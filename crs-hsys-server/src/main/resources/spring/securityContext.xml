@@ -9,11 +9,32 @@
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<http create-session="stateless" use-expressions="true">
+	<beans:bean id="appUserDetailsService"
+		class="io.crs.hsys.server.security.AppUserDetailsService">
+		<beans:constructor-arg ref="appUserService" />
+		<beans:constructor-arg ref="loginAttemptService" />
+		<beans:constructor-arg ref="modelMapper" />
+	</beans:bean>
+
+	<beans:bean id="apiAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService"
+			ref="appUserDetailsService" />
+	</beans:bean>
+
+	<authentication-manager
+		id="apiAuthenticationManager">
+		<authentication-provider
+			ref="apiAuthenticationProvider" />
+	</authentication-manager>
+
+	<!-- =================== -->
+	<!-- API SECURITY CONFIG -->
+	<!-- =================== -->
+	<http create-session="stateless" use-expressions="true" pattern="/api/v1/**">
 		<http-basic
 			entry-point-ref="myBasicAuthenticationEntryPoint" />
 	</http>
-
 
 	<authentication-manager>
 		<authentication-provider>
