@@ -7,6 +7,16 @@
 
 	<display-name>CRS HSys</display-name>
 
+	<!-- Objectify -->
+	<filter>
+		<filter-name>ObjectifyFilter</filter-name>
+		<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ObjectifyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<!-- *************** -->
 	<!-- Spring Security -->
 	<!-- *************** -->
