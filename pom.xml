@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>io.crs.hsys</groupId>
+	<artifactId>crs-hsys</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>crs-hsys-server</module>
+	</modules>
+
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+		<appengine.app.id>hw-cloud8</appengine.app.id>
+		<appengine.app.version>3</appengine.app.version>
+
+		<!-- ********************** -->
+		<!-- Client side properties -->
+		<!-- ********************** -->
+		<gwt.version>2.8.2</gwt.version>
+		<!-- <gwt.version>2.8.0-SNAPSHOT</gwt.version> -->
+		<gwt.style>PRETTY</gwt.style>
+		<gwtp.version>1.6</gwtp.version>
+		<!-- <gwtp.version>2.0-SNAPSHOT</gwtp.version> -->
+		<gin.version>2.1.2</gin.version>
+		<gwt-material.version>2.1.1</gwt-material.version>
+		<!-- <gwt-material-table.version>2.0-SNAPSHOT</gwt-material-table.version> -->
+		<gwt-charts.version>0.9.9</gwt-charts.version>
+		<objectify-gwt.version>1.2.1</objectify-gwt.version>
+
+		<!-- ********************** -->
+		<!-- Server side properties -->
+		<!-- ********************** -->
+		<spring.framework.version>5.1.0.RELEASE</spring.framework.version>
+		<spring.security.version>5.1.0.RELEASE</spring.security.version>
+
+		<logback.version>1.2.3</logback.version>
+		<slf4j.version>1.8.0-beta2</slf4j.version>
+
+		<fasterxml.jackson.core.version>2.8.10</fasterxml.jackson.core.version>
+		<appengine.version>1.9.65</appengine.version>
+		<servlet.version>3.1.0</servlet.version>
+		<objectify.version>5.1.21</objectify.version>
+		<commons-collections4.version>4.1</commons-collections4.version>
+		<validation-api.version>1.1.0.Final</validation-api.version>
+
+		<!-- ***************** -->
+		<!-- Common properties -->
+		<!-- ***************** -->
+		<guava.version>20.0</guava.version>
+
+		<!-- ************* -->
+		<!-- Test versions -->
+		<!-- ************* -->
+		<junit.test.version>4.11</junit.test.version>
+		<!-- <mockito.version>1.10.19</mockito.version> -->
+		<mockito.version>2.0.62-beta</mockito.version>
+		<selenium.version>2.53.0</selenium.version>
+		<selenium.htmlunit.version>2.21</selenium.htmlunit.version>
+
+		<!-- *************** -->
+		<!-- Plugin versions -->
+		<!-- *************** -->
+		<ltgt-gwt-maven-plugin.version>1.0-rc-9</ltgt-gwt-maven-plugin.version>
+		<frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+		<maven-versions-plugin.version>2.7</maven-versions-plugin.version>
+		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+		<maven.surefire.version>2.22.0</maven.surefire.version>
+		<maven.failsafe.version>2.22.0</maven.failsafe.version>
+
+
+		<!-- ********************** -->
+		<!-- Project build settings -->
+		<!-- ********************** -->
+		<java.version>1.8</java.version>
+		<server-artifactId>hw-gae-server</server-artifactId>
+		<server-directory>${project.parent.basedir}/${server-artifactId}</server-directory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<mavenVersion>3.5</mavenVersion>
+	</properties>
+
+	<prerequisites>
+		<maven>3.5</maven>
+	</prerequisites>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- ************************************************************************************* -->
+			<!-- ************************************************************************************* -->
+			<!-- ******************************** SERVER DEPENDENCIES ******************************** -->
+			<!-- ************************************************************************************* -->
+			<!-- ************************************************************************************* -->
+
+
+			<!-- ************************************************************************************* -->
+			<!-- SPRING FRAMEWORK .................................................................... -->
+			<!-- https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/overview.html -->
+			<!-- ************************************************************************************* -->
+
+			<!-- The spring-core and spring-beans modules provide the fundamental 
+				parts of the framework, including the IoC and Dependency Injection features. 
+				The BeanFactory is a sophisticated implementation of the factory pattern. 
+				It removes the need for programmatic singletons and allows you to decouple 
+				the configuration and specification of dependencies from your actual program 
+				logic. -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.framework.version}</version>
+			</dependency>
+
+			<!-- The spring-web module provides basic web-oriented integration features 
+				such as multipart file upload functionality and the initialization of the 
+				IoC container using Servlet listeners and a web-oriented application context. 
+				It also contains an HTTP client and the web-related parts of Spring’s remoting 
+				support. -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.framework.version}</version>
+			</dependency>
+
+			<!-- The spring-webmvc module (also known as the Web-Servlet module) contains 
+				Spring’s model-view-controller (MVC) and REST Web Services implementation 
+				for web applications. Spring’s MVC framework provides a clean separation 
+				between domain model code and web forms and integrates with all of the other 
+				features of the Spring Framework. -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.framework.version}</version>
+			</dependency>
+
+
+			<!-- ************************************************************************************* -->
+			<!-- SPRING SECURITY ..................................................................... -->
+			<!-- ************************************************************************************* -->
+
+			<!-- The Core Spring Security support – spring-security-core – contains 
+				authentication and access control functionality, and has support for standalone 
+				(non-web) applications, method level security and JDBC. -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+			<!-- Web support for Spring Security, the spring-security-web contains 
+				filters and related web security infrastructure enabling URL access control 
+				in a Servlet environment. -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+			<!-- spring-security-config use the rich Spring Security XML namespace, 
+				the spring-security-config dependency will be required. -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+
+
+			<!-- ************************************************************************************* -->
+			<!-- LOGGING ............................................................................. -->
+			<!-- ************************************************************************************* -->
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+
+			<!-- ************************************************************************************* -->
+			<!-- LOGGING ............................................................................. -->
+			<!-- ************************************************************************************* -->
+
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${fasterxml.jackson.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${fasterxml.jackson.core.version}</version>
+			</dependency>
+
+
+			<!-- ************************************************************************************* -->
+			<!-- APPENGINE -->
+			<!-- ************************************************************************************* -->
+
+			<!-- Compile/runtime dependencies -->
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-1.0-sdk</artifactId>
+				<version>${appengine.version}</version>
+			</dependency>
+
+			<!-- Servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- ************************************************************************************* -->
+			<!-- OBJECTIFY -->
+			<!-- ************************************************************************************* -->
+			<dependency>
+				<groupId>com.googlecode.objectify</groupId>
+				<artifactId>objectify</artifactId>
+				<version>${objectify.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.objectify</groupId>
+				<artifactId>objectify-gwt</artifactId>
+				<version>${objectify-gwt.version}</version>
+			</dependency>
+
+			<!-- ************************************************************************************* -->
+			<!-- UTILS -->
+			<!-- ************************************************************************************* -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons-collections4.version}</version>
+			</dependency>
+
+
+			<!-- ************************************************************************************* -->
+			<!-- TESTING -->
+			<!-- ************************************************************************************* -->
+
+			<!-- Test Dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.test.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-testing</artifactId>
+				<version>${appengine.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-stubs</artifactId>
+				<version>${appengine.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-labs</artifactId>
+				<version>${appengine.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-tools-sdk</artifactId>
+				<version>${appengine.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.framework.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- ********************* -->
+				<!-- maven-compiler-plugin -->
+				<!-- ********************* -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<!-- Do not upgrade past 3.1 to avoid triggering https://issues.apache.org/jira/browse/MSOURCES-95 -->
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<!-- ******************* -->
+				<!-- maven-source-plugin -->
+				<!-- ******************* -->
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ****************** -->
+				<!-- gwt-maven-plugin 2 -->
+				<!-- ****************** -->
+				<plugin>
+					<groupId>net.ltgt.gwt.maven</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${ltgt-gwt-maven-plugin.version}</version>
+					<extensions>true</extensions>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<skipModule>true</skipModule>
+						<failOnError>true</failOnError>
+						<sourceLevel>1.8</sourceLevel>
+						<compilerArgs>
+							<arg>-compileReport</arg>
+							<arg>-XcompilerMetrics</arg>
+						</compilerArgs>
+						<classpathScope>compile+runtime</classpathScope>
+						<launcherDir>${server-directory}/target/${server-artifactId}-${project.version}</launcherDir>
+						<warDir>${server-directory}/target/${server-artifactId}-${project.version}</warDir>
+						<webappDirectory>${server-directory}/target/${server-artifactId}-${project.version}</webappDirectory>
+					</configuration>
+				</plugin>
+
+
+				<!-- ************************ -->
+				<!-- Service worker generator -->
+				<!-- ************************ -->
+				<plugin>
+					<groupId>com.github.eirslett</groupId>
+					<artifactId>frontend-maven-plugin</artifactId>
+					<version>${frontend-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>install node and npm</id>
+							<goals>
+								<goal>install-node-and-npm</goal>
+							</goals>
+							<phase>generate-resources</phase>
+							<configuration>
+								<nodeVersion>v9.0.0</nodeVersion>
+							</configuration>
+						</execution>
+						<execution>
+							<id>npm install</id>
+							<goals>
+								<goal>npm</goal>
+							</goals>
+							<phase>generate-resources</phase>
+							<configuration>
+								<arguments>install</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>npm generate</id>
+							<goals>
+								<goal>npm</goal>
+							</goals>
+							<phase>prepare-package</phase>
+							<configuration>
+								<arguments>run-script generate
+									${server-directory}/target/${server-artifactId}-${project.version}</arguments>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ************************ -->
+				<!-- maven-resources-plugin -->
+				<!-- ************************ -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>copy-webapp</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${server-directory}/target/${server-artifactId}-${project.version}</outputDirectory>
+								<resources>
+									<resource>
+										<directory>${server-directory}/src/main/webapp/</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ********************** -->
+				<!-- appengine-maven-plugin -->
+				<!-- ********************** -->
+				<plugin>
+					<groupId>com.google.appengine</groupId>
+					<artifactId>appengine-maven-plugin</artifactId>
+					<version>${appengine.version}</version>
+					<configuration>
+						<version>${appengine.app.version}</version>
+						<enableJarClasses>false</enableJarClasses>
+						<!-- <enableJarSplitting>true</enableJarSplitting> -->
+						<!-- Jar the WEB-INF/classes content. Applies to the App Engine standard 
+							environment only. <enableJarClasses>false</enableJarClasses> -->
+
+						<!-- Comment in the below snippet to bind to all IPs instead of just 
+							localhost -->
+						<!-- <address>0.0.0.0</address> -->
+						<port>8888</port>
+
+						<!-- Comment in the below snippet to enable local debugging with a 
+							remove debugger like those included with Eclipse or IntelliJ -->
+						<!-- jvmFlags> <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag> 
+							</jvmFlags -->
+						<!-- <appId>crm4it</appId> <version>1</version> -->
+						<jvmFlags>
+							<!-- see also: http://blog.cwill-dev.com/2011/11/22/grails-java-lang-outofmemoryerror-permgen-space/ -->
+							<jvmFlag>-Xms512m</jvmFlag>
+							<jvmFlag>-Xmx1024m</jvmFlag>
+							<jvmFlag>-XX:PermSize=256m</jvmFlag>
+							<jvmFlag>-XX:MaxPermSize=512m</jvmFlag>
+							<!-- <jvmFlag>-XX:+UseParNewGC</jvmFlag> <jvmFlag>-XX:MaxNewSize=256m</jvmFlag> 
+								<jvmFlag>-XX:NewSize=256m</jvmFlag> <jvmFlag>-XX:SurvivorRatio=128</jvmFlag> 
+								<jvmFlag>-XX:+UseTLAB</jvmFlag> <jvmFlag>-XX:+UseConcMarkSweepGC</jvmFlag> 
+								<jvmFlag>-XX:+CMSClassUnloadingEnabled</jvmFlag> <jvmFlag>-XX:+CMSPermGenSweepingEnabled</jvmFlag> -->
+						</jvmFlags>
+						<!-- <appDir>${project.build.directory}/gwt/launcherDir</appDir> -->
+					</configuration>
+					<executions>
+						<execution>
+							<id>start-gae</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>devserver_start</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>stop-gae</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>devserver_stop</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${maven-versions-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<!-- Generate JavaDoc -->
+		<profile>
+			<id>generate-java-doc</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.10.3</version>
+						<configuration>
+							<!-- comment out for now because doesn't work on JDK < 8 -->
+							<!--<additionalparam>-Xdoclint:none</additionalparam> -->
+							<encoding>${project.build.sourceEncoding}</encoding>
+							<locale>en</locale>
+							<linksource>true</linksource>
+							<validateLinks>true</validateLinks>
+							<links>
+								<link>https://github.com/gwtproject/gwt/tree/master/doc/validation-package-list</link>
+							</links>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- Disable doclint on JDK 8 -->
+		<profile>
+			<id>nodoclint</id>
+			<activation>
+				<jdk>1.8</jdk>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<configuration>
+								<!--<additionalparam>-Xdoclint:none</additionalparam> -->
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+</project>
