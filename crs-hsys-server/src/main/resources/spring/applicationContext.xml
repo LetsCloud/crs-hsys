@@ -11,5 +11,28 @@
 	<import resource="classpath:/spring/securityContext.xml" />
 
 	<bean id="modelMapper" class="org.modelmapper.ModelMapper" />
+
+	<!-- ======== -->
+	<!-- SERVICES -->
+	<!-- ======== -->
+	<bean id="appUserService"
+		class="io.crs.hsys.server.service.ofy.AppUserServiceImpl">
+		<constructor-arg ref="loggedInChecker" />
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="appUserRepository" />
+	</bean>
+
+	<!-- ============ -->
+	<!-- REPOSITORIES -->
+	<!-- ============ -->
+	<bean id="accountRepository"
+		class="io.crs.hsys.server.repository.ofy.AccountRepositoryImpl" />
+<!-- 	<bean id="userGroupRepository"
+		class="io.crs.hsys.server.repository.ofy.UserGroupRepositoryImpl" />
+	<bean id="roleRepository"
+		class="io.crs.hsys.cloud.server.repository.ofy.RoleRepositoryImpl" />
+ -->
+	<bean id="appUserRepository"
+		class="io.crs.hsys.server.repository.ofy.AppUserRepositoryImpl" />
 	
 </beans>
