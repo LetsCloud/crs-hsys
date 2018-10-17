@@ -9,6 +9,11 @@
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<beans:bean id="loggedInChecker"
+		class="io.crs.hsys.server.security.LoggedInChecker">
+		<beans:constructor-arg ref="modelMapper" />
+	</beans:bean>
+
 	<beans:bean id="loginAttemptService"
 		class="io.crs.hsys.server.security.LoginAttemptService" />
 
@@ -25,25 +30,30 @@
 			ref="appUserDetailsService" />
 	</beans:bean>
 
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	</beans:bean>
+
 	<authentication-manager
 		id="appAuthenticationManager">
 		<authentication-provider
-			ref="appAuthenticationProvider" />
+			ref="appAuthenticationProvider">
+		</authentication-provider>
 	</authentication-manager>
 
 	<!-- =================== -->
 	<!-- APP SECURITY CONFIG -->
 	<!-- =================== -->
-	<http use-expressions="true">
+	<http auto-config="true">
 		<intercept-url pattern="/_ah/**" access="permitAll" />
 		<intercept-url pattern="/login*" access="permitAll" />
-		<intercept-url pattern="/signup*" access="permitAll" />
+		<intercept-url pattern="/signup" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-		<form-login login-page="/login.html"
-			password-parameter="password" username-parameter="username"
+
+		<form-login login-processing-url="/login"  login-page='/login.html'
+			username-parameter="username" password-parameter="password"
 			authentication-failure-url="/login.html?error=true" />
-		<logout delete-cookies="JSESSIONID" />
-		<remember-me key="uniqueAndSecret" />
+		<logout logout-success-url="/login.html" />
 	</http>
 
 </beans:beans>
