@@ -11,8 +11,7 @@ import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.server.entity.profile.Address;
-import io.crs.hsys.shared.constans.PostalAddressLabel;
-import io.crs.hsys.shared.dto.common.RegisterDto;
+import io.crs.hsys.server.model.Registration;
 
 /**
  * @author robi
@@ -37,7 +36,7 @@ public class Account extends BaseEntity {
 	 * Objectify miatt
 	 */
 	public Account() {
-		logger.info("Account()");
+		logger.debug("Account()");
 	}
 
 	/**
@@ -45,17 +44,9 @@ public class Account extends BaseEntity {
 	 * 
 	 * @param registerDto
 	 */
-	public Account(RegisterDto registerDto) {
+	public Account(Registration registration) {
 		this();
-		Address postalAddress = new Address();
-		postalAddress.setPrimary(true);
-		postalAddress.setLabel(PostalAddressLabel.WORK);
-		postalAddress.setStreet(registerDto.getStreet());
-		postalAddress.setCity(registerDto.getCity());
-		postalAddress.setPostcode(registerDto.getPostcode());
-		postalAddress.setCountry(registerDto.getPostcode());
-		this.address = postalAddress;
-		this.name = registerDto.getAccountName();
+		this.name = registration.getUserName();
 	}
 
 	public String getName() {
@@ -63,7 +54,6 @@ public class Account extends BaseEntity {
 	}
 
 	public void setName(String name) {
-		logger.info("setName()->" + name);
 		this.name = name;
 	}
 
@@ -72,7 +62,6 @@ public class Account extends BaseEntity {
 	}
 
 	public void setAddress(Address address) {
-		logger.info("setAddress()->" + address);
 		this.address = address;
 	}
 

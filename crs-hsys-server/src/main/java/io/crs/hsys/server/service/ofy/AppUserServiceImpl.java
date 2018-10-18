@@ -13,11 +13,11 @@ import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.FcmToken;
 import io.crs.hsys.server.entity.common.VerificationToken;
+import io.crs.hsys.server.model.Registration;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.AppUserRepository;
 import io.crs.hsys.server.security.LoggedInChecker;
 import io.crs.hsys.server.service.AppUserService;
-import io.crs.hsys.shared.dto.common.RegisterDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -105,17 +105,12 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 	}
 
 	@Override
-	public AppUser createAdminUser(RegisterDto registerDto)
+	public AppUser createAdminUser(Registration registration, Account account)
 			throws EntityValidationException, UniqueIndexConflictException {
-		Account account = accountRepository.findById(registerDto.getAccountId());
-		logger.info("createAdminUser()->account=" + account);
-
-		AppUser appUser = new AppUser(registerDto);
+		AppUser appUser = new AppUser(registration);
 		appUser.setAccount(account);
 		appUser.setAdmin(true);
 		appUser = appUserRepository.save(appUser);
-		logger.info("createAdminUser()->appUser=" + appUser);
-
 		return appUser;
 	}
 

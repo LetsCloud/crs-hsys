@@ -8,7 +8,13 @@
         http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+        
+	<beans:bean id="registrationListener"
+		class="io.crs.hsys.server.security.RegistrationListener">
+		<beans:property name="appUserService" ref="appUserService" />
+		<beans:property name="messageSource" ref="messageSource" />
+	</beans:bean>
+	
 	<beans:bean id="loggedInChecker"
 		class="io.crs.hsys.server.security.LoggedInChecker">
 		<beans:constructor-arg ref="modelMapper" />
@@ -50,8 +56,9 @@
 		<intercept-url pattern="/signup*" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
-		<form-login login-processing-url="/login"  login-page='/login.html'
-			username-parameter="username" password-parameter="password"
+		<form-login login-processing-url="/login"
+			login-page='/login.html' username-parameter="username"
+			password-parameter="password"
 			authentication-failure-url="/login.html?error=true" />
 		<logout logout-success-url="/login.html" />
 	</http>
