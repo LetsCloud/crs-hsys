@@ -117,7 +117,7 @@ public class AppUser extends AccountChild {
 	 */
 	public AppUser(Registration registration) {
 		this();
-		setUsername(registration.getUserName());
+		setUsername(registration.getAccountName());
 		setPassword(registration.getPassword());
 		setEmailAddress(registration.getEmail());
 	}

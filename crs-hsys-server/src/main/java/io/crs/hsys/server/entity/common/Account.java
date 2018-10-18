@@ -46,7 +46,7 @@ public class Account extends BaseEntity {
 	 */
 	public Account(Registration registration) {
 		this();
-		this.name = registration.getUserName();
+		this.name = registration.getAccountName();
 	}
 
 	public String getName() {

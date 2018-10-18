@@ -47,7 +47,7 @@ public class AccountServiceImpl implements AccountService {
 
 		Account account = accountRepository.save(new Account(registration));
 		if (account == null) {
-			throw new IdNotFoundException(Account.class.getSimpleName(), registration.getUserName());
+			throw new IdNotFoundException(Account.class.getSimpleName(), registration.getAccountName());
 		}
 		
 		AppUser appUser = appUserService.createAdminUser(registration, account);

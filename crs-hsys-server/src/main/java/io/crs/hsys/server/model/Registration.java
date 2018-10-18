@@ -9,7 +9,7 @@ package io.crs.hsys.server.model;
  */
 public class Registration {
 
-	private String userName;
+	private String accountName;
 
 	private String email;
 
@@ -33,12 +33,12 @@ public class Registration {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getAccountName() {
+		return accountName;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	public String getConfPassw() {
