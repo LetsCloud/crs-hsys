@@ -18,11 +18,14 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
+	<bean id="objectifyRegistration"
+		class="io.crs.hsys.server.repository.ofy.ObjectifyRegistration" />
+
 	<!-- ======== -->
 	<!-- SERVICES -->
 	<!-- ======== -->
 	<bean id="accountService"
-		class="hu.hw.cloud.server.service.impl.AccountServiceImpl">
+		class="io.crs.hsys.server.service.ofy.AccountServiceImpl">
 		<property name="accountRepository" ref="accountRepository" />
 		<property name="appUserService" ref="appUserService" />
 	</bean>

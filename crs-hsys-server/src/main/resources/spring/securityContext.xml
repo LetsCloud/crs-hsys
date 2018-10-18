@@ -54,6 +54,7 @@
 		<intercept-url pattern="/_ah/**" access="permitAll" />
 		<intercept-url pattern="/login*" access="permitAll" />
 		<intercept-url pattern="/signup*" access="permitAll" />
+		<intercept-url pattern="/registration*" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
 		<form-login login-processing-url="/login"

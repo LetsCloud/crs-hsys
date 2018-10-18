@@ -51,12 +51,14 @@ public class AppController {
 
 	@RequestMapping("/signup")
 	public String signup(Model model) {
+		logger.info("signup()");
 		model.addAttribute("registration", new Registration());
 		return "signup";
 	}
 
 	@PostMapping("/registration")
 	public String registration(@ModelAttribute Registration registration, WebRequest request) {
+		logger.info("registration()->registration=" + registration);
 		AppUser appuser;
 		try {
 			appuser = accountService.register(registration);
@@ -66,7 +68,7 @@ public class AppController {
 				eventPublisher.publishEvent(new OnRegistrationCompleteEvent(appuser, request.getLocale(), appUrl));
 				Locale locale = request.getLocale();
 				logger.info("register->locale=" + locale);
-				return "success";
+				return "login";
 			} catch (Exception e) {
 				logger.info(e.toString());
 				e.printStackTrace();

@@ -18,8 +18,8 @@
 					<h4 class="center">Sign Up</h4>
 
 					<div class="row">
-						<form class="col s12 m12" th:action="@{/reg}" th:object="${registration}"
-							method="post">
+						<form class="col s12 m12" th:action="@{/registration}"
+							th:object="${registration}" method="post">
 							<div class="row">
 								<div class="input-field col s12 m12">
 									<i class="material-icons prefix">perm_identity</i> <input
@@ -31,8 +31,7 @@
 								<div class="input-field col s12 m12">
 									<i class="material-icons prefix">mail_outline</i> <input
 										id="email" name="email" th:field="*{email}" type="email"
-										class="validate" /> <label for="email"
-										class="center-align">Email</label>
+										class="validate" /> <label for="email" class="center-align">Email</label>
 								</div>
 
 								<div class="input-field col s12 m12">
@@ -43,19 +42,17 @@
 
 								<div class="input-field col s12 m12">
 									<i class="material-icons prefix">lock_outline</i> <input
-										id="confPassw" name="confPassw" th:field="*{confPassw}" type="password" /> <label
-										for="confPassw">Re-type password</label>
+										id="confPassw" name="confPassw" th:field="*{confPassw}"
+										type="password" /> <label for="confPassw">Re-type
+										password</label>
 								</div>
 							</div>
+							<button class="btn waves-effect waves-light center" type="submit">
+								Sign Up <i class="fa fa-sign-in right"></i>
+							</button>
 						</form>
-
-
 					</div>
 					<!--row-->
-					<button class="btn waves-effect waves-light center" type="submit"
-						name="action">
-						Sign Up <i class="fa fa-sign-in right"></i>
-					</button>
 				</div>
 				<!--card-->
 			</div>
