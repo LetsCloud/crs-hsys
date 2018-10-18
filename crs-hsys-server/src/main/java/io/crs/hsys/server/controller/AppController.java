@@ -22,7 +22,8 @@ public class AppController {
         return "login";
 
     }
-   */  
+*/
+	
 	@RequestMapping("/signup")
 	public String registration(Model model) {
 		model.addAttribute("user", new Registration());

@@ -3,68 +3,63 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
 	layout:decorator="layouts/main">
 <head>
-<title>SFJ - Minden napra egy sztori</title>
+<title>CRS Hsys - Sign Up</title>
 <style>
-
 </style>
 </head>
 <body>
 
 	<div layout:fragment="loginContent">
+		<div class="row">
+			<div class="col s12 m6 offset-m3">
+				<div class="card-panel z-depth-5">
+					<h4 class="center">Sign Up</h4>
 
-		<h4>Sign Up</h4>
-		<div id="register-page" class="row">
-			<div class="col s12 z-depth-6 card-panel">
-
-				<form class="register-form" th:action="@{/reg}" th:object="${user}"
-					method="post">
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-social-person-outline prefix"></i> <input
-								id="user_name" name="fullName" th:field="*{fullName}"
-								type="text" class="validate"> <label for="user_name"
-								class="center-align">Username</label>
-						</div>
-					</div>
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-communication-email prefix"></i> <input
-								id="user_email" name="email" th:field="*{email}" type="email"
-								class="validate"> <label for="user_email"
-								class="center-align">Email</label>
-						</div>
-					</div>
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-action-lock-outline prefix"></i> <input
-								id="user_passw" name="password" th:field="*{password}"
-								type="password" class="validate"> <label
-								for="user_passw">Password</label>
-						</div>
-					</div>
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-action-lock-outline prefix"></i> <input
-								id="confirm_pass" type="password"> <label
-								for="confirm_pass">Re-type password</label>
-						</div>
-					</div>
 					<div class="row">
-						<div class="input-field col s12">
-							<a href="register.html"
-								class="btn waves-effect waves-light col s12">Register Now</a>
-						</div>
-						<div class="input-field col s12">
-							<p class="margin center medium-small sign-up">
-								Already have an account? <a href="login.php">Login</a>
-							</p>
-						</div>
+						<form class="col s12 m12" th:action="@{/reg}" th:object="${user}"
+							method="post">
+							<div class="row">
+								<div class="input-field col s12 m12">
+									<i class="material-icons prefix">account_circle</i> <input
+										id="user_name" name="fullName" th:field="*{fullName}"
+										type="text" class="validate" /> <label for="user_name"
+										class="center-align">Username</label>
+								</div>
+
+								<div class="input-field col s12 m12">
+									<i class="material-icons prefix">mail_outline</i> <input
+										id="user_email" name="email" th:field="*{email}" type="email"
+										class="validate" /> <label for="user_email"
+										class="center-align">Email</label>
+								</div>
+
+								<div class="input-field col s12 m12">
+									<i class="material-icons prefix">lock_outline</i> <input
+										id="user_passw" name="password" th:field="*{password}"
+										type="password" class="validate" /> <label for="user_passw">Password</label>
+								</div>
+
+								<div class="input-field col s12 m12">
+									<i class="material-icons prefix">lock_outline</i> <input
+										id="confirm_pass" type="password" /> <label
+										for="confirm_pass">Re-type password</label>
+								</div>
+							</div>
+						</form>
+
+
 					</div>
-				</form>
+					<!--row-->
+					<button class="btn waves-effect waves-light center" type="submit"
+						name="action">
+						Sign Up <i class="fa fa-sign-in right"></i>
+					</button>
+				</div>
+				<!--card-->
 			</div>
+			<!--col-->
 		</div>
-
+		<!--row-->
 	</div>
-
 </body>
 </html>

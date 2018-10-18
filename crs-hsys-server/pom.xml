@@ -60,12 +60,17 @@
 
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
+			<artifactId>logback-classic</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
 
 		<dependency>
@@ -109,8 +114,8 @@
 			</plugin>
 
 			<plugin>
-					<groupId>com.google.appengine</groupId>
-					<artifactId>appengine-maven-plugin</artifactId>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
 			</plugin>
 			<!-- [END cloudplugin] -->
 
