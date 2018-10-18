@@ -9,6 +9,14 @@
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<beans:bean id="loggedInChecker"
+		class="io.crs.hsys.server.security.LoggedInChecker">
+		<beans:constructor-arg ref="modelMapper" />
+	</beans:bean>
+
+	<beans:bean id="loginAttemptService"
+		class="io.crs.hsys.server.security.LoginAttemptService" />
+
 	<beans:bean id="appUserDetailsService"
 		class="io.crs.hsys.server.security.AppUserDetailsService">
 		<beans:constructor-arg ref="appUserService" />
@@ -16,38 +24,36 @@
 		<beans:constructor-arg ref="modelMapper" />
 	</beans:bean>
 
-	<beans:bean id="apiAuthenticationProvider"
+	<beans:bean id="appAuthenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
 		<beans:property name="userDetailsService"
 			ref="appUserDetailsService" />
 	</beans:bean>
 
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	</beans:bean>
+
 	<authentication-manager
-		id="apiAuthenticationManager">
+		id="appAuthenticationManager">
 		<authentication-provider
-			ref="apiAuthenticationProvider" />
-	</authentication-manager>
-
-	<!-- =================== -->
-	<!-- API SECURITY CONFIG -->
-	<!-- =================== -->
-	<http create-session="stateless" use-expressions="true" pattern="/api/v1/**">
-		<http-basic
-			entry-point-ref="myBasicAuthenticationEntryPoint" />
-	</http>
-
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="{noop}admin" authorities="ROLE_USER" />
-			</user-service>
+			ref="appAuthenticationProvider">
 		</authentication-provider>
 	</authentication-manager>
 
-	<global-method-security
-		pre-post-annotations="enabled" />
+	<!-- =================== -->
+	<!-- APP SECURITY CONFIG -->
+	<!-- =================== -->
+	<http auto-config="true">
+		<intercept-url pattern="/_ah/**" access="permitAll" />
+		<intercept-url pattern="/login*" access="permitAll" />
+		<intercept-url pattern="/signup*" access="permitAll" />
+		<intercept-url pattern="/**" access="isAuthenticated()" />
 
-	<beans:bean id="myBasicAuthenticationEntryPoint"
-		class="io.crs.hsys.server.security.MyBasicAuthenticationEntryPoint" />
+		<form-login login-processing-url="/login"  login-page='/login.html'
+			username-parameter="username" password-parameter="password"
+			authentication-failure-url="/login.html?error=true" />
+		<logout logout-success-url="/login.html" />
+	</http>
 
 </beans:beans>

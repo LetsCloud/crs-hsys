@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +27,7 @@ import io.crs.hsys.shared.dto.common.AppUserDto;
  *
  */
 public class AppUserDetailsService implements UserDetailsService {
-//	private static final Logger logger = LoggerFactory.getLogger(AppUserDetailsService.class);
+	private static final Logger logger = LoggerFactory.getLogger(AppUserDetailsService.class);
 
 	private final AppUserService userService;
 
@@ -35,7 +37,7 @@ public class AppUserDetailsService implements UserDetailsService {
 
 	AppUserDetailsService(AppUserService userService, LoginAttemptService loginAttemptService,
 			ModelMapper modelMapper) {
-//		logger.info("AppUserDetailsService()");
+		logger.info("AppUserDetailsService()");
 		this.userService = userService;
 		this.loginAttemptService = loginAttemptService;
 		this.modelMapper = modelMapper;
