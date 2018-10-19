@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
@@ -31,13 +32,15 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 	private final LoggedInChecker loggedInChecker;
 	private final AccountRepository accountRepository;
 	private final AppUserRepository appUserRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	AppUserServiceImpl(LoggedInChecker loggedInChecker, AccountRepository accountRepository,
-			AppUserRepository appUserRepository) {
+			AppUserRepository appUserRepository, PasswordEncoder passwordEncoder) {
 		super(appUserRepository);
 		this.loggedInChecker = loggedInChecker;
 		this.accountRepository = accountRepository;
 		this.appUserRepository = appUserRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
@@ -109,6 +112,7 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 			throws EntityValidationException, UniqueIndexConflictException {
 		AppUser appUser = new AppUser(registration);
 		appUser.setAccount(account);
+		appUser.setPassword(passwordEncoder.encode(registration.getPassword()));
 		appUser.setAdmin(true);
 		appUser = appUserRepository.save(appUser);
 		return appUser;

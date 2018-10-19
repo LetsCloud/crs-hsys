@@ -28,27 +28,28 @@
 		<constructor-arg ref="modelMapper" />
 	</bean>
 
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	</bean>
+
 	<bean id="appAuthenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
 		<property name="userDetailsService"
 			ref="appUserDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
 	</bean>
 
-	<bean id="encoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-	</bean>
-	
 	<security:authentication-manager
 		id="appAuthenticationManager">
 		<security:authentication-provider
-			user-service-ref="appUserDetailsService" />
+			ref="appAuthenticationProvider" />
 	</security:authentication-manager>
-	
+
 	<!-- <security:authentication-manager> <security:authentication-provider> 
 		<security:user-service> <security:user name="admin@admin.com" password="{noop}admin" 
 		authorities="ROLE_USER" /> </security:user-service> </security:authentication-provider> 
 		</security:authentication-manager> -->
-	
+
 	<bean id="loginUrlAuthenticationEntryPoint"
 		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
 		<constructor-arg name="loginFormUrl" value="/login" />

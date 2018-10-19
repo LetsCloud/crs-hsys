@@ -35,6 +35,7 @@
 		<constructor-arg ref="loggedInChecker" />
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="appUserRepository" />
+		<constructor-arg ref="passwordEncoder" />
 	</bean>
 
 	<!-- ============ -->
