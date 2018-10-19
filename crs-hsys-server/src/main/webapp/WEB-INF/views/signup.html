@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
-	layout:decorator="layouts/main">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main}">
 
 <head>
-<title>CRS Hsys - Sign Up</title>
 <style>
 .signup-form {
-	width: 320px;
+	overflow: hidden;
+	padding: 15px 25px 0 25px;
 }
 </style>
 </head>
 
-<body class="cyan">
-	<div layout:fragment="content">
-
-		<div class="row">
-			<div class="col s12 card-panel z-depth-4">
-				<form class="signup-form" th:action="@{/registration}"
-					th:object="${registration}" method="post">
+<body class="blue-grey">
+	<div layout:fragment="content" class="row">
+		<div class="col m6 offset-m3 l4 offset-l4">
+			<div class="signup-form">
+				<form th:action="@{/registration}" th:object="${registration}"
+					method="post" class="card-panel z-depth-4">
 
 					<div class="row">
 						<div class="input-field col s12 center">

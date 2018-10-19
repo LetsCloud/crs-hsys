@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
-	layout:decorator="layouts/main">
+	layout:decorate="~{layouts/main}">
 <head>
-
-<title>CRS Hsys - Login</title>
 <style>
 .login-form {
-	width: 320px;
+	overflow: hidden;
+	padding: 15px 25px 0 25px;
 }
 
 .ml5 {
@@ -21,19 +20,28 @@
 
 </head>
 
-<body class="cyan">
-	<div layout:fragment="content">
-
-		<div class="row">
-			<div class="col s12 card-panel z-depth-4">
-				<form name="login" class="form-login" action="login" method="POST">
+<body class="blue-grey">
+	<div layout:fragment="content" class="row">
+		<div class="col m6 offset-m3 l4 offset-l4">
+			<div class="login-form">
+				<form name="login" th:action="@{/login}" method="post"
+					class="card-panel z-depth-4">
 
 					<div class="row">
-						<div class="input-field col s12 center">
+						<div class="col s12 center">
 							<h4 class="center">Login</h4>
-							<p>Join to...
+							<p>HostWare Cloud
 							<p>
 						</div>
+
+						<div th:if="${param.error}" class="col s12 center card red">
+							<div class="card-content white-text">
+								<p>Hibás felhasználói név és/vagy jelszó</p>
+							</div>
+						</div>
+
+						<div th:if="${param.logout}" class="col s12 center">Sikeresen
+							kijelentkeztél</div>
 					</div>
 
 					<div class="row margin">
@@ -64,7 +72,8 @@
 
 					<div class="row ml5 mr5">
 						<div class="input-field col s12">
-							<button class="btn waves-effect waves-light col s12 pink accent-2"
+							<button
+								class="btn waves-effect waves-light col s12 pink accent-2"
 								type="submit">Login</button>
 						</div>
 					</div>
@@ -72,7 +81,7 @@
 						<div class="input-field col s12">
 							<div class="input-field col s6 m6 l6">
 								<p class="margin medium-small">
-									<a href="/signup">Register Now!</a>
+									<a href="/signup">Sign Up Now!</a>
 								</p>
 							</div>
 							<div class="input-field col s6 m6 l6">
