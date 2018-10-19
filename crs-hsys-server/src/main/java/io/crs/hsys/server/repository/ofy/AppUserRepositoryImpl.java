@@ -38,7 +38,7 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	}
 
 	@Override
-	public AppUser findByEmailAdddress(String emailAddress) {
+	public AppUser findByEmail(String emailAddress) {
 		return getFirstByProperty(PROPERTY_EMAIL, emailAddress);
 	}
 

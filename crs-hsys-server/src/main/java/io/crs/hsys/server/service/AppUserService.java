@@ -19,6 +19,8 @@ public interface AppUserService extends CrudService<AppUser> {
 
 	AppUser getUserByUsername(String username, Long accountGeneratedId);
 
+	AppUser getByEmail(String email);
+	
 	List<String> getPermissions(String username);
 
 	AppUser getCurrentUser();

@@ -8,14 +8,18 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven />
+	
 	<context:component-scan
 		base-package="io.crs.hsys.server.controller" />
 
 	<mvc:resources mapping="/resources/**"
 		location="/resources/" />
-
+<!-- 
 	<mvc:view-controller path="/login*"
 		view-name="login" />
+ -->
+	<mvc:view-controller path="/launchboard"
+		view-name="launchboard" />
 
 	<!-- **************************************************************** -->
 	<!-- THYMELEAF-SPECIFIC ARTIFACTS ................................... -->
@@ -23,14 +27,14 @@
 	<!-- **************************************************************** -->
 
 	<bean id="springTemplateResolver"
-		class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".html" />
 	</bean>
 
 
 	<bean id="springTemplateEngine"
-		class="org.thymeleaf.spring5.SpringTemplateEngine">
+		class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver"
 			ref="springTemplateResolver" />
 		<property name="additionalDialects">
@@ -40,7 +44,7 @@
 		</property>
 	</bean>
 
-	<bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="springTemplateEngine" />
 	</bean>
 </beans>

@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
 	layout:decorate="~{layouts/main}">
 <head>
 
 <!-- CSS  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link href="css/materialize.css" type="text/css" rel="stylesheet"
-	media="screen,projection" />
-<link href="css/style.css" type="text/css" rel="stylesheet"
-	media="screen,projection" />
+<link href="resources/static/css/style.css" type="text/css"
+	rel="stylesheet" media="screen,projection" />
 </head>
 <body>
 	<div layout:fragment="content">
 
-		<nav class="light-blue lighten-1" role="navigation">
+		<nav class="blue-grey" role="navigation">
 			<div class="nav-wrapper container">
-				<a id="logo-container" href="#" class="brand-logo">Logo</a>
+				<a id="logo-container" href="#" class="brand-logo">HostWare
+					Cloud</a>
 				<ul class="right hide-on-med-and-down">
+					<li>
+						<div>
+							Üdvözlünk <span sec:authentication="name">Anonymous </span>
+							<form sec:authorize="isAuthenticated()" id="frmlogout"
+								th:action="@{/logout}" method="post" class="form-inline">
+								| <a href="javascript:{}"
+									onclick="document.getElementById('frmlogout').submit(); return false;">Kijelentkezés</a>
+							</form>
+						</div>
+					<li>
 					<li><a href="#">Navbar Link</a></li>
+					<li><div sec:authentication="name"></div></li>
 				</ul>
 
 				<ul id="nav-mobile" class="sidenav">
@@ -29,6 +38,7 @@
 					class="material-icons">menu</i></a>
 			</div>
 		</nav>
+
 		<div class="section no-pad-bot" id="index-banner">
 			<div class="container">
 				<br> <br>

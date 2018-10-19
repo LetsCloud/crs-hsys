@@ -45,17 +45,17 @@ public class AppUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String input) throws UsernameNotFoundException {
+		logger.info("loadUserByUsername()->input=" + input);
 		String ip = getRequestRemoteAddr();
 		boolean accountNonLocked = !loginAttemptService.isBlocked(ip);
-
-		String[] split = input.split(":");
-		if (split.length < 2)
-			throw new UsernameNotFoundException("Must specify both username and corporate domain identifier");
-
-		String username = split[0];
-		String corporateId = split[1];
-
-		AppUser appUser = userService.getUserByUsername(username, new Long(corporateId));
+		/*
+		 * String[] split = input.split(":"); if (split.length < 2) throw new
+		 * UsernameNotFoundException("Must specify both username and corporate domain identifier"
+		 * );
+		 * 
+		 * String username = split[0]; String corporateId = split[1];
+		 */
+		AppUser appUser = userService.getByEmail(input);
 		if (appUser == null)
 			throw new UsernameNotFoundException("User not found");
 

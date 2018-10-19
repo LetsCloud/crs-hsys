@@ -16,7 +16,7 @@ public interface AppUserRepository extends CrudRepository<AppUser> {
 
 	AppUser findByUsername(Account account, String username);
 
-	AppUser findByEmailAdddress(String emailAddress);
+	AppUser findByEmail(String emailAddress);
 
 	List<AppUser> getByAccount(Object account);
 

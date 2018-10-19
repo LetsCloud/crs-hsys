@@ -43,19 +43,22 @@ public class AppController {
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Autowired
-	AppController(AccountService accountService, AppUserService appUserService, ApplicationEventPublisher eventPublisher) {
+	AppController(AccountService accountService, AppUserService appUserService,
+			ApplicationEventPublisher eventPublisher) {
 		this.accountService = accountService;
 		this.appUserService = appUserService;
 		this.eventPublisher = eventPublisher;
 	}
 
-	/*
-	 * @RequestMapping(value="/login") public String login(Model model) {
-	 * 
-	 * return "login";
-	 * 
-	 * }
-	 */
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@RequestMapping({ "/" })
+	public String index() {
+		return "index";
+	}
 
 	@RequestMapping("/signup")
 	public String signup(Model model) {

@@ -134,4 +134,10 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 			update(currentUser);
 		}
 	}
+
+	@Override
+	public AppUser getByEmail(String email) {
+		AppUser user = this.appUserRepository.findByEmail(email);
+		return user;
+	}
 }
