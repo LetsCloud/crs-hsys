@@ -49,7 +49,7 @@ public class AppController {
 		this.appUserService = appUserService;
 		this.eventPublisher = eventPublisher;
 	}
-
+/*
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
@@ -59,7 +59,8 @@ public class AppController {
 	public String index() {
 		return "index";
 	}
-
+*/
+	
 	@RequestMapping("/signup")
 	public String signup(Model model) {
 		logger.info("signup()");
