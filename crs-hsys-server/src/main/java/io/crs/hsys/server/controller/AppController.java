@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.server.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -12,14 +14,17 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.model.Registration;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AccountService;
+import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -33,11 +38,14 @@ public class AppController {
 
 	private final AccountService accountService;
 
+	private final AppUserService appUserService;
+
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Autowired
-	AppController(AccountService accountService, ApplicationEventPublisher eventPublisher) {
+	AppController(AccountService accountService, AppUserService appUserService, ApplicationEventPublisher eventPublisher) {
 		this.accountService = accountService;
+		this.appUserService = appUserService;
 		this.eventPublisher = eventPublisher;
 	}
 
@@ -86,6 +94,18 @@ public class AppController {
 			logger.info(e.getMessage());
 			e.printStackTrace();
 			return "signup";
+		}
+	}
+
+	@RequestMapping(value = "/activate/{token}", method = GET)
+	@ResponseBody
+	public Boolean activate(@PathVariable String token) {
+		try {
+			appUserService.activate(token);
+			return true;
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

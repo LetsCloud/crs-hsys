@@ -8,13 +8,15 @@
         http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-        
+
 	<beans:bean id="registrationListener"
 		class="io.crs.hsys.server.security.RegistrationListener">
-		<beans:property name="appUserService" ref="appUserService" />
-		<beans:property name="messageSource" ref="messageSource" />
+		<beans:property name="appUserService"
+			ref="appUserService" />
+		<beans:property name="messageSource"
+			ref="messageSource" />
 	</beans:bean>
-	
+
 	<beans:bean id="loggedInChecker"
 		class="io.crs.hsys.server.security.LoggedInChecker">
 		<beans:constructor-arg ref="modelMapper" />
@@ -40,27 +42,30 @@
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 	</beans:bean>
 
-	<authentication-manager
-		id="appAuthenticationManager">
+	<authentication-manager id="appAuthenticationManager">
 		<authentication-provider
-			ref="appAuthenticationProvider">
-		</authentication-provider>
+			user-service-ref="appUserDetailsService" />
 	</authentication-manager>
 
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="admin@admin.com" password="{noop}admin" authorities="ROLE_USER" /> 
+		</user-service> </authentication-provider> </authentication-manager> -->
 	<!-- =================== -->
-	<!-- APP SECURITY CONFIG -->
+	<!-- APP SECURITY CONFIG use-expressions="true" -->
 	<!-- =================== -->
-	<http auto-config="true">
+	<http auto-config="true" authentication-manager-ref="appAuthenticationManager">
 		<intercept-url pattern="/_ah/**" access="permitAll" />
-		<intercept-url pattern="/resources/static/**" access="permitAll" />
+		<intercept-url pattern="/resources/static/**"
+			access="permitAll" />
 		<intercept-url pattern="/login*" access="permitAll" />
 		<intercept-url pattern="/signup*" access="permitAll" />
-		<intercept-url pattern="/registration*" access="permitAll" />
+		<intercept-url pattern="/registration*"
+			access="permitAll" />
+		<intercept-url pattern="/activate/**" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-
-		<form-login
-			login-page="/login" username-parameter="username"
-			password-parameter="password"
+		
+		<form-login login-page="/login"
+			username-parameter="username" password-parameter="password"
 			authentication-failure-url="/login.html?error=true" />
 		<logout logout-success-url="/login.html?logout" />
 	</http>
