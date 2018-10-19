@@ -8,16 +8,13 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven />
-	
+
 	<context:component-scan
 		base-package="io.crs.hsys.server.controller" />
 
 	<mvc:resources mapping="/resources/**"
 		location="/resources/" />
-<!-- 
-	<mvc:view-controller path="/login*"
-		view-name="login" />
- -->
+	<!-- <mvc:view-controller path="/login*" view-name="login" /> -->
 	<mvc:view-controller path="/launchboard"
 		view-name="launchboard" />
 
@@ -40,6 +37,8 @@
 		<property name="additionalDialects">
 			<set>
 				<bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+				<bean
+					class="org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect" />
 			</set>
 		</property>
 	</bean>

@@ -56,6 +56,7 @@ public class AppUserDetailsService implements UserDetailsService {
 		 * String username = split[0]; String corporateId = split[1];
 		 */
 		AppUser appUser = userService.getByEmail(input);
+		logger.info("loadUserByUsername()->appUser=" + appUser);
 		if (appUser == null)
 			throw new UsernameNotFoundException("User not found");
 
