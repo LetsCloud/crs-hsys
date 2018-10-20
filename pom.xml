@@ -88,7 +88,7 @@
 		<!-- Project build settings -->
 		<!-- ********************** -->
 		<java.version>1.8</java.version>
-		<server-artifactId>hw-gae-server</server-artifactId>
+		<server-artifactId>crs-hsys-server</server-artifactId>
 		<server-directory>${project.parent.basedir}/${server-artifactId}</server-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -475,6 +475,21 @@
 								</resources>
 							</configuration>
 						</execution>
+						<execution>
+							<id>copy-resources</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${basedir}/target/${server-artifactId}-${project.version}/META-INF/resources</outputDirectory>
+								<resources>
+									<resource>
+										<directory>${basedir}/src/main/resources</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 
@@ -560,6 +575,25 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>${maven-versions-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

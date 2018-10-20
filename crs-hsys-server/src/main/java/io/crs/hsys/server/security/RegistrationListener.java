@@ -32,7 +32,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
 	private static final String SENDER_EMAIL = "csernikr@gmail.com";
 	private static final String SENDER_NAME = "HostWare Cloud Admin";
-	private static final String ACTIVATION_URL = "https://hw-cloud8.appspot.com//spa/v1/user/activate/";
+	private static final String ACTIVATION_URL = "https://hw-cloud4.appspot.com/activate/";
 
 	private static final String ACT_SUBJECT = "actSubject";
 	private static final String ACT_MESSAGE = "actMessage";

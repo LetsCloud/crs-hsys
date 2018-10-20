@@ -14,7 +14,8 @@
 
 	<mvc:resources mapping="/resources/**"
 		location="/resources/" />
-		
+	<mvc:default-servlet-handler />
+
 	<mvc:view-controller path="/login*"
 		view-name="login" />
 	<mvc:view-controller path="/"
