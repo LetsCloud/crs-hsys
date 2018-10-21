@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg;
+package io.crs.hsys.client.cfg.app;
 
 import java.util.ArrayList;
 import java.util.List;

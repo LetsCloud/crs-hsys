@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.cfg.AppModule;
+import io.crs.hsys.client.cfg.app.AppModule;
 import io.crs.hsys.client.cfg.config.contact.ContactConfigModule;
 import io.crs.hsys.client.cfg.config.hotel.HotelConfigModule;
 import io.crs.hsys.client.cfg.config.organization.OrganizationConfigModule;

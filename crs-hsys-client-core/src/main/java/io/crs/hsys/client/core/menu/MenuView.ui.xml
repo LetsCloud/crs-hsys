@@ -67,13 +67,13 @@
 	</ui:style>
 
 	<ui:with field="permissions"
-		type="hu.hw.cloud.shared.cnst.Permissions" />
+		type="io.crs.hsys.shared.constans.Permissions" />
 
 	<ui:with field="i18n"
-		type="hu.hw.cloud.client.core.i18n.CoreMessages" />
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
 	<ui:with field="res"
-		type="hu.hw.cloud.client.core.resources.CoreResources" />
+		type="io.crs.hsys.client.core.resources.CoreResources" />
 
 	<m:MaterialPanel>
 		<m:MaterialHeader ui:field="header" width="100%">

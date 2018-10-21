@@ -1,4 +1,4 @@
-package io.crs.hsys.client.cfg;
+package io.crs.hsys.client.cfg.app;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 

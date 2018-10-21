@@ -20,14 +20,16 @@ import io.crs.hsys.shared.constans.SubSystem;
  * @author CR
  *
  */
-public class App  implements Bootstrapper {
+public class CfgApp  implements Bootstrapper {
+	private static Logger logger = Logger.getLogger(CfgApp.class.getName());
 
 	private final PlaceManager placeManager;
 	
 	private final AppData appData;
 
 	@Inject
-	App(PlaceManager placeManager, AppData appData) {
+	CfgApp(PlaceManager placeManager, AppData appData) {
+		logger.log(Level.SEVERE, "App()");
 		this.placeManager = placeManager;
 		this.appData = appData;
 	}
@@ -37,6 +39,7 @@ public class App  implements Bootstrapper {
 
 		@Override
 		public void onPreBootstrap() {
+			logger.log(Level.SEVERE, "onPreBootstrap()");
 			GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
 				public void onUncaughtException(Throwable e) {
 					logger.log(Level.SEVERE, e.getMessage(), e);

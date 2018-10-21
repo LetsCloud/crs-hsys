@@ -158,7 +158,7 @@
 						<groupId>net.ltgt.gwt.maven</groupId>
 						<artifactId>gwt-maven-plugin</artifactId>
 						<configuration>
-							<moduleName>hu.hw.cloud.CfgModuleProd</moduleName>
+							<moduleName>io.crs.hsys.CfgModuleProd</moduleName>
 							<moduleShortName>cfg_module</moduleShortName>
 						</configuration>
 					</plugin>
@@ -176,8 +176,8 @@
 						<groupId>net.ltgt.gwt.maven</groupId>
 						<artifactId>gwt-maven-plugin</artifactId>
 						<configuration>
-							<moduleName>hu.hw.cloud.FroModuleDev</moduleName>
-							<moduleShortName>fro_module</moduleShortName>
+							<moduleName>io.crs.hsys.CfgModuleDev</moduleName>
+							<moduleShortName>cfg_module</moduleShortName>
 						</configuration>
 					</plugin>
 				</plugins>

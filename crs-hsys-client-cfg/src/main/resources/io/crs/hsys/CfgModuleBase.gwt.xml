@@ -32,7 +32,7 @@
 		value="io.crs.hsys.client.cfg.gin.ClientModule" />
 
 	<set-configuration-property name="gwtp.bootstrapper"
-		value="hu.hw.cloud.client.cfg.App" />
+		value="io.crs.hsys.client.cfg.CfgApp" />
 
 	<public path="client/cfg/resources" excludes="**/*.java,**/*.class"/>
 	<stylesheet src="css/fonts.css" />

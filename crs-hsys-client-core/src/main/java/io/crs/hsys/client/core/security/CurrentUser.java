@@ -1,6 +1,6 @@
 package io.crs.hsys.client.core.security;
 
-import hu.hw.cloud.shared.dto.common.AccountDto;
+import io.crs.hsys.shared.dto.common.AccountDto;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 

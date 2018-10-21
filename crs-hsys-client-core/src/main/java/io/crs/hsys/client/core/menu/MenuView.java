@@ -224,6 +224,10 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 			sideProfile.setResource(res.redWallpaperImg());
 			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
 			break;
+		case SubSystem.CFG:
+			sideProfile.setResource(res.redWallpaperImg());
+			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
+			break;
 		}
 	}
 

@@ -18,7 +18,7 @@ public interface HwRedResources extends ClientBundle {
 		// Your classes here
 	}
 
-	@Source({ "hu/hw/cloud/client/core/resources/css/theme_hw_red.gss",
-			"hu/hw/cloud/client/core/resources/css/override.gss" })
+	@Source({ "io/crs/hsys/client/core/resources/css/theme_hw_red.gss",
+			"io/crs/hsys/client/core/resources/css/override.gss" })
 	Style override();
 }

@@ -30,9 +30,10 @@ public class LoggedInGatekeeper implements Gatekeeper {
 
 	@Override
 	public boolean canReveal() {
-		if (!currentUser.isLoggedIn())
-			goToLogin();
-		return currentUser.isLoggedIn();
+//		if (!currentUser.isLoggedIn())
+//			goToLogin();
+//		return currentUser.isLoggedIn();
+		return true;
 	}
 
 	private void goToLogin() {
