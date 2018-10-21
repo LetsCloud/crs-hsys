@@ -25,7 +25,7 @@ import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialToast;
 
 import io.crs.hsys.client.core.CoreNameTokens;
-import io.crs.hsys.client.core.app.AppPresenter.MyView;
+import io.crs.hsys.client.core.app.AbstractAppPresenter.MyView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.menu.MenuPresenter;
@@ -34,9 +34,9 @@ import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
-public abstract class AppPresenter<Proxy_ extends Proxy<?>> extends Presenter<MyView, Proxy_>
+public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Presenter<MyView, Proxy_>
 		implements NavigationHandler, SetPageTitleHandler {
-	private static Logger logger = Logger.getLogger(AppPresenter.class.getName());
+	private static Logger logger = Logger.getLogger(AbstractAppPresenter.class.getName());
 
 	public interface MyView extends View {
 		void setPageTitle(String title, String description);
@@ -56,7 +56,7 @@ public abstract class AppPresenter<Proxy_ extends Proxy<?>> extends Presenter<My
 	private final AppServiceWorkerManager swManager;
 	private final String appCode;
 
-	protected AppPresenter(EventBus eventBus, MyView view, Proxy_ proxy, PlaceManager placeManager,
+	protected AbstractAppPresenter(EventBus eventBus, MyView view, Proxy_ proxy, PlaceManager placeManager,
 			RestDispatch dispatch, AuthResource authService, MenuPresenter menuPresenter, CurrentUser currentUser,
 			String appCode, AppServiceWorkerManager swManager) {
 		super(eventBus, view, proxy, RevealType.Root);

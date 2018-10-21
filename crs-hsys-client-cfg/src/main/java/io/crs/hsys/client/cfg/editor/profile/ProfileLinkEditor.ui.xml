@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:ui2="urn:import:gwt.material.design.addext.client.ui">
+
+	<ui:style
+		type="io.crs.hsys.client.cfg.editor.profile.ProfileLinkEditor.MyStyle">
+		.heightTransition {
+			overflow: hidden;
+			transition: max-height 0.5s ease-out;
+			height: auto;
+			max-height: 600px;
+			width: 100%;
+		}
+		
+		.collapsed {
+			max-height: 0;
+		}
+		
+		.marginTop20 {
+			margin-top: 20px;
+		}
+		</ui:style>
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<g:HTMLPanel ui:field="panel">
+		<m:MaterialRow ui:field="displayPanel" marginBottom="0"
+			addStyleNames="{style.heightTransition}">
+			<m:MaterialLink ui:field="profileLink"/>	
+		</m:MaterialRow>
+
+		<m:MaterialRow ui:field="editorPanel" marginBottom="0">
+			<ui2:MaterialAutoCompleteAdd
+				ui:field="profileAutoComplete" limit="1"
+				placeholder="Choose profile" grid="s12" />
+
+			<combobox:MaterialComboBox
+				ui:field="relationshipCombo" grid="s6" multiple="false"
+				label="{i18nCore.addressEditorLabel}" />
+
+			<m:MaterialCheckBox ui:field="switched" grid="s5"
+				text="{i18nCore.addressEditorPrimary}" />
+
+			<m:MaterialIcon ui:field="deleteIcon"
+				iconType="DELETE" grid="s1" />
+		</m:MaterialRow>
+	</g:HTMLPanel>
+</ui:UiBinder> 

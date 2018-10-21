@@ -1,0 +1,147 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:ui2="urn:import:gwt.material.design.addext.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:profile="urn:import:io.crs.hsys.client.cfg.editor.profile">
+
+	<ui:style>
+	.pp {
+		padding-top: 20px;
+		padding-bottom: 8px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	
+	.dataGroupBox {
+		margin-top: 8px;
+		margin-bottom: 8px;
+		padding-left: 10px;
+		border-left: 3px solid #e91e63;
+	}
+	
+	.dataGroupTitle {
+		color: #e91e63;
+		float: left;
+	}
+	
+	.saveButton {
+		margin-bottom: 18px;
+	}
+	
+	.clearBothx {
+		clear: both;
+	}
+	</ui:style>
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<ui:with field="coreTokens"
+		type="io.crs.hsys.client.core.CoreNameTokens" />
+
+	<g:HTMLPanel addStyleNames="{style.pp}">
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12 m6">
+				<m:MaterialRow marginBottom="0">
+					<m:MaterialTextBox ui:field="name" grid="s12"
+						type="TEXT" label="{i18nCore.contactEditorName}" />
+
+					<ui2:MaterialComboBoxAdd
+						ui:field="profileGroupCombo" grid="s12" multiple="false"
+						label="{i18nCore.contactEditorProfileGroup}" />
+				</m:MaterialRow>
+
+				<!-- KOMMUNIKÁCIÓ -->
+				<m:MaterialRow ui:field="linkPanel"
+					addStyleNames="{style.dataGroupBox}">
+					<g:Label text="{i18nCore.contactEditorLink}"
+						addStyleNames="{style.dataGroupTitle}" />
+					<m:MaterialIcon ui:field="addProfileLink"
+						iconType="ADD_BOX" waves="DEFAULT" backgroundColor="WHITE"
+						textColor="BLACK" float="RIGHT" />
+					<profile:ProfileLinkListEditor
+						ui:field="profileLinks" addStyleNames="{style.clearBothx}" />
+				</m:MaterialRow>
+
+				<!-- KOMMUNIKÁCIÓ -->
+				<m:MaterialRow ui:field="communicationPanel"
+					addStyleNames="{style.dataGroupBox}">
+					<g:Label text="{i18nCore.contactEditorCommunication}"
+						addStyleNames="{style.dataGroupTitle}" />
+					<m:MaterialIcon ui:field="addCommunication"
+						iconType="ADD_BOX" waves="DEFAULT" backgroundColor="WHITE"
+						textColor="BLACK" float="RIGHT" />
+					<profile:CommunicationListEditor
+						ui:field="communications" addStyleNames="{style.clearBothx}" />
+				</m:MaterialRow>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m6">
+				<!-- CÍMEK -->
+				<g:HTMLPanel ui:field="addressPanel"
+					addStyleNames="{style.dataGroupBox}">
+					<g:Label text="{i18nCore.contactEditorAdresses}"
+						addStyleNames="{style.dataGroupTitle}" />
+					<m:MaterialIcon ui:field="addAddress"
+						iconType="ADD_BOX" waves="DEFAULT" backgroundColor="WHITE"
+						textColor="BLACK" float="RIGHT" />
+					<profile:AddressListEditor
+						ui:field="addresses" addStyleNames="{style.clearBothx}" />
+				</g:HTMLPanel>
+
+				<!-- CÍMEK -->
+				<g:HTMLPanel ui:field="webPresencePanel"
+					addStyleNames="{style.dataGroupBox}">
+					<g:Label text="{i18nCore.contactEditorWebPresence}"
+						addStyleNames="{style.dataGroupTitle}" />
+					<m:MaterialIcon ui:field="addWebPresence"
+						iconType="ADD_BOX" waves="DEFAULT" backgroundColor="WHITE"
+						textColor="BLACK" float="RIGHT" />
+					<profile:WebPresenceListEditor
+						ui:field="webPresences" addStyleNames="{style.clearBothx}" />
+				</g:HTMLPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialFAB>
+			<m:MaterialTooltip
+				text="{i18nCore.contactDisplayFAB}" position="LEFT">
+				<m:MaterialAnchorButton type="FLOATING"
+					iconType="MORE_VERT" size="LARGE" />
+			</m:MaterialTooltip>
+			<m:MaterialFABList>
+				<m:MaterialTooltip
+					text="{i18nCore.contactEditorTitle}" position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="editButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="AMBER" iconType="EDIT" />
+				</m:MaterialTooltip>
+
+				<m:MaterialTooltip text="{i18nCore.comSave}"
+					position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="saveButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="GREEN" iconType="SAVE" />
+				</m:MaterialTooltip>
+
+				<m:MaterialTooltip text="{i18nCore.comCancel}"
+					position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="cancelButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="GREY" iconType="CANCEL" />
+				</m:MaterialTooltip>
+
+				<m:MaterialTooltip
+					text="{i18nCore.contactDisplayDelete}" position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="deleteButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="RED" iconType="DELETE" />
+				</m:MaterialTooltip>
+			</m:MaterialFABList>
+		</m:MaterialFAB>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 
