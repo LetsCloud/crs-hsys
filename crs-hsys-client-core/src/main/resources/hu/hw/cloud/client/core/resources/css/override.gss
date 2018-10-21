@@ -1,0 +1,193 @@
+@require "theme";
+
+@external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, side-nav, multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, select2-container--focus, select2-container--default, read-only; 
+
+
+/*
+* BTN, BTN-LARGE, BTN-FLAT, BTN-FLOATING
+*/
+.btn,
+.btn-large {
+	color: #fff;
+	background-color: C_PRIMARY
+}
+
+.btn:hover,
+.btn-large:hover {
+	background-color: C_PRIMARY_LIGHT
+}
+
+
+/*
+* INPUTS
+*/
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+	border-bottom: 1px solid C_PRIMARY;
+    box-shadow: 0 1px 0 0 C_PRIMARY
+}
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:focus:not([readonly])+label,
+input[type=password]:focus:not([readonly])+label,
+input[type=email]:focus:not([readonly])+label,
+input[type=url]:focus:not([readonly])+label,
+input[type=time]:focus:not([readonly])+label,
+input[type=date]:focus:not([readonly])+label,
+input[type=datetime-local]:focus:not([readonly])+label,
+input[type=tel]:focus:not([readonly])+label,
+input[type=number]:focus:not([readonly])+label,
+input[type=search]:focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label{
+	color: C_PRIMARY
+}
+textarea.materialize-textarea{
+    padding-top: 0.6rem;
+    padding-right: 0px;
+    padding-bottom: 1.6rem;
+    padding-left: 0px;	
+}
+
+[type="checkbox"]+label:before{
+/*	border:2px solid C_PRIMARY */
+}
+[type="checkbox"]:checked+label:before{
+	border-right:2px solid C_PRIMARY;
+	border-bottom:2px solid C_PRIMARY
+}
+
+
+.dropdown-content li>a,
+.dropdown-content li>span{
+	color: C_PRIMARY
+}
+
+
+
+.titleBar {
+	color: #fff;
+	background-color: C_PRIMARY
+}
+
+
+.secondary-content {
+	color: C_PRIMARY
+}
+
+
+/*
+* COLLECTION
+*/
+.collection .collection-item.active{
+	background-color:C_PRIMARY;
+	color:#ffff
+}
+
+/*
+* SIDE-NAV
+*/
+nav {
+	color: #fff;
+	background-color: C_SECONDARY
+}
+
+/*
+* SIDE-NAV
+*/
+.side-nav {
+	background-color: C_SECONDARY
+}
+
+.side-nav>li>a:hover {
+	background-color: C_SECONDARY_DARK
+}
+/* Az oldalmen� �sszecsukhat� elem�nek f�kuszban lev� k�zvetlen eleme (f�kuszban l�v� almen�) */
+.side-nav .collapsible>li a:hover {
+	background-color: C_SECONDARY_DARK
+}
+/* Az oldalmen� elmen�j�nek f�kuszban lev� k�zvetlen eleme */
+.side-nav .collapsible-body li a:hover {
+	background-color: C_SECONDARY_DARK
+}
+
+.side-nav li.active>a {
+	color: C_PRIMARY
+}
+/* Akt�v elem k�zvetlen div-�nek k�zvetlen linkje (almen� fejl�ce) */
+.side-nav li.active>div>a>i {
+	color: C_PRIMARY
+}
+
+.side-nav li.active>div>a {
+	color: #fafafa
+}
+
+.side-nav div.collapsible-body>ul>li.active {
+	border-left: 5px solid C_PRIMARY
+}
+
+.side-nav div.collapsible-body>ul>li.active>a {
+	color: #fafafa
+}
+
+.side-nav .collapsible-body {
+	background-color: C_SECONDARY_LIGHT
+}
+
+.side-nav a {
+	color: #fafafa; /* GREY_LIGHTEN_5 */
+}
+
+.side-nav.fixed a {
+	color: #444
+}
+
+/** Blockquote **/
+blockquote {
+	border-left: 5px solid C_PRIMARY !important;
+}
+
+.multiValueSuggestBox-panel:focus {
+	border-bottom: 2px solid C_PRIMARY !important;
+}
+
+
+/*************************************************
+* Tabs 
+*************************************************/
+.tabs {
+	background: C_PRIMARY
+}
+
+/** Table **/
+.table-container .top-panel {
+	background: C_SECONDARY
+}
+
+.select2-container--focus .select2-selection--single {
+    border-bottom: 1px solid C_PRIMARY !important;
+}
+
+.read-only input:not([type]), 
+.read-only input[type=text], 
+.read-only input[type=password], 
+.read-only input[type=email], 
+.read-only input[type=url], 
+.read-only input[type=time], 
+.read-only input[type=date], 
+.read-only input[type=datetime-local], 
+.read-only input[type=tel], 
+.read-only input[type=number], 
+.read-only input[type=search], 
+.read-only textarea.materialize-textarea {
+    margin: 0 0 0 0;
+}
