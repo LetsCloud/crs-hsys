@@ -8,16 +8,17 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.FcmToken;
 import io.crs.hsys.server.entity.common.VerificationToken;
+import io.crs.hsys.server.model.Registration;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.AppUserRepository;
 import io.crs.hsys.server.security.LoggedInChecker;
 import io.crs.hsys.server.service.AppUserService;
-import io.crs.hsys.shared.dto.common.RegisterDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -31,13 +32,15 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 	private final LoggedInChecker loggedInChecker;
 	private final AccountRepository accountRepository;
 	private final AppUserRepository appUserRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	AppUserServiceImpl(LoggedInChecker loggedInChecker, AccountRepository accountRepository,
-			AppUserRepository appUserRepository) {
+			AppUserRepository appUserRepository, PasswordEncoder passwordEncoder) {
 		super(appUserRepository);
 		this.loggedInChecker = loggedInChecker;
 		this.accountRepository = accountRepository;
 		this.appUserRepository = appUserRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
@@ -105,17 +108,13 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 	}
 
 	@Override
-	public AppUser createAdminUser(RegisterDto registerDto)
+	public AppUser createAdminUser(Registration registration, Account account)
 			throws EntityValidationException, UniqueIndexConflictException {
-		Account account = accountRepository.findById(registerDto.getAccountId());
-		logger.info("createAdminUser()->account=" + account);
-
-		AppUser appUser = new AppUser(registerDto);
+		AppUser appUser = new AppUser(registration);
 		appUser.setAccount(account);
+		appUser.setPassword(passwordEncoder.encode(registration.getPassword()));
 		appUser.setAdmin(true);
 		appUser = appUserRepository.save(appUser);
-		logger.info("createAdminUser()->appUser=" + appUser);
-
 		return appUser;
 	}
 
@@ -138,5 +137,11 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 			currentUser.setFcmTokens(tokens);
 			update(currentUser);
 		}
+	}
+
+	@Override
+	public AppUser getByEmail(String email) {
+		AppUser user = this.appUserRepository.findByEmail(email);
+		return user;
 	}
 }

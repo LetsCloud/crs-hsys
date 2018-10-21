@@ -8,11 +8,14 @@ package io.crs.hsys.server.model;
  *
  */
 public class Registration {
+
+	private String accountName;
+
 	private String email;
 
 	private String password;
 
-	private String fullName;
+	private String confPassw;
 	
 	public String getEmail() {
 		return email;
@@ -30,12 +33,20 @@ public class Registration {
 		this.password = password;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public String getAccountName() {
+		return accountName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+	public String getConfPassw() {
+		return confPassw;
+	}
+
+	public void setConfPassw(String confPassw) {
+		this.confPassw = confPassw;
 	}
 	
 }

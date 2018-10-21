@@ -14,7 +14,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.hotel.Hotel;
-import io.crs.hsys.shared.dto.common.RegisterDto;
+import io.crs.hsys.server.model.Registration;
 
 /**
  * @author robi
@@ -115,11 +115,11 @@ public class AppUser extends AccountChild {
 	 * 
 	 * @param registerDto
 	 */
-	public AppUser(RegisterDto registerDto) {
+	public AppUser(Registration registration) {
 		this();
-		setUsername(registerDto.getUsername());
-		setPassword(registerDto.getUserPassword());
-		setEmailAddress(registerDto.getUserEmail());
+		setUsername(registration.getAccountName());
+		setPassword(registration.getPassword());
+		setEmailAddress(registration.getEmail());
 	}
 
 	public String getCode() {

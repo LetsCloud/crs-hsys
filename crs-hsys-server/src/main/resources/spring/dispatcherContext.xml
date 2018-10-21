@@ -8,16 +8,24 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven />
+
 	<context:component-scan
 		base-package="io.crs.hsys.server.controller" />
 
+	<!-- all resources inside folder src/main/webapp/resources are mapped so 
+		they can be refered to inside JSP files (see htmlHeader.jsp for more details) -->
 	<mvc:resources mapping="/resources/**"
 		location="/resources/" />
- 
+		
+	<mvc:default-servlet-handler />
+
 	<mvc:view-controller path="/login*"
 		view-name="login" />
- 
- 
+	<mvc:view-controller path="/"
+		view-name="launchboard" />
+	<mvc:view-controller path="/launchboard"
+		view-name="launchboard" />
+
 	<!-- **************************************************************** -->
 	<!-- THYMELEAF-SPECIFIC ARTIFACTS ................................... -->
 	<!-- TemplateResolver <- TemplateEngine <- ViewResolver ............. -->
@@ -37,6 +45,8 @@
 		<property name="additionalDialects">
 			<set>
 				<bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+				<bean
+					class="org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect" />
 			</set>
 		</property>
 	</bean>
