@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MultiProperties xmlns="hu.skzs.multiproperties">
+    <Version>1.2</Version>
+    <Name>AppMessages</Name>
+    <Description></Description>
+    <Handler>Java Properties Handler</Handler>
+    <Columns>
+        <Key>
+            <Width>319</Width>
+        </Key>
+        <Column>
+            <Name>default</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/hw-gae-client_fro/src/main/resources/hu/hw/cloud/client/fro/i18n/FroMessages.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>hu_HU</Name>
+            <Description></Description>
+            <Width>901</Width>
+            <HandlerConfiguration>/hw-gae-client_fro/src/main/resources/hu/hw/cloud/client/fro/i18n/FroMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+    </Columns>
+    <Records>
+        <Comment>
+            <Value>MAIN MENU</Value>
+        </Comment>
+        <Property>
+            <Name>mainMenuItemDashboard</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Reservation</Value>
+            <Value disabled="false">Rezerváció</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupReception</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Front Desk</Value>
+            <Value disabled="false">Recepció</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupCashier</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Cashier</Value>
+            <Value disabled="false">Kassza</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupConfiguration</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Configurations</Value>
+            <Value disabled="false">Beállítások</Value>
+        </Property>
+    </Records>
+</MultiProperties>
