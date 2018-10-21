@@ -62,8 +62,6 @@
 		entry-point-ref="loginUrlAuthenticationEntryPoint">
 		<security:intercept-url pattern="/_ah/**"
 			access="permitAll" />
-		<security:intercept-url
-			pattern="/resources/**" access="permitAll" />
 		<security:intercept-url pattern="/login*"
 			access="permitAll" />
 		<security:intercept-url pattern="/signup*"

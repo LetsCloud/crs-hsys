@@ -5,6 +5,7 @@
 	layout:decorate="~{layouts/main}">
 <head>
 
+<!-- CSS  -->
 <style>
 .card-content {
 	height: 180px;
@@ -15,9 +16,10 @@
 	line-height: 22px;
 }
 </style>
-<!-- CSS  -->
-<link href="resources/static/css/style.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
+
+<link rel="stylesheet" type="text/css" href="resources/css/style.css"
+	th:src="@{/resources/css/style.css}" />
+
 </head>
 <body>
 	<div layout:fragment="content">
