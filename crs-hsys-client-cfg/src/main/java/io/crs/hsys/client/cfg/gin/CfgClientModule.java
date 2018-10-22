@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.cfg.app.AppModule;
+import io.crs.hsys.client.cfg.app.CfgAppModule;
 import io.crs.hsys.client.cfg.config.contact.ContactConfigModule;
 import io.crs.hsys.client.cfg.config.hotel.HotelConfigModule;
 import io.crs.hsys.client.cfg.config.organization.OrganizationConfigModule;
@@ -23,16 +23,18 @@ import io.crs.hsys.client.core.gin.CoreModule;
  * @author CR
  *
  */
-public class ClientModule extends AbstractPresenterModule {
-	private static Logger logger = Logger.getLogger(ClientModule.class.getName());
+public class CfgClientModule extends AbstractPresenterModule {
+	private static Logger logger = Logger.getLogger(CfgClientModule.class.getName());
 
 	@Override
 	protected void configure() {
-		install(new CoreModule());
+		logger.info("CfgClientModule().configure(");
 
-		bind(ResourceLoader.class).asEagerSingleton();
+        install(new CoreModule());
 
-		install(new AppModule());
+		bind(CfgResourceLoader.class).asEagerSingleton();
+
+		install(new CfgAppModule());
 
 		install(new DashboardModule());
 
@@ -47,6 +49,5 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new ContactCreateModule());
 
 		install(new FilterModule());
-
 	}
 }

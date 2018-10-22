@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.core.gin;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Singleton;
@@ -40,6 +39,7 @@ public class CoreModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
+		logger.info("CoreModule.configure(");
 		install(new DefaultModule.Builder().placeManager(DefaultPlaceManager.class)
 				.tokenFormatter(RouteTokenFormatter.class).build());
 
@@ -47,8 +47,8 @@ public class CoreModule extends AbstractPresenterModule {
 		bind(CurrentUser.class).asEagerSingleton();
 
 		bindConstant().annotatedWith(DefaultPlace.class).to(CoreNameTokens.HOME);
-		bindConstant().annotatedWith(ErrorPlace.class).to(CoreNameTokens.LOGIN);
-		bindConstant().annotatedWith(UnauthorizedPlace.class).to(CoreNameTokens.LOGIN);
+		bindConstant().annotatedWith(ErrorPlace.class).to(CoreNameTokens.HOME);
+		bindConstant().annotatedWith(UnauthorizedPlace.class).to(CoreNameTokens.HOME);
 
 		bind(ResourceLoader.class).asEagerSingleton();
 
@@ -69,10 +69,10 @@ public class CoreModule extends AbstractPresenterModule {
 		config.setStorageBucket("hw-cloud8.appspot.com");
 		config.setMessagingSenderId("103271768970");
 		Firebase firebase = Firebase.initializeApp(config);
-		logger.log(Level.INFO, "NotificationsPresenter.onBind().firebase.getName()" + firebase.getName());
+		logger.info("NotificationsPresenter.onBind().firebase.getName()" + firebase.getName());
 
 		MessagingManager messagingManager = new MessagingManager(firebase);
-		logger.log(Level.INFO, "NotificationsPresenter.onReveal().getMessagingManager()");
+		logger.info("NotificationsPresenter.onReveal().getMessagingManager()");
 
 		return messagingManager;
 	}
@@ -81,6 +81,7 @@ public class CoreModule extends AbstractPresenterModule {
 	@Singleton
 	AppServiceWorkerManager provideAppServiceWorkerManager(EventBus eventBus, MessagingManager fcmManager,
 			RestDispatch dispatch, FcmResource fcmService) {
+		logger.info("provideAppServiceWorkerManager()");
 
 		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager("service-worker.js", eventBus,
 				fcmManager, dispatch, fcmService);

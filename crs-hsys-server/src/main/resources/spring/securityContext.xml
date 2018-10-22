@@ -70,6 +70,13 @@
 			pattern="/registration*" access="permitAll" />
 		<security:intercept-url pattern="/activate/**"
 			access="permitAll" />
+
+		<security:intercept-url
+			pattern="/cfg_module/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/cfg.html"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/spa/v1/**"
+			access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="isAuthenticated()" />
 
@@ -82,6 +89,13 @@
 
 		<security:logout logout-url="/logout"
 			logout-success-url="/login.html?logout" />
+
+		<security:csrf token-repository-ref="tokenRepository" />
 	</security:http>
 
+	<bean id="tokenRepository"
+		class="org.springframework.security.web.csrf.CookieCsrfTokenRepository">
+		<property name="cookieHttpOnly" value="false" />
+		<property name="headerName" value="XSRF-TOKEN" />
+	</bean>
 </beans>

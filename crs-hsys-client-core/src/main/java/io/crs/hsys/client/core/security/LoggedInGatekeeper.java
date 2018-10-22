@@ -35,7 +35,7 @@ public class LoggedInGatekeeper implements Gatekeeper {
 //		return currentUser.isLoggedIn();
 		return true;
 	}
-
+/*
 	private void goToLogin() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(placeManager.getCurrentPlaceRequest().getNameToken());
@@ -52,5 +52,5 @@ public class LoggedInGatekeeper implements Gatekeeper {
 				.with(PLACE_TO_GO, sb.toString()).build();
 		placeManager.revealPlace(placeRequest);
 	}
-
+*/
 }

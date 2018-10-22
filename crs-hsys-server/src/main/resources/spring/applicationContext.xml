@@ -29,6 +29,12 @@
 		<property name="accountRepository" ref="accountRepository" />
 		<property name="appUserService" ref="appUserService" />
 	</bean>
+
+	<bean id="userGroupService"
+		class="io.crs.hsys.server.service.ofy.UserGroupServiceImpl">
+		<constructor-arg ref="userGroupRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
 	
 	<bean id="appUserService"
 		class="io.crs.hsys.server.service.ofy.AppUserServiceImpl">
@@ -43,9 +49,9 @@
 	<!-- ============ -->
 	<bean id="accountRepository"
 		class="io.crs.hsys.server.repository.ofy.AccountRepositoryImpl" />
-<!-- 	<bean id="userGroupRepository"
+ 	<bean id="userGroupRepository"
 		class="io.crs.hsys.server.repository.ofy.UserGroupRepositoryImpl" />
-	<bean id="roleRepository"
+<!--	<bean id="roleRepository"
 		class="io.crs.hsys.cloud.server.repository.ofy.RoleRepositoryImpl" />
  -->
 	<bean id="appUserRepository"

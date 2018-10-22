@@ -12,15 +12,20 @@
 
 	<!--GWTP -->
 	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
-	<inherits name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate" />
-	<inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' />
-	<!-- <inherits name="com.gwtplatform.mvp.MvpWithFormFactor" /> -->
+	<inherits
+		name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate" />
+	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
+	<!-- <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' /> -->
+	<!-- <inherits name="com.gwtplatform.mvp.Mvp" /> -->
 
 	<!-- GWT Material -->
-	<inherits name="gwt.material.design.GwtMaterialBasicWithJQuery" />
+	<inherits
+		name="gwt.material.design.GwtMaterialBasicWithJQuery" />
 	<inherits name="gwt.material.design.GwtMaterialTableBasic" />
-	<inherits name="gwt.material.design.addins.GwtMaterialAddinsBasic" />
-	<inherits name="gwt.material.design.addext.GwtMaterialAddextBasic" />
+	<inherits
+		name="gwt.material.design.addins.GwtMaterialAddinsBasic" />
+	<inherits
+		name="gwt.material.design.addext.GwtMaterialAddextBasic" />
 	<inherits name="gwt.material.design.addext.ResourcesBasic" />
 
 	<inherits name="com.google.common.collect.Collect" />
@@ -28,13 +33,17 @@
 	<source path="client" />
 	<source path="shared" />
 
-	<extend-configuration-property name="gin.ginjector.modules"
-		value="io.crs.hsys.client.cfg.gin.ClientModule" />
+	<extend-configuration-property
+		name="gin.ginjector.modules"
+		value="io.crs.hsys.client.cfg.gin.CfgClientModule" />
+<!-- 
+	<set-configuration-property
+		name="gwtp.bootstrapper" value="io.crs.hsys.client.cfg.CfgApp" />
+ -->
+	<!-- <entry-point class='io.crs.hsys.client.cfg.CfgAppEntryPoint' /> -->
 
-	<set-configuration-property name="gwtp.bootstrapper"
-		value="io.crs.hsys.client.cfg.CfgApp" />
-
-	<public path="client/cfg/resources" excludes="**/*.java,**/*.class"/>
+	<public path="client/cfg/resources"
+		excludes="**/*.java,**/*.class" />
 	<stylesheet src="css/fonts.css" />
 
 	<add-linker name="xsiframe" />

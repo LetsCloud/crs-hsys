@@ -13,6 +13,7 @@
 		<module>crs-hsys-shared</module>
 		<module>crs-hsys-server</module>
 		<module>crs-hsys-client-core</module>
+		<module>crs-hsys-client-cfg</module>
 	</modules>
 
 	<properties>
@@ -102,7 +103,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-
 			<!-- ***************************************************** -->
 			<!-- **************** CLIENT DEPENDENCIES **************** -->
 			<!-- ***************************************************** -->

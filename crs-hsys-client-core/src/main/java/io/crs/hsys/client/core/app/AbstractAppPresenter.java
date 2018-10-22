@@ -18,20 +18,18 @@ import com.gwtplatform.mvp.client.proxy.NavigationEvent;
 import com.gwtplatform.mvp.client.proxy.NavigationHandler;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 import gwt.material.design.client.pwa.PwaManager;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialToast;
 
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter.MyView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
-import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AccountUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Presenter<MyView, Proxy_>
@@ -48,7 +46,6 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	public static final NestedSlot SLOT_MAIN = new NestedSlot();
 	public static final SingleSlot<PresenterWidget<?>> SLOT_MODAL = new SingleSlot<>();
 
-	private final PlaceManager placeManager;
 	private final RestDispatch dispatch;
 	private final AuthResource authService;
 	private final CurrentUser currentUser;
@@ -60,9 +57,8 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 			RestDispatch dispatch, AuthResource authService, MenuPresenter menuPresenter, CurrentUser currentUser,
 			String appCode, AppServiceWorkerManager swManager) {
 		super(eventBus, view, proxy, RevealType.Root);
-		logger.info("AppPresenter()");
+		logger.info("AbstractAppPresenter()");
 
-		this.placeManager = placeManager;
 		this.dispatch = dispatch;
 		this.authService = authService;
 		this.menuPresenter = menuPresenter;
@@ -74,6 +70,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	@Override
 	protected void onBind() {
 		super.onBind();
+		logger.info("AbstractAppPresenter().onBind()");
 		String manifest = appCode + "_manifest.json";
 		setInSlot(SLOT_MENU, menuPresenter);
 
@@ -106,18 +103,23 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		logger.info("AbstractAppPresenter().onReveal()");
 		checkCurrentUser();
 	}
 
 	private void checkCurrentUser() {
-		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
+		logger.info("AbstractAppPresenter().checkCurrentUser()");
+		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AccountUserDto>() {
 
 			@Override
-			public void onSuccess(AppUserDto result) {
+			public void onSuccess(AccountUserDto result) {
+				logger.info("AppPresenter().checkCurrentUser().onSuccess()");
 				if (result == null) {
+					logger.info("AppPresenter().checkCurrentUser().onSuccess()->(result == null)");
 					currentUser.setLoggedIn(false);
 					return;
 				}
+				logger.info("AppPresenter().checkCurrentUser().onSuccess()->result=" + result);
 				currentUser.setAppUserDto(result);
 				currentUser.getAppUserDto().getAvailableHotels()
 						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
@@ -128,11 +130,13 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 				swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
 					swManager.fcmSubscribe(token);
 				}));
+				logger.info("AppPresenter().checkCurrentUser().onSuccess()->end");
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
+						+ caught.getMessage());
 			}
 		});
 	}
@@ -142,9 +146,9 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 
 			@Override
 			public void onSuccess(Void result) {
-				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.getLogin()).build();
-				currentUser.setLoggedIn(false);
-				placeManager.revealPlace(placeRequest);
+//				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.getLogin()).build();
+//				currentUser.setLoggedIn(false);
+//				placeManager.revealPlace(placeRequest);
 			}
 
 			@Override

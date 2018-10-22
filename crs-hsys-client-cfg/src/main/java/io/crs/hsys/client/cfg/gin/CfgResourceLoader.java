@@ -11,9 +11,9 @@ import io.crs.hsys.client.core.resources.HwRedResources;
  * @author CR
  *
  */
-public class ResourceLoader {
+public class CfgResourceLoader {
 	@Inject
-    ResourceLoader(HwRedResources resources) {
+    CfgResourceLoader(HwRedResources resources) {
         resources.override().ensureInjected();
     }
 }

@@ -12,6 +12,7 @@
 	<context:component-scan
 		base-package="io.crs.hsys.server.controller" />
 
+
 	<!-- all resources inside folder src/main/webapp/resources are mapped so 
 		they can be refered to inside JSP files (see htmlHeader.jsp for more details) -->
 	<mvc:resources mapping="/resources/**"

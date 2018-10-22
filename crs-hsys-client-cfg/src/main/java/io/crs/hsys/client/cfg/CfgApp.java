@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.cfg;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -20,16 +19,16 @@ import io.crs.hsys.shared.constans.SubSystem;
  * @author CR
  *
  */
-public class CfgApp  implements Bootstrapper {
+public class CfgApp implements Bootstrapper {
 	private static Logger logger = Logger.getLogger(CfgApp.class.getName());
 
 	private final PlaceManager placeManager;
-	
+
 	private final AppData appData;
 
 	@Inject
 	CfgApp(PlaceManager placeManager, AppData appData) {
-		logger.log(Level.SEVERE, "App()");
+		logger.info("App()");
 		this.placeManager = placeManager;
 		this.appData = appData;
 	}
@@ -39,19 +38,19 @@ public class CfgApp  implements Bootstrapper {
 
 		@Override
 		public void onPreBootstrap() {
-			logger.log(Level.SEVERE, "onPreBootstrap()");
+			logger.info("PreApplicationImpl().onPreBootstrap()");
 			GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
 				public void onUncaughtException(Throwable e) {
-					logger.log(Level.SEVERE, e.getMessage(), e);
+					logger.info(e.getMessage());
 				}
 			});
 		}
 	}
 
-	
 	@Override
 	public void onBootstrap() {
+		logger.info("CfgApp().onBootstrap()");
 		appData.setAppCode(SubSystem.CFG);
 		placeManager.revealCurrentPlace();
 	}
-} 
+}
