@@ -73,10 +73,10 @@
 
 		<security:intercept-url
 			pattern="/cfg_module/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/cfg.html"
+		<security:intercept-url pattern="/cfg.html**"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/spa/v1/**"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/**"
 			access="isAuthenticated()" />
 

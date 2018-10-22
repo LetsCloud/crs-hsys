@@ -19,15 +19,15 @@ import io.crs.hsys.shared.constans.SubSystem;
  * @author CR
  *
  */
-public class CfgApp implements Bootstrapper {
-	private static Logger logger = Logger.getLogger(CfgApp.class.getName());
+public class App implements Bootstrapper {
+	private static Logger logger = Logger.getLogger(App.class.getName());
 
 	private final PlaceManager placeManager;
 
 	private final AppData appData;
 
 	@Inject
-	CfgApp(PlaceManager placeManager, AppData appData) {
+	App(PlaceManager placeManager, AppData appData) {
 		logger.info("App()");
 		this.placeManager = placeManager;
 		this.appData = appData;
@@ -49,7 +49,7 @@ public class CfgApp implements Bootstrapper {
 
 	@Override
 	public void onBootstrap() {
-		logger.info("CfgApp().onBootstrap()");
+		logger.info("App().onBootstrap()");
 		appData.setAppCode(SubSystem.CFG);
 		placeManager.revealCurrentPlace();
 	}

@@ -54,7 +54,7 @@ public class AuthController extends BaseController {
 	ResponseEntity<AccountUserDto> getCurrentUser() {
 		logger.info("getCurrentUser()");
 		AppUser appUser = userService.getCurrentUser();
-		logger.info("getCurrentUser()->appUser=");
+		logger.info("getCurrentUser()->appUser=" + appUser);
 		AccountUserDto appUserDto = modelMapper.map(appUser, AccountUserDto.class);
 		logger.info("getCurrentUser()->appUserDto=" + appUserDto);
 		return new ResponseEntity<AccountUserDto>(appUserDto, HttpStatus.OK);

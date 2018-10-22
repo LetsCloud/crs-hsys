@@ -29,13 +29,11 @@
 		<property name="accountRepository" ref="accountRepository" />
 		<property name="appUserService" ref="appUserService" />
 	</bean>
-
 	<bean id="userGroupService"
 		class="io.crs.hsys.server.service.ofy.UserGroupServiceImpl">
 		<constructor-arg ref="userGroupRepository" />
 		<constructor-arg ref="accountRepository" />
-	</bean>
-	
+	</bean>	
 	<bean id="appUserService"
 		class="io.crs.hsys.server.service.ofy.AppUserServiceImpl">
 		<constructor-arg ref="loggedInChecker" />
@@ -43,6 +41,13 @@
 		<constructor-arg ref="appUserRepository" />
 		<constructor-arg ref="passwordEncoder" />
 	</bean>
+	
+	<bean id="hotelService"
+		class="io.crs.hsys.server.service.ofy.HotelServiceImpl">
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="hotelRepository" />
+	</bean>
+	
 
 	<!-- ============ -->
 	<!-- REPOSITORIES -->
@@ -56,5 +61,8 @@
  -->
 	<bean id="appUserRepository"
 		class="io.crs.hsys.server.repository.ofy.AppUserRepositoryImpl" />
+
+	<bean id="hotelRepository"
+		class="io.crs.hsys.server.repository.ofy.HotelRepositoryImpl" />
 	
 </beans>

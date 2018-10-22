@@ -6,4 +6,5 @@ public interface WallpaperCssResource extends CssResource {
 	String orangeWallpaper();
 	String blueWallpaper();
 	String redWallpaper();
+	String greyWallpaper();
 }
