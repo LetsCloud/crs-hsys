@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.config.contact;
+package io.crs.hsys.client.cfg.display.contact;
 
 import java.util.logging.Logger;
 
@@ -18,7 +18,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.cfg.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.cfg.editor.profile.contact.ContactEditorFactory;
-import io.crs.hsys.client.cfg.i18n.FroMessages;
+import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -50,7 +50,7 @@ public class ContactConfigPresenter
 
 	@Inject
 	ContactConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			ContactEditorFactory contactEditorFactory, FroMessages i18n, CoreMessages i18nCore) {
+			ContactEditorFactory contactEditorFactory, CfgMessages i18n, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("ContactConfigPresenter()");
 

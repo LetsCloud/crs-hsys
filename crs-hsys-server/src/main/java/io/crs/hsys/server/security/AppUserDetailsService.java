@@ -68,7 +68,7 @@ public class AppUserDetailsService implements UserDetailsService {
 		 * SimpleGrantedAuthority(permission)); }
 		 */
 		AppUserDto dto = modelMapper.map(appUser, AppUserDto.class);
-		AppUserDetails aud = new AppUserDetails(input, dto, grantedAuthorities, accountNonLocked);
+		AppUserDetails aud = new AppUserDetails(dto, grantedAuthorities, accountNonLocked);
 
 		return aud;
 	}

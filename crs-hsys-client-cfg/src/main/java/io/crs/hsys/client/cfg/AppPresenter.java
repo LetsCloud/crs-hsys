@@ -17,11 +17,9 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 
 import gwt.material.design.client.constants.IconType;
 
-import io.crs.hsys.client.cfg.i18n.FroMessages;
-import io.crs.hsys.client.core.CoreNameTokens;
+import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
-import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
@@ -36,23 +34,20 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
  */
 public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 
-	private final FroMessages i18n;
-
-	private final CoreMessages i18nCore;
+	private final CfgMessages i18n;
 
 	@ProxyStandard
 	interface MyProxy extends Proxy<AppPresenter> {
 	}
 
 	@Inject
-	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, FroMessages i18n,
+	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, CfgMessages i18n,
 			RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
-			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager,CoreMessages i18nCore) {
+			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager) {
 		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, menuPresenter, currentUser,
 				SubSystem.CFG, messagingManager);
 
 		this.i18n = i18n;
-		this.i18nCore = i18nCore;
 	}
 
 	@Override
@@ -64,101 +59,79 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 	private List<MenuItemDto> createMenuitems() {
 		List<MenuItemDto> menuItems = new ArrayList<MenuItemDto>();
 
-		MenuItemDto atendantsItem = new MenuItemDto();
-		atendantsItem.setIndex(1);
-		atendantsItem.setType(MenuItemType.MENU_ITEM);
-		atendantsItem.setIcon(IconType.HOTEL.name());
-		atendantsItem.setText(i18n.mainMenuItemDashboard());
-		atendantsItem.setNameToken(CoreNameTokens.HOME);
-		menuItems.add(atendantsItem);
+		MenuItemDto dasboardMenuItem = new MenuItemDto();
+		dasboardMenuItem.setIndex(1);
+		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
+		dasboardMenuItem.setIcon(IconType.DASHBOARD.name());
+		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
+		dasboardMenuItem.setNameToken(NameTokens.HOME);
+		menuItems.add(dasboardMenuItem);
 
-		MenuItemDto reservationItem = new MenuItemDto();
-		reservationItem.setIndex(2);
-		reservationItem.setType(MenuItemType.MENU_ITEM);
-		reservationItem.setIcon(IconType.HOTEL.name());
-		reservationItem.setText("Reservation");
-		reservationItem.setNameToken(CoreNameTokens.RESERVATION);
-		menuItems.add(reservationItem);
+		// *********************
+		// Common configurations
+		// *********************
+		MenuItemDto commonConfigSubMenu = new MenuItemDto();
+		commonConfigSubMenu.setIndex(2);
+		commonConfigSubMenu.setType(MenuItemType.SUB_MENU);
+		commonConfigSubMenu.setIcon(IconType.SETTINGS.name());
+		commonConfigSubMenu.setText(i18n.mainMenuCommonConfig());
+		commonConfigSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(commonConfigSubMenu);
 
-		MenuItemDto customerCreateItem = new MenuItemDto();
-		customerCreateItem.setIndex(2);
-		customerCreateItem.setType(MenuItemType.MENU_ITEM);
-		customerCreateItem.setIcon(IconType.HOTEL.name());
-		customerCreateItem.setText("Create Customer");
-		customerCreateItem.setNameToken(CoreNameTokens.ORGANIZATION_CREATOR);
-		menuItems.add(customerCreateItem);
-
-		// Reservation
-
-		MenuItemDto resSubMenu = new MenuItemDto();
-		resSubMenu.setIndex(2);
-		resSubMenu.setType(MenuItemType.SUB_MENU);
-		resSubMenu.setIcon(IconType.ROOM_SERVICE.name());
-		resSubMenu.setText(i18n.mainMenuGroupReception());
-		resSubMenu.setItems(new ArrayList<MenuItemDto>());
-		menuItems.add(resSubMenu);
-
-		MenuItemDto resMenuItem1 = new MenuItemDto();
-		resMenuItem1.setIndex(1);
-		resMenuItem1.setType(MenuItemType.MENU_ITEM);
-		resMenuItem1.setText(i18n.mainMenuItemReservation());
-		resMenuItem1.setNameToken(CoreNameTokens.COMMON_CONFIG);
-		resSubMenu.addItem(resMenuItem1);
-
-		MenuItemDto resMenuItem2 = new MenuItemDto();
-		resMenuItem2.setIndex(2);
-		resMenuItem2.setType(MenuItemType.MENU_ITEM);
-		resMenuItem2.setText(i18n.mainMenuItemRoomplan());
-		resMenuItem2.setNameToken(CoreNameTokens.COMMON_CONFIG);
-		resSubMenu.addItem(resMenuItem2);
-
-		// Cashier
-
-		MenuItemDto cashSubMenu = new MenuItemDto();
-		cashSubMenu.setIndex(3);
-		cashSubMenu.setType(MenuItemType.SUB_MENU);
-		cashSubMenu.setIcon(IconType.EURO_SYMBOL.name());
-		cashSubMenu.setText(i18n.mainMenuGroupCashier());
-		cashSubMenu.setItems(new ArrayList<MenuItemDto>());
-		menuItems.add(cashSubMenu);
-
-		MenuItemDto cashMenuItem1 = new MenuItemDto();
-		cashMenuItem1.setIndex(1);
-		cashMenuItem1.setType(MenuItemType.MENU_ITEM);
-		cashMenuItem1.setText(i18n.mainMenuItemBilling());
-		cashMenuItem1.setNameToken(CoreNameTokens.COMMON_CONFIG);
-		cashSubMenu.addItem(cashMenuItem1);
-
-		// Configuration menu
-
-		MenuItemDto configSubMenu = new MenuItemDto();
-		configSubMenu.setIndex(4);
-		configSubMenu.setType(MenuItemType.SUB_MENU);
-		configSubMenu.setIcon(IconType.SETTINGS.name());
-		configSubMenu.setText(i18n.mainMenuGroupConfiguration());
-		configSubMenu.setItems(new ArrayList<MenuItemDto>());
-		menuItems.add(configSubMenu);
-
-		MenuItemDto configMenuItem1 = new MenuItemDto();
-		configMenuItem1.setIndex(1);
-		configMenuItem1.setType(MenuItemType.MENU_ITEM);
-		configMenuItem1.setText(i18nCore.systemConfigTitle());
-		configMenuItem1.setNameToken(CoreNameTokens.SYSTEM_CONFIG);
-		configSubMenu.addItem(configMenuItem1);
+		MenuItemDto userConfigMenuItem = new MenuItemDto();
+		userConfigMenuItem.setIndex(1);
+		userConfigMenuItem.setType(MenuItemType.MENU_ITEM);
+		userConfigMenuItem.setText(i18n.menuItemUserConfig());
+		userConfigMenuItem.setNameToken(NameTokens.SYSTEM_CONFIG);
+		commonConfigSubMenu.addItem(userConfigMenuItem);
 
 		MenuItemDto configMenuItem2 = new MenuItemDto();
 		configMenuItem2.setIndex(2);
 		configMenuItem2.setType(MenuItemType.MENU_ITEM);
-		configMenuItem2.setText(i18nCore.profileConfigTitle());
-		configMenuItem2.setNameToken(CoreNameTokens.PROFILE_CONFIG);
-		configSubMenu.addItem(configMenuItem2);
+		configMenuItem2.setText(i18n.menuItemProfileConfig());
+		configMenuItem2.setNameToken(NameTokens.PROFILE_CONFIG);
+		commonConfigSubMenu.addItem(configMenuItem2);
+
+		// ***************************
+		// Front office configurations
+		// ***************************
+		MenuItemDto froConfigSubMenu = new MenuItemDto();
+		froConfigSubMenu.setIndex(4);
+		froConfigSubMenu.setType(MenuItemType.SUB_MENU);
+		froConfigSubMenu.setIcon(IconType.HOTEL.name());
+		froConfigSubMenu.setText(i18n.mainMenuFroConfig());
+		froConfigSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(froConfigSubMenu);
 
 		MenuItemDto configMenuItem3 = new MenuItemDto();
 		configMenuItem3.setIndex(3);
 		configMenuItem3.setType(MenuItemType.MENU_ITEM);
-		configMenuItem3.setText(i18nCore.hotelConfigTitle());
-		configMenuItem3.setNameToken(CoreNameTokens.HOTEL_CONFIG);
-		configSubMenu.addItem(configMenuItem3);
+		configMenuItem3.setText(i18n.menuItemHotelConfig());
+		configMenuItem3.setNameToken(NameTokens.HOTEL_CONFIG);
+		froConfigSubMenu.addItem(configMenuItem3);
+
+
+		// ***************************
+		// Housekeeping configurations
+		// ***************************
+		MenuItemDto kipConfigSubMenu = new MenuItemDto();
+		kipConfigSubMenu.setIndex(4);
+		kipConfigSubMenu.setType(MenuItemType.SUB_MENU);
+		kipConfigSubMenu.setIcon(IconType.BRUSH.name());
+		kipConfigSubMenu.setText(i18n.mainMenuKipConfig());
+		kipConfigSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(kipConfigSubMenu);
+
+		// *************************************
+		// Management information configurations
+		// *************************************
+		MenuItemDto infConfigSubMenu = new MenuItemDto();
+		infConfigSubMenu.setIndex(4);
+		infConfigSubMenu.setType(MenuItemType.SUB_MENU);
+		infConfigSubMenu.setIcon(IconType.INSERT_CHART.name());
+		infConfigSubMenu.setText(i18n.mainMenuInfConfig());
+		infConfigSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(infConfigSubMenu);
 
 		return menuItems;
 	}

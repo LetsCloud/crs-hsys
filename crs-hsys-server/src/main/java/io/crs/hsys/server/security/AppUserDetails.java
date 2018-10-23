@@ -21,14 +21,12 @@ public class AppUserDetails implements UserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private final String username;
 	private final AppUserDto appUserDto;
 	private final List<GrantedAuthority> authorities;
 	private final boolean accountNonLocked;
 
-	public AppUserDetails(String username, AppUserDto appUserDto, List<GrantedAuthority> authorities,
+	public AppUserDetails(AppUserDto appUserDto, List<GrantedAuthority> authorities,
 			boolean accountNonLocked) {
-		this.username = username;
 		this.appUserDto = appUserDto;
 		this.authorities = authorities;
 		this.accountNonLocked = accountNonLocked;

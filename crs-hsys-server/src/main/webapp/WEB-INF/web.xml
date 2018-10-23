@@ -32,7 +32,8 @@
 	<!-- RequestContextListener, a request header olvasás céljából -->
 	<listener>
 		<listener-class>
-			org.springframework.web.context.request.RequestContextListener</listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
 	</listener>
 	<!-- RequestContextListener END -->
 
@@ -61,7 +62,7 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	<!-- DISPATCHER END -->
 

@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.service.AppUserService;
+import io.crs.hsys.shared.dto.ErrorResponseDto;
 import io.crs.hsys.shared.dto.common.AccountUserDto;
+import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.CURRENTUSER;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.IS_LOGGED_IN;
@@ -51,13 +54,15 @@ public class AuthController extends BaseController {
 	}
 
 	@RequestMapping(method = GET, value = CURRENTUSER)
-	ResponseEntity<AccountUserDto> getCurrentUser() {
+	ResponseEntity<AccountUserDto> getCurrentUser() throws RestApiException {
 		logger.info("getCurrentUser()");
 		AppUser appUser = userService.getCurrentUser();
 		logger.info("getCurrentUser()->appUser=" + appUser);
+		if (appUser==null)
+			throw new RestApiException(new Exception(ExceptionType.LOGIN_USERNAME_NOT_FOUND+" appUser==null"));
+			
 		AccountUserDto appUserDto = modelMapper.map(appUser, AccountUserDto.class);
 		logger.info("getCurrentUser()->appUserDto=" + appUserDto);
 		return new ResponseEntity<AccountUserDto>(appUserDto, HttpStatus.OK);
 	}
-
 }

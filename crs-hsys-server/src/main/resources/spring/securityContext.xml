@@ -58,8 +58,7 @@
 	<!-- =================== -->
 	<!-- APP SECURITY CONFIG use-expressions="true" -->
 	<!-- =================== -->
-	<security:http use-expressions="true" auto-config="true"
-		entry-point-ref="loginUrlAuthenticationEntryPoint">
+	<security:http use-expressions="true">
 		<security:intercept-url pattern="/_ah/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/login*"
@@ -71,15 +70,12 @@
 		<security:intercept-url pattern="/activate/**"
 			access="permitAll" />
 
-		<security:intercept-url
-			pattern="/cfg_module/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/cfg.html**"
-			access="isAuthenticated()" />
-		<security:intercept-url pattern="/spa/v1/**"
-			access="isAuthenticated()" />
+		<security:intercept-url pattern="/cfg.html"
+			access="authenticated" />
+		<security:intercept-url pattern="/resources/**"
+			access="authenticated" />
 		<security:intercept-url pattern="/**"
-			access="isAuthenticated()" />
-
+			access="authenticated" />
 		<security:http-basic />
 
 		<security:form-login login-page="/login"

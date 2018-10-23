@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.config.organization;
+package io.crs.hsys.client.cfg.display.organization;
 
 import io.crs.hsys.client.cfg.config.AbstractConfigUiHandlers;
 

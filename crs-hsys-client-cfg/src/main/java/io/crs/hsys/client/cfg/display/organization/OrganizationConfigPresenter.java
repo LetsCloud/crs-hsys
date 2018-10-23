@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.config.organization;
+package io.crs.hsys.client.cfg.display.organization;
 
 import java.util.logging.Logger;
 
@@ -19,7 +19,7 @@ import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserFactory;
 import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.cfg.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.cfg.editor.profile.organization.OrganizationEditorFactory;
-import io.crs.hsys.client.cfg.i18n.FroMessages;
+import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -52,7 +52,7 @@ public class OrganizationConfigPresenter
 	@Inject
 	OrganizationConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			OrganizationEditorFactory organizationEditorFactory, OrganizationBrowserFactory customerFactory,
-			FroMessages i18n, CoreMessages i18nCore) {
+			CfgMessages i18n, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("OrganizationConfigPresenter()");
 		setCaption(i18nCore.organizationConfigTitle());

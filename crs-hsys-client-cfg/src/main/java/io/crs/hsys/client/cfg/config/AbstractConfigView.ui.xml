@@ -22,7 +22,7 @@
 	</ui:style>
 
 	<ui:with field="i18n"
-		type="io.crs.hsys.client.cfg.i18n.FroMessages" />
+		type="io.crs.hsys.client.cfg.i18n.CfgMessages" />
 
 	<g:HTMLPanel addStyleNames="{style.mainPanel}">
 		<!-- MOBILE SELECTOR -->

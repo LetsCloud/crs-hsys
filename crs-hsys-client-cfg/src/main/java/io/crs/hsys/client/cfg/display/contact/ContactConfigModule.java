@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.config.contact;
+package io.crs.hsys.client.cfg.display.contact;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 

@@ -18,7 +18,7 @@ import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserFactory;
 import io.crs.hsys.client.cfg.browser.profilegroup.ProfileGroupBrowserFactory;
 import io.crs.hsys.client.cfg.browser.relationship.RelationshipBrowserFactory;
 import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
-import io.crs.hsys.client.cfg.i18n.FroMessages;
+import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -50,7 +50,7 @@ public class ProfileConfigPresenter
 	@Inject
 	ProfileConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			ProfileGroupBrowserFactory profileGroupFactory, RelationshipBrowserFactory relationshipFactory,
-			OrganizationBrowserFactory organizationFactory, ContactBrowserFactory contactFactory, FroMessages i18n,
+			OrganizationBrowserFactory organizationFactory, ContactBrowserFactory contactFactory, CfgMessages i18n,
 			CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 
