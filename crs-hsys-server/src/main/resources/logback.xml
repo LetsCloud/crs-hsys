@@ -10,8 +10,8 @@
 	<logger name="org.springframework" level="DEBUG" />
 -->
     
-	<logger name="cloud.s4h" level="DEBUG" />
-    <logger name="cloud.s4h" level="INFO" />
+	<logger name="io.crs" level="DEBUG" />
+    <logger name="io.crs" level="INFO" />
     
 
 	<root level="INFO">

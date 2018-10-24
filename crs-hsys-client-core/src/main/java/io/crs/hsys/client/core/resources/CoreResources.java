@@ -37,12 +37,6 @@ public interface CoreResources extends ClientBundle {
 	@Source("img/red-wallpaper.png")
 	DataResource redWallpaperRes();
 
-	@Source("img/grey-wallpaper.jpg")
-	ImageResource greyWallpaperImg();
-
-	@Source("img/grey-wallpaper.jpg")
-	DataResource greyWallpaperRes();
-
 	@Source("css/wallpaper.css")
 	WallpaperCssResource wallpaperCss();
 	

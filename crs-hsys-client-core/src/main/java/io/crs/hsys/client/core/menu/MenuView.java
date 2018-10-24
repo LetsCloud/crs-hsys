@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -36,9 +37,7 @@ import gwt.material.design.client.ui.MaterialSideNavPush;
 import gwt.material.design.client.ui.MaterialToast;
 
 import io.crs.hsys.client.core.event.ContentPushEvent.MenuState;
-import io.crs.hsys.client.core.resources.CoreResources;
 import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.SubSystem;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 
@@ -79,22 +78,19 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 	@UiField
 	MaterialImage userImage;
 
-	private final CoreResources res;
 	private List<MaterialLink> singleLinks = new ArrayList<MaterialLink>();
 	private List<MaterialCollapsible> collapsibles = new ArrayList<MaterialCollapsible>();
 
 	@Inject
-	MenuView(Binder uiBinder, CoreResources res) {
+	MenuView(Binder uiBinder) {
 		logger.info("MenuView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
-
-		this.res = res;
 	}
 
 	@Override
-    protected void onAttach() {
-        super.onAttach();
+	protected void onAttach() {
+		super.onAttach();
 
 		accountLink.setFontSize(14, Unit.PX);
 		hotelLink.setFontSize(14, Unit.PX);
@@ -211,24 +207,7 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 
 	@Override
 	public void setAppCode(String appCode) {
-		switch (appCode) {
-		case SubSystem.INF:
-			sideProfile.setResource(res.orangeWallpaperImg());
-			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
-			break;
-		case SubSystem.KIP:
-			sideProfile.setResource(res.blueWallpaperImg());
-			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
-			break;
-		case SubSystem.FRO:
-			sideProfile.setResource(res.redWallpaperImg());
-			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
-			break;
-		case SubSystem.CFG:
-			sideProfile.setResource(res.greyWallpaperImg());
-			brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
-			break;
-		}
+		brandPanel.add(new HTML("HostWare <span>Cloud</span> " + appCode + "<span>v8</span>"));
 	}
 
 	@Override
@@ -250,5 +229,10 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 			getUiHandlers().setCurrentHotel(dto);
 		});
 		return link;
+	}
+
+	@Override
+	public void setProfileBackground(ImageResource resource) {
+		sideProfile.setResource(resource);
 	}
 }
