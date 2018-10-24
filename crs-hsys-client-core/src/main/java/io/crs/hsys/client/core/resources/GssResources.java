@@ -26,6 +26,6 @@ public interface GssResources extends ClientBundle {
 		String send_message_textbox();
 	}
 
-	@Source({"hu/hw/cloud/client/core/resources/css/common.gss" })
+	@Source({"io/crs/hsys/client/core/resources/css/common.gss" })
 	Style common();
 }

@@ -48,11 +48,13 @@ public class UnauthorizedPresenter extends Presenter<UnauthorizedPresenter.MyVie
 
     @Override
     protected void onReveal() {
+ /*   	
         PlaceRequest request = new PlaceRequest.Builder()
                 .nameToken(CoreNameTokens.LOGIN)
                 .with("redirectTo", History.getToken())
                 .build();
 
         getView().setLinkToLogin(tokenFormatter.toPlaceToken(request));
+ */       
     }
 }

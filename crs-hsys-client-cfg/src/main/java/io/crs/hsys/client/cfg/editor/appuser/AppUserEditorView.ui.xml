@@ -1,0 +1,123 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+
+	<ui:style>
+	
+	.bb {
+		margin-top: 8px;
+		padding-left: 10px;
+		border-left: 3px solid #e91e63;
+	}
+
+	.cc {
+		color: #e91e63;
+	}
+
+	.pp {
+		padding-top: 20px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	
+	.cb {
+		margin-top: 15px;
+		margin-bottom: 25px;
+	}
+	
+	.saveButton {
+		margin-bottom: 18px;
+	}
+	</ui:style>
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<ui:with field="coreTokens"
+		type="io.crs.hsys.client.core.CoreNameTokens" />
+
+	<g:HTMLPanel addStyleNames="{style.pp}">
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12 m4">
+				<m:MaterialImage ui:field="image" caption="Photo"
+					activates="photoDrop" width="150px" height="150px" />
+				<!-- My Drop Down -->
+				<m:MaterialDropDown activator="photoDrop"
+					constrainWidth="true">
+					<m:MaterialLink ui:field="directorLink"
+						text="Director" />
+					<m:MaterialLink ui:field="financeLink"
+						text="Finance" />
+					<m:MaterialLink ui:field="salesLink" text="Sales" />
+					<m:MaterialLink ui:field="fomLink" text="FOM" />
+					<m:MaterialLink ui:field="recLink"
+						text="Receptionist" />
+					<m:MaterialLink ui:field="fandbLink" text="F and B" />
+					<m:MaterialLink ui:field="eHousekeeperLink"
+						text="Executive HK" />
+					<m:MaterialLink ui:field="housekeeper1Link"
+						text="Housekeeper1" />
+					<m:MaterialLink ui:field="housekeeper2Link"
+						text="Housekeeper2" />
+					<m:MaterialLink ui:field="maintenanceLink"
+						text="Maintenance" />
+				</m:MaterialDropDown>
+
+				<m:MaterialTextBox ui:field="code" type="TEXT"
+					label="{i18nCore.userEditorCode}" />
+
+				<m:MaterialTextBox ui:field="name" type="TEXT"
+					label="{i18nCore.userEditorName}" />
+
+				<m:MaterialTextBox ui:field="title" type="TEXT"
+					label="Beosztás" />
+
+				<m:MaterialTextBox ui:field="emailAddress"
+					type="TEXT" label="{i18nCore.userEditorEmail}" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m8">
+				<!-- BEÁLLÍTÁSOK -->
+				<g:HTMLPanel addStyleNames="{style.bb}">
+					<g:Label text="Beállítások" addStyleNames="{style.cc}" />
+					<m:MaterialCheckBox ui:field="enabled"
+						text="{i18nCore.userEditorEnabled}" addStyleNames="{style.cb}" />
+
+					<m:MaterialTextBox ui:field="username"
+						type="TEXT" label="{i18nCore.userEditorUsername}" />
+
+					<combobox:MaterialComboBox
+						ui:field="userGroups" multiple="true"
+						label="{i18nCore.userEditorChatGroups}"
+						placeholder="{i18nCore.userEditorChooseGroup}" />
+				</g:HTMLPanel>
+
+				<!-- JOGOSULTSÁGOK -->
+				<g:HTMLPanel addStyleNames="{style.bb}">
+					<g:Label text="Jogosultság" addStyleNames="{style.cc}" />
+					<m:MaterialCheckBox ui:field="admin"
+						text="{i18nCore.userEditorIsAdmin}" addStyleNames="{style.cb}" />
+
+					<combobox:MaterialComboBox
+						ui:field="availableHotels" multiple="true"
+						label="{i18nCore.userEditorAvailableHotels}"
+						placeholder="{i18nCore.userEditorChooseHotel}" marginTop="30" />
+
+					<combobox:MaterialComboBox
+						ui:field="defaultHotelCombo" multiple="false"
+						label="{i18nCore.userEditorDefaultHotel}"
+						placeholder="{i18nCore.userEditorChooseHotel}" marginTop="25" />
+				</g:HTMLPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialButton ui:field="saveButton"
+			text="{i18nCore.comSave}" float="RIGHT"
+			addStyleNames="{style.saveButton}" />
+		<m:MaterialButton ui:field="cancelButton"
+			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

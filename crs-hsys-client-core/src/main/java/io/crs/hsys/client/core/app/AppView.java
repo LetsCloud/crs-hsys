@@ -14,7 +14,7 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialRow;
 
-public class AppView extends ViewImpl implements AppPresenter.MyView {
+public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 	private static Logger logger = Logger.getLogger(AppView.class.getName());
 
 	public interface Binder extends UiBinder<Widget, AppView> {
@@ -37,9 +37,9 @@ public class AppView extends ViewImpl implements AppPresenter.MyView {
 		logger.info("ApplicationView()");
 		initWidget(uiBinder.createAndBindUi(this));
 
-		bindSlot(AppPresenter.SLOT_MENU, menu);
-		bindSlot(AppPresenter.SLOT_MAIN, main);
-		bindSlot(AppPresenter.SLOT_MODAL, modalSlot);
+		bindSlot(AbstractAppPresenter.SLOT_MENU, menu);
+		bindSlot(AbstractAppPresenter.SLOT_MAIN, main);
+		bindSlot(AbstractAppPresenter.SLOT_MODAL, modalSlot);
 	}
 
 	@Override

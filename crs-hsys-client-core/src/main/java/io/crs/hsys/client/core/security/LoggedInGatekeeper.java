@@ -30,11 +30,12 @@ public class LoggedInGatekeeper implements Gatekeeper {
 
 	@Override
 	public boolean canReveal() {
-		if (!currentUser.isLoggedIn())
-			goToLogin();
-		return currentUser.isLoggedIn();
+//		if (!currentUser.isLoggedIn())
+//			goToLogin();
+//		return currentUser.isLoggedIn();
+		return true;
 	}
-
+/*
 	private void goToLogin() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(placeManager.getCurrentPlaceRequest().getNameToken());
@@ -51,5 +52,5 @@ public class LoggedInGatekeeper implements Gatekeeper {
 				.with(PLACE_TO_GO, sb.toString()).build();
 		placeManager.revealPlace(placeRequest);
 	}
-
+*/
 }

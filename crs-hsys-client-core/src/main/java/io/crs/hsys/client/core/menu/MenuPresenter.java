@@ -17,9 +17,7 @@ import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.ContentPushEvent.MenuState;
@@ -70,7 +68,6 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		void setAppCode(String appCode);
 	}
 
-	private final PlaceManager placeManager;
 	private final RestDispatch dispatcher;
 	private final AuthResource authService;
 	private final CurrentUser currentUser;
@@ -83,7 +80,6 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		super(eventBus, view);
 		logger.info("MenuPresenter()");
 
-		this.placeManager = placeManager;
 		this.dispatcher = dispatcher;
 		this.authService = authService;
 		this.currentUser = currentUser;
@@ -158,9 +154,9 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 			@Override
 			public void onSuccess(Void result) {
-				currentUser.setLoggedIn(false);
-				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.LOGIN).build();
-				placeManager.revealPlace(placeRequest);
+//				currentUser.setLoggedIn(false);
+//				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.LOGIN).build();
+//				placeManager.revealPlace(placeRequest);
 			}
 
 			@Override
@@ -171,7 +167,7 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void referesh() {
-		getView().setAccountName(currentUser.getAccount().getName());
+		getView().setAccountName(currentUser.getAppUserDto().getAccount().getName());
 		if (currentUser.getCurrentHotel() != null) {
 			if (!Strings.isNullOrEmpty(currentUser.getCurrentHotel().getName()))
 				getView().setHotelName(currentUser.getCurrentHotel().getName());

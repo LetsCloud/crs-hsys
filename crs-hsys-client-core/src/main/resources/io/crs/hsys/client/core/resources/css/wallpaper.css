@@ -1,0 +1,32 @@
+@url orangeWallpaperUrl orangeWallpaperRes;
+.orangeWallpaper {
+	background: orangeWallpaperUrl;
+	background-size: 100%;
+	padding: 0px ! important;
+	/*	padding-top: 15% ! important; */
+}
+
+@url blueWallpaperUrl blueWallpaperRes;
+.blueWallpaper {
+	background: blueWallpaperUrl;
+	background-size: 100%;
+	padding: 0px ! important;
+	/*	padding-top: 15% ! important; */
+}
+
+@url redWallpaperUrl redWallpaperRes;
+.redWallpaper {
+	background: redWallpaperUrl;
+	background-size: 100%;
+	padding: 0px ! important;
+	/*	padding-top: 15% ! important; */
+}
+
+
+@url greyWallpaperUrl greyWallpaperRes;
+.greyWallpaper {
+	background: greydWallpaperUrl;
+	background-size: 100%;
+	padding: 0px ! important;
+	/*	padding-top: 15% ! important; */
+}

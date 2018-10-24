@@ -13,6 +13,7 @@
 		<module>crs-hsys-shared</module>
 		<module>crs-hsys-server</module>
 		<module>crs-hsys-client-core</module>
+		<module>crs-hsys-client-cfg</module>
 	</modules>
 
 	<properties>
@@ -55,7 +56,7 @@
 		<appengine.version>1.9.65</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
 		<objectify.version>5.1.21</objectify.version>
-		<commons-collections4.version>4.1</commons-collections4.version>
+<!-- 		<commons-collections4.version>4.1</commons-collections4.version> -->
 		<validation-api.version>1.1.0.Final</validation-api.version>
 
 		<!-- ***************** -->
@@ -102,7 +103,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-
 			<!-- ***************************************************** -->
 			<!-- **************** CLIENT DEPENDENCIES **************** -->
 			<!-- ***************************************************** -->
@@ -392,6 +392,7 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${servlet.version}</version>
+				<type>jar</type>
 				<scope>provided</scope>
 			</dependency>
 
@@ -411,13 +412,13 @@
 
 			<!-- ************************************************************************************* -->
 			<!-- UTILS -->
-			<!-- ************************************************************************************* -->
+			<!-- ************************************************************************************* 
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-collections4</artifactId>
 				<version>${commons-collections4.version}</version>
 			</dependency>
-
+ -->
 
 			<!-- ************************************************************************************* -->
 			<!-- TESTING -->

@@ -9,10 +9,10 @@ import com.google.gwt.resources.client.TextResource;
 public interface CoreResources extends ClientBundle {
 	public static final CoreResources INSTANCE = GWT.create(CoreResources.class);
 
-	@Source("hu/hw/cloud/client/core/resources/css/materialize.css")
+	@Source("io/crs/hsys/client/core/resources/css/materialize.css")
 	TextResource materialize();
 
-	@Source("hu/hw/cloud/client/core/resources/css/gwt-material.css")
+	@Source("io/crs/hsys/client/core/resources/css/gwt-material.css")
 	TextResource gwtMaterial();
 
 	@Source("img/profile.jpg")
@@ -36,6 +36,12 @@ public interface CoreResources extends ClientBundle {
 
 	@Source("img/red-wallpaper.png")
 	DataResource redWallpaperRes();
+
+	@Source("img/grey-wallpaper.jpg")
+	ImageResource greyWallpaperImg();
+
+	@Source("img/grey-wallpaper.jpg")
+	DataResource greyWallpaperRes();
 
 	@Source("css/wallpaper.css")
 	WallpaperCssResource wallpaperCss();
