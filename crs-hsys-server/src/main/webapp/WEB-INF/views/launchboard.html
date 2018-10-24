@@ -23,12 +23,16 @@
 </head>
 <body>
 	<div layout:fragment="content">
+
 		<div>
-			<form id="frmlogout" th:action="@{/logout}" method="post"></form>
+			<form id="frmlogout" th:action="@{/logout}" method="post"
+				th:hidden="true">
+				<input hidden type="submit" value="Sign Out" />
+			</form>
 		</div>
 
 		<ul id="dropdown-user" class="dropdown-content">
-			<li>|<a href="javascript:{}"
+			<li><a href="javascript:{}"
 				onclick="document.getElementById('frmlogout').submit(); return false;"><i
 					class="material-icons left navDropDownIcon">power_settings_new</i>Kijelentkezek</a>
 			</li>
