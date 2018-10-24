@@ -12,6 +12,14 @@ import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.UserGroup;
 import io.crs.hsys.server.entity.hotel.Hotel;
+import io.crs.hsys.server.entity.profile.Contact;
+import io.crs.hsys.server.entity.profile.Guest;
+import io.crs.hsys.server.entity.profile.Organization;
+import io.crs.hsys.server.entity.profile.Person;
+import io.crs.hsys.server.entity.profile.Profile;
+import io.crs.hsys.server.entity.profile.ProfileGroup;
+import io.crs.hsys.server.entity.profile.ProfileLink;
+import io.crs.hsys.server.entity.profile.Relationship;
 
 
 /**
@@ -29,7 +37,7 @@ public class ObjectifyRegistration {
 		/*		ObjectifyService.register(Role.class);
 		ObjectifyService.register(Currency.class);
 		ObjectifyService.register(Service.class);
-		
+*/		
 		ObjectifyService.register(ProfileGroup.class);
 		ObjectifyService.register(Relationship.class);
 		ObjectifyService.register(Profile.class);
@@ -38,7 +46,7 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(Contact.class);
 		ObjectifyService.register(Guest.class);
 		ObjectifyService.register(ProfileLink.class);
-*/	
+	
 		ObjectifyService.register(Hotel.class);
 /*		ObjectifyService.register(RoomType.class);
 		ObjectifyService.register(Room.class);
