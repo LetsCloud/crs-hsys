@@ -16,7 +16,7 @@
 	<!-- all resources inside folder src/main/webapp/resources are mapped so 
 		they can be refered to inside JSP files (see htmlHeader.jsp for more details) -->
 	<mvc:resources mapping="/resources/**"
-		location="/static/" />
+		location="classpath:static/" />
 
 	<mvc:resources mapping="/**" location="/WEB-INF/gwt/" />
 

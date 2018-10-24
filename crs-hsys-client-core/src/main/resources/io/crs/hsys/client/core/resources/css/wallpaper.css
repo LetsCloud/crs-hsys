@@ -21,12 +21,3 @@
 	padding: 0px ! important;
 	/*	padding-top: 15% ! important; */
 }
-
-
-@url greyWallpaperUrl greyWallpaperRes;
-.greyWallpaper {
-	background: greydWallpaperUrl;
-	background-size: 100%;
-	padding: 0px ! important;
-	/*	padding-top: 15% ! important; */
-}

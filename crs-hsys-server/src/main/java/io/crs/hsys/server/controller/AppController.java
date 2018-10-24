@@ -49,17 +49,6 @@ public class AppController {
 		this.appUserService = appUserService;
 		this.eventPublisher = eventPublisher;
 	}
-/*
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-
-	@RequestMapping({ "/" })
-	public String index() {
-		return "index";
-	}
-*/
 	
 	@RequestMapping("/signup")
 	public String signup(Model model) {

@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import gwt.material.design.client.constants.IconType;
 
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
+import io.crs.hsys.client.cfg.resources.CfgResources;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.menu.MenuPresenter;
@@ -35,6 +36,7 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
 public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 
 	private final CfgMessages i18n;
+	private final CfgResources resources;
 
 	@ProxyStandard
 	interface MyProxy extends Proxy<AppPresenter> {
@@ -43,17 +45,19 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 	@Inject
 	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, CfgMessages i18n,
 			RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
-			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager) {
+			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager, CfgResources resources) {
 		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, menuPresenter, currentUser,
 				SubSystem.CFG, messagingManager);
 
 		this.i18n = i18n;
+		this.resources = resources;
 	}
 
 	@Override
 	protected void onBind() {
 		super.onBind();
 		getMenuPresenter().setMenuItems(createMenuitems());
+		getMenuPresenter().setProfileBackground(resources.profileBackgroundImg());
 	}
 
 	private List<MenuItemDto> createMenuitems() {

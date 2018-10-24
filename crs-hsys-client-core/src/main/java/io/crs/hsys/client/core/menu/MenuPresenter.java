@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.google.common.base.Strings;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -46,6 +47,8 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		void checkPermittedWidgets();
 
 		void setPageTitle(String title, String description);
+
+		void setProfileBackground(ImageResource resource);
 
 		void setAccountName(String accountName);
 
@@ -181,5 +184,9 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 	public void setCurrentHotel(HotelDtor hotel) {
 		currentUser.setCurrentHotel(hotel);
 		getView().setHotelName(hotel.getName());
+	}
+
+	public void setProfileBackground(ImageResource resource) {
+		getView().setProfileBackground(resource);
 	}
 }
