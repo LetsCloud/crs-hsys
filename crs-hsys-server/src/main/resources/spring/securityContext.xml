@@ -70,12 +70,9 @@
 		<security:intercept-url pattern="/activate/**"
 			access="permitAll" />
 
-		<security:intercept-url pattern="/cfg.html"
-			access="authenticated" />
-		<security:intercept-url pattern="/resources/**"
-			access="authenticated" />
 		<security:intercept-url pattern="/**"
 			access="authenticated" />
+
 		<security:http-basic />
 
 		<security:form-login login-page="/login"
