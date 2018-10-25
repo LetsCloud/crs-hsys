@@ -62,6 +62,7 @@ public class ProfileGroupEditorPresenter
 		ProfileGroupDto dto = new ProfileGroupDto();
 		dto.setAccount(new BaseDto());
 		dto.getAccount().setId(currentUser.getAppUserDto().getAccount().getId());
+		dto.setActive(true);
 		return dto;
 	}
 

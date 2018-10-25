@@ -24,8 +24,8 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
+import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.constans.ProfileType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
@@ -65,13 +65,13 @@ public class ProfileGroupEditorView extends ViewWithUiHandlers<ProfileGroupEdito
 	@UiField
 	MaterialButton saveButton;
 
-	private final CoreMessages i18n;
+	private final CfgMessages i18n;
 
 	/**
 	* 
 	*/
 	@Inject
-	ProfileGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n, CoreConstants i18nCoreCnst) {
+	ProfileGroupEditorView(Binder uiBinder, Driver driver, CfgMessages i18n, CoreConstants i18nCoreCnst) {
 		logger.info("ProfileGroupEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));

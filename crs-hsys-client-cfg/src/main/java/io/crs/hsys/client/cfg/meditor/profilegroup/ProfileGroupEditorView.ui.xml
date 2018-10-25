@@ -7,22 +7,25 @@
 	<ui:with field="i18nCore"
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
+	<ui:with field="i18nCfg"
+		type="io.crs.hsys.client.cfg.i18n.CfgMessages" />
+
 	<m:MaterialDialog ui:field="modal" type="DEFAULT"
 		inDuration="500" outDuration="500">
 		<m:MaterialDialogContent>
 			<m:MaterialTitle ui:field="title" />
 
 			<m:MaterialTextBox ui:field="code" type="TEXT"
-				label="{i18nCore.profileGroupCode}" />
+				label="{i18nCfg.profileGroupCode}" />
 
 			<m:MaterialTextBox ui:field="description"
-				type="TEXT" label="{i18nCore.profileGroupDescription}" />
+				type="TEXT" label="{i18nCfg.profileGroupDescription}" />
 
 			<combobox:MaterialComboBox
-				ui:field="typeCombo" label="{i18nCore.profileGroupType}" />
+				ui:field="typeCombo" label="{i18nCfg.profileGroupType}" />
 
 			<m:MaterialCheckBox ui:field="active"
-				text="{i18nCore.profileGroupActive}" value="true" type="FILLED" />
+				text="{i18nCfg.profileGroupActive}" value="true" type="FILLED" />
 		</m:MaterialDialogContent>
 
 		<m:MaterialDialogFooter>
