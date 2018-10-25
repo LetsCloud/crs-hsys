@@ -42,6 +42,39 @@
 		<constructor-arg ref="passwordEncoder" />
 	</bean>
 	
+	
+	<bean id="profileService"
+		class="io.crs.hsys.server.service.ofy.ProfileServiceImpl">
+		<constructor-arg ref="profileRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="organizationService"
+		class="io.crs.hsys.server.service.ofy.OrganizationServiceImpl">
+		<constructor-arg ref="organizationRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="contactService"
+		class="io.crs.hsys.server.service.ofy.ContactServiceImpl">
+		<constructor-arg ref="contactRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="profileGroupService"
+		class="io.crs.hsys.server.service.ofy.ProfileGroupServiceImpl">
+		<constructor-arg ref="profileGroupRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="relationshipService"
+		class="io.crs.hsys.server.service.ofy.RelationshipServiceImpl">
+		<constructor-arg ref="relationshipRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="profileLinkService"
+		class="io.crs.hsys.server.service.ofy.ProfileLinkServiceImpl">
+		<constructor-arg ref="profileLinkRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+
+	
 	<bean id="hotelService"
 		class="io.crs.hsys.server.service.ofy.HotelServiceImpl">
 		<constructor-arg ref="accountRepository" />
@@ -62,6 +95,23 @@
 	<bean id="appUserRepository"
 		class="io.crs.hsys.server.repository.ofy.AppUserRepositoryImpl" />
 
+
+	<bean id="profileRepository"
+		class="io.crs.hsys.server.repository.ofy.ProfileRepositoryImpl" />
+	<bean id="organizationRepository"
+		class="io.crs.hsys.server.repository.ofy.OrganizationRepositoryImpl" />
+	<bean id="contactRepository"
+		class="io.crs.hsys.server.repository.ofy.ContactRepositoryImpl" />
+	<bean id="profileGroupRepository"
+		class="io.crs.hsys.server.repository.ofy.ProfileGroupRepositoryImpl" />
+	<bean id="relationshipRepository"
+		class="io.crs.hsys.server.repository.ofy.RelationshipRepositoryImpl" />
+	<bean id="profileLinkRepository"
+		class="io.crs.hsys.server.repository.ofy.ProfileLinkRepositoryImpl" />
+<!-- 	<bean id="guestRepository"
+		class="io.crs.hsys.server.repository.ofy.GuestRepositoryImpl" /> -->
+		
+		
 	<bean id="hotelRepository"
 		class="io.crs.hsys.server.repository.ofy.HotelRepositoryImpl" />
 	
