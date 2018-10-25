@@ -80,6 +80,26 @@
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
 	</bean>
+	<bean id="roomService"
+		class="io.crs.hsys.server.service.ofy.RoomServiceImpl">
+		<constructor-arg ref="roomRepository" />
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="hotelRepository" />
+		<constructor-arg ref="reservationRepository" />
+	</bean>
+	<bean id="roomTypeService"
+		class="io.crs.hsys.server.service.ofy.RoomTypeServiceImpl">
+		<constructor-arg ref="roomTypeRepository" />
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="hotelRepository" />
+		<constructor-arg ref="roomRepository" />
+	</bean>
+	<bean id="marketGroupService"
+		class="io.crs.hsys.server.service.ofy.MarketGroupServiceImpl">
+		<constructor-arg ref="marketGroupRepository" />
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="hotelRepository" />
+	</bean>
 	
 
 	<!-- ============ -->
@@ -114,5 +134,15 @@
 		
 	<bean id="hotelRepository"
 		class="io.crs.hsys.server.repository.ofy.HotelRepositoryImpl" />
+	<bean id="roomRepository"
+		class="io.crs.hsys.server.repository.ofy.RoomRepositoryImpl" />
+	<bean id="roomTypeRepository"
+		class="io.crs.hsys.server.repository.ofy.RoomTypeRepositoryImpl" />
+	<bean id="marketGroupRepository"
+		class="io.crs.hsys.server.repository.ofy.MarketGroupRepositoryImpl" />
+
+
+	<bean id="reservationRepository"
+		class="io.crs.hsys.server.repository.ofy.ReservationRepositoryImpl" />
 	
 </beans>
