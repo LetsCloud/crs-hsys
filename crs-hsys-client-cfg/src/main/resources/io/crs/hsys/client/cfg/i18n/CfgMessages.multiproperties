@@ -81,5 +81,50 @@
             <Value disabled="false">Management Info Config</Value>
             <Value disabled="false">Vezetői info beállítások</Value>
         </Property>
+        <Comment>
+            <Value>PROFILE GROUP EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>profileGroupCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Profile Group</Value>
+            <Value disabled="false">Profil csoport létrehozása</Value>
+        </Property>
+        <Property>
+            <Name>profileGroupEditTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edit Profile Group</Value>
+            <Value disabled="false">Profil csoport szerkesztése</Value>
+        </Property>
+        <Property>
+            <Name>profileGroupCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>profileGroupDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Property>
+            <Name>profileGroupType</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Type</Value>
+            <Value disabled="false">Típus</Value>
+        </Property>
+        <Property>
+            <Name>profileGroupActive</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Aktív</Value>
+        </Property>
     </Records>
 </MultiProperties>

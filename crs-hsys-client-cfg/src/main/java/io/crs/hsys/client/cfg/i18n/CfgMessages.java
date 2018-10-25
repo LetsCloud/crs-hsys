@@ -46,4 +46,30 @@ public interface CfgMessages extends Messages {
 	// Management Information
 	@DefaultMessage("Management Information")
 	String mainMenuInfConfig();
+	
+	
+
+	
+	/*
+	 * PROFILE GROUP EDITOR
+	 */
+
+	@DefaultMessage("Create Profile Group")
+	String profileGroupCreateTitle();
+
+	@DefaultMessage("Edit Profile Group")
+	String profileGroupEditTitle();
+
+	@DefaultMessage("Code")
+	String profileGroupCode();
+
+	@DefaultMessage("Description")
+	String profileGroupDescription();
+
+	@DefaultMessage("Profile Type")
+	String profileGroupType();
+
+	@DefaultMessage("Active")
+	String profileGroupActive();
+	
 }
