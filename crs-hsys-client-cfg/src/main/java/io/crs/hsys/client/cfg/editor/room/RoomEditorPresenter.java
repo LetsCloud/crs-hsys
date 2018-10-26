@@ -92,6 +92,7 @@ public class RoomEditorPresenter
 	protected void loadData() {
 		roomTypeDataSource.setOnlyActive(true);
 		roomTypeDataSource.setHotelKey(filters.get(HOTEL_KEY));
+		roomTypeDataSource.setInventoryType(InventoryType.PHYS);
 		hotelDataSource.setWebSafeKey(filters.get(HOTEL_KEY));
 		
 		LoadCallback<RoomTypeDto> roomTypeLoadCallback = new LoadCallback<RoomTypeDto>() {

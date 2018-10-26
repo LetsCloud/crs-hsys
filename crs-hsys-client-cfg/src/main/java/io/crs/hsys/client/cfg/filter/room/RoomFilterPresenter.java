@@ -17,6 +17,7 @@ import io.crs.hsys.client.cfg.filter.hotelchild.AbstractHotelChildFilterPresente
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.shared.constans.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 
 /**
@@ -75,6 +76,7 @@ public class RoomFilterPresenter extends AbstractHotelChildFilterPresenter<RoomF
 		logger.info("RoomFilterPresenter().onReveal()-3");
 		roomTypeDataSource.setOnlyActive(true);
 		logger.info("RoomFilterPresenter().onReveal()-4");
+		roomTypeDataSource.setInventoryType(InventoryType.PHYS);
 		roomTypeDataSource.load(new LoadConfig<RoomTypeDto>(0, 0, null, null), roomTypeLoadCallback);
 		logger.info("RoomFilterPresenter().onReveal()-5");
 	}

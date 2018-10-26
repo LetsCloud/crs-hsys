@@ -65,7 +65,7 @@ public class MarketGroupController extends HotelChildController<MarketGroup, Mar
 
 	@RequestMapping(method = GET)
 	public ResponseEntity<List<MarketGroupDto>> getByHotelWithFilters(@RequestParam(HOTEL_KEY) String hotelKey,
-			@RequestParam(ONLY_ACTIVE) Boolean onlyActive, @RequestParam(SEL_INV_TYPE) InventoryType inventoryType) {
+			@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
 		logger.info("RoomTypeController().getByHotelWithFilters()");
 		Map<String, Object> filters = new HashMap<String, Object>();
 		if (onlyActive)
