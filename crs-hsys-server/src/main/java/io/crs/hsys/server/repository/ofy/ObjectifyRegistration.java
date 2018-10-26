@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.googlecode.objectify.ObjectifyService;
 
+import io.crs.hsys.server.entity.GlobalConfig;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.UserGroup;
@@ -30,10 +31,11 @@ import io.crs.hsys.server.entity.reservation.MarketGroup;
  *
  */
 public class ObjectifyRegistration {
-	private static final Logger loger = LoggerFactory.getLogger(ObjectifyRegistration.class);
+	private static final Logger logger = LoggerFactory.getLogger(ObjectifyRegistration.class);
 
 	static {
-		loger.info("ObjectifyService.register");
+		logger.info("ObjectifyService.register");
+		ObjectifyService.register(GlobalConfig.class);
 		ObjectifyService.register(Account.class);
 		ObjectifyService.register(AppUser.class);
 		ObjectifyService.register(UserGroup.class);

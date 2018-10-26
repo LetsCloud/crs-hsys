@@ -35,6 +35,8 @@ public interface CrudRepository<T extends BaseEntity> {
 
 	void delete(String webSafeString);
 
+	List<T> getAll();
+
 	List<T> getAll(Object parent);
 
 	void deleteAll(Object parent);

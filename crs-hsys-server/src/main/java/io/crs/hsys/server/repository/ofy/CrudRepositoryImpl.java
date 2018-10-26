@@ -62,6 +62,11 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 	}
 
 	@Override
+	public List<T> getAll() {
+		return super.getAll();
+	}
+
+	@Override
 	public List<T> getAll(Object parent) {
 		return getChildren(parent);
 	}

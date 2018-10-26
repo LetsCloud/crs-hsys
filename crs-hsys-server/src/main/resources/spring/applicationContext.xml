@@ -24,6 +24,10 @@
 	<!-- ======== -->
 	<!-- SERVICES -->
 	<!-- ======== -->
+	<bean id="globalConfigService"
+		class="io.crs.hsys.server.service.ofy.GlobalConfigServiceImpl">
+		<constructor-arg ref="globalConfigRepository" />
+	</bean>
 	<bean id="accountService"
 		class="io.crs.hsys.server.service.ofy.AccountServiceImpl">
 		<property name="accountRepository" ref="accountRepository" />
@@ -105,6 +109,8 @@
 	<!-- ============ -->
 	<!-- REPOSITORIES -->
 	<!-- ============ -->
+	<bean id="globalConfigRepository"
+		class="io.crs.hsys.server.repository.ofy.GlobalConfigRepositoryImpl" />
 	<bean id="accountRepository"
 		class="io.crs.hsys.server.repository.ofy.AccountRepositoryImpl" />
  	<bean id="userGroupRepository"
