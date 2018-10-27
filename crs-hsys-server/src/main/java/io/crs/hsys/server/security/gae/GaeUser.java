@@ -4,35 +4,51 @@
 package io.crs.hsys.server.security.gae;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.EnumSet;
 import java.util.Set;
 
 /**
- * @author robi
+ * Custom user object for the application.
  *
+ * @author Luke Taylor
  */
 @SuppressWarnings("serial")
 public class GaeUser implements Serializable {
-	private String userId;
-	private String email;
-	private String nickname;
-	private String forename;
-	private String surname;
-	private Set<AppRole> authorities;
-	private boolean enabled;
+	private final String userId;
+	private final String email;
+	private final String nickname;
+	private final String forename;
+	private final String surname;
+	private final Set<AppRole> authorities;
+	private final boolean enabled;
 
+	/**
+	 * Pre-registration constructor.
+	 *
+	 * Assigns the user the "NEW_USER" role only.
+	 */
 	public GaeUser(String userId, String nickname, String email) {
 		this.userId = userId;
 		this.nickname = nickname;
+		this.authorities = EnumSet.of(AppRole.NEW_USER);
+		this.forename = null;
+		this.surname = null;
 		this.email = email;
+		this.enabled = true;
 	}
 
-	public GaeUser(String userId, String nickname, String email, String forename, String surname,
-			Set<AppRole> authorities, boolean enabled) {
-		this(userId, nickname, email);
-
+	/**
+	 * Post-registration constructor
+	 */
+	public GaeUser(String userId, String nickname, String email, String forename,
+			String surname, Set<AppRole> authorities, boolean enabled) {
+		this.userId = userId;
+		this.nickname = nickname;
+		this.email = email;
+		this.authorities = authorities;
 		this.forename = forename;
 		this.surname = surname;
-		this.authorities = authorities;
 		this.enabled = enabled;
 	}
 
@@ -40,12 +56,12 @@ public class GaeUser implements Serializable {
 		return userId;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public String getNickname() {
 		return nickname;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	public String getForename() {
@@ -56,18 +72,18 @@ public class GaeUser implements Serializable {
 		return surname;
 	}
 
-	public Set<AppRole> getAuthorities() {
-		return authorities;
-	}
-
 	public boolean isEnabled() {
 		return enabled;
 	}
 
-	@Override
-	public String toString() {
-		return "GaeUser [userId=" + userId + ", email=" + email + ", nickname=" + nickname + ", forename=" + forename
-				+ ", surname=" + surname + ", authorities=" + authorities + ", enabled=" + enabled + "]";
+	public Collection<AppRole> getAuthorities() {
+		return authorities;
 	}
 
+	@Override
+	public String toString() {
+		return "GaeUser{" + "userId='" + userId + '\'' + ", nickname='" + nickname + '\''
+				+ ", forename='" + forename + '\'' + ", surname='" + surname + '\''
+				+ ", authorities=" + authorities + '}';
+	}
 }
