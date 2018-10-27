@@ -11,7 +11,7 @@ import io.crs.hsys.server.entity.GlobalConfig;
  * @author robi
  *
  */
-public interface GlobalConfigService {
+public interface GlobalConfigService extends CrudService<GlobalConfig> {
 
 	public void checkParams();
 

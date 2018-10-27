@@ -20,7 +20,7 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
  * @author robi
  *
  */
-public class GlobalConfigServiceImpl implements GlobalConfigService {
+public class GlobalConfigServiceImpl extends CrudServiceImpl<GlobalConfig, GlobalConfigRepository> implements GlobalConfigService {
 	private static final Logger logger = LoggerFactory.getLogger(GlobalConfigServiceImpl.class.getName());
 
 	private static EnumSet<GlobalParam> allParams = EnumSet.of(GlobalParam.FB1_API_KEY, GlobalParam.FB2_AUTH_DOMAIN,
@@ -30,6 +30,7 @@ public class GlobalConfigServiceImpl implements GlobalConfigService {
 	private final GlobalConfigRepository repository;
 
 	public GlobalConfigServiceImpl(GlobalConfigRepository repository) {
+		super(repository);
 		logger.info("GlobalConfigServiceImpl()");
 		this.repository = repository;
 	}
@@ -55,6 +56,16 @@ public class GlobalConfigServiceImpl implements GlobalConfigService {
 	@Override
 	public List<GlobalConfig> getParams() {
 		return repository.getAll();
+	}
+
+	@Override
+	protected List<Object> getParents(Long accountId) {
+		return null;
+	}
+
+	@Override
+	protected List<Object> getParents(String accountWebSafeKey) {
+		return null;
 	}
 
 }

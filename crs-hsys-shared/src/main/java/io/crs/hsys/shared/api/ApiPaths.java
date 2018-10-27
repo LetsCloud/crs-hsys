@@ -18,6 +18,7 @@ public class ApiPaths {
 		public static final String SUBSCRIBE = "/subscribe";
 		public static final String MESSAGE = "/message";
 		
+		public static final String GLOBAL_CONFIG = "/globalConfig";
 		public static final String ACCOUNT = "/account";
 		
 		public static final String USER = "/user";

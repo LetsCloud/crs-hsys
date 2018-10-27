@@ -7,6 +7,46 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<bean id="gaeEntryPoint"
+		class="io.crs.hsys.server.security.gae.GoogleAccountsAuthenticationEntryPoint" />
+
+	<bean id="gaeFilter"
+		class="io.crs.hsys.server.security.gae.GaeAuthenticationFilter">
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+	</bean>
+
+	<security:authentication-manager
+		alias="authenticationManager">
+		<security:authentication-provider
+			ref="gaeAuthenticationProvider" />
+	</security:authentication-manager>
+
+	<bean id="gaeAuthenticationProvider"
+		class="io.crs.hsys.server.security.gae.GoogleAccountsAuthenticationProvider">
+		<property name="userRegistry" ref="userRegistry" />
+	</bean>
+
+	<bean id="userRegistry"
+		class="io.crs.hsys.server.security.gae.GaeDatastoreUserRegistry" />
+
+	<security:http pattern="/admin*" use-expressions="true"
+		entry-point-ref="gaeEntryPoint">
+		<security:intercept-url pattern="/"
+			access="permitAll" />
+		<security:intercept-url
+			pattern="/register.htm*" access="hasRole('NEW_USER')" />
+		<security:intercept-url pattern="/**"
+			access="hasRole('USER')" />
+		<security:custom-filter
+			position="PRE_AUTH_FILTER" ref="gaeFilter" />
+	</security:http>
+
+
+
+
+
+
 	<bean id="registrationListener"
 		class="io.crs.hsys.server.security.RegistrationListener">
 		<property name="appUserService" ref="appUserService" />
