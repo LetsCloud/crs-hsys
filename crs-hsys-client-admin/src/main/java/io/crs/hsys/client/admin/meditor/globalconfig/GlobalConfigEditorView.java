@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.admin.meditor.firebase;
+package io.crs.hsys.client.admin.meditor.globalconfig;
 
 import java.util.logging.Logger;
 
@@ -18,10 +18,10 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialButton;
-import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
-import io.crs.hsys.client.core.i18n.CoreConstants;
+import gwt.material.design.client.ui.MaterialTitle;
+import io.crs.hsys.client.admin.i18n.AdminMessages;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 
@@ -29,35 +29,41 @@ import io.crs.hsys.shared.dto.GlobalConfigDto;
  * @author robi
  *
  */
-public class FirebaseEditorView extends ViewWithUiHandlers<FirebaseEditorUiHandlers>
-		implements FirebaseEditorPresenter.MyView, Editor<GlobalConfigDto> {
-	private static Logger logger = Logger.getLogger(FirebaseEditorView.class.getName());
+public class GlobalConfigEditorView extends ViewWithUiHandlers<GlobalConfigEditorUiHandlers>
+		implements GlobalConfigEditorPresenter.MyView, Editor<GlobalConfigDto> {
+	private static Logger logger = Logger.getLogger(GlobalConfigEditorView.class.getName());
 
-	interface Binder extends UiBinder<Widget, FirebaseEditorView> {
+	interface Binder extends UiBinder<Widget, GlobalConfigEditorView> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<GlobalConfigDto, FirebaseEditorView> {
+	interface Driver extends SimpleBeanEditorDriver<GlobalConfigDto, GlobalConfigEditorView> {
 	}
 
 	private final Driver driver;
 
-// private final CoreConstants i18nCoreCnst;
-
 	@UiField
 	MaterialDialog modal;
 
+	@Ignore
 	@UiField
-	MaterialTextBox value;
+	MaterialTitle title;
+
+	@UiField
+	MaterialTextBox code, value;
 
 	@UiField
 	MaterialButton saveButton;
+
+	private final AdminMessages i18n;
 
 	/**
 	* 
 	*/
 	@Inject
-	FirebaseEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst) {
-		logger.info("RoomTypeEditorView()");
+	GlobalConfigEditorView(Binder uiBinder, Driver driver, AdminMessages i18n) {
+		logger.info("GlobalConfigEditorView()");
+
+		this.i18n = i18n;
 
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -69,6 +75,11 @@ public class FirebaseEditorView extends ViewWithUiHandlers<FirebaseEditorUiHandl
 
 	@Override
 	public void open(GlobalConfigDto dto) {
+		if (dto.getId() == null) {
+			title.setTitle(i18n.globalConfigCreatorTitle());
+		} else {
+			title.setTitle(i18n.globalConfigEditorTitle());
+		}
 		driver.edit(dto);
 
 		modal.open();

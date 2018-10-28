@@ -77,14 +77,14 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		commonConfigSubMenu.setIndex(2);
 		commonConfigSubMenu.setType(MenuItemType.SUB_MENU);
 		commonConfigSubMenu.setIcon(IconType.SETTINGS.name());
-		commonConfigSubMenu.setText(i18n.mainSubMenuSystemConfig());
+		commonConfigSubMenu.setText(i18n.mainSubMenuConfigs());
 		commonConfigSubMenu.setItems(new ArrayList<MenuItemDto>());
 		menuItems.add(commonConfigSubMenu);
 
 		MenuItemDto userConfigMenuItem = new MenuItemDto();
 		userConfigMenuItem.setIndex(1);
 		userConfigMenuItem.setType(MenuItemType.MENU_ITEM);
-		userConfigMenuItem.setText(i18n.menuItemGlobalConfig());
+		userConfigMenuItem.setText(i18n.menuItemSystemConfigs());
 		userConfigMenuItem.setNameToken(NameTokens.SYSTEM_CONFIG);
 		commonConfigSubMenu.addItem(userConfigMenuItem);
 

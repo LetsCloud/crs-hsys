@@ -17,8 +17,8 @@ import io.crs.hsys.shared.dto.GlobalConfigDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
-import static io.crs.hsys.shared.api.ApiPaths.SpaV1.GLOBAL_CONFIG;
-import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
+import static io.crs.hsys.shared.api.ApiPaths.AdminV1.GLOBAL_CONFIG;
+import static io.crs.hsys.shared.api.ApiPaths.AdminV1.ROOT;
 
 /**
  * @author robi

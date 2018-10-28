@@ -16,7 +16,7 @@
 		<security:intercept-url
 			pattern="/register.htm*" access="hasRole('NEW_USER')" />
 		<security:intercept-url pattern="/**"
-			access="hasRole('USER')" />
+			access="hasRole('ADMIN')" />
 		<security:custom-filter
 			position="PRE_AUTH_FILTER" ref="gaeFilter" />
 	</security:http>

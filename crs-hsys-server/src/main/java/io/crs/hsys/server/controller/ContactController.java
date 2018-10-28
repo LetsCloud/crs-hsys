@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,11 +30,11 @@ import io.crs.hsys.shared.dto.profile.ProfileDtor;
 import io.crs.hsys.shared.dto.profile.ProfileLinkDto;
 import io.crs.hsys.shared.exception.RestApiException;
 
-import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.CONTACT;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
+
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;

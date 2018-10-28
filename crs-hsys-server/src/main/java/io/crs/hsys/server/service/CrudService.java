@@ -22,6 +22,8 @@ public interface CrudService<T extends BaseEntity> {
 
 	Boolean delete(String id) throws Throwable;
 
+	List<T> getAll();
+
 	List<T> getAll(Long accountId);
 
 	List<T> getAll(String accountWebSafeKey);

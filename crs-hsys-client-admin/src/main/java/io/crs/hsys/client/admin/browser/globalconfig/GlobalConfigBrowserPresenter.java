@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.admin.browser.firebase;
+package io.crs.hsys.client.admin.browser.globalconfig;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,8 +16,8 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.admin.meditor.firebase.FirebaseEditorFactory;
-import io.crs.hsys.client.admin.meditor.firebase.FirebaseEditorPresenter;
+import io.crs.hsys.client.admin.meditor.globalconfig.GlobalConfigEditorFactory;
+import io.crs.hsys.client.admin.meditor.globalconfig.GlobalConfigEditorPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
@@ -28,11 +28,11 @@ import io.crs.hsys.shared.dto.GlobalConfigDto;
  * @author robi
  *
  */
-public class FirebaseBrowserPresenter extends AbstractBrowserPresenter<GlobalConfigDto, FirebaseBrowserPresenter.MyView>
-		implements FirebaseBrowserUiHandlers {
-	private static Logger logger = Logger.getLogger(FirebaseBrowserPresenter.class.getName());
+public class GlobalConfigBrowserPresenter extends AbstractBrowserPresenter<GlobalConfigDto, GlobalConfigBrowserPresenter.MyView>
+		implements GlobalConfigBrowserUiHandlers {
+	private static Logger logger = Logger.getLogger(GlobalConfigBrowserPresenter.class.getName());
 
-	public interface MyView extends View, HasUiHandlers<FirebaseBrowserUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<GlobalConfigBrowserUiHandlers> {
 		void setData(List<GlobalConfigDto> data);
 	}
 
@@ -41,14 +41,14 @@ public class FirebaseBrowserPresenter extends AbstractBrowserPresenter<GlobalCon
 
 	private final ResourceDelegate<GlobalConfigResource> resourceDelegate;
 
-	private final FirebaseEditorPresenter editor;
+	private final GlobalConfigEditorPresenter editor;
 
 	private final CurrentUser currentUser;
 
 	@Inject
-	FirebaseBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
+	GlobalConfigBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<GlobalConfigResource> resourceDelegate, CurrentUser currentUser,
-			FirebaseEditorFactory editorFactory) {
+			GlobalConfigEditorFactory editorFactory) {
 		super(eventBus, view, placeManager);
 
 		this.resourceDelegate = resourceDelegate;

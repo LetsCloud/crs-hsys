@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.service.AppUserService;
-import io.crs.hsys.shared.dto.ErrorResponseDto;
 import io.crs.hsys.shared.dto.common.AccountUserDto;
 import io.crs.hsys.shared.exception.ExceptionType;
 import io.crs.hsys.shared.exception.RestApiException;

@@ -20,10 +20,51 @@ public interface AdminMessages extends Messages {
 
 	
 	// Coommon	
-	@DefaultMessage("System Config")
-	String mainSubMenuSystemConfig();
+	@DefaultMessage("Configurations")
+	String mainSubMenuConfigs();
 	
-	@DefaultMessage("Global Config")
-	String menuItemGlobalConfig();
+	@DefaultMessage("System Configs")
+	String menuItemSystemConfigs();
+
 	
+	/*
+	 * SYSTEM CONFIG
+	 */
+
+	@DefaultMessage("System Configs")
+	String systemConfigTitle();
+
+	@DefaultMessage("All system configuration...")
+	String systemConfigDescription();
+
+	
+	/*
+	 * GLOBAL CONFIG BROWSER
+	 */
+
+	@DefaultMessage("Global Configs")
+	String globalConfigBrowserTitle();
+
+	@DefaultMessage("Code")
+	String globalConfigBrowserFieldCode();
+
+	@DefaultMessage("Value")
+	String globalConfigBrowserFieldValue();
+
+	
+	/*
+	 * GLOBAL CONFIG EDITOR
+	 */
+
+	@DefaultMessage("Create Global Config")
+	String globalConfigCreatorTitle();
+
+	@DefaultMessage("Edit Global Config")
+	String globalConfigEditorTitle();
+
+	@DefaultMessage("Code")
+	String globalConfigEditorFieldCode();
+
+	@DefaultMessage("Value")
+	String globalConfigEditorFieldValue();
 }

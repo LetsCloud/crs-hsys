@@ -5,6 +5,11 @@ public class ApiPaths {
     public static final String PATH_HOTEL_KEY = "/{" + ApiParameters.HOTEL_KEY + "}";
     public static final String REDUCED = "/reduced";
 	
+	public class AdminV1 {
+		public static final String ROOT = "/admin/v1";
+		public static final String GLOBAL_CONFIG = "/globalConfig";
+	}
+	
 	public class SpaV1 {
 		public static final String ROOT = "/spa/v1";
 		public static final String FILTER = "/filter";
@@ -18,7 +23,6 @@ public class ApiPaths {
 		public static final String SUBSCRIBE = "/subscribe";
 		public static final String MESSAGE = "/message";
 		
-		public static final String GLOBAL_CONFIG = "/globalConfig";
 		public static final String ACCOUNT = "/account";
 		
 		public static final String USER = "/user";

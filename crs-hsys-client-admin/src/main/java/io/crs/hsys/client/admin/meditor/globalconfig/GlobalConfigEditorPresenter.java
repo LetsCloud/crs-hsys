@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.admin.meditor.firebase;
+package io.crs.hsys.client.admin.meditor.globalconfig;
 
 import java.util.logging.Logger;
 
@@ -13,54 +13,45 @@ import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import io.crs.hsys.client.admin.NameTokens;
 import io.crs.hsys.client.admin.config.system.SystemConfigPresenter;
-import io.crs.hsys.client.core.CoreNameTokens;
-import io.crs.hsys.client.core.datasource.HotelDataSource;
-import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.ui.meditor.AbstractMeditorPresenter;
 import io.crs.hsys.client.core.ui.meditor.MeditorView;
 import io.crs.hsys.shared.api.GlobalConfigResource;
-import io.crs.hsys.shared.api.MarketGroupResource;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
-import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 
 /**
  * @author robi
  *
  */
-public class FirebaseEditorPresenter
-		extends AbstractMeditorPresenter<GlobalConfigDto, FirebaseEditorPresenter.MyView>
-		implements FirebaseEditorUiHandlers {
-	private static Logger logger = Logger.getLogger(FirebaseEditorPresenter.class.getName());
+public class GlobalConfigEditorPresenter
+		extends AbstractMeditorPresenter<GlobalConfigDto, GlobalConfigEditorPresenter.MyView>
+		implements GlobalConfigEditorUiHandlers {
+	private static Logger logger = Logger.getLogger(GlobalConfigEditorPresenter.class.getName());
 
-	public interface MyView extends MeditorView<GlobalConfigDto>, HasUiHandlers<FirebaseEditorUiHandlers> {
+	public interface MyView extends MeditorView<GlobalConfigDto>, HasUiHandlers<GlobalConfigEditorUiHandlers> {
 
 		void displayError(EntityPropertyCode code, String message);
 	}
 
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<GlobalConfigResource> resourceDelegate;
-	private final HotelDataSource hotelDataSource;
 	private final CurrentUser currentUser;
-	private final CoreMessages i18n;
 
 	@Inject
-	FirebaseEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<GlobalConfigResource> resourceDelegate, HotelDataSource hotelDataSource,
-			CurrentUser currentUser, CoreMessages i18n) {
+	GlobalConfigEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
+			ResourceDelegate<GlobalConfigResource> resourceDelegate,
+			CurrentUser currentUser) {
 		super(eventBus, view);
-		logger.info("MarketGroupEditorPresenter()");
+		logger.info("GlobalConfigEditorPresenter()");
 
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
-		this.hotelDataSource = hotelDataSource;
 		this.currentUser = currentUser;
-		this.i18n = i18n;
 
 		getView().setUiHandlers(this);
 	}
@@ -73,12 +64,12 @@ public class FirebaseEditorPresenter
 
 	@Override
 	public void saveDto(GlobalConfigDto dto) {
-		resourceDelegate.withCallback(new AsyncCallback<MarketGroupDto>() {
+		resourceDelegate.withCallback(new AsyncCallback<GlobalConfigDto>() {
 			@Override
-			public void onSuccess(MarketGroupDto dto) {
+			public void onSuccess(GlobalConfigDto dto) {
 				getView().close();
-				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.HOTEL_CONFIG)
-						.with(AbstractConfigPresenter.PLACE_PARAM, SystemConfigPresenter.MARKET_GROUPS).build();
+				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SYSTEM_CONFIG)
+						.with(AbstractConfigPresenter.PLACE_PARAM, SystemConfigPresenter.GLOBAL_CONFIGS).build();
 				placeManager.revealPlace(placeRequest);
 			}
 

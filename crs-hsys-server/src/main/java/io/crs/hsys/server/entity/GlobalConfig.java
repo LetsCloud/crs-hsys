@@ -23,7 +23,7 @@ public class GlobalConfig extends BaseEntity {
 	 * Key
 	 */
 	@Index
-	private GlobalParam key;
+	private GlobalParam code;
 
 	/**
 	 * Value
@@ -39,15 +39,15 @@ public class GlobalConfig extends BaseEntity {
 
 	public GlobalConfig(GlobalParam key) {
 		this();
-		this.key = key;
+		this.code = key;
 	}
 
-	public GlobalParam getKey() {
-		return key;
+	public GlobalParam getCode() {
+		return code;
 	}
 
-	public void setKey(GlobalParam key) {
-		this.key = key;
+	public void setCode(GlobalParam code) {
+		this.code = code;
 	}
 
 	public String getValue() {
@@ -56,6 +56,11 @@ public class GlobalConfig extends BaseEntity {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		return "GlobalConfig [code=" + code + ", value=" + value + "]";
 	}
 
 }

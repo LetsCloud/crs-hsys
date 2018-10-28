@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.admin.meditor.firebase;
+package io.crs.hsys.client.admin.meditor.globalconfig;
 
 import io.crs.hsys.client.core.ui.editor.AbstractEditorUiHandlers;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
@@ -10,5 +10,5 @@ import io.crs.hsys.shared.dto.GlobalConfigDto;
  * @author robi
  *
  */
-public interface FirebaseEditorUiHandlers extends AbstractEditorUiHandlers<GlobalConfigDto> {
+public interface GlobalConfigEditorUiHandlers extends AbstractEditorUiHandlers<GlobalConfigDto> {
 }

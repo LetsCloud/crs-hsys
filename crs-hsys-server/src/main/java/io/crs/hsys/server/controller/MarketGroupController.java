@@ -23,13 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.reservation.MarketGroup;
 import io.crs.hsys.server.service.MarketGroupService;
-import io.crs.hsys.shared.constans.InventoryType;
 import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
 import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
-import static io.crs.hsys.shared.api.ApiParameters.SEL_INV_TYPE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.MARKET_GROUP;

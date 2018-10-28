@@ -7,7 +7,8 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Set;
 
-import org.springframework.security.core.GrantedAuthority;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -22,6 +23,7 @@ import com.google.appengine.api.datastore.KeyFactory;
  * @author Luke Taylor
  */
 public class GaeDatastoreUserRegistry implements UserRegistry {
+	private static final Logger logger = LoggerFactory.getLogger(GaeDatastoreUserRegistry.class);
 
 	private static final String USER_TYPE = "GaeUser";
 	private static final String USER_FORENAME = "forename";
@@ -32,6 +34,7 @@ public class GaeDatastoreUserRegistry implements UserRegistry {
 	private static final String USER_AUTHORITIES = "authorities";
 
 	public GaeUser findUser(String userId) {
+		logger.info("findUser()->userId="+userId);
 		Key key = KeyFactory.createKey(USER_TYPE, userId);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 

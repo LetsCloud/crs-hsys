@@ -13,19 +13,19 @@ public class GlobalConfigDto extends BaseDto {
 	/**
 	 * Key
 	 */
-	private String key;
+	private String code;
 
 	/**
 	 * Key
 	 */
 	private String value;
 
-	public String getKey() {
-		return key;
+	public String getCode() {
+		return code;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getValue() {
@@ -38,7 +38,7 @@ public class GlobalConfigDto extends BaseDto {
 
 	@Override
 	public String toString() {
-		String ret = "GlobalConfigDto:{key=" + key + ", value=" + value + super.toString() + "}";
+		String ret = "GlobalConfigDto:{code=" + code + ", value=" + value + super.toString() + "}";
 		return ret;
 	}
 

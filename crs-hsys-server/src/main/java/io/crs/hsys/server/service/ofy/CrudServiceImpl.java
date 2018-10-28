@@ -103,6 +103,11 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 	}
 
 	@Override
+	public List<T> getAll() {
+		return repository.getAll();
+	}
+
+	@Override
 	public List<T> getAll(Long accountId) {
 		List<Object> parents = getParents(accountId);
 		return getAllChildren(parents);

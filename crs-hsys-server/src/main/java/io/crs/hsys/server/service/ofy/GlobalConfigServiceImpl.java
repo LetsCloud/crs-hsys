@@ -40,7 +40,7 @@ public class GlobalConfigServiceImpl extends CrudServiceImpl<GlobalConfig, Globa
 		List<GlobalConfig> storedParams = getParams();
 
 		for (GlobalParam param : allParams) {
-			if (storedParams.stream().filter(p -> param.equals(p.getKey())).count() == 0)
+			if (storedParams.stream().filter(p -> param.equals(p.getCode())).count() == 0)
 				try {
 					repository.save(new GlobalConfig(param));
 				} catch (EntityValidationException e) {
@@ -56,6 +56,12 @@ public class GlobalConfigServiceImpl extends CrudServiceImpl<GlobalConfig, Globa
 	@Override
 	public List<GlobalConfig> getParams() {
 		return repository.getAll();
+	}
+
+	@Override
+	public List<GlobalConfig> getAll() {
+		checkParams();
+		return super.getAll();
 	}
 
 	@Override
