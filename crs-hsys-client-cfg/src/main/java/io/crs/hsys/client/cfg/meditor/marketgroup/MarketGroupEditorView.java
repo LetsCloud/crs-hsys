@@ -60,7 +60,7 @@ public class MarketGroupEditorView extends ViewWithUiHandlers<MarketGroupEditorU
 	*/
 	@Inject
 	MarketGroupEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst) {
-		logger.info("RoomTypeEditorView()");
+		logger.info("MarketGroupEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
 

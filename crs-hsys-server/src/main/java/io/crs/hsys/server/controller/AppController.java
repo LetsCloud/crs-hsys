@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
+import io.crs.hsys.server.entity.GlobalConfig;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.model.Registration;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.server.service.AppUserService;
+import io.crs.hsys.server.service.GlobalConfigService;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -36,6 +39,8 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 public class AppController {
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
+	private final GlobalConfigService globalConfigService;
+
 	private final AccountService accountService;
 
 	private final AppUserService appUserService;
@@ -43,13 +48,20 @@ public class AppController {
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Autowired
-	AppController(AccountService accountService, AppUserService appUserService,
+	AppController(GlobalConfigService globalConfigService, AccountService accountService, AppUserService appUserService,
 			ApplicationEventPublisher eventPublisher) {
+		this.globalConfigService = globalConfigService;
 		this.accountService = accountService;
 		this.appUserService = appUserService;
 		this.eventPublisher = eventPublisher;
 	}
-	
+
+
+    @ModelAttribute(value = "globalConfig")
+    public GlobalConfig construct() {
+        return new GlobalConfig();
+    }
+
 	@RequestMapping("/signup")
 	public String signup(Model model) {
 		logger.info("signup()");
@@ -100,5 +112,43 @@ public class AppController {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@RequestMapping("/globalconfig")
+	public String globalConfig(Model model) {
+		logger.info("globalConfig()");
+		globalConfigService.checkParams();
+		model.addAttribute("globalConfigs", globalConfigService.getParams());
+		return "globalconfig";
+	}
+
+	@RequestMapping(value = "globalconfig/load/{webSafeKey}", method = GET)
+	public GlobalConfig loadGlobalConfig(@PathVariable String webSafeKey) {
+		logger.info("loadGlobalConfig()->webSafeKey=" + webSafeKey);
+		try {
+			return globalConfigService.read(webSafeKey);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null; 
+	}
+
+	@ResponseBody
+	@PostMapping("globalconfig/update}")
+	public void updateGlobalConfig(@ModelAttribute("globalConfig") GlobalConfig globalConfig) {
+		logger.info("updateGlobalConfig()->globalConfig=" + globalConfig);
+		try {
+			globalConfigService.update(globalConfig);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value = "/editGlobalConfig/{webSafeKey}", method = GET)
+	public String editGlobalConfig(@PathVariable String webSafeKey) {
+		logger.info("editGlobalConfig()->webSafeKey=" + webSafeKey);
+		return "globalconfig";
 	}
 }
