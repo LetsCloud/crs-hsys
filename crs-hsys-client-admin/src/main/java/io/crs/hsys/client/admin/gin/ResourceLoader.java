@@ -6,7 +6,7 @@ package io.crs.hsys.client.admin.gin;
 import javax.inject.Inject;
 
 import io.crs.hsys.client.admin.resources.AdminResources;
-import io.crs.hsys.client.core.resources.BlueGreyThemeResources;
+import io.crs.hsys.client.core.resources.GreyThemeResources;
 
 /**
  * @author CR
@@ -14,7 +14,7 @@ import io.crs.hsys.client.core.resources.BlueGreyThemeResources;
  */
 public class ResourceLoader {
 	@Inject
-	ResourceLoader(AdminResources adminResources, BlueGreyThemeResources resources) {
+	ResourceLoader(AdminResources adminResources, GreyThemeResources resources) {
 		resources.override().ensureInjected();
 	}
 }

@@ -8,34 +8,7 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<security:http pattern="/_ah/**" security="none" />
-
-	<security:http pattern="/admin*" use-expressions="true"
-		entry-point-ref="gaeEntryPoint">
-		<security:intercept-url pattern="/"
-			access="permitAll" />
-		<security:intercept-url
-			pattern="/register.htm*" access="hasRole('NEW_USER')" />
-		<security:intercept-url pattern="/**"
-			access="hasRole('ADMIN')" />
-		<security:custom-filter
-			position="PRE_AUTH_FILTER" ref="gaeFilter" />
-	</security:http>
-
-	<bean id="gaeEntryPoint"
-		class="io.crs.hsys.server.security.gae.GoogleAccountsAuthenticationEntryPoint" />
-
-	<bean id="gaeFilter" class="io.crs.hsys.server.security.gae.GaeAuthenticationFilter">
-		<property name="authenticationManager" ref="authenticationManager"/>
-		<property name="failureHandler">
-			<bean class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
-				<property name="exceptionMappings">
-					<map>
-						<entry key="org.springframework.security.authentication.DisabledException" value="/disabled.htm" />
-					</map>
-				</property>
-			</bean>
-		</property>
-	</bean>
+	<security:http pattern="/loggedout.htm" security="none" />
 
 	<security:authentication-manager
 		alias="authenticationManager">
@@ -44,6 +17,46 @@
 		<security:authentication-provider
 			ref="appAuthenticationProvider" />
 	</security:authentication-manager>
+
+
+	<!-- **************************** -->
+	<!-- Admin felület autentikációjs -->
+	<!-- **************************** -->
+	<security:http pattern="/admin/**" use-expressions="true"
+		entry-point-ref="gaeEntryPoint">
+		<security:intercept-url pattern="/"
+			access="permitAll" />
+		<security:intercept-url
+			pattern="/register.htm*" access="hasRole('NEW_USER')" />
+		<security:intercept-url pattern="/**"
+			access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/admin/spa/v1/logout"
+			access="permitAll" />
+		<security:custom-filter
+			position="PRE_AUTH_FILTER" ref="gaeFilter" />
+		<security:csrf token-repository-ref="tokenRepository" />
+	</security:http>
+
+	<bean id="gaeEntryPoint"
+		class="io.crs.hsys.server.security.gae.GoogleAccountsAuthenticationEntryPoint" />
+
+	<bean id="gaeFilter"
+		class="io.crs.hsys.server.security.gae.GaeAuthenticationFilter">
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+		<property name="failureHandler">
+			<bean
+				class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+				<property name="exceptionMappings">
+					<map>
+						<entry
+							key="org.springframework.security.authentication.DisabledException"
+							value="/disabled.htm" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
 
 	<bean id="gaeAuthenticationProvider"
 		class="io.crs.hsys.server.security.gae.GoogleAccountsAuthenticationProvider">
@@ -54,9 +67,9 @@
 		class="io.crs.hsys.server.security.gae.GaeDatastoreUserRegistry" />
 
 
-
-
-
+	<!-- *********************************** -->
+	<!-- Felhasználói felület autentikációjs -->
+	<!-- *********************************** -->
 
 	<bean id="registrationListener"
 		class="io.crs.hsys.server.security.RegistrationListener">
@@ -89,13 +102,8 @@
 			ref="appUserDetailsService" />
 		<property name="passwordEncoder" ref="passwordEncoder" />
 	</bean>
-<!-- 
-	<security:authentication-manager
-		id="appAuthenticationManager">
-		<security:authentication-provider
-			ref="appAuthenticationProvider" />
-	</security:authentication-manager>
- -->
+	<!-- <security:authentication-manager id="appAuthenticationManager"> <security:authentication-provider 
+		ref="appAuthenticationProvider" /> </security:authentication-manager> -->
 	<!-- <security:authentication-manager> <security:authentication-provider> 
 		<security:user-service> <security:user name="admin@admin.com" password="{noop}admin" 
 		authorities="ROLE_USER" /> </security:user-service> </security:authentication-provider> 

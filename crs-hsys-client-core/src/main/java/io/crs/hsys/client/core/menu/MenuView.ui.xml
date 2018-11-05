@@ -102,7 +102,7 @@
 
 				<!-- accountLink -->
 				<m:MaterialLink ui:field="accountLink"
-					text="Demo Kft" activates="accountDropDown"
+					activates="accountDropDown"
 					iconType="ACCOUNT_BALANCE" iconPosition="LEFT"
 					textColor="GREY_LIGHTEN_5" addStyleNames="{style.clearBoth}" />
 

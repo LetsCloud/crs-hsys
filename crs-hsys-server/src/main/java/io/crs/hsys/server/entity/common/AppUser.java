@@ -111,9 +111,9 @@ public class AppUser extends AccountChild {
 	}
 
 	/**
-	 * Kontruktor RegisterDTO-ból
+	 * Konstruktor Registration-ból
 	 * 
-	 * @param registerDto
+	 * @param registration
 	 */
 	public AppUser(Registration registration) {
 		this();

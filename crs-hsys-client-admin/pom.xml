@@ -145,6 +145,9 @@
 				<configuration>
 					<moduleName>io.crs.hsys.AdminModuleProd</moduleName>
 					<moduleShortName>admin_module</moduleShortName>
+					<launcherDir>${server-directory}/target/${server-artifactId}-${project.version}/admin</launcherDir>
+					<warDir>${server-directory}/target/${server-artifactId}-${project.version}/admin</warDir>
+					<webappDirectory>${server-directory}/target/${server-artifactId}-${project.version}/admin</webappDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -182,6 +185,10 @@
 						<configuration>
 							<moduleName>io.crs.hsys.AdminModuleDev</moduleName>
 							<moduleShortName>admin_module</moduleShortName>
+							<codeserverArgs>
+								<arg>-port</arg>
+								<arg>4532</arg>
+							</codeserverArgs>
 						</configuration>
 					</plugin>
 				</plugins>

@@ -14,6 +14,6 @@ import com.google.gwt.resources.client.ImageResource;
 public interface AdminResources extends ClientBundle {
 	public static final AdminResources INSTANCE = GWT.create(AdminResources.class);
 
-	@Source("img/grey-blue-wallpaper-3.jpg")
+	@Source("img/grey-wallpaper.jpg")
 	ImageResource profileBackgroundImg();
 }

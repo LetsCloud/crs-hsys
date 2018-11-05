@@ -170,13 +170,18 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void referesh() {
-		getView().setAccountName(currentUser.getAppUserDto().getAccount().getName());
+		if (currentUser.getAppUserDto().getAccount() != null) {
+			getView().setAccountName(currentUser.getAppUserDto().getAccount().getName());
+		}
+
 		if (currentUser.getCurrentHotel() != null) {
 			if (!Strings.isNullOrEmpty(currentUser.getCurrentHotel().getName()))
 				getView().setHotelName(currentUser.getCurrentHotel().getName());
 		}
 		getView().setPermittedHotels(currentUser.getAppUserDto().getAvailableHotels());
-		getView().setUserImageUrl(currentUser.getAppUserDto().getPicture());
+		if (currentUser.getAppUserDto().getPicture() != null) {
+			getView().setUserImageUrl(currentUser.getAppUserDto().getPicture());
+		}
 		getView().setUserName(currentUser.getAppUserDto().getName());
 	}
 

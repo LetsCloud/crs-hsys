@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.core.gin;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Singleton;
@@ -10,6 +11,7 @@ import javax.inject.Singleton;
 import com.google.inject.Provides;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
@@ -28,7 +30,11 @@ import io.crs.hsys.client.core.menu.MenuModule;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.unauthorized.UnauthorizedModule;
+import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.FcmResource;
+import io.crs.hsys.shared.api.GlobalConfigResource;
+import io.crs.hsys.shared.constans.GlobalParam;
+import io.crs.hsys.shared.dto.GlobalConfigDto;
 
 /**
  * @author CR
@@ -60,21 +66,33 @@ public class CoreModule extends AbstractPresenterModule {
 
 	@Provides
 	@Singleton
-	MessagingManager provideMessagingManager() {
-		Config config = new Config();
-		config.setApiKey("AIzaSyCldBkLB_W7v7p-CUCW_ZkedBVLoWSuKLU");
-		config.setAuthDomain("hw-cloud8.firebaseapp.com");
-		config.setDatabaseURL("https://hw-cloud3.firebaseio.com");
-		config.setProjectId("hw-cloud8");
-		config.setStorageBucket("hw-cloud8.appspot.com");
-		config.setMessagingSenderId("103271768970");
-		Firebase firebase = Firebase.initializeApp(config);
-		logger.info("NotificationsPresenter.onBind().firebase.getName()" + firebase.getName());
+	MessagingManager provideMessagingManager(ResourceDelegate<GlobalConfigResource> resourceDelegate) {
 
-		MessagingManager messagingManager = new MessagingManager(firebase);
-		logger.info("NotificationsPresenter.onReveal().getMessagingManager()");
+		MessagingManager messagingManager = new MessagingManager();
+
+		resourceDelegate.withCallback(new AbstractAsyncCallback<List<GlobalConfigDto>>() {
+			@Override
+			public void onSuccess(List<GlobalConfigDto> result) {
+
+				Config config = new Config();
+				config.setApiKey(getGlobalSetting(result, GlobalParam.FB1_API_KEY.name()));
+				config.setAuthDomain(getGlobalSetting(result, GlobalParam.FB2_AUTH_DOMAIN.name()));
+				config.setDatabaseURL(getGlobalSetting(result, GlobalParam.FB3_DATABASE_URL.name()));
+				config.setProjectId(getGlobalSetting(result, GlobalParam.FB4_PROJECT_ID.name()));
+				config.setStorageBucket(getGlobalSetting(result, GlobalParam.FB5_STORAGE_BUCKET.name()));
+				config.setMessagingSenderId(getGlobalSetting(result, GlobalParam.FB6_MESSAGE_SENDER_ID.name()));
+				Firebase firebase = Firebase.initializeApp(config);
+				logger.info("NotificationsPresenter.onBind().firebase.getName()" + firebase.getName());
+				logger.info("NotificationsPresenter.onReveal().getMessagingManager()");
+				messagingManager.setFirebase(firebase);
+			}
+		}).getAll();
 
 		return messagingManager;
+	}
+
+	private String getGlobalSetting(List<GlobalConfigDto> result, String key) {
+		return result.stream().filter(o -> o.getCode().equals(key)).findFirst().get().getValue();
 	}
 
 	@Provides

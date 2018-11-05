@@ -3,18 +3,6 @@
  */
 package io.crs.hsys.server.controller;
 
-import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
-import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
-import static io.crs.hsys.shared.api.ApiPaths.AdminV1.ADMIN;
-import static io.crs.hsys.shared.api.ApiPaths.AdminV1.GLOBAL_CONFIG;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,19 +22,31 @@ import io.crs.hsys.server.service.GlobalConfigService;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 import io.crs.hsys.shared.exception.RestApiException;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static io.crs.hsys.shared.api.ApiPaths.AdminV1.ADMIN;
+import static io.crs.hsys.shared.api.ApiPaths.AdminV1.GLOBAL_CONFIG;
+import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 /**
  * @author robi
  *
  */
 @RestController
-@RequestMapping(value = GLOBAL_CONFIG, produces = MediaType.APPLICATION_JSON_VALUE)
-public class GlobalConfigController extends CrudController<GlobalConfig, GlobalConfigDto> {
-	private static final Logger logger = LoggerFactory.getLogger(GlobalConfigController.class);
+@RequestMapping(value = ADMIN + GLOBAL_CONFIG, produces = MediaType.APPLICATION_JSON_VALUE)
+public class AdminGlobalConfigController extends CrudController<GlobalConfig, GlobalConfigDto> {
+	private static final Logger logger = LoggerFactory.getLogger(AdminGlobalConfigController.class);
 
 	private final ModelMapper modelMapper;
 
 	@Autowired
-	GlobalConfigController(GlobalConfigService service, ModelMapper modelMapper) {
+	AdminGlobalConfigController(GlobalConfigService service, ModelMapper modelMapper) {
 		super(GlobalConfig.class, service, modelMapper);
 		logger.info("GlobalConfigController()");
 		this.modelMapper = modelMapper;
@@ -76,5 +76,19 @@ public class GlobalConfigController extends CrudController<GlobalConfig, GlobalC
 	@RequestMapping(value = PATH_WEBSAFEKEY, method = GET)
 	public ResponseEntity<GlobalConfigDto> get(@PathVariable String webSafeKey) throws RestApiException {
 		return super.get(webSafeKey);
+	}
+
+	@Override
+	@RequestMapping(method = POST)
+	public ResponseEntity<GlobalConfigDto> saveOrCreate(@RequestBody GlobalConfigDto dto) throws RestApiException {
+		logger.info("saveOrCreate()->dto=" + dto);
+		return super.saveOrCreate(dto);
+	}
+
+	@Override
+	@RequestMapping(value = PATH_WEBSAFEKEY, method = DELETE)
+	@ResponseStatus(HttpStatus.OK)
+	public void delete(@PathVariable(WEBSAFEKEY) String webSafeKey) throws RestApiException {
+		super.delete(webSafeKey);
 	}
 }
