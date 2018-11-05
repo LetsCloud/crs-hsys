@@ -50,7 +50,7 @@ public class App implements Bootstrapper {
 	@Override
 	public void onBootstrap() {
 		logger.info("App().onBootstrap()");
-		appData.setAppCode(SubSystem.CFG);
+		appData.setAppCode(SubSystem.ADMIN);
 		placeManager.revealCurrentPlace();
 	}
 }

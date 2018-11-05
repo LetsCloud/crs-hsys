@@ -9,6 +9,8 @@ package io.crs.hsys.shared.constans;
  */
 public class SubSystem {
 
+	public final static String ADMIN = "ADMIN";
+
 	public final static String INF = "INF";
 
 	public final static String KIP = "KIP";

@@ -169,14 +169,14 @@ public abstract class BaseEntity {
 
 	/**
 	 * Validációs metódus, amelyet a
-	 * {@link hu.hw.cloud.server.repository.ofy.CrudRepositoryImpl} osztály
-	 * {@link hu.hw.cloud.server.repository.ofy.CrudRepositoryImpl#save(BaseEntity)}
+	 * {@link io.crs.hsys.server.repository.ofy.CrudRepositoryImpl} osztály
+	 * {@link io.crs.hsys.server.repository.ofy.CrudRepositoryImpl#save(BaseEntity)}
 	 * save metódusa hívja meg még az egyedi kulcsok értékesítés és az entitás
 	 * mentése előtt.
 	 * <p>
 	 * Validációs hiba esetén EntityValidationException kivételt dob.
 	 * 
-	 * @throws EntityValidationException
+	 * @throws EntityValidationException hibát dob
 	 */
 	public void validate() throws EntityValidationException {
 	}

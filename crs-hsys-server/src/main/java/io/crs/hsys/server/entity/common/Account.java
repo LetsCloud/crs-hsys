@@ -42,7 +42,7 @@ public class Account extends BaseEntity {
 	/**
 	 * Entitás létrehozása RegisterDto-ból
 	 * 
-	 * @param registerDto
+	 * @param registration
 	 */
 	public Account(Registration registration) {
 		this();

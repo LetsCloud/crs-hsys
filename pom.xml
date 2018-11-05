@@ -42,23 +42,22 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.1.0.RELEASE</spring.framework.version>
-		<spring.security.version>5.1.0.RELEASE</spring.security.version>
+		<spring.framework.version>5.1.2.RELEASE</spring.framework.version>
+		<spring.security.version>5.1.1.RELEASE</spring.security.version>
 
-		<thymeleaf-spring.version>3.0.10.RELEASE</thymeleaf-spring.version>
+		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
-		<thymeleaf-extras-springsecurity.version>3.0.3.RELEASE</thymeleaf-extras-springsecurity.version>
+		<thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
 
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.25</slf4j.version> <!-- 1.8.0-beta2 -->
 
 		<fasterxml.jackson.core.version>2.9.7</fasterxml.jackson.core.version>
 
-		<modelmapper.version>2.1.1</modelmapper.version>
-		<appengine.version>1.9.65</appengine.version>
+		<modelmapper.version>2.3.1</modelmapper.version>
+		<appengine.version>1.9.67</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
 		<objectify.version>5.1.21</objectify.version>
-<!-- 		<commons-collections4.version>4.1</commons-collections4.version> -->
 		<validation-api.version>1.1.0.Final</validation-api.version>
 
 		<!-- ***************** -->
@@ -69,11 +68,7 @@
 		<!-- ************* -->
 		<!-- Test versions -->
 		<!-- ************* -->
-		<junit.test.version>4.11</junit.test.version>
-		<!-- <mockito.version>1.10.19</mockito.version> -->
-		<mockito.version>2.0.62-beta</mockito.version>
-		<selenium.version>2.53.0</selenium.version>
-		<selenium.htmlunit.version>2.21</selenium.htmlunit.version>
+		<junit.test.version>4.12</junit.test.version>
 
 		<!-- *************** -->
 		<!-- Plugin versions -->
@@ -86,7 +81,8 @@
 		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
 		<maven.surefire.version>2.22.0</maven.surefire.version>
 		<maven.failsafe.version>2.22.0</maven.failsafe.version>
-
+		<appengine-maven-plugin.version>1.9.65</appengine-maven-plugin.version>
+		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 
 		<!-- ********************** -->
 		<!-- Project build settings -->
@@ -194,15 +190,6 @@
 				<groupId>org.moxieapps.gwt</groupId>
 				<artifactId>org.moxieapps.gwt.highcharts</artifactId>
 				<version>1.7.0</version>
-			</dependency>
-
-			<!-- ***************** -->
-			<!-- gwt-commons-codec -->
-			<!-- ***************** -->
-			<dependency>
-				<groupId>de.knightsoft-net</groupId>
-				<artifactId>gwt-commons-codec</artifactId>
-				<version>1.10-2</version>
 			</dependency>
 
 			<!-- ***************** -->
@@ -413,16 +400,6 @@
 			</dependency>
 
 			<!-- ************************************************************************************* -->
-			<!-- UTILS -->
-			<!-- ************************************************************************************* 
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>${commons-collections4.version}</version>
-			</dependency>
- -->
-
-			<!-- ************************************************************************************* -->
 			<!-- TESTING -->
 			<!-- ************************************************************************************* -->
 
@@ -609,7 +586,7 @@
 				<plugin>
 					<groupId>com.google.appengine</groupId>
 					<artifactId>appengine-maven-plugin</artifactId>
-					<version>${appengine.version}</version>
+					<version>${appengine-maven-plugin.version}</version>
 					<configuration>
 						<version>${appengine.app.version}</version>
 						<enableJarClasses>false</enableJarClasses>
@@ -656,17 +633,6 @@
 							</goals>
 						</execution>
 					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>com.google.cloud.tools</groupId>
-					<artifactId>appengine-maven-plugin</artifactId>
-					<version>1.3.2</version>
-					<configuration>
-						<port>8080</port>
-						<stage.enableJarSplitting>true</stage.enableJarSplitting>
-						<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
-					</configuration>
 				</plugin>
 
 				<plugin>
@@ -718,7 +684,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.10.3</version>
+						<version>${maven-javadoc-plugin.version}</version>
 						<configuration>
 							<!-- comment out for now because doesn't work on JDK < 8 -->
 							<!--<additionalparam>-Xdoclint:none</additionalparam> -->

@@ -6,7 +6,12 @@ public class ApiPaths {
     public static final String REDUCED = "/reduced";
 	
 	public class AdminV1 {
-		public static final String ROOT = "/admin/v1";
+		public static final String ADMIN = "/admin";
+		public static final String LOGIN = "/login";
+		public static final String CURRENTUSER = "/currentuser";
+		public static final String IS_LOGGED_IN = "/isLoggedIn";
+		public static final String LOGOUT = "/logout";
+		public static final String LOGGEDOUT = "/loggedout";
 		public static final String GLOBAL_CONFIG = "/globalConfig";
 	}
 	

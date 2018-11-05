@@ -20,15 +20,21 @@ import io.crs.hsys.client.core.promise.xgwt.Fn;
 public class MessagingManager implements HasMessagingFeatures {
 	private static Logger logger = Logger.getLogger(MessagingManager.class.getName());
 
-	private final Firebase firebase;
+	private Firebase firebase;
 	Fnx.NoArg unsubscribe;
+
+	public MessagingManager() {
+	}
 
 	public MessagingManager(Firebase firebase) {
 		logger.info("MessagingManager()");
 		this.firebase = firebase;
 	}
-
 	
+	public void setFirebase(Firebase firebase) {
+		this.firebase = firebase;
+	}
+
 	@Override
 	public Messaging getMessaging() {
 		if (firebase != null) {

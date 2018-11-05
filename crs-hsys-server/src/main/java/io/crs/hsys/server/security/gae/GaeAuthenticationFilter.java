@@ -52,6 +52,8 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
 		User googleUser = UserServiceFactory.getUserService().getCurrentUser();
 		logger.info("doFilter()->googleUser=" + googleUser);
 
+		// Ha valaki bejelntkezett és NEM GaeUser, akkor törli a SecurityContext-t és
+		// érvényteleníti a munkamanetet, azaz újra be kell jelentkezni
 		if (authentication != null && !loggedInUserMatchesGaeUser(authentication, googleUser)) {
 			logger.info("doFilter()->(authentication != null)");
 			SecurityContextHolder.clearContext();
@@ -88,7 +90,7 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
 
 				} catch (AuthenticationException e) {
 					logger.info("doFilter()->AuthenticationException");
-					e.printStackTrace();					
+					e.printStackTrace();
 					failureHandler.onAuthenticationFailure((HttpServletRequest) request, (HttpServletResponse) response,
 							e);
 

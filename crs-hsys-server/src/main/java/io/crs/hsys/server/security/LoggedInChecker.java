@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import io.crs.hsys.server.entity.common.AppUser;
+import io.crs.hsys.server.security.gae.GaeUser;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 
 /**
@@ -54,6 +55,15 @@ public class LoggedInChecker {
 					e.printStackTrace();
 				}
 				logger.info("getLoggedInUser()->after mapper");
+			}
+
+			// GaeUser esetén
+			if (principal instanceof GaeUser) {
+				logger.info("getLoggedInUser()->(principal instanceof GaeUser)");
+				GaeUser gaeUser = (GaeUser) principal;
+				appUser = new AppUser();
+				appUser.setEmailAddress(gaeUser.getEmail());
+				appUser.setName(gaeUser.getNickname());
 			}
 		}
 		return appUser;

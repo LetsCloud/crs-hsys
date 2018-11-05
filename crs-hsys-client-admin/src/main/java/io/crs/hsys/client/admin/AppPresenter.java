@@ -46,7 +46,7 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 			RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
 			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager, AdminResources resources) {
 		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, menuPresenter, currentUser,
-				SubSystem.CFG, messagingManager);
+				SubSystem.ADMIN, messagingManager);
 
 		this.i18n = i18n;
 		this.resources = resources;
