@@ -133,10 +133,9 @@
 			</plugin>
 
 			<plugin>
-				<groupId>com.google.appengine</groupId>
+				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 			</plugin>
-			<!-- [END cloudplugin] -->
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
