@@ -1,0 +1,47 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field="resource"
+		type="io.crs.hsys.client.core.resources.CoreResources" />
+
+	<ui:style>
+	.container {
+		border: 2px solid #dedede;
+		background-color: #f1f1f1;
+		border-radius: 5px;
+		padding: 10px;
+		margin: 10px 0;
+	}
+	
+	.image {
+		border-radius: 1000px;
+	}
+	
+	.chat-body {
+		display: block;
+		overflow: hidden;
+	}
+	
+	.chat-content {
+		position: relative;
+		display: block;
+		float: left;
+		padding: 8px 15px;
+		clear: both;
+		border-radius: 4px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<div ui:field="avatarDiv">
+			<g:Image ui:field="image" addStyleNames="{style.image}" />
+		</div>
+		<div ui:field="bodyDiv" class="{style.chat-body}">
+			<div ui:field="contentDiv" class="{style.chat-content}">
+				<g:Label ui:field="messageLabel" />
+				<g:Label ui:field="timeLabel" />
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:nwx="urn:import:io.crs.hsys.client.kip.chat.editor">
+
+	<ui:style>
+	.innerPanel {
+		background-color: white;
+	}
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<ui:with field="res"
+		type="io.crs.hsys.client.core.resources.GssResources" />
+
+	<g:HTMLPanel>
+		<ma:overlay.MaterialOverlay
+			ui:field="overlay" backgroundColor="BLUE">
+
+			<m:MaterialButton ui:field="btnCloseOverlay"
+				text="X" float="RIGHT" />
+
+			<m.html:Div
+				addStyleNames="{res.common.chat_creator_panel}">
+				<m:MaterialLabel textAlign="CENTER"
+					text="{i18nCore.createChatHeader}" marginTop="120"
+					fontWeight="LIGHTER" fontSize="2em" textColor="WHITE" />
+				<m:MaterialLabel textAlign="CENTER"
+					text="{i18nCore.createChatSubHeader}" marginBottom="40"
+					textColor="WHITE" />
+<!--  
+				<m.html:Div addStyleNames="{style.innerPanel}">
+					<combobox:MaterialComboBox
+						ui:field="receiversComboBox" label="{i18nCore.createChatInvited}"
+						closeOnSelect="false" multiple="true"
+						placeholder="{i18nCore.createChatToInvite}">
+					</combobox:MaterialComboBox>
+				</m.html:Div>
+-->
+				<nwx:SendMessageWidget
+					ui:field="sendMessageWidget" />
+
+				<m:MaterialCollection
+					ui:field="receiverCollection" header="{i18nCore.createChatInvited}" />
+			</m.html:Div>
+		</ma:overlay.MaterialOverlay>
+	</g:HTMLPanel>
+</ui:UiBinder> 

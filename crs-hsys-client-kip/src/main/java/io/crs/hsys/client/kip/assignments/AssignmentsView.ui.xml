@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.collection {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	</ui:style>
+
+	<m:MaterialPanel>
+		<m:MaterialCollection ui:field="materialCollection"
+			addStyleNames="{style.collection}" />
+
+		<g:SimplePanel ui:field="modalSlot" />
+
+	</m:MaterialPanel>
+</ui:UiBinder> 

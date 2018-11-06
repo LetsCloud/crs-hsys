@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style>
+	</ui:style>
+
+	<ui:with field="res" type="io.crs.hsys.client.core.resources.GssResources" />
+
+	<g:HTMLPanel ui:field="panel" styleName="{res.common.chat_details_widget}">
+	</g:HTMLPanel>
+</ui:UiBinder> 
