@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.service.AppUserService;
-import io.crs.hsys.shared.dto.common.AccountUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.exception.ExceptionType;
 import io.crs.hsys.shared.exception.RestApiException;
 
@@ -53,15 +53,15 @@ public class AuthController extends BaseController {
 	}
 
 	@RequestMapping(method = GET, value = CURRENTUSER)
-	ResponseEntity<AccountUserDto> getCurrentUser() throws RestApiException {
+	ResponseEntity<AppUserDto> getCurrentUser() throws RestApiException {
 		logger.info("getCurrentUser()");
 		AppUser appUser = userService.getCurrentUser();
 		logger.info("getCurrentUser()->appUser=" + appUser);
-		if (appUser==null)
-			throw new RestApiException(new Exception(ExceptionType.LOGIN_USERNAME_NOT_FOUND+" appUser==null"));
-			
-		AccountUserDto appUserDto = modelMapper.map(appUser, AccountUserDto.class);
+		if (appUser == null)
+			throw new RestApiException(new Exception(ExceptionType.LOGIN_USERNAME_NOT_FOUND + " appUser==null"));
+
+		AppUserDto appUserDto = modelMapper.map(appUser, AppUserDto.class);
 		logger.info("getCurrentUser()->appUserDto=" + appUserDto);
-		return new ResponseEntity<AccountUserDto>(appUserDto, HttpStatus.OK);
+		return new ResponseEntity<AppUserDto>(appUserDto, HttpStatus.OK);
 	}
 }

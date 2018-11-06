@@ -3,8 +3,8 @@
  */
 package io.crs.hsys.shared.dto.profile;
 
-import io.crs.hsys.shared.dto.BaseDto;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
+import io.crs.hsys.shared.dto.common.AccountDtor;
 
 /**
  * @author robi
@@ -22,7 +22,7 @@ public class ProfileDtor extends AccountChildDto {
 
 	public ProfileDtor(Long id, Long accountId, String Name) {
 		setId(id);
-		setAccount(new BaseDto(accountId));
+		setAccount(new AccountDtor(accountId));
 		setName(Name);
 	}
 

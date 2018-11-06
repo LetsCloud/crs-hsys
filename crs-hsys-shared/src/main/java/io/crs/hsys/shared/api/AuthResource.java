@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
-import io.crs.hsys.shared.dto.common.AccountUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.PASSWORD;
 import static io.crs.hsys.shared.api.ApiParameters.REMEMBER_ME;
@@ -46,6 +46,6 @@ public interface AuthResource {
 
 	@GET
 	@Path(LOGIN + CURRENTUSER)
-	RestAction<AccountUserDto> getCurrentUser();
+	RestAction<AppUserDto> getCurrentUser();
 
 }

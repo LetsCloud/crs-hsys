@@ -21,8 +21,8 @@ import io.crs.hsys.client.cfg.meditor.MeditorView;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.ProfileGroupResource;
-import io.crs.hsys.shared.dto.BaseDto;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
+import io.crs.hsys.shared.dto.common.AccountDtor;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
 
 /**
@@ -60,7 +60,7 @@ public class ProfileGroupEditorPresenter
 	protected ProfileGroupDto createDto() {
 		logger.info("ProfileGroupEditorPresenter().createDto");
 		ProfileGroupDto dto = new ProfileGroupDto();
-		dto.setAccount(new BaseDto());
+		dto.setAccount(new AccountDtor());
 		dto.getAccount().setId(currentUser.getAppUserDto().getAccount().getId());
 		dto.setActive(true);
 		return dto;

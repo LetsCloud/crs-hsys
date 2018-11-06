@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>150</Width>
-            <HandlerConfiguration>/hw-gae-client_kip/src/main/resources/hu/hw/cloud/client/kip/i18n/KipMessages.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
             <Width>150</Width>
-            <HandlerConfiguration>/hw-gae-client_kip/src/main/resources/hu/hw/cloud/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>

@@ -31,13 +31,16 @@ import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenter;
 import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenterFactory;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
+import io.crs.hsys.client.kip.resources.KipResources;
 
 /**
  * @author CR
  *
  */
 public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProxy> {
+
 	private final KipMessages i18n;
+	private final KipResources resources;
 
 	@ProxyStandard
 	interface MyProxy extends Proxy<KipAppPresenter> {
@@ -48,7 +51,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	@Inject
 	KipAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, KipMessages i18n,
-			RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
+			KipResources resources, RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
 			MenuPresenter menuPresenter, GfilterDisplayPresenter gfilterDisplayPresenter,
 			GfilterConfigPresenterFactory gfilterConfigPresenterFactory, AppData appData,
 			AppServiceWorkerManager messagingManager) {
@@ -56,6 +59,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 				SubSystem.KIP, messagingManager);
 
 		this.i18n = i18n;
+		this.resources = resources;
 		this.gfilterDisplayPresenter = gfilterDisplayPresenter;
 		gfilterConfigPresenter = gfilterConfigPresenterFactory.createGfilterConfigPresenter();
 	}
@@ -65,6 +69,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		super.onBind();
 		setInSlot(SLOT_MODAL, gfilterConfigPresenter);
 		getMenuPresenter().setMenuItems(createMenuitems());
+		getMenuPresenter().setProfileBackground(resources.profileBackgroundImg());
 		getMenuPresenter().setNavBarWidget(gfilterDisplayPresenter);
 		gfilterDisplayPresenter.setGfilterConfigPresenter(gfilterConfigPresenter);
 	}

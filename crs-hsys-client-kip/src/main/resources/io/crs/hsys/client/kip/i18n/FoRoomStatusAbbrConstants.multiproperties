@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>150</Width>
-            <HandlerConfiguration>/s4h-cpms-module/src/main/resources/cloud/s4h/cpms/client/resources/i18n/FoRoomStatusAbbrConstants.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/FoRoomStatusAbbrConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
-            <Width>150</Width>
-            <HandlerConfiguration>/s4h-cpms-module/src/main/resources/cloud/s4h/cpms/client/resources/i18n/FoRoomStatusAbbrConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <Width>1020</Width>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/FoRoomStatusAbbrConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>

@@ -29,7 +29,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
-import io.crs.hsys.shared.dto.common.AccountUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Presenter<MyView, Proxy_>
@@ -109,10 +109,10 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 
 	private void checkCurrentUser() {
 		logger.info("AbstractAppPresenter().checkCurrentUser()");
-		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AccountUserDto>() {
+		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
 
 			@Override
-			public void onSuccess(AccountUserDto result) {
+			public void onSuccess(AppUserDto result) {
 				logger.info("AppPresenter().checkCurrentUser().onSuccess()");
 				if (result == null) {
 					logger.info("AppPresenter().checkCurrentUser().onSuccess()->(result == null)");

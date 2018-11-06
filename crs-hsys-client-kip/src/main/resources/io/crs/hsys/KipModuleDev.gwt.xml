@@ -2,7 +2,7 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
   "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to="kip_module">
-	<inherits name="hu.hw.cloud.KipModuleBase" />
+	<inherits name="io.crs.hsys.KipModuleBase" />
 
 	<inherits name="com.google.gwt.logging.Logging" />
 	<set-property name="gwt.logging.enabled" value="TRUE" />
