@@ -11,3 +11,6 @@ https://stackoverflow.com/questions/12737293/how-do-i-resolve-the-java-net-binde
 
 This prints out a process number at the end.
 2. taskkill /pid 3932
+
+GAE autentikáció megvalósítása egy régi leírás alapján:
+https://spring.io/blog/2010/08/02/spring-security-in-google-app-engine/ 
