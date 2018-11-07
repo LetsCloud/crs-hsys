@@ -27,7 +27,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
  * @author CR
  *
  */
-@Path(ROOT)
+@Path("")
 public interface AuthResource {
 
 	@POST
@@ -36,16 +36,16 @@ public interface AuthResource {
 	RestAction<Void> login(@FormParam(USERNAME) String username, @FormParam(PASSWORD) String password,
 			@FormParam(REMEMBER_ME) Boolean remeberMe);
 
-	@GET
+	@POST
 	@Path(LOGOUT)
 	RestAction<Void> logout();
 
 	@GET
-	@Path(LOGIN + IS_LOGGED_IN)
+	@Path(ROOT + LOGIN + IS_LOGGED_IN)
 	RestAction<Boolean> isCurrentUserLoggedIn();
 
 	@GET
-	@Path(LOGIN + CURRENTUSER)
+	@Path(ROOT + LOGIN + CURRENTUSER)
 	RestAction<AppUserDto> getCurrentUser();
 
 }
