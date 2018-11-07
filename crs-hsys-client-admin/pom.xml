@@ -148,6 +148,9 @@
 					<launcherDir>${server-directory}/target/${server-artifactId}-${project.version}/admin</launcherDir>
 					<warDir>${server-directory}/target/${server-artifactId}-${project.version}/admin</warDir>
 					<webappDirectory>${server-directory}/target/${server-artifactId}-${project.version}/admin</webappDirectory>
+					<systemProperties>
+						<gwt.persistentunitcachedir>${server-directory}/target/gwt-unitCache/</gwt.persistentunitcachedir>
+					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>
