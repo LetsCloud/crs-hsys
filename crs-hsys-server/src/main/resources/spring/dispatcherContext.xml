@@ -36,6 +36,7 @@
 
 	<bean id="springTemplateResolver"
 		class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+		<property name="characterEncoding" value="UTF-8"/>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".html" />
 	</bean>
@@ -56,5 +57,6 @@
 
 	<bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="springTemplateEngine" />
+		<property name="characterEncoding" value="UTF-8"/>
 	</bean>
 </beans>

@@ -102,17 +102,6 @@
 			ref="appUserDetailsService" />
 		<property name="passwordEncoder" ref="passwordEncoder" />
 	</bean>
-	<!-- <security:authentication-manager id="appAuthenticationManager"> <security:authentication-provider 
-		ref="appAuthenticationProvider" /> </security:authentication-manager> -->
-	<!-- <security:authentication-manager> <security:authentication-provider> 
-		<security:user-service> <security:user name="admin@admin.com" password="{noop}admin" 
-		authorities="ROLE_USER" /> </security:user-service> </security:authentication-provider> 
-		</security:authentication-manager> -->
-
-	<bean id="loginUrlAuthenticationEntryPoint"
-		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-		<constructor-arg name="loginFormUrl" value="/login" />
-	</bean>
 
 	<!-- =================== -->
 	<!-- APP SECURITY CONFIG use-expressions="true" -->
