@@ -1,0 +1,125 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style
+		type="io.crs.hsys.client.kip.task.TaskDisplay.MyStyle">
+		.titleStyle {
+			/* margin-top: 10px; */ /*			margin-right: 5px; */ /*			float: left; */
+			/*			line-height: 1rem; */ /*			display: inline-block; */
+			
+		}
+		
+		.badgeStyle {
+			/*		margin-bottom: 10px; */ /*		margin-left: 5px; */
+			margin-top: 5px;
+			margin-right: 5px;
+			padding: 5px;
+			line-height: 1rem;
+			border-radius: 5px;
+			float: left;
+		}
+		
+		.floatLeft {
+			float: left;
+		}
+		
+		.floatRight {
+			float: right;
+			display: inline-block;
+		}
+		
+		.boxEnd {
+			display: flow-root;
+			clear: both;
+		}
+		
+		.noMargins {
+			margin: 0;
+		}
+		
+		.lineThrough {
+			text-decoration: line-through;
+		}
+		
+		.noStrech {
+			align-self: flex-start;
+			overflow: visible;
+			margin-right: 10px;
+/*			height: 42px !important;
+			width: 42px !important;*/
+		}
+		
+		.flexBox {
+			display: flex;
+		}
+		</ui:style>
+
+	<g:HTMLPanel>
+		<m:MaterialRow margin="0" paddingTop="10">
+			<m:MaterialColumn grid="s10 m11" margin="0" padding="0">
+				<m:MaterialRow margin="0" padding="0">
+					<m:MaterialColumn grid="s12 m6" margin="0"
+						padding="0">
+						<m:MaterialCheckBox ui:field="title"
+							addStyleNames="{style.titleStyle}" />
+					</m:MaterialColumn>
+
+					<m:MaterialColumn grid="s12 m6" margin="0"
+						padding="0" addStyleNames="{style.flexBox}">
+						
+						<m:MaterialIcon ui:field="taskKind" marginTop="5"
+							addStyleNames="{style.noStrech}" />
+
+						<m:MaterialIcon ui:field="taskStatus" marginTop="5"
+							addStyleNames="{style.noStrech}" />
+
+						<g:HTMLPanel ui:field="taskLine" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s2 m1" margin="0" padding="0">
+				<m:MaterialIcon ui:field="menuIcon"
+					iconType="MORE_VERT" float="RIGHT" waves="DEFAULT" circle="true"
+					activates="dp-3" />
+
+				<!-- My Drop Down -->
+				<m:MaterialDropDown ui:field="menuDropDown"
+					activator="dp-3" constrainWidth="false">
+
+					<m:MaterialLink ui:field="startLink" text="Start" iconType="PLAY_ARROW"
+						iconPosition="LEFT" separator="true" enabled="false" />
+
+					<m:MaterialLink ui:field="pauseLink" text="Pause" iconType="PAUSE"
+						iconPosition="LEFT" separator="true" enabled="false" />
+
+					<m:MaterialLink ui:field="closeLink" text="Close" iconType="CHECK"
+						iconPosition="LEFT" separator="true" enabled="false" />
+
+					<m:MaterialLink ui:field="reassignLink" text="Reassign" iconType="SYNC"
+						iconPosition="LEFT" separator="true" />
+
+					<m:MaterialLink ui:field="editTask" text="Modify"
+						iconType="EDIT" iconPosition="LEFT" separator="true" />
+						
+					<m:MaterialLink ui:field="deleteLink" text="Delete" iconType="DELETE"
+						iconPosition="LEFT" separator="true" enabled="false" />
+				</m:MaterialDropDown>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialRow margin="0" paddingTop="10"
+			paddingBottom="10">
+			<m:MaterialColumn grid="s6" margin="0" padding="0">
+				<g:Label ui:field="time" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s6" margin="0" padding="0">
+				<g:Label ui:field="dueDate" text="Due: 2018.06.01."
+					addStyleNames="{style.floatRight}" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+	</g:HTMLPanel>
+</ui:UiBinder> 

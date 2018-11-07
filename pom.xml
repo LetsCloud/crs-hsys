@@ -15,6 +15,7 @@
 		<module>crs-hsys-client-core</module>
 		<module>crs-hsys-client-admin</module>
 		<module>crs-hsys-client-cfg</module>
+		<module>crs-hsys-client-kip</module>
 		<module>crs-hsys-server</module>
 	</modules>
 
@@ -364,6 +365,12 @@
 				<version>${modelmapper.version}</version>
 			</dependency>
 
+<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20180813</version>
+</dependency>
 
 			<!-- ************************************************************************************* -->
 			<!-- APPENGINE -->

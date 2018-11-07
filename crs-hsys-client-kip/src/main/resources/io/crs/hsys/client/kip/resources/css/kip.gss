@@ -1,0 +1,87 @@
+/*************************************************
+* CHAT LIST VIEW
+*************************************************/
+@def SMALL_SCREEN "max-width: 600px";
+
+@def MEDIUM_DOWN_SCREEN "min-width : 601px";
+
+@def MEDIUM_UP_SCREEN "max-width: 992px";
+
+@def LARGE_DOWN_SCREEN "min-width : 993px";
+
+@def LARGE_UP_SCREEN "max-width: 1200px";
+
+@def XTRA_LARGE_SCREEN "min-width : 1201px";
+
+ 
+@media (SMALL_SCREEN) { 
+		.chat_list_view_col_left { 
+			display:block;
+		
+		}
+		.chat_list_view_col_right {
+			display: none;
+		}
+}
+
+@media (MEDIUM_DOWN_SCREEN) {
+	.chat_list_view_col_left {
+		display: block;
+	}
+	.chat_list_view_col_right {
+		display: block;
+	}
+}
+
+.chat_list_view_collection {
+	height: calc(100vh - 290px);
+	overflow-y: scroll;
+	margin: 0;
+}
+
+/*************************************************
+* CHAT DETAILS WIDGET
+*************************************************/
+.chat_details_widget {
+	height: calc(100vh - 370px);
+	overflow-y: scroll;
+}
+
+/*************************************************
+* CHAT CREATOR 
+*************************************************/
+.chat_creator_panel {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (SMALL_SCREEN) {
+	.chat_creator_panel {
+		width: 90%;
+	}
+}
+
+@media (MEDIUM_DOWN_SCREEN) and (MEDIUM_UP_SCREEN) {
+	.chat_creator_panel {
+		width: 70%;
+	}
+}
+
+@media (LARGE_DOWN_SCREEN) and (LARGE_UP_SCREEN) {
+	.chat_creator_panel {
+		width: 50%;
+	}
+}
+
+@media (XTRA_LARGE_SCREEN) {
+	.chat_creator_panel {
+		width: 30%;
+	}
+}
+
+/*************************************************
+* SEND MESSAGE 
+*************************************************/
+.send_message_textbox {
+	width: calc(100% - 90px);
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	.label {
+		margin-left: 5px;
+		/*		font-weight: 200; */
+	}
+	
+	.value {
+		font-weight: 800;
+	}
+	
+	.clearBoth {
+		clear: both;
+	}
+	
+	.gpsButton {
+		padding-left: 10px;
+	}
+	
+	.gpsDisplayM {
+		padding-top: 5px;
+		max-width: 200px;
+		line-height: 25px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<!-- GPS link -->
+		<m:MaterialLink ui:field="gpsLink" iconType="DATE_RANGE"
+			iconColor="GREY_LIGHTEN_5" float="RIGHT" addStyleNames="{style.gpsButton}" />
+
+
+		<!-- GPS Display -->
+		<m.html:Div float="RIGHT" hideOn="HIDE_ON_SMALL_DOWN">
+			<m:MaterialLabel text="M.Beáta" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.value}" />
+			<m:MaterialLabel text="Ell.:" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.label}" />
+			<m:MaterialLabel text="K.Zsuzsa" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.value}" />
+			<m:MaterialLabel text="Tak.:" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.label}" />
+
+			<m:MaterialLabel text="9999" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.value}" />
+			<m:MaterialLabel text="Szoba:" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.label}" />
+			<m:MaterialLabel text="Béta" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.value}" />
+			<m:MaterialLabel text="Hotel:" textColor="LIGHT_BLUE"
+				float="RIGHT" addStyleNames="{style.label}" />
+		</m.html:Div>
+
+		<m.html:Div float="RIGHT" hideOn="HIDE_ON_MED_UP"
+			addStyleNames="{style.gpsDisplayM}">
+			<m.html:Div>
+				<m:MaterialLabel text="9999" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.value}" />
+				<m:MaterialLabel text="Szoba:" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.label}" />
+				<m:MaterialLabel text="Béta" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.value}" />
+				<m:MaterialLabel text="Hotel:" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.label}" />
+			</m.html:Div>
+
+			<m.html:Div addStyleNames="{style.clearBoth}">
+				<m:MaterialLabel text="M.Beáta" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.value}" />
+				<m:MaterialLabel text="Ell.:" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.label}" />
+				<m:MaterialLabel text="K.Zsuzsa" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.value}" />
+				<m:MaterialLabel text="Tak.:" textColor="LIGHT_BLUE"
+					float="RIGHT" addStyleNames="{style.label}" />
+			</m.html:Div>
+		</m.html:Div>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

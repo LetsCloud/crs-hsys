@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:nwx="urn:import:io.crs.hsys.client.kip.chat.editor" xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<m:MaterialRow marginBottom="0" paddingTop="5">
+		
+		<nwx:SendMessageWidget ui:field="sendMessageWidget" />
+
+		<m:MaterialCard grid="s12" marginBottom="10">
+			<m:MaterialCardContent padding="10">
+				<m:MaterialCardTitle ui:field="chatTitle" text="Chat Details"
+					iconType="VISIBILITY" iconPosition="RIGHT" />
+				<nwx:ReceiversPanel />
+				
+				<nwx:PostPanelWidget ui:field="chatPostsWidget" />
+			</m:MaterialCardContent>
+
+			<m:MaterialCardReveal>
+				<m:MaterialCardTitle text="Chat Details"
+					iconType="CLOSE" iconPosition="RIGHT" textColor="BLACK" />
+
+				<m:MaterialRadioButton ui:field="openChats2"
+					name="onlyOpenChats" text="Display only open chats" />
+
+				<m:MaterialListBox placeholder="Order By">
+					<m.html:Option text="Created" />
+					<m.html:Option text="Response Time" />
+					<m.html:Option text="Sender" />
+				</m:MaterialListBox>
+
+				<m:MaterialSwitch ui:field="openChats" value="true"
+					grid="s12" />
+			</m:MaterialCardReveal>
+
+		</m:MaterialCard>
+		
+		<!-- <m:MaterialRow width="100%"> <nwx:MessagePanel placeholder="Text message" 
+			backgroundColor="WHITE" iconColor="BLACK" active="true" grid="s12" shadow="1" 
+			/> </m:MaterialRow> -->
+
+	</m:MaterialRow>
+</ui:UiBinder> 

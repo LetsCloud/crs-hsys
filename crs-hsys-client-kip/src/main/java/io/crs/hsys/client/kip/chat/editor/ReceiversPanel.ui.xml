@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<g:HTMLPanel>
+		<m:MaterialRow ui:field="selReceiverRow">
+			<combobox:MaterialComboBox ui:field="userGroupDtos"
+				label="Receivers" />
+		</m:MaterialRow>
+
+		<m:MaterialRow ui:field="receiversRow">
+			<m:MaterialChip margin="8" url="image/director.png"
+				text="Yunalis Mat Zara'ai" />
+			<m:MaterialChip margin="8" text="Click Me" />
+			<m:MaterialChip margin="8" url="image/finance2.png"
+				text="Yunalis Mat Zara'ai" />
+			<m:MaterialChip margin="8" text="Click Me" />
+			<m:MaterialChip margin="8" url="image/sales.png" text="Yunalis Mat Zara'ai" />
+			<m:MaterialChip margin="8" text="Click Me" />
+			<m:MaterialChip margin="8" ui:field="chip" url="image/fom.png"
+				text="Yunalis Mat Zara'ai" />
+			<m:MaterialChip margin="8" text="Click Me" />
+		</m:MaterialRow>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.panel {
+		z-index: 10;
+	}
+	
+	.title {
+		margin-top: 0;
+	}
+	
+	.block {
+		display: block;
+		margin-bottom: 10px;
+	}
+	</ui:style>
+
+
+	<g:PopupPanel glassEnabled="true" autoHideEnabled="true"
+		animationEnabled="true" addStyleNames="{style.panel}">
+		<m:MaterialPanel>
+			<m:MaterialTitle title="Change Room Status"
+				addStyleNames="{style.title}" />
+			<m:MaterialLabel text="Room:" />
+			<m:MaterialLabel text="Current status:" />
+
+			<m:MaterialRadioButton ui:field="dirtyMRB"
+				name="status" text="Dirty" type="GAP" addStyleNames="{style.block}" />
+			<m:MaterialRadioButton ui:field="cleanMRB"
+				name="status" text="Clean" type="GAP" addStyleNames="{style.block}" />
+			<m:MaterialRadioButton ui:field="inspectedMRB"
+				name="status" text="Inspected" type="GAP" addStyleNames="{style.block}" />
+			<m:MaterialRadioButton ui:field="oosMRB" name="status"
+				text="Out of Service" type="GAP" addStyleNames="{style.block}" />
+			<m:MaterialRadioButton ui:field="showMRB" name="status"
+				text="Show room" type="GAP" addStyleNames="{style.block}" />
+
+			<m:MaterialButton ui:field="changeButton" text="Change status"
+				type="FLAT" />
+		</m:MaterialPanel>
+	</g:PopupPanel>
+</ui:UiBinder>

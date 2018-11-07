@@ -1,21 +1,21 @@
 package io.crs.hsys.client.core.security;
 
-import io.crs.hsys.shared.dto.common.AccountUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 public class CurrentUser {
 	
-	private AccountUserDto appUserDto;
+	private AppUserDto appUserDto;
 
 	private HotelDtor currentHotel;
 
 	private boolean loggedIn;
 
-	public AccountUserDto getAppUserDto() {
+	public AppUserDto getAppUserDto() {
 		return appUserDto;
 	}
 
-	public void setAppUserDto(AccountUserDto userDto) {
+	public void setAppUserDto(AppUserDto userDto) {
 		this.appUserDto = userDto;
 		this.currentHotel = userDto.getDefaultHotel();
 	}

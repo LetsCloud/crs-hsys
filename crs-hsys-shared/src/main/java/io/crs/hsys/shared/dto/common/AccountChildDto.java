@@ -12,13 +12,13 @@ import io.crs.hsys.shared.dto.BaseDto;
 @SuppressWarnings("serial")
 public class AccountChildDto extends BaseDto {
 
-	private BaseDto account;
+	private AccountDtor account;
 
-	public BaseDto getAccount() {
+	public AccountDtor getAccount() {
 		return account;
 	}
 
-	public void setAccount(BaseDto account) {
+	public void setAccount(AccountDtor account) {
 		this.account = account;
 	}
 
