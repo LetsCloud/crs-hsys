@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.app;
+package io.crs.hsys.client.kip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,6 @@ import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
-import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenter;
 import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenterFactory;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayPresenter;
@@ -76,6 +75,14 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	private List<MenuItemDto> createMenuitems() {
 		List<MenuItemDto> menuItems = new ArrayList<MenuItemDto>();
+
+		MenuItemDto dasboardMenuItem = new MenuItemDto();
+		dasboardMenuItem.setIndex(1);
+		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
+		dasboardMenuItem.setIcon(IconType.DASHBOARD.name());
+		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
+		dasboardMenuItem.setNameToken(KipNameTokens.HOME);
+		menuItems.add(dasboardMenuItem);
 
 		// Assignemnts
 		MenuItemDto taskMngrItem = new MenuItemDto();

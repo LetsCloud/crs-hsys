@@ -2,6 +2,8 @@ package io.crs.hsys.client.kip;
 
 public class KipNameTokens {
 
+	public static final String HOME = "/home";
+
 	// Sales
 	public static final String RESERVATION = "/reservation";
 	public static final String ROOM_PLAN = "/roomPlan";

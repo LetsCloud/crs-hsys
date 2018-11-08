@@ -15,6 +15,9 @@ public interface KipMessages extends Messages {
 	 * MAIN MENU
 	 */
 
+	@DefaultMessage("Dashboard")
+	String mainMenuItemDashboard();
+
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
