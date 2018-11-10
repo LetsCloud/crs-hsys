@@ -23,10 +23,11 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialTextBox;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author robi
@@ -51,12 +52,13 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 
 	@Ignore
 	@UiField
-	MaterialComboBox<RoomTypeDto> roomTypeCombo;
-	TakesValueEditor<RoomTypeDto> roomType;
+	MaterialComboBox<RoomTypeDtor> roomTypeCombo;
+
+	TakesValueEditor<RoomTypeDtor> roomType;
 
 	@UiField(provided = true)
 	AvailabilityListEditor roomAvailabilities;
-	
+
 	@UiField
 	MaterialButton saveButton;
 
@@ -64,30 +66,31 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 	* 
 	*/
 	@Inject
-	RoomEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, AvailabilityListEditor roomAvailabilityDtos) {
+	RoomEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst,
+			AvailabilityListEditor roomAvailabilityDtos) {
 		logger.info("RoomTypeEditorView()");
-		
+
 		this.roomAvailabilities = roomAvailabilityDtos;
-		
+
 		initWidget(uiBinder.createAndBindUi(this));
+
+		initRoomTypeCombo();
 
 		this.driver = driver;
 		driver.initialize(this);
-		
-		initRoomTypeCombo();
 	}
 
 	private void initRoomTypeCombo() {
 
-		roomType = TakesValueEditor.of(new TakesValue<RoomTypeDto>() {
+		roomType = TakesValueEditor.of(new TakesValue<RoomTypeDtor>() {
 
 			@Override
-			public void setValue(RoomTypeDto value) {
+			public void setValue(RoomTypeDtor value) {
 				roomTypeCombo.setSingleValue(value);
 			}
 
 			@Override
-			public RoomTypeDto getValue() {
+			public RoomTypeDtor getValue() {
 				return roomTypeCombo.getSingleValue();
 			}
 		});
@@ -96,9 +99,9 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 	@Override
 	public void show(RoomDto dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void edit(RoomDto dto) {
 		driver.edit(dto);
@@ -130,9 +133,9 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 	}
 
 	@Override
-	public void setRoomTypeData(List<RoomTypeDto> roomTypeData) {
+	public void setRoomTypeData(List<RoomTypeDtor> roomTypeData) {
 		roomTypeCombo.clear();
-		for (RoomTypeDto roomTypeDto : roomTypeData) {
+		for (RoomTypeDtor roomTypeDto : roomTypeData) {
 			roomTypeCombo.addItem(roomTypeDto.getCode() + " - " + roomTypeDto.getName(), roomTypeDto);
 		}
 	}
@@ -140,6 +143,6 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 	@Override
 	public void close() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

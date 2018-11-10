@@ -40,62 +40,56 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 
 		CardDisplay dirtyRooms = new CardDisplay();
 		dirtyRooms.setBackgroundColor(Color.RED_DARKEN_2);
+		dirtyRooms.setTitleBackgroundColor(Color.RED_DARKEN_4);
 		dirtyRooms.setTextColor(Color.WHITE);
 		dirtyRooms.setTitleText("PISZKOS SZOBÁK");
-		dirtyRooms.addItem("Lakó", "50");
-		dirtyRooms.addItem("Érkező", "50");
-		dirtyRooms.addItem("Üres", "50");
-		dirtyRooms.addItem("ÖSSZESEN", "150");
+		dirtyRooms.addItem("Érkező", "50", "Lakó", "50", "Üres", "50");
+		dirtyRooms.addItem("ÖSSZES", "150");
 		addCard(dirtyRooms);
 
 		CardDisplay cleanRooms = new CardDisplay();
 		cleanRooms.setBackgroundColor(Color.AMBER_DARKEN_2);
+		cleanRooms.setTitleBackgroundColor(Color.AMBER_DARKEN_4);
 		cleanRooms.setTextColor(Color.WHITE);
 		cleanRooms.setTitleText("TISZTA SZOBÁK");
-		cleanRooms.addItem("Lakó", "50");
-		cleanRooms.addItem("Érkező", "50");
-		cleanRooms.addItem("Üres", "50");
-		cleanRooms.addItem("ÖSSZESEN", "150");
+		cleanRooms.addItem("Érkező", "50", "Lakó", "50", "Üres", "50");
+		cleanRooms.addItem("ÖSSZES", "150");
 		addCard(cleanRooms);
 
 		CardDisplay checkedRooms = new CardDisplay();
 		checkedRooms.setBackgroundColor(Color.GREEN_DARKEN_2);
+		checkedRooms.setTitleBackgroundColor(Color.GREEN_DARKEN_4);
 		checkedRooms.setTextColor(Color.WHITE);
 		checkedRooms.setTitleText("ELLENŐRZÖTT SZOBÁK");
-		checkedRooms.addItem("Lakó", "50");
-		checkedRooms.addItem("Érkező", "50");
-		checkedRooms.addItem("Üres", "50");
-		checkedRooms.addItem("ÖSSZESEN", "150");
+		checkedRooms.addItem("Érkező", "50", "Lakó", "50", "Üres", "50");
+		checkedRooms.addItem("ÖSSZES", "150");
 		addCard(checkedRooms);
 
 		CardDisplay publicAreas = new CardDisplay();
 		publicAreas.setBackgroundColor(Color.PURPLE_DARKEN_2);
+		publicAreas.setTitleBackgroundColor(Color.PURPLE_DARKEN_4);
 		publicAreas.setTextColor(Color.WHITE);
 		publicAreas.setTitleText("KÖZÖSSÉGI TEREK");
-		publicAreas.addItem("Piszkos", "50");
-		publicAreas.addItem("Tiszta", "50");
-		publicAreas.addItem("Ellenőrzött", "50");
-		publicAreas.addItem(".", ".");
+		publicAreas.addItem("Piszkos", "50", "Tiszta", "50", "Ellenőrzött", "50");
+		publicAreas.addItem("", "");
 		addCard(publicAreas);
 
 		CardDisplay tasks = new CardDisplay();
 		tasks.setBackgroundColor(Color.BLUE_DARKEN_2);
+		tasks.setTitleBackgroundColor(Color.BLUE_DARKEN_4);
 		tasks.setTextColor(Color.WHITE);
 		tasks.setTitleText("TAKARÍTÁSI FELADATOK");
-		tasks.addItem("Vendégszoba", "50");
-		tasks.addItem("Közösségi tér", "50");
-		tasks.addItem("Bekészítés", "50");
-		tasks.addItem(".", ".");
+		tasks.addItem("Szoba", "50", "Közösségi tér", "50", "Bekészítés", "50");
+		tasks.addItem("", "");
 		addCard(tasks);
 
 		CardDisplay oooRooms = new CardDisplay();
 		oooRooms.setBackgroundColor(Color.GREY_DARKEN_2);
+		oooRooms.setTitleBackgroundColor(Color.GREY_DARKEN_4);
 		oooRooms.setTextColor(Color.WHITE);
 		oooRooms.setTitleText("OOO SZOBÁK");
-		oooRooms.addItem(".", ".");
-		oooRooms.addItem("Visszaadandó", "50");
-		oooRooms.addItem("Marad", "50");
-		oooRooms.addItem(".", ".");
+		oooRooms.addItem("Visszaadandó", "50", "Marad", "50");
+		tasks.addItem("", "");
 		addCard(oooRooms);
 	}
 

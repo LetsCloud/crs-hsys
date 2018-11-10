@@ -18,52 +18,71 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
+	
+	// *********
+	// Chat Room
+	// *********
+
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
-	@DefaultMessage("Atendants")
-	String mainMenuItemAtendants();
+	
+	// *********
+	// Tasks
+	// *********
 
-	@DefaultMessage("Assignment")
-	String mainMenuItemAssignment();
+	@DefaultMessage("Tasks")
+	String mainMenuItemTasks();
 
-	@DefaultMessage("Sales")
-	String mainMenuGroupSales();
+	
+	// ***********
+	// Guest Rooms
+	// ***********
 
-	@DefaultMessage("Reservation")
-	String mainMenuItemReservation();
+	@DefaultMessage("Guest Rooms")
+	String mainMenuItemGuestRooms();
 
-	@DefaultMessage("Roomplan")
-	String mainMenuItemRoomplan();
 
-	@DefaultMessage("Roomp Availability")
-	String mainMenuItemRoomAvailability();
+	// ************
+	// Public Areas
+	// ************
+	@DefaultMessage("Public Areas")
+	String mainMenuGroupPublicAreas();
 
-	@DefaultMessage("Housekeeping")
-	String mainMenuGroupHousekeeping();
 
-	@DefaultMessage("Room status")
-	String mainMenuItemChangeStatus();
+	// ************
+	// Assignment
+	// ************
+	@DefaultMessage("Cleaning Assignment")
+	String mainMenuGroupAssignment();
 
-	@DefaultMessage("Minibar consumption")
-	String mainMenuItemMinibarConsumption();
+	@DefaultMessage("Room Cleaning Assignment")
+	String mainMenuItemRoomAssignment();
 
-	@DefaultMessage("Profiles")
-	String mainMenuGroupProfiles();
+	@DefaultMessage("Area Cleaning Assignment")
+	String mainMenuItemAreaAssignment();
 
-	@DefaultMessage("Contacts")
-	String mainMenuItemContacts();
 
-	@DefaultMessage("Configuration")
-	String mainMenuGroupConfiguration();
+	// ************
+	// Minibar
+	// ************
+	@DefaultMessage("Minibar")
+	String mainMenuGroupMinibar();
 
-	@DefaultMessage("Hotels")
-	String mainMenuItemHotels();
+	@DefaultMessage("Minibar Consumption")
+	String mainMenuItemConsumption();
 
-	@DefaultMessage("Users & Roles")
-	String mainMenuItemUsers();
+
+	// ************
+	// Maintenance
+	// ************
+	
+	@DefaultMessage("Maintenance")
+	String mainMenuGroupMaintenance();
+
 	
 
+	
 	/*
 	 * CHAT ROOM
 	 */

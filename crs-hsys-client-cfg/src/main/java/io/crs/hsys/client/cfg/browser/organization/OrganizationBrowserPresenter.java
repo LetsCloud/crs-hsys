@@ -18,7 +18,7 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.browser.AbstractBrowserPresenter;
-import io.crs.hsys.client.cfg.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
 import io.crs.hsys.client.cfg.filter.profile.ProfileFilterPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;

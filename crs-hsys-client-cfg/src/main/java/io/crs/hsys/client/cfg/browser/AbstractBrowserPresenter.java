@@ -121,6 +121,7 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	}
 
 	private PlaceRequest addFilters(Builder placeBuilder) {
+		logger.info("AbstractBrowserPresenter().AbstractBrowserPresenter()->filters=" + filters);
 		if (!filters.isEmpty())
 			placeBuilder.with(filters);
 		return placeBuilder.build();
@@ -141,6 +142,7 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	protected abstract void deleteData(String webSafeKey);
 
 	protected void addFilter(String key, String value) {
+		logger.info("AbstractBrowserPresenter().addFilter(" + key + ", " + value + ")");
 		filters.put(key, value);
 	}
 }

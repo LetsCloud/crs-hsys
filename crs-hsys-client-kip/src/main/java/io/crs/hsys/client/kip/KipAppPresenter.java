@@ -16,7 +16,6 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
 import gwt.material.design.client.constants.IconType;
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.menu.MenuPresenter;
@@ -76,6 +75,9 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	private List<MenuItemDto> createMenuitems() {
 		List<MenuItemDto> menuItems = new ArrayList<MenuItemDto>();
 
+		// *******************
+		// Dashboard menu item
+		// *******************
 		MenuItemDto dasboardMenuItem = new MenuItemDto();
 		dasboardMenuItem.setIndex(1);
 		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
@@ -83,67 +85,100 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
 		dasboardMenuItem.setNameToken(KipNameTokens.HOME);
 		menuItems.add(dasboardMenuItem);
-
-		// Assignemnts
-		MenuItemDto taskMngrItem = new MenuItemDto();
-		taskMngrItem.setIndex(1);
-		taskMngrItem.setType(MenuItemType.MENU_ITEM);
-		taskMngrItem.setIcon(IconType.ACCESSIBILITY.name());
-		taskMngrItem.setText("Task Manager");
-		taskMngrItem.setNameToken(KipNameTokens.TASK_MNGR);
-		menuItems.add(taskMngrItem);
-
-		// Assignemnts
+		
+		// *******************
+		// Chat Room menu item
+		// *******************
 		MenuItemDto chatRoomItem = new MenuItemDto();
-		chatRoomItem.setIndex(1);
+		chatRoomItem.setIndex(2);
 		chatRoomItem.setType(MenuItemType.MENU_ITEM);
 		chatRoomItem.setIcon(IconType.FORUM.name());
 		chatRoomItem.setText(i18n.mainMenuItemChatRoom());
 		chatRoomItem.setNameToken(KipNameTokens.CHAT_ROOM);
 		menuItems.add(chatRoomItem);
 
-		// Attendants
-		MenuItemDto atendantsItem = new MenuItemDto();
-		atendantsItem.setIndex(1);
-		atendantsItem.setType(MenuItemType.MENU_ITEM);
-		atendantsItem.setIcon(IconType.PEOPLE.name());
-		atendantsItem.setText(i18n.mainMenuItemAtendants());
-		atendantsItem.setNameToken(CoreNameTokens.HOME);
-		menuItems.add(atendantsItem);
+		
+		// ***************
+		// Tasks menu item
+		// ***************
+		MenuItemDto tasksItem = new MenuItemDto();
+		tasksItem.setIndex(3);
+		tasksItem.setType(MenuItemType.MENU_ITEM);
+		tasksItem.setIcon(IconType.ASSIGNMENT.name());
+		tasksItem.setText(i18n.mainMenuItemTasks());
+		tasksItem.setNameToken(KipNameTokens.TASK_MNGR);
+		menuItems.add(tasksItem);
 
-		// Assignemnts
-		MenuItemDto assignmentsItem = new MenuItemDto();
-		assignmentsItem.setIndex(1);
-		assignmentsItem.setType(MenuItemType.MENU_ITEM);
-		assignmentsItem.setIcon(IconType.PLAYLIST_PLAY.name());
-		assignmentsItem.setText(i18n.mainMenuItemAssignment());
-		assignmentsItem.setNameToken(KipNameTokens.HK_ASSIGNMENTS);
-		menuItems.add(assignmentsItem);
+		
+		// ********************
+		// GuestRooms menu item
+		// *********************
+		MenuItemDto roomsMenuItem = new MenuItemDto();
+		roomsMenuItem.setIndex(4);
+		roomsMenuItem.setType(MenuItemType.MENU_ITEM);
+		roomsMenuItem.setIcon(IconType.HOTEL.name());
+		roomsMenuItem.setText(i18n.mainMenuItemGuestRooms());
+		roomsMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		menuItems.add(roomsMenuItem);
 
-		// Perfomance
+		
+		// **********************
+		// Public Areas menu item
+		// **********************
+		MenuItemDto areasMenuItem = new MenuItemDto();
+		areasMenuItem.setIndex(5);
+		areasMenuItem.setType(MenuItemType.MENU_ITEM);
+		areasMenuItem.setIcon(IconType.STORE.name());
+		areasMenuItem.setText(i18n.mainMenuGroupPublicAreas());
+		areasMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		menuItems.add(areasMenuItem);
+		
+		
+		// *********************
+		// Assignment menu group
+		// *********************
+		MenuItemDto assignmentSubMenu = new MenuItemDto();
+		assignmentSubMenu.setIndex(6);
+		assignmentSubMenu.setType(MenuItemType.SUB_MENU);
+		assignmentSubMenu.setIcon(IconType.ASSIGNMENT_RETURNED.name());
+		assignmentSubMenu.setText(i18n.mainMenuGroupAssignment());
+		assignmentSubMenu.setItems(new ArrayList<MenuItemDto>());
 
-		MenuItemDto perfSubMenu = new MenuItemDto();
-		perfSubMenu.setIndex(2);
-		perfSubMenu.setType(MenuItemType.SUB_MENU);
-		perfSubMenu.setIcon(IconType.AV_TIMER.name());
-		perfSubMenu.setText(i18n.mainMenuGroupHousekeeping());
-		perfSubMenu.setItems(new ArrayList<MenuItemDto>());
+		MenuItemDto roomAssignMenuItem = new MenuItemDto();
+		roomAssignMenuItem.setIndex(1);
+		roomAssignMenuItem.setType(MenuItemType.MENU_ITEM);
+		roomAssignMenuItem.setText(i18n.mainMenuItemRoomAssignment());
+		roomAssignMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		assignmentSubMenu.addItem(roomAssignMenuItem);
 
-		MenuItemDto perfMenuItem1 = new MenuItemDto();
-		perfMenuItem1.setIndex(1);
-		perfMenuItem1.setType(MenuItemType.MENU_ITEM);
-		perfMenuItem1.setText("Occupancy");
-		perfMenuItem1.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
-		perfSubMenu.addItem(perfMenuItem1);
+		MenuItemDto areaAssigntMenuItem = new MenuItemDto();
+		areaAssigntMenuItem.setIndex(2);
+		areaAssigntMenuItem.setType(MenuItemType.MENU_ITEM);
+		areaAssigntMenuItem.setText(i18n.mainMenuItemAreaAssignment());
+		areaAssigntMenuItem.setNameToken(KipNameTokens.HK_ASSIGNMENTS);
+		assignmentSubMenu.addItem(areaAssigntMenuItem);
 
-		MenuItemDto perfMenuItem2 = new MenuItemDto();
-		perfMenuItem2.setIndex(2);
-		perfMenuItem2.setType(MenuItemType.MENU_ITEM);
-		perfMenuItem2.setText("Revenue");
-		perfMenuItem2.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
-		perfSubMenu.addItem(perfMenuItem2);
+		menuItems.add(assignmentSubMenu);
 
-		menuItems.add(perfSubMenu);
+
+		// ******************
+		// Minibar menu group
+		// ******************
+		MenuItemDto minibarSubMenu = new MenuItemDto();
+		minibarSubMenu.setIndex(7);
+		minibarSubMenu.setType(MenuItemType.SUB_MENU);
+		minibarSubMenu.setIcon(IconType.KITCHEN.name());
+		minibarSubMenu.setText(i18n.mainMenuGroupMinibar());
+		minibarSubMenu.setItems(new ArrayList<MenuItemDto>());
+
+		MenuItemDto consumptionMenuItem = new MenuItemDto();
+		consumptionMenuItem.setIndex(1);
+		consumptionMenuItem.setType(MenuItemType.MENU_ITEM);
+		consumptionMenuItem.setText(i18n.mainMenuItemConsumption());
+		consumptionMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		minibarSubMenu.addItem(consumptionMenuItem);
+		
+		menuItems.add(minibarSubMenu);
 
 		return menuItems;
 	}

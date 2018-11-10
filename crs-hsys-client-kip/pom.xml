@@ -183,7 +183,7 @@
 							<moduleShortName>kip_module</moduleShortName>
 							<codeserverArgs>
 								<arg>-port</arg>
-								<arg>4532</arg>
+								<arg>4534</arg>
 							</codeserverArgs>
 						</configuration>
 					</plugin>

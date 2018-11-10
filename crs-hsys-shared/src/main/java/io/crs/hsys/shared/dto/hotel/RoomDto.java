@@ -52,7 +52,7 @@ public class RoomDto extends HotelChildDto {
 	/**
 	 * Szobatípus hivatkozás
 	 */
-	private RoomTypeDto roomType;
+	private RoomTypeDtor roomType;
 
 	/**
 	 * Szoba nyitások és zárások
@@ -107,11 +107,11 @@ public class RoomDto extends HotelChildDto {
 		this.foRoomStatus = foRoomStatus;
 	}
 
-	public RoomTypeDto getRoomType() {
+	public RoomTypeDtor getRoomType() {
 		return roomType;
 	}
 
-	public void setRoomType(RoomTypeDto roomType) {
+	public void setRoomType(RoomTypeDtor roomType) {
 		this.roomType = roomType;
 	}
 

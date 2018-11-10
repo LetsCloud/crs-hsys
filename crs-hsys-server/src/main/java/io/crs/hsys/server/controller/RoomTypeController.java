@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.server.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,16 +27,18 @@ import io.crs.hsys.server.entity.hotel.RoomType;
 import io.crs.hsys.server.service.RoomTypeService;
 import io.crs.hsys.shared.constans.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOMTYPE;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
 import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.SEL_INV_TYPE;
-
+import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -74,6 +78,24 @@ public class RoomTypeController extends HotelChildController<RoomType, RoomTypeD
 			filters.put(SEL_INV_TYPE, inventoryType);
 
 		return getChildrenByFilters(hotelKey, filters);
+	}
+
+	/**
+	 * Visszaadja a bejelentkezett felhasználó előfizetéséhez tartozó összes
+	 * szállodát
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = REDUCED, method = GET)
+	public @ResponseBody ResponseEntity<List<RoomTypeDtor>> getAllReduced(@RequestParam(HOTEL_KEY) String hotelKey) {
+		List<RoomTypeDtor> dtos = new ArrayList<RoomTypeDtor>();
+
+		Map<String, Object> filters = new HashMap<String, Object>();
+		
+		for (RoomType entity : service.getChildrenByFilters(hotelKey, filters))
+			dtos.add(modelMapper.map(entity, RoomTypeDtor.class));
+
+		return new ResponseEntity<List<RoomTypeDtor>>(dtos, OK);
 	}
 
 	@Override

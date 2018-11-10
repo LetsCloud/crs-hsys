@@ -35,6 +35,8 @@ import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorFactory;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorPresenter;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetPresenter;
+import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
 /**
@@ -48,6 +50,8 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 	interface MyView extends View, HasUiHandlers<AssignmentsUiHandlers> {
 	}
 
+
+	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
 	public static final SingleSlot<PresenterWidget<?>> SLOT_MODAL = new SingleSlot<>();
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
@@ -57,16 +61,18 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 	interface MyProxy extends ProxyPlace<AssignmentsPresenter> {
 	}
 
+	private final AssignmentFilterPresenter filterPresenter;
 	private final AssignmentWidgetFactory assignmentWidgetFactory;
 	private final AssignmentEditorPresenter assignmentEditPresenter;
 	private final KipMessages i18n;
 
 	@Inject
 	AssignmentsPresenter(EventBus eventBus, MyView view, MyProxy proxy, AssignmentWidgetFactory assignmentWidgetFactory,
-			AssignmentEditorFactory assignmentEditFactory, KipMessages i18n) {
+			AssignmentEditorFactory assignmentEditFactory, KipMessages i18n, FilterPresenterFactory filterPresenterFactory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "AssignmentsPresenter()");
 
+		this.filterPresenter = filterPresenterFactory.createAssignmentFilterPresenter();
 		this.assignmentWidgetFactory = assignmentWidgetFactory;
 		this.assignmentEditPresenter = assignmentEditFactory.createAssignmentEdit();
 		this.i18n = i18n;
@@ -78,6 +84,7 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 	protected void onBind() {
 		super.onBind();
 
+		setInSlot(SLOT_FILTER, filterPresenter);
 		setInSlot(SLOT_MODAL, assignmentEditPresenter);
 
 		addRegisteredHandler(AssignmentEditEvent.TYPE, this);
