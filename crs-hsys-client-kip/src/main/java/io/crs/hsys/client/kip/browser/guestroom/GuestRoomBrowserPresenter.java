@@ -21,8 +21,6 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.assignments.AssignmentEditEvent;
-import io.crs.hsys.client.kip.assignments.AssignmentsPresenter;
-import io.crs.hsys.client.kip.assignments.AssignmentsUiHandlers;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorFactory;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorPresenter;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
@@ -31,11 +29,14 @@ import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.constans.AssignmentStatus;
+import io.crs.hsys.shared.constans.FoRoomStatus;
 import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hk.CleanTypeDto;
 import io.crs.hsys.shared.dto.hk.HkAssignmentDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 public class GuestRoomBrowserPresenter
 		extends Presenter<GuestRoomBrowserPresenter.MyView, GuestRoomBrowserPresenter.MyProxy>
@@ -43,6 +44,7 @@ public class GuestRoomBrowserPresenter
 	private static Logger logger = Logger.getLogger(GuestRoomBrowserPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<GuestRoomBrowserUiHandlers> {
+		void addData(RoomDto data);
 	}
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
@@ -50,7 +52,7 @@ public class GuestRoomBrowserPresenter
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_ASSIGNMENTS)
+	@NameToken(KipNameTokens.GUEST_ROOMS)
 	interface MyProxy extends ProxyPlace<GuestRoomBrowserPresenter> {
 	}
 
@@ -91,10 +93,8 @@ public class GuestRoomBrowserPresenter
 		description = i18n.assignmentsTasksAssignedTo("Kiss Piroska");
 		SetPageTitleEvent.fire(i18n.assignmentsTitle(), description, MenuItemType.MENU_ITEM, this);
 
-		for (HkAssignmentDto data : getData()) {
-			AssignmentWidgetPresenter widget = assignmentWidgetFactory.assignmentWidgetPresenter();
-			widget.setData(data);
-			addToSlot(SLOT_ASSIGNMENTS, widget);
+		for (RoomDto data : getData()) {
+			getView().addData(data);
 		}
 
 	}
@@ -106,48 +106,30 @@ public class GuestRoomBrowserPresenter
 		setInSlot(SLOT_MODAL, assignmentEditPresenter);
 	}
 
-	private List<HkAssignmentDto> getData() {
-		List<HkAssignmentDto> result = new ArrayList<HkAssignmentDto>();
+	private List<RoomDto> getData() {
+		List<RoomDto> result = new ArrayList<RoomDto>();
 
-		CleanTypeDto teljes = new CleanTypeDto();
-		teljes.setDescription("Teljes");
-		teljes.setTime(20);
+		RoomTypeDtor dblbRTD = new RoomTypeDtor.Builder().code("DBLB").name("Double bed room").build();
+		RoomTypeDtor twinRTD = new RoomTypeDtor.Builder().code("TWIN").name("Twin bed room").build();
 
-		AppUserDto kissPiri = new AppUserDto();
-		kissPiri.setUsername("Kiss Piroska");
-		AppUserDto nagyMari = new AppUserDto();
-		nagyMari.setUsername("Nagy Mária");
-
-		RoomDto room101 = new RoomDto();
-		room101.setCode("101");
-		RoomDto room102 = new RoomDto();
-		room102.setCode("102");
-		RoomDto room103 = new RoomDto();
-		room103.setCode("103");
-		RoomDto room104 = new RoomDto();
-		room104.setCode("104");
-		RoomDto room105 = new RoomDto();
-		room105.setCode("105");
-		RoomDto room106 = new RoomDto();
-		room106.setCode("106");
-
-		HkAssignmentDto a1 = new HkAssignmentDto();
-		a1.setRoomDto(room101);
-		a1.setAttendantDto(kissPiri);
-		a1.setInspectorDto(nagyMari);
-		a1.setCleanTypeDto(teljes);
-		a1.setNotice("Akármi");
-		a1.setStatus(AssignmentStatus.OPEN);
-		result.add(a1);
-
-		HkAssignmentDto a2 = new HkAssignmentDto();
-		a2.setRoomDto(room102);
-		a2.setAttendantDto(kissPiri);
-		a2.setInspectorDto(nagyMari);
-		a2.setCleanTypeDto(teljes);
-		a2.setNotice("Akármi");
-		a2.setStatus(AssignmentStatus.OPEN);
-		result.add(a2);
+		result.add(
+				new RoomDto.Builder().code("101").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+		result.add(
+				new RoomDto.Builder().code("102").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+		result.add(
+				new RoomDto.Builder().code("103").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+		result.add(
+				new RoomDto.Builder().code("104").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
+		result.add(
+				new RoomDto.Builder().code("105").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
+		result.add(
+				new RoomDto.Builder().code("106").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
+						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
 
 		return result;
 	}

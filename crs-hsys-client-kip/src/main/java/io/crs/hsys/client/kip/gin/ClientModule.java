@@ -8,6 +8,7 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import io.crs.hsys.client.kip.KipAppModule;
 import io.crs.hsys.client.kip.assignments.AssignmentsModule;
 import io.crs.hsys.client.kip.atendants.AtendantsModule;
+import io.crs.hsys.client.kip.browser.guestroom.GuestRoomBrowserModule;
 import io.crs.hsys.client.kip.chat.ChatRoomModule;
 import io.crs.hsys.client.kip.chat.creator.ChatCreatorModule;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorModule;
@@ -47,6 +48,7 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new ChatEditorModule());
 		install(new TaskMngrModule());
 		install(new FilterModule());
+		install(new GuestRoomBrowserModule());
 		/*
 		 * install(new UserListModule()); install(new RoleListModule()); install(new
 		 * HotelListModule());

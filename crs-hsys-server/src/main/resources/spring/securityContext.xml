@@ -117,6 +117,9 @@
 			pattern="/registration*" access="permitAll" />
 		<security:intercept-url pattern="/activate/**"
 			access="permitAll" />
+		<security:intercept-url pattern="/static/**"
+			access="permitAll" />
+
 
 		<security:intercept-url pattern="/**"
 			access="authenticated" />

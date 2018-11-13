@@ -118,7 +118,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		roomsMenuItem.setType(MenuItemType.MENU_ITEM);
 		roomsMenuItem.setIcon(IconType.HOTEL.name());
 		roomsMenuItem.setText(i18n.mainMenuItemGuestRooms());
-		roomsMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		roomsMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS);
 		menuItems.add(roomsMenuItem);
 
 		

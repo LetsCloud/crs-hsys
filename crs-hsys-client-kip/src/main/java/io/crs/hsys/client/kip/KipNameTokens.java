@@ -4,36 +4,23 @@ public class KipNameTokens {
 
 	public static final String HOME = "/home";
 
-	// Sales
-	public static final String RESERVATION = "/reservation";
-	public static final String ROOM_PLAN = "/roomPlan";
-	public static final String ROOM_AVAILABILITY = "/roomAvailability";
-
 	// Housekeeping
 	public static final String CHAT_ROOM = "/chatRoom";
+
+	public static final String TASK_MNGR = "/taskMngr";
+
+	public static final String GUEST_ROOMS = "/guestRooms";
+	
 	public static final String HK_CHANGE_STATUS = "/hkChangeStatus";
 	public static final String HK_ATENDANTS = "/hkAtendants";
 	public static final String HK_ASSIGNMENTS = "/hkAssignments";
 	public static final String MINIBAR_CONSUMPTION = "/minibarConsumption";
 
-	public static final String TASK_MNGR = "/taskMngr";
 
 	// Profiles
 	public static final String CONTACTS = "!contacts";
 	public static final String ORGANIZATIONS = "!organizations";
 	public static final String PROPERTIES = "!properties";
-
-	public static String getReservation() {
-		return RESERVATION;
-	}
-
-	public static String getRoomPlan() {
-		return ROOM_PLAN;
-	}
-
-	public static String getRoomAvailability() {
-		return ROOM_AVAILABILITY;
-	}
 
 	// Housekeeping
 	public static String getHkChangeStatus() {

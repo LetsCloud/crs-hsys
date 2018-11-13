@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialCollection;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
 
 /**
  * @author robi
@@ -34,7 +35,12 @@ public class GuestRoomBrowserView extends ViewWithUiHandlers<GuestRoomBrowserUiH
 		initWidget(uiBinder.createAndBindUi(this));
 
 		bindSlot(GuestRoomBrowserPresenter.SLOT_FILTER, filterSlot);
-		bindSlot(GuestRoomBrowserPresenter.SLOT_ASSIGNMENTS, materialCollection);
+//		bindSlot(GuestRoomBrowserPresenter.SLOT_ASSIGNMENTS, materialCollection);
 		bindSlot(GuestRoomBrowserPresenter.SLOT_MODAL, modalSlot);
+	}
+
+	@Override
+	public void addData(RoomDto data) {
+		materialCollection.add(new GuestRoomWidget(data));
 	}
 }

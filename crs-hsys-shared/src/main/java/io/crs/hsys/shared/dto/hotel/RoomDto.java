@@ -142,4 +142,62 @@ public class RoomDto extends HotelChildDto {
 			return one.getCode().compareTo(other.getCode());
 		}
 	};
+
+	public static class Builder {
+
+		private String code;
+		private String floor;
+		private String description;
+		private RoomStatus roomStatus;
+		private Boolean occupied;
+		private FoRoomStatus foRoomStatus;
+		private RoomTypeDtor roomType;
+		
+		public Builder code(String code) {
+			this.code = code;
+			return this;
+		}
+		
+		public Builder floor(String floor) {
+			this.floor = floor;
+			return this;
+		}
+		
+		public Builder description(String description) {
+			this.description = description;
+			return this;
+		}
+		
+		public Builder roomStatus(RoomStatus roomStatus) {
+			this.roomStatus = roomStatus;
+			return this;
+		}
+		
+		public Builder occupied(Boolean occupied) {
+			this.occupied = occupied;
+			return this;
+		}
+		
+		public Builder foRoomStatus(FoRoomStatus foRoomStatus) {
+			this.foRoomStatus = foRoomStatus;
+			return this;
+		}
+		
+		public Builder roomType(RoomTypeDtor roomType) {
+			this.roomType = roomType;
+			return this;
+		}
+		
+		public RoomDto build() {
+			RoomDto dto = new  RoomDto();
+			dto.setCode(code);
+			dto.setDescription(description);
+			dto.setFloor(floor);
+			dto.setFoRoomStatus(foRoomStatus);
+			dto.setOccupied(occupied);
+			dto.setRoomStatus(roomStatus);
+			dto.setRoomType(roomType);
+			return dto;
+		}
+	}	
 }
