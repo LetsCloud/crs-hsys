@@ -25,6 +25,7 @@ import io.crs.hsys.server.entity.profile.ProfileGroup;
 import io.crs.hsys.server.entity.profile.ProfileLink;
 import io.crs.hsys.server.entity.profile.Relationship;
 import io.crs.hsys.server.entity.reservation.MarketGroup;
+import io.crs.hsys.server.entity.reservation.Reservation;
 
 
 /**
@@ -60,8 +61,9 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(Room.class);
 		ObjectifyService.register(MarketGroup.class);
 		/*		ObjectifyService.register(Chat.class);
-		ObjectifyService.register(Task.class);
+		ObjectifyService.register(Task.class);*/
 		ObjectifyService.register(Reservation.class);
+		/*
 		ObjectifyService.register(CubeBdgtCap.class);
 		ObjectifyService.register(CubeBdgtPfm.class);
 		ObjectifyService.register(CubeActlCap.class);
