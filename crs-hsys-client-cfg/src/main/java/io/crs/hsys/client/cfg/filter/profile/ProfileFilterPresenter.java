@@ -15,8 +15,8 @@ import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
-import io.crs.hsys.client.cfg.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.cfg.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.datasource.ProfileGroupDataSource;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;

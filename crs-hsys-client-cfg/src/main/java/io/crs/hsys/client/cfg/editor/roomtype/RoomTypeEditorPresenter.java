@@ -82,7 +82,9 @@ public class RoomTypeEditorPresenter
 
 	@Override
 	protected void loadData() {
+		logger.info("RoomTypeEditorPresenter().loadData()");
 		if (isNew()) {
+			logger.info("RoomTypeEditorPresenter().loadData()->(isNew())->"+filters.get(HOTEL_KEY));
 			hotelDataSource.setWebSafeKey(filters.get(HOTEL_KEY));
 			LoadCallback<HotelDto> hotelLoadCallback = new LoadCallback<HotelDto>() {
 				@Override

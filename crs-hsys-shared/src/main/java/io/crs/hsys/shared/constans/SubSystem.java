@@ -25,6 +25,6 @@ public class SubSystem {
 
 	public final static String FIT = "FIT";
 
-	public final static String CFG = "CFG";
+	public final static String CFG = "HOT";
 
 }

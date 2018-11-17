@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.googlecode.objectify.ObjectifyService;
 
 import io.crs.hsys.server.entity.GlobalConfig;
+import io.crs.hsys.server.entity.chat.Chat;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.UserGroup;
@@ -24,6 +25,7 @@ import io.crs.hsys.server.entity.profile.ProfileGroup;
 import io.crs.hsys.server.entity.profile.ProfileLink;
 import io.crs.hsys.server.entity.profile.Relationship;
 import io.crs.hsys.server.entity.reservation.MarketGroup;
+import io.crs.hsys.server.entity.reservation.Reservation;
 
 
 /**
@@ -51,14 +53,17 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(Contact.class);
 		ObjectifyService.register(Guest.class);
 		ObjectifyService.register(ProfileLink.class);
-	
+
+		ObjectifyService.register(Chat.class);
+
 		ObjectifyService.register(Hotel.class);
 		ObjectifyService.register(RoomType.class);
 		ObjectifyService.register(Room.class);
 		ObjectifyService.register(MarketGroup.class);
 		/*		ObjectifyService.register(Chat.class);
-		ObjectifyService.register(Task.class);
+		ObjectifyService.register(Task.class);*/
 		ObjectifyService.register(Reservation.class);
+		/*
 		ObjectifyService.register(CubeBdgtCap.class);
 		ObjectifyService.register(CubeBdgtPfm.class);
 		ObjectifyService.register(CubeActlCap.class);

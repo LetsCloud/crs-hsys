@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.cfg.filter.AbstractFilterView;
+import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 

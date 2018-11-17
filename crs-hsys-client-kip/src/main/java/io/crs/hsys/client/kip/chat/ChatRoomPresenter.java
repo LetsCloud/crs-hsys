@@ -23,13 +23,13 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.pwa.PwaManager;
 import gwt.material.design.client.ui.MaterialToast;
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.client.kip.app.KipAppPresenter;
+import io.crs.hsys.client.kip.KipAppPresenter;
+import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.chat.creator.ChatCreatorFactory;
 import io.crs.hsys.client.kip.chat.creator.ChatCreatorPresenter;
 import io.crs.hsys.client.kip.chat.list.ChatListFactory;
@@ -60,7 +60,7 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 	private final KipMessages i18n;
 
 	@ProxyStandard
-	@NameToken(CoreNameTokens.HOME)
+	@NameToken(KipNameTokens.CHAT_ROOM)
 	interface MyProxy extends ProxyPlace<ChatRoomPresenter> {
 	}
 

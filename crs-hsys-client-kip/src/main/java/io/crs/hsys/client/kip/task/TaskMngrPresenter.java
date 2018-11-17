@@ -26,8 +26,8 @@ import io.crs.hsys.shared.constans.TaskType;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
+import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.app.KipAppPresenter;
 import io.crs.hsys.client.kip.resources.KipGssResources;
 
 /**

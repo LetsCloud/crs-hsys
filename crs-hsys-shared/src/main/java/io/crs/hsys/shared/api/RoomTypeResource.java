@@ -8,6 +8,7 @@ import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.SEL_INV_TYPE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOMTYPE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 
@@ -24,6 +25,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.crs.hsys.shared.constans.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author robi
@@ -36,6 +38,10 @@ public interface RoomTypeResource {
 	@GET
 	List<RoomTypeDto> getAll(@QueryParam(HOTEL_KEY) String hotelKey, @QueryParam(ONLY_ACTIVE) Boolean onlyActive,
 			@QueryParam(SEL_INV_TYPE) InventoryType type);
+
+	@GET
+	@Path(REDUCED)
+	List<RoomTypeDtor> listReduced(@QueryParam(HOTEL_KEY) String hotelKey);
 
 	@GET
 	@Path(PATH_WEBSAFEKEY)

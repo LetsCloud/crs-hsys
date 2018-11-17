@@ -20,7 +20,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.cfg.browser.roomtype.RoomTypeBrowserPresenter;
-import io.crs.hsys.client.cfg.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
 import io.crs.hsys.client.cfg.filter.room.RoomFilterPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;

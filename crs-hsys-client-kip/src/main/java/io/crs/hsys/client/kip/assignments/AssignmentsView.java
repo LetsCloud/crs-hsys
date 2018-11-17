@@ -25,7 +25,7 @@ public class AssignmentsView extends ViewWithUiHandlers<AssignmentsUiHandlers>
 	MaterialCollection materialCollection;
 
 	@UiField
-	SimplePanel modalSlot;
+	SimplePanel modalSlot, filterSlot;
 
 	/**
 	 */
@@ -33,6 +33,7 @@ public class AssignmentsView extends ViewWithUiHandlers<AssignmentsUiHandlers>
 	AssignmentsView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 
+		bindSlot(AssignmentsPresenter.SLOT_FILTER, filterSlot);		
 		bindSlot(AssignmentsPresenter.SLOT_ASSIGNMENTS, materialCollection);		
 		bindSlot(AssignmentsPresenter.SLOT_MODAL, modalSlot);		
 	}

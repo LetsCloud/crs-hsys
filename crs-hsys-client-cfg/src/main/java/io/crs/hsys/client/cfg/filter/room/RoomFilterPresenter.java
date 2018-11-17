@@ -12,7 +12,7 @@ import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
-import io.crs.hsys.client.cfg.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.cfg.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource;

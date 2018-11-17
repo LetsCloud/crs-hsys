@@ -6,7 +6,6 @@ package io.crs.hsys.client.cfg.editor.room;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -28,18 +27,17 @@ import io.crs.hsys.client.cfg.editor.AbstractEditorView;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.datasource.HotelDataSource;
-import io.crs.hsys.client.core.datasource.RoomTypeDataSource;
+import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.RoomResource;
-import io.crs.hsys.shared.constans.InventoryType;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.HotelDto;
 import io.crs.hsys.shared.dto.hotel.RoomAvailabilityDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
@@ -54,7 +52,7 @@ public class RoomEditorPresenter
 	private static Logger logger = Logger.getLogger(RoomEditorPresenter.class.getName());
 
 	public interface MyView extends AbstractEditorView<RoomDto>, HasUiHandlers<RoomEditorUiHandlers> {
-		void setRoomTypeData(List<RoomTypeDto> roomTypeData);
+		void setRoomTypeData(List<RoomTypeDtor> roomTypeData);
 
 		void displayError(EntityPropertyCode code, String message);
 	}
@@ -66,14 +64,14 @@ public class RoomEditorPresenter
 
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<RoomResource> resourceDelegate;
-	private final RoomTypeDataSource roomTypeDataSource;
+	private final RoomTypeDataSource2 roomTypeDataSource;
 	private final HotelDataSource hotelDataSource;
 	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
 
 	@Inject
 	RoomEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			ResourceDelegate<RoomResource> resourceDelegate, RoomTypeDataSource roomTypeDataSource,
+			ResourceDelegate<RoomResource> resourceDelegate, RoomTypeDataSource2 roomTypeDataSource,
 			HotelDataSource hotelDataSource, CurrentUser currentUser, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("RoomTypeEditorPresenter()");
@@ -90,18 +88,13 @@ public class RoomEditorPresenter
 
 	@Override
 	protected void loadData() {
-		roomTypeDataSource.setOnlyActive(true);
 		roomTypeDataSource.setHotelKey(filters.get(HOTEL_KEY));
-		roomTypeDataSource.setInventoryType(InventoryType.PHYS);
 		hotelDataSource.setWebSafeKey(filters.get(HOTEL_KEY));
 		
-		LoadCallback<RoomTypeDto> roomTypeLoadCallback = new LoadCallback<RoomTypeDto>() {
+		LoadCallback<RoomTypeDtor> roomTypeLoadCallback = new LoadCallback<RoomTypeDtor>() {
 			@Override
-			public void onSuccess(LoadResult<RoomTypeDto> loadResult) {
-				List<RoomTypeDto> filteredResult = loadResult.getData().stream()
-						.filter(roomType -> roomType.getInventoryType().equals(InventoryType.PHYS))
-						.collect(Collectors.toList());
-				getView().setRoomTypeData(filteredResult);
+			public void onSuccess(LoadResult<RoomTypeDtor> loadResult) {
+				getView().setRoomTypeData(loadResult.getData());
 				if (isNew()) {
 					LoadCallback<HotelDto> hotelLoadCallback = new LoadCallback<HotelDto>() {
 						@Override
@@ -128,7 +121,7 @@ public class RoomEditorPresenter
 				// TODO Auto-generated method stub
 			}
 		};
-		roomTypeDataSource.load(new LoadConfig<RoomTypeDto>(0, 0, null, null), roomTypeLoadCallback);
+		roomTypeDataSource.load(new LoadConfig<RoomTypeDtor>(0, 0, null, null), roomTypeLoadCallback);
 	}
 
 	@Override

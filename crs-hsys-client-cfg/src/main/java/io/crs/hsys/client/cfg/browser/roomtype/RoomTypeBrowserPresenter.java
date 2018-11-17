@@ -17,7 +17,7 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.browser.AbstractBrowserPresenter;
-import io.crs.hsys.client.cfg.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
 import io.crs.hsys.client.cfg.filter.roomtype.RoomTypeFilterPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
@@ -96,6 +96,7 @@ public class RoomTypeBrowserPresenter extends AbstractBrowserPresenter<RoomTypeD
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("RoomTypeTablePresenter().onFilterChange()");
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<RoomTypeDto>>() {
 			@Override
 			public void onSuccess(List<RoomTypeDto> result) {

@@ -28,8 +28,8 @@ import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hk.AssignmentSummaryDto;
+import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.app.KipAppPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
 /**

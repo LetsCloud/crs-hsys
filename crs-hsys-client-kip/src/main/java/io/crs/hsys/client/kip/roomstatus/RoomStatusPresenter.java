@@ -19,8 +19,8 @@ import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
+import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.app.KipAppPresenter;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent.RoomStatusFilterHandler;
 import io.crs.hsys.client.kip.roomstatus.filter.RoomStatusFilterPresenter;
