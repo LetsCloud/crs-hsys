@@ -1,119 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-	<title>MDI - Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<title>MDI - Test</title>
 
-	<!-- CSS  -->
-	<link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" type="text/css" rel="stylesheet">
-  
-	<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- CSS  -->
+<link
+	href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css"
+	type="text/css" rel="stylesheet">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<style>
+.room-item {
+	line-height: inherit !important;
+	padding: 0px !important;
+}
+
+.float-left {
+	float: left;
+}
+
+.cover {
+	color: white;
+}
+
+.conti {
+	width: 100%;
+	display: table;
+}
+
+.third {
+	display: table-cell;
+	float: left;
+	margin-bottom: 0px;
+}
+
+.room-status-and-number {
+	height: 100%;
+	text-align: center;
+	width: 180px;
+	display: table-cell;
+	float: left;
+	margin-bottom: 0px;
+}
+
+@media screen and (max-width: 600px) {
+	.room-status-and-number {
+		width: 180px;
+	}
+}
+
+.room-status {
+	font-size: 35px;
+}
+
+.room-number {
+	font-size: 20px;
+}
+
+.rubber-wrapper {
+	width: 100%;
+	display: table-cell;
+}
+
+.room-type-and-guest-number {
+	width: 40%;
+}
+
+.room-type {
+	font-size: 15px;
+}
+
+.guest-number {
+	font-size: 10px;
+}
+
+.guest-number span {
+	font-size: 25px;
+}
+
+.made-and-tasks {
+	width: 40%;
+}
+
+.made {
+	height: 30px;
+	font-size: 15px;
+}
+
+.tasks {
+	font-size: 18px;
+}
+
+.tasks span {
+	font-size: 20px;
+}
+
+.cleaning {
+	/*	width: 50%; */
 	
-	<style>
-		.room-item {
-			line-height: inherit !important;
-			padding: 0px !important;
-		}
-		.float-left {
-			float: left;
-		}
-		.cover {
-			color: white;
-		}
+}
 
-		.conti {
-			width: 100%;
-			display: table;
-		}
-		.third {
-			display: table-cell;
-			width: 33%;
-			float: left;
-			margin-bottom: 0px;
-		}
+.maintenance {
+	/*	width: 50%; */
+	
+}
 
-		.room-status-and-number {
-			height: 100%;
-			text-align: center;
-			width: 180px;
-			display: table-cell;
-		/*	float: left; */
-						margin-bottom: 0px;
-		}
-		.room-status {
-			font-size: 35px;
-		}
-		.room-number {
-			font-size: 20px;
-		}
+.occupancy-status {
+	width: 20%;
+	font-size: 12px;
+}
 
-		
-		.rubber-wrapper {
-			width: 100%;
-			display: table-cell;
-		}
+.status {
+	
+}
 
-		.room-type-and-guest-number {
-			/* padding: 5px; */
-		}
-		.room-type {
-			height: 30px;
-			font-size: 20px;
-		}
-		.guest-number {
-			font-size: 15px;
-		}
-		.guest-number span {
-			font-size: 25px;
-		}
+.status span {
+	font-size: 24px;
+}
 
+.box {
+	font-size: 30px
+}
 
-		.made-and-tasks {
-	/*		padding: 5px; */
-		}
-		.made {
-			height: 30px;
-			font-size: 15px;
-		}
-		.tasks {
-			font-size: 18px;
-		}
-		.tasks span {
-			font-size: 20px;
-		}	
-		.cleaning {
-			width: 50%;
-		}
-		.maintenance {
-			width: 50%;
-		}
+.status {
+	color: 30px
+}
 
-
-		.occupancy-status {
-			font-size: 12px;
-		}
-		.status {
-		}
-		.status span {
-			font-size: 24px;
-		}
-		
-		
-		.box {
-			font-size: 30px
-		}
-		.status {
-			color: 30px
-		}
-		.clearfix::after {
-			clear: both;
-		}		
-	</style>
+.clearfix::after {
+	clear: both;
+}
+</style>
 </head>
 <body>
 	<ul class="collection">
@@ -121,68 +147,60 @@
 		<li class="room-item collection-item">
 			<div class="conti clearfix">
 				<!-- Státusz és szobaszám -->
-				<div class="row red room-status-and-number">
+				<div class="row room-status-and-number center valign-wrapper red">
 					<!-- Státusz -->
-					<div class="col s12 m6 room-status red-text text-lighten-4">
+					<div class="col s12 m5 room-status red-text text-lighten-4">
 						<span class="mdi mdi-delete-circle-outline"></span>
 					</div>
 					<!-- Szobaszám -->
-					<div class="col s12 m6 valign-wrapper room-number white-text">
-						<div class="valign-wrapper">
-							AB9001
-						</div>
-					</div>
+					<div class="col s12 m7 room-number white-text">AB900</div>
 				</div>
-				
+
 				<div class="rubber-wrapper">
 					<!-- Szobatípus és létszám -->
-					<div class="row third room-type-and-guest-number float-left white grey-text text-darken-2">
+					<div
+						class="row third room-type-and-guest-number white grey-text text-darken-2 center valign-wrapper">
 						<!-- Szobatípus -->
-						<div class="col s12 m6 room-type">
-							DBLBXL
-						</div>
+						<div class="col s12 m6 room-type">DBLBXL</div>
 						<!-- Létszám -->
 						<div class="col s12 m6 guest-number">
-							<span class="mdi mdi-account"></span>
-							2/1/1/1
+							<span class="mdi mdi-account"></span> 2/1/1/1
 						</div>
 					</div>
 
 					<!-- Szobalány és feladatok -->
-					<div class="row third made-and-tasks float-left white grey-text text-darken-2">
+					<div
+						class="row center valign-wrapper third made-and-tasks white grey-text text-darken-2">
 						<!-- Szobalány -->
-						<div class="col s12 m6 made">
-							PIRI NÉNI
-						</div>
+						<div class="col s12 m6 made">PIRI NÉNI</div>
 						<div class="col s12 m6 tasks">
 							<!-- Karbantartás -->
-							<div class="cleaning float-left light-blue-text">
-								<span class="mdi mdi-brush"></span>
-								2
+							<div class="cleaning light-blue-text">
+								<span class="mdi mdi-brush"></span> 2
 							</div>
 							<!-- Takarítás -->
-							<div class="maintenance float-left purple-text">
-								<span class="mdi mdi-wrench"></span>
-								3
+							<div class="maintenance purple-text">
+								<span class="mdi mdi-wrench"></span> 3
 							</div>
 						</div>
-					</div>	
+					</div>
 
 					<!-- Foglaltsági státusz változás -->
-					<div class="row third float-left white black-text">
+					<div
+						class="row occupancy-status third center valign-wrapper white black-text">
 						<!-- Check-out -->
-						<div class="col s12 m6 status red-text occupancy-status">
+						<div class="col s12 m6 status red-text">
 							<span class="mdi mdi-arrow-up-bold-box"></span>
 						</div>
 						<!-- Check-in -->
-						<div class="col s12 m6 status green-text occupancy-status">
+						<div class="col s12 m6 status green-text">
 							<span class="mdi mdi-arrow-down-bold-box"></span>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</li>
-		
+
 		<!-- AB9002 számú szoba room-item -->
 		<li class="room-item collection-item">
 			<div class="conti clearfix">
@@ -193,44 +211,37 @@
 						<span class="mdi mdi-star-circle-outline"></span>
 					</div>
 					<!-- Szobaszám -->
-					<div class="room-number white-text">
-						AB9002
-					</div>
+					<div class="room-number white-text">AB9002</div>
 				</div>
 
 				<div class="rubber-wrapper">
 					<!-- Szobatípus és létszám -->
-					<div class="third room-type-and-guest-number float-left white grey-text text-darken-2">
+					<div
+						class="third room-type-and-guest-number float-left white grey-text text-darken-2">
 						<!-- Szobatípus -->
-						<div class="room-type">
-							DBLBXL
-						</div>
+						<div class="room-type">DBLBXL</div>
 						<!-- Létszám -->
 						<div class="guest-number">
-							<span class="mdi mdi-account"></span>
-							2/1/1/1
+							<span class="mdi mdi-account"></span> 2/1/1/1
 						</div>
 					</div>
 
 					<!-- Szobalány és feladatok -->
-					<div class="third made-and-tasks float-left white grey-text text-darken-2">
+					<div
+						class="third made-and-tasks float-left white grey-text text-darken-2">
 						<!-- Szobalány -->
-						<div class="made">
-							PIRI NÉNI
-						</div>
+						<div class="made">PIRI NÉNI</div>
 						<div class="tasks">
 							<!-- Karbantartás -->
 							<div class="cleaning float-left light-blue-text">
-								<span class="mdi mdi-brush"></span>
-								2
+								<span class="mdi mdi-brush"></span> 2
 							</div>
 							<!-- Takarítás -->
 							<div class="maintenance float-left purple-text">
-								<span class="mdi mdi-wrench"></span>
-								3
+								<span class="mdi mdi-wrench"></span> 3
 							</div>
 						</div>
-					</div>	
+					</div>
 
 					<!-- Foglaltsági státusz változás -->
 					<div class="third float-left white black-text">
@@ -243,10 +254,10 @@
 							<span class="mdi mdi-arrow-down-bold-box"></span>
 						</div>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</li>
-		
+
 		<!-- AB9003 számú szoba room-item -->
 		<li class="room-item collection-item">
 			<div class="conti clearfix">
@@ -257,44 +268,37 @@
 						<span class="mdi mdi-check-circle-outline"></span>
 					</div>
 					<!-- Szobaszám -->
-					<div class="room-number white-text">
-						AB9003
-					</div>
+					<div class="room-number white-text">AB9003</div>
 				</div>
 
 				<div class="rubber-wrapper">
 					<!-- Szobatípus és létszám -->
-					<div class="third room-type-and-guest-number float-left white grey-text text-darken-2">
+					<div
+						class="third room-type-and-guest-number float-left white grey-text text-darken-2">
 						<!-- Szobatípus -->
-						<div class="room-type">
-							DBLBXL
-						</div>
+						<div class="room-type">DBLBXL</div>
 						<!-- Létszám -->
 						<div class="guest-number">
-							<span class="mdi mdi-account"></span>
-							2/1/1/1
+							<span class="mdi mdi-account"></span> 2/1/1/1
 						</div>
 					</div>
 
 					<!-- Szobalány és feladatok -->
-					<div class="third made-and-tasks float-left white grey-text text-darken-2">
+					<div
+						class="third made-and-tasks float-left white grey-text text-darken-2">
 						<!-- Szobalány -->
-						<div class="made">
-							PIRI NÉNI
-						</div>
+						<div class="made">PIRI NÉNI</div>
 						<div class="tasks">
 							<!-- Karbantartás -->
 							<div class="cleaning float-left light-blue-text">
-								<span class="mdi mdi-brush"></span>
-								2
+								<span class="mdi mdi-brush"></span> 2
 							</div>
 							<!-- Takarítás -->
 							<div class="maintenance float-left purple-text">
-								<span class="mdi mdi-wrench"></span>
-								3
+								<span class="mdi mdi-wrench"></span> 3
 							</div>
 						</div>
-					</div>	
+					</div>
 
 					<!-- Foglaltsági státusz változás -->
 					<div class="third float-left white black-text">
@@ -307,10 +311,10 @@
 							<span class="mdi mdi-arrow-down-bold-box"></span>
 						</div>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</li>
-		
+
 		<!-- AB9004 számú szoba room-item -->
 		<li class="room-item collection-item">
 			<div class="conti clearfix">
@@ -321,44 +325,37 @@
 						<span class="mdi mdi-settings-outline"></span>
 					</div>
 					<!-- Szobaszám -->
-					<div class="room-number white-text">
-						AB9004
-					</div>
+					<div class="room-number white-text">AB9004</div>
 				</div>
 
 				<div class="rubber-wrapper">
 					<!-- Szobatípus és létszám -->
-					<div class="third room-type-and-guest-number float-left white grey-text text-darken-2">
+					<div
+						class="third room-type-and-guest-number float-left white grey-text text-darken-2">
 						<!-- Szobatípus -->
-						<div class="room-type">
-							DBLBXL
-						</div>
+						<div class="room-type">DBLBXL</div>
 						<!-- Létszám -->
 						<div class="guest-number cover">
-							<span class="mdi mdi-account"></span>
-							2/1/1/1
+							<span class="mdi mdi-account"></span> 2/1/1/1
 						</div>
 					</div>
 
 					<!-- Szobalány és feladatok -->
-					<div class="third made-and-tasks float-left white grey-text text-darken-2">
+					<div
+						class="third made-and-tasks float-left white grey-text text-darken-2">
 						<!-- Szobalány -->
-						<div class="made">
-							PIRI NÉNI
-						</div>
+						<div class="made">PIRI NÉNI</div>
 						<div class="tasks">
 							<!-- Karbantartás -->
 							<div class="cleaning float-left light-blue-text">
-								<span class="mdi mdi-brush"></span>
-								2
+								<span class="mdi mdi-brush"></span> 2
 							</div>
 							<!-- Takarítás -->
 							<div class="maintenance float-left purple-text">
-								<span class="mdi mdi-wrench"></span>
-								3
+								<span class="mdi mdi-wrench"></span> 3
 							</div>
 						</div>
-					</div>	
+					</div>
 
 					<!-- Foglaltsági státusz változás -->
 					<div class="third float-left white black-text">
@@ -368,14 +365,13 @@
 						</div>
 						<!-- Üres lesz -->
 						<div class="status grey-text occupancy-status">
-							<span class="mdi mdi-checkbox-blank-outline"></span>
-							nov.20
+							<span class="mdi mdi-checkbox-blank-outline"></span> nov.20
 						</div>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</li>
-		
+
 		<!-- AB9005 számú szoba room-item -->
 		<li class="room-item collection-item">
 			<div class="conti clearfix">
@@ -386,44 +382,36 @@
 						<span class="mdi mdi-eye-outline"></span>
 					</div>
 					<!-- Szobaszám -->
-					<div class="room-number white-text">
-						AB9005
-					</div>
+					<div class="room-number white-text">AB9005</div>
 				</div>
 
 				<div class="rubber-wrapper">
 					<!-- Szobatípus és létszám -->
-					<div class="third room-type-and-guest-number float-left white grey-text text-darken-2">
+					<div
+						class="third room-type-and-guest-number float-left white grey-text text-darken-2">
 						<!-- Szobatípus -->
-						<div class="room-type">
-							DBLBXL
-						</div>
+						<div class="room-type">DBLBXL</div>
 						<!-- Létszám -->
 						<div class="guest-number cover">
-							<span class="mdi mdi-account"></span>
-							2/1/1/1
+							<span class="mdi mdi-account"></span> 2/1/1/1
 						</div>
 					</div>
 
 					<!-- Szobalány és feladatok -->
 					<div class="third made-and-tasks float-left white white-text cover">
 						<!-- Szobalány -->
-						<div class="made">
-							PIRI NÉNI
-						</div>
+						<div class="made">PIRI NÉNI</div>
 						<div class="tasks">
 							<!-- Karbantartás -->
 							<div class="cleaning float-left white-text">
-								<span class="mdi mdi-brush"></span>
-								2
+								<span class="mdi mdi-brush"></span> 2
 							</div>
 							<!-- Takarítás -->
 							<div class="maintenance float-left white-text">
-								<span class="mdi mdi-wrench"></span>
-								3
+								<span class="mdi mdi-wrench"></span> 3
 							</div>
 						</div>
-					</div>	
+					</div>
 
 					<!-- Foglaltsági státusz változás -->
 					<div class="third float-left white">
@@ -433,17 +421,16 @@
 						</div>
 						<!-- Üres lesz -->
 						<div class="status white-text occupancy-status">
-							<span class="mdi mdi-checkbox-blank-outline"></span>
-							nov.20
+							<span class="mdi mdi-checkbox-blank-outline"></span> nov.20
 						</div>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</li>
-    </ul>
-	
-	
-	
+	</ul>
+
+
+
 	<!-- Szoba room-item -->
 	<div class="room-item clearfix">
 		<!-- Bal oldali státusz és szobaszám -->
@@ -453,26 +440,21 @@
 				<span class="mdi mdi-account mdi-rotate-45"></span>
 			</div>
 			<!-- Szobaszám -->
-			<div>
-				101
-			</div>
+			<div>101</div>
 		</div>
 
 		<!-- Szobatípus és létszám -->
 		<div class="float-left white black-text">
 			<!-- Szobatípus -->
-			<div>
-				DBLB
-			</div>
+			<div>DBLB</div>
 			<!-- Létszám -->
 			<div>
-				<span class="mdi mdi-account-star"></span>
-				2/1/1/1
+				<span class="mdi mdi-account-star"></span> 2/1/1/1
 			</div>
 		</div>
 	</div>
 
-		<!-- Szoba room-item -->
+	<!-- Szoba room-item -->
 	<div class="room-item clearfix">
 		<!-- Bal oldali státusz és szobaszám -->
 		<div class="float-left red room-status-and-number">
@@ -481,43 +463,35 @@
 				<span class="mdi mdi-delete-circle-outline"></span>
 			</div>
 			<!-- Szobaszám -->
-			<div class="room-number white-text">
-				AB9001
-			</div>
+			<div class="room-number white-text">AB9001</div>
 		</div>
 
 		<!-- Szobatípus és létszám -->
-		<div class="room-type-and-guest-number float-left white grey-text text-darken-2">
+		<div
+			class="room-type-and-guest-number float-left white grey-text text-darken-2">
 			<!-- Szobatípus -->
-			<div class="room-type">
-				DBLBXL
-			</div>
+			<div class="room-type">DBLBXL</div>
 			<!-- Létszám -->
 			<div class="guest-number">
-				<span class="mdi mdi-account"></span>
-				2/1/1/1
+				<span class="mdi mdi-account"></span> 2/1/1/1
 			</div>
 		</div>
 
 		<!-- Szobalány és feladatok -->
 		<div class="made-and-tasks float-left white grey-text text-darken-2">
 			<!-- Szobalány -->
-			<div class="made">
-				PIRI NÉNI
-			</div>
+			<div class="made">PIRI NÉNI</div>
 			<div class="tasks">
 				<!-- Karbantartás -->
 				<div class="cleaning float-left light-blue-text">
-					<span class="mdi mdi-brush"></span>
-					2
+					<span class="mdi mdi-brush"></span> 2
 				</div>
 				<!-- Takarítás -->
 				<div class="maintenance float-left purple-text">
-					<span class="mdi mdi-wrench"></span>
-					3
+					<span class="mdi mdi-wrench"></span> 3
 				</div>
 			</div>
-		</div>	
+		</div>
 
 		<!-- Érkezés, utazás  -->
 		<div class="float-left white black-text">
@@ -530,9 +504,9 @@
 					<span class="mdi mdi-arrow-down-bold-box"></span>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
-	
+
 	<!-- Szoba room-item -->
 	<div class="room-item clearfix">
 		<!-- Bal oldali státusz és szobaszám -->
@@ -542,75 +516,63 @@
 				<span class="mdi mdi-account mdi-rotate-45"></span>
 			</div>
 			<!-- Szobaszám -->
-			<div>
-				101
-			</div>
+			<div>101</div>
 		</div>
 
 		<!-- Szobatípus és létszám -->
 		<div class="float-left white black-text">
 			<!-- Szobatípus -->
-			<div>
-				DBLB
-			</div>
+			<div>DBLB</div>
 			<!-- Létszám -->
 			<div>
-				<span class="mdi mdi-account-star"></span>
-				2/1/1/1
+				<span class="mdi mdi-account-star"></span> 2/1/1/1
 			</div>
 		</div>
 
 		<!-- Szoba room-item -->
-	<div class="room-item clearfix">
-		<!-- Bal oldali státusz és szobaszám -->
-		<div class="float-left green white-text">
-			<!-- Státusz -->
-			<div>
-				<span class="mdi mdi-check-circle-outline"></span>
-			</div>
-			<!-- Szobaszám -->
-			<div>
-				101
-			</div>
-		</div>
-
-		<!-- Szobatípus és létszám -->
-		<div class="float-left white black-text">
-			<!-- Szobatípus -->
-			<div>
-				DBLB
-			</div>
-			<!-- Létszám -->
-			<div>
-				<span class="mdi mdi-account"></span>
-				2/1/1/1
-			</div>
-		</div>
-
-		<!-- Szobalány és feladatok -->
-		<div class="float-left white black-text">
-			<!-- Szobalány -->
-			<div>
-				PIRI
-			</div>
-			<div>
-				<!-- Karbantartás -->
-				<div class="float-left">
-					<span class="mdi mdi-account"></span>
-					2
+		<div class="room-item clearfix">
+			<!-- Bal oldali státusz és szobaszám -->
+			<div class="float-left green white-text">
+				<!-- Státusz -->
+				<div>
+					<span class="mdi mdi-check-circle-outline"></span>
 				</div>
-				<!-- Takarítás -->
-				<div class="float-left">
-					<span class="mdi mdi-account"></span>
-					3
+				<!-- Szobaszám -->
+				<div>101</div>
+			</div>
+
+			<!-- Szobatípus és létszám -->
+			<div class="float-left white black-text">
+				<!-- Szobatípus -->
+				<div>DBLB</div>
+				<!-- Létszám -->
+				<div>
+					<span class="mdi mdi-account"></span> 2/1/1/1
 				</div>
 			</div>
-		</div>	</div>
+
+			<!-- Szobalány és feladatok -->
+			<div class="float-left white black-text">
+				<!-- Szobalány -->
+				<div>PIRI</div>
+				<div>
+					<!-- Karbantartás -->
+					<div class="float-left">
+						<span class="mdi mdi-account"></span> 2
+					</div>
+					<!-- Takarítás -->
+					<div class="float-left">
+						<span class="mdi mdi-account"></span> 3
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
-	
-	
-	Bob lives in a <span class="mdi mdi-home"></span>.
+
+
+	Bob lives in a
+	<span class="mdi mdi-home"></span>.
 
 	<span class="mdi mdi-account mdi-rotate-45"></span>
 
@@ -633,7 +595,7 @@
 
 	<div class="box red-text">
 		<span class="mdi mdi-alpha-l-box">Late check-out</span>
-	</div>	
+	</div>
 	<span class="mdi mdi-account mdi-flip-v"></span>
 
 	<span class="mdi mdi-account mdi-spin">Processing</span>
@@ -641,11 +603,9 @@
 	<span class="mdi mdi-loading mdi-spin">Processing</span>
 
 	<div class="mdi-set">
-		<span class="mdi-star"></span>
-		<span class="mdi-star"></span>
-		<span class="mdi-star"></span>
-		<span class="mdi-star-outline"></span>
-		<span class="mdi-star-outline"></span>
+		<span class="mdi-star"></span> <span class="mdi-star"></span> <span
+			class="mdi-star"></span> <span class="mdi-star-outline"></span> <span
+			class="mdi-star-outline"></span>
 	</div>
- </body>
+</body>
 </html>
