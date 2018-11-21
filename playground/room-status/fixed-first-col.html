@@ -31,7 +31,7 @@
 }
 
 .fixed-col {
-	width: 180px;
+	width: 100px;
 	display: table-cell;
 	float: left;
 }
@@ -43,7 +43,7 @@
 }
 
 .room-status {
-	font-size: 35px;
+	font-size: 30px;
 }
 
 .room-number {
@@ -57,7 +57,7 @@
 	}
 }
 
-.flexy-wrapper {
+.flexi-wrapper {
 	width: 100%;
 	display: table-cell;
 	vertical-align: middle;
@@ -89,31 +89,43 @@
 }
 
 .made {
-	font-size: 15px;
+	font-size: 18px;
 }
 
 .tasks {
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .tasks span {
 	font-size: 20px;
 }
 
+
 .fourth-col {
 	width: 27%;
 }
 
 .occupancy-status {
-	font-size: 12px;
+	font-size: 15px;
 }
 
 .occupancy-status span {
 	font-size: 20px;
 }
 
+
 .margin-bottom-0 {
 	margin-bottom: 0px;
+}
+
+.padding-left-right-0 {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.padding-left-right-5 {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
 }
 </style>
 </head>
@@ -126,24 +138,23 @@
 				<div class="fixed-col">
 					<div class="row margin-bottom-0 center red">
 						<!-- Státusz -->
-						<div class="col s12 m4 room-status red-text text-lighten-4">
+						<div class="col s12 m3 room-status red-text text-lighten-4 padding-left-right-0">
 							<span class="mdi mdi-delete-circle-outline"></span>
 						</div>
 						<!-- Szobaszám -->
-						<div class="col s12 m8 room-number white-text">AB9001</div>
+						<div class="col s12 m9 room-number white-text padding-left-right-0">AB9001</div>
 					</div>
 				</div>
 
-				<div class="flexy-wrapper white grey-text text-darken-2">
+				<div class="flexi-wrapper white grey-text text-darken-2">
 					<!-- Szobatípus és létszám -->
 					<div class="flexi-col second-col">
 						<div class="row margin-bottom-0 center">
 							<!-- Szobatípus -->
-							<div class="col s12 m6 room-type">DBLBXL</div>
+							<div class="col s12 m6 room-type padding-left-right-5">DBLBXL</div>
 							<!-- Létszám -->
-							<div class="col s12 m6 guest-number">
-								<span class="mdi mdi-account"></span> 2/1/1/1
-							</div>
+							<div class="col s12 m6 guest-number padding-left-right-5">
+								<span class="mdi mdi-account"></span>2-1-1-1</div>
 						</div>
 					</div>
 
@@ -151,31 +162,30 @@
 					<div class="flexi-col third-col">
 						<div class="row margin-bottom-0 center">
 							<!-- Szobalány -->
-							<div class="col s12 m6 made">PIRI NÉNI</div>
-							<div class="col s12 m6">
+							<div class="col s12 m6 made padding-left-right-5">PIRI NÉNI</div>
+							<div class="col s12 m6 padding-left-right-5">
 								<!-- Karbantartás -->
-								<div class="col s6 tasks light-blue-text">
-									<span class="mdi mdi-brush"></span> 2
-								</div>
+								<div class="col s6 tasks light-blue-text padding-left-right-5">
+									<span class="mdi mdi-brush"></span>2</div>
 								<!-- Takarítás -->
-								<div class="col s6 tasks purple-text">
-									<span class="mdi mdi-wrench"></span> 3
-								</div>
+								<div class="col s6 tasks purple-text padding-left-right-5">
+									<span class="mdi mdi-wrench"></span>3</div>
 							</div>
 						</div>
 					</div>
+
 
 					<!-- Foglaltsági státusz változás -->
 					<div class="flexi-col fourth-col">
 						<div class="row margin-bottom-0">
 							<!-- Check-out -->
-							<div class="col s12 occupancy-status m6 red-text">
-								<span class="mdi mdi-arrow-up-bold-box"></span>
+							<div class="col s12 occupancy-status m6 red-text padding-left-right-5">
+								<span class="mdi mdi-arrow-up-box"></span>
 								10:00
 							</div>
 							<!-- Check-in -->
-							<div class="col s12 m6 occupancy-status green-text">
-								<span class="mdi mdi-arrow-down-bold-box"></span>
+							<div class="col s12 m6 occupancy-status green-text padding-left-right-5">
+								<span class="mdi mdi-arrow-down-box"></span>
 								14:00
 							</div>
 						</div>
