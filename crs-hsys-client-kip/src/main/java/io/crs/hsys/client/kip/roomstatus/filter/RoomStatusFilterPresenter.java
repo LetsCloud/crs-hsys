@@ -36,7 +36,7 @@ public class RoomStatusFilterPresenter
 	}
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_CHANGE_STATUS)
+	@NameToken(KipNameTokens.GUEST_ROOMS)
 	@UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<RoomStatusFilterPresenter> {
 	}

@@ -52,7 +52,7 @@ public class RoomStatusListPresenter extends Presenter<RoomStatusListPresenter.M
 	}
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_CHANGE_STATUS)
+	@NameToken(KipNameTokens.GUEST_ROOMS)
 	@UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<RoomStatusListPresenter> {
 	}

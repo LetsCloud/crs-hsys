@@ -109,7 +109,7 @@
 					<!-- Szobaszám -->
 					<m:MaterialColumn grid="s12 m9" textColor="WHITE"
 						addStyleNames="{style.room-number} {style.padding-left-right-0}">
-						<g:Label ui:field="roomNo" />
+						<g:Label ui:field="roomNoLabel" />
 					</m:MaterialColumn>
 				</m:MaterialRow>
 			</m.html:Div>
@@ -125,7 +125,7 @@
 						<!-- Szobatípus -->
 						<m:MaterialColumn grid="s12 m6"
 							addStyleNames="{style.padding-left-right-5}">
-							<g:Label ui:field="roomType"
+							<g:Label ui:field="roomTypeLabel"
 								addStyleNames="{style.value-text}" />
 						</m:MaterialColumn>
 						<!-- Létszám -->
@@ -133,7 +133,7 @@
 							addStyleNames="{style.padding-left-right-5}">
 							<m.ext:MaterialDesignIcon
 								iconType="ACCOUNT" addStyleNames="{style.value-icon}" />
-							<g:InlineLabel ui:field="guestNumber"
+							<g:InlineLabel ui:field="guestNumberLabel"
 								addStyleNames="{style.value-field}" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
@@ -147,7 +147,7 @@
 						<!-- Szobalány -->
 						<m:MaterialColumn grid="s12 m6"
 							addStyleNames="{style.padding-left-right-5}">
-							<g:Label ui:field="atendant"
+							<g:Label ui:field="atendantLabel"
 								addStyleNames="{style.value-text}" />
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s12 m6"
@@ -158,7 +158,7 @@
 								addStyleNames="{style.padding-left-right-5}">
 								<m.ext:MaterialDesignIcon
 									iconType="BRUSH" addStyleNames="{style.value-icon}" />
-								<g:InlineLabel ui:field="cleaning"
+								<g:InlineLabel ui:field="cleaningLabel"
 									addStyleNames="{style.value-field}" />
 							</m:MaterialColumn>
 							<!-- Takarítás -->
@@ -166,7 +166,7 @@
 								addStyleNames="{style.padding-left-right-5}">
 								<m.ext:MaterialDesignIcon
 									iconType="WRENCH" addStyleNames="{style.value-icon}" />
-								<g:InlineLabel ui:field="maintenance"
+								<g:InlineLabel ui:field="maintenanceLabel"
 									addStyleNames="{style.value-field}" />
 							</m:MaterialColumn>
 						</m:MaterialColumn>
@@ -181,7 +181,7 @@
 						<m:MaterialColumn ui:field="currOccStatusPanel" grid="s12 m6" textColor="RED"
 							addStyleNames="{style.padding-left-right-5}">
 							<m.ext:MaterialDesignIcon
-								ui:field="currOccStatus" addStyleNames="{style.value-icon}" />
+								ui:field="currOccStatusIcon" addStyleNames="{style.value-icon}" />
 							<g:InlineLabel ui:field="currOccLabel"
 								addStyleNames="{style.value-field}" />
 						</m:MaterialColumn>
@@ -189,7 +189,7 @@
 						<m:MaterialColumn ui:field="nextOccStatusPanel" grid="s12 m6" textColor="RED"
 							addStyleNames="{style.padding-left-right-5}">
 							<m.ext:MaterialDesignIcon
-								ui:field="nextOccStatus" addStyleNames="{style.value-icon}" />
+								ui:field="nextOccStatusIcon" addStyleNames="{style.value-icon}" />
 							<g:InlineLabel ui:field="nextOccLabel"
 								addStyleNames="{style.value-field}" />
 						</m:MaterialColumn>

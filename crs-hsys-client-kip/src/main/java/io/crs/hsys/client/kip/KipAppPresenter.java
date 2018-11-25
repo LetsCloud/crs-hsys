@@ -130,7 +130,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		areasMenuItem.setType(MenuItemType.MENU_ITEM);
 		areasMenuItem.setIcon(IconType.STORE.name());
 		areasMenuItem.setText(i18n.mainMenuGroupPublicAreas());
-		areasMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		areasMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS2);
 		menuItems.add(areasMenuItem);
 		
 		
@@ -148,7 +148,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		roomAssignMenuItem.setIndex(1);
 		roomAssignMenuItem.setType(MenuItemType.MENU_ITEM);
 		roomAssignMenuItem.setText(i18n.mainMenuItemRoomAssignment());
-		roomAssignMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		roomAssignMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS);
 		assignmentSubMenu.addItem(roomAssignMenuItem);
 
 		MenuItemDto areaAssigntMenuItem = new MenuItemDto();
@@ -175,7 +175,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		consumptionMenuItem.setIndex(1);
 		consumptionMenuItem.setType(MenuItemType.MENU_ITEM);
 		consumptionMenuItem.setText(i18n.mainMenuItemConsumption());
-		consumptionMenuItem.setNameToken(KipNameTokens.HK_CHANGE_STATUS);
+		consumptionMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS);
 		minibarSubMenu.addItem(consumptionMenuItem);
 		
 		menuItems.add(minibarSubMenu);

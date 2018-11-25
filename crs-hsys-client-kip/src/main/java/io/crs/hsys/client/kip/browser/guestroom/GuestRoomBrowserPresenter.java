@@ -52,7 +52,7 @@ public class GuestRoomBrowserPresenter
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.GUEST_ROOMS)
+	@NameToken(KipNameTokens.GUEST_ROOMS2)
 	interface MyProxy extends ProxyPlace<GuestRoomBrowserPresenter> {
 	}
 

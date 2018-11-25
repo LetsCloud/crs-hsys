@@ -3,6 +3,9 @@
  */
 package io.crs.hsys.client.kip.roomstatus;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,6 +27,7 @@ import io.crs.hsys.shared.constans.RoomStatus;
  *
  */
 public class RoomStatusWidget extends Composite {
+	private static final Logger logger = Logger.getLogger(RoomStatusWidget.class.getName());
 
 	private static RoomStatusWidgetUiBinder uiBinder = GWT.create(RoomStatusWidgetUiBinder.class);
 
@@ -37,43 +41,55 @@ public class RoomStatusWidget extends Composite {
 	MaterialColumn currOccStatusPanel, nextOccStatusPanel;
 
 	@UiField
-	MaterialDesignIcon statusIcon, currOccStatus, nextOccStatus;
+	MaterialDesignIcon statusIcon, currOccStatusIcon, nextOccStatusIcon;
 
 	@UiField
-	Label roomNo, roomType, atendant;
+	Label roomNoLabel, roomTypeLabel, atendantLabel;
 
 	@UiField
-	InlineLabel guestNumber, cleaning, maintenance, currOccLabel, nextOccLabel;
+	InlineLabel guestNumberLabel, cleaningLabel, maintenanceLabel, currOccLabel, nextOccLabel;
 
 	/**
 	 * 
 	 */
 	public RoomStatusWidget() {
+		logger.log(Level.INFO, "RoomStatusWidget()");
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	public RoomStatusWidget(String roomNo, RoomStatus roomStatus, String roomType, String guestNumber, String atendant,
-			Integer cleaningTasks, Integer maintTasks, OccStatus currOccStatus, String currOccLabel,
-			OccStatus nextOccStatus, String nextOccLabel) {
+			Integer cleaningTasks, Integer maintTasks, OccStatus currOccStatus, String currOccText,
+			OccStatus nextOccStatus, String nextOccText) {
 		this();
+
 		roomStatusPanel.setBackgroundColor(getStatusBgColor(roomStatus));
 		statusIcon.setTextColor(getStatusIconColor(roomStatus));
 		statusIcon.setIconType(getStatusIcon(roomStatus));
-		this.roomNo.setText(roomNo);
-		this.roomType.setText(roomType);
-		this.guestNumber.setText(guestNumber);
+		this.roomNoLabel.setText(roomNo);
+
+		this.roomTypeLabel.setText(roomType);
+		this.guestNumberLabel.setText(guestNumber);
+
 		if (atendant == null)
-			this.atendant.setText("BEOSZTATLAN");
+			this.atendantLabel.setText("BEOSZTATLAN");
 		else
-			this.atendant.setText(atendant);
-		cleaning.setText(cleaningTasks.toString());
-		maintenance.setText(maintTasks.toString());
+			this.atendantLabel.setText(atendant);
+		cleaningLabel.setText(cleaningTasks.toString());
+		maintenanceLabel.setText(maintTasks.toString());
+
 		currOccStatusPanel.setTextColor(getOccStatusColor(currOccStatus));
-		this.currOccStatus.setIconType(getOccStatusIcon(currOccStatus));
-		this.currOccLabel.setText(currOccLabel);
-		nextOccStatusPanel.setTextColor(getOccStatusColor(nextOccStatus));
-		this.nextOccStatus.setIconType(getOccStatusIcon(nextOccStatus));
-		this.nextOccLabel.setText(nextOccLabel);
+		currOccStatusIcon.setIconType(getOccStatusIcon(currOccStatus));
+		currOccLabel.setText(currOccText);
+
+		if (currOccStatus.equals(OccStatus.INHOUSE) || currOccStatus.equals(OccStatus.OOO)) {
+			logger.log(Level.INFO, "RoomStatusWidget()");
+			nextOccStatusPanel.setVisible(false);
+			currOccStatusPanel.setGrid("s12");
+		} else {
+			nextOccStatusPanel.setTextColor(getOccStatusColor(nextOccStatus));
+			nextOccStatusIcon.setIconType(getOccStatusIcon(nextOccStatus));
+			nextOccLabel.setText(nextOccText);
+		}
 	}
 
 	private Color getStatusBgColor(RoomStatus roomStatus) {
@@ -105,7 +121,7 @@ public class RoomStatusWidget extends Composite {
 		case INSPECTED:
 			return Color.GREEN_LIGHTEN_4;
 		case OOO:
-			return Color.GREY_LIGHTEN_4;
+			return Color.GREY;
 		case OOS:
 			return Color.PURPLE_LIGHTEN_4;
 		case SHOW:
@@ -177,7 +193,7 @@ public class RoomStatusWidget extends Composite {
 		case LATECO:
 			return MdiType.ALPHA_L_BOX;
 		case OOO:
-			return MdiType.SETTING_BOX;
+			return MdiType.SETTINGS_BOX;
 		case OOS:
 			return MdiType.CLOSE_BOX;
 		case SHOW:

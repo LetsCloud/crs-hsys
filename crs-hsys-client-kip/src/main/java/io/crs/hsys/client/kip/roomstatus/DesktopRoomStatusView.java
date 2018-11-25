@@ -24,7 +24,7 @@ import io.crs.hsys.shared.constans.RoomStatus;
  */
 public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 		implements RoomStatusPresenter.MyView {
-	private static final Logger LOGGER = Logger.getLogger(DesktopRoomStatusView.class.getName());
+	private static final Logger logger = Logger.getLogger(DesktopRoomStatusView.class.getName());
 
 	interface Binder extends UiBinder<Widget, DesktopRoomStatusView> {
 	}
@@ -36,7 +36,7 @@ public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandle
 	 */
 	@Inject
 	DesktopRoomStatusView(Binder uiBinder) {
-		LOGGER.log(Level.INFO, "RoomStatusView()");
+		logger.log(Level.INFO, "RoomStatusView()");
 		initWidget(uiBinder.createAndBindUi(this));
 		collection.add(new RoomStatusWidget("AB9001", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.CHECKIN, ""));
@@ -49,11 +49,13 @@ public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandle
 		collection.add(new RoomStatusWidget("AB9005", RoomStatus.INSPECTED, "TWINXL", "2-2-0-0", null, 1, 2,
 				OccStatus.INHOUSE, "", OccStatus.INHOUSE, ""));
 		collection.add(new RoomStatusWidget("AB9006", RoomStatus.OOO, "TWINXL", "2-0-0-1", "Háká Kata", 2, 1,
-				OccStatus.VACANT, "", OccStatus.VACANT, ""));
+				OccStatus.OOO, "2018.12.06.", OccStatus.VACANT, ""));
 		collection.add(new RoomStatusWidget("AB9007", RoomStatus.OOS, "TWINXL", "2-0-2-0", "Partfis Piri", 2, 0,
-				OccStatus.VACANT, "", OccStatus.CHECKIN, ""));
+				OccStatus.OOS, "", OccStatus.CHECKIN, ""));
 		collection.add(new RoomStatusWidget("AB9008", RoomStatus.SHOW, "TWINXL", "1-1-0-0", null, 1, 0,
-				OccStatus.VACANT, "", OccStatus.VACANT, ""));
+				OccStatus.SHOW, "", OccStatus.VACANT, ""));
+		collection.add(new RoomStatusWidget("AB9009", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
+				OccStatus.CHECKOUT, "", OccStatus.OOO, ""));
 	}
 
 	@Override
