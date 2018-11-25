@@ -44,8 +44,8 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	interface MyProxy extends Proxy<KipAppPresenter> {
 	}
 
-	private final GfilterDisplayPresenter gfilterDisplayPresenter;
-	private GfilterConfigPresenter gfilterConfigPresenter;
+//	private final GfilterDisplayPresenter gfilterDisplayPresenter;
+//	private GfilterConfigPresenter gfilterConfigPresenter;
 
 	@Inject
 	KipAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, KipMessages i18n,
@@ -58,18 +58,18 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 		this.i18n = i18n;
 		this.resources = resources;
-		this.gfilterDisplayPresenter = gfilterDisplayPresenter;
-		gfilterConfigPresenter = gfilterConfigPresenterFactory.createGfilterConfigPresenter();
+//		this.gfilterDisplayPresenter = gfilterDisplayPresenter;
+//		gfilterConfigPresenter = gfilterConfigPresenterFactory.createGfilterConfigPresenter();
 	}
 
 	@Override
 	protected void onBind() {
 		super.onBind();
-		setInSlot(SLOT_MODAL, gfilterConfigPresenter);
+//		setInSlot(SLOT_MODAL, gfilterConfigPresenter);
 		getMenuPresenter().setMenuItems(createMenuitems());
 		getMenuPresenter().setProfileBackground(resources.profileBackgroundImg());
-		getMenuPresenter().setNavBarWidget(gfilterDisplayPresenter);
-		gfilterDisplayPresenter.setGfilterConfigPresenter(gfilterConfigPresenter);
+//		getMenuPresenter().setNavBarWidget(gfilterDisplayPresenter);
+//		gfilterDisplayPresenter.setGfilterConfigPresenter(gfilterConfigPresenter);
 	}
 
 	private List<MenuItemDto> createMenuitems() {
