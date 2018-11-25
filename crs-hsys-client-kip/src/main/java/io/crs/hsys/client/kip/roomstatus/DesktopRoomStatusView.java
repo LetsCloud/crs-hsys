@@ -41,19 +41,19 @@ public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandle
 		collection.add(new RoomStatusWidget("AB9001", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.CHECKIN, ""));
 		collection.add(new RoomStatusWidget("AB9002", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
-				OccStatus.LATECO, "18:00", OccStatus.VACANT, ""));
+				OccStatus.LATECO, "18:00", OccStatus.VACANT, "", true));
 		collection.add(new RoomStatusWidget("AB9003", RoomStatus.CLEAN, "TWINXL", "2-0-0-0", "Háká Kata", 2, 1,
 				OccStatus.VACANT, "", OccStatus.EARLYCI, "10:00"));
 		collection.add(new RoomStatusWidget("AB9004", RoomStatus.INSPECTED, "TWINXL", "2-2-0-0", null, 1, 2,
-				OccStatus.CHECKOUT, "OUT", OccStatus.CHECKIN, "IN"));
+				OccStatus.CHECKOUT, "OUT", OccStatus.CHECKIN, "IN", true));
 		collection.add(new RoomStatusWidget("AB9005", RoomStatus.INSPECTED, "TWINXL", "2-2-0-0", null, 1, 2,
 				OccStatus.INHOUSE, "", OccStatus.INHOUSE, ""));
 		collection.add(new RoomStatusWidget("AB9006", RoomStatus.OOO, "TWINXL", "2-0-0-1", "Háká Kata", 2, 1,
-				OccStatus.OOO, "2018.12.06.", OccStatus.VACANT, ""));
+				OccStatus.OOO, "dec.06.", OccStatus.VACANT, "", true));
 		collection.add(new RoomStatusWidget("AB9007", RoomStatus.OOS, "TWINXL", "2-0-2-0", "Partfis Piri", 2, 0,
 				OccStatus.OOS, "", OccStatus.CHECKIN, ""));
 		collection.add(new RoomStatusWidget("AB9008", RoomStatus.SHOW, "TWINXL", "1-1-0-0", null, 1, 0,
-				OccStatus.SHOW, "", OccStatus.VACANT, ""));
+				OccStatus.SHOW, "", OccStatus.VACANT, "", true));
 		collection.add(new RoomStatusWidget("AB9009", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.OOO, ""));
 	}

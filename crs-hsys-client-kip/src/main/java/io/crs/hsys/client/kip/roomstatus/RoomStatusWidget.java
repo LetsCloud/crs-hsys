@@ -7,8 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Label;
@@ -16,9 +19,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.addext.client.ui.MaterialDesignIcon;
 import gwt.material.design.addext.client.ui.constants.MdiType;
+import gwt.material.design.addins.client.cutout.MaterialCutOut;
+import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialColumn;
+import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialRow;
+import gwt.material.design.client.ui.html.Div;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
 
@@ -49,12 +56,21 @@ public class RoomStatusWidget extends Composite {
 	@UiField
 	InlineLabel guestNumberLabel, cleaningLabel, maintenanceLabel, currOccLabel, nextOccLabel;
 
+	@UiField
+	Div contentPanel, flexiPanel;
+
+	@UiField
+	MaterialOverlay overlay;
+
 	/**
 	 * 
 	 */
 	public RoomStatusWidget() {
 		logger.log(Level.INFO, "RoomStatusWidget()");
 		initWidget(uiBinder.createAndBindUi(this));
+//		overlay.setBackfaceVisibility("50");
+//		overlay.setDuration(500);
+//		overlay.setOpacity(0.8);
 	}
 
 	public RoomStatusWidget(String roomNo, RoomStatus roomStatus, String roomType, String guestNumber, String atendant,
@@ -70,10 +86,13 @@ public class RoomStatusWidget extends Composite {
 		this.roomTypeLabel.setText(roomType);
 		this.guestNumberLabel.setText(guestNumber);
 
-		if (atendant == null)
-			this.atendantLabel.setText("BEOSZTATLAN");
-		else
-			this.atendantLabel.setText(atendant);
+		if (atendant == null) {
+			atendantLabel.setText("Beosztatlan");
+			atendantLabel.getElement().getStyle().setColor("#bdbdbd");
+//			atendantLabel.getElement().getStyle().setFontSize(14, Unit.PX);
+		} else {
+			atendantLabel.setText(atendant);
+		}
 		cleaningLabel.setText(cleaningTasks.toString());
 		maintenanceLabel.setText(maintTasks.toString());
 
@@ -82,7 +101,6 @@ public class RoomStatusWidget extends Composite {
 		currOccLabel.setText(currOccText);
 
 		if (currOccStatus.equals(OccStatus.INHOUSE) || currOccStatus.equals(OccStatus.OOO)) {
-			logger.log(Level.INFO, "RoomStatusWidget()");
 			nextOccStatusPanel.setVisible(false);
 			currOccStatusPanel.setGrid("s12");
 		} else {
@@ -90,6 +108,15 @@ public class RoomStatusWidget extends Composite {
 			nextOccStatusIcon.setIconType(getOccStatusIcon(nextOccStatus));
 			nextOccLabel.setText(nextOccText);
 		}
+	}
+
+	public RoomStatusWidget(String roomNo, RoomStatus roomStatus, String roomType, String guestNumber, String atendant,
+			Integer cleaningTasks, Integer maintTasks, OccStatus currOccStatus, String currOccText,
+			OccStatus nextOccStatus, String nextOccText, Boolean oddItem) {
+		this(roomNo, roomStatus, roomType, guestNumber, atendant, cleaningTasks, maintTasks, currOccStatus, currOccText,
+				nextOccStatus, nextOccText);
+		if (oddItem)
+			setBackgroundColor(Color.GREY_LIGHTEN_4);
 	}
 
 	private Color getStatusBgColor(RoomStatus roomStatus) {
@@ -202,5 +229,19 @@ public class RoomStatusWidget extends Composite {
 			break;
 		}
 		return null;
+	}
+
+	@UiHandler("contentPanel")
+	public void onContentClick(ClickEvent event) {
+		overlay.open();
+	}
+
+	@UiHandler("btnCutOutClose")
+	public void btnCutOutClose(ClickEvent event) {
+		overlay.close();
+	}
+
+	public void setBackgroundColor(Color color) {
+		flexiPanel.setBackgroundColor(color);
 	}
 }
