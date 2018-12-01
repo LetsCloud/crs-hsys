@@ -8,9 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.TaskType;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**
  * @author robi
@@ -19,67 +20,53 @@ import io.crs.hsys.shared.dto.common.AppUserDto;
 @SuppressWarnings("serial")
 public class TaskDto extends AccountChildDto {
 
-	private TaskType type;
+	private TaskKind kind;
+	
+	private TaskTypeDto type;
+
+	private Date created;
+
+	private Date updated;
 	
 	private TaskStatus status;
 
 	private String title;
 
-	private AppUserDto reporter;
+	private String description;
 
-	private AppUserDto assignee;
+	private AppUserDtor reporter;
 
-	private AppUserDto inspector;
+	private AppUserDtor assignee;
 
-	private List<AppUserDto> assignies = new ArrayList<AppUserDto>();
+	private AppUserDtor inspector;
 
-	private Date created;
-
-	private Date updated;
+	private List<AppUserDtor> assignies = new ArrayList<AppUserDtor>();
 
 	private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 
 	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
-	private String description;
-
 	public TaskDto() {
 	}
 
-	public TaskDto(TaskType type, String title, Date created, Date updated, List<TaskAttrDto> attributes,
+	public TaskDto(TaskKind type, String title, Date created, Date updated, List<TaskAttrDto> attributes,
 			String description) {
 	}
 
-	public TaskType getType() {
+	public TaskKind getKind() {
+		return kind;
+	}
+
+	public void setKind(TaskKind kind) {
+		this.kind = kind;
+	}
+
+	public TaskTypeDto getType() {
 		return type;
 	}
 
-	public void setType(TaskType type) {
+	public void setType(TaskTypeDto type) {
 		this.type = type;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public AppUserDto getReporter() {
-		return reporter;
-	}
-
-	public void setReporter(AppUserDto reporter) {
-		this.reporter = reporter;
-	}
-
-	public List<AppUserDto> getAssignies() {
-		return assignies;
-	}
-
-	public void setAssignies(List<AppUserDto> assignies) {
-		this.assignies = assignies;
 	}
 
 	public Date getCreated() {
@@ -98,12 +85,20 @@ public class TaskDto extends AccountChildDto {
 		this.updated = updated;
 	}
 
-	public List<TaskAttrDto> getAttributes() {
-		return attributes;
+	public TaskStatus getStatus() {
+		return status;
 	}
 
-	public void setAttributes(List<TaskAttrDto> attributes) {
-		this.attributes = attributes;
+	public void setStatus(TaskStatus status) {
+		this.status = status;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -114,19 +109,47 @@ public class TaskDto extends AccountChildDto {
 		this.description = description;
 	}
 
-	public AppUserDto getAssignee() {
+	
+	
+	
+	
+	public AppUserDtor getReporter() {
+		return reporter;
+	}
+
+	public void setReporter(AppUserDtor reporter) {
+		this.reporter = reporter;
+	}
+
+	public List<AppUserDtor> getAssignies() {
+		return assignies;
+	}
+
+	public void setAssignies(List<AppUserDtor> assignies) {
+		this.assignies = assignies;
+	}
+
+	public List<TaskAttrDto> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(List<TaskAttrDto> attributes) {
+		this.attributes = attributes;
+	}
+
+	public AppUserDtor getAssignee() {
 		return assignee;
 	}
 
-	public void setAssignee(AppUserDto assignee) {
+	public void setAssignee(AppUserDtor assignee) {
 		this.assignee = assignee;
 	}
 
-	public AppUserDto getInspector() {
+	public AppUserDtor getInspector() {
 		return inspector;
 	}
 
-	public void setInspector(AppUserDto inspector) {
+	public void setInspector(AppUserDtor inspector) {
 		this.inspector = inspector;
 	}
 
@@ -138,12 +161,60 @@ public class TaskDto extends AccountChildDto {
 		this.notes = notes;
 	}
 
-	public TaskStatus getStatus() {
-		return status;
-	}
+	public static class Builder {
 
-	public void setStatus(TaskStatus status) {
-		this.status = status;
+		private TaskKind kind;
+		private TaskTypeDto type;
+		private Date created;
+		private Date updated;
+		private TaskStatus status;
+		private String title;
+		private String description;
+		private AppUserDtor reporter;
+		private AppUserDtor assignee;
+		private AppUserDtor inspector;
+		private List<AppUserDto> assignies = new ArrayList<AppUserDto>();
+		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
+		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
+
+		public Builder() {
+		}
+
+		public Builder kind(TaskKind kind) {
+			this.kind = kind;
+			return this;
+		}
+
+		public Builder type(TaskTypeDto type) {
+			this.type = type;
+			return this;
+		}
+
+		public Builder created(Date created) {
+			this.created = created;
+			return this;
+		}
+
+		public Builder status(TaskStatus status) {
+			this.status = status;
+			return this;
+		}
+
+		public Builder assignee(AppUserDtor assignee) {
+			this.assignee = assignee;
+			return this;
+		}
+
+		public TaskDto build() {
+			TaskDto result = new TaskDto();
+			result.setKind(kind);
+			result.setType(type);
+			result.setCreated(created);
+			result.setUpdated(updated);
+			result.setStatus(status);
+			result.setAssignee(assignee);
+			return result;
+		}
 	}
 
 }

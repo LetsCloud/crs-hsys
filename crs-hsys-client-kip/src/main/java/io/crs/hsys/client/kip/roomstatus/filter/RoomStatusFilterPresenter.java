@@ -19,7 +19,6 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.roomstatus.RoomStatusPresenter;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 
 /**
@@ -43,7 +42,7 @@ public class RoomStatusFilterPresenter
 
 	@Inject
 	RoomStatusFilterPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
-		super(eventBus, view, proxy, RoomStatusPresenter.SLOT_FILTER);
+		super(eventBus, view, proxy);
 		LOGGER.log(Level.INFO, "RoomStatusFilterPresenter()");
 		getView().setUiHandlers(this);
 	}

@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import io.crs.hsys.shared.constans.FoRoomStatus;
+import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
 
 /**
@@ -40,14 +40,14 @@ public class RoomDto extends HotelChildDto {
 	private RoomStatus roomStatus;
 
 	/**
-	 * Foglalt e a szoba
+	 * 
 	 */
-	private Boolean occupied;
+	private RoomOccDto currOccStatus;
 
 	/**
-	 * A szoba front office státusza.
+	 * 
 	 */
-	private FoRoomStatus foRoomStatus;
+	private RoomOccDto nextOccStatus;
 
 	/**
 	 * Szobatípus hivatkozás
@@ -58,6 +58,20 @@ public class RoomDto extends HotelChildDto {
 	 * Szoba nyitások és zárások
 	 */
 	private List<RoomAvailabilityDto> roomAvailabilities = new ArrayList<RoomAvailabilityDto>();
+
+	public RoomDto() {
+	}
+
+	public RoomDto(String code, String floor, String description, RoomStatus roomStatus, RoomTypeDtor roomType,
+			String guestNumber, String atendant, Integer cleaningTasks, Integer maintTasks, OccStatus occStatus,
+			String currOccText, OccStatus nextOccStatus, String nextOccText) {
+		this();
+		this.code = code;
+		this.floor = floor;
+		this.description = description;
+		this.roomStatus = roomStatus;
+		this.roomType = roomType;
+	}
 
 	public String getCode() {
 		return code;
@@ -91,20 +105,20 @@ public class RoomDto extends HotelChildDto {
 		this.roomStatus = roomStatus;
 	}
 
-	public Boolean getOccupied() {
-		return occupied;
+	public RoomOccDto getCurrOccStatus() {
+		return currOccStatus;
 	}
 
-	public void setOccupied(Boolean occupied) {
-		this.occupied = occupied;
+	public void setCurrOccStatus(RoomOccDto currOccStatus) {
+		this.currOccStatus = currOccStatus;
 	}
 
-	public FoRoomStatus getFoRoomStatus() {
-		return foRoomStatus;
+	public RoomOccDto getNextOccStatus() {
+		return nextOccStatus;
 	}
 
-	public void setFoRoomStatus(FoRoomStatus foRoomStatus) {
-		this.foRoomStatus = foRoomStatus;
+	public void setNextOccStatus(RoomOccDto nextOccStatus) {
+		this.nextOccStatus = nextOccStatus;
 	}
 
 	public RoomTypeDtor getRoomType() {
@@ -131,9 +145,8 @@ public class RoomDto extends HotelChildDto {
 	@Override
 	public String toString() {
 		return "RoomDto [" + super.toString() + ", code=" + this.code + ", floor=" + this.floor + ", description="
-				+ this.description + ", roomType=" + this.roomType + ", roomStatus=" + this.roomStatus + ", occupied="
-				+ this.occupied + ", foRoomStatus=" + this.foRoomStatus + ", roomAvailabilies="
-				+ this.roomAvailabilities + "]";
+				+ this.description + ", roomType=" + this.roomType + ", roomStatus=" + this.roomStatus
+				+ ", roomAvailabilies=" + this.roomAvailabilities + "]";
 	}
 
 	@JsonIgnore
@@ -149,55 +162,55 @@ public class RoomDto extends HotelChildDto {
 		private String floor;
 		private String description;
 		private RoomStatus roomStatus;
-		private Boolean occupied;
-		private FoRoomStatus foRoomStatus;
+		private RoomOccDto currOccStatus;
+		private RoomOccDto nextOccStatus;
 		private RoomTypeDtor roomType;
-		
+
 		public Builder code(String code) {
 			this.code = code;
 			return this;
 		}
-		
+
 		public Builder floor(String floor) {
 			this.floor = floor;
 			return this;
 		}
-		
+
 		public Builder description(String description) {
 			this.description = description;
 			return this;
 		}
-		
+
 		public Builder roomStatus(RoomStatus roomStatus) {
 			this.roomStatus = roomStatus;
 			return this;
 		}
-		
-		public Builder occupied(Boolean occupied) {
-			this.occupied = occupied;
+
+		public Builder currOccStatus(RoomOccDto currOccStatus) {
+			this.currOccStatus = currOccStatus;
 			return this;
 		}
-		
-		public Builder foRoomStatus(FoRoomStatus foRoomStatus) {
-			this.foRoomStatus = foRoomStatus;
+
+		public Builder nextOccStatus(RoomOccDto nextOccStatus) {
+			this.nextOccStatus = nextOccStatus;
 			return this;
 		}
-		
+
 		public Builder roomType(RoomTypeDtor roomType) {
 			this.roomType = roomType;
 			return this;
 		}
-		
+
 		public RoomDto build() {
-			RoomDto dto = new  RoomDto();
+			RoomDto dto = new RoomDto();
 			dto.setCode(code);
 			dto.setDescription(description);
 			dto.setFloor(floor);
-			dto.setFoRoomStatus(foRoomStatus);
-			dto.setOccupied(occupied);
+			dto.setCurrOccStatus(currOccStatus);
+			dto.setNextOccStatus(nextOccStatus);
 			dto.setRoomStatus(roomStatus);
 			dto.setRoomType(roomType);
 			return dto;
 		}
-	}	
+	}
 }

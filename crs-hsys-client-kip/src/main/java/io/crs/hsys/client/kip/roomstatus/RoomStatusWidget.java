@@ -3,11 +3,12 @@
  */
 package io.crs.hsys.client.kip.roomstatus;
 
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -19,15 +20,18 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.addext.client.ui.MaterialDesignIcon;
 import gwt.material.design.addext.client.ui.constants.MdiType;
-import gwt.material.design.addins.client.cutout.MaterialCutOut;
-import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialColumn;
-import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.html.Div;
+
+import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.dto.hk.RoomStatusDto;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
  * @author robi
@@ -59,9 +63,6 @@ public class RoomStatusWidget extends Composite {
 	@UiField
 	Div contentPanel, flexiPanel;
 
-	@UiField
-	MaterialOverlay overlay;
-
 	/**
 	 * 
 	 */
@@ -71,6 +72,52 @@ public class RoomStatusWidget extends Composite {
 //		overlay.setBackfaceVisibility("50");
 //		overlay.setDuration(500);
 //		overlay.setOpacity(0.8);
+	}
+
+	public RoomStatusWidget(RoomStatusDto roomStatus) {
+		this();
+
+		roomStatusPanel.setBackgroundColor(getStatusBgColor(roomStatus.getRoom().getRoomStatus()));
+		statusIcon.setTextColor(getStatusIconColor(roomStatus.getRoom().getRoomStatus()));
+		statusIcon.setIconType(getStatusIcon(roomStatus.getRoom().getRoomStatus()));
+		this.roomNoLabel.setText(roomStatus.getRoom().getCode());
+
+		this.roomTypeLabel.setText(roomStatus.getRoom().getRoomType().getCode());
+		this.guestNumberLabel.setText(roomStatus.getRoom().getCurrOccStatus().getGuestNumber().toString());
+
+		Supplier<Stream<TaskDto>> cleaningTasks = () -> roomStatus.getTasks().stream()
+				.filter(o -> o.getKind().equals(TaskKind.CLEANING));
+
+		Supplier<Stream<TaskDto>> attendantTasks = () -> cleaningTasks.get().filter(o -> o.getAssignee() != null);
+
+		if (attendantTasks.get().count() == 0) {
+			atendantLabel.setText("Beosztatlan");
+			atendantLabel.getElement().getStyle().setColor("#bdbdbd");
+//			atendantLabel.getElement().getStyle().setFontSize(14, Unit.PX);
+		} else {
+			atendantLabel.setText(attendantTasks.get().findFirst().get().getAssignee().getName());
+		}
+
+		cleaningLabel.setText(Long.toString(cleaningTasks.get().count()));
+
+		Supplier<Stream<TaskDto>> maintenanceTasks = () -> roomStatus.getTasks().stream()
+				.filter(o -> o.getKind().equals(TaskKind.MAINTENANCE));
+		
+		maintenanceLabel.setText(Long.toString(maintenanceTasks.get().count()));
+
+		currOccStatusPanel.setTextColor(getOccStatusColor(roomStatus.getRoom().getCurrOccStatus().getStatus()));
+		currOccStatusIcon.setIconType(getOccStatusIcon(roomStatus.getRoom().getCurrOccStatus().getStatus()));
+		currOccLabel.setText(roomStatus.getRoom().getCurrOccStatus().getNotice());
+
+		if (roomStatus.getRoom().getCurrOccStatus().getStatus().equals(OccStatus.INHOUSE)
+				|| roomStatus.getRoom().getCurrOccStatus().getStatus().equals(OccStatus.OOO)) {
+			nextOccStatusPanel.setVisible(false);
+			currOccStatusPanel.setGrid("s12");
+		} else {
+			nextOccStatusPanel.setTextColor(getOccStatusColor(roomStatus.getRoom().getNextOccStatus().getStatus()));
+			nextOccStatusIcon.setIconType(getOccStatusIcon(roomStatus.getRoom().getNextOccStatus().getStatus()));
+			nextOccLabel.setText(roomStatus.getRoom().getNextOccStatus().getNotice());
+		}
 	}
 
 	public RoomStatusWidget(String roomNo, RoomStatus roomStatus, String roomType, String guestNumber, String atendant,
@@ -233,12 +280,7 @@ public class RoomStatusWidget extends Composite {
 
 	@UiHandler("contentPanel")
 	public void onContentClick(ClickEvent event) {
-		overlay.open();
-	}
-
-	@UiHandler("btnCutOutClose")
-	public void btnCutOutClose(ClickEvent event) {
-		overlay.close();
+		RoomStatusEditEvent.fire(this, new RoomDto());
 	}
 
 	public void setBackgroundColor(Color color) {

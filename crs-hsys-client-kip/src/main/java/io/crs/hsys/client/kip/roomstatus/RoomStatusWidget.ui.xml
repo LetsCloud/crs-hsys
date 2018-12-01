@@ -97,16 +97,6 @@
 	<m:MaterialCollectionItem
 		addStyleNames="{style.room-status-item}">
 
-		<ma:overlay.MaterialOverlay
-			ui:field="overlay" backgroundColor="BLUE" textAlign="CENTER" textColor="WHITE">
-			
-			<m:MaterialTitle title="New Feature"
-				description="Description of your new Feature" textColor="WHITE" textAlign="CENTER" />
-
-			<m:MaterialButton text="Close"
-				ui:field="btnCutOutClose" textColor="BLUE" backgroundColor="WHITE" textAlign="CENTER" />
-		</ma:overlay.MaterialOverlay>
-
 		<m.html:Div ui:field="contentPanel"
 			addStyleNames="{style.conti}">
 			<!-- Státusz és szobaszám -->

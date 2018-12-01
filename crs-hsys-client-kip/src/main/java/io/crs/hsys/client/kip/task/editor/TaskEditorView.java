@@ -19,6 +19,7 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -43,18 +44,18 @@ public class TaskEditorView extends Composite implements Editor<TaskDto> {
 
 	@UiField
 	@Ignore
-	MaterialComboBox<AppUserDto> reporterCombo;
-	TakesValueEditor<AppUserDto> reporter;
+	MaterialComboBox<AppUserDtor> reporterCombo;
+	TakesValueEditor<AppUserDtor> reporter;
 
 	@UiField
 	@Ignore
-	MaterialComboBox<AppUserDto> assigneeCombo;
-	TakesValueEditor<AppUserDto> assignee;
+	MaterialComboBox<AppUserDtor> assigneeCombo;
+	TakesValueEditor<AppUserDtor> assignee;
 
 	@UiField
 	@Ignore
-	MaterialComboBox<AppUserDto> inspectorCombo;
-	TakesValueEditor<AppUserDto> inspector;
+	MaterialComboBox<AppUserDtor> inspectorCombo;
+	TakesValueEditor<AppUserDtor> inspector;
 
 	/**
 	 * 
@@ -63,13 +64,13 @@ public class TaskEditorView extends Composite implements Editor<TaskDto> {
 	TaskEditorView(Binder uiBinder, Driver driver) {
 		initWidget(uiBinder.createAndBindUi(this));
 
-		assignee = TakesValueEditor.of(new TakesValue<AppUserDto>() {
+		assignee = TakesValueEditor.of(new TakesValue<AppUserDtor>() {
 			@Override
-			public void setValue(AppUserDto value) {
+			public void setValue(AppUserDtor value) {
 				assigneeCombo.setSingleValue(value);
 			}
 			@Override
-			public AppUserDto getValue() {
+			public AppUserDtor getValue() {
 				return assigneeCombo.getSingleValue();
 			}
 		});

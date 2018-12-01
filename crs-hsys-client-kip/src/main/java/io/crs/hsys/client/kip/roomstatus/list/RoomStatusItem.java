@@ -74,11 +74,11 @@ public class RoomStatusItem extends Composite implements HasRoomStatusEditHandle
 
 	public void updateRoom(RoomDto roomDto) {
 		this.roomDto = roomDto;
-		if (!roomDto.getOccupied())
-			code.setBackgroundColor(Color.WHITE);
+//		if (!roomDto.getOccupied())
+//			code.setBackgroundColor(Color.WHITE);
 		code.setLetter(roomDto.getCode());
-		code.setText(i18nRoomStatus.roomStatusAbbrMap().get(roomDto.getRoomStatus().name()) + "/"
-				+ roomDto.getFoRoomStatus());
+//		code.setText(i18nRoomStatus.roomStatusAbbrMap().get(roomDto.getRoomStatus().name()) + "/"
+//				+ roomDto.getFoRoomStatus());
 		// code.setText(roomDto.getRoomStatus().name());
 
 		// code.setText(roomDto.getRoomStatus().name() + "/&#9786;");

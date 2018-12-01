@@ -113,4 +113,26 @@ public class BaseDto implements Dto {
 		return ret;
 	}
 
+	public static class Builder {
+
+		private Long id;
+		private String webSafeKey;
+
+		public Builder id(Long id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder webSafeKey(String webSafeKey) {
+			this.webSafeKey = webSafeKey;
+			return this;
+		}
+
+		public BaseDto build() {
+			BaseDto dto = new BaseDto();
+			dto.setId(id);
+			dto.setWebSafeKey(webSafeKey);
+			return dto;
+		}
+	}
 }

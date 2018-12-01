@@ -3,31 +3,40 @@
  */
 package io.crs.hsys.client.kip.roomstatus;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.ui.MaterialCollection;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 /**
  * @author CR
  *
  */
-public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
+public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 		implements RoomStatusPresenter.MyView {
-	private static final Logger logger = Logger.getLogger(DesktopRoomStatusView.class.getName());
+	private static final Logger logger = Logger.getLogger(RoomStatusView.class.getName());
 
-	interface Binder extends UiBinder<Widget, DesktopRoomStatusView> {
+	interface Binder extends UiBinder<Widget, RoomStatusView> {
 	}
+
+	@UiField
+	SimplePanel filterPanel, controllPanel;
 
 	@UiField
 	MaterialCollection collection;
@@ -35,9 +44,10 @@ public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandle
 	/**
 	 */
 	@Inject
-	DesktopRoomStatusView(Binder uiBinder) {
+	RoomStatusView(Binder uiBinder) {
 		logger.log(Level.INFO, "RoomStatusView()");
 		initWidget(uiBinder.createAndBindUi(this));
+		/*
 		collection.add(new RoomStatusWidget("AB9001", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.CHECKIN, ""));
 		collection.add(new RoomStatusWidget("AB9002", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
@@ -56,12 +66,21 @@ public class DesktopRoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandle
 				OccStatus.SHOW, "", OccStatus.VACANT, "", true));
 		collection.add(new RoomStatusWidget("AB9009", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.OOO, ""));
+				*/
 	}
 
 	@Override
 	public void doFilter(RoomStatusFilterEvent event) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void loadData(List<RoomStatusDto> data) {
+		collection.clear();
+		for (RoomStatusDto rs: data) {
+			collection.add(new RoomStatusWidget(rs));
+		}
 	}
 
 }
