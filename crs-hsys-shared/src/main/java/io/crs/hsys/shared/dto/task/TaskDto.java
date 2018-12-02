@@ -200,6 +200,11 @@ public class TaskDto extends AccountChildDto {
 			return this;
 		}
 
+		public Builder description(String description) {
+			this.description = description;
+			return this;
+		}
+
 		public Builder assignee(AppUserDtor assignee) {
 			this.assignee = assignee;
 			return this;
@@ -212,6 +217,7 @@ public class TaskDto extends AccountChildDto {
 			result.setCreated(created);
 			result.setUpdated(updated);
 			result.setStatus(status);
+			result.setDescription(description);
 			result.setAssignee(assignee);
 			return result;
 		}

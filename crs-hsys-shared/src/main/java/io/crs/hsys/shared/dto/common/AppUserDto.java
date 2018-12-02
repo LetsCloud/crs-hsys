@@ -6,6 +6,7 @@ package io.crs.hsys.shared.dto.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 /**
@@ -64,6 +65,11 @@ public class AppUserDto extends AccountChildDto {
 	 * Felhasználói csoportok
 	 */
 	private List<UserGroupDto> userGroups = new ArrayList<UserGroupDto>();
+
+	/**
+	 * Felhasználói jogok
+	 */
+	private List<UserPerm> permissions = new ArrayList<UserPerm>();
 
 	/**
 	 * Szerepkörök
@@ -209,12 +215,20 @@ public class AppUserDto extends AccountChildDto {
 		this.fcmTokens = fcmTokens;
 	}
 
+	public List<UserPerm> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<UserPerm> permissions) {
+		this.permissions = permissions;
+	}
+
 	@Override
 	public String toString() {
 		String ret = "AppUserDto:{name=" + name + ", username=" + username + ", password=" + password
 				+ ", emailAddress=" + emailAddress + ", picture=" + picture + ", enabled=" + enabled + ", admin="
-				+ admin + ", roles=" + roles + ", userGroups=" + userGroups + ", defaultHotel=" + defaultHotel + ", "
-				+ super.toString() + "}";
+				+ admin + ", roles=" + roles + ", userGroups=" + userGroups + ", defaultHotel=" + defaultHotel
+				+ ", permissions=" + permissions + ", " + super.toString() + "}";
 		return ret;
 	}
 }

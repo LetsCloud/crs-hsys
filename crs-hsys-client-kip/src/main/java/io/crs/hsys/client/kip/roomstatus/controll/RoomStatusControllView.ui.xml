@@ -2,24 +2,90 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:ma="urn:import:gwt.material.design.addins.client">
-	
-	<ui:style>
+	xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:m.ext="urn:import:gwt.material.design.addext.client.ui">
+
+	<ui:style gss="true">
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
-	</ui:style>
+	.header {
+		display: flow-root;
+	}
 	
+	.statusIcon {
+		font-size: 50px;
+	}
+	
+	.roomNo {
+		vertical-align: super;
+	}
+	
+	.taskList {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	@media screen and (min-width: 600px) {
+		.taskList {
+			width: 600px;
+		}
+	}
+	</ui:style>
+
 	<g:HTMLPanel>
 		<ma:overlay.MaterialOverlay
-			ui:field="overlay" backgroundColor="BLUE" textAlign="CENTER"
-			textColor="WHITE">
+			ui:field="overlay" textAlign="CENTER" textColor="WHITE">
 
-			<m:MaterialTitle title="New Feature"
-				description="Description of your new Feature" textColor="WHITE"
-				textAlign="CENTER" />
+			<m.html:Div addStyleNames="{style.header}">
+				<m:MaterialButton ui:field="btnClose" float="RIGHT"
+					iconColor="WHITE" waves="DEFAULT" iconType="CLOSE" type="FLAT"
+					iconPosition="RIGHT" />
+			</m.html:Div>
 
-			<m:MaterialButton text="Close"
-				ui:field="btnCutOutClose" textColor="BLUE" backgroundColor="WHITE"
-				textAlign="CENTER" />
+			<m:MaterialRow textAlign="CENTER" marginBottom="0">
+				<m:MaterialIcon ui:field="statusIcon"
+					addStyleNames="{style.statusIcon}" />
+				<g:InlineLabel ui:field="roomNoLabel"
+					addStyleNames="{style.statusIcon} {style.roomNo}" />
+			</m:MaterialRow>
+
+			<m:MaterialRow textAlign="CENTER">
+				<m:MaterialButton ui:field="dirtyButton"
+					iconType="DELETE" textColor="RED_LIGHTEN_1"
+					backgroundColor="RED_LIGHTEN_4" visible="false" />
+				<m:MaterialButton ui:field="cleanButton"
+					iconType="STAR" textColor="BLUE_LIGHTEN_1"
+					backgroundColor="BLUE_LIGHTEN_4" visible="false" />
+				<m:MaterialButton ui:field="inspectButton"
+					iconType="CHECK" textColor="GREEN_LIGHTEN_1"
+					backgroundColor="GREEN_LIGHTEN_4" visible="false" />
+
+				<m:MaterialButton ui:field="minibarButton"
+					iconType="KITCHEN" textColor="INDIGO_LIGHTEN_1"
+					backgroundColor="INDIGO_LIGHTEN_4" visible="false" />
+
+				<m:MaterialButton ui:field="chatButton"
+					iconType="CHAT" textColor="ORANGE_LIGHTEN_1"
+					backgroundColor="ORANGE_LIGHTEN_4" />
+				<m:MaterialButton ui:field="addTaskButton"
+					iconType="PLAYLIST_ADD" textColor="TEAL_LIGHTEN_1"
+					backgroundColor="TEAL_LIGHTEN_4" />
+			</m:MaterialRow>
+
+			<m:MaterialCollection ui:field="collection"
+				addStyleNames="{style.taskList}" />
+
+			<m:MaterialRow textAlign="CENTER">
+				<m:MaterialButton ui:field="oooButton"
+					iconType="SETTINGS" textColor="BLACK"
+					backgroundColor="GREY_LIGHTEN_1" visible="false" />
+				<m:MaterialButton ui:field="oosButton"
+					iconType="CLOSE" textColor="PURPLE_LIGHTEN_1"
+					backgroundColor="PURPLE_LIGHTEN_4" visible="false" />
+				<m:MaterialButton ui:field="showButton"
+					iconType="REMOVE_RED_EYE" textColor="AMBER_LIGHTEN_1"
+					backgroundColor="AMBER_LIGHTEN_4" visible="false" />
+			</m:MaterialRow>
 		</ma:overlay.MaterialOverlay>
 	</g:HTMLPanel>
 </ui:UiBinder> 

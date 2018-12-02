@@ -12,6 +12,8 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 
+import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 /**
@@ -23,15 +25,18 @@ public class RoomStatusControllPresenter extends PresenterWidget<RoomStatusContr
 	private static Logger logger = Logger.getLogger(RoomStatusControllPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<RoomStatusControllUiHandlers> {
-		void open(RoomStatusDto dto);
+		void open(RoomStatusDto dto, AppUserDto admin);
 
 		void close();
 	}
 
+	private final CurrentUser currentUser;
+	
 	@Inject
-	RoomStatusControllPresenter(EventBus eventBus, MyView view) {
+	RoomStatusControllPresenter(EventBus eventBus, MyView view, CurrentUser currentUser) {
 		super(eventBus, view);
 		logger.log(Level.INFO, "RoomStatusControllPresenter()");
+		this.currentUser = currentUser;
 		getView().setUiHandlers(this);
 	}
 
@@ -41,6 +46,7 @@ public class RoomStatusControllPresenter extends PresenterWidget<RoomStatusContr
 	}
 
 	public void open(RoomStatusDto dto) {
-		getView().open(dto);
+		logger.log(Level.INFO, "RoomStatusControllPresenter().open()");
+		getView().open(dto, currentUser.getAppUserDto());
 	}
 }

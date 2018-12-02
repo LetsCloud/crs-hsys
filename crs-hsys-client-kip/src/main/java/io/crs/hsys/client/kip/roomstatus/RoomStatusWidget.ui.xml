@@ -100,7 +100,7 @@
 		<m.html:Div ui:field="contentPanel"
 			addStyleNames="{style.conti}">
 			<!-- Státusz és szobaszám -->
-			<m.html:Div addStyleNames="{style.fixed-col}">
+			<m.html:Div  addStyleNames="{style.fixed-col}">
 				<m:MaterialRow ui:field="roomStatusPanel"
 					textAlign="CENTER" addStyleNames="{style.margin-bottom-0}">
 					<!-- Státusz -->

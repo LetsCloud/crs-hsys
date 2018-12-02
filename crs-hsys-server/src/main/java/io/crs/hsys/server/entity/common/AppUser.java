@@ -15,6 +15,7 @@ import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.hotel.Hotel;
 import io.crs.hsys.server.model.Registration;
+import io.crs.hsys.shared.constans.UserPerm;
 
 /**
  * @author robi
@@ -75,6 +76,11 @@ public class AppUser extends AccountChild {
 	 * Felhasználói csoportok
 	 */
 	private List<Ref<UserGroup>> userGroups = new ArrayList<Ref<UserGroup>>();
+
+	/**
+	 * Felhasználói jogok
+	 */
+	private List<UserPerm> permissions = new ArrayList<UserPerm>();
 
 	/**
 	 * Szerepkörök
@@ -285,6 +291,14 @@ public class AppUser extends AccountChild {
 			list.add(Ref.create(userGroup));
 		}
 		this.userGroups = list;
+	}
+
+	public List<UserPerm> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<UserPerm> permissions) {
+		this.permissions = permissions;
 	}
 
 	@Override

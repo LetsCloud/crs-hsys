@@ -19,7 +19,10 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.ui.MaterialCollection;
+import io.crs.hsys.client.kip.chat.ChatRoomPresenter;
+import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
+import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
@@ -47,6 +50,8 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 	RoomStatusView(Binder uiBinder) {
 		logger.log(Level.INFO, "RoomStatusView()");
 		initWidget(uiBinder.createAndBindUi(this));
+		bindSlot(RoomStatusPresenter.EDITOR_SLOT, controllPanel);
+		
 		/*
 		collection.add(new RoomStatusWidget("AB9001", RoomStatus.DIRTY, "DBLXL", "2-1-1-1", null, 2, 1,
 				OccStatus.CHECKOUT, "", OccStatus.CHECKIN, ""));
@@ -77,9 +82,19 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 
 	@Override
 	public void loadData(List<RoomStatusDto> data) {
+		Boolean odd = false;
 		collection.clear();
 		for (RoomStatusDto rs: data) {
-			collection.add(new RoomStatusWidget(rs));
+			RoomStatusWidget rsi = new RoomStatusWidget(rs, odd);
+			rsi.addRoomStatusEditHandler(new RoomStatusEditHandler() {
+				@Override
+				public void onEdit(RoomStatusEditEvent event) {
+					logger.log(Level.INFO, "RoomStatusWidget().onEdit()");
+					getUiHandlers().onEdit(event.getRoomStatusDto(), event.getAdmin());
+				}
+			});
+			collection.add(rsi);
+			odd = !odd;
 		}
 	}
 

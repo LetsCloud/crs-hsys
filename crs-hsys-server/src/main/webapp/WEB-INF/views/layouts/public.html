@@ -14,7 +14,7 @@
 	rel="stylesheet">
 
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet" th:href="@{/static/css/materialize.min.css}"/>
+<link rel="stylesheet" th:href="@{/static/css/materialize.min.css}" />
 
 <style>
 html, body {
@@ -44,7 +44,8 @@ html {
 
 </head>
 <body>
-
+	<input type="hidden" th:name="${_csrf.parameterName}"
+		th:value="${_csrf.token}" />
 	<div layout:fragment="content"></div>
 
 	<!-- Compiled and minified JavaScript -->

@@ -60,7 +60,7 @@ public class RoomStatusItem extends Composite implements HasRoomStatusEditHandle
 
 	@UiHandler("changeIcon")
 	public void onChangeClick(ClickEvent event) {
-		RoomStatusEditEvent.fire(this, roomDto);
+//		RoomStatusEditEvent.fire(this, roomDto);
 	}
 
 	@Override

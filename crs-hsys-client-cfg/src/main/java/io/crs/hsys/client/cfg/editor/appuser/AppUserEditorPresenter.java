@@ -171,9 +171,11 @@ public class AppUserEditorPresenter
 
 	@Override
 	public void save(AppUserDto dto) {
+		logger.info("AppUserEditorPresenter().save()->dto=" + dto);
 		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this) {
 			@Override
 			public void onSuccess(AppUserDto dto) {
+				logger.info("AppUserEditorPresenter().save().onSuccess()->dto=" + dto);
 //				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG)
 //						.with(AbstractConfigPresenter.PLACE_PARAM, SystemConfigPresenter.APP_USERS).build();
 //				placeManager.revealPlace(placeRequest);
