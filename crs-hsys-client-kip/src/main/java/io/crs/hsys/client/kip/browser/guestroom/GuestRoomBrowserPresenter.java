@@ -52,7 +52,7 @@ public class GuestRoomBrowserPresenter
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.GUEST_ROOMS)
+	@NameToken(KipNameTokens.GUEST_ROOMS2)
 	interface MyProxy extends ProxyPlace<GuestRoomBrowserPresenter> {
 	}
 
@@ -113,23 +113,17 @@ public class GuestRoomBrowserPresenter
 		RoomTypeDtor twinRTD = new RoomTypeDtor.Builder().code("TWIN").name("Twin bed room").build();
 
 		result.add(
-				new RoomDto.Builder().code("101").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+				new RoomDto.Builder().code("101").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
 		result.add(
-				new RoomDto.Builder().code("102").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+				new RoomDto.Builder().code("102").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
 		result.add(
-				new RoomDto.Builder().code("103").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
+				new RoomDto.Builder().code("103").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());
 		result.add(
-				new RoomDto.Builder().code("104").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
+				new RoomDto.Builder().code("104").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
 		result.add(
-				new RoomDto.Builder().code("105").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
+				new RoomDto.Builder().code("105").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
 		result.add(
-				new RoomDto.Builder().code("106").description("asdsadasd").floor("1").foRoomStatus(FoRoomStatus.ARRIVED)
-						.occupied(true).roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
+				new RoomDto.Builder().code("106").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(twinRTD).build());
 
 		return result;
 	}

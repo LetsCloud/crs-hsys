@@ -102,6 +102,11 @@
 						text="{i18nCore.userEditorIsAdmin}" addStyleNames="{style.cb}" />
 
 					<combobox:MaterialComboBox
+						ui:field="permissions" multiple="true"
+						label="Permitions"
+						placeholder="Permitions" marginTop="30" />
+
+					<combobox:MaterialComboBox
 						ui:field="availableHotels" multiple="true"
 						label="{i18nCore.userEditorAvailableHotels}"
 						placeholder="{i18nCore.userEditorChooseHotel}" marginTop="30" />

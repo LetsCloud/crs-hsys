@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<title>MDI - Test</title>
+
+<!-- CSS  -->
+<link
+	href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css"
+	type="text/css" rel="stylesheet">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<style>
+.room-item {
+	line-height: inherit !important;
+	padding: 0px !important;
+}
+
+.conti {
+	width: 100%;
+	display: table;
+}
+
+.fixed-col {
+	width: 100px;
+	display: table-cell;
+	float: left;
+}
+
+@media screen and (max-width: 600px) {
+	.fixed-col {
+		width: 80px;
+	}
+}
+
+.room-status {
+	font-size: 30px;
+}
+
+.room-number {
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+	.room-number {
+		margin-top: 0px;
+	}
+}
+
+.flexi-wrapper {
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.flexi-col {
+	display: table-cell;
+	float: left;
+}
+
+.second-col {
+	width: 30%;
+}
+
+.room-type {
+	font-size: 18px;
+}
+
+.guest-number {
+	font-size: 15px;
+}
+
+.guest-number span {
+	font-size: 20px;
+}
+
+.third-col {
+	width: 43%;
+}
+
+.made {
+	font-size: 18px;
+}
+
+.tasks {
+	font-size: 15px;
+}
+
+.tasks span {
+	font-size: 20px;
+}
+
+
+.fourth-col {
+	width: 27%;
+}
+
+.occupancy-status {
+	font-size: 15px;
+}
+
+.occupancy-status span {
+	font-size: 20px;
+}
+
+
+.margin-bottom-0 {
+	margin-bottom: 0px;
+}
+
+.padding-left-right-0 {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.padding-left-right-5 {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+</style>
+</head>
+<body>
+	<ul class="collection">
+		<!-- AB9001 számú szoba room-item -->
+		<li class="collection-item room-item">
+			<div class="conti">
+				<!-- Státusz és szobaszám -->
+				<div class="fixed-col">
+					<div class="row margin-bottom-0 center red">
+						<!-- Státusz -->
+						<div class="col s12 m3 room-status red-text text-lighten-4 padding-left-right-0">
+							<span class="mdi mdi-delete-circle-outline"></span>
+						</div>
+						<!-- Szobaszám -->
+						<div class="col s12 m9 room-number white-text padding-left-right-0">AB9001</div>
+					</div>
+				</div>
+
+				<div class="flexi-wrapper white grey-text text-darken-2">
+					<!-- Szobatípus és létszám -->
+					<div class="flexi-col second-col">
+						<div class="row margin-bottom-0 center">
+							<!-- Szobatípus -->
+							<div class="col s12 m6 room-type padding-left-right-5">DBLBXL</div>
+							<!-- Létszám -->
+							<div class="col s12 m6 guest-number padding-left-right-5">
+								<span class="mdi mdi-account"></span>2-1-1-1</div>
+						</div>
+					</div>
+
+					<!-- Szobalány és feladatok -->
+					<div class="flexi-col third-col">
+						<div class="row margin-bottom-0 center">
+							<!-- Szobalány -->
+							<div class="col s12 m6 made padding-left-right-5">PIRI NÉNI</div>
+							<div class="col s12 m6 padding-left-right-5">
+								<!-- Karbantartás -->
+								<div class="col s6 tasks light-blue-text padding-left-right-5">
+									<span class="mdi mdi-brush"></span>2</div>
+								<!-- Takarítás -->
+								<div class="col s6 tasks purple-text padding-left-right-5">
+									<span class="mdi mdi-wrench"></span>3</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Foglaltsági státusz változás -->
+					<div class="flexi-col fourth-col">
+						<div class="row margin-bottom-0">
+							<!-- Check-out -->
+							<div class="col s12 occupancy-status m6 red-text padding-left-right-5">
+								<span class="mdi mdi-arrow-up-box"></span>
+								10:00
+							</div>
+							<!-- Check-in -->
+							<div class="col s12 m6 occupancy-status green-text padding-left-right-5">
+								<span class="mdi mdi-arrow-down-box"></span>
+								14:00
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:m.ext="urn:import:gwt.material.design.addext.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+
+	<ui:style gss="true">
+	.room-status-item {
+		line-height: inherit !important;
+		padding: 0px !important;
+	}
+	
+	/* Create three unequal columns that floats next to each other */
+	.column {
+		float: left;
+		padding: 10px;
+	}
+	
+	.right {
+		background-color: #616161;
+		color: #f5f5f5;
+	}
+	
+	.left, .right {
+		width: 50px;
+	}
+	
+	.middle {
+		width: calc(100% - 100px);
+	}
+	
+	/* Clear floats after the columns */
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	.row {
+		color: #424242;
+		background-color: white;
+	}
+	
+	.taskDescription {
+		font-size: 20px;
+		text-align: left;
+	}
+	</ui:style>
+
+	<m:MaterialCollectionItem
+		addStyleNames="{style.room-status-item}">
+		<m.html:Div ui:field="row" addStyleNames="{style.row}">
+			<m.html:Div ui:field="leftCol"
+				addStyleNames="{style.column} {style.left}">
+				<m:MaterialIcon ui:field="leftIcon" iconSize="SMALL" />
+			</m.html:Div>
+			<m.html:Div ui:field="middleCol"
+				addStyleNames="{style.column} {style.middle}">
+				<g:Label ui:field="description"
+					addStyleNames="{style.taskDescription}" />
+			</m.html:Div>
+			<m.html:Div ui:field="rightCol"
+				addStyleNames="{style.column} {style.right}">
+				<m:MaterialIcon ui:field="rightIcon" iconSize="SMALL" />
+			</m.html:Div>
+		</m.html:Div>
+	</m:MaterialCollectionItem>
+</ui:UiBinder> 

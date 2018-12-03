@@ -22,7 +22,7 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskAttrType;
 import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.TaskType;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -96,7 +96,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(cleaningType);
-		taskDto.setType(TaskType.CLNG);
+		taskDto.setKind(TaskKind.CLEANING);
 		taskDto.setStatus(TaskStatus.NOT_STARTED);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
@@ -111,7 +111,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(guestRequest);
-		taskDto.setType(TaskType.GUEST_RQ);
+		taskDto.setKind(TaskKind.REQUEST);
 		taskDto.setStatus(TaskStatus.IN_PROGRESS);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
@@ -127,8 +127,8 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(text);
-		taskDto.setReporter(reporter);
-		taskDto.setType(TaskType.MAINT);
+//		taskDto.setReporter(reporter);
+		taskDto.setKind(TaskKind.MAINTENANCE);
 		taskDto.setStatus(TaskStatus.COMPLETED);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;

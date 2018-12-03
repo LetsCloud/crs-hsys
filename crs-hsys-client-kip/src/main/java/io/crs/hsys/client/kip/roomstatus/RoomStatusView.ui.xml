@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<g:HTMLPanel>
+		<g:SimplePanel ui:field="filterPanel" />
+
+		<m:MaterialCollection ui:field="collection" />
+
+		<g:SimplePanel ui:field="controllPanel" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

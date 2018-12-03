@@ -27,7 +27,7 @@ import gwt.material.design.client.ui.MaterialLink;
 
 import io.crs.hsys.shared.constans.TaskAttrType;
 import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.TaskType;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
@@ -99,7 +99,7 @@ public class TaskDisplay extends Composite {
 		menuDropDown.setActivator("tm-" + task.getWebSafeKey());
 		title.setText(task.getTitle());
 		time.setText("1 min ago");
-		setTaskType(task.getType());
+		setTaskType(task.getKind());
 		setTaskStatus(task.getStatus());
 
 		for (TaskAttrDto taskAttr : task.getAttributes()) {
@@ -110,19 +110,19 @@ public class TaskDisplay extends Composite {
 			taskLine.add(createAttLink(TaskAttrType.REPORTER, task.getReporter().getCode()));
 	}
 
-	private void setTaskType(TaskType type) {
+	private void setTaskType(TaskKind type) {
 		switch (type) {
-		case CLNG:
+		case CLEANING:
 			taskKind.setIconType(IconType.BRUSH);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
-		case GUEST_RQ:
+		case REQUEST:
 			taskKind.setIconType(IconType.ADD_SHOPPING_CART);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
-		case MAINT:
+		case MAINTENANCE:
 			taskKind.setIconType(IconType.BUILD);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);

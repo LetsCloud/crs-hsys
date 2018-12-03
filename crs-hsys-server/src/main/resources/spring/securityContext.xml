@@ -30,8 +30,8 @@
 			pattern="/register.htm*" access="hasRole('NEW_USER')" />
 		<security:intercept-url pattern="/**"
 			access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/admin/spa/v1/logout"
-			access="permitAll" />
+		<security:intercept-url
+			pattern="/admin/spa/v1/logout" access="permitAll" />
 		<security:custom-filter
 			position="PRE_AUTH_FILTER" ref="gaeFilter" />
 		<security:csrf token-repository-ref="tokenRepository" />

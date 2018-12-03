@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>232</Width>
-            <HandlerConfiguration>/hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CoreConstants.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
             <Width>938</Width>
-            <HandlerConfiguration>/hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CoreConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
@@ -59,6 +59,44 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">To many login attempts! Please try again in 15 minutes.</Value>
             <Value disabled="false">Túl sok bejelentkezési próbálkozás! Kérem próbálpzzon 15 perc múlva</Value>
+        </Property>
+        <Comment>
+            <Value>USER PERMISSIONS</Value>
+        </Comment>
+        <Property>
+            <Name>userPermMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">UP_HKSUPERVISOR,UP_HOUSEKEEPER,UP_MAINTMANAGER,UP_TECHNICIAN</Value>
+            <Value disabled="false">UP_HKSUPERVISOR,UP_HOUSEKEEPER,UP_MAINTMANAGER,UP_TECHNICIAN</Value>
+        </Property>
+        <Property>
+            <Name>UP_HKSUPERVISOR</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeping Supervisor</Value>
+            <Value disabled="false">Gondnoknő</Value>
+        </Property>
+        <Property>
+            <Name>UP_HOUSEKEEPER</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeper</Value>
+            <Value disabled="false">Szobalány</Value>
+        </Property>
+        <Property>
+            <Name>UP_MAINTMANAGER</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance Manager</Value>
+            <Value disabled="false">Karbantartás vezető</Value>
+        </Property>
+        <Property>
+            <Name>UP_TECHNICIAN</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Technician</Value>
+            <Value disabled="false">Karbantartó</Value>
         </Property>
         <Comment>
             <Value>PROFILE TYPES</Value>

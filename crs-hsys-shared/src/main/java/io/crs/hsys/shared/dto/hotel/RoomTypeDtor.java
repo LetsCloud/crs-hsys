@@ -17,6 +17,10 @@ public class RoomTypeDtor extends HotelChildDto {
 	public RoomTypeDtor() {
 	};
 
+	public RoomTypeDtor(HotelChildDto parent) {
+		this.setHotel(parent.getHotel());
+	};
+
 	public String getCode() {
 		return code;
 	}
@@ -38,7 +42,7 @@ public class RoomTypeDtor extends HotelChildDto {
 		return "RoomTypeDtor:{code=" + code + ", name=" + name + ", " + super.toString() + "}";
 	}
 
-	public static class Builder {
+	public static class Builder extends HotelChildDto.Builder {
 
 		private String code;
 		private String name;
@@ -54,7 +58,7 @@ public class RoomTypeDtor extends HotelChildDto {
 		}
 
 		public RoomTypeDtor build() {
-			RoomTypeDtor dto = new RoomTypeDtor();
+			RoomTypeDtor dto = new RoomTypeDtor(super.build());
 			dto.setCode(code);
 			dto.setName(name);
 			return dto;

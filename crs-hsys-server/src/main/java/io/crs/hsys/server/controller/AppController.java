@@ -111,4 +111,16 @@ public class AppController {
 			return false;
 		}
 	}
+
+	@RequestMapping(value = "/resetpsw/{token}", method = GET)
+	@ResponseBody
+	public Boolean resetPsw(@PathVariable String token) {
+		try {
+			appUserService.resetPsw(token);
+			return true;
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

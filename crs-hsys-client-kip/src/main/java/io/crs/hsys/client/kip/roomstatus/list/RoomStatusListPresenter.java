@@ -31,7 +31,6 @@ import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.roomstatus.RoomStatusPresenter;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusRefreshEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent.RoomStatusFilterHandler;
@@ -52,7 +51,7 @@ public class RoomStatusListPresenter extends Presenter<RoomStatusListPresenter.M
 	}
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_CHANGE_STATUS)
+	@NameToken(KipNameTokens.GUEST_ROOMS)
 	@UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<RoomStatusListPresenter> {
 	}
@@ -67,7 +66,7 @@ public class RoomStatusListPresenter extends Presenter<RoomStatusListPresenter.M
 	RoomStatusListPresenter(PlaceManager placeManager, EventBus eventBus, MyView view, MyProxy proxy,
 			ResourceDelegate<RoomResource> roomDelegate, CurrentUser currentUser,
 			RoomStatusEditorPresenter roomStatusEditorPresenter, @UnauthorizedPlace String unauthorizedPlace) {
-		super(eventBus, view, proxy, RoomStatusPresenter.SLOT_LIST);
+		super(eventBus, view, proxy);
 		LOGGER.log(Level.INFO, "RoomStatusListPresenter()");
 
 		this.placeManager = placeManager;

@@ -3,7 +3,9 @@
  */
 package io.crs.hsys.client.cfg.editor.appuser;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -27,6 +29,8 @@ import gwt.material.design.addins.client.combobox.events.SelectItemEvent.SelectC
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialImage;
 import gwt.material.design.client.ui.MaterialTextBox;
+import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.UserGroupDto;
@@ -47,7 +51,7 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 	}
 
 	private final Driver driver;
-	
+
 	@UiField
 	@Ignore
 	MaterialImage image;
@@ -69,10 +73,13 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 	MaterialComboBox<HotelDtor> defaultHotelCombo;
 	TakesValueEditor<HotelDtor> defaultHotel;
 
+	@UiField
+	MaterialComboBox<UserPerm> permissions;
+
 	String picture;
-	
+
 	@Inject
-	AppUserEditorView(Binder uiBinder, Driver driver, EventBus eventBus) {
+	AppUserEditorView(Binder uiBinder, Driver driver, EventBus eventBus, CoreConstants i18nCoreCnst) {
 		logger.info("AppUserEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
@@ -90,6 +97,8 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 			}
 		});
 
+		initUserPermCombo(i18nCoreCnst.userPermMap());
+
 		this.driver = driver;
 		driver.initialize(this);
 
@@ -102,10 +111,14 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 		});
 	}
 
+	private void initUserPermCombo(Map<String, String> i18n) {
+		Arrays.asList(UserPerm.values()).forEach(st -> permissions.addItem(i18n.get(st.toString()), st));
+	}
+
 	@Override
 	public void show(AppUserDto dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -221,6 +234,6 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 	@Override
 	public void close() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

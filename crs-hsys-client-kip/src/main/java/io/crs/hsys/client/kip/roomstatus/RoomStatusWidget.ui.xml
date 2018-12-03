@@ -1,0 +1,208 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:m.ext="urn:import:gwt.material.design.addext.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+
+	<ui:style gss="true">
+	.room-status-item {
+		line-height: inherit !important;
+		padding: 0px !important;
+	}
+	
+	.conti {
+		width: 100%;
+		display: table;
+	}
+	
+	.fixed-col {
+		width: 100px;
+		display: table-cell;
+		float: left;
+	}
+	
+	@media screen and (max-width: 600px) {
+		.fixed-col {
+			width: 80px;
+		}
+	}
+	
+	.room-status {
+		font-size: 30px;
+	}
+	
+	.room-number {
+		margin-top: 10px;
+		font-size: 18px;
+	}
+	
+	@media screen and (max-width: 600px) {
+		.room-number {
+			margin-top: 0px;
+		}
+	}
+	
+	.flexi-wrapper {
+		width: 100%;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	
+	.flexi-col {
+		display: table-cell;
+		float: left;
+	}
+	
+	.second-col {
+		width: 30%;
+	}
+	
+	.third-col {
+		width: 43%;
+	}
+	
+	.fourth-col {
+		width: 27%;
+	}
+	
+	.value-text {
+		font-size: 18px;
+	}
+	
+	.value-icon {
+		font-size: 20px;
+	}
+	
+	.value-field {
+		font-size: 15px;
+	}
+	
+	.margin-bottom-0 {
+		margin-bottom: 0px;
+	}
+	
+	.padding-left-right-0 {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	
+	.padding-left-right-5 {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+	</ui:style>
+
+	<m:MaterialCollectionItem
+		addStyleNames="{style.room-status-item}">
+
+		<m.html:Div ui:field="contentPanel"
+			addStyleNames="{style.conti}">
+			<!-- Státusz és szobaszám -->
+			<m.html:Div  addStyleNames="{style.fixed-col}">
+				<m:MaterialRow ui:field="roomStatusPanel"
+					textAlign="CENTER" addStyleNames="{style.margin-bottom-0}">
+					<!-- Státusz -->
+					<m:MaterialColumn grid="s12 m3"
+						addStyleNames="{style.room-status} {style.padding-left-right-0}">
+						<m.ext:MaterialDesignIcon
+							ui:field="statusIcon" />
+					</m:MaterialColumn>
+					<!-- Szobaszám -->
+					<m:MaterialColumn grid="s12 m9" textColor="WHITE"
+						addStyleNames="{style.room-number} {style.padding-left-right-0}">
+						<g:Label ui:field="roomNoLabel" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m.html:Div>
+
+			<m.html:Div ui:field="flexiPanel" backgroundColor="WHITE"
+				textColor="GREY_DARKEN_2" addStyleNames="{style.flexi-wrapper}">
+				<!-- Szobatípus és létszám -->
+				<m.html:Div
+					addStyleNames="{style.flexi-col} {style.second-col}">
+
+					<m:MaterialRow textAlign="CENTER"
+						addStyleNames="{style.margin-bottom-0}">
+						<!-- Szobatípus -->
+						<m:MaterialColumn grid="s12 m6"
+							addStyleNames="{style.padding-left-right-5}">
+							<g:Label ui:field="roomTypeLabel"
+								addStyleNames="{style.value-text}" />
+						</m:MaterialColumn>
+						<!-- Létszám -->
+						<m:MaterialColumn grid="s12 m6"
+							addStyleNames="{style.padding-left-right-5}">
+							<m.ext:MaterialDesignIcon
+								iconType="ACCOUNT" addStyleNames="{style.value-icon}" />
+							<g:InlineLabel ui:field="guestNumberLabel"
+								addStyleNames="{style.value-field}" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m.html:Div>
+
+				<!-- Szobalány és feladatok -->
+				<m.html:Div
+					addStyleNames="{style.flexi-col} {style.third-col}">
+					<m:MaterialRow textAlign="CENTER"
+						addStyleNames="{style.margin-bottom-0}">
+						<!-- Szobalány -->
+						<m:MaterialColumn grid="s12 m6"
+							addStyleNames="{style.padding-left-right-5}">
+							<g:Label ui:field="atendantLabel"
+								addStyleNames="{style.value-text}" />
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s12 m6"
+							addStyleNames="{style.padding-left-right-5}">
+							<!-- Karbantartás -->
+							<m:MaterialColumn grid="s6"
+								textColor="LIGHT_BLUE"
+								addStyleNames="{style.padding-left-right-5}">
+								<m.ext:MaterialDesignIcon
+									iconType="BRUSH" addStyleNames="{style.value-icon}" />
+								<g:InlineLabel ui:field="cleaningLabel"
+									addStyleNames="{style.value-field}" />
+							</m:MaterialColumn>
+							<!-- Takarítás -->
+							<m:MaterialColumn grid="s6" textColor="PURPLE"
+								addStyleNames="{style.padding-left-right-5}">
+								<m.ext:MaterialDesignIcon
+									iconType="WRENCH" addStyleNames="{style.value-icon}" />
+								<g:InlineLabel ui:field="maintenanceLabel"
+									addStyleNames="{style.value-field}" />
+							</m:MaterialColumn>
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m.html:Div>
+
+				<!-- Foglaltsági státusz változás -->
+				<m.html:Div
+					addStyleNames="{style.flexi-col} {style.fourth-col}">
+					<m:MaterialRow
+						addStyleNames="{style.margin-bottom-0}">
+						<!-- Check-out -->
+						<m:MaterialColumn ui:field="currOccStatusPanel"
+							grid="s12 m6" textColor="RED"
+							addStyleNames="{style.padding-left-right-5}">
+							<m.ext:MaterialDesignIcon
+								ui:field="currOccStatusIcon" addStyleNames="{style.value-icon}" />
+							<g:InlineLabel ui:field="currOccLabel"
+								addStyleNames="{style.value-field}" />
+						</m:MaterialColumn>
+						<!-- Check-in -->
+						<m:MaterialColumn ui:field="nextOccStatusPanel"
+							grid="s12 m6" textColor="RED"
+							addStyleNames="{style.padding-left-right-5}">
+							<m.ext:MaterialDesignIcon
+								ui:field="nextOccStatusIcon" addStyleNames="{style.value-icon}" />
+							<g:InlineLabel ui:field="nextOccLabel"
+								addStyleNames="{style.value-field}" />
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m.html:Div>
+			</m.html:Div>
+
+		</m.html:Div>
+	</m:MaterialCollectionItem>
+</ui:UiBinder> 

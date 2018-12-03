@@ -144,4 +144,13 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 		AppUser user = this.appUserRepository.findByEmail(email);
 		return user;
 	}
+
+	
+	@Override
+	public Boolean resetPsw(String token) throws EntityValidationException, UniqueIndexConflictException {
+		AppUser user = this.appUserRepository.findByWebSafeKey(token);
+		user.setPassword(passwordEncoder.encode("*"));
+		this.appUserRepository.save(user);
+		return true;
+	}
 }

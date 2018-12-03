@@ -29,6 +29,8 @@ public interface AppUserService extends CrudService<AppUser> {
 
 	Boolean activate(String token) throws EntityValidationException, UniqueIndexConflictException;
 
+	Boolean resetPsw(String token) throws EntityValidationException, UniqueIndexConflictException;
+
 	void createVerificationToken(AppUser user, String token) throws Throwable;
 	
 	AppUser createAdminUser(Registration registration, Account account) throws EntityValidationException, UniqueIndexConflictException;

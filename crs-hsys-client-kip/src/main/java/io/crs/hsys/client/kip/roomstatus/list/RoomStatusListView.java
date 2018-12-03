@@ -55,7 +55,7 @@ public class RoomStatusListView extends ViewWithUiHandlers<RoomStatusListUiHandl
 				@Override
 				public void onEdit(RoomStatusEditEvent event) {
 					LOGGER.log(Level.INFO, "onEdit()");
-					getUiHandlers().editStatus(event.getRoomDto());
+//					getUiHandlers().editStatus(event.getRoomDto());
 				}
 
 			});
