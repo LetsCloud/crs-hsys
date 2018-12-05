@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.html.Div;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
@@ -43,6 +44,9 @@ public class RoomStatusControllTaskWidget extends Composite {
 	@UiField
 	Label description;
 
+	@UiField
+	MaterialCollection toDoList;
+	
 	/**
 	 * 
 	 */

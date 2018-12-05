@@ -66,5 +66,7 @@
 				<m:MaterialIcon ui:field="rightIcon" iconSize="SMALL" />
 			</m.html:Div>
 		</m.html:Div>
+
+		<m:MaterialCollection ui:field="toDoList" />
 	</m:MaterialCollectionItem>
 </ui:UiBinder> 

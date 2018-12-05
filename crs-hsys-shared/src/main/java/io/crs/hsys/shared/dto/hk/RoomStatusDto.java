@@ -6,6 +6,7 @@ package io.crs.hsys.shared.dto.hk;
 import java.util.List;
 
 import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomOccDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -16,7 +17,24 @@ public class RoomStatusDto {
 
 	private RoomDto room;
 
+	/**
+	 * 
+	 */
+	private RoomOccDto currOccStatus;
+
+	/**
+	 * 
+	 */
+	private RoomOccDto nextOccStatus;
+
 	private List<TaskDto> tasks;
+
+	protected RoomStatusDto(Builder<?> builder) {
+		room = builder.room;
+		currOccStatus = builder.currOccStatus;
+		nextOccStatus = builder.nextOccStatus;
+		tasks = builder.tasks;
+	}
 
 	public RoomDto getRoom() {
 		return room;
@@ -24,6 +42,22 @@ public class RoomStatusDto {
 
 	public void setRoom(RoomDto room) {
 		this.room = room;
+	}
+
+	public RoomOccDto getCurrOccStatus() {
+		return currOccStatus;
+	}
+
+	public void setCurrOccStatus(RoomOccDto currOccStatus) {
+		this.currOccStatus = currOccStatus;
+	}
+
+	public RoomOccDto getNextOccStatus() {
+		return nextOccStatus;
+	}
+
+	public void setNextOccStatus(RoomOccDto nextOccStatus) {
+		this.nextOccStatus = nextOccStatus;
 	}
 
 	public List<TaskDto> getTasks() {
@@ -34,30 +68,53 @@ public class RoomStatusDto {
 		this.tasks = tasks;
 	}
 
-	public static class Builder {
+	public static abstract class Builder<T extends Builder<T>> {
+
+		protected abstract T self();
 
 		private RoomDto room;
+		private RoomOccDto currOccStatus;
+		private RoomOccDto nextOccStatus;
 		private List<TaskDto> tasks;
 
-		public Builder() {
-		}
-
-		public Builder room(RoomDto room) {
+		public T room(RoomDto room) {
 			this.room = room;
-			return this;
+			return self();
 		}
 
-		public Builder tasks(List<TaskDto> tasks) {
+		public T currOccStatus(RoomOccDto currOccStatus) {
+			this.currOccStatus = currOccStatus;
+			return self();
+		}
+
+		public T nextOccStatus(RoomOccDto nextOccStatus) {
+			this.nextOccStatus = nextOccStatus;
+			return self();
+		}
+
+		public T tasks(List<TaskDto> tasks) {
 			this.tasks = tasks;
-			return this;
+			return self();
 		}
 
 		public RoomStatusDto build() {
-			RoomStatusDto result = new RoomStatusDto();
-			result.setRoom(room);
-			result.setTasks(tasks);
-			return result;
+			return new RoomStatusDto(this);
 		}
 	}
 
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
+	}
 }

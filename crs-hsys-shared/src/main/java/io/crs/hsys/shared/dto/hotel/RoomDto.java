@@ -40,16 +40,6 @@ public class RoomDto extends HotelChildDto {
 	private RoomStatus roomStatus;
 
 	/**
-	 * 
-	 */
-	private RoomOccDto currOccStatus;
-
-	/**
-	 * 
-	 */
-	private RoomOccDto nextOccStatus;
-
-	/**
 	 * Szobatípus hivatkozás
 	 */
 	private RoomTypeDtor roomType;
@@ -105,22 +95,6 @@ public class RoomDto extends HotelChildDto {
 		this.roomStatus = roomStatus;
 	}
 
-	public RoomOccDto getCurrOccStatus() {
-		return currOccStatus;
-	}
-
-	public void setCurrOccStatus(RoomOccDto currOccStatus) {
-		this.currOccStatus = currOccStatus;
-	}
-
-	public RoomOccDto getNextOccStatus() {
-		return nextOccStatus;
-	}
-
-	public void setNextOccStatus(RoomOccDto nextOccStatus) {
-		this.nextOccStatus = nextOccStatus;
-	}
-
 	public RoomTypeDtor getRoomType() {
 		return roomType;
 	}
@@ -162,8 +136,6 @@ public class RoomDto extends HotelChildDto {
 		private String floor;
 		private String description;
 		private RoomStatus roomStatus;
-		private RoomOccDto currOccStatus;
-		private RoomOccDto nextOccStatus;
 		private RoomTypeDtor roomType;
 
 		public Builder code(String code) {
@@ -186,16 +158,6 @@ public class RoomDto extends HotelChildDto {
 			return this;
 		}
 
-		public Builder currOccStatus(RoomOccDto currOccStatus) {
-			this.currOccStatus = currOccStatus;
-			return this;
-		}
-
-		public Builder nextOccStatus(RoomOccDto nextOccStatus) {
-			this.nextOccStatus = nextOccStatus;
-			return this;
-		}
-
 		public Builder roomType(RoomTypeDtor roomType) {
 			this.roomType = roomType;
 			return this;
@@ -206,8 +168,6 @@ public class RoomDto extends HotelChildDto {
 			dto.setCode(code);
 			dto.setDescription(description);
 			dto.setFloor(floor);
-			dto.setCurrOccStatus(currOccStatus);
-			dto.setNextOccStatus(nextOccStatus);
 			dto.setRoomStatus(roomStatus);
 			dto.setRoomType(roomType);
 			return dto;

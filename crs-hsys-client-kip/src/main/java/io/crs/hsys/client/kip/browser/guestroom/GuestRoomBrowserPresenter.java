@@ -24,17 +24,11 @@ import io.crs.hsys.client.kip.assignments.AssignmentEditEvent;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorFactory;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorPresenter;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
-import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetPresenter;
 import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
-import io.crs.hsys.shared.constans.AssignmentStatus;
-import io.crs.hsys.shared.constans.FoRoomStatus;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.RoomStatus;
-import io.crs.hsys.shared.dto.common.AppUserDto;
-import io.crs.hsys.shared.dto.hk.CleanTypeDto;
-import io.crs.hsys.shared.dto.hk.HkAssignmentDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
@@ -57,7 +51,7 @@ public class GuestRoomBrowserPresenter
 	}
 
 	private final AssignmentFilterPresenter filterPresenter;
-	private final AssignmentWidgetFactory assignmentWidgetFactory;
+//	private final AssignmentWidgetFactory assignmentWidgetFactory;
 	private final AssignmentEditorPresenter assignmentEditPresenter;
 	private final KipMessages i18n;
 
@@ -69,7 +63,7 @@ public class GuestRoomBrowserPresenter
 		logger.log(Level.INFO, "GuestRoomBrowserPresenter()");
 
 		this.filterPresenter = filterPresenterFactory.createAssignmentFilterPresenter();
-		this.assignmentWidgetFactory = assignmentWidgetFactory;
+//		this.assignmentWidgetFactory = assignmentWidgetFactory;
 		this.assignmentEditPresenter = assignmentEditFactory.createAssignmentEdit();
 		this.i18n = i18n;
 
@@ -109,8 +103,8 @@ public class GuestRoomBrowserPresenter
 	private List<RoomDto> getData() {
 		List<RoomDto> result = new ArrayList<RoomDto>();
 
-		RoomTypeDtor dblbRTD = new RoomTypeDtor.Builder().code("DBLB").name("Double bed room").build();
-		RoomTypeDtor twinRTD = new RoomTypeDtor.Builder().code("TWIN").name("Twin bed room").build();
+		RoomTypeDtor dblbRTD = RoomTypeDtor.builder().code("DBLB").name("Double bed room").build();
+		RoomTypeDtor twinRTD = RoomTypeDtor.builder().code("TWIN").name("Twin bed room").build();
 
 		result.add(
 				new RoomDto.Builder().code("101").description("asdsadasd").floor("1").roomStatus(RoomStatus.CLEAN).roomType(dblbRTD).build());

@@ -17,6 +17,12 @@ public class RoomTypeDtor extends HotelChildDto {
 	public RoomTypeDtor() {
 	};
 
+	public RoomTypeDtor(Builder<?> builder) {
+		super(builder);
+		code = builder.code;
+		name = builder.name;
+	};
+
 	public RoomTypeDtor(HotelChildDto parent) {
 		this.setHotel(parent.getHotel());
 	};
@@ -42,27 +48,45 @@ public class RoomTypeDtor extends HotelChildDto {
 		return "RoomTypeDtor:{code=" + code + ", name=" + name + ", " + super.toString() + "}";
 	}
 
-	public static class Builder extends HotelChildDto.Builder {
+	/**
+	 * 
+	 * @author robi
+	 *
+	 * @param <T>
+	 */
+	public static abstract class Builder<T extends Builder<T>> extends HotelChildDto.Builder<T> {
 
 		private String code;
 		private String name;
 
-		public Builder code(String code) {
+		public T code(String code) {
 			this.code = code;
-			return this;
+			return self();
 		}
 
-		public Builder name(String name) {
+		public T name(String name) {
 			this.name = name;
-			return this;
+			return self();
 		}
 
 		public RoomTypeDtor build() {
-			RoomTypeDtor dto = new RoomTypeDtor(super.build());
-			dto.setCode(code);
-			dto.setName(name);
-			return dto;
+			return new RoomTypeDtor(this);
 		}
 	}
 
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
+	}
 }

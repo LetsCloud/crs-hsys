@@ -33,7 +33,6 @@ import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
-import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -67,6 +66,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 	Div contentPanel, flexiPanel;
 
 	private RoomStatusDto roomStatus;
+
 	/**
 	 * 
 	 */
@@ -84,14 +84,14 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 
 		if (oddItem)
 			setBackgroundColor(Color.GREY_LIGHTEN_4);
-		
+
 		roomStatusPanel.setBackgroundColor(RoomStatusUtils.getStatusBgColor(roomStatus.getRoom().getRoomStatus()));
 		statusIcon.setTextColor(RoomStatusUtils.getStatusIconColor(roomStatus.getRoom().getRoomStatus()));
 		statusIcon.setIconType(RoomStatusUtils.getStatusIcon(roomStatus.getRoom().getRoomStatus()));
 		this.roomNoLabel.setText(roomStatus.getRoom().getCode());
 
 		this.roomTypeLabel.setText(roomStatus.getRoom().getRoomType().getCode());
-		this.guestNumberLabel.setText(roomStatus.getRoom().getCurrOccStatus().getGuestNumber().toString());
+		this.guestNumberLabel.setText(roomStatus.getCurrOccStatus().getGuestNumber().toString());
 
 		Supplier<Stream<TaskDto>> cleaningTasks = () -> roomStatus.getTasks().stream()
 				.filter(o -> o.getKind().equals(TaskKind.CLEANING));
@@ -110,21 +110,22 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 
 		Supplier<Stream<TaskDto>> maintenanceTasks = () -> roomStatus.getTasks().stream()
 				.filter(o -> o.getKind().equals(TaskKind.MAINTENANCE));
-		
+
 		maintenanceLabel.setText(Long.toString(maintenanceTasks.get().count()));
 
-		currOccStatusPanel.setTextColor(RoomStatusUtils.getOccStatusColor(roomStatus.getRoom().getCurrOccStatus().getStatus()));
-		currOccStatusIcon.setIconType(RoomStatusUtils.getOccStatusIcon(roomStatus.getRoom().getCurrOccStatus().getStatus()));
-		currOccLabel.setText(roomStatus.getRoom().getCurrOccStatus().getNotice());
+		currOccStatusPanel.setTextColor(RoomStatusUtils.getOccStatusColor(roomStatus.getCurrOccStatus().getStatus()));
+		currOccStatusIcon.setIconType(RoomStatusUtils.getOccStatusIcon(roomStatus.getCurrOccStatus().getStatus()));
+		currOccLabel.setText(roomStatus.getCurrOccStatus().getNotice());
 
-		if (roomStatus.getRoom().getCurrOccStatus().getStatus().equals(OccStatus.INHOUSE)
-				|| roomStatus.getRoom().getCurrOccStatus().getStatus().equals(OccStatus.OOO)) {
+		if (roomStatus.getCurrOccStatus().getStatus().equals(OccStatus.INHOUSE)
+				|| roomStatus.getCurrOccStatus().getStatus().equals(OccStatus.OOO)) {
 			nextOccStatusPanel.setVisible(false);
 			currOccStatusPanel.setGrid("s12");
 		} else {
-			nextOccStatusPanel.setTextColor(RoomStatusUtils.getOccStatusColor(roomStatus.getRoom().getNextOccStatus().getStatus()));
-			nextOccStatusIcon.setIconType(RoomStatusUtils.getOccStatusIcon(roomStatus.getRoom().getNextOccStatus().getStatus()));
-			nextOccLabel.setText(roomStatus.getRoom().getNextOccStatus().getNotice());
+			nextOccStatusPanel
+					.setTextColor(RoomStatusUtils.getOccStatusColor(roomStatus.getNextOccStatus().getStatus()));
+			nextOccStatusIcon.setIconType(RoomStatusUtils.getOccStatusIcon(roomStatus.getNextOccStatus().getStatus()));
+			nextOccLabel.setText(roomStatus.getNextOccStatus().getNotice());
 		}
 	}
 
@@ -173,119 +174,41 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		if (oddItem)
 			setBackgroundColor(Color.GREY_LIGHTEN_4);
 	}
-/*
-	private Color getStatusBgColor(RoomStatus roomStatus) {
-		switch (roomStatus) {
-		case DIRTY:
-			return Color.RED;
-		case CLEAN:
-			return Color.BLUE;
-		case INSPECTED:
-			return Color.GREEN;
-		case OOO:
-			return Color.BLACK;
-		case OOS:
-			return Color.PURPLE;
-		case SHOW:
-			return Color.AMBER;
-		default:
-			break;
-		}
-		return null;
-	}
 
-	private Color getStatusIconColor(RoomStatus roomStatus) {
-		switch (roomStatus) {
-		case DIRTY:
-			return Color.RED_LIGHTEN_4;
-		case CLEAN:
-			return Color.BLUE_LIGHTEN_4;
-		case INSPECTED:
-			return Color.GREEN_LIGHTEN_4;
-		case OOO:
-			return Color.GREY;
-		case OOS:
-			return Color.PURPLE_LIGHTEN_4;
-		case SHOW:
-			return Color.AMBER_LIGHTEN_4;
-		default:
-			break;
-		}
-		return null;
-	}
-
-	private MdiType getStatusIcon(RoomStatus roomStatus) {
-		switch (roomStatus) {
-		case DIRTY:
-			return MdiType.DELETE_CIRCLE_OUTLINE;
-		case CLEAN:
-			return MdiType.STAR_CIRCLE_OUTLINE;
-		case INSPECTED:
-			return MdiType.CHECK_CIRCLE_OUTLINE;
-		case OOO:
-			return MdiType.SETTINGS_OUTLINE;
-		case OOS:
-			return MdiType.CLOSE_CIRCLE_OUTLINE;
-		case SHOW:
-			return MdiType.EYE_OUTLINE;
-		default:
-			break;
-		}
-		return null;
-	}
-
-	private Color getOccStatusColor(OccStatus occStatus) {
-		switch (occStatus) {
-		case VACANT:
-			return Color.GREY;
-		case EARLYCI:
-			return Color.GREEN;
-		case CHECKIN:
-			return Color.GREEN;
-		case INHOUSE:
-			return Color.BLUE;
-		case CHECKOUT:
-			return Color.RED;
-		case LATECO:
-			return Color.RED;
-		case OOO:
-			return Color.BLACK;
-		case OOS:
-			return Color.PURPLE;
-		case SHOW:
-			return Color.AMBER;
-		default:
-			break;
-		}
-		return null;
-	}
-
-	private MdiType getOccStatusIcon(OccStatus occStatus) {
-		switch (occStatus) {
-		case VACANT:
-			return MdiType.CHECKBOX_BLANK;
-		case EARLYCI:
-			return MdiType.ALPHA_E_BOX;
-		case CHECKIN:
-			return MdiType.ARROW_DOWN_BOX;
-		case INHOUSE:
-			return MdiType.ACCOUNT_BOX;
-		case CHECKOUT:
-			return MdiType.ARROW_UP_BOX;
-		case LATECO:
-			return MdiType.ALPHA_L_BOX;
-		case OOO:
-			return MdiType.SETTINGS_BOX;
-		case OOS:
-			return MdiType.CLOSE_BOX;
-		case SHOW:
-			return MdiType.EYE;
-		default:
-			break;
-		}
-		return null;
-	}
-*/
+	/*
+	 * private Color getStatusBgColor(RoomStatus roomStatus) { switch (roomStatus) {
+	 * case DIRTY: return Color.RED; case CLEAN: return Color.BLUE; case INSPECTED:
+	 * return Color.GREEN; case OOO: return Color.BLACK; case OOS: return
+	 * Color.PURPLE; case SHOW: return Color.AMBER; default: break; } return null; }
+	 * 
+	 * private Color getStatusIconColor(RoomStatus roomStatus) { switch (roomStatus)
+	 * { case DIRTY: return Color.RED_LIGHTEN_4; case CLEAN: return
+	 * Color.BLUE_LIGHTEN_4; case INSPECTED: return Color.GREEN_LIGHTEN_4; case OOO:
+	 * return Color.GREY; case OOS: return Color.PURPLE_LIGHTEN_4; case SHOW: return
+	 * Color.AMBER_LIGHTEN_4; default: break; } return null; }
+	 * 
+	 * private MdiType getStatusIcon(RoomStatus roomStatus) { switch (roomStatus) {
+	 * case DIRTY: return MdiType.DELETE_CIRCLE_OUTLINE; case CLEAN: return
+	 * MdiType.STAR_CIRCLE_OUTLINE; case INSPECTED: return
+	 * MdiType.CHECK_CIRCLE_OUTLINE; case OOO: return MdiType.SETTINGS_OUTLINE; case
+	 * OOS: return MdiType.CLOSE_CIRCLE_OUTLINE; case SHOW: return
+	 * MdiType.EYE_OUTLINE; default: break; } return null; }
+	 * 
+	 * private Color getOccStatusColor(OccStatus occStatus) { switch (occStatus) {
+	 * case VACANT: return Color.GREY; case EARLYCI: return Color.GREEN; case
+	 * CHECKIN: return Color.GREEN; case INHOUSE: return Color.BLUE; case CHECKOUT:
+	 * return Color.RED; case LATECO: return Color.RED; case OOO: return
+	 * Color.BLACK; case OOS: return Color.PURPLE; case SHOW: return Color.AMBER;
+	 * default: break; } return null; }
+	 * 
+	 * private MdiType getOccStatusIcon(OccStatus occStatus) { switch (occStatus) {
+	 * case VACANT: return MdiType.CHECKBOX_BLANK; case EARLYCI: return
+	 * MdiType.ALPHA_E_BOX; case CHECKIN: return MdiType.ARROW_DOWN_BOX; case
+	 * INHOUSE: return MdiType.ACCOUNT_BOX; case CHECKOUT: return
+	 * MdiType.ARROW_UP_BOX; case LATECO: return MdiType.ALPHA_L_BOX; case OOO:
+	 * return MdiType.SETTINGS_BOX; case OOS: return MdiType.CLOSE_BOX; case SHOW:
+	 * return MdiType.EYE; default: break; } return null; }
+	 */
 	@UiHandler("flexiPanel")
 	public void onContentClick(ClickEvent event) {
 		logger.log(Level.INFO, "RoomStatusWidget().onContentClick");
