@@ -3,6 +3,9 @@
  */
 package io.crs.hsys.shared.dto.task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 
@@ -14,7 +17,8 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
 public class TaskTypeDto extends AccountChildDto {
 	private TaskKind kind;
 	private String code;
-	private String description;
+	private String description; 
+	private List<String> toDos = new ArrayList<String>();
 
 	public TaskKind getKind() {
 		return kind;
@@ -40,11 +44,20 @@ public class TaskTypeDto extends AccountChildDto {
 		this.description = description;
 	}
 
+	public List<String> getToDos() {
+		return toDos;
+	}
+
+	public void setToDos(List<String> toDos) {
+		this.toDos = toDos;
+	}
+
 	public static class Builder {
 
 		private TaskKind kind;
 		private String code;
 		private String description;
+		private List<String> toDos = new ArrayList<String>();
 
 		public Builder() {
 		}
@@ -64,11 +77,17 @@ public class TaskTypeDto extends AccountChildDto {
 			return this;
 		}
 
+		public Builder toDos(List<String> toDos) {
+			this.toDos = toDos;
+			return this;
+		}
+
 		public TaskTypeDto build() {
 			TaskTypeDto result = new TaskTypeDto();
 			result.setKind(kind);
 			result.setCode(code);
 			result.setDescription(description);
+			result.setToDos(toDos);
 			return result;
 		}
 	}

@@ -43,6 +43,12 @@ public class BaseDto implements Dto {
 		this.webSafeKey = source.getWebSafeKey();
 	}
 
+	public BaseDto(Builder<?> builder) {
+		id = builder.id;
+		version = builder.version;
+		webSafeKey = builder.webSafeKey;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -113,26 +119,53 @@ public class BaseDto implements Dto {
 		return ret;
 	}
 
-	public static class Builder {
+	/**
+	 * 
+	 * @author robi
+	 *
+	 * @param <T>
+	 */
+	public static abstract class Builder<T extends Builder<T>> {
 
 		private Long id;
+		private Long version;
 		private String webSafeKey;
 
-		public Builder id(Long id) {
+		protected abstract T self();
+
+		public T id(Long id) {
 			this.id = id;
-			return this;
+			return self();
 		}
 
-		public Builder webSafeKey(String webSafeKey) {
+		public T version(Long version) {
+			this.version = version;
+			return self();
+		}
+
+		public T webSafeKey(String webSafeKey) {
 			this.webSafeKey = webSafeKey;
-			return this;
+			return self();
 		}
 
 		public BaseDto build() {
-			BaseDto dto = new BaseDto();
-			dto.setId(id);
-			dto.setWebSafeKey(webSafeKey);
-			return dto;
+			return new BaseDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	private static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 }

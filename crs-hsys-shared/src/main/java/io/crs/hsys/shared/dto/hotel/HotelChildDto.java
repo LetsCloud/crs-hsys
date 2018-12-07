@@ -21,6 +21,11 @@ public class HotelChildDto extends BaseDto {
 	public HotelChildDto() {
 	}
 
+	protected HotelChildDto(Builder<?> builder) {
+		super(builder);
+		hotel = builder.hotel;
+	}
+
 	public HotelChildDto(BaseDto base) {
 		this.setId(base.getId());
 		this.setWebSafeKey(base.getWebSafeKey());
@@ -36,19 +41,39 @@ public class HotelChildDto extends BaseDto {
 		return ret;
 	}
 
-	public static class Builder extends BaseDto.Builder {
+	/**
+	 * 
+	 * @author robi
+	 *
+	 * @param <T>
+	 */
+	public static abstract class Builder<T extends Builder<T>> extends BaseDto.Builder<T> {
 
 		private HotelDtor hotel;
 
-		public Builder hotel(HotelDtor hotel) {
+		public T hotel(HotelDtor hotel) {
 			this.hotel = hotel;
-			return this;
+			return self();
 		}
 
 		public HotelChildDto build() {
-			HotelChildDto dto = new HotelChildDto(super.build());
-			dto.setHotel(hotel);
-			return dto;
+			return new HotelChildDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	private static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 }

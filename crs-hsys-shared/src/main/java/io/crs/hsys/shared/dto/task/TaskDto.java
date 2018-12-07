@@ -10,7 +10,6 @@ import java.util.List;
 import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**
@@ -21,13 +20,13 @@ import io.crs.hsys.shared.dto.common.AppUserDtor;
 public class TaskDto extends AccountChildDto {
 
 	private TaskKind kind;
-	
+
 	private TaskTypeDto type;
 
 	private Date created;
 
 	private Date updated;
-	
+
 	private TaskStatus status;
 
 	private String title;
@@ -47,6 +46,24 @@ public class TaskDto extends AccountChildDto {
 	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 	public TaskDto() {
+		super();
+	}
+
+	public TaskDto(Builder<?> builder) {
+		super(builder);
+		kind = builder.kind;
+		type = builder.type;
+		created = builder.created;
+		updated = builder.updated;
+		status = builder.status;
+		title = builder.title;
+		description = builder.description;
+		reporter = builder.reporter;
+		assignee = builder.assignee;
+		inspector = builder.inspector;
+		assignies = builder.assignies;
+		attributes = builder.attributes;
+		notes = builder.notes;
 	}
 
 	public TaskDto(TaskKind type, String title, Date created, Date updated, List<TaskAttrDto> attributes,
@@ -92,7 +109,7 @@ public class TaskDto extends AccountChildDto {
 	public void setStatus(TaskStatus status) {
 		this.status = status;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -109,10 +126,6 @@ public class TaskDto extends AccountChildDto {
 		this.description = description;
 	}
 
-	
-	
-	
-	
 	public AppUserDtor getReporter() {
 		return reporter;
 	}
@@ -161,7 +174,13 @@ public class TaskDto extends AccountChildDto {
 		this.notes = notes;
 	}
 
-	public static class Builder {
+	/**
+	 * 
+	 * @author robi
+	 *
+	 * @param <T>
+	 */
+	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
 
 		private TaskKind kind;
 		private TaskTypeDto type;
@@ -173,54 +192,59 @@ public class TaskDto extends AccountChildDto {
 		private AppUserDtor reporter;
 		private AppUserDtor assignee;
 		private AppUserDtor inspector;
-		private List<AppUserDto> assignies = new ArrayList<AppUserDto>();
+		private List<AppUserDtor> assignies = new ArrayList<AppUserDtor>();
 		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
-		public Builder() {
-		}
-
-		public Builder kind(TaskKind kind) {
+		public T kind(TaskKind kind) {
 			this.kind = kind;
-			return this;
+			return self();
 		}
 
-		public Builder type(TaskTypeDto type) {
+		public T type(TaskTypeDto type) {
 			this.type = type;
-			return this;
+			return self();
 		}
 
-		public Builder created(Date created) {
+		public T created(Date created) {
 			this.created = created;
-			return this;
+			return self();
 		}
 
-		public Builder status(TaskStatus status) {
+		public T status(TaskStatus status) {
 			this.status = status;
-			return this;
+			return self();
 		}
 
-		public Builder description(String description) {
+		public T description(String description) {
 			this.description = description;
-			return this;
+			return self();
 		}
 
-		public Builder assignee(AppUserDtor assignee) {
+		public T assignee(AppUserDtor assignee) {
 			this.assignee = assignee;
-			return this;
+			return self();
 		}
 
 		public TaskDto build() {
-			TaskDto result = new TaskDto();
-			result.setKind(kind);
-			result.setType(type);
-			result.setCreated(created);
-			result.setUpdated(updated);
-			result.setStatus(status);
-			result.setDescription(description);
-			result.setAssignee(assignee);
-			return result;
+			return new TaskDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 
 }
