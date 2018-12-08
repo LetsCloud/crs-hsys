@@ -23,6 +23,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.pwa.PwaManager;
 import gwt.material.design.client.ui.MaterialToast;
+
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
@@ -120,7 +121,7 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 
 	@Override
 	public void subToServer(String iidToken) {
-		dispatcher.execute(fcmService.subscribe(iidToken, getUserAgent()), new AsyncCallback<Void>() {
+		dispatcher.execute(fcmService.subscribe(iidToken, b64decode(getUserAgent())), new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void response) {
@@ -133,6 +134,11 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 			}
 		});
 	}
+	
+	@Override
+	public void createChat(MaterialWidget source) {
+		chatCreatorPresenter.open(source);
+	}
 
 	/**
 	 * 
@@ -142,9 +148,8 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 		return $wnd.navigator.userAgent.toLowerCase();
 	}-*/;
 
-	@Override
-	public void createChat(MaterialWidget source) {
-		chatCreatorPresenter.open(source);
-	}
+	private static native String b64decode(String a) /*-{
+		return window.atob(a);
+	}-*/;
 
 }

@@ -30,7 +30,7 @@ public class MessagingManager implements HasMessagingFeatures {
 		logger.info("MessagingManager()");
 		this.firebase = firebase;
 	}
-	
+
 	public void setFirebase(Firebase firebase) {
 		this.firebase = firebase;
 	}
@@ -50,9 +50,10 @@ public class MessagingManager implements HasMessagingFeatures {
 	public void getToken(Fn.Arg<String> callback) {
 		getMessaging().getToken().then(object -> {
 			String token = (String) object;
+			logger.info("getToken()->token=" + token);
 			callback.call(token);
 		}).katch(error -> {
-			logger.info("getMessaging().getToken().katch()" + error.toString());
+			logger.info("getToken().katch()->" + error.toString());
 		});
 	}
 
