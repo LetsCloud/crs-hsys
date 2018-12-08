@@ -13,6 +13,7 @@ import gwt.material.design.client.pwa.serviceworker.ServiceEvent;
 import gwt.material.design.client.pwa.serviceworker.ServiceWorkerManager;
 import gwt.material.design.client.pwa.serviceworker.js.ServiceWorkerRegistration;
 import gwt.material.design.client.ui.MaterialToast;
+
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.firebase.messaging.js.Fnx;
 import io.crs.hsys.client.core.promise.xgwt.Fn;
@@ -34,6 +35,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	public AppServiceWorkerManager(String resource, EventBus eventBus, MessagingManager fcmManager,
 			RestDispatch dispatch, FcmResource fcmService) {
 		super(resource);
+		logger.info("AppServiceWorkerManager()");
 		this.eventBus = eventBus;
 		this.fcmManager = fcmManager;
 		this.dispatch = dispatch;
@@ -44,10 +46,13 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 
 	@Override
 	public boolean onRegistered(ServiceEvent event, ServiceWorkerRegistration registration) {
+		logger.info("AppServiceWorkerManager().onRegistered()");
 		boolean result = super.onRegistered(event, registration);
 
-		if (result)
+		if (result) {
+			logger.info("AppServiceWorkerManager().onRegistered()->success");
 			fcmManager.useServiceWorker(registration);
+		}
 
 		return result;
 	}
@@ -61,6 +66,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void requestFcbPermission(Fn.NoArg callback) {
+		logger.info("requestFcbPermission()");
 		fcmManager.requestPermission(callback);
 	}
 
@@ -69,6 +75,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void getFcbToken(Fn.Arg<String> callback) {
+		logger.info("getFcbToken()");
 		fcmManager.getToken(callback);
 	}
 
@@ -77,6 +84,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void onFcmTokenRefresh(Fn.Arg<String> callback) {
+		logger.info("onFcmTokenRefresh()");
 		fcmManager.onTokenRefresh(callback);
 	}
 
@@ -85,6 +93,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void onFcmMessage(Fnx.Arg callback) {
+		logger.info("onFcmMessage()");
 		fcmManager.onMessage(callback);
 	}
 
@@ -93,7 +102,10 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param iidToken
 	 */
 	public void fcmSubscribe(String iidToken) {
-		dispatch.execute(fcmService.subscribe(iidToken, getUserAgent()), new AsyncCallback<Void>() {
+		logger.info("fcmSubscribe()->iidToken=" + iidToken);
+		String userAgent = b64decode(getUserAgent());
+		logger.info("fcmSubscribe()->userAgent=" + userAgent);
+		dispatch.execute(fcmService.subscribe(iidToken, userAgent), new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void response) {
@@ -114,4 +126,9 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	public static native String getUserAgent() /*-{
 												return $wnd.navigator.userAgent.toLowerCase();
 												}-*/;
+
+	private static native String b64decode(String a) /*-{
+														return window.atob(a);
+														}-*/;
+
 }

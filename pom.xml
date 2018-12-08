@@ -551,7 +551,7 @@
 							<phase>prepare-package</phase>
 							<configuration>
 								<arguments>run-script generate
-									${server-directory}/target/${server-artifactId}-${project.version}</arguments>
+									${server-directory}/target/${server-artifactId}-${project.version}/WEB-INF/gwt</arguments>
 							</configuration>
 						</execution>
 					</executions>
