@@ -21,18 +21,38 @@ public class MessagingManager implements HasMessagingFeatures {
 	private static Logger logger = Logger.getLogger(MessagingManager.class.getName());
 
 	private Firebase firebase;
+	private Boolean registered;
+	
+	public Firebase getFirebase() {
+		return firebase;
+	}
+
 	Fnx.NoArg unsubscribe;
 
 	public MessagingManager() {
+		logger.info("MessagingManager()");
+		registered = false;
 	}
 
 	public MessagingManager(Firebase firebase) {
-		logger.info("MessagingManager()");
-		this.firebase = firebase;
+		this();
+		logger.info("MessagingManager(firebase)");
+		setFirebase(firebase);
 	}
 
 	public void setFirebase(Firebase firebase) {
+		logger.info("setFirebase()");
 		this.firebase = firebase;
+		registered = true;
+	}
+
+	public Boolean isRegistered() {
+		logger.info("isRegistered()=" + registered);
+		return registered;
+	}
+
+	public void setRegistered(Boolean registered) {
+		this.registered = registered;
 	}
 
 	@Override
@@ -58,12 +78,14 @@ public class MessagingManager implements HasMessagingFeatures {
 	}
 
 	@Override
-	public void useServiceWorker(ServiceWorkerRegistration r) {
-		firebase.messaging().useServiceWorker(r);
+	public void useServiceWorker(ServiceWorkerRegistration serviceWorker) {
+		logger.info("useServiceWorker()");
+		firebase.messaging().useServiceWorker(serviceWorker);
 	}
 
 	@Override
 	public void requestPermission(Fn.NoArg callback) {
+		logger.info("requestPermission()");
 		getMessaging().requestPermission().then(() -> {
 			callback.call();
 		});
@@ -71,6 +93,7 @@ public class MessagingManager implements HasMessagingFeatures {
 
 	@Override
 	public void onTokenRefresh(Fn.Arg<String> callback) {
+		logger.info("onTokenRefresh()");
 		getMessaging().onTokenRefresh(() -> {
 			getToken(callback);
 		});
@@ -78,6 +101,7 @@ public class MessagingManager implements HasMessagingFeatures {
 
 	@Override
 	public void onMessage(Fnx.Arg callback) {
+		logger.info("onMessage()");
 		unsubscribe = getMessaging().onMessage(callback);
 	}
 }

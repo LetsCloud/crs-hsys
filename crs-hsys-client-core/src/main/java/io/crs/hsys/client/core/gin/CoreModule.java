@@ -73,6 +73,7 @@ public class CoreModule extends AbstractPresenterModule {
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<GlobalConfigDto>>() {
 			@Override
 			public void onSuccess(List<GlobalConfigDto> result) {
+				logger.info("provideMessagingManager().onSuccess()");
 
 				Config config = new Config();
 				config.setApiKey(getGlobalSetting(result, GlobalParam.FB1_API_KEY.name()));
@@ -81,9 +82,9 @@ public class CoreModule extends AbstractPresenterModule {
 				config.setProjectId(getGlobalSetting(result, GlobalParam.FB4_PROJECT_ID.name()));
 				config.setStorageBucket(getGlobalSetting(result, GlobalParam.FB5_STORAGE_BUCKET.name()));
 				config.setMessagingSenderId(getGlobalSetting(result, GlobalParam.FB6_MESSAGE_SENDER_ID.name()));
+
 				Firebase firebase = Firebase.initializeApp(config);
-				logger.info("NotificationsPresenter.onBind().firebase.getName()" + firebase.getName());
-				logger.info("NotificationsPresenter.onReveal().getMessagingManager()");
+				logger.info("provideMessagingManager().onSuccess()->firebase.getName()" + firebase.getName());
 				messagingManager.setFirebase(firebase);
 			}
 		}).getAll();

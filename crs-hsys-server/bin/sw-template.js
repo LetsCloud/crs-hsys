@@ -144,7 +144,7 @@ self.addEventListener('notificationclick', event => {
 importScripts('https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/4.11.0/firebase-messaging.js');
 
-firebase.initializeApp({'messagingSenderId': '1069431891980'});
+firebase.initializeApp({'messagingSenderId': '99934082315'});
 	  
 const messaging = firebase.messaging();
 

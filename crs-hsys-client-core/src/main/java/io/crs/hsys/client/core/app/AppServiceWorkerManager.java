@@ -17,6 +17,7 @@ import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.firebase.messaging.js.Fnx;
 import io.crs.hsys.client.core.promise.xgwt.Fn;
+import io.crs.hsys.client.core.util.Base64Utils;
 import io.crs.hsys.shared.api.FcmResource;
 
 /**
@@ -31,6 +32,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	private final RestDispatch dispatch;
 	private final FcmResource fcmService;
 	private String endpoint, auth, key;
+	private Boolean registered;
 
 	public AppServiceWorkerManager(String resource, EventBus eventBus, MessagingManager fcmManager,
 			RestDispatch dispatch, FcmResource fcmService) {
@@ -40,18 +42,20 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 		this.fcmManager = fcmManager;
 		this.dispatch = dispatch;
 		this.fcmService = fcmService;
+		this.registered = false;
 		// Polling Interval should be every 1 minute
 		/* setPollingInterval(1000); */
 	}
 
 	@Override
 	public boolean onRegistered(ServiceEvent event, ServiceWorkerRegistration registration) {
-		logger.info("AppServiceWorkerManager().onRegistered()");
+		logger.info("onRegistered()");
 		boolean result = super.onRegistered(event, registration);
 
 		if (result) {
-			logger.info("AppServiceWorkerManager().onRegistered()->success");
+			logger.info("Sikeres volt a ServiceWorker regisztrácója, ezért átadjuk a MessagingManager-nek.");
 			fcmManager.useServiceWorker(registration);
+			registered = true;
 		}
 
 		return result;
@@ -60,6 +64,15 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	/*
 	 * FCM
 	 */
+
+	public Boolean isRegistered() {
+		logger.info("isRegistered()=" + registered);
+		return registered;
+	}
+
+	public MessagingManager getFcmManager() {
+		return fcmManager;
+	}
 
 	/**
 	 * 
@@ -103,7 +116,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 */
 	public void fcmSubscribe(String iidToken) {
 		logger.info("fcmSubscribe()->iidToken=" + iidToken);
-		String userAgent = b64decode(getUserAgent());
+		String userAgent = Base64Utils.toBase64(getUserAgent().getBytes());
 		logger.info("fcmSubscribe()->userAgent=" + userAgent);
 		dispatch.execute(fcmService.subscribe(iidToken, userAgent), new AsyncCallback<Void>() {
 

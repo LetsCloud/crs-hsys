@@ -21,11 +21,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.chat.Chat;
 import io.crs.hsys.server.entity.chat.ChatPost;
@@ -40,7 +40,7 @@ import io.crs.hsys.shared.exception.RestApiException;
  * @author robi
  *
  */
-@Controller
+@RestController
 @RequestMapping(value = ROOT + CHAT, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ChatController extends BaseController {
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
