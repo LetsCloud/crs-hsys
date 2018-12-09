@@ -98,6 +98,7 @@ public class ChatController extends BaseController {
 			dto = modelMapper.map(entity, ChatDto.class);
 			return new ResponseEntity<ChatDto>(dto, OK);
 		} catch (Throwable e) {
+			logger.info("create().catch()->e=" + e.getMessage());
 			throw new RestApiException(e);
 		}
 	}

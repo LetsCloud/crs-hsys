@@ -70,7 +70,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	@Override
 	protected void onBind() {
 		super.onBind();
-		logger.info("onBind()");
+//		logger.info("onBind()");
 		String manifest = appCode + "_manifest.json";
 		setInSlot(SLOT_MENU, menuPresenter);
 
@@ -81,7 +81,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private void configPwaManagerLoop(String manifest, Integer attempt) {
-		logger.info("configPwaManagerLoop()->attempt=" + attempt);
+//		logger.info("configPwaManagerLoop()->attempt=" + attempt);
 		if (attempt > 50)
 			return;
 		if (!configPwaManager(manifest)) {
@@ -96,9 +96,9 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private Boolean configPwaManager(String manifest) {
-		logger.info("configPwaManager()");
+//		logger.info("configPwaManager()");
 		if (swManager.getFcmManager().isRegistered()) {
-			logger.info("configPwaManager()->OK");
+//			logger.info("configPwaManager()->OK");
 			PwaManager.getInstance().setServiceWorker(swManager).setWebManifest(manifest).load();
 			configOnFcmMessage();
 			swManager.onFcmTokenRefresh(token -> swManager.fcmSubscribe(token));
@@ -109,7 +109,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private void checkCurrentUserLoop(Integer attempt) {
-		logger.info("checkCurrentUserLoop()->attempt=" + attempt);
+//		logger.info("checkCurrentUserLoop()->attempt=" + attempt);
 		if (attempt > 50)
 			return;
 		if (!checkCurrentUser()) {
@@ -124,7 +124,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private void configOnFcmMessage() {
-		logger.info("configOnFcmMessage()");
+//		logger.info("configOnFcmMessage()");
 		swManager.onFcmMessage(dataMessage -> {
 			String action = dataMessage.getData().getAction();
 			String href = action.substring(action.indexOf("#"));
@@ -135,26 +135,20 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 		});
 	}
 
-	@Override
-	protected void onReveal() {
-		super.onReveal();
-		logger.info("onReveal()");
-	}
-
 	private Boolean checkCurrentUser() {
-		logger.info("checkCurrentUser()");
+//		logger.info("checkCurrentUser()");
 		if (swManager.isRegistered()) {
 			dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
 
 				@Override
 				public void onSuccess(AppUserDto result) {
-					logger.info("checkCurrentUser().onSuccess()");
+//					logger.info("checkCurrentUser().onSuccess()");
 					if (result == null) {
-						logger.info("checkCurrentUser().onSuccess()->(result == null)");
+//						logger.info("checkCurrentUser().onSuccess()->(result == null)");
 						currentUser.setLoggedIn(false);
 						return;
 					}
-					logger.info("checkCurrentUser().onSuccess()->result=" + result);
+//					logger.info("checkCurrentUser().onSuccess()->result=" + result);
 					currentUser.setAppUserDto(result);
 					currentUser.getAppUserDto().getAvailableHotels()
 							.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
@@ -166,7 +160,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 						swManager.fcmSubscribe(token);
 					}));
 
-					logger.info(".checkCurrentUser().onSuccess()->end");
+//					logger.info(".checkCurrentUser().onSuccess()->end");
 				}
 
 				@Override

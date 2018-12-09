@@ -54,4 +54,10 @@ public class ChatPostDto implements Dto {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		String ret = "ChatPostDto:{created=" + created + ", message=" + message + ", sender=" + sender + "}";
+		return ret;
+	}
+
 }

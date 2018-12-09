@@ -49,11 +49,11 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 
 	@Override
 	public boolean onRegistered(ServiceEvent event, ServiceWorkerRegistration registration) {
-		logger.info("onRegistered()");
+//		logger.info("onRegistered()");
 		boolean result = super.onRegistered(event, registration);
 
 		if (result) {
-			logger.info("Sikeres volt a ServiceWorker regisztrácója, ezért átadjuk a MessagingManager-nek.");
+//			logger.info("Sikeres volt a ServiceWorker regisztrácója, ezért átadjuk a MessagingManager-nek.");
 			fcmManager.useServiceWorker(registration);
 			registered = true;
 		}
@@ -66,7 +66,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 */
 
 	public Boolean isRegistered() {
-		logger.info("isRegistered()=" + registered);
+//		logger.info("isRegistered()=" + registered);
 		return registered;
 	}
 
@@ -79,7 +79,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void requestFcbPermission(Fn.NoArg callback) {
-		logger.info("requestFcbPermission()");
+//		logger.info("requestFcbPermission()");
 		fcmManager.requestPermission(callback);
 	}
 
@@ -88,7 +88,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void getFcbToken(Fn.Arg<String> callback) {
-		logger.info("getFcbToken()");
+//		logger.info("getFcbToken()");
 		fcmManager.getToken(callback);
 	}
 
@@ -97,7 +97,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void onFcmTokenRefresh(Fn.Arg<String> callback) {
-		logger.info("onFcmTokenRefresh()");
+//		logger.info("onFcmTokenRefresh()");
 		fcmManager.onTokenRefresh(callback);
 	}
 
@@ -106,7 +106,7 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param callback
 	 */
 	public void onFcmMessage(Fnx.Arg callback) {
-		logger.info("onFcmMessage()");
+//		logger.info("onFcmMessage()");
 		fcmManager.onMessage(callback);
 	}
 
@@ -115,9 +115,9 @@ public class AppServiceWorkerManager extends ServiceWorkerManager {
 	 * @param iidToken
 	 */
 	public void fcmSubscribe(String iidToken) {
-		logger.info("fcmSubscribe()->iidToken=" + iidToken);
+//		logger.info("fcmSubscribe()->iidToken=" + iidToken);
 		String userAgent = Base64Utils.toBase64(getUserAgent().getBytes());
-		logger.info("fcmSubscribe()->userAgent=" + userAgent);
+//		logger.info("fcmSubscribe()->userAgent=" + userAgent);
 		dispatch.execute(fcmService.subscribe(iidToken, userAgent), new AsyncCallback<Void>() {
 
 			@Override

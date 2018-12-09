@@ -72,8 +72,8 @@ public abstract class BaseEntity {
 	private void onLoad() {
 		Key<BaseEntity> key = Key.create(this);
 		this.webSafeKey = key.getString();
-		logger.info("onLoad()->id=" + id);
-		logger.info("onLoad()->webSafeKey=" + webSafeKey);
+//		logger.info("onLoad()->id=" + id);
+//		logger.info("onLoad()->webSafeKey=" + webSafeKey);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public abstract class BaseEntity {
 	 * @param id Egyedi azonosíító.
 	 */
 	public void setId(Long id) {
-		logger.info("setId()->" + id);
+//		logger.info("setId()->" + id);
 		this.id = id;
 	}
 

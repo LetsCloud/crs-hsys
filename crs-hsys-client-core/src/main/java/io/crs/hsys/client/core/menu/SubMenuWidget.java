@@ -30,7 +30,7 @@ public class SubMenuWidget extends MaterialCollapsibleItem {
 	}
 
 	private void init(MenuItemDto menuItem) {
-		logger.log(Level.INFO, "SubMenuWidget.init()");
+//		logger.log(Level.INFO, "SubMenuWidget.init()");
 
 		MaterialLink headerLink = new MaterialLink();
 		if (menuItem.getIcon() != null)

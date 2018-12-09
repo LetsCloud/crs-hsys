@@ -37,7 +37,6 @@ public class ChatEditorPresenter extends PresenterWidget<ChatEditorPresenter.MyV
 		void setPosts(List<ChatPostDto> posts, String currentUserKey);
 
 		void addPost(String message);
-
 	}
 
 	private final ResourceDelegate<ChatResource> chatResource;

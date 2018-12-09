@@ -40,7 +40,7 @@ public class AccountChild extends BaseEntity {
 	}
 
 	public void setAccount(Account account) {
-		logger.info("setAccount()->" + account);
+//		logger.info("setAccount()->" + account);
 		if (account.getId() != null)
 			this.account = Ref.create(account);
 	}

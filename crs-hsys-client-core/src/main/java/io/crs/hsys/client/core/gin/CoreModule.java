@@ -73,7 +73,7 @@ public class CoreModule extends AbstractPresenterModule {
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<GlobalConfigDto>>() {
 			@Override
 			public void onSuccess(List<GlobalConfigDto> result) {
-				logger.info("provideMessagingManager().onSuccess()");
+//				logger.info("provideMessagingManager().onSuccess()");
 
 				Config config = new Config();
 				config.setApiKey(getGlobalSetting(result, GlobalParam.FB1_API_KEY.name()));
@@ -84,7 +84,7 @@ public class CoreModule extends AbstractPresenterModule {
 				config.setMessagingSenderId(getGlobalSetting(result, GlobalParam.FB6_MESSAGE_SENDER_ID.name()));
 
 				Firebase firebase = Firebase.initializeApp(config);
-				logger.info("provideMessagingManager().onSuccess()->firebase.getName()" + firebase.getName());
+//				logger.info("provideMessagingManager().onSuccess()->firebase.getName()" + firebase.getName());
 				messagingManager.setFirebase(firebase);
 			}
 		}).getAll();
@@ -100,7 +100,7 @@ public class CoreModule extends AbstractPresenterModule {
 	@Singleton
 	AppServiceWorkerManager provideAppServiceWorkerManager(EventBus eventBus, MessagingManager fcmManager,
 			RestDispatch dispatch, FcmResource fcmService) {
-		logger.info("provideAppServiceWorkerManager()");
+//		logger.info("provideAppServiceWorkerManager()");
 
 		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager("service-worker.js", eventBus,
 				fcmManager, dispatch, fcmService);

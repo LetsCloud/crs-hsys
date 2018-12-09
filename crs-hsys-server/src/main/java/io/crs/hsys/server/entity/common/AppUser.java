@@ -133,7 +133,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setCode(String code) {
-		logger.info("setCode()");
+//		logger.info("setCode()");
 		this.code = code;
 	}
 
@@ -142,7 +142,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setName(String name) {
-		logger.info("setName()");
+//		logger.info("setName()");
 		this.name = name;
 	}
 
@@ -151,7 +151,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setTitle(String title) {
-		logger.info("setTitle()");
+//		logger.info("setTitle()");
 		this.title = title;
 	}
 
@@ -160,7 +160,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setPicture(String picture) {
-		logger.info("setPicture()");
+//		logger.info("setPicture()");
 		this.picture = picture;
 	}
 
@@ -169,7 +169,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setUsername(String username) {
-		logger.info("setUsername()");
+//		logger.info("setUsername()");
 		this.username = username;
 	}
 
@@ -178,7 +178,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setPassword(String hashedPassword) {
-		logger.info("setPassword()");
+//		logger.info("setPassword()");
 		this.password = hashedPassword;
 	}
 
@@ -187,7 +187,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setEmailAddress(String emailAddress) {
-		logger.info("setEmailAddress()");
+//		logger.info("setEmailAddress()");
 		this.emailAddress = emailAddress;
 	}
 
@@ -196,7 +196,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setVerificationTokens(List<VerificationToken> verificationTokens) {
-		logger.info("setVerificationTokens()");
+//		logger.info("setVerificationTokens()");
 		this.verificationTokens = verificationTokens;
 	}
 
@@ -205,7 +205,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setEnabled(Boolean enabled) {
-		logger.info("setEnabled()");
+//		logger.info("setEnabled()");
 		this.enabled = enabled;
 	}
 
@@ -214,7 +214,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setAdmin(Boolean admin) {
-		logger.info("setAdmin()");
+//		logger.info("setAdmin()");
 		this.admin = admin;
 	}
 
@@ -227,7 +227,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setRoles(List<Role> roles) {
-		logger.info("setRoles()");
+//		logger.info("setRoles()");
 		ArrayList<Ref<Role>> list = new ArrayList<Ref<Role>>();
 		for (Role role : roles) {
 			list.add(Ref.create(role));
@@ -244,7 +244,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setAvailableHotels(List<Hotel> accessibleHotels) {
-		logger.info("setAvailableHotels()");
+//		logger.info("setAvailableHotels()");
 		ArrayList<Ref<Hotel>> list = new ArrayList<Ref<Hotel>>();
 		for (Hotel hotel : accessibleHotels) {
 			list.add(Ref.create(hotel));
@@ -261,7 +261,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setDefaultHotel(Hotel defaultHotel) {
-		logger.info("setDefaultHotel()->defaultHotel=" + defaultHotel);
+//		logger.info("setDefaultHotel()->defaultHotel=" + defaultHotel);
 		if (defaultHotel.getId() == null)
 			return;
 		this.defaultHotel = Ref.create(defaultHotel);
@@ -272,7 +272,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setFcmTokens(List<FcmToken> fcmTokens) {
-		logger.info("setFcmTokens()");
+//		logger.info("setFcmTokens()");
 		this.fcmTokens = fcmTokens;
 	}
 
@@ -285,7 +285,7 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setUserGroups(List<UserGroup> userGroups) {
-		logger.info("setUserGroups()");
+//		logger.info("setUserGroups()");
 		ArrayList<Ref<UserGroup>> list = new ArrayList<Ref<UserGroup>>();
 		for (UserGroup userGroup : userGroups) {
 			list.add(Ref.create(userGroup));
@@ -303,22 +303,27 @@ public class AppUser extends AccountChild {
 
 	@Override
 	public String toString() {
-		String ret = "User:{" + super.toString() + ", username=" + username + ", password=" + password
-				+ ", emailAddress=" + emailAddress + ", enabled=" + enabled + ", admin=" + admin + "}";
+		String ret = "AppUser:{code=" + code + ", name=" + name + ", title=" + title + ", picture=" + picture
+				+ ", username=" + username + ", password=" + password + ", emailAddress=" + emailAddress + ", enabled="
+				+ enabled + ", admin=" + admin + super.toString() + "}";
 		return ret;
 	}
 
 	public static List<AppUser> ref2EntityList(List<Ref<AppUser>> refList) {
+//		logger.info("ref2EntityList()");
 		List<AppUser> list = new ArrayList<AppUser>();
 		for (Ref<AppUser> ref : refList) {
+			logger.info("ref2EntityList()->item");
 			list.add(ref.get());
 		}
 		return list;
 	}
 
 	public static List<Ref<AppUser>> entity2RefList(List<AppUser> entityList) {
+//		logger.info("entity2RefList()");
 		List<Ref<AppUser>> list = new ArrayList<Ref<AppUser>>();
 		for (AppUser entity : entityList) {
+			logger.info("entity2RefList()->item");
 			list.add(Ref.create(entity));
 		}
 		return list;

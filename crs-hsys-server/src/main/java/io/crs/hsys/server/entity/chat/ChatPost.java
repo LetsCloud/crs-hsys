@@ -5,6 +5,9 @@ package io.crs.hsys.server.entity.chat;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.googlecode.objectify.Ref;
 
 import io.crs.hsys.server.entity.common.AppUser;
@@ -14,6 +17,7 @@ import io.crs.hsys.server.entity.common.AppUser;
  *
  */
 public class ChatPost {
+	private static final Logger logger = LoggerFactory.getLogger(ChatPost.class.getName());
 
 	private Date created;
 
@@ -40,11 +44,15 @@ public class ChatPost {
 	}
 
 	public AppUser getSender() {
+		if (sender == null)
+			return null;
 		return sender.get();
 	}
 
 	public void setSender(AppUser sender) {
-		this.sender = Ref.create(sender);
+		logger.info("Chat().setSender()->sender=" + sender);
+		if (sender.getId() != null)
+			this.sender = Ref.create(sender);
 	}
 
 	public String getMessage() {
