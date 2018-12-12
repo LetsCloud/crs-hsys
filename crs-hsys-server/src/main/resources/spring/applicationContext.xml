@@ -12,6 +12,8 @@
 
 	<bean id="modelMapper" class="org.modelmapper.ModelMapper" />
 
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:i18n\messages" />
@@ -82,6 +84,9 @@
 		class="io.crs.hsys.server.service.ofy.ChatServiceImpl">
 		<constructor-arg ref="chatRepository" />
 		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="fcmService"
+		class="io.crs.hsys.server.service.impl.FcmServiceImpl">
 	</bean>
 
 	

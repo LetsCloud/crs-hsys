@@ -70,26 +70,61 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	@Override
 	protected void onBind() {
 		super.onBind();
-		logger.info("AbstractAppPresenter().onBind()");
+//		logger.info("onBind()");
 		String manifest = appCode + "_manifest.json";
 		setInSlot(SLOT_MENU, menuPresenter);
 
 		addRegisteredHandler(NavigationEvent.getType(), this);
 		addRegisteredHandler(SetPageTitleEvent.TYPE, this);
 
-		Timer t = new Timer() {
+		configPwaManagerLoop(manifest, 0);
+	}
 
-			@Override
-			public void run() {
-				PwaManager.getInstance().setServiceWorker(swManager).setWebManifest(manifest).load();
-				configOnFcmMessage();
-				swManager.onFcmTokenRefresh(token -> swManager.fcmSubscribe(token));
-			}
-		};
-		t.schedule(500);
+	private void configPwaManagerLoop(String manifest, Integer attempt) {
+//		logger.info("configPwaManagerLoop()->attempt=" + attempt);
+		if (attempt > 50)
+			return;
+		if (!configPwaManager(manifest)) {
+			Timer t = new Timer() {
+				@Override
+				public void run() {
+					configPwaManagerLoop(manifest, attempt + 1);
+				}
+			};
+			t.schedule(100);
+		}
+	}
+
+	private Boolean configPwaManager(String manifest) {
+//		logger.info("configPwaManager()");
+		if (swManager.getFcmManager().isRegistered()) {
+//			logger.info("configPwaManager()->OK");
+			PwaManager.getInstance().setServiceWorker(swManager).setWebManifest(manifest).load();
+			configOnFcmMessage();
+			swManager.onFcmTokenRefresh(token -> swManager.fcmSubscribe(token));
+			checkCurrentUserLoop(0);
+			return true;
+		}
+		return false;
+	}
+
+	private void checkCurrentUserLoop(Integer attempt) {
+//		logger.info("checkCurrentUserLoop()->attempt=" + attempt);
+		if (attempt > 50)
+			return;
+		if (!checkCurrentUser()) {
+			Timer t = new Timer() {
+				@Override
+				public void run() {
+					checkCurrentUserLoop(attempt + 1);
+				}
+			};
+			t.schedule(100);
+		}
 	}
 
 	private void configOnFcmMessage() {
+//		logger.info("configOnFcmMessage()");
 		swManager.onFcmMessage(dataMessage -> {
 			String action = dataMessage.getData().getAction();
 			String href = action.substring(action.indexOf("#"));
@@ -100,45 +135,43 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 		});
 	}
 
-	@Override
-	protected void onReveal() {
-		super.onReveal();
-		logger.info("AbstractAppPresenter().onReveal()");
-		checkCurrentUser();
-	}
+	private Boolean checkCurrentUser() {
+//		logger.info("checkCurrentUser()");
+		if (swManager.isRegistered()) {
+			dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
 
-	private void checkCurrentUser() {
-		logger.info("AbstractAppPresenter().checkCurrentUser()");
-		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
+				@Override
+				public void onSuccess(AppUserDto result) {
+//					logger.info("checkCurrentUser().onSuccess()");
+					if (result == null) {
+//						logger.info("checkCurrentUser().onSuccess()->(result == null)");
+						currentUser.setLoggedIn(false);
+						return;
+					}
+//					logger.info("checkCurrentUser().onSuccess()->result=" + result);
+					currentUser.setAppUserDto(result);
+					currentUser.getAppUserDto().getAvailableHotels()
+							.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
+					currentUser.setLoggedIn(true);
 
-			@Override
-			public void onSuccess(AppUserDto result) {
-				logger.info("AppPresenter().checkCurrentUser().onSuccess()");
-				if (result == null) {
-					logger.info("AppPresenter().checkCurrentUser().onSuccess()->(result == null)");
-					currentUser.setLoggedIn(false);
-					return;
+					menuPresenter.referesh();
+
+					swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
+						swManager.fcmSubscribe(token);
+					}));
+
+//					logger.info(".checkCurrentUser().onSuccess()->end");
 				}
-				logger.info("AppPresenter().checkCurrentUser().onSuccess()->result=" + result);
-				currentUser.setAppUserDto(result);
-				currentUser.getAppUserDto().getAvailableHotels()
-						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
-				currentUser.setLoggedIn(true);
 
-				menuPresenter.referesh();
-
-				swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
-					swManager.fcmSubscribe(token);
-				}));
-				logger.info("AppPresenter().checkCurrentUser().onSuccess()->end");
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
-						+ caught.getMessage());
-			}
-		});
+				@Override
+				public void onFailure(Throwable caught) {
+					logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
+							+ caught.getMessage());
+				}
+			});
+			return true;
+		}
+		return false;
 	}
 
 	public void logout() {

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.OnSave;
@@ -20,6 +23,7 @@ import io.crs.hsys.server.entity.common.AppUser;
  */
 @Entity
 public class Chat extends AccountChild {
+	private static final Logger logger = LoggerFactory.getLogger(Chat.class.getName());
 
 	private Date created;
 
@@ -37,8 +41,16 @@ public class Chat extends AccountChild {
 
 	private String url;
 
-	public Chat() {
+	@OnSave
+	void maintainPosts() {
+		for (ChatPost p : this.posts) {
+			if (p.getCreated() == null)
+				p.setCreated(new Date());
+		}
+	}
 
+	public Chat() {
+		logger.info("Chat()");
 	}
 
 	/**
@@ -55,11 +67,15 @@ public class Chat extends AccountChild {
 	}
 
 	public AppUser getSender() {
+		if (sender == null)
+			return null;
 		return sender.get();
 	}
 
 	public void setSender(AppUser sender) {
-		this.sender = Ref.create(sender);
+		logger.info("Chat().setSender()->sender=" + sender);
+		if (sender.getId() != null)
+			this.sender = Ref.create(sender);
 	}
 
 	public List<AppUser> getReceivers() {
@@ -67,6 +83,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setReceivers(List<AppUser> receivers) {
+		logger.info("Chat().setReceivers()");
 		this.receivers = AppUser.entity2RefList(receivers);
 	}
 
@@ -75,6 +92,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setMessage(String message) {
+		logger.info("Chat().setMessage()");
 		this.message = message;
 	}
 
@@ -83,6 +101,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setPosts(List<ChatPost> posts) {
+		logger.info("Chat().setPosts()");
 		this.posts = posts;
 	}
 
@@ -91,6 +110,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setCreated(Date created) {
+		logger.info("Chat().setCreated()");
 		this.created = created;
 	}
 
@@ -99,6 +119,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setUpdated(Date updated) {
+		logger.info("Chat().setUpdated()");
 		this.updated = updated;
 	}
 
@@ -107,6 +128,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setClosed(Date closed) {
+		logger.info("Chat().setClosed()");
 		this.closed = closed;
 	}
 
@@ -115,6 +137,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setUrl(String url) {
+		logger.info("Chat().setUrl()");
 		this.url = url;
 	}
 }

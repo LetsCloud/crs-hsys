@@ -27,6 +27,7 @@ import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
+import io.crs.hsys.client.core.util.Base64Utils;
 import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.client.kip.KipAppPresenter;
@@ -66,9 +67,9 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 	}
 
 	@Inject
-	ChatRoomPresenter(EventBus eventBus, MyView view, MyProxy proxy,
-			ChatListFactory chatListFactory, ChatCreatorFactory chatCreatorFactory, RestDispatch dispatcher,
-			FcmResource fcmService, MessagingManager messagingManager, KipMessages i18n) {
+	ChatRoomPresenter(EventBus eventBus, MyView view, MyProxy proxy, ChatListFactory chatListFactory,
+			ChatCreatorFactory chatCreatorFactory, RestDispatch dispatcher, FcmResource fcmService,
+			MessagingManager messagingManager, KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("ChatRoomPresenter()");
 
@@ -85,7 +86,6 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 	@Override
 	protected void onBind() {
 		super.onBind();
-
 
 		setInSlot(LIST_SLOT, chatListPresenter);
 		setInSlot(CREATOR_SLOT, chatCreatorPresenter);
@@ -121,7 +121,10 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 
 	@Override
 	public void subToServer(String iidToken) {
-		dispatcher.execute(fcmService.subscribe(iidToken, b64decode(getUserAgent())), new AsyncCallback<Void>() {
+		logger.info("subToServer()");
+		String userAgent = Base64Utils.toBase64(getUserAgent().getBytes());
+		logger.info("subToServer()->userAgent=" + userAgent);
+		dispatcher.execute(fcmService.subscribe(iidToken, userAgent), new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void response) {
@@ -134,7 +137,7 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 			}
 		});
 	}
-	
+
 	@Override
 	public void createChat(MaterialWidget source) {
 		chatCreatorPresenter.open(source);
