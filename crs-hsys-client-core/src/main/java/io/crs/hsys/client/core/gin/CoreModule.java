@@ -43,6 +43,9 @@ import io.crs.hsys.shared.dto.GlobalConfigDto;
 public class CoreModule extends AbstractPresenterModule {
 	private static Logger logger = Logger.getLogger(CoreModule.class.getName());
 
+//	private static final String SW_PATH="service-worker.js";
+	private static final String SW_PATH="./service-worker.js";
+	
 	@Override
 	protected void configure() {
 		logger.info("CoreModule.configure(");
@@ -102,7 +105,7 @@ public class CoreModule extends AbstractPresenterModule {
 			RestDispatch dispatch, FcmResource fcmService) {
 //		logger.info("provideAppServiceWorkerManager()");
 
-		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager("service-worker.js", eventBus,
+		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager(SW_PATH, eventBus,
 				fcmManager, dispatch, fcmService);
 
 		return serviceWorkerManager;
