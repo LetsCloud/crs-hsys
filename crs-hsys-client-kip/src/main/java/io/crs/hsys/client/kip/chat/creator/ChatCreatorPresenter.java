@@ -24,6 +24,7 @@ import gwt.material.design.client.base.MaterialWidget;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.shared.api.AppUserResource;
 import io.crs.hsys.shared.api.ChatResource;
 import io.crs.hsys.shared.dto.chat.ChatDto;
@@ -87,8 +88,9 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 			public void onSuccess(List<AppUserDto> users) {
 				List<UserGroupDto> userGroups = new ArrayList<UserGroupDto>();
 				List<UserGroupDto> appUsers = new ArrayList<UserGroupDto>();
-				
+
 				for (AppUserDto appUser : users) {
+					logger.info("ChatCreatorPresenter().loadReceiversData()->appUser.getCode()" + appUser.getCode());
 					for (UserGroupDto userGroup : appUser.getUserGroups())
 						if (!userGroups.contains(userGroup))
 							userGroups.add(userGroup);
@@ -112,15 +114,14 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 
 	@Override
 	public void saveChat(List<AppUserDto> receivers, String message) {
-
 		ChatDto dto = new ChatDto();
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		dto.setSender(currentUser.getAppUserDto());
 		dto.setReceivers(receivers);
 		dto.setMessage(message);
-		
-		PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.getHome()).with("id", "").build();
-		dto.setUrl(GWT.getHostPageBaseURL() + "kip.html#" + placeManager.buildHistoryToken(placeRequest));
+
+		PlaceRequest placeRequest = createPlaceRequest("");
+		dto.setUrl(createMeaasgeUrl(placeRequest));
 
 		ChatPostDto post = new ChatPostDto(dto.getSender(), message);
 		dto.getPosts().add(post);
@@ -133,10 +134,7 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 			@Override
 			public void onSuccess(ChatDto dto) {
 				getView().close();
-				PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.getHome())
-						.with("id", String.valueOf(dto.getWebSafeKey())).build();
-
-				placeManager.revealPlace(placeRequest);
+				placeManager.revealPlace(createPlaceRequest(dto.getWebSafeKey()));
 			}
 
 			@Override
@@ -151,4 +149,15 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 		}).create(dto);
 	}
 
+	private PlaceRequest createPlaceRequest(String webSafeKey) {
+		PlaceRequest placeRequest = new Builder().nameToken(KipNameTokens.CHAT_ROOM)
+				.with("id", String.valueOf(webSafeKey)).build();
+		return placeRequest;
+
+	}
+
+	private String createMeaasgeUrl(PlaceRequest placeRequest) {
+		return GWT.getHostPageBaseURL() + "kip.html#" + placeManager.buildHistoryToken(placeRequest);
+
+	}
 }

@@ -53,19 +53,6 @@ public class Chat extends AccountChild {
 		logger.info("Chat()");
 	}
 
-	/**
-	 * Az entitás verziiószámát növelő trigger, amely az entitás mentése előtt fut
-	 * le.
-	 */
-	@OnSave
-	private void onSave() {
-		if (getId() == null) {
-			created = new Date();
-		} else {
-			updated = new Date();
-		}
-	}
-
 	public AppUser getSender() {
 		if (sender == null)
 			return null;

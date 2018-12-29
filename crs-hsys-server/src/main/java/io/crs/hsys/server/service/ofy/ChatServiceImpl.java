@@ -48,7 +48,10 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 	@Override
 	public Chat create(Chat dto) throws Throwable {
+		Date updated = new Date();
 		Chat entiy = super.create(dto);
+		entiy.setCreated(updated);
+		entiy.setUpdated(updated);
 		notifyReceivers(entiy.getSender(), entiy, false);
 		return entiy;
 	}
