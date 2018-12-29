@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<http pattern="/_ah/**" security="none" />
-	<http pattern="/loggedout.htm" security="none" />
+	<http pattern="/service-worker.js" security="none" />
 
 	<authentication-manager
 		alias="authenticationManager">
@@ -116,7 +116,6 @@
 			access="permitAll" />
 		<intercept-url pattern="/activate/**" access="permitAll" />
 		<intercept-url pattern="/static/**" access="permitAll" />
-
 
 		<intercept-url pattern="/**" access="authenticated" />
 
