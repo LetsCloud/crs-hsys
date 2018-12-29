@@ -8,7 +8,14 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.google.common.base.Strings;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -153,19 +160,31 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void logout() {
-		dispatcher.execute(authService.logout(), new AsyncCallback<Void>() {
 
-			@Override
-			public void onSuccess(Void result) {
-//				currentUser.setLoggedIn(false);
-//				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.LOGIN).build();
-//				placeManager.revealPlace(placeRequest);
-			}
+		/*
+		 * dispatcher.execute(authService.logout(), new AsyncCallback<Void>() {
+		 * 
+		 * @Override public void onSuccess(Void result) {
+		 * currentUser.setLoggedIn(false); PlaceRequest placeRequest = new
+		 * PlaceRequest.Builder().nameToken(CoreNameTokens.LOGIN).build();
+		 * placeManager.revealPlace(placeRequest); }
+		 * 
+		 * @Override public void onFailure(Throwable caught) { } });
+		 */
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, GWT.getHostPageBaseURL() + "logout");
 
-			@Override
-			public void onFailure(Throwable caught) {
-			}
-		});
+		try {
+			Request response = builder.sendRequest("", new RequestCallback() {
+
+				public void onError(Request request, Throwable exception) {
+				}
+
+				public void onResponseReceived(Request request, Response response) {
+					Window.Location.replace(GWT.getHostPageBaseURL()+"login");
+				}
+			});
+		} catch (RequestException e) {
+		}
 	}
 
 	@Override

@@ -71,7 +71,7 @@ public class ChatListPresenter extends PresenterWidget<ChatListPresenter.MyView>
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<ChatDto>>() {
 			@Override
 			public void onSuccess(List<ChatDto> result) {
-				result.sort((ChatDto c1, ChatDto c2) -> c2.getUpdated().compareTo(c1.getUpdated()));
+//				result.sort((ChatDto c1, ChatDto c2) -> c2.getUpdated().compareTo(c1.getUpdated()));
 
 				if (Strings.isNullOrEmpty(chatWebSafeKey) && result.size() > 0) {
 					getView().setData(result, result.get(0).getWebSafeKey());
