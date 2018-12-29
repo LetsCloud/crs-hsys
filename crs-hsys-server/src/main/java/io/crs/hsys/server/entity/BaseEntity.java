@@ -80,7 +80,7 @@ public abstract class BaseEntity {
 	 * Objectify miatt szükséges.
 	 */
 	public BaseEntity() {
-		logger.info("BaseEntity()");
+//		logger.info("BaseEntity()");
 	}
 
 	/**

@@ -47,7 +47,7 @@ public class MessagingManager implements HasMessagingFeatures {
 	}
 
 	public Boolean isRegistered() {
-//		logger.info("isRegistered()=" + registered);
+		logger.info("isRegistered()=" + registered);
 		return registered;
 	}
 
@@ -70,7 +70,7 @@ public class MessagingManager implements HasMessagingFeatures {
 	public void getToken(Fn.Arg<String> callback) {
 		getMessaging().getToken().then(object -> {
 			String token = (String) object;
-//			logger.info("getToken()->token=" + token);
+			logger.info("getToken()->token=" + token);
 			callback.call(token);
 		}).katch(error -> {
 			logger.info("getToken().katch()->" + error.toString());
@@ -85,7 +85,7 @@ public class MessagingManager implements HasMessagingFeatures {
 
 	@Override
 	public void requestPermission(Fn.NoArg callback) {
-//		logger.info("requestPermission()");
+		logger.info("requestPermission()");
 		getMessaging().requestPermission().then(() -> {
 			callback.call();
 		});
@@ -93,7 +93,7 @@ public class MessagingManager implements HasMessagingFeatures {
 
 	@Override
 	public void onTokenRefresh(Fn.Arg<String> callback) {
-//		logger.info("onTokenRefresh()");
+		logger.info("onTokenRefresh()");
 		getMessaging().onTokenRefresh(() -> {
 			getToken(callback);
 		});
@@ -101,7 +101,7 @@ public class MessagingManager implements HasMessagingFeatures {
 
 	@Override
 	public void onMessage(Fnx.Arg callback) {
-//		logger.info("onMessage()");
+		logger.info("onMessage()");
 		unsubscribe = getMessaging().onMessage(callback);
 	}
 }

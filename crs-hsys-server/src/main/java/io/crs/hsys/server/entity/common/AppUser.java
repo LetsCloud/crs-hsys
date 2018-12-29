@@ -111,7 +111,7 @@ public class AppUser extends AccountChild {
 	 * Paraméter nélküli kontruktor Objectify-hoz
 	 */
 	public AppUser() {
-		logger.info("AppUser()");
+//		logger.info("AppUser()");
 		this.enabled = false;
 		this.admin = false;
 	}
@@ -313,7 +313,7 @@ public class AppUser extends AccountChild {
 //		logger.info("ref2EntityList()");
 		List<AppUser> list = new ArrayList<AppUser>();
 		for (Ref<AppUser> ref : refList) {
-			logger.info("ref2EntityList()->item");
+//			logger.info("ref2EntityList()->item");
 			list.add(ref.get());
 		}
 		return list;
@@ -323,7 +323,7 @@ public class AppUser extends AccountChild {
 //		logger.info("entity2RefList()");
 		List<Ref<AppUser>> list = new ArrayList<Ref<AppUser>>();
 		for (AppUser entity : entityList) {
-			logger.info("entity2RefList()->item");
+//			logger.info("entity2RefList()->item");
 			list.add(Ref.create(entity));
 		}
 		return list;
