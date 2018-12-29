@@ -49,9 +49,9 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 	@Override
 	public Chat create(Chat dto) throws Throwable {
 		Date updated = new Date();
+		dto.setCreated(updated);
+		dto.setUpdated(updated);
 		Chat entiy = super.create(dto);
-		entiy.setCreated(updated);
-		entiy.setUpdated(updated);
 		notifyReceivers(entiy.getSender(), entiy, false);
 		return entiy;
 	}
@@ -83,7 +83,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 	}
 
 	public void notifyReceivers(AppUser sender, Chat chat, Boolean isAddPost) {
-		logger.info("notifyReceivers()");
+//		logger.info("notifyReceivers()");
 
 		NotificationDto nd = new NotificationDto(sender.getName(),
 				chat.getPosts().get(chat.getPosts().size() - 1).getMessage(), sender.getPicture(),
@@ -93,7 +93,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 		// Sima postolás esetén a chatet inditó tokenjét is begyűjtjük
 		if (isAddPost) {
-			logger.info("notifyReceivers()->chatStarter=" + chat.getSender().getName());
+//			logger.info("notifyReceivers()->chatStarter=" + chat.getSender().getName());
 			for (FcmToken chatStarterToken : chat.getSender().getFcmTokens()) {
 				if (!tokens.contains(chatStarterToken.getToken()))
 					tokens.add(chatStarterToken.getToken());
@@ -102,7 +102,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 		// Majd az értesítettek tokenjeit is begyűjtjük
 		for (AppUser receiver : chat.getReceivers()) {
-			logger.info("notifyReceivers()->receiver=" + receiver.getName());
+//			logger.info("notifyReceivers()->receiver=" + receiver.getName());
 			for (FcmToken receiverToken : receiver.getFcmTokens()) {
 				if (!tokens.contains(receiverToken.getToken()))
 					tokens.add(receiverToken.getToken());
@@ -110,12 +110,12 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 		}
 
 		// Végül kivesszük a sender token-ét
-		logger.info("notifyReceivers()->sender=" + sender.getName());
+//		logger.info("notifyReceivers()->sender=" + sender.getName());
 		for (FcmToken senderToken : sender.getFcmTokens())
 			tokens.remove(senderToken.getToken());
 
 		for (String token : tokens) {
-			logger.info("notifyReceivers()->token=" + token);
+//			logger.info("notifyReceivers()->token=" + token);
 			FcmService2.send_FCM_Notification(token, nd);
 		}
 	}

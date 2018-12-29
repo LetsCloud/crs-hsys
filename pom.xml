@@ -91,6 +91,7 @@
 		<java.version>1.8</java.version>
 		<server-artifactId>crs-hsys-server</server-artifactId>
 		<server-directory>${project.parent.basedir}/${server-artifactId}</server-directory>
+		<gcd.backing.store-directory>${project.parent.basedir}/${server-artifactId}/appengine-generated/local_db.bin</gcd.backing.store-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<mavenVersion>3.5</mavenVersion>
@@ -365,12 +366,12 @@
 				<version>${modelmapper.version}</version>
 			</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.json/json -->
-<dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20180813</version>
-</dependency>
+			<!-- https://mvnrepository.com/artifact/org.json/json -->
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>20180813</version>
+			</dependency>
 
 			<!-- ************************************************************************************* -->
 			<!-- APPENGINE -->
@@ -601,6 +602,15 @@
 						<version>
 							${appengine.app.version}
 						</version>
+						<automaticRestart>true</automaticRestart>
+						<jvmFlags>
+							<jvmFlag>
+								-Dappengine.fullscan.seconds=5
+							</jvmFlag>
+							<jvmFlag>
+								-Ddatastore.backing_store=${gcd.backing.store-directory}
+							</jvmFlag>
+						</jvmFlags>
 					</configuration>
 				</plugin>
 
