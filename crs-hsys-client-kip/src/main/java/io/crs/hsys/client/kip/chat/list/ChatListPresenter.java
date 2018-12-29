@@ -19,10 +19,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.ChatResource;
 import io.crs.hsys.shared.dto.chat.ChatDto;
+import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorFactory;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorPresenter;
 
@@ -71,7 +71,7 @@ public class ChatListPresenter extends PresenterWidget<ChatListPresenter.MyView>
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<ChatDto>>() {
 			@Override
 			public void onSuccess(List<ChatDto> result) {
-//				result.sort((ChatDto c1, ChatDto c2) -> c2.getUpdated().compareTo(c1.getUpdated()));
+				result.sort((ChatDto c1, ChatDto c2) -> c2.getUpdated().compareTo(c1.getUpdated()));
 
 				if (Strings.isNullOrEmpty(chatWebSafeKey) && result.size() > 0) {
 					getView().setData(result, result.get(0).getWebSafeKey());
@@ -86,7 +86,7 @@ public class ChatListPresenter extends PresenterWidget<ChatListPresenter.MyView>
 
 	@Override
 	public void onSelectChat(String chatWebSafeKey) {
-		PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.getHome())
+		PlaceRequest placeRequest = new Builder().nameToken(KipNameTokens.CHAT_ROOM)
 				.with("id", String.valueOf(chatWebSafeKey)).build();
 
 		placeManager.revealPlace(placeRequest);

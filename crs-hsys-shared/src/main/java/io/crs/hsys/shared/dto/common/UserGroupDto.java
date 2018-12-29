@@ -21,6 +21,7 @@ public class UserGroupDto extends AccountChildDto {
 	}
 
 	public UserGroupDto(AppUserDto member) {
+		name = member.getName();
 		members.add(member);
 	}
 
