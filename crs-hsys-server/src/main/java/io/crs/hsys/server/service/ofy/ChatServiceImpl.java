@@ -72,20 +72,22 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 	@Override
 	public Chat addPost(String chatKey, ChatPost post) throws EntityValidationException, UniqueIndexConflictException {
+		logger.info("addPost()->post=" + post);
 		Date updated = new Date();
 		Chat chat = repository.findByWebSafeKey(chatKey);
 		post.setCreated(updated);
 		chat.getPosts().add(post);
 		chat.setUpdated(updated);
 		chat = repository.save(chat);
-		notifyReceivers(chat.getSender(), chat, true);
+		notifyReceivers(post.getSender(), chat, true);
 		return chat;
 	}
 
 	public void notifyReceivers(AppUser sender, Chat chat, Boolean isAddPost) {
-		logger.info("notifyReceivers()");
+		logger.info("notifyReceivers()->sender=" + sender);
+		logger.info("notifyReceivers()->chat=" + chat);
 
-		NotificationDto nd = new NotificationDto(sender.getName(),
+		NotificationDto notification = new NotificationDto(sender.getName(),
 				chat.getPosts().get(chat.getPosts().size() - 1).getMessage(), sender.getPicture(),
 				chat.getUrl() + chat.getWebSafeKey());
 
@@ -93,7 +95,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 		// Sima postolás esetén a chatet inditó tokenjét is begyűjtjük
 		if (isAddPost) {
-		logger.info("notifyReceivers()->chatStarter=" + chat.getSender().getName());
+			logger.info("notifyReceivers()->chatStarter=" + chat.getSender().getName());
 			for (FcmToken chatStarterToken : chat.getSender().getFcmTokens()) {
 				if (!tokens.contains(chatStarterToken.getToken()))
 					tokens.add(chatStarterToken.getToken());
@@ -114,9 +116,9 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 		for (FcmToken senderToken : sender.getFcmTokens())
 			tokens.remove(senderToken.getToken());
 
-		for (String token : tokens) {
-			logger.info("notifyReceivers()->token=" + token);
-			FcmService2.send_FCM_Notification(token, nd);
+		for (String receiverToken : tokens) {
+			logger.info("notifyReceivers()->receiverToken=" + receiverToken);
+			FcmService2.send_FCM_Notification(receiverToken, notification);
 		}
 	}
 
