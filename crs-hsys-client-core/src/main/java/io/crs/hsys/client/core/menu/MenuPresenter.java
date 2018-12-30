@@ -16,10 +16,8 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
@@ -33,7 +31,6 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.security.HasPermissionsGatekeeper;
-import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
@@ -45,6 +42,9 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
 public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		implements MenuUiHandlers, SetPageTitleHandler {
 	private static Logger logger = Logger.getLogger(MenuPresenter.class.getName());
+
+	public static final String LOGOUT_URL = "logout";
+	public static final String LOGOUT_SUCCESS_URL = "login.html?logout";
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_NAVBAR = new SingleSlot<>();
 
@@ -78,20 +78,15 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		void setAppCode(String appCode);
 	}
 
-	private final RestDispatch dispatcher;
-	private final AuthResource authService;
 	private final CurrentUser currentUser;
 	private final AppData appData;
 
 	@Inject
-	MenuPresenter(EventBus eventBus, MyView view, PlaceManager placeManager, RestDispatch dispatcher,
-			AuthResource authService, CurrentUser currentUser, AppData appData,
+	MenuPresenter(EventBus eventBus, MyView view, PlaceManager placeManager, CurrentUser currentUser, AppData appData,
 			HasPermissionsGatekeeper menItemGatekeeper) {
 		super(eventBus, view);
 		logger.info("MenuPresenter()");
 
-		this.dispatcher = dispatcher;
-		this.authService = authService;
 		this.currentUser = currentUser;
 		this.appData = appData;
 		this.menItemGatekeeper = menItemGatekeeper;
@@ -160,27 +155,15 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void logout() {
-
-		/*
-		 * dispatcher.execute(authService.logout(), new AsyncCallback<Void>() {
-		 * 
-		 * @Override public void onSuccess(Void result) {
-		 * currentUser.setLoggedIn(false); PlaceRequest placeRequest = new
-		 * PlaceRequest.Builder().nameToken(CoreNameTokens.LOGIN).build();
-		 * placeManager.revealPlace(placeRequest); }
-		 * 
-		 * @Override public void onFailure(Throwable caught) { } });
-		 */
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, GWT.getHostPageBaseURL() + "logout");
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, GWT.getHostPageBaseURL() + LOGOUT_URL);
 
 		try {
-			Request response = builder.sendRequest("", new RequestCallback() {
-
-				public void onError(Request request, Throwable exception) {
+			builder.sendRequest("", new RequestCallback() {
+				public void onResponseReceived(Request request, Response response) {
+					Window.Location.replace(GWT.getHostPageBaseURL() + LOGOUT_SUCCESS_URL);
 				}
 
-				public void onResponseReceived(Request request, Response response) {
-					Window.Location.replace(GWT.getHostPageBaseURL()+"login");
+				public void onError(Request request, Throwable exception) {
 				}
 			});
 		} catch (RequestException e) {

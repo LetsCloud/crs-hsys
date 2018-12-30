@@ -19,7 +19,6 @@
 		location="classpath:static/" />
 
 	<mvc:resources mapping="/**" location="/WEB-INF/gwt/" />
-	<mvc:resources mapping="/**" location="/WEB-INF/gwt/service-worker.js" />
 
 	<mvc:default-servlet-handler />
 
