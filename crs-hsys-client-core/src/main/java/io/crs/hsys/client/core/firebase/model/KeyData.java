@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.core.firebase.model;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -43,8 +44,12 @@ public class KeyData {
 	}
 
 	@JsOverlay
-	public final String getAction() {
+	public final String getClick_action() {
 		return click_action;
 	}
+
+	@Override
+	@JsMethod
+	public native String toString();
 
 }

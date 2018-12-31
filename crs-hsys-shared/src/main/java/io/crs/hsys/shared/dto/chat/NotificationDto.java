@@ -15,7 +15,7 @@ public class NotificationDto implements Serializable {
 	private String title;
 	private String body;
 	private String icon;
-	private String action;
+	private String click_action;
 
 	public NotificationDto() {
 	}
@@ -27,9 +27,9 @@ public class NotificationDto implements Serializable {
 		this.icon = icon;
 	}
 
-	public NotificationDto(String title, String body, String icon, String action) {
+	public NotificationDto(String title, String body, String icon, String click_action) {
 		this(title, body, icon);
-		this.action = action;
+		this.click_action = click_action;
 	}
 
 	public String getTitle() {
@@ -56,12 +56,18 @@ public class NotificationDto implements Serializable {
 		this.icon = icon;
 	}
 
-	public String getAction() {
-		return action;
+	public String getClick_action() {
+		return click_action;
 	}
 
-	public void setAction(String action) {
-		this.action = action;
+	public void setClick_action(String action) {
+		this.click_action = action;
 	}
 
+	@Override
+	public String toString() {
+		String ret = "NotificationDto:{title=" + title + ", body=" + body + ", icon=" + icon + ", click_action="
+				+ click_action + "}";
+		return ret;
+	}
 }

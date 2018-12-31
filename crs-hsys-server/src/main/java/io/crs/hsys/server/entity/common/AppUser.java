@@ -305,7 +305,7 @@ public class AppUser extends AccountChild {
 	public String toString() {
 		String ret = "AppUser:{code=" + code + ", name=" + name + ", title=" + title + ", picture=" + picture
 				+ ", username=" + username + ", password=" + password + ", emailAddress=" + emailAddress + ", enabled="
-				+ enabled + ", admin=" + admin + super.toString() + "}";
+				+ enabled + ", admin=" + admin + ", " + super.toString() + "}";
 		return ret;
 	}
 

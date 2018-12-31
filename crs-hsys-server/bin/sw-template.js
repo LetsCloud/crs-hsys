@@ -90,6 +90,7 @@ self.addEventListener('fetch', function(e) {
  * This will also provide you a Notification UI build from the JSON Payload
  * provided before sending the message.
  */
+/*
 self.addEventListener('push', function (event) {
     console.log("Service Worker Push Received");
     var json = event.data.json();
@@ -117,7 +118,7 @@ self.addEventListener('push', function (event) {
 
     event.waitUntil(self.registration.showNotification(title, options));
 });
-
+*/
 
 //
 // Notifications API

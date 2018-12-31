@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
-import com.google.appengine.api.users.UserServiceFactory;
-
 import io.crs.hsys.server.entity.GlobalConfig;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.model.Registration;

@@ -8,14 +8,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.crs.hsys.server.entity.chat.Chat;
 import io.crs.hsys.server.entity.chat.ChatPost;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.FcmToken;
+import io.crs.hsys.server.model.FcmMessage;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.ChatRepository;
 import io.crs.hsys.server.service.ChatService;
+import io.crs.hsys.server.service.FcmService;
 import io.crs.hsys.shared.dto.chat.NotificationDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
@@ -29,11 +34,16 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 	private final ChatRepository repository;
 	private final AccountRepository accountRepository;
+	private final FcmService fcmService;
+	private final ObjectMapper objectMapper;
 
-	public ChatServiceImpl(ChatRepository repository, AccountRepository accountRepository) {
+	public ChatServiceImpl(ChatRepository repository, AccountRepository accountRepository, FcmService fcmService,
+			ObjectMapper objectMapper) {
 		super(repository);
 		this.repository = repository;
 		this.accountRepository = accountRepository;
+		this.fcmService = fcmService;
+		this.objectMapper = objectMapper;
 	}
 
 	@Override
@@ -84,18 +94,20 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 	}
 
 	public void notifyReceivers(AppUser sender, Chat chat, Boolean isAddPost) {
-		logger.info("notifyReceivers()->sender=" + sender);
-		logger.info("notifyReceivers()->chat=" + chat);
+		logger.info("sender=" + sender);
+		logger.info("chat=" + chat);
 
 		NotificationDto notification = new NotificationDto(sender.getName(),
 				chat.getPosts().get(chat.getPosts().size() - 1).getMessage(), sender.getPicture(),
 				chat.getUrl() + chat.getWebSafeKey());
 
+		logger.info("notification.getAction()=" + notification.getClick_action());
+
 		List<String> tokens = new ArrayList<String>();
 
 		// Sima postolás esetén a chatet inditó tokenjét is begyűjtjük
 		if (isAddPost) {
-			logger.info("notifyReceivers()->chatStarter=" + chat.getSender().getName());
+			logger.info("chat.getSender().getName()=" + chat.getSender().getName());
 			for (FcmToken chatStarterToken : chat.getSender().getFcmTokens()) {
 				if (!tokens.contains(chatStarterToken.getToken()))
 					tokens.add(chatStarterToken.getToken());
@@ -104,7 +116,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 
 		// Majd az értesítettek tokenjeit is begyűjtjük
 		for (AppUser receiver : chat.getReceivers()) {
-			logger.info("notifyReceivers()->receiver=" + receiver.getName());
+			logger.info("receiver.getName()=" + receiver.getName());
 			for (FcmToken receiverToken : receiver.getFcmTokens()) {
 				if (!tokens.contains(receiverToken.getToken()))
 					tokens.add(receiverToken.getToken());
@@ -112,13 +124,20 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 		}
 
 		// Végül kivesszük a sender token-ét
-		logger.info("notifyReceivers()->sender=" + sender.getName());
+		logger.info("sender.getName()=" + sender.getName());
 		for (FcmToken senderToken : sender.getFcmTokens())
 			tokens.remove(senderToken.getToken());
 
 		for (String receiverToken : tokens) {
-			logger.info("notifyReceivers()->receiverToken=" + receiverToken);
-			FcmService2.send_FCM_Notification(receiverToken, notification);
+			logger.info("receiverToken=" + receiverToken);
+//			FcmService2.send_FCM_Notification(receiverToken, notification);
+			FcmMessage message = new FcmMessage(notification, receiverToken);
+			try {
+				fcmService.postMessage(objectMapper.writeValueAsString(message));
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

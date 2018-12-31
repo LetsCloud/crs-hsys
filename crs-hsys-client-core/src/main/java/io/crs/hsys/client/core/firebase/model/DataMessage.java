@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.core.firebase.model;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -20,9 +21,9 @@ public class DataMessage {
 
 	@JsProperty
 	public String from;
-	
+
 	@JsProperty
-	public KeyData data;
+	public KeyData notification;
 
 	@JsOverlay
 	public final String getCollapse_key() {
@@ -35,7 +36,11 @@ public class DataMessage {
 	}
 
 	@JsOverlay
-	public final KeyData getData() {
-		return data;
+	public final KeyData getNotification() {
+		return notification;
 	}
+
+	@Override
+	@JsMethod
+	public native String toString();
 }

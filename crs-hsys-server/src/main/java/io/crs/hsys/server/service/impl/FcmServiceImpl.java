@@ -46,6 +46,7 @@ public class FcmServiceImpl implements FcmService {
 		HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
 		ResponseEntity<String> responseEntity = rest.exchange(HOST_URL, HttpMethod.POST, requestEntity, String.class);
 		this.setStatus(responseEntity.getStatusCode());
+		logger.info("responseEntity.getBody()=" + responseEntity.getBody());
 		return responseEntity.getBody();
 	}
 

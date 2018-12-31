@@ -127,4 +127,12 @@ public class Chat extends AccountChild {
 //		logger.info("Chat().setUrl()");
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "Chat:[created=" + created + ", " + "updated=" + updated + ", " + "sender=" + getSender() + ", "
+				+ "message=" + message + ", " + "closed=" + closed + ", " + "url=" + url + ", " + super.toString()
+				+ "]";
+	}
+
 }

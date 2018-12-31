@@ -61,7 +61,7 @@ public class FcmService2 {
 			notificationJson.put("icon", message.getIcon());
 			notificationJson.put("title", message.getTitle());
 			notificationJson.put("body", message.getBody());
-			notificationJson.put("click_action", message.getAction());
+			notificationJson.put("click_action", message.getClick_action());
 
 //			JSONObject dataJson = new JSONObject();
 //			dataJson.put("notification", notificationJson);
