@@ -23,7 +23,7 @@ import io.crs.hsys.shared.dto.chat.NotificationDto;
 public class FcmService2 {
 	private static final String FCM_URL = "https://fcm.googleapis.com/fcm/send";
 //	private static final String FCM_URL = "https://fcm.googleapis.com/v1/projects/hw-cloud3/messages:send";
-	private static final String SERVER_KEY = "AAAAGAt6I4o:APA91bF4FBaCBtd9s6_ASAd0RaYiFFx6eb0TurFomRI26cmDwEiG_3OH5ax4PdJSxK-ZVkl_Y6fDv_L-9o-ti-rlfwQwCZ6yq-SklwQF7LEgwJEihJjyLF4p2iUPgtECgR0be4NJsZ0b";
+	private static final String SERVER_KEY = "AAAAF0SJFQs:APA91bHuujFobqGu2ynQ_hBA8jyNNOibKxITNAyEmr4NAjL1FOOmbxrv7TT2rL1kTsGQAaGI4nIDiEt1qaW9VOekRaaTJ84Q_QRakKyrwSngUljxJqqwWUlcClbddLKXKiX5JnEyQ1JT";
 
 	/**
 	 *
@@ -61,7 +61,7 @@ public class FcmService2 {
 			notificationJson.put("icon", message.getIcon());
 			notificationJson.put("title", message.getTitle());
 			notificationJson.put("body", message.getBody());
-			notificationJson.put("click_action", message.getAction());
+			notificationJson.put("click_action", message.getClick_action());
 
 //			JSONObject dataJson = new JSONObject();
 //			dataJson.put("notification", notificationJson);

@@ -21,8 +21,8 @@ import io.crs.hsys.server.service.FcmService;
 public class FcmServiceImpl implements FcmService {
 	private static final Logger logger = LoggerFactory.getLogger(FcmServiceImpl.class);
 
-//	private static final String HOST_URL = "https://fcm.googleapis.com/fcm/send";
-	private static final String HOST_URL = "https://fcm.googleapis.com/v1/projects/hw-cloud4/messages:send";
+	private static final String HOST_URL = "https://fcm.googleapis.com/fcm/send";
+//	private static final String HOST_URL = "https://fcm.googleapis.com/v1/projects/hw-cloud4/messages:send";
 	private static final String HEAD_AUTH = "Authorization";
 	private static final String SERVER_KEY = "key=AAAAF0SJFQs:APA91bHuujFobqGu2ynQ_hBA8jyNNOibKxITNAyEmr4NAjL1FOOmbxrv7TT2rL1kTsGQAaGI4nIDiEt1qaW9VOekRaaTJ84Q_QRakKyrwSngUljxJqqwWUlcClbddLKXKiX5JnEyQ1JT";
 	// private static final String SERVER_KEY =
@@ -42,9 +42,11 @@ public class FcmServiceImpl implements FcmService {
 	}
 
 	public String postMessage(String json) {
+		logger.info("postMessage()->json=" + json);
 		HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
 		ResponseEntity<String> responseEntity = rest.exchange(HOST_URL, HttpMethod.POST, requestEntity, String.class);
 		this.setStatus(responseEntity.getStatusCode());
+		logger.info("responseEntity.getBody()=" + responseEntity.getBody());
 		return responseEntity.getBody();
 	}
 

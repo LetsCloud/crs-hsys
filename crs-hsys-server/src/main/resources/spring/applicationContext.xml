@@ -84,6 +84,8 @@
 		class="io.crs.hsys.server.service.ofy.ChatServiceImpl">
 		<constructor-arg ref="chatRepository" />
 		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="fcmService" />
+		<constructor-arg ref="objectMapper" />
 	</bean>
 	<bean id="fcmService"
 		class="io.crs.hsys.server.service.impl.FcmServiceImpl">

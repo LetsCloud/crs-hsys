@@ -59,7 +59,7 @@ public class Hotel extends AccountChild {
 	 * 
 	 */
 	public Hotel() {
-		logger.info("Hotel()");
+//		logger.info("Hotel()");
 	}
 
 	public String getCode() {
@@ -67,7 +67,7 @@ public class Hotel extends AccountChild {
 	}
 
 	public void setCode(String code) {
-		logger.info("setCode()->code=" + code);
+//		logger.info("setCode()->code=" + code);
 		this.code = code;
 	}
 
@@ -76,7 +76,7 @@ public class Hotel extends AccountChild {
 	}
 
 	public void setName(String name) {
-		logger.info("setName()->code=" + code);
+//		logger.info("setName()->code=" + code);
 		this.name = name;
 	}
 

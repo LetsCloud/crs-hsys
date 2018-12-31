@@ -78,11 +78,11 @@ public class ChatController extends BaseController {
 
 	@RequestMapping(value = PATH_WEBSAFEKEY, method = GET)
 	public @ResponseBody ResponseEntity<ChatDto> getByKey(@PathVariable String webSafeKey) throws RestApiException {
-		logger.info("getByKey()->webSafeKey=" + webSafeKey);
+//		logger.info("getByKey()->webSafeKey=" + webSafeKey);
 		Chat entity;
 		try {
 			entity = chatService.read(webSafeKey);
-			logger.info("getByKey()->entity.getWebSafeKey()=" + entity.getWebSafeKey());
+//			logger.info("getByKey()->entity.getWebSafeKey()=" + entity.getWebSafeKey());
 		} catch (Throwable e) {
 			throw new RestApiException(e);
 		}
@@ -92,7 +92,7 @@ public class ChatController extends BaseController {
 
 	@RequestMapping(method = POST)
 	public ResponseEntity<ChatDto> create(@RequestBody ChatDto dto) throws RestApiException {
-		logger.info("create()");
+//		logger.info("create()");
 		try {
 			Chat entity = chatService.create(modelMapper.map(dto, Chat.class));
 			dto = modelMapper.map(entity, ChatDto.class);
@@ -105,7 +105,7 @@ public class ChatController extends BaseController {
 
 	@RequestMapping(value = ADD_POST, method = POST)
 	public ResponseEntity<ChatDto> addPost(@RequestBody AddPostDto postDto) throws RestApiException {
-		logger.info("create()");
+//		logger.info("create()");
 		try {
 			ChatPost post = modelMapper.map(postDto, ChatPost.class);
 			Chat entity = chatService.addPost(postDto.getChatWebSafeKey(), post);

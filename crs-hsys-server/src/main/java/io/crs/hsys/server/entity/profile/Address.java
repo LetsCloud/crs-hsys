@@ -55,7 +55,7 @@ public class Address {
 	private String formattedAddress;
 
 	public Address() {
-		logger.info("Address()");
+//		logger.info("Address()");
 	}
 
 	public PostalAddressLabel getLabel() {
@@ -71,7 +71,7 @@ public class Address {
 	}
 
 	public void setPrimary(Boolean primary) {
-		logger.info("setPrimary()->" + primary);
+//		logger.info("setPrimary()->" + primary);
 		this.primary = primary;
 	}
 

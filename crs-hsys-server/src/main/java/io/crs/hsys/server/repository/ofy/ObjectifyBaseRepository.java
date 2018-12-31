@@ -477,7 +477,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @throws UniqueIndexConflictException
 	 */
 	public void checkUniqueIndexConflict(Object parent, T entity) throws UniqueIndexConflictException {
-		logger.info("checkUniqueIndexConflict()->entity" + entity);
+//		logger.info("checkUniqueIndexConflict()->entity" + entity);
 		// Az entitás egyedi indexeinek begyűjtése
 		Map<String, Object> uniqueIndexes = entity.getUniqueIndexes();
 		// A egyedi indexek végigpásztázása

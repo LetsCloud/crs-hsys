@@ -30,7 +30,7 @@ public class AccountChild extends BaseEntity {
 	 */
 	public AccountChild() {
 		super();
-		logger.info("AccountChild()");
+//		logger.info("AccountChild()");
 	}
 
 	public Account getAccount() {

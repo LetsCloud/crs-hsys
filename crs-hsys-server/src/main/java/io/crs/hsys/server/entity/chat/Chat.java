@@ -50,7 +50,7 @@ public class Chat extends AccountChild {
 	}
 
 	public Chat() {
-		logger.info("Chat()");
+//		logger.info("Chat()");
 	}
 
 	public AppUser getSender() {
@@ -60,7 +60,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setSender(AppUser sender) {
-		logger.info("Chat().setSender()->sender=" + sender);
+//		logger.info("Chat().setSender()->sender=" + sender);
 		if (sender.getId() != null)
 			this.sender = Ref.create(sender);
 	}
@@ -70,7 +70,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setReceivers(List<AppUser> receivers) {
-		logger.info("Chat().setReceivers()");
+//		logger.info("Chat().setReceivers()");
 		this.receivers = AppUser.entity2RefList(receivers);
 	}
 
@@ -79,7 +79,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setMessage(String message) {
-		logger.info("Chat().setMessage()");
+//		logger.info("Chat().setMessage()");
 		this.message = message;
 	}
 
@@ -88,7 +88,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setPosts(List<ChatPost> posts) {
-		logger.info("Chat().setPosts()");
+//		logger.info("Chat().setPosts()");
 		this.posts = posts;
 	}
 
@@ -97,7 +97,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setCreated(Date created) {
-		logger.info("Chat().setCreated()");
+//		logger.info("Chat().setCreated()");
 		this.created = created;
 	}
 
@@ -106,7 +106,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setUpdated(Date updated) {
-		logger.info("Chat().setUpdated()");
+//		logger.info("Chat().setUpdated()");
 		this.updated = updated;
 	}
 
@@ -115,7 +115,7 @@ public class Chat extends AccountChild {
 	}
 
 	public void setClosed(Date closed) {
-		logger.info("Chat().setClosed()");
+//		logger.info("Chat().setClosed()");
 		this.closed = closed;
 	}
 
@@ -124,7 +124,15 @@ public class Chat extends AccountChild {
 	}
 
 	public void setUrl(String url) {
-		logger.info("Chat().setUrl()");
+//		logger.info("Chat().setUrl()");
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "Chat:[created=" + created + ", " + "updated=" + updated + ", " + "sender=" + getSender() + ", "
+				+ "message=" + message + ", " + "closed=" + closed + ", " + "url=" + url + ", " + super.toString()
+				+ "]";
+	}
+
 }

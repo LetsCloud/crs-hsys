@@ -124,14 +124,18 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private void configOnFcmMessage() {
-//		logger.info("configOnFcmMessage()");
+		logger.info("configOnFcmMessage()");
 		swManager.onFcmMessage(dataMessage -> {
-			String action = dataMessage.getData().getAction();
+			logger.info("configOnFcmMessage()->dataMessage.getData().getClick_action()="
+					+ dataMessage.getNotification().getClick_action());
+			String action = dataMessage.getNotification().getClick_action();
+			logger.info("configOnFcmMessage()->action=" + action);
 			String href = action.substring(action.indexOf("#"));
+			logger.info("configOnFcmMessage()->href=" + href);
 			MaterialLink link = new MaterialLink("MEGNYITOM");
 			link.setHref(href);
 			new MaterialToast(link).toast(
-					"ÜZENET:" + dataMessage.getData().getTitle() + "->" + dataMessage.getData().getBody(), 10000);
+					"ÜZENET:" + dataMessage.getNotification().getTitle() + "->" + dataMessage.getNotification().getBody(), 10000);
 		});
 	}
 

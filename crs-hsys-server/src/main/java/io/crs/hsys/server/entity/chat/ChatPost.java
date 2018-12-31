@@ -50,7 +50,7 @@ public class ChatPost {
 	}
 
 	public void setSender(AppUser sender) {
-		logger.info("Chat().setSender()->sender=" + sender);
+//		logger.info("Chat().setSender()->sender=" + sender);
 		if (sender.getId() != null)
 			this.sender = Ref.create(sender);
 	}

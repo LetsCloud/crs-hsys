@@ -90,6 +90,7 @@ self.addEventListener('fetch', function(e) {
  * This will also provide you a Notification UI build from the JSON Payload
  * provided before sending the message.
  */
+/*
 self.addEventListener('push', function (event) {
     console.log("Service Worker Push Received");
     var json = event.data.json();
@@ -117,7 +118,7 @@ self.addEventListener('push', function (event) {
 
     event.waitUntil(self.registration.showNotification(title, options));
 });
-
+*/
 
 //
 // Notifications API
@@ -268,8 +269,8 @@ function sendMessageToAllClients(message) {
  * If you do not serve/host your project using Firebase Hosting see
  * https://firebase.google.com/docs/web/setup
  */
-importScripts('https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/4.11.0/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js');
 
 firebase.initializeApp({'messagingSenderId': '99934082315'});
 	  
