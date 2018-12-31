@@ -31,13 +31,12 @@ var filesToCache = [  {{#each filesToCache}}
  */
  self.addEventListener('install', function (e) {
 	console.log('[ServiceWorker] Install');
-// e.waitUntil(
-// caches.open(cacheName)
-// .then(function (cache) {
-// console.log('[ServiceWorker] Caching app shell');
-// return cache.addAll(filesToCache);
-// })
-// );
+	e.waitUntil(caches.open(cacheName)
+			.then(function (cache) {
+				console.log('[ServiceWorker] Caching app shell');
+				return cache.addAll(filesToCache);
+			})
+	);
  });
 
 
@@ -91,34 +90,19 @@ self.addEventListener('fetch', function(e) {
  * provided before sending the message.
  */
 /*
-self.addEventListener('push', function (event) {
-    console.log("Service Worker Push Received");
-    var json = event.data.json();
-    // The Notification Data which contains all required parameters to display a
-	// notification ui.
-    var data = JSON.parse(json.data.model);
-    var title = data.title;
-
-    const options = {
-        body: data.body,
-        icon: data.icon,
-        image: data.image,
-        badge: data.badge,
-        vibrate: data.vibrate,
-        sound: data.sound,
-        actions: data.actions,
-        dir: data.dir,
-        tag: data.tag,
-        data: data.payload,
-        requireInteraction: data.requireInteraction,
-        renotify: data.renotify,
-        silent: data.silent,
-        timestamp: data.timestamp
-    }
-
-    event.waitUntil(self.registration.showNotification(title, options));
-});
-*/
+ * self.addEventListener('push', function (event) { console.log("Service Worker
+ * Push Received"); var json = event.data.json(); // The Notification Data which
+ * contains all required parameters to display a // notification ui. var data =
+ * JSON.parse(json.data.model); var title = data.title;
+ * 
+ * const options = { body: data.body, icon: data.icon, image: data.image, badge:
+ * data.badge, vibrate: data.vibrate, sound: data.sound, actions: data.actions,
+ * dir: data.dir, tag: data.tag, data: data.payload, requireInteraction:
+ * data.requireInteraction, renotify: data.renotify, silent: data.silent,
+ * timestamp: data.timestamp }
+ * 
+ * event.waitUntil(self.registration.showNotification(title, options)); });
+ */
 
 //
 // Notifications API
@@ -134,7 +118,7 @@ self.addEventListener('push', function (event) {
  * redirect the user to that url else we will just close the notification.
  */
 self.addEventListener('notificationclick', function (event) {
-	console.log('On notification click.');
+	console.log('[ServiceWorker] Notification on click.');
 
     var notification = event.notification;
     var data = event.notification.data;
@@ -146,44 +130,26 @@ self.addEventListener('notificationclick', function (event) {
     
     // Define your action callbacks below.
 /*
-	const msgPayload = event.notification.data;
-	const clickAction =  msgPayload['data']['click_action'];
-	var pos = clickAction.indexOf("#");
-	const rootUrl = clickAction.substr(0,pos);
-	
-	if (!clickAction) {
-		// Nothing to do.
-	    return;
-	}
-
-	const promiseChain = this.getWindowClient_(rootUrl)
-		.then(windowClient => {
-	        if (!windowClient) {
-	          // Unable to find window client so need to open one.
-	          return clients.openWindow(clickAction);
-	        }
-	        return windowClient;
-	 	})
-	 	.then(windowClient => {
-	 		if (!windowClient) {
-	 			// Window Client will not be returned if it's for a third party
-				// origin.
-	 			return;
-	 		}
-
-	 		const internalMsg = {
-	 				'firebase-messaging-msg-type': 'notification-clicked',
-	 				'firebase-messaging-msg-data': msgPayload
-	 		};
-
-	 		// Attempt to send a message to the client to handle the data
-	        // Is affected by:
-			// https://github.com/slightlyoff/ServiceWorker/issues/728
-	        return this.attemptToMessageClient_(windowClient, internalMsg);
-	 	});
-
-		event.waitUntil(promiseChain);
-		*/	
+ * const msgPayload = event.notification.data; const clickAction =
+ * msgPayload['data']['click_action']; var pos = clickAction.indexOf("#"); const
+ * rootUrl = clickAction.substr(0,pos);
+ * 
+ * if (!clickAction) { // Nothing to do. return; }
+ * 
+ * const promiseChain = this.getWindowClient_(rootUrl) .then(windowClient => {
+ * if (!windowClient) { // Unable to find window client so need to open one.
+ * return clients.openWindow(clickAction); } return windowClient; })
+ * .then(windowClient => { if (!windowClient) { // Window Client will not be
+ * returned if it's for a third party // origin. return; }
+ * 
+ * const internalMsg = { 'firebase-messaging-msg-type': 'notification-clicked',
+ * 'firebase-messaging-msg-data': msgPayload }; // Attempt to send a message to
+ * the client to handle the data // Is affected by: //
+ * https://github.com/slightlyoff/ServiceWorker/issues/728 return
+ * this.attemptToMessageClient_(windowClient, internalMsg); });
+ * 
+ * event.waitUntil(promiseChain);
+ */	
 });
 
 
@@ -196,6 +162,7 @@ self.addEventListener('notificationclick', function (event) {
  * event is not raised in the service worker.
  */
 self.addEventListener('notificationclose', function (event) {
+	console.log('[ServiceWorker] Notification close.');
     // For now we dont have any useful usecase to define
     // atm when notification was closed.
 });
@@ -283,7 +250,7 @@ const messaging = firebase.messaging();
 // [START background_handler]
 messaging.setBackgroundMessageHandler(function(msgPayload) {
 	
-	console.log('Received background message.');
+	console.log('[Service Worker] Received background message.');
     
 	var notificationTitle = msgPayload['data']['title'];
 	var notificationOptions = {
