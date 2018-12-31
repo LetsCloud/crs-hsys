@@ -109,9 +109,11 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	}
 
 	private void checkCurrentUserLoop(Integer attempt) {
-//		logger.info("checkCurrentUserLoop()->attempt=" + attempt);
-		if (attempt > 50)
+		if (attempt > 100) {
+			logger.info("checkCurrentUserLoop()->attempt=" + attempt);
 			return;
+		}
+
 		if (!checkCurrentUser()) {
 			Timer t = new Timer() {
 				@Override
@@ -119,7 +121,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 					checkCurrentUserLoop(attempt + 1);
 				}
 			};
-			t.schedule(100);
+			t.schedule(200);
 		}
 	}
 
@@ -134,48 +136,42 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 			logger.info("configOnFcmMessage()->href=" + href);
 			MaterialLink link = new MaterialLink("MEGNYITOM");
 			link.setHref(href);
-			new MaterialToast(link).toast(
-					"ÜZENET:" + dataMessage.getNotification().getTitle() + "->" + dataMessage.getNotification().getBody(), 10000);
+			new MaterialToast(link).toast("ÜZENET:" + dataMessage.getNotification().getTitle() + "->"
+					+ dataMessage.getNotification().getBody(), 10000);
 		});
 	}
 
 	private Boolean checkCurrentUser() {
-//		logger.info("checkCurrentUser()");
-		if (swManager.isRegistered()) {
-			dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
+		if (!swManager.isRegistered())
+			return false;
 
-				@Override
-				public void onSuccess(AppUserDto result) {
-//					logger.info("checkCurrentUser().onSuccess()");
-					if (result == null) {
-//						logger.info("checkCurrentUser().onSuccess()->(result == null)");
-						currentUser.setLoggedIn(false);
-						return;
-					}
-//					logger.info("checkCurrentUser().onSuccess()->result=" + result);
-					currentUser.setAppUserDto(result);
-					currentUser.getAppUserDto().getAvailableHotels()
-							.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
-					currentUser.setLoggedIn(true);
+		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
 
-					menuPresenter.referesh();
-
-					swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
-						swManager.fcmSubscribe(token);
-					}));
-
-//					logger.info(".checkCurrentUser().onSuccess()->end");
+			@Override
+			public void onSuccess(AppUserDto result) {
+				if (result == null) {
+					currentUser.setLoggedIn(false);
+					return;
 				}
+				currentUser.setAppUserDto(result);
+				currentUser.getAppUserDto().getAvailableHotels()
+						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
+				currentUser.setLoggedIn(true);
 
-				@Override
-				public void onFailure(Throwable caught) {
-					logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
-							+ caught.getMessage());
-				}
-			});
-			return true;
-		}
-		return false;
+				menuPresenter.referesh();
+
+				swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
+					swManager.fcmSubscribe(token);
+				}));
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
+						+ caught.getMessage());
+			}
+		});
+		return true;
 	}
 
 	public void logout() {
