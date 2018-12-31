@@ -145,7 +145,7 @@ self.addEventListener('notificationclick', function (event) {
     }
     
     // Define your action callbacks below.
-
+/*
 	const msgPayload = event.notification.data;
 	const clickAction =  msgPayload['data']['click_action'];
 	var pos = clickAction.indexOf("#");
@@ -182,7 +182,8 @@ self.addEventListener('notificationclick', function (event) {
 	        return this.attemptToMessageClient_(windowClient, internalMsg);
 	 	});
 
-		event.waitUntil(promiseChain);	
+		event.waitUntil(promiseChain);
+		*/	
 });
 
 
