@@ -1,29 +1,26 @@
 /**
  * 
  */
-package io.crs.hsys.shared.dto.chat;
-
-import java.io.Serializable;
+package io.crs.hsys.server.model;
 
 /**
  * @author CR
  *
  */
-@SuppressWarnings("serial")
-public class FcmNotificationDto implements Serializable {
+public class FcmNotification {
 
 	private String title;
 	private String body;
 	private String icon;
 	private String click_action;
 
-	public FcmNotificationDto(String title, String body, String icon) {
+	public FcmNotification(String title, String body, String icon) {
 		this.title = title;
 		this.body = body;
 		this.icon = icon;
 	}
 
-	public FcmNotificationDto(String title, String body, String icon, String click_action) {
+	public FcmNotification(String title, String body, String icon, String click_action) {
 		this(title, body, icon);
 		this.click_action = click_action;
 	}
@@ -62,8 +59,7 @@ public class FcmNotificationDto implements Serializable {
 
 	@Override
 	public String toString() {
-		String ret = "NotificationDto:{title=" + title + ", body=" + body + ", icon=" + icon + ", click_action="
+		return "FcmNotification:{title=" + title + ", body=" + body + ", icon=" + icon + ", click_action="
 				+ click_action + "}";
-		return ret;
 	}
 }

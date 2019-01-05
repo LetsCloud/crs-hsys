@@ -1,20 +1,17 @@
-package io.crs.hsys.shared.dto.chat;
+package io.crs.hsys.server.model;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class FcmDataDto implements Serializable {
+public class FcmData {
 
 	private String action;
 	private String title;
 	private String body;
 	private String icon;
 
-	public FcmDataDto(String action) {
+	public FcmData(String action) {
 		this.action = action;
 	}
 
-	public FcmDataDto(String action, String title, String body, String icon) {
+	public FcmData(String action, String title, String body, String icon) {
 		this(action);
 		this.title = title;
 		this.body = body;
@@ -55,8 +52,6 @@ public class FcmDataDto implements Serializable {
 
 	@Override
 	public String toString() {
-		String ret = "FcmDataDto:{title=" + title + ", body=" + body + ", icon=" + icon + ", action=" + action + "}";
-		return ret;
+		return "FcmDataDto:{title=" + title + ", body=" + body + ", icon=" + icon + ", action=" + action + "}";
 	}
-
 }

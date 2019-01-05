@@ -16,13 +16,13 @@ import io.crs.hsys.server.entity.chat.ChatPost;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.FcmToken;
+import io.crs.hsys.server.model.FcmData;
+import io.crs.hsys.server.model.FcmMessage;
+import io.crs.hsys.server.model.FcmNotification;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.ChatRepository;
 import io.crs.hsys.server.service.ChatService;
 import io.crs.hsys.server.service.FcmService;
-import io.crs.hsys.shared.dto.chat.FcmDataDto;
-import io.crs.hsys.shared.dto.chat.FcmMessageDto;
-import io.crs.hsys.shared.dto.chat.FcmNotificationDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -98,11 +98,11 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 		logger.info("sender=" + sender);
 		logger.info("chat=" + chat);
 
-		FcmNotificationDto notification = new FcmNotificationDto(sender.getName(),
+		FcmNotification notification = new FcmNotification(sender.getName(),
 				chat.getPosts().get(chat.getPosts().size() - 1).getMessage(), sender.getPicture(),
 				chat.getUrl() + chat.getWebSafeKey());
 
-		FcmDataDto data = new FcmDataDto(chat.getUrl() + chat.getWebSafeKey(), sender.getName(),
+		FcmData data = new FcmData(chat.getUrl() + chat.getWebSafeKey(), sender.getName(),
 				chat.getPosts().get(chat.getPosts().size() - 1).getMessage(), sender.getPicture());
 
 		logger.info("data.getAction()=" + data.getAction());
@@ -135,7 +135,7 @@ public class ChatServiceImpl extends CrudServiceImpl<Chat, ChatRepository> imple
 		for (String receiverToken : tokens) {
 			logger.info("receiverToken=" + receiverToken);
 //			FcmService2.send_FCM_Notification(receiverToken, notification);
-			FcmMessageDto message = new FcmMessageDto(receiverToken, notification, data);
+			FcmMessage message = new FcmMessage(receiverToken, notification, data);
 			try {
 				fcmService.postMessage(objectMapper.writeValueAsString(message));
 			} catch (JsonProcessingException e) {
