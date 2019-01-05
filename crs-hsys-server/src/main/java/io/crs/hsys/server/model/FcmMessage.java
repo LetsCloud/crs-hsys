@@ -3,26 +3,39 @@
  */
 package io.crs.hsys.server.model;
 
-import io.crs.hsys.shared.dto.chat.NotificationDto;
-
 /**
  * @author robi
  *
  */
 public class FcmMessage {
-	private NotificationDto notification;
 	private String to;
+	private FcmNotification notification;
+	private FcmData data;
 
-	public FcmMessage(NotificationDto notification, String to) {
+	public FcmMessage(FcmNotification notification) {
 		this.notification = notification;
-		this.to = to;
 	}
 
-	public NotificationDto getNotification() {
+	public FcmMessage(String token, FcmNotification notification) {
+		this(notification);
+		this.to = token;
+	}
+
+	public FcmMessage(String token, FcmData data) {
+		this.to = token;
+		this.data = data;
+	}
+
+	public FcmMessage(String token, FcmNotification notification, FcmData data) {
+		this(token, notification);
+		this.data = data;
+	}
+
+	public FcmNotification getNotification() {
 		return notification;
 	}
 
-	public void setNotification(NotificationDto notification) {
+	public void setNotification(FcmNotification notification) {
 		this.notification = notification;
 	}
 
@@ -30,8 +43,16 @@ public class FcmMessage {
 		return to;
 	}
 
-	public void setTo(String to) {
-		this.to = to;
+	public void setTo(String token) {
+		this.to = token;
+	}
+
+	public FcmData getData() {
+		return data;
+	}
+
+	public void setData(FcmData data) {
+		this.data = data;
 	}
 
 }

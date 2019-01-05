@@ -47,7 +47,7 @@ public class MessagingManager implements HasMessagingFeatures {
 	}
 
 	public Boolean isRegistered() {
-		logger.info("isRegistered()=" + registered);
+//		logger.info("isRegistered()=" + registered);
 		return registered;
 	}
 

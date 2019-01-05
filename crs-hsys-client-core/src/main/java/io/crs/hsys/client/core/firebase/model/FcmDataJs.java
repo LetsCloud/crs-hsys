@@ -14,30 +14,38 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class DataMessage {
+public class FcmDataJs {
 
 	@JsProperty
-	public String collapse_key;
+	public String action;
 
 	@JsProperty
-	public String from;
+	public String icon;
 
 	@JsProperty
-	public KeyData notification;
+	public String title;
+
+	@JsProperty
+	public String body;
 
 	@JsOverlay
-	public final String getCollapse_key() {
-		return collapse_key;
+	public final String getAction() {
+		return action;
 	}
 
 	@JsOverlay
-	public final String getFrom() {
-		return from;
+	public final String getIcon() {
+		return icon;
 	}
 
 	@JsOverlay
-	public final KeyData getNotification() {
-		return notification;
+	public final String getTitle() {
+		return title;
+	}
+
+	@JsOverlay
+	public final String getBody() {
+		return body;
 	}
 
 	@Override

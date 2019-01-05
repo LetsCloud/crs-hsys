@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,10 +33,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.common.FcmToken;
 import io.crs.hsys.server.model.FcmMessage;
+import io.crs.hsys.server.model.FcmNotification;
 import io.crs.hsys.server.model.Subscription;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.server.service.FcmService;
-import io.crs.hsys.shared.dto.chat.NotificationDto;
+import io.crs.hsys.shared.dto.chat.MessageDto;
 
 /**
  * @author robi
@@ -83,14 +83,17 @@ public class FcmController extends BaseController {
 
 	@RequestMapping(value = MESSAGE, method = POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void notifyAllUser(@RequestBody NotificationDto notification, WebRequest request) {
+	public void notifyAllUser(@RequestBody MessageDto message, WebRequest request) {
 		logger.info("notifyAllUser()-START");
+
+		FcmMessage fcmMessage = new FcmMessage(
+				new FcmNotification(message.getTitle(), message.getBody(), message.getIcon()));
 
 		List<String> tokens = getTokens(userService.getAll(getAccountId(request)));
 		try {
 			for (String token : tokens) {
-				FcmMessage message = new FcmMessage(notification, token); 
-				fcmService.postMessage(objectMapper.writeValueAsString(message));
+				fcmMessage.setTo(token);
+				fcmService.postMessage(objectMapper.writeValueAsString(fcmMessage));
 			}
 			logger.info("notifyAllUser()-END");
 		} catch (IOException e) {

@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
-import io.crs.hsys.shared.dto.chat.NotificationDto;
+import io.crs.hsys.shared.dto.chat.MessageDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.IID_TOKEN;
 import static io.crs.hsys.shared.api.ApiParameters.USER_AGENT;
@@ -41,6 +41,6 @@ public interface FcmResource {
 
 	@POST
 	@Path(MESSAGE)
-	RestAction<Void> notifyAllUser(NotificationDto notification);
+	RestAction<Void> notifyAllUser1(MessageDto message);
 
 }

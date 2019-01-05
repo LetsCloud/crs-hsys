@@ -4,14 +4,26 @@
 package io.crs.hsys.server.model;
 
 /**
- * @author robi
+ * @author CR
  *
  */
 public class FcmNotification {
+
 	private String title;
 	private String body;
 	private String icon;
 	private String click_action;
+
+	public FcmNotification(String title, String body, String icon) {
+		this.title = title;
+		this.body = body;
+		this.icon = icon;
+	}
+
+	public FcmNotification(String title, String body, String icon, String click_action) {
+		this(title, body, icon);
+		this.click_action = click_action;
+	}
 
 	public String getTitle() {
 		return title;
@@ -45,4 +57,9 @@ public class FcmNotification {
 		this.click_action = click_action;
 	}
 
+	@Override
+	public String toString() {
+		return "FcmNotification:{title=" + title + ", body=" + body + ", icon=" + icon + ", click_action="
+				+ click_action + "}";
+	}
 }

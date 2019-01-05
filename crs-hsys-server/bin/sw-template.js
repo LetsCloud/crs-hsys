@@ -31,13 +31,12 @@ var filesToCache = [  {{#each filesToCache}}
  */
  self.addEventListener('install', function (e) {
 	console.log('[ServiceWorker] Install');
-// e.waitUntil(
-// caches.open(cacheName)
-// .then(function (cache) {
-// console.log('[ServiceWorker] Caching app shell');
-// return cache.addAll(filesToCache);
-// })
-// );
+	e.waitUntil(caches.open(cacheName)
+			.then(function (cache) {
+				console.log('[ServiceWorker] Caching app shell');
+				return cache.addAll(filesToCache);
+			})
+	);
  });
 
 
@@ -74,7 +73,7 @@ self.addEventListener('activate', function (e) {
  * which allows us to provide a response to this fetch.
  */
 self.addEventListener('fetch', function(e) {
-	console.log('[ServiceWorker] Fetch', e.request.url);	
+// console.log('[ServiceWorker] Fetch', e.request.url);
     e.respondWith(
         // Try the cache
         caches.match(e.request).then(function(response) {
@@ -90,35 +89,21 @@ self.addEventListener('fetch', function(e) {
  * This will also provide you a Notification UI build from the JSON Payload
  * provided before sending the message.
  */
+
 /*
-self.addEventListener('push', function (event) {
-    console.log("Service Worker Push Received");
-    var json = event.data.json();
-    // The Notification Data which contains all required parameters to display a
-	// notification ui.
-    var data = JSON.parse(json.data.model);
-    var title = data.title;
-
-    const options = {
-        body: data.body,
-        icon: data.icon,
-        image: data.image,
-        badge: data.badge,
-        vibrate: data.vibrate,
-        sound: data.sound,
-        actions: data.actions,
-        dir: data.dir,
-        tag: data.tag,
-        data: data.payload,
-        requireInteraction: data.requireInteraction,
-        renotify: data.renotify,
-        silent: data.silent,
-        timestamp: data.timestamp
-    }
-
-    event.waitUntil(self.registration.showNotification(title, options));
-});
-*/
+ * self.addEventListener('push', function (event) { console.log("Service Worker
+ * Push Received"); var json = event.data.json(); // The Notification Data which
+ * contains all required parameters to display a // notification ui. var data =
+ * JSON.parse(json.data.model); var title = data.title;
+ * 
+ * const options = { body: data.body, icon: data.icon, image: data.image, badge:
+ * data.badge, vibrate: data.vibrate, sound: data.sound, actions: data.actions,
+ * dir: data.dir, tag: data.tag, data: data.payload, requireInteraction:
+ * data.requireInteraction, renotify: data.renotify, silent: data.silent,
+ * timestamp: data.timestamp }
+ * 
+ * event.waitUntil(self.registration.showNotification(title, options)); });
+ */
 
 //
 // Notifications API
@@ -133,58 +118,41 @@ self.addEventListener('push', function (event) {
  * functionality wherein we will check if the data.url is available then we will
  * redirect the user to that url else we will just close the notification.
  */
-self.addEventListener('notificationclick', function (event) {
-	console.log('On notification click.');
 
-    var notification = event.notification;
-    var data = event.notification.data;
-    var action = event.action;
+// self.addEventListener('notificationclick', function (event) {
+// console.log('[ServiceWorker] Notification on click.', event.notification);
 
-    if (action === 'close') {
-        notification.close();
-    }
+// var notification = event.notification;
+// var data = event.notification.data;
+// var action = event.action;
+
+// if (action === 'close') {
+// notification.close();
+// }
     
     // Define your action callbacks below.
 /*
-	const msgPayload = event.notification.data;
-	const clickAction =  msgPayload['data']['click_action'];
-	var pos = clickAction.indexOf("#");
-	const rootUrl = clickAction.substr(0,pos);
-	
-	if (!clickAction) {
-		// Nothing to do.
-	    return;
-	}
-
-	const promiseChain = this.getWindowClient_(rootUrl)
-		.then(windowClient => {
-	        if (!windowClient) {
-	          // Unable to find window client so need to open one.
-	          return clients.openWindow(clickAction);
-	        }
-	        return windowClient;
-	 	})
-	 	.then(windowClient => {
-	 		if (!windowClient) {
-	 			// Window Client will not be returned if it's for a third party
-				// origin.
-	 			return;
-	 		}
-
-	 		const internalMsg = {
-	 				'firebase-messaging-msg-type': 'notification-clicked',
-	 				'firebase-messaging-msg-data': msgPayload
-	 		};
-
-	 		// Attempt to send a message to the client to handle the data
-	        // Is affected by:
-			// https://github.com/slightlyoff/ServiceWorker/issues/728
-	        return this.attemptToMessageClient_(windowClient, internalMsg);
-	 	});
-
-		event.waitUntil(promiseChain);
-		*/	
-});
+ * const msgPayload = event.notification.data; const clickAction =
+ * msgPayload['data']['click_action']; var pos = clickAction.indexOf("#"); const
+ * rootUrl = clickAction.substr(0,pos);
+ * 
+ * if (!clickAction) { // Nothing to do. return; }
+ * 
+ * const promiseChain = this.getWindowClient_(rootUrl) .then(windowClient => {
+ * if (!windowClient) { // Unable to find window client so need to open one.
+ * return clients.openWindow(clickAction); } return windowClient; })
+ * .then(windowClient => { if (!windowClient) { // Window Client will not be
+ * returned if it's for a third party // origin. return; }
+ * 
+ * const internalMsg = { 'firebase-messaging-msg-type': 'notification-clicked',
+ * 'firebase-messaging-msg-data': msgPayload }; // Attempt to send a message to
+ * the client to handle the data // Is affected by: //
+ * https://github.com/slightlyoff/ServiceWorker/issues/728 return
+ * this.attemptToMessageClient_(windowClient, internalMsg); });
+ * 
+ * event.waitUntil(promiseChain);
+ */	
+// });
 
 
 /**
@@ -195,10 +163,11 @@ self.addEventListener('notificationclick', function (event) {
  * Note: If the user dismisses all notifications then, to save resources, an
  * event is not raised in the service worker.
  */
-self.addEventListener('notificationclose', function (event) {
+// self.addEventListener('notificationclose', function (event) {
+// console.log('[ServiceWorker] Notification close.');
     // For now we dont have any useful usecase to define
     // atm when notification was closed.
-});
+// });
 
 
 /**
@@ -217,9 +186,9 @@ self.addEventListener('message', function (event) {
 	console.log('[Service Worker] message->' + event);
 
 	var data = event.data;
-    if (data == 'skipWaiting') {
-        self.skipWaiting();
-    }
+	if (data == 'skipWaiting') {
+		self.skipWaiting();
+	}
     // Define any custom messaging below by calling
 	// sendMessageToAllClients(message).
 });
@@ -270,11 +239,19 @@ function sendMessageToAllClients(message) {
  * If you do not serve/host your project using Firebase Hosting see
  * https://firebase.google.com/docs/web/setup
  */
-importScripts('https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js');
 
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here, other Firebase libraries
+// are not available in the service worker.
+importScripts('https://www.gstatic.com/firebasejs/5.7.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/5.7.1/firebase-messaging.js');
+
+// Initialize the Firebase app in the service worker by passing in the
+// messagingSenderId.
 firebase.initializeApp({'messagingSenderId': '99934082315'});
 	  
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
 const messaging = firebase.messaging();
 
 // If you would like to customize notifications that are received in the
@@ -283,10 +260,11 @@ const messaging = firebase.messaging();
 // [START background_handler]
 messaging.setBackgroundMessageHandler(function(msgPayload) {
 	
-	console.log('Received background message.');
+	console.log('[Service Worker] Received background message.', msgPayload);
     
 	var notificationTitle = msgPayload['data']['title'];
 	var notificationOptions = {
+		title: msgPayload['data']['title'],
 		body: msgPayload['data']['body'], 
 		icon: msgPayload['data']['icon'],
 		data: msgPayload

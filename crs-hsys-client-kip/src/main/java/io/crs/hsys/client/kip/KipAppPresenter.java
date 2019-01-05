@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
@@ -18,10 +19,12 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import gwt.material.design.client.constants.IconType;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
+import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
+import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
@@ -49,12 +52,13 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	@Inject
 	KipAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, KipMessages i18n,
-			KipResources resources, RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
+			KipResources resources, RestDispatch dispatch, AuthResource authenticationService,
+			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
 			MenuPresenter menuPresenter, GfilterDisplayPresenter gfilterDisplayPresenter,
 			GfilterConfigPresenterFactory gfilterConfigPresenterFactory, AppData appData,
-			AppServiceWorkerManager messagingManager) {
-		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, menuPresenter, currentUser,
-				SubSystem.KIP, messagingManager);
+			AppServiceWorkerManager swManager, MessagingManager messagingManager) {
+		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, globalConfigResource, menuPresenter,
+				currentUser, SubSystem.KIP, swManager, messagingManager);
 
 		this.i18n = i18n;
 		this.resources = resources;
@@ -85,7 +89,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
 		dasboardMenuItem.setNameToken(KipNameTokens.HOME);
 		menuItems.add(dasboardMenuItem);
-		
+
 		// *******************
 		// Chat Room menu item
 		// *******************
@@ -97,7 +101,6 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		chatRoomItem.setNameToken(KipNameTokens.CHAT_ROOM);
 		menuItems.add(chatRoomItem);
 
-		
 		// ***************
 		// Tasks menu item
 		// ***************
@@ -109,7 +112,6 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		tasksItem.setNameToken(KipNameTokens.TASK_MNGR);
 		menuItems.add(tasksItem);
 
-		
 		// ********************
 		// GuestRooms menu item
 		// *********************
@@ -121,7 +123,6 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		roomsMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS);
 		menuItems.add(roomsMenuItem);
 
-		
 		// **********************
 		// Public Areas menu item
 		// **********************
@@ -132,8 +133,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		areasMenuItem.setText(i18n.mainMenuGroupPublicAreas());
 		areasMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS2);
 		menuItems.add(areasMenuItem);
-		
-		
+
 		// *********************
 		// Assignment menu group
 		// *********************
@@ -160,7 +160,6 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 		menuItems.add(assignmentSubMenu);
 
-
 		// ******************
 		// Minibar menu group
 		// ******************
@@ -177,7 +176,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		consumptionMenuItem.setText(i18n.mainMenuItemConsumption());
 		consumptionMenuItem.setNameToken(KipNameTokens.GUEST_ROOMS);
 		minibarSubMenu.addItem(consumptionMenuItem);
-		
+
 		menuItems.add(minibarSubMenu);
 
 		return menuItems;

@@ -3,51 +3,34 @@
  */
 package io.crs.hsys.client.kip;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.inject.Inject;
 
-import com.google.gwt.core.client.GWT;
-import com.gwtplatform.mvp.client.Bootstrapper;
-import com.gwtplatform.mvp.client.PreBootstrapper;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+import io.crs.hsys.client.core.AbstractAppBootstrapper;
+import io.crs.hsys.client.core.app.AppServiceWorkerManager;
+import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
+import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.AppData;
+import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.shared.api.AuthResource;
+import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.SubSystem;
 
 /**
  * @author CR
  *
  */
-public class KipApp  implements Bootstrapper {
-
-	private final PlaceManager placeManager;
-	
-	private final AppData appData;
+public class KipApp extends AbstractAppBootstrapper {
 
 	@Inject
-	KipApp(PlaceManager placeManager, AppData appData) {
-		this.placeManager = placeManager;
-		this.appData = appData;
+	KipApp(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
+			MessagingManager messagingManager, AppServiceWorkerManager swManager, RestDispatch dispatch,
+			AuthResource authService, CurrentUser currentUser) {
+		super(placeManager, appData, globalConfigResource, messagingManager, swManager, dispatch, authService,
+				currentUser);
+		setAppCode(SubSystem.KIP);
 	}
-
-	public static class PreApplicationImpl implements PreBootstrapper {
-		private static Logger logger = Logger.getLogger(PreApplicationImpl.class.getName());
-
-		@Override
-		public void onPreBootstrap() {
-			GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
-				public void onUncaughtException(Throwable e) {
-					logger.log(Level.SEVERE, e.getMessage(), e);
-				}
-			});
-		}
-	}
-
-	@Override
-	public void onBootstrap() {
-		appData.setAppCode(SubSystem.KIP);
-		placeManager.revealCurrentPlace();
-	}
-} 
+}
