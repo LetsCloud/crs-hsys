@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.client.core.firebase.messaging.js;
 
-import io.crs.hsys.client.core.firebase.model.DataMessage;
+import io.crs.hsys.client.core.firebase.model.FcmMessageJs;
 import jsinterop.annotations.JsFunction;
 
 /**
@@ -15,7 +15,7 @@ public class Fnx {
 	@FunctionalInterface
 	@JsFunction
 	public interface Arg {
-		void apply(DataMessage val);
+		void apply(FcmMessageJs val);
 	}
 
 	@FunctionalInterface

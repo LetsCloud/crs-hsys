@@ -14,7 +14,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class KeyData {
+public class FcmNotificationJs {
 
 	@JsProperty
 	public String icon;
@@ -24,9 +24,6 @@ public class KeyData {
 
 	@JsProperty
 	public String body;
-
-	@JsProperty
-	public String click_action;
 
 	@JsOverlay
 	public final String getIcon() {
@@ -43,13 +40,7 @@ public class KeyData {
 		return body;
 	}
 
-	@JsOverlay
-	public final String getClick_action() {
-		return click_action;
-	}
-
 	@Override
 	@JsMethod
 	public native String toString();
-
 }

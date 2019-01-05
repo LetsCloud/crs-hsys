@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.core.firebase.model;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -13,20 +14,28 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class NotificationMessage {
+public class FcmMessageJs {
 
 	@JsProperty
 	public String collapse_key;
 
 	@JsProperty
-	public String from;
-	
+	public FcmDataJs data;
+
 	@JsProperty
-	public KeyData notification;
+	public String from;
+
+	@JsProperty
+	public FcmNotificationJs notification;
 
 	@JsOverlay
 	public final String getCollapse_key() {
 		return collapse_key;
+	}
+
+	@JsOverlay
+	public final FcmDataJs getData() {
+		return data;
 	}
 
 	@JsOverlay
@@ -35,7 +44,11 @@ public class NotificationMessage {
 	}
 
 	@JsOverlay
-	public final KeyData getNotification() {
+	public final FcmNotificationJs getNotification() {
 		return notification;
 	}
+
+	@Override
+	@JsMethod
+	public native String toString();
 }

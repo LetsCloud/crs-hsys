@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
@@ -20,10 +21,12 @@ import io.crs.hsys.client.admin.i18n.AdminMessages;
 import io.crs.hsys.client.admin.resources.AdminResources;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
+import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
+import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
@@ -43,10 +46,12 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 
 	@Inject
 	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, AdminMessages i18n,
-			RestDispatch dispatch, AuthResource authenticationService, CurrentUser currentUser,
-			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager messagingManager, AdminResources resources) {
-		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, menuPresenter, currentUser,
-				SubSystem.ADMIN, messagingManager);
+			RestDispatch dispatch, AuthResource authenticationService,
+			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
+			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager swManager, AdminResources resources,
+			MessagingManager messagingManager) {
+		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, globalConfigResource, menuPresenter,
+				currentUser, SubSystem.ADMIN, swManager, messagingManager);
 
 		this.i18n = i18n;
 		this.resources = resources;

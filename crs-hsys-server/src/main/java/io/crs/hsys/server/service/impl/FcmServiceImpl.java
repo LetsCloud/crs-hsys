@@ -37,6 +37,8 @@ public class FcmServiceImpl implements FcmService {
 	public FcmServiceImpl() {
 		this.rest = new RestTemplate();
 		this.headers = new HttpHeaders();
+		
+		rest.setErrorHandler(new RestTemplateResponseErrorHandler());
 		headers.add(HEAD_TYPE, APP_JSON);
 		headers.add(HEAD_AUTH, SERVER_KEY);
 	}

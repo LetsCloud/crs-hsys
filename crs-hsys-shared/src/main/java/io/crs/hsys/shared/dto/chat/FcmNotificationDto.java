@@ -10,24 +10,20 @@ import java.io.Serializable;
  *
  */
 @SuppressWarnings("serial")
-public class NotificationDto implements Serializable {
+public class FcmNotificationDto implements Serializable {
 
 	private String title;
 	private String body;
 	private String icon;
 	private String click_action;
 
-	public NotificationDto() {
-	}
-
-	public NotificationDto(String title, String body, String icon) {
-		this();
+	public FcmNotificationDto(String title, String body, String icon) {
 		this.title = title;
 		this.body = body;
 		this.icon = icon;
 	}
 
-	public NotificationDto(String title, String body, String icon, String click_action) {
+	public FcmNotificationDto(String title, String body, String icon, String click_action) {
 		this(title, body, icon);
 		this.click_action = click_action;
 	}
@@ -60,8 +56,8 @@ public class NotificationDto implements Serializable {
 		return click_action;
 	}
 
-	public void setClick_action(String action) {
-		this.click_action = action;
+	public void setClick_action(String click_action) {
+		this.click_action = click_action;
 	}
 
 	@Override
