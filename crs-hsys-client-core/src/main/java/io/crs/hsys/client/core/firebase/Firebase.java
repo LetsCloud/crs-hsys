@@ -22,17 +22,18 @@ import jsinterop.annotations.JsType;
 public class Firebase {
 
 	/**
-	 * The (read-only) configuration options for this app. These are the original
-	 * parameters given in firebase.initializeApp().
+	 * Mivel a firebase névtérben található initializeApp metódus a firebase.app
+	 * névtérben található App osztályt adja vissza, ésszerű azt a firebase.app.App
+	 * osztályt leképező osztályban leképezni.
 	 * 
 	 * @param config non-null Object
-	 * @return
+	 * @return Firebase azaz firebase.app.App
 	 */
 	@JsMethod(namespace = "firebase")
 	public static native Firebase initializeApp(Config config);
 
 	/**
-	 * name
+	 * A firebase.app.App osztály name tulajdonsága.
 	 * 
 	 * The (read-only) name for this app. The default app's name is "[DEFAULT]".
 	 * 
@@ -42,7 +43,7 @@ public class Firebase {
 	public native String getName();
 
 	/**
-	 * messaging
+	 * A firebase.app.App osztály messaging metódusa.
 	 * 
 	 * Gets the Messaging service for the current app.
 	 * 

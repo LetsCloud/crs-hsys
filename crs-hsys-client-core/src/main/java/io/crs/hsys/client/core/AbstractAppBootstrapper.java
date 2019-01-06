@@ -84,7 +84,10 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 
 	@Override
 	public void onBootstrap() {
+		initFirebase();
+	}
 
+	private void initFirebase() {
 		globalConfigResource.withCallback(new AbstractAsyncCallback<List<GlobalConfigDto>>() {
 			@Override
 			public void onSuccess(List<GlobalConfigDto> result) {
@@ -106,7 +109,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 			}
 		}).getAll();
 	}
-
+	
 	private String getGlobalSetting(List<GlobalConfigDto> result, String key) {
 		return result.stream().filter(o -> o.getCode().equals(key)).findFirst().get().getValue();
 	}
