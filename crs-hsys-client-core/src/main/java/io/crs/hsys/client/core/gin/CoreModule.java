@@ -27,7 +27,6 @@ import io.crs.hsys.client.core.menu.MenuModule;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.unauthorized.UnauthorizedModule;
-import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 
 /**
@@ -38,8 +37,8 @@ public class CoreModule extends AbstractPresenterModule {
 	private static Logger logger = Logger.getLogger(CoreModule.class.getName());
 
 //	private static final String SW_PATH="service-worker.js";
-	private static final String SW_PATH="./service-worker.js";
-	
+	private static final String SW_PATH = "./service-worker.js";
+
 	@Override
 	protected void configure() {
 		logger.info("CoreModule.configure(");
@@ -73,11 +72,10 @@ public class CoreModule extends AbstractPresenterModule {
 	@Provides
 	@Singleton
 	AppServiceWorkerManager provideAppServiceWorkerManager(EventBus eventBus, MessagingManager fcmManager,
-			RestDispatch dispatch, FcmResource fcmResource) {
+			RestDispatch dispatch) {
 //		logger.info("provideAppServiceWorkerManager()");
 
-		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager(SW_PATH, eventBus,
-				fcmManager, dispatch, fcmResource);
+		AppServiceWorkerManager serviceWorkerManager = new AppServiceWorkerManager(SW_PATH, fcmManager);
 
 		return serviceWorkerManager;
 	}

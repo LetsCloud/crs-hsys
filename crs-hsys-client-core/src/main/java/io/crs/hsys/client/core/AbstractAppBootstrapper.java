@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -30,7 +29,9 @@ import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.core.util.Base64Utils;
 import io.crs.hsys.shared.api.AuthResource;
+import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.GlobalParam;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
@@ -53,12 +54,13 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 	private final AppServiceWorkerManager swManager;
 	private final RestDispatch dispatch;
 	private final AuthResource authService;
+	private final FcmResource fcmService;
 	private final CurrentUser currentUser;
 
 	public AbstractAppBootstrapper(PlaceManager placeManager, AppData appData,
 			ResourceDelegate<GlobalConfigResource> globalConfigResource, MessagingManager messagingManager,
-			AppServiceWorkerManager swManager, RestDispatch dispatch, AuthResource authService,
-			CurrentUser currentUser) {
+			AppServiceWorkerManager swManager, RestDispatch dispatch, AuthResource authService, CurrentUser currentUser,
+			FcmResource fcmService) {
 		this.placeManager = placeManager;
 		this.appData = appData;
 		this.globalConfigResource = globalConfigResource;
@@ -67,6 +69,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 		this.dispatch = dispatch;
 		this.authService = authService;
 		this.currentUser = currentUser;
+		this.fcmService = fcmService;
 	}
 
 	public static class PreApplicationImpl implements PreBootstrapper {
@@ -103,48 +106,30 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 
 				Firebase firebase = Firebase.initializeApp(config);
 				logger.info("provideMessagingManager().onSuccess()->firebase.getName()" + firebase.getName());
-				messagingManager.setFirebase(firebase);
 
-				configPwaManagerLoop(manifest, 0);
+				cfgMessagingManager(firebase);
+
+				configFcmOnMessage();
+
+				cfgPwaManager();
+				
+				checkCurrentUser();
 			}
 		}).getAll();
 	}
-	
+
 	private String getGlobalSetting(List<GlobalConfigDto> result, String key) {
 		return result.stream().filter(o -> o.getCode().equals(key)).findFirst().get().getValue();
 	}
 
-	private void configPwaManagerLoop(String manifest, Integer attempt) {
-		logger.info("configPwaManagerLoop()->attempt=" + attempt);
-		if (attempt > 50)
-			return;
-		if (!configPwaManager(manifest)) {
-			Timer t = new Timer() {
-				@Override
-				public void run() {
-					configPwaManagerLoop(manifest, attempt + 1);
-				}
-			};
-			t.schedule(100);
-		}
+	private void cfgMessagingManager(Firebase firebase) {
+		messagingManager.setFirebase(firebase);
+//		messagingManager.onTokenRefresh(token -> fcmSubscribe(token));
 	}
 
-	private Boolean configPwaManager(String manifest) {
-//		logger.info("configPwaManager()");
-		if (swManager.getFcmManager().isRegistered()) {
-			logger.info("configPwaManager()->OK");
-			PwaManager.getInstance().setServiceWorker(swManager).setWebManifest(manifest).load();
-			configOnFcmMessage();
-			swManager.onFcmTokenRefresh(token -> swManager.fcmSubscribe(token));
-			checkCurrentUserLoop(0);
-			return true;
-		}
-		return false;
-	}
-
-	private void configOnFcmMessage() {
+	private void configFcmOnMessage() {
 		logger.info("configOnFcmMessage()");
-		swManager.onFcmMessage(fcmMessage -> {
+		messagingManager.onMessage(fcmMessage -> {
 			logger.info("configOnFcmMessage()->dataMessage.getData().getClick_action()="
 					+ fcmMessage.getData().getAction());
 
@@ -169,32 +154,17 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				logger.info("configOnFcmMessage()->href=" + href);
 				link.setHref(href);
 			}
-			new MaterialToast(link).toast("ÜZENET:" + fcmMessage.getData().getTitle() + "->"
-					+ fcmMessage.getData().getBody(), 10000);
+			new MaterialToast(link)
+					.toast("ÜZENET:" + fcmMessage.getData().getTitle() + "->" + fcmMessage.getData().getBody(), 10000);
 		});
 	}
 
-	private void checkCurrentUserLoop(Integer attempt) {
-		if (attempt > 100) {
-			logger.info("checkCurrentUserLoop()->attempt=" + attempt);
-			return;
-		}
-
-		if (!checkCurrentUser()) {
-			Timer t = new Timer() {
-				@Override
-				public void run() {
-					checkCurrentUserLoop(attempt + 1);
-				}
-			};
-			t.schedule(200);
-		}
+	private void cfgPwaManager() {
+		logger.info("configPwaManager()->OK");
+		PwaManager.getInstance().setServiceWorker(swManager).setWebManifest(getManifest()).load();
 	}
 
-	private Boolean checkCurrentUser() {
-		if (!swManager.isRegistered())
-			return false;
-
+	private void checkCurrentUser() {
 		dispatch.execute(authService.getCurrentUser(), new AsyncCallback<AppUserDto>() {
 
 			@Override
@@ -208,8 +178,8 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));
 				currentUser.setLoggedIn(true);
 
-				swManager.requestFcbPermission(() -> swManager.getFcbToken(token -> {
-					swManager.fcmSubscribe(token);
+				messagingManager.requestPermission(() -> messagingManager.getToken(token -> {
+					fcmSubscribe(token);
 				}));
 
 //				menuPresenter.referesh();
@@ -222,11 +192,45 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 						+ caught.getMessage());
 			}
 		});
-		return true;
 	}
 
 	protected void setAppCode(String code) {
 		appData.setAppCode(code);
 		manifest = code.toString() + "_manifest.json";
 	}
+
+	private String getManifest() {
+		return manifest;
+	}
+
+	/**
+	 * 
+	 * @param iidToken
+	 */
+	public void fcmSubscribe(String iidToken) {
+//		logger.info("fcmSubscribe()->iidToken=" + iidToken);
+		String userAgent = Base64Utils.toBase64(getUserAgent().getBytes());
+//		logger.info("fcmSubscribe()->userAgent=" + userAgent);
+		dispatch.execute(fcmService.subscribe(iidToken, userAgent), new AsyncCallback<Void>() {
+
+			@Override
+			public void onSuccess(Void response) {
+				MaterialToast.fireToast("Sussecfull subscription!");
+			}
+
+			@Override
+			public void onFailure(Throwable throwable) {
+				MaterialToast.fireToast(throwable.getMessage());
+			}
+		});
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static native String getUserAgent() /*-{
+												return $wnd.navigator.userAgent.toLowerCase();
+												}-*/;
+
 }

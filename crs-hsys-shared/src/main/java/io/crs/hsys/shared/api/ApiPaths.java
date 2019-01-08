@@ -25,14 +25,14 @@ public class ApiPaths {
 		public static final String LOGOUT = "/logout";
 		
 		public static final String FCM = "/fcm";
-		public static final String SUBSCRIBE = "/subscribe";
 		public static final String MESSAGE = "/message";
 		
 		public static final String ACCOUNT = "/account";
 		
+		public static final String USER_GROUP = "/userGroup";
 		public static final String USER = "/user";
 		public static final String INVITE = "/invite";
-		public static final String USER_GROUP = "/userGroup";
+		public static final String SUBSCRIBE = "/subscribe";
 		public static final String ROLE = "/role";
 
 		public static final String CHAT = "/chat";
