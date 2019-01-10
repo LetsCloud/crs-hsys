@@ -67,6 +67,6 @@
 			</m.html:Div>
 		</m.html:Div>
 
-		<m:MaterialCollection ui:field="toDoList" />
+		<m:MaterialCollection ui:field="toDoList" margin="0"/>
 	</m:MaterialCollectionItem>
 </ui:UiBinder> 
