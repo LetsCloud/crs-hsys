@@ -36,17 +36,17 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
  * @author CR
  *
  */
-public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
+public class CfgAppPresenter extends AbstractAppPresenter<CfgAppPresenter.MyProxy> {
 
 	private final CfgMessages i18n;
 	private final CfgResources resources;
 
 	@ProxyStandard
-	interface MyProxy extends Proxy<AppPresenter> {
+	interface MyProxy extends Proxy<CfgAppPresenter> {
 	}
 
 	@Inject
-	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, CfgMessages i18n,
+	CfgAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, CfgMessages i18n,
 			RestDispatch dispatch, AuthResource authenticationService,
 			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
 			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager swManager, CfgResources resources,
@@ -73,7 +73,7 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
 		dasboardMenuItem.setIcon(IconType.DASHBOARD.name());
 		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
-		dasboardMenuItem.setNameToken(NameTokens.HOME);
+		dasboardMenuItem.setNameToken(CfgNameTokens.HOME);
 		menuItems.add(dasboardMenuItem);
 
 		// *********************
@@ -91,14 +91,14 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		userConfigMenuItem.setIndex(1);
 		userConfigMenuItem.setType(MenuItemType.MENU_ITEM);
 		userConfigMenuItem.setText(i18n.menuItemUserConfig());
-		userConfigMenuItem.setNameToken(NameTokens.SYSTEM_CONFIG);
+		userConfigMenuItem.setNameToken(CfgNameTokens.SYSTEM_CONFIG);
 		commonConfigSubMenu.addItem(userConfigMenuItem);
 
 		MenuItemDto configMenuItem2 = new MenuItemDto();
 		configMenuItem2.setIndex(2);
 		configMenuItem2.setType(MenuItemType.MENU_ITEM);
 		configMenuItem2.setText(i18n.menuItemProfileConfig());
-		configMenuItem2.setNameToken(NameTokens.PROFILE_CONFIG);
+		configMenuItem2.setNameToken(CfgNameTokens.PROFILE_CONFIG);
 		commonConfigSubMenu.addItem(configMenuItem2);
 
 		// ***************************
@@ -116,7 +116,7 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		configMenuItem3.setIndex(3);
 		configMenuItem3.setType(MenuItemType.MENU_ITEM);
 		configMenuItem3.setText(i18n.menuItemHotelConfig());
-		configMenuItem3.setNameToken(NameTokens.HOTEL_CONFIG);
+		configMenuItem3.setNameToken(CfgNameTokens.HOTEL_CONFIG);
 		froConfigSubMenu.addItem(configMenuItem3);
 
 		// ***************************

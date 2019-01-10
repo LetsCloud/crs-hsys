@@ -14,7 +14,7 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.admin.NameTokens;
+import io.crs.hsys.client.admin.AdminNameTokens;
 import io.crs.hsys.client.admin.config.system.SystemConfigPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
@@ -68,7 +68,7 @@ public class GlobalConfigEditorPresenter
 			@Override
 			public void onSuccess(GlobalConfigDto dto) {
 				getView().close();
-				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SYSTEM_CONFIG)
+				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(AdminNameTokens.SYSTEM_CONFIG)
 						.with(AbstractConfigPresenter.PLACE_PARAM, SystemConfigPresenter.GLOBAL_CONFIGS).build();
 				placeManager.revealPlace(placeRequest);
 			}

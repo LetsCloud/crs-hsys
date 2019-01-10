@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.admin.AppModule;
+import io.crs.hsys.client.admin.AdminAppModule;
 import io.crs.hsys.client.admin.config.system.SystemConfigModule;
 import io.crs.hsys.client.admin.dashboard.DashboardModule;
 import io.crs.hsys.client.core.gin.CoreModule;
@@ -27,7 +27,7 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bind(ResourceLoader.class).asEagerSingleton();
 
-		install(new AppModule());
+		install(new AdminAppModule());
 
 		install(new DashboardModule());
 

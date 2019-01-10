@@ -35,17 +35,17 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
  * @author CR
  *
  */
-public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
+public class AdminAppPresenter extends AbstractAppPresenter<AdminAppPresenter.MyProxy> {
 
 	private final AdminMessages i18n;
 	private final AdminResources resources;
 
 	@ProxyStandard
-	interface MyProxy extends Proxy<AppPresenter> {
+	interface MyProxy extends Proxy<AdminAppPresenter> {
 	}
 
 	@Inject
-	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, AdminMessages i18n,
+	AdminAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, AdminMessages i18n,
 			RestDispatch dispatch, AuthResource authenticationService,
 			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
 			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager swManager, AdminResources resources,
@@ -72,7 +72,7 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
 		dasboardMenuItem.setIcon(IconType.DASHBOARD.name());
 		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
-		dasboardMenuItem.setNameToken(NameTokens.HOME);
+		dasboardMenuItem.setNameToken(AdminNameTokens.HOME);
 		menuItems.add(dasboardMenuItem);
 
 		// *********************
@@ -90,7 +90,7 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		userConfigMenuItem.setIndex(1);
 		userConfigMenuItem.setType(MenuItemType.MENU_ITEM);
 		userConfigMenuItem.setText(i18n.menuItemSystemConfigs());
-		userConfigMenuItem.setNameToken(NameTokens.SYSTEM_CONFIG);
+		userConfigMenuItem.setNameToken(AdminNameTokens.SYSTEM_CONFIG);
 		commonConfigSubMenu.addItem(userConfigMenuItem);
 
 		return menuItems;

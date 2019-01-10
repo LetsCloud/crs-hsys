@@ -26,7 +26,6 @@
 		name="gwt.material.design.addins.GwtMaterialAddinsBasic" />
 	<inherits
 		name="gwt.material.design.addext.GwtMaterialAddextBasic" />
-	<inherits name="gwt.material.design.addext.ResourcesBasic" />
 
 	<inherits name="com.google.common.collect.Collect" />
 
@@ -38,7 +37,7 @@
 		value="io.crs.hsys.client.cfg.gin.CfgClientModule" />
 
 	<set-configuration-property
-		name="gwtp.bootstrapper" value="io.crs.hsys.client.cfg.App" />
+		name="gwtp.bootstrapper" value="io.crs.hsys.client.cfg.CfgApp" />
  
 	<!-- <entry-point class='io.crs.hsys.client.cfg.CfgAppEntryPoint' /> -->
 
