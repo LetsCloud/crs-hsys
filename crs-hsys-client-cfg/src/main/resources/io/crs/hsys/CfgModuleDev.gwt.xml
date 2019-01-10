@@ -16,6 +16,7 @@
 	<!-- <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" 
 		/> -->
 
+
 	<extend-property name="locale" values="hu_HU" />
 	<set-property name="locale" value="hu_HU" />
 
