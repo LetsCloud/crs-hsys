@@ -14,11 +14,13 @@ import javax.ws.rs.core.MediaType;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.FcmTokenDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.TOKEN;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.INVITE;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.SUBSCRIBE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.USER;
 
@@ -43,6 +45,10 @@ public interface AppUserResource {
 	@POST
 	@Path(INVITE)
 	AppUserDto invite(AppUserDto userDto);
+
+	@POST
+	@Path(SUBSCRIBE)
+	Boolean subscribe(FcmTokenDto token);
 
 	@GET
 	@Path("/activate/{token}")

@@ -15,7 +15,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import io.crs.hsys.client.admin.NameTokens;
+import io.crs.hsys.client.admin.AdminNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
@@ -33,7 +33,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 	}
 
 	@ProxyCodeSplit
-	@NameToken(NameTokens.HOME)
+	@NameToken(AdminNameTokens.HOME)
 	// @UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<DashboardPresenter> {
 	}

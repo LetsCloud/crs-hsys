@@ -25,12 +25,14 @@ import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.FcmTokenDto;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.INVITE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.SUBSCRIBE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.USER;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -81,7 +83,7 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@Override
 	@RequestMapping(method = POST)
 	public ResponseEntity<AppUserDto> saveOrCreate(@RequestBody AppUserDto dto) throws RestApiException {
-		logger.info("saveOrCreate()->dto="+dto);
+		logger.info("saveOrCreate()->dto=" + dto);
 		return super.saveOrCreate(dto);
 	}
 
@@ -104,4 +106,19 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	public void delete(@PathVariable(WEBSAFEKEY) String webSafeKey) throws RestApiException {
 		super.delete(webSafeKey);
 	}
+
+	@RequestMapping(value = SUBSCRIBE, method = POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public ResponseEntity<Boolean> subscribe(@RequestBody FcmTokenDto token) {
+		logger.info("subscribe(IID_TOKEN=" + token.getToken() + ", USER_AGENT=" + token.getUserAgent() + ")");
+		try {
+			userService.fcmSubscribe(token.getToken(), token.getUserAgent());
+			return new ResponseEntity<Boolean>(true, NOT_FOUND);
+		} catch (Throwable e) {
+			logger.info("subscribe->catch Exeption->" + e.getMessage());
+			e.printStackTrace();
+			return new ResponseEntity<Boolean>(NOT_FOUND);
+		}
+	}
+
 }

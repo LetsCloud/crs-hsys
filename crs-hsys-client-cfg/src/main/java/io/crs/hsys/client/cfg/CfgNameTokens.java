@@ -7,7 +7,7 @@ package io.crs.hsys.client.cfg;
  * @author robi
  *
  */
-public class NameTokens {
+public class CfgNameTokens {
 
 	public static final String HOME = "/home";
 

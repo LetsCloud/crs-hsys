@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip;
+package io.crs.hsys.client.cfg;
 
 import javax.inject.Inject;
 
@@ -23,14 +23,14 @@ import io.crs.hsys.shared.constans.SubSystem;
  * @author CR
  *
  */
-public class KipApp extends AbstractAppBootstrapper {
+public class CfgApp extends AbstractAppBootstrapper {
 
 	@Inject
-	KipApp(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
+	CfgApp(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
 			MessagingManager messagingManager, AppServiceWorkerManager swManager, RestDispatch dispatch,
 			AuthResource authService, CurrentUser currentUser, FcmResource fcmService) {
 		super(placeManager, appData, globalConfigResource, messagingManager, swManager, dispatch, authService,
 				currentUser, fcmService);
-		setAppCode(SubSystem.KIP);
+		setAppCode(SubSystem.CFG);
 	}
 }

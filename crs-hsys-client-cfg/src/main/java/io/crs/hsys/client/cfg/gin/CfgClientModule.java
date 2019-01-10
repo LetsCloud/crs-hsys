@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.cfg.AppModule;
+import io.crs.hsys.client.cfg.CfgAppModule;
 import io.crs.hsys.client.cfg.config.hotel.HotelConfigModule;
 import io.crs.hsys.client.cfg.config.profile.ProfileConfigModule;
 import io.crs.hsys.client.cfg.config.system.SystemConfigModule;
@@ -34,7 +34,7 @@ public class CfgClientModule extends AbstractPresenterModule {
 
 		bind(CfgResourceLoader.class).asEagerSingleton();
 
-		install(new AppModule());
+		install(new CfgAppModule());
 
 		install(new DashboardModule());
 

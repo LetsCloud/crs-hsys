@@ -7,7 +7,7 @@ package io.crs.hsys.client.admin;
  * @author robi
  *
  */
-public class NameTokens {
+public class AdminNameTokens {
 
 	public static final String HOME = "/home";
 

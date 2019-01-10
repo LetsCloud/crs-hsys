@@ -35,10 +35,10 @@
 
 	<extend-configuration-property
 		name="gin.ginjector.modules"
-		value="io.crs.hsys.client.admin.gin.ClientModule" />
+		value="io.crs.hsys.client.admin.gin.AdminClientModule" />
 
 	<set-configuration-property
-		name="gwtp.bootstrapper" value="io.crs.hsys.client.admin.App" />
+		name="gwtp.bootstrapper" value="io.crs.hsys.client.admin.AdminApp" />
  
 	<!-- <entry-point class='io.crs.hsys.client.cfg.CfgAppEntryPoint' /> -->
 
