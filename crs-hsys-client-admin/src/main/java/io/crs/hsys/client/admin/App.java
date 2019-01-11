@@ -23,10 +23,10 @@ import io.crs.hsys.shared.constans.SubSystem;
  * @author CR
  *
  */
-public class AdminApp extends AbstractAppBootstrapper {
+public class App extends AbstractAppBootstrapper {
 
 	@Inject
-	AdminApp(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
+	App(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
 			MessagingManager messagingManager, AppServiceWorkerManager swManager, RestDispatch dispatch,
 			AuthResource authService, CurrentUser currentUser, FcmResource fcmService) {
 		super(placeManager, appData, globalConfigResource, messagingManager, swManager, dispatch, authService,
