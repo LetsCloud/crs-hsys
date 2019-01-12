@@ -11,7 +11,6 @@ package io.crs.hsys.shared.dto.hotel;
 public class RoomTypeDtor extends HotelChildDto {
 
 	private String code;
-
 	private String name;
 
 	public RoomTypeDtor() {

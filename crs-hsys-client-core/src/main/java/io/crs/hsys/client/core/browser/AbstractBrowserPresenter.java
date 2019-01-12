@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.browser;
+package io.crs.hsys.client.core.browser;
 
 import java.util.HashMap;
 import java.util.List;

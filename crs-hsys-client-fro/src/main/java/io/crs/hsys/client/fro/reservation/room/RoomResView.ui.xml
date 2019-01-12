@@ -1,0 +1,207 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	.textAlignRight {
+		text-align: right;
+	}
+	
+	.striped {
+		background-color: #f5f5f5;
+	}
+	
+	.marginTop0 {
+		margin-top: 0px;
+	}
+	
+	.padding0 {
+		padding: 0px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel>
+
+
+
+		<m:MaterialCollapsible
+			addStyleNames="{style.marginTop0}">
+			<m:MaterialCollapsibleItem>
+				<m:MaterialCollapsibleHeader
+					addStyleNames="{style.striped}">
+					<m:MaterialLink text="205 - Smith John, Mr."
+						iconType="HOTEL" iconPosition="LEFT" textColor="BLACK" />
+				</m:MaterialCollapsibleHeader>
+				<m:MaterialCollapsibleBody
+					addStyleNames="{style.padding0}">
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+							paddingRight="0">
+							<m:MaterialRow>
+								<m:MaterialTextBox label="Vendégnév"
+									value="Smith John, Mr." grid="s12" iconType="MORE_HORIZ" />
+
+								<m:MaterialIntegerBox label="Felnőtt"
+									value="2" placeholder="Adults" grid="s3" />
+								<m:MaterialIntegerBox label="Tini"
+									value="1" placeholder="Teens" grid="s3" />
+								<m:MaterialIntegerBox label="Gyerek"
+									value="1" placeholder="Children" grid="s3" />
+								<m:MaterialIntegerBox label="Csecsemő"
+									value="0" placeholder="Infants" grid="s3" />
+
+								<m:MaterialDatePicker ui:field="arrival"
+									placeholder="Érkezés" grid="s4" format="yyyy.mm.dd" />
+								<m:MaterialIntegerBox ui:field="nights"
+									label="Éj" placeholder="Éj" grid="s4" />
+								<m:MaterialDatePicker ui:field="departure"
+									placeholder="Utazás" grid="s4" format="yyyy.mm.dd" />
+
+								<combobox:MaterialComboBox
+									label="Szobatípus" grid="s4">
+									<m:html.Option value="DBLB" text="DBLB" />
+									<m:html.Option value="TWIN" text="TWIN" />
+									<m:html.Option value="SNGL" text="SNGL" />
+								</combobox:MaterialComboBox>
+								<m:MaterialIntegerBox ui:field="qt"
+									label="Mennyi" placeholder="Mennyi" grid="s4" />
+								<combobox:MaterialComboBox
+									label="Szoba#" grid="s4">
+									<m:html.Option value="DBLB" text="1001" />
+									<m:html.Option value="TWIN" text="1002" />
+									<m:html.Option value="SNGL" text="1003" />
+								</combobox:MaterialComboBox>
+
+								<m:MaterialLabel text="2018.07.20 - 2018.07.21"
+									grid="s12" addStyleNames="{style.textAlignRight}" />
+								<combobox:MaterialComboBox
+									label="Árkód" grid="s3">
+									<m:html.Option value="DBLB" text="RACK" />
+									<m:html.Option value="TWIN" text="PACK1" />
+									<m:html.Option value="SNGL" text="PACK2" />
+								</combobox:MaterialComboBox>
+								<m:MaterialFloatBox ui:field="rate"
+									label="Szobaár" grid="s3" />
+								<combobox:MaterialComboBox
+									label="Valuta" grid="s3">
+									<m:html.Option value="HUF" text="HUF" />
+									<m:html.Option value="EUR" text="EUR" />
+									<m:html.Option value="USD" text="USD" />
+								</combobox:MaterialComboBox>
+								<combobox:MaterialComboBox label="IFA"
+									grid="s3">
+									<m:html.Option value="DBLB" text="Beleértve" />
+									<m:html.Option value="TWIN" text="Rátéve" />
+									<m:html.Option value="SNGL" text="Mentes" />
+								</combobox:MaterialComboBox>
+
+								<m:MaterialLabel text="2018.07.20 - 2018.07.21"
+									grid="s12" addStyleNames="{style.textAlignRight}" />
+								<combobox:MaterialComboBox
+									label="Árkód" grid="s3">
+									<m:html.Option value="DBLB" text="RACK" />
+									<m:html.Option value="TWIN" text="PACK1" />
+									<m:html.Option value="SNGL" text="PACK2" />
+								</combobox:MaterialComboBox>
+								<m:MaterialFloatBox ui:field="rate2"
+									label="Szobaár" grid="s3" />
+								<combobox:MaterialComboBox
+									label="Valuta" grid="s3">
+									<m:html.Option value="HUF" text="HUF" />
+									<m:html.Option value="EUR" text="EUR" />
+									<m:html.Option value="USD" text="USD" />
+								</combobox:MaterialComboBox>
+								<combobox:MaterialComboBox label="IFA"
+									grid="s3">
+									<m:html.Option value="DBLB" text="Beleértve" />
+									<m:html.Option value="TWIN" text="Rátéve" />
+									<m:html.Option value="SNGL" text="Mentes" />
+								</combobox:MaterialComboBox>
+							</m:MaterialRow>
+						</m:MaterialColumn>
+
+						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+							paddingRight="0">
+							<m:MaterialRow>
+								<m:MaterialCheckBox text="EarlyCI"
+									value="true" grid="s6" />
+								<m:MaterialCheckBox text="LateCO"
+									value="true" grid="s6" />
+
+								<m:MaterialCheckBox text="Fix szoba"
+									value="true" grid="s6" />
+								<m:MaterialCheckBox text="Átterhelés"
+									value="true" grid="s6" />
+
+								<m:MaterialCheckBox text="Árkód szobára"
+									value="true" grid="s6" />
+								<m:MaterialCheckBox text="IFA szobára"
+									value="true" grid="s6" />
+
+								<combobox:MaterialComboBox
+									label="Bekészítés" placeholder="Válassz bekészítést" grid="s12"
+									closeOnSelect="false" multiple="true">
+									<m:html.Option value="DBLB" text="Gyümölcskosár" />
+									<m:html.Option value="TWIN" text="Köntös" />
+									<m:html.Option value="SNGL" text="Pezsgő" />
+									<m:html.Option value="SNGL" text="Bonbon" />
+								</combobox:MaterialComboBox>
+
+								<m:MaterialTextBox label="Megjegyzés"
+									value="Érkezéskor fizet" grid="s12" />
+
+							</m:MaterialRow>
+						</m:MaterialColumn>
+					</m:MaterialRow>
+				</m:MaterialCollapsibleBody>
+			</m:MaterialCollapsibleItem>
+		</m:MaterialCollapsible>
+
+		<m:MaterialFAB>
+			<m:MaterialTooltip text="Rezervációs műveletek"
+				position="LEFT">
+				<m:MaterialAnchorButton type="FLOATING"
+					iconType="MORE_VERT" size="LARGE" />
+			</m:MaterialTooltip>
+			<m:MaterialFABList>
+				<m:MaterialTooltip text="Módosítás"
+					position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="YELLOW" iconType="EDIT" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Napi szobaár"
+					position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="LIME" iconType="TRANSFORM" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Visszaigazolás"
+					position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="CYAN" iconType="MAIL" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Check-IN" position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="GREEN" iconType="FLIGHT_LAND" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Kulcskártya"
+					position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="BLUE" iconType="VPN_KEY" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Költöztetés"
+					position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="YELLOW"
+						iconType="ROTATE_90_DEGREES_CCW" />
+				</m:MaterialTooltip>
+				<m:MaterialTooltip text="Lemondás" position="LEFT">
+					<m:MaterialAnchorButton type="FLOATING"
+						waves="LIGHT" backgroundColor="RED" iconType="CANCEL" />
+				</m:MaterialTooltip>
+			</m:MaterialFABList>
+		</m:MaterialFAB>
+	</g:HTMLPanel>
+</ui:UiBinder> 

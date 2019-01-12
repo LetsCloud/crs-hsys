@@ -18,6 +18,9 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
+	@DefaultMessage("Reservation")
+	String mainMenuItemReservation();
+
 	
 	// *********
 	// Chat Room

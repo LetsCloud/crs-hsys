@@ -4,12 +4,14 @@ public class NameTokens {
 
 	public static final String HOME = "/home";
 
-	// Housekeeping
+	// Reservation
+	public static final String RESERVATION = "/reservation";
+	public static final String CREATE_RESERVATION = "/createReservation";
+
 	public static final String CHAT_ROOM = "/chatRoom";
 
 	public static final String TASK_MNGR = "/taskMngr";
-
-	public static final String GUEST_ROOMS = "/guestRooms";
+	
 	public static final String GUEST_ROOMS2 = "/guestRooms2";
 	
 	public static final String HK_ATENDANTS = "/hkAtendants";
@@ -21,11 +23,6 @@ public class NameTokens {
 	public static final String CONTACTS = "!contacts";
 	public static final String ORGANIZATIONS = "!organizations";
 	public static final String PROPERTIES = "!properties";
-
-	// Housekeeping
-	public static String getHkChangeStatus() {
-		return GUEST_ROOMS;
-	}
 
 	public static String getHkAtendants() {
 		return HK_ATENDANTS;

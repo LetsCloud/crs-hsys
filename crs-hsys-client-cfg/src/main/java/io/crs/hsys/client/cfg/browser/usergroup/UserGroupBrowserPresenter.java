@@ -15,9 +15,9 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.cfg.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.cfg.meditor.usergroup.UserGroupEditorFactory;
 import io.crs.hsys.client.cfg.meditor.usergroup.UserGroupEditorPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.UserGroupResource;

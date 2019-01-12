@@ -25,6 +25,7 @@
 		name="gwt.material.design.addins.GwtMaterialAddinsBasic" />
 	<inherits
 		name="gwt.material.design.addext.GwtMaterialAddextBasic" />
+	<inherits name="gwt.material.design.incubator.AddinsIncubator" />
 
 	<inherits name="com.google.common.collect.Collect" />
 

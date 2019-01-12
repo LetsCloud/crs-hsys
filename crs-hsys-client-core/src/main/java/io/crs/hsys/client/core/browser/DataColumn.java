@@ -1,13 +1,14 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.browser;
+package io.crs.hsys.client.core.browser;
 
 import java.util.Comparator;
 
 import gwt.material.design.client.constants.HideOn;
 import gwt.material.design.client.data.component.RowComponent;
 import gwt.material.design.client.ui.table.cell.TextColumn;
+
 import io.crs.hsys.shared.dto.BaseDto;
 
 /**

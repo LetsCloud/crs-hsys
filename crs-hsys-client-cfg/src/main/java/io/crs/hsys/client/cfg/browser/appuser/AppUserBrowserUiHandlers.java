@@ -5,7 +5,7 @@ package io.crs.hsys.client.cfg.browser.appuser;
 
 import java.util.List;
 
-import io.crs.hsys.client.cfg.browser.AbstractBrowserUiHandlers;
+import io.crs.hsys.client.core.browser.AbstractBrowserUiHandlers;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 
 /**

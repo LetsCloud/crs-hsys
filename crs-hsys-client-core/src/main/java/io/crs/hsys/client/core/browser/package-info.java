@@ -10,4 +10,4 @@
  * @author robi
  *
  */
-package io.crs.hsys.client.cfg.browser;
+package io.crs.hsys.client.core.browser;

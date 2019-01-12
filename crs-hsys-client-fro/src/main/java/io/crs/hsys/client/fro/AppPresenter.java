@@ -44,9 +44,6 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 	interface MyProxy extends Proxy<AppPresenter> {
 	}
 
-//	private final GfilterDisplayPresenter gfilterDisplayPresenter;
-//	private GfilterConfigPresenter gfilterConfigPresenter;
-
 	@Inject
 	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, FroMessages i18n,
 			FroResources resources, RestDispatch dispatch, AuthResource authenticationService,
@@ -58,8 +55,6 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 
 		this.i18n = i18n;
 		this.resources = resources;
-//		this.gfilterDisplayPresenter = gfilterDisplayPresenter;
-//		gfilterConfigPresenter = gfilterConfigPresenterFactory.createGfilterConfigPresenter();
 	}
 
 	@Override
@@ -70,66 +65,37 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 	}
 
 	private List<MenuItemDto> createMenuitems() {
+		int index = 0;
 		List<MenuItemDto> menuItems = new ArrayList<MenuItemDto>();
 
-		// *******************
 		// Dashboard menu item
-		// *******************
-		MenuItemDto dasboardMenuItem = new MenuItemDto();
-		dasboardMenuItem.setIndex(1);
-		dasboardMenuItem.setType(MenuItemType.MENU_ITEM);
-		dasboardMenuItem.setIcon(IconType.DASHBOARD.name());
-		dasboardMenuItem.setText(i18n.mainMenuItemDashboard());
-		dasboardMenuItem.setNameToken(NameTokens.HOME);
-		menuItems.add(dasboardMenuItem);
+		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM)
+				.icon(IconType.DASHBOARD.name()).text(i18n.mainMenuItemDashboard()).nameToken(NameTokens.HOME).build());
 
-		// *******************
+		// Reservation menu item
+		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM)
+				.icon(IconType.EVENT_AVAILABLE.name()).text(i18n.mainMenuItemReservation())
+				.nameToken(NameTokens.RESERVATION).build());
+
 		// Chat Room menu item
-		// *******************
-		MenuItemDto chatRoomItem = new MenuItemDto();
-		chatRoomItem.setIndex(2);
-		chatRoomItem.setType(MenuItemType.MENU_ITEM);
-		chatRoomItem.setIcon(IconType.FORUM.name());
-		chatRoomItem.setText(i18n.mainMenuItemChatRoom());
-		chatRoomItem.setNameToken(NameTokens.CHAT_ROOM);
-		menuItems.add(chatRoomItem);
+		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
+				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CHAT_ROOM).build());
 
-		// ***************
 		// Tasks menu item
-		// ***************
-		MenuItemDto tasksItem = new MenuItemDto();
-		tasksItem.setIndex(3);
-		tasksItem.setType(MenuItemType.MENU_ITEM);
-		tasksItem.setIcon(IconType.ASSIGNMENT.name());
-		tasksItem.setText(i18n.mainMenuItemTasks());
-		tasksItem.setNameToken(NameTokens.TASK_MNGR);
-		menuItems.add(tasksItem);
 
-		// *********************
+		// Chat Room menu item
+		menuItems.add(
+				new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.ASSIGNMENT.name())
+						.text(i18n.mainMenuItemTasks()).nameToken(NameTokens.TASK_MNGR).build());
+
 		// Assignment menu group
-		// *********************
-		MenuItemDto assignmentSubMenu = new MenuItemDto();
-		assignmentSubMenu.setIndex(6);
-		assignmentSubMenu.setType(MenuItemType.SUB_MENU);
-		assignmentSubMenu.setIcon(IconType.ASSIGNMENT_RETURNED.name());
-		assignmentSubMenu.setText(i18n.mainMenuGroupAssignment());
-		assignmentSubMenu.setItems(new ArrayList<MenuItemDto>());
-
-		MenuItemDto roomAssignMenuItem = new MenuItemDto();
-		roomAssignMenuItem.setIndex(1);
-		roomAssignMenuItem.setType(MenuItemType.MENU_ITEM);
-		roomAssignMenuItem.setText(i18n.mainMenuItemRoomAssignment());
-		roomAssignMenuItem.setNameToken(NameTokens.GUEST_ROOMS);
-		assignmentSubMenu.addItem(roomAssignMenuItem);
-
-		MenuItemDto areaAssigntMenuItem = new MenuItemDto();
-		areaAssigntMenuItem.setIndex(2);
-		areaAssigntMenuItem.setType(MenuItemType.MENU_ITEM);
-		areaAssigntMenuItem.setText(i18n.mainMenuItemAreaAssignment());
-		areaAssigntMenuItem.setNameToken(NameTokens.HK_ASSIGNMENTS);
-		assignmentSubMenu.addItem(areaAssigntMenuItem);
-
-		menuItems.add(assignmentSubMenu);
+		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.SUB_MENU)
+				.icon(IconType.ASSIGNMENT_RETURNED.name()).text(i18n.mainMenuGroupAssignment())
+				.addItem(new MenuItemDto.Builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemRoomAssignment())
+						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
+				.addItem(new MenuItemDto.Builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemAreaAssignment())
+						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
+				.build());
 
 		return menuItems;
 	}

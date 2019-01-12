@@ -21,8 +21,7 @@ import gwt.material.design.client.data.component.RowComponent;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
-
-import io.crs.hsys.client.cfg.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.hotel.HotelDto;
 

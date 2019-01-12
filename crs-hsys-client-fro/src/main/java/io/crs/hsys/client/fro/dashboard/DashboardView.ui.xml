@@ -2,18 +2,57 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:toggle="urn:import:gwt.material.design.incubator.client.toggle"
+	xmlns:widget="urn:import:io.crs.hsys.client.fro.dashboard.widget">
 
 	<ui:style>
-	.rowCards {
-		opacity: 0;
-		padding: 20px;
+	.clearBoth {
+		clear: both;
+	}
+	
+	.floatLeft {
+		float: left;
+	}
+	
+	.floatRight {
+		float: right;
+	}
+	
+	.centerHoriz {
+		text-align: center;
 	}
 	</ui:style>
-	
+
 	<g:HTMLPanel>
-		<m:MaterialRow ui:field="rowCards"
-			layoutPosition="RELATIVE" addStyleNames="{style.rowCards}">
+		<m.html:Div addStyleNames="{style.centerHoriz}">
+			<toggle:GroupToggleButton
+				ui:field="periodToggle" marginTop="0" />
+		</m.html:Div>
+
+		<m:MaterialRow ui:field="measuresPanel"
+			addStyleNames="{style.clearBoth}">
+			<widget:MeasureCard ui:field="arrivals"
+				grid="s12 m4" label="ÉRKEZŐ SZOBÁK" iconType="FLIGHT_LAND"
+				iconColor="GREEN" value="15" percent="33"
+				fulfilledText="Megérkezett 5" remainingText="Hátralévő 10"
+				backgroundColor="GREY_LIGHTEN_4" />
+
+			<widget:MeasureCard ui:field="occupancy"
+				grid="s12 m4" label="BENTLAKÓ SZOBÁK" iconType="LOCAL_HOTEL"
+				iconColor="BLUE" value="43" percent="65" fulfilledText="Foglaltság" />
+
+			<widget:MeasureCard ui:field="departures"
+				grid="s12 m4" label="UTAZÓ SZOBÁK" iconType="FLIGHT_TAKEOFF"
+				iconColor="RED" value="12" percent="92" fulfilledText="Elutazott 11"
+				remainingText="Hátralévő 1" />
 		</m:MaterialRow>
+
+		<m.html:Div addStyleNames="{style.centerHoriz}">
+			<toggle:GroupToggleButton
+				ui:field="detailToggle" marginTop="0" />
+		</m.html:Div>
+		
+		<g:SimplePanel ui:field="reservationSearchPanel"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

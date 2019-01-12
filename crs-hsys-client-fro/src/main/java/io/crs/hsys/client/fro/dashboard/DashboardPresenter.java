@@ -3,6 +3,9 @@
  */
 package io.crs.hsys.client.fro.dashboard;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +23,7 @@ import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.dto.reservation.ReservationSearchDto;
 
 /**
  * @author CR
@@ -31,6 +35,8 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 
 	interface MyView extends View, HasUiHandlers<DashboardUiHandlers> {
 		void showCards();
+
+		void setReservationSearchData(List<ReservationSearchDto> data);
 	}
 
 	@ProxyCodeSplit
@@ -52,6 +58,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 		super.onReveal();
 		SetPageTitleEvent.fire("Dashboard", "", MenuItemType.MENU_ITEM, this);
 		getView().showCards();
+		loadData();
 	}
 
 	@Override
@@ -60,4 +67,14 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 
 	}
 
+	private void loadData() {
+		List<ReservationSearchDto> data = new ArrayList<ReservationSearchDto>();
+
+		data.add(ReservationSearchDto.builder().webSafeKey("1").id(1l).name("Siemens csoport").arrival(new Date())
+				.departure(new Date()).numOfRooms(10).numOfGuests(20).customer("Siemens").build());
+		data.add(ReservationSearchDto.builder().webSafeKey("2").id(2l).name("Telecom csoport").arrival(new Date())
+				.departure(new Date()).numOfRooms(10).numOfGuests(20).customer("Telecom").build());
+		
+		getView().setReservationSearchData(data);
+	}
 }
