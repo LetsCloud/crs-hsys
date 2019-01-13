@@ -130,7 +130,7 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	 * @param title  Az oszlop felirata.
 	 */
 	public void addColumn(Column<T, ?> column, String title) {
-		table.addColumn(column, title);
+		table.addColumn(title, column);
 	}
 
 	/**

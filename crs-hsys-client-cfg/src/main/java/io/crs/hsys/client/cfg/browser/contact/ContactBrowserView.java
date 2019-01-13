@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.cfg.browser.contact;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -17,10 +16,10 @@ import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.TextAlign;
 import gwt.material.design.client.constants.WavesType;
-import gwt.material.design.client.data.component.RowComponent;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
+
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.profile.ContactDto;
@@ -63,31 +62,22 @@ public class ContactBrowserView extends ViewWithUiHandlers<ContactBrowserUiHandl
 		/*
 		 * NAME
 		 */
-		table.getTable().addColumn(new TextColumn<ContactDto>() {
+		table.getTable().addColumn(i18nCore.contactBrowserColName(), new TextColumn<ContactDto>() {
 			@Override
-			public boolean isSortable() {
+			public boolean sortable() {
 				return true;
-			}
-
-			@Override
-			public Comparator<? super RowComponent<ContactDto>> sortComparator() {
-				return (o1, o2) -> o1.getData().getName().compareToIgnoreCase(o2.getData().getName());
 			}
 
 			@Override
 			public String getValue(ContactDto object) {
 				return object.getName();
 			}
-		}, i18nCore.contactBrowserColName());
+		}.sortComparator((o1, o2) -> o1.getData().getName().compareToIgnoreCase(o2.getData().getName())));
 
 //
 // EDIT ICON
 //
 		table.getTable().addColumn(new WidgetColumn<ContactDto, MaterialIcon>() {
-			@Override
-			public TextAlign textAlign() {
-				return TextAlign.RIGHT;
-			}
 
 			@Override
 			public MaterialIcon getValue(ContactDto object) {
@@ -106,7 +96,7 @@ public class ContactBrowserView extends ViewWithUiHandlers<ContactBrowserUiHandl
 				icon.setTextColor(Color.WHITE);
 				return icon;
 			}
-		});
+		}.textAlign(TextAlign.RIGHT));
 	}
 
 	@Override
