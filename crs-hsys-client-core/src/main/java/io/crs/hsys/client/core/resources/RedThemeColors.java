@@ -7,9 +7,9 @@ package io.crs.hsys.client.core.resources;
  * @author CR
  *
  */
-public class HwBlueColors {
-	public static final String C_PRIMARY = "#03a9f4"; /* LIGHT_BLUE */
-	public static final String C_PRIMARY_LIGHT = "#81d4fa"; /* LIGHT_BLUE_LIGHTEN_3 */
+public class RedThemeColors {
+	public static final String C_PRIMARY = "#e91e63"; /* PINK */
+	public static final String C_PRIMARY_LIGHT = "#f48fb1"; /* PINK_LIGHTEN_3 */
 
 	public static final String C_SECONDARY = "#424242"; /* GREY_DARKEN_3 */
 	public static final String C_SECONDARY_LIGHT = "#616161"; /* GREY_DARKEN_2 */

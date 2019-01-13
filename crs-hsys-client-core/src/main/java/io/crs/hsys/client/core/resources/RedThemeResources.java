@@ -11,14 +11,14 @@ import com.google.gwt.resources.client.CssResource;
  * @author CR
  *
  */
-public interface HwOrangeResources extends ClientBundle {
-	public static final HwOrangeResources INSTANCE = GWT.create(HwOrangeResources.class);
+public interface RedThemeResources extends ClientBundle {
+	public static final RedThemeResources INSTANCE = GWT.create(RedThemeResources.class);
 
 	interface Style extends CssResource {
 		// Your classes here
 	}
 
-	@Source({ "io/crs/hsys/client/core/resources/css/theme_hw_orange.gss",
+	@Source({ "io/crs/hsys/client/core/resources/css/theme_hw_red.gss",
 			"io/crs/hsys/client/core/resources/css/override.gss" })
 	Style override();
 }

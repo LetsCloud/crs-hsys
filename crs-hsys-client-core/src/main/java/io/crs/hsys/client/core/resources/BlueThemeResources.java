@@ -11,8 +11,8 @@ import com.google.gwt.resources.client.CssResource;
  * @author CR
  *
  */
-public interface HwBlueResources extends ClientBundle {
-	public static final HwBlueResources INSTANCE = GWT.create(HwBlueResources.class);
+public interface BlueThemeResources extends ClientBundle {
+	public static final BlueThemeResources INSTANCE = GWT.create(BlueThemeResources.class);
 
 	interface Style extends CssResource {
 		// Your classes here
