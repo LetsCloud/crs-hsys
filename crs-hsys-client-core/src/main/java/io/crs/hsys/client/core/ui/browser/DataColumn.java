@@ -32,12 +32,12 @@ public class DataColumn<T extends BaseDto> extends TextColumn<T> {
 	public DataColumn(ValueFunc<T> valueFunc, Comparator<? super RowComponent<T>> sortComparator) {
 		this(valueFunc);
 		this.sortable = true;
-		this.setSortComparator(sortComparator);
+		this.sortComparator(sortComparator);
 	}
 
 	public DataColumn(ValueFunc<T> valueFunc, Comparator<? super RowComponent<T>> sortComparator, HideOn hideOn) {
 		this(valueFunc, sortComparator);
-		this.setHideOn(hideOn);
+		this.hideOn(hideOn);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class DataColumn<T extends BaseDto> extends TextColumn<T> {
 	}
 
 	@Override
-	public boolean isSortable() {
+	public boolean sortable() {
 		return sortable;
 	}
 

@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	.basePanelStyle {
+		
+	}
+	
+	.frameStyle {
+		margin: 5px;
+		padding: 20px;
+		background: #fff;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+			rgba(0, 0, 0, 0.12);
+	}
+	
+	.headerStyle {
+		
+	}
+	
+	.titleStyle {
+		font-size: 48px;
+	}
+	
+	.clearBoth {
+		clear: both;
+	}
+	
+	.floatLeft {
+		float: left;
+	}
+	</ui:style>
+
+	<m:MaterialColumn>
+		<!-- FRAME -->
+		<m.html:Div addStyleNames="{style.frameStyle}">
+
+			<!-- HEADER -->
+			<m.html:Div addStyleNames="{style.headerStyle}">
+				<g:Label ui:field="title"
+					addStyleNames="{style.titleStyle} {style.floatLeft}" />
+
+				<m.html:Div ui:field="iconTray" />
+			</m.html:Div>
+
+			<!-- BODY -->
+			<m.html:Div ui:field="body" />
+		</m.html:Div>
+	</m:MaterialColumn>
+</ui:UiBinder> 

@@ -15,24 +15,21 @@ public interface CoreResources extends ClientBundle {
 	@Source("io/crs/hsys/client/core/resources/css/gwt-material.css")
 	TextResource gwtMaterial();
 
-	@Source("img/profile.jpg")
-	ImageResource profileImg();
+//	@Source("img/profile.jpg")
+//	ImageResource profileImg();
 
-	@Source("img/orange-wallpaper.jpg")
-	ImageResource orangeWallpaperImg();
+//	@Source("img/orange-wallpaper.jpg")
+//	ImageResource orangeWallpaperImg();
 
 	// Az appCss-ben lévő mainBackground CSS osztály használja fel
-	@Source("img/orange-wallpaper.jpg")
-	DataResource orangeWallpaperRes();
+//	@Source("img/orange-wallpaper.jpg")
+//	DataResource orangeWallpaperRes();
 
-	@Source("img/red-wallpaper.png")
-	ImageResource redWallpaperImg();
+//	@Source("img/red-wallpaper.png")
+//	ImageResource redWallpaperImg();
 
-	@Source("img/red-wallpaper.png")
-	DataResource redWallpaperRes();
-
-	@Source("css/wallpaper.css")
-	WallpaperCssResource wallpaperCss();
+//	@Source("img/red-wallpaper.png")
+//	DataResource redWallpaperRes();
 	
 	@Source("css/core.css")
 	TextResource coreCss();

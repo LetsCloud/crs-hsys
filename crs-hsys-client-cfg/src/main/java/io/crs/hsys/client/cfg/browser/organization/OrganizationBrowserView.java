@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.cfg.browser.organization;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -17,12 +16,10 @@ import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.TextAlign;
 import gwt.material.design.client.constants.WavesType;
-import gwt.material.design.client.data.component.RowComponent;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
-
-import io.crs.hsys.client.cfg.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
@@ -66,51 +63,37 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 		/*
 		 * CODE
 		 */
-		table.getTable().addColumn(new TextColumn<OrganizationDtor>() {
+		table.getTable().addColumn(i18nCore.organizationBrowserColCode(), new TextColumn<OrganizationDtor>() {
 			@Override
-			public boolean isSortable() {
+			public boolean sortable() {
 				return true;
-			}
-
-			@Override
-			public Comparator<? super RowComponent<OrganizationDtor>> sortComparator() {
-				return (o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode());
 			}
 
 			@Override
 			public String getValue(OrganizationDtor object) {
 				return object.getCode();
 			}
-		}, i18nCore.organizationBrowserColCode());
+		}.sortComparator((o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode())));
 
 		/*
 		 * NAME
 		 */
-		table.getTable().addColumn(new TextColumn<OrganizationDtor>() {
+		table.getTable().addColumn(i18nCore.organizationBrowserColName(), new TextColumn<OrganizationDtor>() {
 			@Override
-			public boolean isSortable() {
+			public boolean sortable() {
 				return true;
-			}
-
-			@Override
-			public Comparator<? super RowComponent<OrganizationDtor>> sortComparator() {
-				return (o1, o2) -> o1.getData().getName().compareToIgnoreCase(o2.getData().getName());
 			}
 
 			@Override
 			public String getValue(OrganizationDtor object) {
 				return object.getName();
 			}
-		}, i18nCore.organizationBrowserColName());
+		}.sortComparator((o1, o2) -> o1.getData().getName().compareToIgnoreCase(o2.getData().getName())));
 
 		//
 		// EDIT ICON
 		//
 		table.getTable().addColumn(new WidgetColumn<OrganizationDtor, MaterialIcon>() {
-			@Override
-			public TextAlign textAlign() {
-				return TextAlign.RIGHT;
-			}
 
 			@Override
 			public MaterialIcon getValue(OrganizationDtor object) {
@@ -129,7 +112,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 				icon.setTextColor(Color.WHITE);
 				return icon;
 			}
-		});
+		}.textAlign(TextAlign.RIGHT));
 	}
 
 	@Override

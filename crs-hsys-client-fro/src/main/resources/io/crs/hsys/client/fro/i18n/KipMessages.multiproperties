@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MultiProperties xmlns="hu.skzs.multiproperties">
+    <Version>1.2</Version>
+    <Name>AppMessages</Name>
+    <Description></Description>
+    <Handler>Java Properties Handler</Handler>
+    <Columns>
+        <Key>
+            <Width>200</Width>
+        </Key>
+        <Column>
+            <Name>default</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>hu_HU</Name>
+            <Description></Description>
+            <Width>1020</Width>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+    </Columns>
+    <Records>
+        <Comment>
+            <Value>MAIN MENU</Value>
+        </Comment>
+        <Property>
+            <Name>mainMenuItemDashboard</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Dashboard</Value>
+            <Value disabled="false">Vezérlőpult</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemChatRoom</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Chat Room</Value>
+            <Value disabled="false">Csevegés</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemTasks</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Tasks</Value>
+            <Value disabled="false">Feladatok</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemGuestRooms</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Guest Rooms</Value>
+            <Value disabled="false">Vendégszobák</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupPublicAreas</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Public Areas</Value>
+            <Value disabled="false">Közös terek</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupAssignment</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Assignment</Value>
+            <Value disabled="false">Beosztás</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemAtendants</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Atendants</Value>
+            <Value disabled="false">Takarítók</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupMinibar</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Minibar</Value>
+            <Value disabled="false">Mini bár</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemAssignment</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Assigments</Value>
+            <Value disabled="false">Beosztások</Value>
+        </Property>
+        <Comment>
+            <Value>ATTENDANTS</Value>
+        </Comment>
+        <Property>
+            <Name>attendantsTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Attendants</Value>
+            <Value disabled="false">Takarítók</Value>
+        </Property>
+        <Property>
+            <Name>attendantsDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">All attendants</Value>
+            <Value disabled="false">Összes takarító</Value>
+        </Property>
+    </Records>
+</MultiProperties>

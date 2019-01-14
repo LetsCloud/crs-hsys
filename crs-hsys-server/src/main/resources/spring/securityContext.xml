@@ -10,6 +10,10 @@
 
 	<http pattern="/_ah/**" security="none" />
 	<http pattern="/service-worker.js" security="none" />
+	<http pattern="/KIP_launcher-icons/**" security="none" />
+	<http pattern="/FRO_launcher-icons/**" security="none" />
+	<http pattern="/INF_launcher-icons/**" security="none" />
+	<http pattern="/CFG_launcher-icons/**" security="none" />
 
 	<authentication-manager
 		alias="authenticationManager">

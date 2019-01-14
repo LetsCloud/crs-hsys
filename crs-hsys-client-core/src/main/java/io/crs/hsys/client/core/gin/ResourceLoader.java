@@ -22,7 +22,7 @@ public class ResourceLoader {
 		StyleInjector.inject(resources.gwtMaterial().getText());
 		StyleInjector.injectAtEnd(resources.coreCss().getText());
 		
-		resources.wallpaperCss().ensureInjected();
+//		resources.wallpaperCss().ensureInjected();
 		gssResources.common().ensureInjected();
        
     }

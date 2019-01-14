@@ -13,9 +13,10 @@
 	<modules>
 		<module>crs-hsys-shared</module>
 		<module>crs-hsys-client-core</module>
-		<module>crs-hsys-client-admin</module>
+<!-- 		<module>crs-hsys-client-admin</module> -->
 		<module>crs-hsys-client-cfg</module>
 		<module>crs-hsys-client-kip</module>
+		<module>crs-hsys-client-fro</module>
 		<module>crs-hsys-server</module>
 	</modules>
 
@@ -35,7 +36,9 @@
 		<gwtp.version>1.6</gwtp.version>
 		<!-- <gwtp.version>2.0-SNAPSHOT</gwtp.version> -->
 		<gin.version>2.1.2</gin.version>
-		<gwt-material.version>2.1.1</gwt-material.version>
+<!-- 		<gwt-material.version>2.1.1</gwt-material.version> -->
+		<gwt-material.version>2.2-SNAPSHOT</gwt-material.version>
+ 		<gmd-addext.version>2.1.1</gmd-addext.version>
 		<!-- <gwt-material-table.version>2.0-SNAPSHOT</gwt-material-table.version> -->
 		<gwt-charts.version>0.9.9</gwt-charts.version>
 		<objectify-gwt.version>1.2.1</objectify-gwt.version>
@@ -45,8 +48,8 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.1.3.RELEASE</spring.framework.version>
-		<spring.security.version>5.1.2.RELEASE</spring.security.version>
+		<spring.framework.version>5.1.4.RELEASE</spring.framework.version>
+		<spring.security.version>5.1.3.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
@@ -168,7 +171,7 @@
 			<dependency>
 				<groupId>com.github.gwtmaterialdesign</groupId>
 				<artifactId>gwt-material-addext</artifactId>
-				<version>${gwt-material.version}</version>
+				<version>${gmd-addext.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>

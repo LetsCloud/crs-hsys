@@ -55,7 +55,7 @@ public class ActionColumn<T extends BaseDto> extends WidgetColumn<T, MaterialIco
 	 */
 	public ActionColumn(ActionRow<T> actionRow) {
 		this.actionRow = actionRow;
-		this.setTextAlign(TextAlign.RIGHT);
+		this.textAlign(TextAlign.RIGHT);
 	}
 
 	/**

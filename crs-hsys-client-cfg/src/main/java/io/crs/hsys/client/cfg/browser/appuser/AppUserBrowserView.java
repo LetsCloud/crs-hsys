@@ -11,9 +11,9 @@ import javax.inject.Inject;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import io.crs.hsys.client.cfg.browser.AbstractBrowserView;
-import io.crs.hsys.client.cfg.browser.ActionColumn;
-import io.crs.hsys.client.cfg.browser.DataColumn;
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.ActionColumn;
+import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.api.AppUserResource;
 import io.crs.hsys.shared.dto.common.AppUserDto;
