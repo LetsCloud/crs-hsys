@@ -104,6 +104,8 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		RoomDto r1002 = new RoomDto.Builder().code("1002").roomType(twinRT).roomStatus(RoomStatus.CLEAN).build();
 		RoomDto r1003 = new RoomDto.Builder().code("1003").roomType(twinRT).roomStatus(RoomStatus.INSPECTED).build();
 		RoomDto r1004 = new RoomDto.Builder().code("1004").roomType(twinRT).roomStatus(RoomStatus.OOO).build();
+		RoomDto r1005 = new RoomDto.Builder().code("1005").roomType(dblbRT).roomStatus(RoomStatus.OOS).build();
+		RoomDto r1006 = new RoomDto.Builder().code("1006").roomType(dblbRT).roomStatus(RoomStatus.SHOW).build();
 
 		List<String> inspectTD = new ArrayList<String>();
 		inspectTD.add("ROOM – Temperature room comfortable upon arrival (between X & Xº)");
@@ -209,6 +211,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		dailyTD.add("Clean Toilet, Flush Handle and Seats");
 		dailyTD.add("Empty and Clean Sani-bins");
 		dailyTD.add("Replenish Bathroom Amenities");
+
 		TaskTypeDto dailyClTT = new TaskTypeDto.Builder().kind(TaskKind.CLEANING).code("DAILY")
 				.description("Napi takarítás").build();
 
@@ -261,6 +264,14 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		result.add(RoomStatusDto.builder().room(r1004)
 				.currOccStatus(new RoomOccDto(OccStatus.OOO, new GuestNumber(2, 0, 1, 0), "dec.15"))
 				.nextOccStatus(new RoomOccDto(OccStatus.UNCHANGED, new GuestNumber(0, 0, 0, 0), "")).tasks(r1004Tasks)
+				.build());
+		result.add(RoomStatusDto.builder().room(r1005)
+				.currOccStatus(new RoomOccDto(OccStatus.CHECKOUT, new GuestNumber(2, 0, 1, 0), "OUT"))
+				.nextOccStatus(new RoomOccDto(OccStatus.CHECKIN, new GuestNumber(0, 0, 0, 0), "")).tasks(r1004Tasks)
+				.build());
+		result.add(RoomStatusDto.builder().room(r1006)
+				.currOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(2, 0, 1, 0), ""))
+				.nextOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0), "")).tasks(r1004Tasks)
 				.build());
 
 		return result;

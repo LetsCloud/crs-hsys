@@ -38,20 +38,36 @@ public class CardDisplay extends Composite {
 
 		title = new MaterialCardTitle();
 		title.setTruncate(true);
+		title.setIconPosition(IconPosition.LEFT);
+		title.getIcon().setMarginTop(10);
+		title.getIcon().setMarginLeft(5);
 		content.add(title);
 
 		panel = new MaterialRow();
+		panel.setPaddingTop(10);
 		content.add(panel);
 		
 		initWidget(card);
 	}
 
+	public void setTitleIconType(IconType type) {
+		title.setIconType(type);
+	}
+
+	public void setTitleIconColor(Color color) {
+		title.setIconColor(color);
+	}
+	
 	public void setBackgroundColor(Color color) {
 		card.setBackgroundColor(color);
 	}
 
 	public void setTextColor(Color color) {
 		content.setTextColor(color);
+	}
+
+	public void setTitleTextColor(Color color) {
+		title.setTextColor(color);
 	}
 
 	public void setTitleText(String text) {
