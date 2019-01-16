@@ -27,9 +27,9 @@ public class RoomStatusUtils {
 		case OOO:
 			return Color.GREY_DARKEN_3;
 		case OOS:
-			return Color.PURPLE_LIGHTEN_2;
+			return Color.PURPLE_LIGHTEN_3;
 		case SHOW:
-			return Color.AMBER_LIGHTEN_2;
+			return Color.AMBER_LIGHTEN_1;
 		default:
 			break;
 		}
@@ -47,9 +47,9 @@ public class RoomStatusUtils {
 		case OOO:
 			return Color.GREY_LIGHTEN_1;
 		case OOS:
-			return Color.PURPLE_LIGHTEN_4;
+			return Color.PURPLE_LIGHTEN_5;
 		case SHOW:
-			return Color.AMBER_LIGHTEN_4;
+			return Color.AMBER_LIGHTEN_5;
 		default:
 			break;
 		}
@@ -125,13 +125,13 @@ public class RoomStatusUtils {
 	public static MdiType getOccStatusIcon(OccStatus occStatus) {
 		switch (occStatus) {
 		case VACANT:
-			return MdiType.CHECKBOX_BLANK;
+			return MdiType.CHECKBOX_BLANK_OUTLINE;
 		case EARLYCI:
 			return MdiType.ALPHA_E_BOX;
 		case CHECKIN:
 			return MdiType.ARROW_DOWN_BOX;
 		case INHOUSE:
-			return MdiType.ACCOUNT_BOX;
+			return MdiType.HOTEL;
 		case CHECKOUT:
 			return MdiType.ARROW_UP_BOX;
 		case LATECO:
