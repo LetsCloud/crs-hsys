@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.Color;
+import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.animate.MaterialAnimation;
@@ -39,17 +40,20 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		logger.log(Level.INFO, "DashboardView");
 
 		CardDisplay dirtyRooms = new CardDisplay();
-		dirtyRooms.setBackgroundColor(Color.RED_DARKEN_2);
-		dirtyRooms.setTitleBackgroundColor(Color.RED_DARKEN_4);
-		dirtyRooms.setTextColor(Color.WHITE);
+		dirtyRooms.setTitleTextColor(Color.WHITE);
+		dirtyRooms.setTitleBackgroundColor(Color.RED);
+		dirtyRooms.setTitleIconType(IconType.DELETE);
+		dirtyRooms.setTitleIconColor(Color.RED_LIGHTEN_4);
+		dirtyRooms.setTextColor(Color.GREY_DARKEN_3);
+		dirtyRooms.setBackgroundColor(Color.GREY_LIGHTEN_4);
 		dirtyRooms.setTitleText("PISZKOS SZOBÁK");
 		dirtyRooms.addItem("Érkező", "50", "Lakó", "50", "Üres", "50");
 		dirtyRooms.addItem("ÖSSZES", "150");
 		addCard(dirtyRooms);
 
 		CardDisplay cleanRooms = new CardDisplay();
-		cleanRooms.setBackgroundColor(Color.AMBER_DARKEN_2);
-		cleanRooms.setTitleBackgroundColor(Color.AMBER_DARKEN_4);
+		cleanRooms.setBackgroundColor(Color.AMBER_LIGHTEN_2);
+		cleanRooms.setTitleBackgroundColor(Color.AMBER);
 		cleanRooms.setTextColor(Color.WHITE);
 		cleanRooms.setTitleText("TISZTA SZOBÁK");
 		cleanRooms.addItem("Érkező", "50", "Lakó", "50", "Üres", "50");
