@@ -88,12 +88,15 @@ public class RoomTypeController extends HotelChildController<RoomType, RoomTypeD
 	 */
 	@RequestMapping(value = REDUCED, method = GET)
 	public @ResponseBody ResponseEntity<List<RoomTypeDtor>> getAllReduced(@RequestParam(HOTEL_KEY) String hotelKey) {
+		logger.info("RoomTypeController().getAllReduced()->hotelKey=" + hotelKey);
 		List<RoomTypeDtor> dtos = new ArrayList<RoomTypeDtor>();
 
 		Map<String, Object> filters = new HashMap<String, Object>();
 		
-		for (RoomType entity : service.getChildrenByFilters(hotelKey, filters))
+		for (RoomType entity : service.getChildrenByFilters(hotelKey, filters)) {
+			logger.info("RoomTypeController().getAllReduced()->entity.getCode()" + entity.getCode());
 			dtos.add(modelMapper.map(entity, RoomTypeDtor.class));
+		}
 
 		return new ResponseEntity<List<RoomTypeDtor>>(dtos, OK);
 	}

@@ -140,8 +140,12 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 
 	@Override
 	public List<T> getChildrenByFilters(String parentWebSafeKey, Map<String, Object> filters) {
-		if ((filters == null) || (filters.isEmpty()))
+		logger.info("CrudServiceImpl().getChildrenByFilters()");
+		if ((filters == null) || (filters.isEmpty())) {
+			logger.info("CrudServiceImpl().getChildrenByFilters()-2->"+parentWebSafeKey);
 			return repository.getChildren(parentWebSafeKey);
+		}
+		logger.info("CrudServiceImpl().getChildrenByFilters()-3");
 		return repository.getChildrenByFilters(parentWebSafeKey, filters);
 	}
 

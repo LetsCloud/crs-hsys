@@ -22,6 +22,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
+import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenter;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenterFactory;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
@@ -61,13 +63,16 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	interface MyProxy extends ProxyPlace<RoomStatusPresenter> {
 	}
 
+	private final RoomStatusFilterPresenter2 roomStatusfilter;
 	private final RoomStatusControllPresenter roomStatusControll;
 
 	@Inject
-	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, RoomStatusControllPresenterFactory factory) {
+	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, FilterPresenterFactory filterFactory,
+			RoomStatusControllPresenterFactory factory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 
+		roomStatusfilter = filterFactory.createRoomStatusFilter();
 		roomStatusControll = factory.createRoomStatusControllPresenter();
 
 		getView().setUiHandlers(this);
@@ -76,6 +81,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	@Override
 	protected void onBind() {
 		super.onBind();
+		setInSlot(FILTER_SLOT, roomStatusfilter);
 		setInSlot(EDITOR_SLOT, roomStatusControll);
 //		addRegisteredHandler(RoomStatusEditEvent.getType(), this);
 	}
