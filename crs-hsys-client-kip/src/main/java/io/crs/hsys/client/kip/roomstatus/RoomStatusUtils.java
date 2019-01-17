@@ -129,11 +129,11 @@ public class RoomStatusUtils {
 		case EARLYCI:
 			return MdiType.ALPHA_E_BOX;
 		case CHECKIN:
-			return MdiType.ARROW_DOWN_BOX;
+			return MdiType.ARROW_LEFT_BOX;
 		case INHOUSE:
 			return MdiType.HOTEL;
 		case CHECKOUT:
-			return MdiType.ARROW_UP_BOX;
+			return MdiType.ARROW_RIGHT_BOX;
 		case LATECO:
 			return MdiType.ALPHA_L_BOX;
 		case OOO:
