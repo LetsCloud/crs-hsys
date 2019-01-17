@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.addext.client.ui.MaterialButton2;
 import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollection;
@@ -53,8 +54,11 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	InlineLabel roomNoLabel;
 
 	@UiField
-	MaterialButton cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, dirtyButton, showButton,
+	MaterialButton cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, showButton,
 			oosButton, oooButton;
+
+	@UiField
+	MaterialButton2 dirtyButton;
 
 	@UiField
 	MaterialCollection collection;
@@ -69,7 +73,7 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	private void initButtons() {
 		initButton(cleanButton);
 		initButton(inspectButton);
-		initButton(dirtyButton);
+		initButton2(dirtyButton);
 		initButton(showButton);
 		initButton(oosButton);
 		initButton(oooButton);
@@ -85,11 +89,18 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
 		button.getElement().getStyle().setMargin(5, Unit.PX);
 	}
+	
+	private void initButton2(MaterialButton2 button) {
+		button.setHeight("100px");
+		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
+		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
+		button.getElement().getStyle().setMargin(5, Unit.PX);
+	}
 
 	private void reinitButtons() {
 		reinitButton(cleanButton);
 		reinitButton(inspectButton);
-		reinitButton(dirtyButton);
+		reinitButton2(dirtyButton);
 		reinitButton(showButton);
 		reinitButton(oosButton);
 		reinitButton(oooButton);
@@ -100,6 +111,10 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 	
 	private void reinitButton(MaterialButton button) {
+		button.setVisible(false);
+	}
+	
+	private void reinitButton2(MaterialButton2 button) {
 		button.setVisible(false);
 	}
 

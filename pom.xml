@@ -184,7 +184,7 @@
 			<dependency>
 				<groupId>com.github.gwtmaterialdesign</groupId>
 				<artifactId>gwt-material-addext</artifactId>
-				<version>${gmd-addext.version}</version>
+				<version>${gwt-material.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
