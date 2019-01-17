@@ -9,22 +9,16 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.client.ui.MaterialCollection;
-import io.crs.hsys.client.kip.chat.ChatRoomPresenter;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
-import io.crs.hsys.shared.constans.OccStatus;
-import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 /**
@@ -49,7 +43,10 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 	@Inject
 	RoomStatusView(Binder uiBinder) {
 		logger.log(Level.INFO, "RoomStatusView()");
+		
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		bindSlot(RoomStatusPresenter.FILTER_SLOT, filterPanel);
 		bindSlot(RoomStatusPresenter.EDITOR_SLOT, controllPanel);
 		
 		/*
