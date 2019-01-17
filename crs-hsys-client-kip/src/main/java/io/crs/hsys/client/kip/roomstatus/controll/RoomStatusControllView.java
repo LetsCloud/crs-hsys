@@ -54,11 +54,8 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	InlineLabel roomNoLabel;
 
 	@UiField
-	MaterialButton cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, showButton,
-			oosButton, oooButton;
-
-	@UiField
-	MaterialButton2 dirtyButton;
+	MaterialButton2 dirtyButton, cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, showButton,
+	oosButton, oooButton;;
 
 	@UiField
 	MaterialCollection collection;
@@ -71,16 +68,16 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void initButtons() {
-		initButton(cleanButton);
-		initButton(inspectButton);
+		initButton2(cleanButton);
+		initButton2(inspectButton);
 		initButton2(dirtyButton);
-		initButton(showButton);
-		initButton(oosButton);
-		initButton(oooButton);
+		initButton2(showButton);
+		initButton2(oosButton);
+		initButton2(oooButton);
 
-		initButton(minibarButton);
-		initButton(chatButton);
-		initButton(addTaskButton);		
+		initButton2(minibarButton);
+		initButton2(chatButton);
+		initButton2(addTaskButton);		
 	}
 	
 	private void initButton(MaterialButton button) {
@@ -94,18 +91,20 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		button.setHeight("100px");
 		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
 		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
+		button.getIcon().getElement().getStyle().setMarginBottom(10, Unit.PX);
+		button.getIcon().getElement().getStyle().setMarginTop(20, Unit.PX);
 		button.getElement().getStyle().setMargin(5, Unit.PX);
 	}
 
 	private void reinitButtons() {
-		reinitButton(cleanButton);
-		reinitButton(inspectButton);
+		reinitButton2(cleanButton);
+		reinitButton2(inspectButton);
 		reinitButton2(dirtyButton);
-		reinitButton(showButton);
-		reinitButton(oosButton);
-		reinitButton(oooButton);
+		reinitButton2(showButton);
+		reinitButton2(oosButton);
+		reinitButton2(oooButton);
 
-		reinitButton(minibarButton);
+		reinitButton2(minibarButton);
 //		reinitButton(chatButton);
 //		reinitButton(addTaskButton);		
 	}
