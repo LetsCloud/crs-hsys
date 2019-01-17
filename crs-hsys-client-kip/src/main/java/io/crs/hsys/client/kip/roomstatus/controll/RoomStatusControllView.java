@@ -88,11 +88,11 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 	
 	private void initButton2(MaterialButton2 button) {
-		button.setHeight("100px");
+		button.setHeight("110px");
 		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
 		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
 		button.getIcon().getElement().getStyle().setMarginBottom(10, Unit.PX);
-		button.getIcon().getElement().getStyle().setMarginTop(20, Unit.PX);
+		button.getIcon().getElement().getStyle().setMarginTop(30, Unit.PX);
 		button.getElement().getStyle().setMargin(5, Unit.PX);
 	}
 
