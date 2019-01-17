@@ -53,9 +53,9 @@
 				addStyleNames="{style.taskList}" />
 
 			<m:MaterialRow textAlign="CENTER">
-				<m:MaterialButton ui:field="dirtyButton"
+				<m.ext:MaterialButton2 ui:field="dirtyButton"
 					iconType="DELETE" textColor="RED_LIGHTEN_1"
-					backgroundColor="RED_LIGHTEN_4" visible="false" />
+					backgroundColor="RED_LIGHTEN_4" visible="false" text="Piszkos" />
 				<m:MaterialButton ui:field="cleanButton"
 					iconType="STAR" textColor="BLUE_LIGHTEN_1"
 					backgroundColor="BLUE_LIGHTEN_4" visible="false" />
