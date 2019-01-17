@@ -13,7 +13,7 @@
 	<modules>
 		<module>crs-hsys-shared</module>
 		<module>crs-hsys-client-core</module>
-<!-- 		<module>crs-hsys-client-admin</module> -->
+		<!-- <module>crs-hsys-client-admin</module> -->
 		<module>crs-hsys-client-cfg</module>
 		<module>crs-hsys-client-kip</module>
 		<module>crs-hsys-client-fro</module>
@@ -36,9 +36,9 @@
 		<gwtp.version>1.6</gwtp.version>
 		<!-- <gwtp.version>2.0-SNAPSHOT</gwtp.version> -->
 		<gin.version>2.1.2</gin.version>
-<!-- 		<gwt-material.version>2.1.1</gwt-material.version> -->
+		<!-- <gwt-material.version>2.1.1</gwt-material.version> -->
 		<gwt-material.version>2.2-SNAPSHOT</gwt-material.version>
- 		<gmd-addext.version>2.1.1</gmd-addext.version>
+		<gmd-addext.version>2.1.1</gmd-addext.version>
 		<!-- <gwt-material-table.version>2.0-SNAPSHOT</gwt-material-table.version> -->
 		<gwt-charts.version>0.9.9</gwt-charts.version>
 		<objectify-gwt.version>1.2.1</objectify-gwt.version>
@@ -105,6 +105,19 @@
 	<prerequisites>
 		<maven>3.5</maven>
 	</prerequisites>
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
+			<id>sonatype-nexus-snapshot</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>

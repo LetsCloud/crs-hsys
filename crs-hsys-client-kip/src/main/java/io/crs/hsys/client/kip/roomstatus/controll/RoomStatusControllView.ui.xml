@@ -49,6 +49,9 @@
 					addStyleNames="{style.statusIcon} {style.roomNo}" />
 			</m:MaterialRow>
 
+			<m:MaterialCollection ui:field="collection"
+				addStyleNames="{style.taskList}" />
+
 			<m:MaterialRow textAlign="CENTER">
 				<m:MaterialButton ui:field="dirtyButton"
 					iconType="DELETE" textColor="RED_LIGHTEN_1"
@@ -70,12 +73,6 @@
 				<m:MaterialButton ui:field="addTaskButton"
 					iconType="PLAYLIST_ADD" textColor="TEAL_LIGHTEN_1"
 					backgroundColor="TEAL_LIGHTEN_4" />
-			</m:MaterialRow>
-
-			<m:MaterialCollection ui:field="collection"
-				addStyleNames="{style.taskList}" />
-
-			<m:MaterialRow textAlign="CENTER">
 				<m:MaterialButton ui:field="oooButton"
 					iconType="SETTINGS" textColor="BLACK"
 					backgroundColor="GREY_LIGHTEN_1" visible="false" />
