@@ -90,4 +90,10 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 	public Boolean isOnlyActive() {
 		return onlyActiveCheckBox.getValue();
 	}
+	
+	public void disableOnlyActive() {
+		onlyActiveCheckBox.setValue(false);
+		setOnlyActiveChip(false);
+		onlyActiveCheckBox.setVisible(false);
+	}
 }

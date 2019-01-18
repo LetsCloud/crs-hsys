@@ -10,7 +10,7 @@
 	<g:HTMLPanel>
 		<g:SimplePanel ui:field="filterPanel" />
 
-		<m:MaterialCollection ui:field="collection" />
+		<m:MaterialCollection ui:field="collection" marginTop="0" marginBottom="0"/>
 
 		<g:SimplePanel ui:field="controllPanel" />
 	</g:HTMLPanel>
