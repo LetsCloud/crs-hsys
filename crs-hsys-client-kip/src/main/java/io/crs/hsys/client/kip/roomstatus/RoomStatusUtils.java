@@ -67,7 +67,7 @@ public class RoomStatusUtils {
 		case OOO:
 			return MdiType.SETTINGS_OUTLINE;
 		case OOS:
-			return MdiType.CLOSE;
+			return MdiType.ALERT;
 		case SHOW:
 			return MdiType.EYE_OUTLINE;
 		default:
@@ -83,11 +83,11 @@ public class RoomStatusUtils {
 		case CLEAN:
 			return IconType.STAR;
 		case INSPECTED:
-			return IconType.CHECK;
+			return IconType.DONE_ALL;
 		case OOO:
 			return IconType.SETTINGS;
 		case OOS:
-			return IconType.CLOSE;
+			return IconType.WARNING;
 		case SHOW:
 			return IconType.VISIBILITY;
 		default:
