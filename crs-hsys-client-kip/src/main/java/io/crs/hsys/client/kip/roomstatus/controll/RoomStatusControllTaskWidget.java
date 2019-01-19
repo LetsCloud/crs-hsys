@@ -89,8 +89,8 @@ public class RoomStatusControllTaskWidget extends Composite {
 //		leftCol.setBackgroundColor(RoomStatusUtils.getTaskBgColor(kind));
 		leftCol.setTextColor(RoomStatusUtils.getTaskColor(kind));
 
-		if (oddLine)
-			row.setBackgroundColor(Color.GREY_LIGHTEN_4);
+//		if (oddLine)
+//			row.setBackgroundColor(Color.GREY_LIGHTEN_4);
 
 //		rightCol.setBackgroundColor(RoomStatusUtils.getTaskColor(kind));
 //		rightCol.setTextColor(RoomStatusUtils.getTaskBgColor(kind));

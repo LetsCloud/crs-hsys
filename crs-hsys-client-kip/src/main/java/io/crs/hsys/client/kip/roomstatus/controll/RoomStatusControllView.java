@@ -20,6 +20,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addext.client.ui.MaterialButton2;
 import gwt.material.design.addins.client.overlay.MaterialOverlay;
+import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialIcon;
@@ -54,6 +55,9 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	InlineLabel roomNoLabel;
 
 	@UiField
+	MaterialButton btnClose;
+	
+	@UiField
 	MaterialButton2 dirtyButton, cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, showButton,
 	oosButton, oooButton;;
 
@@ -68,6 +72,10 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void initButtons() {
+		btnClose.getIcon().getElement().getStyle().setFontSize(3, Unit.EM);
+		btnClose.setPaddingLeft(0);
+		btnClose.setMarginTop(10);
+		
 		initButton2(cleanButton);
 		initButton2(inspectButton);
 		initButton2(dirtyButton);
@@ -121,7 +129,10 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	public void open(RoomStatusDto dto, AppUserDto currentUser) {
 		logger.log(Level.INFO, "RoomStatusControllView().open()");
 
-		overlay.setBackgroundColor(RoomStatusUtils.getStatusBgColor(dto.getRoom().getRoomStatus()));
+//		overlay.setTextColor(Color.WHITE);
+//		overlay.setBackgroundColor(RoomStatusUtils.getStatusBgColor(dto.getRoom().getRoomStatus()));
+		overlay.setTextColor(Color.GREY_DARKEN_3);
+		overlay.setBackgroundColor(Color.WHITE);
 		reinitButtons();
 		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(dto.getRoom().getRoomStatus()));
 		statusIcon.setIconColor(RoomStatusUtils.getStatusIconColor(dto.getRoom().getRoomStatus()));

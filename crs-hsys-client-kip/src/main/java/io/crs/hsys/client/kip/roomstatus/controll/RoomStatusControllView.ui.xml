@@ -34,12 +34,12 @@
 
 	<g:HTMLPanel>
 		<ma:overlay.MaterialOverlay
-			ui:field="overlay" textAlign="CENTER" textColor="WHITE">
+			ui:field="overlay" textAlign="CENTER">
 
 			<m.html:Div addStyleNames="{style.header}">
-				<m:MaterialButton ui:field="btnClose" float="RIGHT"
-					iconColor="WHITE" waves="DEFAULT" iconType="CLOSE" type="FLAT"
-					iconPosition="RIGHT" />
+				<m:MaterialButton ui:field="btnClose" float="LEFT"
+					iconColor="GREY_DARKEN_3" waves="DEFAULT"
+					iconType="KEYBOARD_ARROW_LEFT" type="FLAT" iconPosition="LEFT" />
 			</m.html:Div>
 
 			<m:MaterialRow textAlign="CENTER" marginBottom="0">
@@ -54,40 +54,50 @@
 
 			<m:MaterialRow textAlign="CENTER">
 				<m.ext:MaterialButton2 ui:field="dirtyButton"
-					iconType="DELETE" textColor="RED_LIGHTEN_1"
-					backgroundColor="RED_LIGHTEN_4" visible="false" text="Piszkos" />
-					
-				<m.ext:MaterialButton2 ui:field="cleanButton"
-					iconType="STAR" textColor="BLUE_LIGHTEN_1"
-					backgroundColor="BLUE_LIGHTEN_4" visible="false" text="Tiszta" />
-					
-				<m.ext:MaterialButton2 ui:field="inspectButton"
-					iconType="CHECK" textColor="GREEN_LIGHTEN_1"
-					backgroundColor="GREEN_LIGHTEN_4" visible="false" text="Rendben" />
+					iconType="DELETE" textColor="GREY_DARKEN_3"
+					iconColor="RED_LIGHTEN_2" backgroundColor="WHITE" visible="false"
+					text="Piszkos" type="OUTLINED" />
 
-				<m.ext:MaterialButton2 ui:field="minibarButton"
-					iconType="KITCHEN" textColor="INDIGO_LIGHTEN_1"
-					backgroundColor="INDIGO_LIGHTEN_4" visible="false" text="Minibár" />
+				<m.ext:MaterialButton2 ui:field="cleanButton"
+					iconType="STAR" iconColor="BLUE_LIGHTEN_2"
+					backgroundColor="WHITE" visible="false" text="Tiszta"
+					type="OUTLINED" textColor="GREY_DARKEN_3" />
+
+				<m.ext:MaterialButton2
+					ui:field="inspectButton" iconType="DONE_ALL"
+					iconColor="GREEN_LIGHTEN_2" backgroundColor="WHITE" visible="false"
+					text="Rendben" type="OUTLINED" textColor="GREY_DARKEN_3" />
+
+				<m.ext:MaterialButton2
+					ui:field="minibarButton" iconType="KITCHEN"
+					iconColor="INDIGO_LIGHTEN_2" backgroundColor="WHITE"
+					visible="false" text="Minibár" type="OUTLINED"
+					textColor="GREY_DARKEN_3" />
 
 				<m.ext:MaterialButton2 ui:field="chatButton"
-					iconType="CHAT" textColor="ORANGE_LIGHTEN_1"
-					backgroundColor="ORANGE_LIGHTEN_4" text="Chat" />
-					
-				<m.ext:MaterialButton2 ui:field="addTaskButton"
-					iconType="PLAYLIST_ADD" textColor="TEAL_LIGHTEN_1"
-					backgroundColor="TEAL_LIGHTEN_4" text="Feladat" />
-					
+					iconType="CHAT" iconColor="ORANGE_LIGHTEN_2"
+					backgroundColor="WHITE" text="Chat" type="OUTLINED"
+					textColor="GREY_DARKEN_3" />
+
+				<m.ext:MaterialButton2
+					ui:field="addTaskButton" iconType="PLAYLIST_ADD"
+					iconColor="TEAL_LIGHTEN_2" backgroundColor="WHITE" text="Feladat"
+					type="OUTLINED" textColor="GREY_DARKEN_3" />
+
 				<m.ext:MaterialButton2 ui:field="oooButton"
-					iconType="SETTINGS" textColor="BLACK"
-					backgroundColor="GREY_LIGHTEN_1" visible="false" text="OOO" />
-					
+					iconType="SETTINGS" iconColor="GREY_DARKEN_4"
+					backgroundColor="WHITE" visible="false" text="OOO" type="OUTLINED"
+					textColor="GREY_DARKEN_3" />
+
 				<m.ext:MaterialButton2 ui:field="oosButton"
-					iconType="CLOSE" textColor="PURPLE_LIGHTEN_1"
-					backgroundColor="PURPLE_LIGHTEN_4" visible="false" text="OOS" />
-					
+					iconType="WARNING" iconColor="PURPLE_LIGHTEN_2"
+					backgroundColor="WHITE" visible="false" text="OOS" type="OUTLINED"
+					textColor="GREY_DARKEN_3" />
+
 				<m.ext:MaterialButton2 ui:field="showButton"
-					iconType="REMOVE_RED_EYE" textColor="AMBER_LIGHTEN_1"
-					backgroundColor="AMBER_LIGHTEN_4" visible="false" text="Show Room" />
+					iconType="REMOVE_RED_EYE" iconColor="AMBER_LIGHTEN_2"
+					backgroundColor="WHITE" visible="false" text="Show Room"
+					type="OUTLINED" textColor="GREY_DARKEN_3" />
 			</m:MaterialRow>
 		</ma:overlay.MaterialOverlay>
 	</g:HTMLPanel>

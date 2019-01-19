@@ -39,17 +39,17 @@ public class RoomStatusUtils {
 	public static Color getStatusIconColor(RoomStatus roomStatus) {
 		switch (roomStatus) {
 		case DIRTY:
-			return Color.RED_LIGHTEN_4;
+			return Color.RED_LIGHTEN_2;
 		case CLEAN:
-			return Color.BLUE_LIGHTEN_4;
+			return Color.BLUE_LIGHTEN_2;
 		case INSPECTED:
-			return Color.GREEN_LIGHTEN_4;
+			return Color.GREEN_LIGHTEN_2;
 		case OOO:
-			return Color.GREY_LIGHTEN_1;
+			return Color.GREY_DARKEN_1;
 		case OOS:
-			return Color.PURPLE_LIGHTEN_5;
+			return Color.PURPLE_LIGHTEN_2;
 		case SHOW:
-			return Color.AMBER_LIGHTEN_5;
+			return Color.AMBER_LIGHTEN_2;
 		default:
 			break;
 		}
@@ -83,11 +83,11 @@ public class RoomStatusUtils {
 		case CLEAN:
 			return IconType.STAR;
 		case INSPECTED:
-			return IconType.CHECK;
+			return IconType.DONE_ALL;
 		case OOO:
 			return IconType.SETTINGS;
 		case OOS:
-			return IconType.CLOSE;
+			return IconType.WARNING;
 		case SHOW:
 			return IconType.VISIBILITY;
 		default:

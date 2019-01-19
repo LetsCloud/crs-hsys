@@ -1,6 +1,6 @@
 @require "theme";
 
-@external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, side-nav, multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, select2-container--focus, select2-container--default, read-only; 
+@external titleBar, btn, btn-large, btn-outlined, secondary-content, collection, dropdown-content, side-nav, multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, select2-container--focus, select2-container--default, read-only; 
 
 
 /*
@@ -190,4 +190,15 @@ blockquote {
 .read-only input[type=search], 
 .read-only textarea.materialize-textarea {
     margin: 0 0 0 0;
+}
+
+/** Outlined Button (MD2) **/
+button.btn-outlined,
+button.btn-outlined:hover,
+button.btn-outlined:focus,
+button.btn-outlined:active {
+    border: 2px solid #0000001e;
+    box-shadow: none;
+    background-color: white;
+    color: #000;
 }
