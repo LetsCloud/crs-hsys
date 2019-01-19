@@ -59,14 +59,14 @@ public class RoomStatusFilterView2 extends AbstractFilterView implements RoomSta
 	@Override
 	protected void initView() {
 		super.initView();
-		initDiFiltertyr();
-		initCleanFilter();
-		initInspectedFilter();
-		initRoomTypeFilter();
 		initFloorFilter();
+		initRoomTypeFilter();
+		initInspectedFilter();
+		initCleanFilter();
+		initDirtyFilter();
 	}
 
-	private void initDiFiltertyr() {
+	private void initDirtyFilter() {
 		dirtyChip = new MaterialChip();
 		dirtyChip.setVisible(false);
 		collapsibleHeader.insert(dirtyChip, 1);
@@ -76,15 +76,17 @@ public class RoomStatusFilterView2 extends AbstractFilterView implements RoomSta
 		dirtyCheckBox.setMarginBottom(10);
 
 		dirtyCheckBox.addValueChangeHandler(e -> {
+			logger.info("initDirtyFilter()->addValueChangeHandler()");
 			setDirtyChip(e.getValue());
 			getUiHandlers().filterChange();
 		});
 	}
 
 	private void setDirtyChip(Boolean dirty) {
-		dirtyChip.setVisible(!dirty);
+		logger.info("setDirtyChip(" + dirty + ")");
+		dirtyChip.setVisible(dirty);
 		if (dirty)
-			dirtyChip.setText("Piszkosak");
+			dirtyChip.setText("Piszkos");
 	}
 
 	private void initCleanFilter() {
@@ -103,9 +105,9 @@ public class RoomStatusFilterView2 extends AbstractFilterView implements RoomSta
 	}
 
 	private void setCleanChip(Boolean clean) {
-		cleanChip.setVisible(!clean);
+		cleanChip.setVisible(clean);
 		if (clean)
-			cleanChip.setText("Piszkosak");
+			cleanChip.setText("Tiszta");
 	}
 
 	private void initInspectedFilter() {
@@ -124,7 +126,7 @@ public class RoomStatusFilterView2 extends AbstractFilterView implements RoomSta
 	}
 
 	private void setInspectedhip(Boolean inspected) {
-		inspectedChip.setVisible(!inspected);
+		inspectedChip.setVisible(inspected);
 		if (inspected)
 			inspectedChip.setText("Rendben");
 	}
