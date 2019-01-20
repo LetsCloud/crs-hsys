@@ -17,10 +17,11 @@
 
 			<!-- A szűrő feltétekeket beállító komponenseket magába foglaló test -->
 			<m:MaterialCollapsibleBody
-				ui:field="collapsibleBody" paddingTop="15" paddingBottom="0">
+				ui:field="collapsibleBody" paddingTop="15" paddingBottom="0"
+				paddingLeft="15" paddingRight="15">
 				<m:MaterialRow ui:field="controlPanel" />
 			</m:MaterialCollapsibleBody>
-			
+
 		</m:MaterialCollapsibleItem>
 	</m:MaterialCollapsible>
 </ui:UiBinder> 
