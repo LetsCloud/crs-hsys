@@ -20,9 +20,11 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addext.client.ui.MaterialButton2;
 import gwt.material.design.addins.client.overlay.MaterialOverlay;
+import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialIcon;
+
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.UserPerm;
@@ -54,8 +56,11 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	InlineLabel roomNoLabel;
 
 	@UiField
+	MaterialButton btnClose;
+
+	@UiField
 	MaterialButton2 dirtyButton, cleanButton, inspectButton, minibarButton, chatButton, addTaskButton, showButton,
-	oosButton, oooButton;;
+			oosButton, oooButton;;
 
 	@UiField
 	MaterialCollection collection;
@@ -64,31 +69,37 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	RoomStatusControllView(Binder binder) {
 		logger.log(Level.INFO, "RoomStatusControllView()");
 		initWidget(binder.createAndBindUi(this));
+		initCloseButton();
 		initButtons();
 	}
 
-	private void initButtons() {
-		initButton2(cleanButton);
-		initButton2(inspectButton);
-		initButton2(dirtyButton);
-		initButton2(showButton);
-		initButton2(oosButton);
-		initButton2(oooButton);
-
-		initButton2(minibarButton);
-		initButton2(chatButton);
-		initButton2(addTaskButton);		
+	private void initCloseButton() {
+		btnClose.getIcon().getElement().getStyle().setFontSize(3, Unit.EM);
 	}
-	
+
+	private void initButtons() {
+		initButton2(cleanButton, RoomStatusUtils.getStatusIcon2(RoomStatus.CLEAN));
+		initButton2(inspectButton, RoomStatusUtils.getStatusIcon2(RoomStatus.INSPECTED));
+		initButton2(dirtyButton, RoomStatusUtils.getStatusIcon2(RoomStatus.DIRTY));
+		initButton2(showButton, RoomStatusUtils.getStatusIcon2(RoomStatus.SHOW));
+		initButton2(oosButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOS));
+		initButton2(oooButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOO));
+
+		initButton2(minibarButton, IconType.KITCHEN);
+		initButton2(chatButton, IconType.CHAT);
+		initButton2(addTaskButton, IconType.PLAYLIST_ADD);
+	}
+
 	private void initButton(MaterialButton button) {
 		button.setHeight("100px");
 		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
 		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
 		button.getElement().getStyle().setMargin(5, Unit.PX);
 	}
-	
-	private void initButton2(MaterialButton2 button) {
+
+	private void initButton2(MaterialButton2 button, IconType iconType) {
 		button.setHeight("110px");
+		button.setIconType(iconType);
 		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
 		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
 		button.getIcon().getElement().getStyle().setMarginBottom(10, Unit.PX);
@@ -108,11 +119,11 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 //		reinitButton(chatButton);
 //		reinitButton(addTaskButton);		
 	}
-	
+
 	private void reinitButton(MaterialButton button) {
 		button.setVisible(false);
 	}
-	
+
 	private void reinitButton2(MaterialButton2 button) {
 		button.setVisible(false);
 	}

@@ -33,8 +33,6 @@ public class RoomStatusFilterPresenter2 extends AbstractFilterPresenter<RoomStat
 	public interface MyView extends AbstractFilterPresenter.MyView, HasUiHandlers<AbstractFilterUiHandlers> {
 		void setRoomTypeData(List<RoomTypeDtor> hotelData);
 
-		void setSelectedRoomType(RoomTypeDtor roomType);
-
 		RoomTypeDtor getSelectedRoomType();
 	}
 

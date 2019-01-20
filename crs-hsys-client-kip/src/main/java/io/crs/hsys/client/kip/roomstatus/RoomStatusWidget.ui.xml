@@ -100,14 +100,13 @@
 		<m.html:Div ui:field="contentPanel"
 			addStyleNames="{style.conti}">
 			<!-- Státusz és szobaszám -->
-			<m.html:Div  addStyleNames="{style.fixed-col}">
+			<m.html:Div addStyleNames="{style.fixed-col}">
 				<m:MaterialRow ui:field="roomStatusPanel"
 					textAlign="CENTER" addStyleNames="{style.margin-bottom-0}">
 					<!-- Státusz -->
 					<m:MaterialColumn grid="s12 m3"
 						addStyleNames="{style.room-status} {style.padding-left-right-0}">
-						<m.ext:MaterialDesignIcon
-							ui:field="statusIcon" />
+						<m:MaterialIcon ui:field="statusIcon" />
 					</m:MaterialColumn>
 					<!-- Szobaszám -->
 					<m:MaterialColumn grid="s12 m9" textColor="WHITE"

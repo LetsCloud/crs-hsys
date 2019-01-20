@@ -28,7 +28,7 @@ import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
-import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenter;
+
 import io.crs.hsys.client.kip.gfilter.config.GfilterConfigPresenterFactory;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;

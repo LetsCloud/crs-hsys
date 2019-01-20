@@ -33,7 +33,7 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 	}
 
 	@UiField
-	SimplePanel filterPanel, controllPanel;
+	SimplePanel searchPanel, filterPanel, controllPanel;
 
 	@UiField
 	MaterialCollection collection;
@@ -46,6 +46,7 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 		
 		initWidget(uiBinder.createAndBindUi(this));
 		
+		bindSlot(RoomStatusPresenter.SEARCH_SLOT, searchPanel);
 		bindSlot(RoomStatusPresenter.FILTER_SLOT, filterPanel);
 		bindSlot(RoomStatusPresenter.EDITOR_SLOT, controllPanel);
 		

@@ -18,7 +18,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
-	
 	// *********
 	// Chat Room
 	// *********
@@ -26,7 +25,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
-	
 	// *********
 	// Tasks
 	// *********
@@ -34,7 +32,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Tasks")
 	String mainMenuItemTasks();
 
-	
 	// ***********
 	// Guest Rooms
 	// ***********
@@ -42,13 +39,11 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Guest Rooms")
 	String mainMenuItemGuestRooms();
 
-
 	// ************
 	// Public Areas
 	// ************
 	@DefaultMessage("Public Areas")
 	String mainMenuGroupPublicAreas();
-
 
 	// ************
 	// Assignment
@@ -62,7 +57,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Area Cleaning Assignment")
 	String mainMenuItemAreaAssignment();
 
-
 	// ************
 	// Minibar
 	// ************
@@ -72,17 +66,13 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Minibar Consumption")
 	String mainMenuItemConsumption();
 
-
 	// ************
 	// Maintenance
 	// ************
-	
+
 	@DefaultMessage("Maintenance")
 	String mainMenuGroupMaintenance();
 
-	
-
-	
 	/*
 	 * CHAT ROOM
 	 */
@@ -92,7 +82,6 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("All attendants")
 	String chatRoomDescription();
-	
 
 	/*
 	 * ATTENDANTS
@@ -103,7 +92,6 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("All attendants")
 	String attendantsDescription();
-	
 
 	/*
 	 * ASSIGNMENTS
@@ -126,6 +114,84 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("CleanType")
 	String assignmentsCleanType();
-	
-	
+
+	/*
+	 * ROOM STATUS FILTER
+	 */
+
+	@DefaultMessage("Occupancy Statuses")
+	String roomStatusFilterOccupancyStatusTitle();
+
+	@DefaultMessage("Vacant")
+	String roomStatusFilterOccupancyVacant();
+
+	@DefaultMessage("Early Check-in")
+	String roomStatusFilterOccupancyEarlyCheckIn();
+
+	@DefaultMessage("Check-in")
+	String roomStatusFilterOccupancyCheckIn();
+
+	@DefaultMessage("Checked in")
+	String roomStatusFilterOccupancyCheckedIn();
+
+	@DefaultMessage("Stay Over")
+	String roomStatusFilterOccupancyStayOver();
+
+	@DefaultMessage("Checkout")
+	String roomStatusFilterOccupancyCheckout();
+
+	@DefaultMessage("Late Checkout")
+	String roomStatusFilterOccupancyLateCheckout();
+
+	@DefaultMessage("Checked out")
+	String roomStatusFilterOccupancyCheckedOut();
+
+	@DefaultMessage("Room Statuses")
+	String roomStatusFilterRoomStatusTitle();
+
+	@DefaultMessage("Dirty")
+	String roomStatusFilterRoomDirty();
+
+	@DefaultMessage("Clean")
+	String roomStatusFilterRoomClean();
+
+	@DefaultMessage("Inspected")
+	String roomStatusFilterRoomInspected();
+
+	@DefaultMessage("Out Of Order")
+	String roomStatusFilterRoomOoo();
+
+	@DefaultMessage("Out Of Service")
+	String roomStatusFilterRoomOos();
+
+	@DefaultMessage("Show Room")
+	String roomStatusFilterRoomShow();
+
+	@DefaultMessage("Room number")
+	String roomStatusFilterRoomNumberLabel();
+
+	@DefaultMessage("Type a room number")
+	String roomStatusFilterRoomNumberPlaceholder();
+
+	@DefaultMessage("Room:{0}")
+	String roomStatusFilterRoomNumberChip(String roomNumber);
+
+	@DefaultMessage("Room Type")
+	String roomStatusFilterRoomTypeLabel();
+
+	@DefaultMessage("Choose Room Type")
+	String roomStatusFilterRoomTypePlaceholder();
+
+	@DefaultMessage("All Types")
+	String roomStatusFilterRoomTypeAll();
+
+	@DefaultMessage("Floor")
+	String roomStatusFilterRoomFloorLabel();
+
+	@DefaultMessage("Type a floor code")
+	String roomStatusFilterRoomFloorPlaceholder();
+
+	@DefaultMessage("{0}. floor")
+	String roomStatusFilterRoomFloorChip(String floor);
+
 }

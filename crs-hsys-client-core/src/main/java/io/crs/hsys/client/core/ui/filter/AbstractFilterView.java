@@ -13,6 +13,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialChip;
+import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialRow;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -33,6 +34,9 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 	@UiField
 	protected MaterialCollapsibleHeader collapsibleHeader;
 
+	@UiField
+	protected MaterialCollapsibleBody collapsibleBody;
+	
 	@UiField
 	protected MaterialRow controlPanel;
 	

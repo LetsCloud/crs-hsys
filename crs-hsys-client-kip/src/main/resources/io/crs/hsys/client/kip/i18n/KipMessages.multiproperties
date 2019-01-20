@@ -105,5 +105,183 @@
             <Value disabled="false">All attendants</Value>
             <Value disabled="false">Összes takarító</Value>
         </Property>
+        <Comment>
+            <Value>ROOM STATUS FILTER</Value>
+        </Comment>
+        <Property>
+            <Name>roomStatusFilterOccupancyStatusTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Occupancy Statuses</Value>
+            <Value disabled="false">Foglaltsági státuszok</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyVacant</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Vacant</Value>
+            <Value disabled="false">Üres</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyEarlyCheckIn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Early Check-in</Value>
+            <Value disabled="false">Korai érkező</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyCheckIn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Check-in</Value>
+            <Value disabled="false">Érkező</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyCheckedIn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Checked in</Value>
+            <Value disabled="false">Megérkezett</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyStayOver</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Stay Over</Value>
+            <Value disabled="false">Lakó</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyCheckout</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Checkout</Value>
+            <Value disabled="false">Utazó</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyLateCheckout</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Late Checkout</Value>
+            <Value disabled="false">Késői utazó</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterOccupancyCheckedOut</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Checked out</Value>
+            <Value disabled="false">Elutazott</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomStatusTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room Statuses</Value>
+            <Value disabled="false">Szobastátuszok</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomDirty</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Dirty</Value>
+            <Value disabled="false">Piszkos</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomClean</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Clean</Value>
+            <Value disabled="false">Tiszta</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomInspected</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Inspected</Value>
+            <Value disabled="false">Rendben</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomOoo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Out Of Order</Value>
+            <Value disabled="false">Out Of Order</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomOos</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Out Of Service</Value>
+            <Value disabled="false">Out Of Service</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomShow</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Show Room</Value>
+            <Value disabled="false">Bemutató szoba</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomNumberLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room Number</Value>
+            <Value disabled="false">Szobaszám</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomNumberPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Type in a room number</Value>
+            <Value disabled="false">Írd be a szobaszámot</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomNumberChip</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room:{0}</Value>
+            <Value disabled="false">Szoba:{0}</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomTypeLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room Type</Value>
+            <Value disabled="false">Szobatípus</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomTypePlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a room type</Value>
+            <Value disabled="false">Válassz szobatípust</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomTypeAll</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">All Room Types</Value>
+            <Value disabled="false">Összes szobatípus</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomFloorLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Floor</Value>
+            <Value disabled="false">Emelet</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomFloorPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Type in a floor number</Value>
+            <Value disabled="false">Írj be egy emelet számot</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusFilterRoomFloorChip</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0}. floor</Value>
+            <Value disabled="false">{0}. emelet</Value>
+        </Property>
     </Records>
 </MultiProperties>

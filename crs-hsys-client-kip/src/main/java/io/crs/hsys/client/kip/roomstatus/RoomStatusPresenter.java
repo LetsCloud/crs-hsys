@@ -27,6 +27,8 @@ import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenter;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenterFactory;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
+import io.crs.hsys.client.kip.search.SearchPresenterFactory;
+import io.crs.hsys.client.kip.search.roomstatus.RoomStatusSearchPresenter;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
@@ -49,6 +51,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		implements RoomStatusUiHandlers {
 	private static final Logger logger = Logger.getLogger(RoomStatusPresenter.class.getName());
 
+	public static final SingleSlot<PresenterWidget<?>> SEARCH_SLOT = new SingleSlot<>();
 	public static final SingleSlot<PresenterWidget<?>> FILTER_SLOT = new SingleSlot<>();
 	public static final SingleSlot<PresenterWidget<?>> EDITOR_SLOT = new SingleSlot<>();
 
@@ -63,15 +66,17 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	interface MyProxy extends ProxyPlace<RoomStatusPresenter> {
 	}
 
+	private final RoomStatusSearchPresenter searchPresenter;;
 	private final RoomStatusFilterPresenter2 roomStatusfilter;
 	private final RoomStatusControllPresenter roomStatusControll;
 
 	@Inject
-	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, FilterPresenterFactory filterFactory,
-			RoomStatusControllPresenterFactory factory) {
+	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, SearchPresenterFactory searchFactory,
+			FilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 
+		searchPresenter = searchFactory.createRoomStatusSearch();
 		roomStatusfilter = filterFactory.createRoomStatusFilter();
 		roomStatusControll = factory.createRoomStatusControllPresenter();
 
@@ -81,6 +86,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	@Override
 	protected void onBind() {
 		super.onBind();
+//		setInSlot(SEARCH_SLOT, searchPresenter);
 		setInSlot(FILTER_SLOT, roomStatusfilter);
 		setInSlot(EDITOR_SLOT, roomStatusControll);
 //		addRegisteredHandler(RoomStatusEditEvent.getType(), this);
