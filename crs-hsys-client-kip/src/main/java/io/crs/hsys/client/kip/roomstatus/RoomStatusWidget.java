@@ -20,9 +20,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 import gwt.material.design.addext.client.ui.MaterialDesignIcon;
-import gwt.material.design.addext.client.ui.constants.MdiType;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialColumn;
+import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.html.Div;
 
@@ -54,7 +54,10 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 	MaterialColumn currOccStatusPanel, nextOccStatusPanel;
 
 	@UiField
-	MaterialDesignIcon statusIcon, currOccStatusIcon, nextOccStatusIcon;
+	MaterialIcon statusIcon;
+
+	@UiField
+	MaterialDesignIcon currOccStatusIcon, nextOccStatusIcon;
 
 	@UiField
 	Label roomNoLabel, roomTypeLabel, atendantLabel;
@@ -82,12 +85,12 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		this();
 		this.roomStatus = roomStatus;
 
-		if (oddItem)
-			setBackgroundColor(Color.GREY_LIGHTEN_4);
+//		if (oddItem)
+//			setBackgroundColor(Color.GREY_LIGHTEN_4);
 
-		roomStatusPanel.setBackgroundColor(RoomStatusUtils.getStatusBgColor(roomStatus.getRoom().getRoomStatus()));
+//		roomStatusPanel.setBackgroundColor(RoomStatusUtils.getStatusBgColor(roomStatus.getRoom().getRoomStatus()));
 		statusIcon.setTextColor(RoomStatusUtils.getStatusIconColor(roomStatus.getRoom().getRoomStatus()));
-		statusIcon.setIconType(RoomStatusUtils.getStatusIcon(roomStatus.getRoom().getRoomStatus()));
+		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(roomStatus.getRoom().getRoomStatus()));
 		this.roomNoLabel.setText(roomStatus.getRoom().getCode());
 
 		this.roomTypeLabel.setText(roomStatus.getRoom().getRoomType().getCode());
@@ -136,7 +139,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 
 		roomStatusPanel.setBackgroundColor(RoomStatusUtils.getStatusBgColor(roomStatus));
 		statusIcon.setTextColor(RoomStatusUtils.getStatusIconColor(roomStatus));
-		statusIcon.setIconType(RoomStatusUtils.getStatusIcon(roomStatus));
+		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(roomStatus));
 		this.roomNoLabel.setText(roomNo);
 
 		this.roomTypeLabel.setText(roomType);

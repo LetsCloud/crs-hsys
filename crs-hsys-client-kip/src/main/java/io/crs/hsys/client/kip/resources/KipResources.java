@@ -14,6 +14,6 @@ import com.google.gwt.resources.client.ImageResource;
 public interface KipResources extends ClientBundle {
 	public static final KipResources INSTANCE = GWT.create(KipResources.class);
 
-	@Source("img/blue3-wallpaper.png")
+	@Source("img/grey-wallpaper.jpg")
 	ImageResource profileBackgroundImg();
 }

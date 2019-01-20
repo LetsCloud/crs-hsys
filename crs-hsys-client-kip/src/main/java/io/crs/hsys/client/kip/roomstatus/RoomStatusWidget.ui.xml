@@ -101,16 +101,16 @@
 			addStyleNames="{style.conti}">
 			<!-- Státusz és szobaszám -->
 			<m.html:Div  addStyleNames="{style.fixed-col}">
-				<m:MaterialRow ui:field="roomStatusPanel"
+				<m:MaterialRow ui:field="roomStatusPanel" backgroundColor="WHITE"
 					textAlign="CENTER" addStyleNames="{style.margin-bottom-0}">
 					<!-- Státusz -->
 					<m:MaterialColumn grid="s12 m3"
 						addStyleNames="{style.room-status} {style.padding-left-right-0}">
-						<m.ext:MaterialDesignIcon
+						<m:MaterialIcon
 							ui:field="statusIcon" />
 					</m:MaterialColumn>
 					<!-- Szobaszám -->
-					<m:MaterialColumn grid="s12 m9" textColor="WHITE"
+					<m:MaterialColumn grid="s12 m9" textColor="GREY_DARKEN_3"
 						addStyleNames="{style.room-number} {style.padding-left-right-0}">
 						<g:Label ui:field="roomNoLabel" />
 					</m:MaterialColumn>
