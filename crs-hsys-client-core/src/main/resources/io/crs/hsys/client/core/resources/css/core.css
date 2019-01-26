@@ -1,11 +1,11 @@
 html {
 	overflow-x: hidden ! important;
-	height: 100%;
+	height: auto;
 }
 
 body {
 	padding-top: 70px;
-	height: 100%;
+	height: auto;
 }
 
 pre.prettyprint {

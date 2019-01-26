@@ -72,6 +72,10 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	 */
 	protected abstract void loadData();
 
+	public void refresh() {
+		loadData();
+	}
+
 	/**
 	 * A törzsadatmegjelenítő feliratának kiolvasása.
 	 * 

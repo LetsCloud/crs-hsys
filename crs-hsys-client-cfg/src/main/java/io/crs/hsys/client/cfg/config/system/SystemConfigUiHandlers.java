@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.client.cfg.config.system;
 
-import io.crs.hsys.client.core.config.AbstractConfigUiHandlers;
+import io.crs.hsys.client.core.ui.config.AbstractConfigUiHandlers;
 
 /**
  * @author CR

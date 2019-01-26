@@ -56,7 +56,6 @@ public class ProfileFilterPresenter extends AbstractFilterPresenter<ProfileFilte
 	@Override
 	public void onReveal() {
 		super.onReveal();
-		logger.info("ProfileFilterPresenter().onReveal()");
 		LoadCallback<ProfileGroupDto> profileGroupLoadCallback = new LoadCallback<ProfileGroupDto>() {
 
 			@Override

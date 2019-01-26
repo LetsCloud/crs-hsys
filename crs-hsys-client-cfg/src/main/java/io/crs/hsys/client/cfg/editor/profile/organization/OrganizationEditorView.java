@@ -103,13 +103,11 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 
 			@Override
 			public void setValue(ProfileGroupDto value) {
-				logger.info("OrganizationEditorView().profileGroup.setValue(" + value + ")");
 				profileGroupCombo.setSingleValue(value);
 			}
 
 			@Override
 			public ProfileGroupDto getValue() {
-				logger.info("OrganizationEditorView().profileGroup.getValue()" + profileGroupCombo.getSingleValue());
 				return profileGroupCombo.getSingleValue();
 			}
 		});

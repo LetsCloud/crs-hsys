@@ -183,10 +183,8 @@ public class ProfileFilterView extends AbstractFilterView implements ProfileFilt
 
 	@Override
 	public void setProfileGroupData(List<ProfileGroupDto> profileGroupData) {
-		logger.info("ProfileFilterView().setProfileGroupData()");
 		profileGroupCombo.clear();
 		for (ProfileGroupDto dto : profileGroupData) {
-			logger.info("ProfileFilterView().setProfileGroupData()->dto.getCode()=" + dto.getCode());
 			profileGroupCombo.addItem(dto.getCode() + "-" + dto.getDescription(), dto);
 		}
 	}
