@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.config;
+package io.crs.hsys.client.core.config;
 
 import java.util.List;
 import java.util.logging.Level;

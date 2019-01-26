@@ -15,12 +15,12 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
-import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.cfg.config.hotel.HotelConfigPresenter;
 import io.crs.hsys.client.cfg.config.profile.ProfileConfigPresenter;
 import io.crs.hsys.client.cfg.meditor.AbstractMeditorPresenter;
 import io.crs.hsys.client.cfg.meditor.MeditorView;
 import io.crs.hsys.client.core.CoreNameTokens;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.datasource.HotelDataSource;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
