@@ -24,6 +24,8 @@ import io.crs.hsys.server.entity.common.AccountChild;
 public class Profile extends AccountChild {
 	private static final Logger logger = LoggerFactory.getLogger(Profile.class);
 
+	private Boolean active;
+
 	/**
 	 * A Profil neve.
 	 */
@@ -87,6 +89,14 @@ public class Profile extends AccountChild {
 		this.webPresences = webPresences;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
 		return "Profile:[name=" + name + ", profileGroup=" + getProfileGroup() + "]>>" + super.toString();
@@ -99,6 +109,8 @@ public class Profile extends AccountChild {
 	 */
 	public static class Builder extends AccountChild.Builder<Builder> {
 
+		private Boolean active;
+		
 		private String name;
 
 		private Ref<ProfileGroup> profileGroup;
@@ -110,6 +122,11 @@ public class Profile extends AccountChild {
 		private List<WebPresence> webPresences = new ArrayList<WebPresence>();
 
 		public Builder() {
+		}
+
+		public Builder active(Boolean active) {
+			this.active = active;
+			return this;
 		}
 
 		public Builder name(String name) {
@@ -160,6 +177,11 @@ public class Profile extends AccountChild {
 
 	protected Profile(Builder builder) {
 		super(builder);
+		this.setActive(builder.active);
 		this.setName(builder.name);
+		this.profileGroup = builder.profileGroup;
+		this.setCommunications(builder.communications);
+		this.setAddresses(builder.addresses);
+		this.setWebPresences(builder.webPresences);
 	}
 }

@@ -69,6 +69,23 @@ public class OrganizationBrowserPresenter
 
 	@Override
 	protected void loadData() {
+		resourceDelegate.withCallback(new AbstractAsyncCallback<List<OrganizationDtor>>() {
+			@Override
+			public void onSuccess(List<OrganizationDtor> result) {
+				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
+					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
+							.collect(Collectors.toList());
+				if ((filter.getName() != null) && (!filter.getName().isEmpty()))
+					result = result.stream().filter(org -> org.getName().contains(filter.getName()))
+							.collect(Collectors.toList());
+				if (!filter.getProfileGroupKeys().isEmpty())
+					result = result.stream()
+							.filter(org -> filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
+							.collect(Collectors.toList());
+
+				getView().setData(result);
+			}
+		}).list();
 	}
 
 	@Override
@@ -93,22 +110,6 @@ public class OrganizationBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
-		resourceDelegate.withCallback(new AbstractAsyncCallback<List<OrganizationDtor>>() {
-			@Override
-			public void onSuccess(List<OrganizationDtor> result) {
-				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
-					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
-							.collect(Collectors.toList());
-				if ((filter.getName() != null) && (!filter.getName().isEmpty()))
-					result = result.stream().filter(org -> org.getName().contains(filter.getName()))
-							.collect(Collectors.toList());
-				if (!filter.getProfileGroupKeys().isEmpty())
-					result = result.stream()
-							.filter(org -> filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
-							.collect(Collectors.toList());
-
-				getView().setData(result);
-			}
-		}).list();
+		loadData();
 	}
 }

@@ -13,6 +13,8 @@ import io.crs.hsys.shared.dto.common.AccountDtor;
 @SuppressWarnings("serial")
 public class ProfileDtor extends AccountChildDto {
 
+	private Boolean active;
+
 	private String name;
 
 	private ProfileGroupDto profileGroup;
@@ -40,6 +42,14 @@ public class ProfileDtor extends AccountChildDto {
 
 	public void setProfileGroup(ProfileGroupDto profileGroup) {
 		this.profileGroup = profileGroup;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	/*

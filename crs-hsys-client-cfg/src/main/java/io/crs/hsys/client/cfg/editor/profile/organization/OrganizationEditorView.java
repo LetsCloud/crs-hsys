@@ -23,6 +23,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addext.client.ui.MaterialComboBoxAdd;
 import gwt.material.design.client.ui.MaterialAnchorButton;
+import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialFAB;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialTextBox;
@@ -51,6 +52,9 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	}
 
 	private final Driver driver;
+
+	@UiField
+	MaterialCheckBox active;
 
 	@UiField
 	MaterialTextBox code, name;
@@ -203,6 +207,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 			operationsFab.close();
 		}
 		
+		active.setEnabled(!readOnly);
 		code.setReadOnly(readOnly);
 		name.setReadOnly(readOnly);
 		profileGroupCombo.setReadOnly(readOnly);
