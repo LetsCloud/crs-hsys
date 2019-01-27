@@ -19,11 +19,11 @@
 		margin-top: 8px;
 		margin-bottom: 8px;
 		padding-left: 10px;
-		border-left: 3px solid #e91e63;
+		border-left: 3px solid #607d8b;
 	}
 	
 	.dataGroupTitle {
-		color: #e91e63;
+		color: #607d8b;
 		float: left;
 	}
 	

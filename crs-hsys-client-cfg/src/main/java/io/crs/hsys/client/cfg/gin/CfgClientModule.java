@@ -5,6 +5,8 @@ package io.crs.hsys.client.cfg.gin;
 
 import java.util.logging.Logger;
 
+import javax.inject.Singleton;
+
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 import io.crs.hsys.client.cfg.CfgAppModule;
@@ -18,6 +20,7 @@ import io.crs.hsys.client.cfg.display.contact.ContactConfigModule;
 import io.crs.hsys.client.cfg.display.organization.OrganizationConfigModule;
 import io.crs.hsys.client.cfg.filter.FilterModule;
 import io.crs.hsys.client.core.gin.CoreModule;
+import io.crs.hsys.client.core.resources.ThemeParams;
 
 /**
  * @author CR
@@ -28,11 +31,10 @@ public class CfgClientModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
-		logger.info("CfgClientModule().configure(");
-
-        install(new CoreModule());
+		install(new CoreModule());
 
 		bind(CfgResourceLoader.class).asEagerSingleton();
+		bind(ThemeParams.class).to(CfgThemeParams.class).in(Singleton.class);
 
 		install(new CfgAppModule());
 

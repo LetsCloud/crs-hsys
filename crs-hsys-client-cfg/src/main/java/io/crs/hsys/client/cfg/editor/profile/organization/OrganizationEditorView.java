@@ -30,6 +30,7 @@ import io.crs.hsys.client.cfg.editor.profile.AddressListEditor;
 import io.crs.hsys.client.cfg.editor.profile.CommunicationActionEvent;
 import io.crs.hsys.client.cfg.editor.profile.CommunicationListEditor;
 import io.crs.hsys.client.cfg.editor.profile.WebPresenceListEditor;
+import io.crs.hsys.client.core.resources.ThemeParams;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
@@ -82,7 +83,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	*/
 	@Inject
 	OrganizationEditorView(Binder uiBinder, EventBus eventBus, Driver driver, CommunicationListEditor communications,
-			AddressListEditor addresses, WebPresenceListEditor webPresences) {
+			AddressListEditor addresses, WebPresenceListEditor webPresences, ThemeParams themeParams) {
 		logger.info("OrganizationEditorView()");
 
 		this.eventBus = eventBus;
