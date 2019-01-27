@@ -97,14 +97,14 @@
 			</m:MaterialColumn>
 		</m:MaterialRow>
 
-		<m:MaterialFAB>
-			<m:MaterialTooltip text="Rezervációs műveletek"
+		<m:MaterialFAB ui:field="operationsFab">
+			<m:MaterialTooltip text="Műveletek"
 				position="LEFT">
 				<m:MaterialAnchorButton type="FLOATING"
 					iconType="MORE_VERT" size="LARGE" />
 			</m:MaterialTooltip>
 			<m:MaterialFABList>
-				<m:MaterialTooltip text="{i18nCore.comSave}"
+				<m:MaterialTooltip text="{i18nCore.comEdit}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="editButton" type="FLOATING" waves="LIGHT"
@@ -125,11 +125,18 @@
 						backgroundColor="GREY" iconType="CANCEL" />
 				</m:MaterialTooltip>
 				
-				<m:MaterialTooltip text="{i18nCore.comCancel}"
+				<m:MaterialTooltip text="{i18nCore.comDelete}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="deleteButton" type="FLOATING" waves="LIGHT"
 						backgroundColor="RED" iconType="DELETE" />
+				</m:MaterialTooltip>
+
+				<m:MaterialTooltip text="{i18nCore.comBrowse}"
+					position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="browseButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="GREY" iconType="VIEW_LIST" />
 				</m:MaterialTooltip>
 			</m:MaterialFABList>
 		</m:MaterialFAB>

@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>150</Width>
-            <HandlerConfiguration>/hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CoreMessages.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreMessages.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
             <Width>928</Width>
-            <HandlerConfiguration>/hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CoreMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
@@ -47,6 +47,20 @@
             <Value disabled="false">Rendben</Value>
         </Property>
         <Property>
+            <Name>comCreate</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create</Value>
+            <Value disabled="false">Létrehoz</Value>
+        </Property>
+        <Property>
+            <Name>comEdit</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edit</Value>
+            <Value disabled="false">Szerkeszt</Value>
+        </Property>
+        <Property>
             <Name>comSave</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -59,6 +73,20 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Cancel</Value>
             <Value disabled="false">Mégsem</Value>
+        </Property>
+        <Property>
+            <Name>comDelete</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Delete</Value>
+            <Value disabled="false">Töröl</Value>
+        </Property>
+        <Property>
+            <Name>comBrowse</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Browse</Value>
+            <Value disabled="false">Böngészés</Value>
         </Property>
         <Property>
             <Name>comRequiredField</Name>

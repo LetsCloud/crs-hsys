@@ -50,7 +50,7 @@ public final class OrganizationEditorPresenter
 
 		void displayError(EntityPropertyCode code, String message);
 
-		void setReadOnly(Boolean readOnly);
+		void setReadOnly(Boolean readOnly, Boolean createMode);
 	}
 
 	private final PlaceManager placeManager;
@@ -157,6 +157,6 @@ public final class OrganizationEditorPresenter
 	}
 
 	public void setReadOnly(Boolean readOnly) {
-		getView().setReadOnly(readOnly);
+		getView().setReadOnly(readOnly, true);
 	}
 }
