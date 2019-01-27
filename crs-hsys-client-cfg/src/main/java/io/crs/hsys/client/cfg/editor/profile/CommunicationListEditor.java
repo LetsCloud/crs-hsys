@@ -134,5 +134,9 @@ public class CommunicationListEditor extends Composite
 
 	public void setReadOnly(Boolean readOnly) {
 		this.readOnly = readOnly;
+		for (CommunicationEditor e : editor.getEditors()) {
+			e.setReadOnly(readOnly);
+		}
+
 	}
 }

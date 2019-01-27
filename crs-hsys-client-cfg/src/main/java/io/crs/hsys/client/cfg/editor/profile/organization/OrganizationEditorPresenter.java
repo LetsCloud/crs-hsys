@@ -14,7 +14,6 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import gwt.material.design.client.data.loader.LoadCallback;
@@ -22,15 +21,11 @@ import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.cfg.CfgNameTokens;
-import io.crs.hsys.client.cfg.config.profile.ProfileConfigPresenter;
-import io.crs.hsys.client.cfg.config.system.SystemConfigPresenter;
 import io.crs.hsys.client.cfg.editor.AbstractEditorPresenterWidget;
 import io.crs.hsys.client.cfg.editor.AbstractEditorView;
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.datasource.ProfileGroupDataSource;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.OrganizationResource;
 import io.crs.hsys.shared.constans.CommMode;

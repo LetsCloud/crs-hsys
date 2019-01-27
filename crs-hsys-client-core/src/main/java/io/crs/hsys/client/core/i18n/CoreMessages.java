@@ -534,7 +534,7 @@ public interface CoreMessages extends Messages {
 	/*
 	 * COMMUNICATION EDITOR
 	 */
-	@DefaultMessage("Communication Mode")
+	@DefaultMessage("Mode")
 	String communicationEditorLabel();
 
 	@DefaultMessage("Primary")

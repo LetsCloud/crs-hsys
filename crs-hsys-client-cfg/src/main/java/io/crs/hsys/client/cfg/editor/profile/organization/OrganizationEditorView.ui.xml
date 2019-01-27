@@ -9,10 +9,10 @@
 
 	<ui:style>
 	.pp {
-		padding-top: 20px;
-		padding-bottom: 8px;
-		margin-left: 10px;
-		margin-right: 10px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 	
 	.dataGroupBox {
@@ -43,7 +43,7 @@
 		type="io.crs.hsys.client.core.CoreNameTokens" />
 
 	<g:HTMLPanel addStyleNames="{style.pp}">
-		<m:MaterialRow>
+		<m:MaterialRow marginBottom="0">
 			<m:MaterialColumn grid="s12 m6">
 				<m:MaterialRow marginBottom="0">
 					<m:MaterialTextBox ui:field="name" grid="s12"

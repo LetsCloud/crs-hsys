@@ -11,8 +11,8 @@
 	}
 	
 	.mobileSelectPanel {
-		padding-left: 10px;
-		padding-right: 10px;
+/*		padding-left: 10px;
+		padding-right: 10px; */
 		padding-bottom: 10px;
 	}
 	
@@ -48,7 +48,7 @@
 			</m:MaterialColumn>
 
 			<m:MaterialColumn ui:field="tablePanel"
-				grid="s12 m12 l9">
+				grid="s12 m12 l9" paddingLeft="0" paddingRight="0">
 
 			</m:MaterialColumn>
 		</m:MaterialRow>
