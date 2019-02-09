@@ -40,8 +40,14 @@
 							</div>
 						</div>
 
+
 						<div th:if="${param.logout}" class="col s12 center">Sikeresen
 							kijelentkeztél</div>
+
+						<div th:if="${param.targetUrl}">
+							<input id="targetUrl" name="targetUrl" type="hidden"
+								th:value="${param.targetUrl[0]}">
+						</div>
 					</div>
 
 					<div class="row margin">
@@ -77,6 +83,7 @@
 								type="submit">Login</button>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="input-field col s12">
 							<div class="input-field col s6 m6 l6">
