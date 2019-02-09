@@ -45,6 +45,9 @@ import io.crs.hsys.shared.dto.hotel.HotelDtor;
 public abstract class AbstractAppBootstrapper implements Bootstrapper {
 	private static Logger logger = Logger.getLogger(AbstractAppBootstrapper.class.getName());
 
+	public static final String TARGET_URL = "targetUrl";
+	public static final String LOGIN_URL = "login";
+
 	private final PlaceManager placeManager;
 
 	private String manifest;
@@ -112,7 +115,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				configFcmOnMessage();
 
 				cfgPwaManager();
-				
+
 				checkCurrentUser();
 			}
 		}).getAll();
@@ -169,7 +172,9 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 
 			@Override
 			public void onSuccess(AppUserDto result) {
+				logger.info("checkCurrentUser().onSuccess()");
 				if (result == null) {
+					logger.info("checkCurrentUser().onSuccess()->(result == null)");
 					currentUser.setLoggedIn(false);
 					return;
 				}
@@ -190,6 +195,12 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 			public void onFailure(Throwable caught) {
 				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
 						+ caught.getMessage());
+
+				String pathString = Window.Location.getPath()+Window.Location.getHash();
+				String pathB64 = Base64Utils.toBase64(pathString.getBytes());
+
+				Window.Location.replace(
+						GWT.getHostPageBaseURL() + LOGIN_URL + "?" + TARGET_URL + "=" + pathB64);
 			}
 		});
 	}

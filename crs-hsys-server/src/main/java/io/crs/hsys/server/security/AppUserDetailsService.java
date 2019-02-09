@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,7 +29,10 @@ import io.crs.hsys.shared.dto.common.AppUserDto;
  */
 public class AppUserDetailsService implements UserDetailsService {
 	private static final Logger logger = LoggerFactory.getLogger(AppUserDetailsService.class);
-
+	
+	@Autowired
+	  private HttpServletRequest request;
+	
 	private final AppUserService userService;
 
 	private LoginAttemptService loginAttemptService;
@@ -70,6 +74,8 @@ public class AppUserDetailsService implements UserDetailsService {
 		AppUserDto dto = modelMapper.map(appUser, AppUserDto.class);
 		AppUserDetails aud = new AppUserDetails(dto, grantedAuthorities, accountNonLocked);
 
+		if (request != null)
+		aud.setTargetUrl(request.getServerName());
 		return aud;
 	}
 

@@ -24,6 +24,7 @@ public class AppUserDetails implements UserDetails {
 	private final AppUserDto appUserDto;
 	private final List<GrantedAuthority> authorities;
 	private final boolean accountNonLocked;
+	private String targetUrl; 
 
 	public AppUserDetails(AppUserDto appUserDto, List<GrantedAuthority> authorities,
 			boolean accountNonLocked) {
@@ -70,4 +71,13 @@ public class AppUserDetails implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
+
+	public String getTargetUrl() {
+		return targetUrl;
+	}
+
+	public void setTargetUrl(String targetUrl) {
+		this.targetUrl = targetUrl;
+	}
+	
 }
