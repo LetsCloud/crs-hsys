@@ -14,16 +14,19 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
+import io.crs.hsys.client.cfg.CfgNameTokens;
 import io.crs.hsys.client.cfg.editor.AbstractEditorPresenterWidget;
 import io.crs.hsys.client.cfg.editor.AbstractEditorView;
 import io.crs.hsys.client.core.datasource.ProfileGroupDataSource;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.OrganizationResource;
 import io.crs.hsys.shared.constans.CommMode;
 import io.crs.hsys.shared.constans.MenuItemType;
@@ -47,7 +50,7 @@ public final class OrganizationEditorPresenter
 
 		void displayError(EntityPropertyCode code, String message);
 
-		void setReadOnly(Boolean readOnly);
+		void setReadOnly(Boolean readOnly, Boolean createMode);
 	}
 
 	private final PlaceManager placeManager;
@@ -104,11 +107,9 @@ public final class OrganizationEditorPresenter
 	}
 
 	private void showOrEdit(String webSafeKey) {
-		logger.info("OrganizationEditorPresenter().showOrEdit(" + webSafeKey + ")");
 		resourceDelegate.withCallback(new AsyncCallback<OrganizationDto>() {
 			@Override
 			public void onSuccess(OrganizationDto dto) {
-				logger.info("OrganizationEditorPresenter().edit().onSuccess(" + dto + ")");
 				SetPageTitleEvent.fire(dto.getCode(), dto.getName(), MenuItemType.MENU_ITEM,
 						OrganizationEditorPresenter.this);
 
@@ -131,14 +132,21 @@ public final class OrganizationEditorPresenter
 		resourceDelegate.withCallback(new AsyncCallback<OrganizationDto>() {
 			@Override
 			public void onSuccess(OrganizationDto dto) {
-				logger.info("OrganizationEditorPresenter().save().onSuccess()->webSafeKey=" + dto.getWebSafeKey());
 //				loadData();
 //				setReadOnly(true);
-				placeManager.navigateBack();
+
+				// placeManager.navigateBack();
+				
 //				eventBus.fireEvent(new CommunicationActionEvent(CommunicationActionEvent.Action.CLOSE, -1));
-//				Builder placeBuilder = new Builder().nameToken(FroNameTokens.ORGANIZATION_DISPLAY);
-//				placeBuilder.with(WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
-//				placeManager.revealPlace(placeBuilder.build());
+				
+				Builder placeBuilder = new Builder().nameToken(CfgNameTokens.ORGANIZATION_DISPLAY);
+				placeBuilder.with(ApiParameters.WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
+				placeManager.revealPlace(placeBuilder.build());
+				
+//				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.PROFILE_CONFIG)
+//				.with(AbstractConfigPresenter.PLACE_PARAM, ProfileConfigPresenter.ORGANIZATIONS).build();
+//		placeManager.revealPlace(placeRequest);
+
 			}
 
 			@Override
@@ -149,6 +157,6 @@ public final class OrganizationEditorPresenter
 	}
 
 	public void setReadOnly(Boolean readOnly) {
-		getView().setReadOnly(readOnly);
+		getView().setReadOnly(readOnly, true);
 	}
 }

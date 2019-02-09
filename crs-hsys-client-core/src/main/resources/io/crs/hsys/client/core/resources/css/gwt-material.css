@@ -1,7 +1,7 @@
 * html,body {
 	margin: 0 !important;
 	padding: 0 !important;
-	height: 100%;
+/*	height: 100%; */
 	width: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -376,7 +376,8 @@ ul.collection .collection-item .gwt-Label, ul.collection .collection-item a:firs
 
 @media only screen and (max-width : 992px) {
 	main {
-		padding-bottom: 70px !important;
+/*		padding-bottom: 70px !important; */
+		padding-bottom: 0px !important;
 	}
 }
 
@@ -498,7 +499,7 @@ a,a:visited {
 
 html,body {
 	width: 100%;
-	height: 100%;
+/*	height: 100%; */
 }
 
 a:hover,a:visited {

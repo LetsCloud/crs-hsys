@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.client.cfg.display.organization;
 
-import io.crs.hsys.client.cfg.config.AbstractConfigUiHandlers;
+import io.crs.hsys.client.core.ui.config.AbstractConfigUiHandlers;
 
 /**
  * @author robi

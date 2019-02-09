@@ -12,11 +12,11 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.cfg.browser.appuser.AppUserBrowserFactory;
 import io.crs.hsys.client.cfg.browser.usergroup.UserGroupBrowserFactory;
-import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
+import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 
 public class SystemConfigPresenter
 		extends AbstractConfigPresenter<SystemConfigPresenter.MyView, SystemConfigPresenter.MyProxy>

@@ -15,7 +15,6 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.cfg.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.cfg.editor.profile.contact.ContactEditorFactory;
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
@@ -23,6 +22,7 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
+import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 

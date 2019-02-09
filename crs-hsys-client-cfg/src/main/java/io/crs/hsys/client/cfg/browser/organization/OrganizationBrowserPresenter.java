@@ -17,11 +17,11 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
 import io.crs.hsys.client.cfg.filter.profile.ProfileFilterPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
-import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.OrganizationResource;
@@ -69,6 +69,23 @@ public class OrganizationBrowserPresenter
 
 	@Override
 	protected void loadData() {
+		resourceDelegate.withCallback(new AbstractAsyncCallback<List<OrganizationDtor>>() {
+			@Override
+			public void onSuccess(List<OrganizationDtor> result) {
+				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
+					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
+							.collect(Collectors.toList());
+				if ((filter.getName() != null) && (!filter.getName().isEmpty()))
+					result = result.stream().filter(org -> org.getName().contains(filter.getName()))
+							.collect(Collectors.toList());
+				if (!filter.getProfileGroupKeys().isEmpty())
+					result = result.stream()
+							.filter(org -> filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
+							.collect(Collectors.toList());
+
+				getView().setData(result);
+			}
+		}).list();
 	}
 
 	@Override
@@ -93,23 +110,6 @@ public class OrganizationBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
-		logger.info("OrganizationBrowserPresenter().onFilterChange()");
-		resourceDelegate.withCallback(new AbstractAsyncCallback<List<OrganizationDtor>>() {
-			@Override
-			public void onSuccess(List<OrganizationDtor> result) {
-				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
-					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
-							.collect(Collectors.toList());
-				if ((filter.getName() != null) && (!filter.getName().isEmpty()))
-					result = result.stream().filter(org -> org.getName().contains(filter.getName()))
-							.collect(Collectors.toList());
-				if (!filter.getProfileGroupKeys().isEmpty())
-					result = result.stream().filter(
-							org -> filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
-							.collect(Collectors.toList());
-
-				getView().setData(result);
-			}
-		}).list();
+		loadData();
 	}
 }

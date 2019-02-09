@@ -134,5 +134,8 @@ public class WebPresenceListEditor extends Composite
 
 	public void setReadOnly(Boolean readOnly) {
 		this.readOnly = readOnly;
+		for (WebPresenceEditor e : editor.getEditors()) {
+			e.setReadOnly(readOnly);
+		}
 	}
 }

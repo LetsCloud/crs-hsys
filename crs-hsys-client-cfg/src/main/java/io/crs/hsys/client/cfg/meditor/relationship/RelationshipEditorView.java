@@ -112,6 +112,7 @@ public class RelationshipEditorView extends ViewWithUiHandlers<RelationshipEdito
 
 	@UiHandler("saveButton")
 	void onSaveClick(ClickEvent event) {
+		logger.info("RelationshipEditorView().onSaveClick()");
 		getUiHandlers().save(driver.flush());
 	}
 

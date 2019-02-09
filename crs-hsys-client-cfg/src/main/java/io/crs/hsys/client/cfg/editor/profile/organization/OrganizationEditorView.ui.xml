@@ -9,21 +9,21 @@
 
 	<ui:style>
 	.pp {
-		padding-top: 20px;
-		padding-bottom: 8px;
-		margin-left: 10px;
-		margin-right: 10px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 	
 	.dataGroupBox {
 		margin-top: 8px;
 		margin-bottom: 8px;
 		padding-left: 10px;
-		border-left: 3px solid #e91e63;
+		border-left: 3px solid #607d8b;
 	}
 	
 	.dataGroupTitle {
-		color: #e91e63;
+		color: #607d8b;
 		float: left;
 	}
 	
@@ -43,17 +43,21 @@
 		type="io.crs.hsys.client.core.CoreNameTokens" />
 
 	<g:HTMLPanel addStyleNames="{style.pp}">
-		<m:MaterialRow>
+		<m:MaterialRow marginBottom="0">
 			<m:MaterialColumn grid="s12 m6">
 				<m:MaterialRow marginBottom="0">
-					<m:MaterialTextBox ui:field="name" grid="s12"
-						type="TEXT" label="{i18nCore.organizationEditorName}" />
+					<m:MaterialTextBox ui:field="name"
+						grid="s12 xm10" type="TEXT"
+						label="{i18nCore.organizationEditorName}" />
 
-					<m:MaterialTextBox ui:field="code" grid="xm12 l6"
+					<m:MaterialCheckBox ui:field="active"
+						text="Aktív" grid="s6 xm2" />
+
+					<m:MaterialTextBox ui:field="code" grid="s6 xm6"
 						type="TEXT" label="{i18nCore.organizationEditorCode}" />
 
 					<ui2:MaterialComboBoxAdd
-						ui:field="profileGroupCombo" grid="xm12 l6" multiple="false"
+						ui:field="profileGroupCombo" grid="s12 xm6" multiple="false"
 						label="{i18nCore.organizationEditorProfileGroup}" />
 				</m:MaterialRow>
 
@@ -97,39 +101,45 @@
 			</m:MaterialColumn>
 		</m:MaterialRow>
 
-		<m:MaterialFAB>
-			<m:MaterialTooltip text="Rezervációs műveletek"
-				position="LEFT">
+		<m:MaterialFAB ui:field="operationsFab">
+			<m:MaterialTooltip text="Műveletek" position="LEFT">
 				<m:MaterialAnchorButton type="FLOATING"
 					iconType="MORE_VERT" size="LARGE" />
 			</m:MaterialTooltip>
 			<m:MaterialFABList>
-				<m:MaterialTooltip text="{i18nCore.comSave}"
+				<m:MaterialTooltip text="{i18nCore.comEdit}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="editButton" type="FLOATING" waves="LIGHT"
 						backgroundColor="AMBER" iconType="EDIT" />
 				</m:MaterialTooltip>
-				
+
 				<m:MaterialTooltip text="{i18nCore.comSave}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="saveButton" type="FLOATING" waves="LIGHT"
 						backgroundColor="GREEN" iconType="SAVE" />
 				</m:MaterialTooltip>
-				
+
 				<m:MaterialTooltip text="{i18nCore.comCancel}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="cancelButton" type="FLOATING" waves="LIGHT"
 						backgroundColor="GREY" iconType="CANCEL" />
 				</m:MaterialTooltip>
-				
-				<m:MaterialTooltip text="{i18nCore.comCancel}"
+
+				<m:MaterialTooltip text="{i18nCore.comDelete}"
 					position="LEFT">
 					<m:MaterialAnchorButton
 						ui:field="deleteButton" type="FLOATING" waves="LIGHT"
 						backgroundColor="RED" iconType="DELETE" />
+				</m:MaterialTooltip>
+
+				<m:MaterialTooltip text="{i18nCore.comBrowse}"
+					position="LEFT">
+					<m:MaterialAnchorButton
+						ui:field="browseButton" type="FLOATING" waves="LIGHT"
+						backgroundColor="GREY" iconType="VIEW_LIST" />
 				</m:MaterialTooltip>
 			</m:MaterialFABList>
 		</m:MaterialFAB>

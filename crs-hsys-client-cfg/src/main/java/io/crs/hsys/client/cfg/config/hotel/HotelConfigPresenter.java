@@ -17,11 +17,11 @@ import io.crs.hsys.client.cfg.browser.hotel.HotelBrowserFactory;
 import io.crs.hsys.client.cfg.browser.marketgroup.MarketGroupBrowserFactory;
 import io.crs.hsys.client.cfg.browser.room.RoomBrowserFactory;
 import io.crs.hsys.client.cfg.browser.roomtype.RoomTypeBrowserFactory;
-import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
+import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 
 /**
  * @author robi

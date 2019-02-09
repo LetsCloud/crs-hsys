@@ -152,6 +152,8 @@ public class CommunicationEditor extends Composite implements Editor<Communicati
 	}
 
 	private void setParamaterIcon(CommMode mode) {
+		if (mode == null) return;
+		
 		if (isPhone(mode))
 			parameter.setRightIconType(AwesomeIconType.PHONE);
 		if (isEmail(mode))
@@ -227,6 +229,8 @@ public class CommunicationEditor extends Composite implements Editor<Communicati
 
 		if (!readOnly) {
 			parameter.setRightIconType(AwesomeIconType.ERASER);
+		} else {
+			setParamaterIcon(mode.getValue());			
 		}
 	}
 

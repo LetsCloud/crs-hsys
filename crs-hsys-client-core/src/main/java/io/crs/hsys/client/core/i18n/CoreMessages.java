@@ -22,11 +22,23 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("OK")
 	String comOk();
 
+	@DefaultMessage("Create")
+	String comCreate();
+
+	@DefaultMessage("Edit")
+	String comEdit();
+
 	@DefaultMessage("Save")
 	String comSave();
 
 	@DefaultMessage("Cancel")
 	String comCancel();
+
+	@DefaultMessage("Delete")
+	String comDelete();
+
+	@DefaultMessage("Browse")
+	String comBrowse();
 
 	@DefaultMessage("Active")
 	String comActive();
@@ -534,7 +546,7 @@ public interface CoreMessages extends Messages {
 	/*
 	 * COMMUNICATION EDITOR
 	 */
-	@DefaultMessage("Communication Mode")
+	@DefaultMessage("Mode")
 	String communicationEditorLabel();
 
 	@DefaultMessage("Primary")

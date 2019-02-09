@@ -20,7 +20,7 @@ import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
 import io.crs.hsys.client.cfg.filter.accountchild.AccountChildFilterPresenter;
 import io.crs.hsys.client.cfg.meditor.profilegroup.ProfileGroupEditorFactory;
 import io.crs.hsys.client.cfg.meditor.profilegroup.ProfileGroupEditorPresenter;
-import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.ProfileGroupResource;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;

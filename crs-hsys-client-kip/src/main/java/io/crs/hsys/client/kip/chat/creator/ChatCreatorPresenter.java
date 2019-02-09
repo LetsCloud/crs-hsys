@@ -21,7 +21,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import gwt.material.design.client.base.MaterialWidget;
-import io.crs.hsys.client.core.CoreNameTokens;
+
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.KipNameTokens;

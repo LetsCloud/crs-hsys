@@ -23,6 +23,8 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addext.client.ui.MaterialComboBoxAdd;
 import gwt.material.design.client.ui.MaterialAnchorButton;
+import gwt.material.design.client.ui.MaterialCheckBox;
+import gwt.material.design.client.ui.MaterialFAB;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialTextBox;
 
@@ -30,6 +32,7 @@ import io.crs.hsys.client.cfg.editor.profile.AddressListEditor;
 import io.crs.hsys.client.cfg.editor.profile.CommunicationActionEvent;
 import io.crs.hsys.client.cfg.editor.profile.CommunicationListEditor;
 import io.crs.hsys.client.cfg.editor.profile.WebPresenceListEditor;
+import io.crs.hsys.client.core.resources.ThemeParams;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
@@ -49,6 +52,9 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	}
 
 	private final Driver driver;
+
+	@UiField
+	MaterialCheckBox active;
 
 	@UiField
 	MaterialTextBox code, name;
@@ -73,7 +79,11 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 
 	@Ignore
 	@UiField
-	MaterialAnchorButton editButton, saveButton, cancelButton, deleteButton;
+	MaterialAnchorButton editButton, saveButton, cancelButton, deleteButton, browseButton;
+	
+	@Ignore
+	@UiField
+	MaterialFAB operationsFab;
 
 	private final EventBus eventBus;
 
@@ -82,7 +92,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	*/
 	@Inject
 	OrganizationEditorView(Binder uiBinder, EventBus eventBus, Driver driver, CommunicationListEditor communications,
-			AddressListEditor addresses, WebPresenceListEditor webPresences) {
+			AddressListEditor addresses, WebPresenceListEditor webPresences, ThemeParams themeParams) {
 		logger.info("OrganizationEditorView()");
 
 		this.eventBus = eventBus;
@@ -103,13 +113,11 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 
 			@Override
 			public void setValue(ProfileGroupDto value) {
-				logger.info("OrganizationEditorView().profileGroup.setValue(" + value + ")");
 				profileGroupCombo.setSingleValue(value);
 			}
 
 			@Override
 			public ProfileGroupDto getValue() {
-				logger.info("OrganizationEditorView().profileGroup.getValue()" + profileGroupCombo.getSingleValue());
 				return profileGroupCombo.getSingleValue();
 			}
 		});
@@ -118,13 +126,13 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 
 	@Override
 	public void show(OrganizationDto dto) {
-		setReadOnly(true);
+		setReadOnly(true, false);
 		driver.edit(dto);
 	}
 
 	@Override
 	public void edit(OrganizationDto dto) {
-		setReadOnly(false);
+		setReadOnly(false, dto.getId() == null);
 		driver.edit(dto);
 
 		Timer t = new Timer() {
@@ -142,10 +150,15 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 		// TODO Auto-generated method stub
 	}
 
+	@UiHandler("browseButton")
+	void onBrowseClick(ClickEvent event) {
+		getUiHandlers().cancel();
+	}
+
 	@UiHandler("editButton")
 	void onEditClick(ClickEvent event) {
 		eventBus.fireEvent(new CommunicationActionEvent(CommunicationActionEvent.Action.OPEN, -1));
-		setReadOnly(false);
+		setReadOnly(false, false);
 	}
 
 	@UiHandler("saveButton")
@@ -157,7 +170,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent ignored) {
 		eventBus.fireEvent(new CommunicationActionEvent(CommunicationActionEvent.Action.CLOSE, -1));
-		setReadOnly(true);
+		setReadOnly(true, false);
 	}
 
 	@Override
@@ -189,7 +202,12 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	}
 
 	@Override
-	public void setReadOnly(Boolean readOnly) {
+	public void setReadOnly(Boolean readOnly, Boolean createMode) {
+		if (operationsFab.isOpen()) {
+			operationsFab.close();
+		}
+		
+		active.setEnabled(!readOnly);
 		code.setReadOnly(readOnly);
 		name.setReadOnly(readOnly);
 		profileGroupCombo.setReadOnly(readOnly);
@@ -207,7 +225,8 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 		deleteButton.setVisible(readOnly);
 
 		saveButton.setVisible(!readOnly);
-		cancelButton.setVisible(!readOnly);
-
+		cancelButton.setVisible(!readOnly && !createMode);
+		
+		browseButton.setVisible(readOnly || (!readOnly && createMode));
 	}
 }

@@ -14,12 +14,12 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.cfg.config.AbstractConfigPresenter;
 import io.crs.hsys.client.cfg.config.profile.ProfileConfigPresenter;
 import io.crs.hsys.client.cfg.meditor.AbstractMeditorPresenter;
 import io.crs.hsys.client.cfg.meditor.MeditorView;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.shared.api.ProfileGroupResource;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AccountDtor;

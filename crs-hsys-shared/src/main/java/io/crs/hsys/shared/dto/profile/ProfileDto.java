@@ -15,6 +15,8 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
 @SuppressWarnings("serial")
 public class ProfileDto extends AccountChildDto {
 
+	private Boolean active;
+
 	private String name;
 
 	private ProfileGroupDto profileGroup;
@@ -76,6 +78,14 @@ public class ProfileDto extends AccountChildDto {
 
 	public void setProfileLinks(List<ProfileLinkDto> profileLinks) {
 		this.profileLinks = profileLinks;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	/*
