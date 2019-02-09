@@ -18,7 +18,7 @@
 	<mvc:resources mapping="/static/**"
 		location="classpath:static/" />
 
-	<mvc:resources mapping="/**" location="/WEB-INF/gwt/" />
+<!-- 	<mvc:resources mapping="/**" location="/WEB-INF/gwt/" /> -->
 
 	<mvc:default-servlet-handler />
 

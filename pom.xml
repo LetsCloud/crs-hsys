@@ -94,8 +94,11 @@
 		<!-- Project build settings -->
 		<!-- ********************** -->
 		<java.version>1.8</java.version>
+
 		<server-artifactId>crs-hsys-server</server-artifactId>
 		<server-directory>${project.parent.basedir}/${server-artifactId}</server-directory>
+		<gwt-directory>${server-directory}/target/${server-artifactId}-${project.version}</gwt-directory>
+
 		<gcd.backing.store-directory>${project.parent.basedir}/${server-artifactId}/appengine-generated/local_db.bin</gcd.backing.store-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -527,9 +530,9 @@
 							<arg>-XcompilerMetrics</arg>
 						</compilerArgs>
 						<classpathScope>compile+runtime</classpathScope>
-						<launcherDir>${server-directory}/target/${server-artifactId}-${project.version}</launcherDir>
-						<warDir>${server-directory}/target/${server-artifactId}-${project.version}</warDir>
-						<webappDirectory>${server-directory}/target/${server-artifactId}-${project.version}</webappDirectory>
+						<launcherDir>${gwt-directory}</launcherDir>
+						<warDir>${gwt-directory}</warDir>
+						<webappDirectory>${gwt-directory}</webappDirectory>
 					</configuration>
 				</plugin>
 
@@ -570,7 +573,7 @@
 							<phase>prepare-package</phase>
 							<configuration>
 								<arguments>run-script generate
-									${server-directory}/target/${server-artifactId}-${project.version}/WEB-INF/gwt</arguments>
+									${gwt-directory}</arguments>
 							</configuration>
 						</execution>
 					</executions>
