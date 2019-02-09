@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.chat.creator;
+package io.crs.hsys.client.kip.task.creator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +36,11 @@ import io.crs.hsys.shared.dto.common.UserGroupDto;
  * @author robi
  *
  */
-public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.MyView>
-		implements ChatCreatorUiHandlers {
-	private static Logger logger = Logger.getLogger(ChatCreatorPresenter.class.getName());
+public class TaskCreatorPresenter extends PresenterWidget<TaskCreatorPresenter.MyView>
+		implements TaskCreatorUiHandlers {
+	private static Logger logger = Logger.getLogger(TaskCreatorPresenter.class.getName());
 
-	public interface MyView extends View, HasUiHandlers<ChatCreatorUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<TaskCreatorUiHandlers> {
 		void open(MaterialWidget widget);
 
 		void clearReceiverList();
@@ -58,11 +58,11 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 	private final CurrentUser currentUser;
 
 	@Inject
-	ChatCreatorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
+	TaskCreatorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<ChatResource> chatResource, ResourceDelegate<AppUserResource> appUserResource,
 			CurrentUser currentUser) {
 		super(eventBus, view);
-		logger.info("ChatCreatorPresenter()");
+		logger.info("TaskCreatorPresenter()");
 
 		this.placeManager = placeManager;
 		this.chatResource = chatResource;

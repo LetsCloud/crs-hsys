@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:nattable="http://www.eclipse.org/papyrus/nattable/model" xmlns:nattableaxis="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxis" xmlns:nattableaxisconfiguration="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisconfiguration" xmlns:nattableaxisprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider" xmlns:nattableconfiguration="http://www.eclipse.org/papyrus/nattable/model/nattableconfiguration" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxis http://www.eclipse.org/papyrus/nattable/model#//nattableaxis http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisconfiguration http://www.eclipse.org/papyrus/nattable/model#//nattableaxisconfiguration http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider http://www.eclipse.org/papyrus/nattable/model#//nattableaxisprovider http://www.eclipse.org/papyrus/nattable/model/nattableconfiguration http://www.eclipse.org/papyrus/nattable/model#//nattableconfiguration">
+  <nattable:Table xmi:id="_FdEp4CQAEemAM9S8s9ZKuQ" name="Generic Tree Table" currentRowAxisProvider="_FdEp4yQAEemAM9S8s9ZKuQ" currentColumnAxisProvider="_FdEp4SQAEemAM9S8s9ZKuQ" tableKindId="org.eclipse.papyrus.uml.table.genericTree">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FdKwgCQAEemAM9S8s9ZKuQ" source="http://www.eclipse.org/papyrus/infra/nattable/version">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FdKwgSQAEemAM9S8s9ZKuQ" key="version" value="1.3.0"/>
+    </eAnnotations>
+    <context xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <owner xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <tableConfiguration xmi:type="nattableconfiguration:TableConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.nattable/configs/genericTreeTable.nattableconfiguration#PapyrusUMLGenericTreeTable_XMI_ID"/>
+    <columnAxisProvidersHistory xmi:type="nattableaxisprovider:SlaveObjectAxisProvider" xmi:id="_FdEp4SQAEemAM9S8s9ZKuQ" description="This axis provider provides available columns according to the rows of the table (features of the object displayed on the other axis)" name="UML Feature axis provider">
+      <axis xmi:type="nattableaxis:EStructuralFeatureAxis" xmi:id="_FdEp4iQAEemAM9S8s9ZKuQ">
+        <manager xmi:type="nattableaxisconfiguration:AxisManagerRepresentation" href="platform:/plugin/org.eclipse.papyrus.uml.nattable/configs/genericTreeTable.nattableconfiguration#_Wa4BBDzQEei_1txcmoHe_A"/>
+        <element xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+      </axis>
+    </columnAxisProvidersHistory>
+    <rowAxisProvidersHistory xmi:type="nattableaxisprovider:MasterObjectAxisProvider" xmi:id="_FdEp4yQAEemAM9S8s9ZKuQ" description="This axis provider manages the rows, according to the wanted hierarchy" name="HierarchicalRowAxisManager" disconnectSlave="true"/>
+  </nattable:Table>
+  <notation:Diagram xmi:id="_FelFwCQAEemAM9S8s9ZKuQ" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_ODhiUCQAEemAM9S8s9ZKuQ" type="Class_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ODo3ECQAEemAM9S8s9ZKuQ" type="Class_NameLabel"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_ODo3ESQAEemAM9S8s9ZKuQ" type="Class_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODo3EiQAEemAM9S8s9ZKuQ" y="15"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_ODrTUCQAEemAM9S8s9ZKuQ" type="Class_AttributeCompartment">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_ODr6YCQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_ODr6YSQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_ODr6YiQAEemAM9S8s9ZKuQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODr6YyQAEemAM9S8s9ZKuQ"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_ODr6ZCQAEemAM9S8s9ZKuQ" type="Class_OperationCompartment">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_ODr6ZSQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_ODr6ZiQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_ODr6ZyQAEemAM9S8s9ZKuQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODr6aCQAEemAM9S8s9ZKuQ"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_ODr6aSQAEemAM9S8s9ZKuQ" type="Class_NestedClassifierCompartment">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_ODr6aiQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_ODr6ayQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_ODr6bCQAEemAM9S8s9ZKuQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODr6bSQAEemAM9S8s9ZKuQ"/>
+      </children>
+      <element xmi:type="uml:Class" href="CrsHsys.uml#_ODWjMCQAEemAM9S8s9ZKuQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODhiUSQAEemAM9S8s9ZKuQ" x="180" y="140"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_TDs3oCQAEemAM9S8s9ZKuQ" type="Enumeration_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_TDtesCQAEemAM9S8s9ZKuQ" type="Enumeration_NameLabel"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_TDtesSQAEemAM9S8s9ZKuQ" type="Enumeration_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_TDtesiQAEemAM9S8s9ZKuQ" y="15"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_TDtesyQAEemAM9S8s9ZKuQ" type="Enumeration_LiteralCompartment">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_TDtetCQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_TDtetSQAEemAM9S8s9ZKuQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_TDtetiQAEemAM9S8s9ZKuQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TDtetyQAEemAM9S8s9ZKuQ"/>
+      </children>
+      <element xmi:type="uml:Enumeration" href="CrsHsys.uml#_TDp0UCQAEemAM9S8s9ZKuQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TDs3oSQAEemAM9S8s9ZKuQ" x="480" y="100"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_FelFwSQAEemAM9S8s9ZKuQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_FelFwiQAEemAM9S8s9ZKuQ"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_FelFwyQAEemAM9S8s9ZKuQ" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+      <owner xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    </styles>
+    <element xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+  </notation:Diagram>
+  <nattable:Table xmi:id="_FerMYCQAEemAM9S8s9ZKuQ" name="Class Tree Table" currentRowAxisProvider="_FerzciQAEemAM9S8s9ZKuQ" currentColumnAxisProvider="_FerzcCQAEemAM9S8s9ZKuQ" tableKindId="org.eclipse.papyrus.uml.table.classTree">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FesagCQAEemAM9S8s9ZKuQ" source="http://www.eclipse.org/papyrus/infra/nattable/version">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FesagSQAEemAM9S8s9ZKuQ" key="version" value="1.3.0"/>
+    </eAnnotations>
+    <context xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <owner xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <tableConfiguration xmi:type="nattableconfiguration:TableConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.nattable.clazz.config/configs/class_synchronized_tree.nattableconfiguration#PapyrusClassTreeTable_XMI_ID"/>
+    <columnAxisProvidersHistory xmi:type="nattableaxisprovider:SlaveObjectAxisProvider" xmi:id="_FerzcCQAEemAM9S8s9ZKuQ" description="This axis provider provides available columns according to the rows of the table (features of the object displayed on the other axis)" name="UML Feature axis provider">
+      <axis xmi:type="nattableaxis:EStructuralFeatureAxis" xmi:id="_FerzcSQAEemAM9S8s9ZKuQ">
+        <manager xmi:type="nattableaxisconfiguration:AxisManagerRepresentation" href="platform:/plugin/org.eclipse.papyrus.uml.nattable.clazz.config/configs/class_synchronized_tree.nattableconfiguration#_UJa7yDzQEei_1txcmoHe_A"/>
+        <element xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+      </axis>
+    </columnAxisProvidersHistory>
+    <rowAxisProvidersHistory xmi:type="nattableaxisprovider:MasterObjectAxisProvider" xmi:id="_FerzciQAEemAM9S8s9ZKuQ" description="This axis provider manages the rows, according to the wanted hierarchy" name="HierarchicalRowaAxisManager" disconnectSlave="true"/>
+  </nattable:Table>
+  <nattable:Table xmi:id="_Feu2wCQAEemAM9S8s9ZKuQ" name="Generic Table" currentRowAxisProvider="_Feu2wiQAEemAM9S8s9ZKuQ" currentColumnAxisProvider="_Feu2wSQAEemAM9S8s9ZKuQ" tableKindId="org.eclipse.papyrus.uml.table.generic">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Fevd0CQAEemAM9S8s9ZKuQ" source="http://www.eclipse.org/papyrus/infra/nattable/version">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Fevd0SQAEemAM9S8s9ZKuQ" key="version" value="1.3.0"/>
+    </eAnnotations>
+    <context xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <owner xmi:type="uml:Model" href="CrsHsys.uml#_FbEewCQAEemAM9S8s9ZKuQ"/>
+    <tableConfiguration xmi:type="nattableconfiguration:TableConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.nattable.generic.config/configs/generic.nattableconfiguration#PapyrusGenericTable_XMI_ID"/>
+    <columnAxisProvidersHistory xmi:type="nattableaxisprovider:SlaveObjectAxisProvider" xmi:id="_Feu2wSQAEemAM9S8s9ZKuQ" description="This axis provider provides available columns according to the rows of the table (features of the object displayed on the other axis)" name="UML Feature axis provider"/>
+    <rowAxisProvidersHistory xmi:type="nattableaxisprovider:MasterObjectAxisProvider" xmi:id="_Feu2wiQAEemAM9S8s9ZKuQ" description="This axis provider contains the object dropped by the user into the table" name="DroppedElementAxisProvider"/>
+  </nattable:Table>
+</xmi:XMI>
