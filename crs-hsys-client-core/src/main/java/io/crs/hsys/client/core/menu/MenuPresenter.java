@@ -32,6 +32,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.security.HasPermissionsGatekeeper;
+import io.crs.hsys.client.core.util.UrlUtils;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
@@ -156,24 +157,14 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void logout() {
-		String baseUrl = GWT.getHostPageBaseURL();
-		logger.log(Level.INFO, "getApplicationPath()->baseUrl=" + baseUrl);
-
-		if (baseUrl.endsWith("/")) {
-			baseUrl = baseUrl.substring(0, baseUrl.length() - 5);
-			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
-		} else {
-			baseUrl = baseUrl.substring(0, baseUrl.length() - 4);
-			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
-		}
-		final String baseUrl2 = baseUrl;
+		final String baseUrl = UrlUtils.getImageUrl();
 		
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, baseUrl + LOGOUT_URL);
 
 		try {
 			builder.sendRequest("", new RequestCallback() {
 				public void onResponseReceived(Request request, Response response) {
-					Window.Location.replace(baseUrl2 + LOGOUT_SUCCESS_URL);
+					Window.Location.replace(baseUrl + LOGOUT_SUCCESS_URL);
 				}
 
 				public void onError(Request request, Throwable exception) {
