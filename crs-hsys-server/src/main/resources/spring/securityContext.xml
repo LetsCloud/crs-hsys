@@ -105,12 +105,11 @@
 			ref="appUserDetailsService" />
 		<beans:property name="passwordEncoder"
 			ref="passwordEncoder" />
-<!-- 		<beans:property name="requestHolder"
-			ref="requestHolder" />  -->
+		<!-- <beans:property name="requestHolder" ref="requestHolder" /> -->
 	</beans:bean>
 
-	<beans:bean id="customAuthenticationSuccessHandler"
-		class="io.crs.hsys.server.security.CustomAuthenticationSuccessHandler">
+	<beans:bean id="appAuthenticationSuccessHandler"
+		class="io.crs.hsys.server.security.AppAuthenticationSuccessHandler">
 	</beans:bean>
 
 	<!-- =================== -->
@@ -126,19 +125,33 @@
 		<intercept-url pattern="/activate/**" access="permitAll" />
 		<intercept-url pattern="/static/**" access="permitAll" />
 
-		<intercept-url pattern="/kip.html"
+		<intercept-url pattern="/**" access="authenticated" />
+		<intercept-url pattern="/launchboard*" access="authenticated" />
+
+		<intercept-url pattern="/kip/start.html"
+			access="authenticated" />
+		<intercept-url pattern="/kip-manifest/**"
 			access="authenticated" />
 		<intercept-url pattern="/kip_module/**"
 			access="authenticated" />
 
 		<intercept-url pattern="/fro.html"
 			access="authenticated" />
+		<intercept-url pattern="/fro-manifest/**"
+			access="authenticated" />
 		<intercept-url pattern="/fro_module/**"
 			access="authenticated" />
 
-		<intercept-url pattern="/cfg.html"
+		<intercept-url pattern="/cfg/start.html"
 			access="authenticated" />
-		<intercept-url pattern="/cfg_module/**"
+		<intercept-url pattern="/cfg/**" access="authenticated" />
+		<intercept-url pattern="/cfg/cfg_module/**"
+			access="authenticated" />
+
+		<intercept-url pattern="/inf/start.html"
+			access="authenticated" />
+		<intercept-url pattern="/inf/**" access="authenticated" />
+		<intercept-url pattern="/inf/inf_module/**"
 			access="authenticated" />
 
 		<http-basic />
@@ -146,7 +159,7 @@
 		<form-login login-page="/login"
 			login-processing-url="/login" username-parameter="username"
 			password-parameter="password" default-target-url="/launchboard"
-			authentication-success-handler-ref="customAuthenticationSuccessHandler"
+			authentication-success-handler-ref="appAuthenticationSuccessHandler"
 			authentication-failure-url="/login.html?error=true" />
 
 		<logout logout-url="/logout"

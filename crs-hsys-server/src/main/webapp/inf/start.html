@@ -6,9 +6,12 @@
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<title>HostWare FRO</title>
+<meta name="theme-color" content="#ff9800" />
 
-<link rel="manifest" href="/FRO_manifest.json" />
+<title>HostWare INF</title>
+
+<link rel="manifest" href="manifest.json" />
+
 <style>
 #splashscreen {
 	top: 0;
@@ -16,7 +19,7 @@
 	right: 0;
 	bottom: 0;
 	position: fixed;
-	background: #e57373 !important;
+	background: #ffcc80 !important;
 	-webkit-flex-align: center;
 	-ms-flex-align: center;
 	-webkit-align-items: center;
@@ -53,12 +56,13 @@
 	font-weight: 200
 }
 </style>
+
 </head>
 <body>
 	<!-- Splash screen -->
 	<div id="splashscreen">
 		<div id="splashcontent">
-			<img src="FRO_launcher-icons/launcher4x.png" /><span class="title">HostWare
+			<img src="launcher4x.png" /><span class="title">HostWare
 				Cloud</span> <span class="description">Loading ...</span>
 			<div class="progress">
 				<div class="indeterminate"></div>
@@ -66,21 +70,8 @@
 		</div>
 	</div>
 
-	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
-		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
-
 	<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase-app.js"></script>
 	<script
 		src="https://www.gstatic.com/firebasejs/5.7.1/firebase-messaging.js"></script>
-	<!-- RECOMMENDED if your web app will not function without JavaScript enabled  -->
-	<noscript>
-		<div
-			style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-			Your web browser must have JavaScript enabled in order for this
-			application to display correctly.</div>
-	</noscript>
-
-	<script src="fro_module/fro_module.nocache.js" async defer></script>
-
 </body>
 </html>

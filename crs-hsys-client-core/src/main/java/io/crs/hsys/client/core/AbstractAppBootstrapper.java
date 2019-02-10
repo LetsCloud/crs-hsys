@@ -46,7 +46,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 	private static Logger logger = Logger.getLogger(AbstractAppBootstrapper.class.getName());
 
 	public static final String TARGET_URL = "targetUrl";
-	public static final String LOGIN_URL = "login";
+	public static final String LOGIN_URL = "/login";
 
 	private final PlaceManager placeManager;
 
@@ -196,11 +196,21 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
 						+ caught.getMessage());
 
-				String pathString = Window.Location.getPath()+Window.Location.getHash();
+				String baseUrl = GWT.getHostPageBaseURL();
+				logger.log(Level.INFO, "getApplicationPath()->baseUrl=" + baseUrl);
+
+				if (baseUrl.endsWith("/")) {
+					baseUrl = baseUrl.substring(0, baseUrl.length() - 5);
+					logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
+				} else {
+					baseUrl = baseUrl.substring(0, baseUrl.length() - 4);
+					logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
+				}
+
+				String pathString = Window.Location.getPath() + Window.Location.getHash();
 				String pathB64 = Base64Utils.toBase64(pathString.getBytes());
 
-				Window.Location.replace(
-						GWT.getHostPageBaseURL() + LOGIN_URL + "?" + TARGET_URL + "=" + pathB64);
+				Window.Location.replace(baseUrl + LOGIN_URL + "?" + TARGET_URL + "=" + pathB64);
 			}
 		});
 	}

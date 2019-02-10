@@ -97,7 +97,10 @@
 
 		<server-artifactId>crs-hsys-server</server-artifactId>
 		<server-directory>${project.parent.basedir}/${server-artifactId}</server-directory>
-		<gwt-directory>${server-directory}/target/${server-artifactId}-${project.version}</gwt-directory>
+		<server-target-directory>${project.parent.basedir}/${server-artifactId}/target/${server-artifactId}-${project.version}</server-target-directory>
+		<cfg-gwt-directory>${server-target-directory}/cfg</cfg-gwt-directory>
+		<kip-gwt-directory>${server-target-directory}/kip</kip-gwt-directory>
+		<fro-gwt-directory>${server-target-directory}/fro</fro-gwt-directory>
 
 		<gcd.backing.store-directory>${project.parent.basedir}/${server-artifactId}/appengine-generated/local_db.bin</gcd.backing.store-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -530,9 +533,9 @@
 							<arg>-XcompilerMetrics</arg>
 						</compilerArgs>
 						<classpathScope>compile+runtime</classpathScope>
-						<launcherDir>${gwt-directory}</launcherDir>
-						<warDir>${gwt-directory}</warDir>
-						<webappDirectory>${gwt-directory}</webappDirectory>
+						<launcherDir>${cfg-gwt-directory}</launcherDir>
+						<warDir>${cfg-gwt-directory}</warDir>
+						<webappDirectory>${cfg-gwt-directory}</webappDirectory>
 					</configuration>
 				</plugin>
 
@@ -573,7 +576,7 @@
 							<phase>prepare-package</phase>
 							<configuration>
 								<arguments>run-script generate
-									${gwt-directory}</arguments>
+									${server-target-directory}</arguments>
 							</configuration>
 						</execution>
 					</executions>
@@ -594,7 +597,7 @@
 								<goal>copy-resources</goal>
 							</goals>
 							<configuration>
-								<outputDirectory>${server-directory}/target/${server-artifactId}-${project.version}</outputDirectory>
+								<outputDirectory>${server-target-directory}</outputDirectory>
 								<resources>
 									<resource>
 										<directory>${server-directory}/src/main/webapp/</directory>

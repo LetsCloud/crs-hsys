@@ -5,6 +5,7 @@ package io.crs.hsys.client.core.menu;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.common.base.Strings;
@@ -43,8 +44,8 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 		implements MenuUiHandlers, SetPageTitleHandler {
 	private static Logger logger = Logger.getLogger(MenuPresenter.class.getName());
 
-	public static final String LOGOUT_URL = "logout";
-	public static final String LOGOUT_SUCCESS_URL = "login.html?logout";
+	public static final String LOGOUT_URL = "/logout";
+	public static final String LOGOUT_SUCCESS_URL = "/login.html?logout";
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_NAVBAR = new SingleSlot<>();
 
@@ -155,12 +156,24 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void logout() {
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, GWT.getHostPageBaseURL() + LOGOUT_URL);
+		String baseUrl = GWT.getHostPageBaseURL();
+		logger.log(Level.INFO, "getApplicationPath()->baseUrl=" + baseUrl);
+
+		if (baseUrl.endsWith("/")) {
+			baseUrl = baseUrl.substring(0, baseUrl.length() - 5);
+			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
+		} else {
+			baseUrl = baseUrl.substring(0, baseUrl.length() - 4);
+			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
+		}
+		final String baseUrl2 = baseUrl;
+		
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, baseUrl + LOGOUT_URL);
 
 		try {
 			builder.sendRequest("", new RequestCallback() {
 				public void onResponseReceived(Request request, Response response) {
-					Window.Location.replace(GWT.getHostPageBaseURL() + LOGOUT_SUCCESS_URL);
+					Window.Location.replace(baseUrl2 + LOGOUT_SUCCESS_URL);
 				}
 
 				public void onError(Request request, Throwable exception) {

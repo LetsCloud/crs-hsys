@@ -35,9 +35,13 @@ public class ServiceModule extends AbstractPresenterModule {
 		logger.log(Level.INFO, "getApplicationPath()->baseUrl=" + baseUrl);
 
 		if (baseUrl.endsWith("/")) {
-			baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
+			baseUrl = baseUrl.substring(0, baseUrl.length() - 5);
+			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
+		} else {
+			baseUrl = baseUrl.substring(0, baseUrl.length() - 4);
 			logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
 		}
+			
 
 		return baseUrl;
 	}

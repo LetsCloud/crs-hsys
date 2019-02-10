@@ -25,8 +25,8 @@ import org.springframework.util.StringUtils;
  * @author robi
  *
  */
-public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
+public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+	private static final Logger logger = LoggerFactory.getLogger(AppAuthenticationSuccessHandler.class);
 
 	private static final String TARGET_URL = "targetUrl";
 	private static final String LAUNCHBOARD_URL = "launchboard";
@@ -43,6 +43,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
 	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException {
+		String targetUrl = LAUNCHBOARD_URL;
 
 		Map<String, String[]> params = request.getParameterMap();
 		for (Entry<String, String[]> param : params.entrySet()) {
@@ -51,14 +52,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
 		logger.info("targetUrl=" + request.getParameter(TARGET_URL));
 
-		byte[] decodedBytes = Base64Utils.decodeFromString(request.getParameter(TARGET_URL));
-		String targetUrl = new String(decodedBytes);
-		
-		logger.info("targetUrl2=" + targetUrl);
-
-		if (!StringUtils.hasText(targetUrl)) {
-			targetUrl = LAUNCHBOARD_URL;
+		if (StringUtils.hasText(request.getParameter(TARGET_URL))) {
+			byte[] decodedBytes = Base64Utils.decodeFromString(request.getParameter(TARGET_URL));
+			targetUrl = new String(decodedBytes);
 		}
+
+		logger.info("targetUrl2=" + targetUrl);
 
 		if (response.isCommitted()) {
 			logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
