@@ -1,32 +1,32 @@
 {
-  "name": "HostWare CFG",
-  "short_name": "CFG",
+  "name": "HostWare INF",
+  "short_name": "INF",
   "icons": [
     {
-      "src": "FRO_launcher-icons/launcher1x.png",
+      "src": "launcher1x.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "FRO_launcher-icons/launcher2x.png",
+      "src": "launcher2x.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "FRO_launcher-icons/launcher4x.png",
+      "src": "launcher4x.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "FRO_launcher-icons/launcher5x.png",
+      "src": "launcher5x.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "cfg.html",
+  "start_url": "inf.html",
   "display": "fullscreen",
-  "background_color": "#F44336",
-  "theme_color": "#C62828",
+  "background_color": "#ffcc80",
+  "theme_color": "#ff9800",
   
   "gcm_sender_id": "103953800507"
 }
