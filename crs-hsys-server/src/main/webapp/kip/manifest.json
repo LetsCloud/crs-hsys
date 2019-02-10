@@ -23,7 +23,7 @@
 			"sizes": "512x512"
 		}
 	],
-	"start_url": "kip.html",
+	"start_url": "/kip/start.html",
 	"display": "fullscreen",
 	"background_color": "#2196f3",
 	"theme_color": "#1565c0",

@@ -23,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "fro.html",
+  "start_url": "/fro/start.html",
   "display": "fullscreen",
   "background_color": "#f48fb1",
   "theme_color": "#e91e63",

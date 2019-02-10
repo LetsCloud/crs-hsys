@@ -23,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "cfg.html",
+  "start_url": "/cfg/start.html",
   "display": "fullscreen",
   "background_color": "#90a4ae",
   "theme_color": "#607d8b",
