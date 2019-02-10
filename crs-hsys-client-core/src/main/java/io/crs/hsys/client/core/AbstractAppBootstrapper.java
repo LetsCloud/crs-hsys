@@ -94,6 +94,8 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 	}
 
 	private void initFirebase() {
+		logger.info("initFirebase()");
+
 		globalConfigResource.withCallback(new AbstractAsyncCallback<List<GlobalConfigDto>>() {
 			@Override
 			public void onSuccess(List<GlobalConfigDto> result) {
@@ -116,6 +118,12 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 
 				cfgPwaManager();
 
+				checkCurrentUser();
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				logger.info("provideMessagingManager().onFailure()");
 				checkCurrentUser();
 			}
 		}).getAll();
@@ -148,6 +156,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				link.addClickHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
+						logger.info("configFcmOnMessage()->refresh.onClick()");
 						Window.Location.reload();
 					}
 				});

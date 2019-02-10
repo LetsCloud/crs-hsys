@@ -150,9 +150,4 @@ public class ChatRoomPresenter extends Presenter<ChatRoomPresenter.MyView, ChatR
 	public static native String getUserAgent() /*-{
 		return $wnd.navigator.userAgent.toLowerCase();
 	}-*/;
-
-	private static native String b64decode(String a) /*-{
-		return window.atob(a);
-	}-*/;
-
 }
