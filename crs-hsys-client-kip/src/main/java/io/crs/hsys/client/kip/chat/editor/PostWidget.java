@@ -53,6 +53,7 @@ public class PostWidget extends Composite {
 		
 		if (own) {
 			avatarDiv.getStyle().setFloat(Style.Float.RIGHT);
+			avatarDiv.getStyle().setMarginLeft(10, Unit.PX);
 //			avatarDiv.getStyle().setDisplay(Display.NONE);
 			bodyDiv.getStyle().setMarginTop(10, Unit.PX);
 			bodyDiv.getStyle().setMarginLeft(0, Unit.PX);
@@ -78,7 +79,7 @@ public class PostWidget extends Composite {
 			contentDiv.getStyle().setTextAlign(TextAlign.LEFT);
 			contentDiv.getStyle().setFloat(Style.Float.LEFT);
 			contentDiv.getStyle().setMarginTop(0, Unit.PX);
-			contentDiv.getStyle().setMarginLeft(20, Unit.PX);
+			contentDiv.getStyle().setMarginLeft(10, Unit.PX);
 			contentDiv.getStyle().setMarginRight(0, Unit.PX);
 			contentDiv.getStyle().setMarginBottom(10, Unit.PX);
 			contentDiv.getStyle().setBackgroundColor("#00B5B8");

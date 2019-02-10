@@ -40,6 +40,8 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 		implements ChatCreatorUiHandlers {
 	private static Logger logger = Logger.getLogger(ChatCreatorPresenter.class.getName());
 
+	private final static String HOST_PAGE = "start.html";
+
 	public interface MyView extends View, HasUiHandlers<ChatCreatorUiHandlers> {
 		void open(MaterialWidget widget);
 
@@ -157,7 +159,7 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 	}
 
 	private String createMeaasgeUrl(PlaceRequest placeRequest) {
-		return GWT.getHostPageBaseURL() + "kip.html#" + placeManager.buildHistoryToken(placeRequest);
+		return GWT.getHostPageBaseURL() + HOST_PAGE + "#" + placeManager.buildHistoryToken(placeRequest);
 
 	}
 }
