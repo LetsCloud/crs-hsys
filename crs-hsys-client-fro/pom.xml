@@ -145,12 +145,6 @@
 				<configuration>
 					<moduleName>io.crs.hsys.FroModuleProd</moduleName>
 					<moduleShortName>fro_module</moduleShortName>
-
-					<classpathScope>compile+runtime</classpathScope>
-					<launcherDir>${fro-gwt-directory}</launcherDir>
-					<warDir>${fro-gwt-directory}</warDir>
-					<webappDirectory>${fro-gwt-directory}</webappDirectory>
-
 				</configuration>
 			</plugin>
 		</plugins>

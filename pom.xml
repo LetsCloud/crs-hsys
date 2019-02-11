@@ -533,9 +533,9 @@
 							<arg>-XcompilerMetrics</arg>
 						</compilerArgs>
 						<classpathScope>compile+runtime</classpathScope>
-						<launcherDir>${cfg-gwt-directory}</launcherDir>
-						<warDir>${cfg-gwt-directory}</warDir>
-						<webappDirectory>${cfg-gwt-directory}</webappDirectory>
+						<launcherDir>${server-target-directory}</launcherDir>
+						<warDir>${server-target-directory}</warDir>
+						<webappDirectory>${server-target-directory}</webappDirectory>
 					</configuration>
 				</plugin>
 

@@ -4,11 +4,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
 
+<meta name="theme-color" content="#607d8b" />
+
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<title>HostWare FRO</title>
+<title>HostWare CFG</title>
 
-<link rel="manifest" href="manifest.json" />
+<link rel="manifest" href="cfg-manifest/manifest.json" />
+
 <style>
 #splashscreen {
 	top: 0;
@@ -16,7 +19,7 @@
 	right: 0;
 	bottom: 0;
 	position: fixed;
-	background: #e57373 !important;
+	background: #78909c !important;
 	-webkit-flex-align: center;
 	-ms-flex-align: center;
 	-webkit-align-items: center;
@@ -53,12 +56,13 @@
 	font-weight: 200
 }
 </style>
+
 </head>
 <body>
 	<!-- Splash screen -->
 	<div id="splashscreen">
 		<div id="splashcontent">
-			<img src="launcher4x.png" /><span class="title">HostWare
+			<img src="/cfg-manifest/launcher4x.png" /><span class="title">HostWare
 				Cloud</span> <span class="description">Loading ...</span>
 			<div class="progress">
 				<div class="indeterminate"></div>
@@ -66,13 +70,13 @@
 		</div>
 	</div>
 
-	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
-		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
-
 	<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase-app.js"></script>
 	<script
 		src="https://www.gstatic.com/firebasejs/5.7.1/firebase-messaging.js"></script>
-	<!-- RECOMMENDED if your web app will not function without JavaScript enabled  -->
+
+	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+	<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
 	<noscript>
 		<div
 			style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
@@ -80,7 +84,7 @@
 			application to display correctly.</div>
 	</noscript>
 
-	<script src="fro_module/fro_module.nocache.js" async defer></script>
+	<script src="cfg_module/cfg_module.nocache.js" async defer></script>
 
 </body>
 </html>

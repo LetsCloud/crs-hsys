@@ -1,6 +1,6 @@
 {
-  "name": "HostWare CFG",
-  "short_name": "CFG",
+  "name": "HostWare INF",
+  "short_name": "INF",
   "icons": [
     {
       "src": "launcher1x.png",
@@ -23,10 +23,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/cfg/start.html",
+  "start_url": "/inf.html",
   "display": "fullscreen",
-  "background_color": "#90a4ae",
-  "theme_color": "#607d8b",
+  "background_color": "#ffcc80",
+  "theme_color": "#ff9800",
   
   "gcm_sender_id": "103953800507"
 }

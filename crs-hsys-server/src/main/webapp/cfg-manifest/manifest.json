@@ -1,6 +1,6 @@
 {
-  "name": "HostWare FRO",
-  "short_name": "FRO",
+  "name": "HostWare CFG",
+  "short_name": "CFG",
   "icons": [
     {
       "src": "launcher1x.png",
@@ -23,10 +23,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/fro/start.html",
+  "start_url": "../cfg.html",
   "display": "fullscreen",
-  "background_color": "#f48fb1",
-  "theme_color": "#e91e63",
+  "background_color": "#90a4ae",
+  "theme_color": "#607d8b",
   
   "gcm_sender_id": "103953800507"
 }

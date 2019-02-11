@@ -145,15 +145,6 @@
 				<configuration>
 					<moduleName>io.crs.hsys.KipModuleProd</moduleName>
 					<moduleShortName>kip_module</moduleShortName>
-
-
-					<classpathScope>compile+runtime</classpathScope>
-					<launcherDir>${kip-gwt-directory}</launcherDir>
-					<warDir>${kip-gwt-directory}</warDir>
-					<webappDirectory>${kip-gwt-directory}</webappDirectory>
-
-
-
 				</configuration>
 			</plugin>
 		</plugins>

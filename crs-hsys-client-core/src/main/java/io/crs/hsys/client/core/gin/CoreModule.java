@@ -36,8 +36,8 @@ import io.crs.hsys.shared.api.GlobalConfigResource;
 public class CoreModule extends AbstractPresenterModule {
 	private static Logger logger = Logger.getLogger(CoreModule.class.getName());
 
-//	private static final String SW_PATH="service-worker.js";
-	private static final String SW_PATH = "../service-worker.js";
+	private static final String SW_PATH="service-worker.js";
+	//	private static final String SW_PATH = "../service-worker.js";
 
 	@Override
 	protected void configure() {

@@ -13,7 +13,7 @@ public class UrlUtils {
 
 	public static String getBaseUrl() {
 		String baseUrl = GWT.getHostPageBaseURL();
-		int shortening = (baseUrl.endsWith("/")) ? 5 : 4;
+		int shortening = (baseUrl.endsWith("/")) ? 1 : 0;
 		return baseUrl.substring(0, baseUrl.length() - shortening);
 	}
 	

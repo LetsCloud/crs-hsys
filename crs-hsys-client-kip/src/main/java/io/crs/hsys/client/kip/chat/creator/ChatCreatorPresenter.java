@@ -40,7 +40,7 @@ public class ChatCreatorPresenter extends PresenterWidget<ChatCreatorPresenter.M
 		implements ChatCreatorUiHandlers {
 	private static Logger logger = Logger.getLogger(ChatCreatorPresenter.class.getName());
 
-	private final static String HOST_PAGE = "start.html";
+	private final static String HOST_PAGE = "kip.html";
 
 	public interface MyView extends View, HasUiHandlers<ChatCreatorUiHandlers> {
 		void open(MaterialWidget widget);

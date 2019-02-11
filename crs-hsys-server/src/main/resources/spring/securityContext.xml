@@ -126,9 +126,10 @@
 		<intercept-url pattern="/static/**" access="permitAll" />
 
 		<intercept-url pattern="/**" access="authenticated" />
-		<intercept-url pattern="/launchboard*" access="authenticated" />
+		<intercept-url pattern="/launchboard*"
+			access="authenticated" />
 
-		<intercept-url pattern="/kip/start.html"
+		<intercept-url pattern="/kip.html"
 			access="authenticated" />
 		<intercept-url pattern="/kip-manifest/**"
 			access="authenticated" />
@@ -142,16 +143,18 @@
 		<intercept-url pattern="/fro_module/**"
 			access="authenticated" />
 
-		<intercept-url pattern="/cfg/start.html"
+		<intercept-url pattern="/cfg.html"
 			access="authenticated" />
-		<intercept-url pattern="/cfg/**" access="authenticated" />
-		<intercept-url pattern="/cfg/cfg_module/**"
+		<intercept-url pattern="/cfg-manifest/**"
+			access="authenticated" />
+		<intercept-url pattern="/cfg_module/**"
 			access="authenticated" />
 
-		<intercept-url pattern="/inf/start.html"
+		<intercept-url pattern="/inf.html"
 			access="authenticated" />
-		<intercept-url pattern="/inf/**" access="authenticated" />
-		<intercept-url pattern="/inf/inf_module/**"
+		<intercept-url pattern="/inf-manifest/**"
+			access="authenticated" />
+		<intercept-url pattern="/inf_module/**"
 			access="authenticated" />
 
 		<http-basic />
