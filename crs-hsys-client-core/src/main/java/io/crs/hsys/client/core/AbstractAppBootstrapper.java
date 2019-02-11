@@ -30,6 +30,7 @@ import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.core.util.Base64Utils;
+import io.crs.hsys.client.core.util.UrlUtils;
 import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
@@ -205,16 +206,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				logger.info("AbstractAppPresenter().checkCurrentUser().onFailure()->caught.getMessage()="
 						+ caught.getMessage());
 
-				String baseUrl = GWT.getHostPageBaseURL();
-				logger.log(Level.INFO, "getApplicationPath()->baseUrl=" + baseUrl);
-
-				if (baseUrl.endsWith("/")) {
-					baseUrl = baseUrl.substring(0, baseUrl.length() - 5);
-					logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
-				} else {
-					baseUrl = baseUrl.substring(0, baseUrl.length() - 4);
-					logger.log(Level.INFO, "if (baseUrl.endsWith(/))->baseUrl=" + baseUrl);
-				}
+				String baseUrl = UrlUtils.getBaseUrl();
 
 				String pathString = Window.Location.getPath() + Window.Location.getHash();
 				String pathB64 = Base64Utils.toBase64(pathString.getBytes());

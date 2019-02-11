@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
@@ -30,6 +29,7 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialImage;
 import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.core.util.UrlUtils;
 import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDto;
@@ -128,7 +128,7 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 		if (dto.getPicture() != null) {
 			setImageUrl(dto.getPicture());
 		} else {
-			setImageUrl(GWT.getHostPageBaseURL() + "image/user_plus.jpeg");
+			setImageUrl(UrlUtils.getImageUrl() + "user_plus.jpeg");
 		}
 
 		setDefHotelCombo(dto.getAvailableHotels());
@@ -178,52 +178,52 @@ public class AppUserEditorView extends ViewWithUiHandlers<AppUserEditorUiHandler
 
 	@UiHandler("directorLink")
 	public void onDirectorClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/director.png");
+		setImageUrl(UrlUtils.getImageUrl() + "director.png");
 	}
 
 	@UiHandler("financeLink")
 	public void onFinanceClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/finance2.png");
+		setImageUrl(UrlUtils.getImageUrl() + "finance2.png");
 	}
 
 	@UiHandler("salesLink")
 	public void onSalesClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/sales.png");
+		setImageUrl(UrlUtils.getImageUrl() + "sales.png");
 	}
 
 	@UiHandler("fomLink")
 	public void onFomClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/fom.png");
+		setImageUrl(UrlUtils.getImageUrl() + "fom.png");
 	}
 
 	@UiHandler("recLink")
 	public void onRecClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/receptionist.png");
+		setImageUrl(UrlUtils.getImageUrl() + "receptionist.png");
 	}
 
 	@UiHandler("fandbLink")
 	public void onFandbClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/fandb.png");
+		setImageUrl(UrlUtils.getImageUrl() + "fandb.png");
 	}
 
 	@UiHandler("eHousekeeperLink")
 	public void onEhkClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/e_housekeeper.png");
+		setImageUrl(UrlUtils.getImageUrl() + "e_housekeeper.png");
 	}
 
 	@UiHandler("housekeeper1Link")
 	public void onHk1Click(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/housekeeper1.png");
+		setImageUrl(UrlUtils.getImageUrl() + "housekeeper1.png");
 	}
 
 	@UiHandler("housekeeper2Link")
 	public void onHk2Click(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/housekeeper2_2.png");
+		setImageUrl(UrlUtils.getImageUrl() + "housekeeper2_2.png");
 	}
 
 	@UiHandler("maintenanceLink")
 	public void onMaintenanceClick(ClickEvent event) {
-		setImageUrl(GWT.getHostPageBaseURL() + "image/maintenance.png");
+		setImageUrl(UrlUtils.getImageUrl() + "maintenance.png");
 	}
 
 	private void setImageUrl(String url) {

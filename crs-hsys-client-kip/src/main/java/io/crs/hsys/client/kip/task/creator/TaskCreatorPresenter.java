@@ -157,7 +157,7 @@ public class TaskCreatorPresenter extends PresenterWidget<TaskCreatorPresenter.M
 	}
 
 	private String createMeaasgeUrl(PlaceRequest placeRequest) {
-		return GWT.getHostPageBaseURL() + "kip.html#" + placeManager.buildHistoryToken(placeRequest);
+		return GWT.getHostPageBaseURL() + "start.html#" + placeManager.buildHistoryToken(placeRequest);
 
 	}
 }
