@@ -157,7 +157,7 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView>
 
 	@Override
 	public void logout() {
-		final String baseUrl = UrlUtils.getImageUrl();
+		final String baseUrl = UrlUtils.getBaseUrl();
 		
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, baseUrl + LOGOUT_URL);
 

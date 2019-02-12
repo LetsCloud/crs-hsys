@@ -25,7 +25,7 @@
 	],
 	"start_url": "/kip/start.html",
 	"display": "fullscreen",
-	"background_color": "#2196f3",
-	"theme_color": "#1565c0",
+	"background_color": "#81d4fa",
+	"theme_color": "#03a9f4",
 	"gcm_sender_id": "103953800507"
 }
