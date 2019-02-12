@@ -170,6 +170,33 @@
 				</configuration>
 			</plugin>
 
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>target/${server-artifactId}-${project.version}</directory>
+							<includes>
+								<directory>gwt-unitCache/**</directory>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+				</configuration>
+				<executions>
+					<execution>
+						<id>gwt-unitCache</id>
+						<phase>install</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>

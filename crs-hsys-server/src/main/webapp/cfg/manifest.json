@@ -25,7 +25,7 @@
   ],
   "start_url": "/cfg/start.html",
   "display": "fullscreen",
-  "background_color": "#90a4ae",
+  "background_color": "#b0bec5",
   "theme_color": "#607d8b",
   
   "gcm_sender_id": "103953800507"
