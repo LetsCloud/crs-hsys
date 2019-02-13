@@ -1,0 +1,119 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html"
+	xmlns:incubator="urn:import:gwt.material.design.incubator.client">
+
+	<ui:style>
+	.panelStyle {
+		position: relative;
+		margin: 0.5rem 0 1rem 0;
+	}
+	
+	.frameStyle {
+		padding: 10px;
+		background: #f5f5f5;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+			rgba(0, 0, 0, 0.12);
+	}
+	
+	.sumRowStyle {
+		margin-bottom: 10px;
+	}
+	
+	.titleStyle {
+		color: #616161;
+		font-weight: bold;
+	}
+	
+	.iconCellStyle {
+		padding: 0px !important;
+	}
+	
+	.sumValueStyle {
+		margin-top: 10px;
+		text-align: center;
+		color: #616161;
+		font-size: 30px;
+	}
+	
+	.partRowStyle {
+		border-top: 1px solid #e0e0e0;
+		padding-top: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.partCellStyle {
+		padding: 0px !important;
+	}
+	
+	.partTitleStyle {
+		text-align: center;
+		color: #616161;
+	}
+	
+	.partValueStyle {
+		text-align: center;
+		color: #616161;
+		font-size: 24px;
+	}
+	
+	.clearBoth {
+		clear: both;
+	}
+	
+	.floatLeft {
+		float: left;
+	}
+	
+	.floatRight {
+		float: right;
+	}
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<g:HTMLPanel addStyleNames="{style.panelStyle}">
+		<m.html:Div ui:field="frame"
+			addStyleNames="{style.frameStyle}">
+
+			<g:Label ui:field="title" addStyleNames="{style.titleStyle}" />
+
+			<m:MaterialRow addStyleNames="{style.sumRowStyle}">
+				<m:MaterialColumn grid="s3"
+					addStyleNames="{style.iconCellStyle}">
+					<m:MaterialIcon ui:field="icon" iconSize="MEDIUM"
+						float="LEFT" />
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s9">
+					<g:Label ui:field="sumValue"
+						addStyleNames="{style.sumValueStyle}" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
+
+			<m:MaterialRow addStyleNames="{style.partRowStyle}">
+				<m:MaterialColumn grid="s4"
+					addStyleNames="{style.partCellStyle}">
+					<g:Label ui:field="partTitle1"
+						addStyleNames="{style.partTitleStyle}" />
+					<g:Label ui:field="partValue1"
+						addStyleNames="{style.partValueStyle}" />
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s4"
+					addStyleNames="{style.partCellStyle}">
+					<g:Label ui:field="partTitle2"
+						addStyleNames="{style.partTitleStyle}" />
+					<g:Label ui:field="partValue2"
+						addStyleNames="{style.partValueStyle}" />
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s4"
+					addStyleNames="{style.partCellStyle}">
+					<g:Label ui:field="partTitle3"
+						addStyleNames="{style.partTitleStyle}" />
+					<g:Label ui:field="partValue3"
+						addStyleNames="{style.partValueStyle}" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
+		</m.html:Div>
+	</g:HTMLPanel>
+</ui:UiBinder> 
