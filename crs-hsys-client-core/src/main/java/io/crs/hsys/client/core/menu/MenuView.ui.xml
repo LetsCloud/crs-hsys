@@ -84,7 +84,22 @@
 				activates="sideBar">
 
 				<g:SimplePanel ui:field="navBarSlot" />
-
+				
+				<m:MaterialNavSection hideOn="NONE"
+					float="RIGHT">
+					
+					<m:MaterialLink href="#" iconPosition="NONE"
+						iconType="NOTIFICATIONS" layoutPosition="RELATIVE">
+						<m:MaterialBadge text="2" backgroundColor="PINK"
+							textColor="WHITE" circle="true" />
+					</m:MaterialLink>
+					
+					<m:MaterialLink href="#" iconPosition="NONE"
+						iconType="ASSIGNMENT_LATE" layoutPosition="RELATIVE">
+						<m:MaterialBadge text="2" backgroundColor="PINK"
+							textColor="WHITE" circle="true" />
+					</m:MaterialLink>
+				</m:MaterialNavSection>
 			</m:MaterialNavBar>
 		</m:MaterialHeader>
 
@@ -102,9 +117,9 @@
 
 				<!-- accountLink -->
 				<m:MaterialLink ui:field="accountLink"
-					activates="accountDropDown"
-					iconType="ACCOUNT_BALANCE" iconPosition="LEFT"
-					textColor="GREY_LIGHTEN_5" addStyleNames="{style.clearBoth}" />
+					activates="accountDropDown" iconType="ACCOUNT_BALANCE"
+					iconPosition="LEFT" textColor="GREY_LIGHTEN_5"
+					addStyleNames="{style.clearBoth}" />
 
 				<!-- accountDropDown -->
 				<m:MaterialDropDown ui:field="accountDropDown"
@@ -139,7 +154,7 @@
 				</m.html:Div>
 			</ma:sideprofile.MaterialSideProfile>
 		</m:MaterialSideNavPush>
-		
+
 		<!-- userDropDown -->
 		<m:MaterialDropDown ui:field="userDropDown"
 			activator="userDropDown" constrainWidth="false">
