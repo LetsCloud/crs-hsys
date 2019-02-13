@@ -50,7 +50,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire("Műszerfal", "Gondoknők részére", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire("Műszerfal", "Gondnoknők részére", MenuItemType.MENU_ITEM, this);
 		getView().showCards();
 	}
 
