@@ -75,7 +75,7 @@ public class TaskDisplay extends Composite {
 	Label time;
 
 	@UiField
-	MaterialLink startLink, pauseLink, closeLink, reassignLink, editTask, deleteLink;
+	MaterialLink startLink, closeLink, editTask, deleteLink;
 
 	/**
 	 */
@@ -148,7 +148,7 @@ public class TaskDisplay extends Composite {
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.BLUE);
 			
-			pauseLink.setDisplay(Display.BLOCK);
+//			pauseLink.setDisplay(Display.BLOCK);
 			closeLink.setDisplay(Display.BLOCK);
 			break;
 		case DEFFERED:

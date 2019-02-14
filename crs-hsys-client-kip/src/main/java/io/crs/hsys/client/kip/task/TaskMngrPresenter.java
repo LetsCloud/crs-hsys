@@ -28,6 +28,7 @@ import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.resources.KipGssResources;
 
 /**
@@ -50,15 +51,17 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	private KipGssResources res;
 	private AppUserDataSource appUserDataSource;
 	private CurrentUser currentUser;
+	private KipMessages i18n;
 
 	@Inject
 	TaskMngrPresenter(EventBus eventBus, MyView view, MyProxy proxy, KipGssResources res,
-			AppUserDataSource appUserDataSource, CurrentUser currentUser) {
+			AppUserDataSource appUserDataSource, CurrentUser currentUser, KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
 		this.res = res;
 		this.appUserDataSource = appUserDataSource;
 		this.currentUser = currentUser;
+		this.i18n = i18n;
 		getView().setUiHandlers(this);
 	}
 
@@ -70,7 +73,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire("Task Manager", "", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire(i18n.mainMenuItemTasks(), "Hajrá!", MenuItemType.MENU_ITEM, this);
 
 		loadTasks();
 	}

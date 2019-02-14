@@ -88,13 +88,13 @@
 				<m:MaterialNavSection hideOn="NONE"
 					float="RIGHT">
 					
-					<m:MaterialLink href="#" iconPosition="NONE"
-						iconType="NOTIFICATIONS" layoutPosition="RELATIVE">
+					<m:MaterialLink href="#/chatRoom" iconPosition="NONE"
+						iconType="FORUM" layoutPosition="RELATIVE">
 						<m:MaterialBadge text="2" backgroundColor="PINK"
 							textColor="WHITE" circle="true" />
 					</m:MaterialLink>
 					
-					<m:MaterialLink href="#" iconPosition="NONE"
+					<m:MaterialLink href="#/taskMngr" iconPosition="NONE"
 						iconType="ASSIGNMENT_LATE" layoutPosition="RELATIVE">
 						<m:MaterialBadge text="2" backgroundColor="PINK"
 							textColor="WHITE" circle="true" />

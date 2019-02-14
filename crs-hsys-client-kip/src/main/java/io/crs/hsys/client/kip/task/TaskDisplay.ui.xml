@@ -90,22 +90,24 @@
 					activator="dp-3" constrainWidth="false">
 
 					<m:MaterialLink ui:field="startLink" text="Start" iconType="PLAY_ARROW"
-						iconPosition="LEFT" separator="true" enabled="false" />
-
-					<m:MaterialLink ui:field="pauseLink" text="Pause" iconType="PAUSE"
-						iconPosition="LEFT" separator="true" enabled="false" />
-
-					<m:MaterialLink ui:field="closeLink" text="Close" iconType="CHECK"
-						iconPosition="LEFT" separator="true" enabled="false" />
-
-					<m:MaterialLink ui:field="reassignLink" text="Reassign" iconType="SYNC"
 						iconPosition="LEFT" separator="true" />
+<!-- 
+					<m:MaterialLink ui:field="pauseLink" text="Pause" iconType="PAUSE"
+						iconPosition="LEFT" separator="true" visible="false" />
+ -->
+					<m:MaterialLink ui:field="closeLink" text="Close" iconType="CHECK"
+						iconPosition="LEFT" separator="true" />
+
+<!-- 
+					<m:MaterialLink ui:field="reassignLink" text="Reassign" iconType="SYNC"
+						iconPosition="LEFT" separator="true" visible="false" />
+ -->
 
 					<m:MaterialLink ui:field="editTask" text="Modify"
 						iconType="EDIT" iconPosition="LEFT" separator="true" />
 						
 					<m:MaterialLink ui:field="deleteLink" text="Delete" iconType="DELETE"
-						iconPosition="LEFT" separator="true" enabled="false" />
+						iconPosition="LEFT" separator="true" />
 				</m:MaterialDropDown>
 			</m:MaterialColumn>
 		</m:MaterialRow>
