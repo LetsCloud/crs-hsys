@@ -19,6 +19,7 @@ import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.animate.MaterialAnimation;
 import gwt.material.design.client.ui.animate.Transition;
+import io.crs.hsys.client.kip.dashboard.widget.MultiMeasureCard;
 
 /**
  * @author CR
