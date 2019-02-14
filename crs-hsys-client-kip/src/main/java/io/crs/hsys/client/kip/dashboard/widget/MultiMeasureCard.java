@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.dashboard;
+package io.crs.hsys.client.kip.dashboard.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
