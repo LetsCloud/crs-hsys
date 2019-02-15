@@ -4,14 +4,10 @@
 package io.crs.hsys.shared.dto.menu;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
-import io.crs.hsys.shared.dto.hotel.RoomDto;
 
 /**
  * @author CR
@@ -33,6 +29,20 @@ public class MenuItemDto extends AccountChildDto {
 	private List<MenuItemDto> items = new ArrayList<MenuItemDto>();
 
 	private List<MenuItemParamDto> params = new ArrayList<MenuItemParamDto>();
+
+	public MenuItemDto() {
+	}
+
+	public MenuItemDto(Builder<?> builder) {
+		super(builder);
+		index = builder.index;
+		type = builder.type;
+		icon = builder.icon;
+		text = builder.text;
+		nameToken = builder.nameToken;
+		items = builder.items;
+		params = builder.params;
+	}
 
 	public Integer getIndex() {
 		return index;
@@ -100,14 +110,7 @@ public class MenuItemDto extends AccountChildDto {
 				+ this.text + ", nameToken=" + this.nameToken + super.toString() + "]";
 	}
 
-	@JsonIgnore
-	public static Comparator<RoomDto> ORDER_BY_CODE = new Comparator<RoomDto>() {
-		public int compare(RoomDto one, RoomDto other) {
-			return one.getCode().compareTo(other.getCode());
-		}
-	};
-
-	public static class Builder {
+	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
 
 		private Integer index;
 		private MenuItemType type;
@@ -118,52 +121,60 @@ public class MenuItemDto extends AccountChildDto {
 		private List<MenuItemParamDto> params = new ArrayList<MenuItemParamDto>();
 		private Integer itemIndex = 0;
 
-		public Builder index(Integer index) {
+		public T index(Integer index) {
 			this.index = index;
-			return this;
+			return self();
 		}
 
-		public Builder type(MenuItemType type) {
+		public T type(MenuItemType type) {
 			this.type = type;
-			return this;
+			return self();
 		}
 
-		public Builder icon(String icon) {
+		public T icon(String icon) {
 			this.icon = icon;
-			return this;
+			return self();
 		}
 
-		public Builder text(String text) {
+		public T text(String text) {
 			this.text = text;
-			return this;
+			return self();
 		}
 
-		public Builder nameToken(String nameToken) {
+		public T nameToken(String nameToken) {
 			this.nameToken = nameToken;
-			return this;
+			return self();
 		}
 
-		public Builder addItem(MenuItemDto item) {
+		public T addItem(MenuItemDto item) {
 			item.setIndex(itemIndex++);
 			this.items.add(item);
-			return this;
+			return self();
 		}
 
-		public Builder addParam(MenuItemParamDto param) {
+		public T addParam(MenuItemParamDto param) {
 			this.params.add(param);
-			return this;
+			return self();
 		}
 
 		public MenuItemDto build() {
-			MenuItemDto object = new MenuItemDto();
-			object.setIndex(index);
-			object.setType(type);
-			object.setIcon(icon);
-			object.setText(text);
-			object.setNameToken(nameToken);
-			object.setItems(items);
-			object.setParams(params);
-			return object;
+			return new MenuItemDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 }

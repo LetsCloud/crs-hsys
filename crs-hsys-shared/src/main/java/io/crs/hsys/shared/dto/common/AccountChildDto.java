@@ -65,7 +65,7 @@ public class AccountChildDto extends BaseDto {
 	 * @author robi
 	 *
 	 */
-	protected static class Builder2 extends Builder<Builder2> {
+	private static class Builder2 extends Builder<Builder2> {
 		@Override
 		protected Builder2 self() {
 			return this;
