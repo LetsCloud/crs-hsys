@@ -17,5 +17,12 @@
 			widget names. The ui:field attribute binds an element to a field in the owner 
 			class. See the GWT docs on UI Binder for more details. -->
 		<kip.ui:TaskCollapsible ui:field="collapsible" />
+
+
+		<m:MaterialFAB>
+			<m:MaterialButton ui:field="addButton"
+				type="FLOATING" backgroundColor="BLUE" iconType="ADD" size="LARGE" />
+		</m:MaterialFAB>
+		
 	</g:HTMLPanel>
 </ui:UiBinder> 
