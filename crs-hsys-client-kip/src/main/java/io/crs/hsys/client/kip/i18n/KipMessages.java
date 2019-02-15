@@ -67,6 +67,15 @@ public interface KipMessages extends Messages {
 	String mainMenuItemConsumption();
 
 	// ************
+	// Beállítások
+	// ************
+	@DefaultMessage("Beállítások")
+	String mainMenuGroupConfig();
+
+	@DefaultMessage("Housekeeping")
+	String mainMenuItemHousekeepingConfig();
+
+	// ************
 	// Maintenance
 	// ************
 

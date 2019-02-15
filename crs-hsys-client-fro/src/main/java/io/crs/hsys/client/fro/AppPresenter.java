@@ -69,31 +69,31 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		List<MenuItemDto> menuItems = new ArrayList<MenuItemDto>();
 
 		// Dashboard menu item
-		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM)
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
 				.icon(IconType.DASHBOARD.name()).text(i18n.mainMenuItemDashboard()).nameToken(NameTokens.HOME).build());
 
 		// Reservation menu item
-		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM)
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
 				.icon(IconType.EVENT_AVAILABLE.name()).text(i18n.mainMenuItemReservation())
 				.nameToken(NameTokens.RESERVATION).build());
 
 		// Chat Room menu item
-		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
 				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CHAT_ROOM).build());
 
 		// Tasks menu item
 
 		// Chat Room menu item
 		menuItems.add(
-				new MenuItemDto.Builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.ASSIGNMENT.name())
+				MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.ASSIGNMENT.name())
 						.text(i18n.mainMenuItemTasks()).nameToken(NameTokens.TASK_MNGR).build());
 
 		// Assignment menu group
-		menuItems.add(new MenuItemDto.Builder().index(index++).type(MenuItemType.SUB_MENU)
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.SUB_MENU)
 				.icon(IconType.ASSIGNMENT_RETURNED.name()).text(i18n.mainMenuGroupAssignment())
-				.addItem(new MenuItemDto.Builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemRoomAssignment())
+				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemRoomAssignment())
 						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
-				.addItem(new MenuItemDto.Builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemAreaAssignment())
+				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemAreaAssignment())
 						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
 				.build());
 

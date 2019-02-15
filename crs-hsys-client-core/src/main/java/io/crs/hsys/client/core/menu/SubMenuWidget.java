@@ -13,7 +13,6 @@ import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.html.UnorderedList;
-
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 
 /**
