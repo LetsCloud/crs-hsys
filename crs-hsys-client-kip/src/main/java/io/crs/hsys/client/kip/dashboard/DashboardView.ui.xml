@@ -6,14 +6,14 @@
 
 	<ui:style>
 	.rowCards {
-		opacity: 0;
+/*		opacity: 0; */
 		padding: 20px;
 	}
 	</ui:style>
 	
 	<g:HTMLPanel>
 		<m:MaterialRow ui:field="rowCards"
-			layoutPosition="RELATIVE" addStyleNames="{style.rowCards}">
+			addStyleNames="{style.rowCards}"> <!-- layoutPosition="RELATIVE"  -->
 		</m:MaterialRow>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -18,6 +18,10 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
+	
+	@DefaultMessage("Dashboard")
+	String mainMenuItemDashboardMaintenance();
+
 	// *********
 	// Chat Room
 	// *********
@@ -82,6 +86,17 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Maintenance")
 	String mainMenuGroupMaintenance();
 
+	
+	/*
+	 * DASHBOARD
+	 */
+	@DefaultMessage("Maintenance")
+	String dashboardSubtitle();
+
+	@DefaultMessage("Maintenance")
+	String dashboardMaintenanceSubtitle();
+
+	
 	/*
 	 * CHAT ROOM
 	 */
