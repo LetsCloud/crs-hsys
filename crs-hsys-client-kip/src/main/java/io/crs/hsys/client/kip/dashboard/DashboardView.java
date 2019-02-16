@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.kip.dashboard;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +20,9 @@ import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.animate.MaterialAnimation;
 import gwt.material.design.client.ui.animate.Transition;
+import io.crs.hsys.client.kip.dashboard.widget.ListMeasureCard;
 import io.crs.hsys.client.kip.dashboard.widget.MultiMeasureCard;
+import io.crs.hsys.shared.dto.hk.MaintenanceSumDto;
 
 /**
  * @author CR
@@ -38,6 +41,16 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 	DashboardView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		logger.log(Level.INFO, "DashboardView");
+	}
+
+	public void addCard(Widget card) {
+		MaterialColumn column = new MaterialColumn(12, 6, 4);
+		column.add(card);
+		rowCards.add(column);
+	}
+
+	@Override
+	public void showCards() {
 
 		MultiMeasureCard dirtyRooms2 = new MultiMeasureCard();
 		dirtyRooms2.setTitleText("Piszkos szobák");
@@ -116,16 +129,24 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		tasks2.setPartTitle3("Vár");
 		tasks2.setPartValue3("110");
 		addCard(tasks2);
-	}
 
-	public void addCard(Widget card) {
-		MaterialColumn column = new MaterialColumn(12, 6, 4);
-		column.add(card);
-		rowCards.add(column);
+		new MaterialAnimation().transition(Transition.SHOW_GRID).animate(rowCards);
 	}
 
 	@Override
-	public void showCards() {
-		new MaterialAnimation().transition(Transition.SHOW_GRID).animate(rowCards);
+	public void showChiefEngBoard(List<MaintenanceSumDto> data, List<MaintenanceSumDto> data2) {
+
+		MaterialColumn column = new MaterialColumn(12, 6, 8);
+		column.add(new ListMeasureCard(data, "NYITOTT ÉS LEJÁRT FELADATOK", IconType.ASSIGNMENT, "s12 m12 l6"));
+		rowCards.add(column);
+
+		MaterialColumn column2 = new MaterialColumn(12, 6, 4);
+		column2.add(new ListMeasureCard(data2, "FELADAT ÖSSZESÍTŐ FELELŐSÖNKÉNT", IconType.ASSIGNMENT_IND, "s12"));
+		rowCards.add(column2);
+
+//		new MaterialAnimation().transition(Transition.SHOW_GRID).animate(rowCards);
+
+		// TODO Auto-generated method stub
+
 	}
 }

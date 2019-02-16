@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	.basePanel {
+		margin-top: 5px;
+		margin-bottom: 15px;
+		border-left: 2px solid #2196f3;
+	}
+	
+	.titleRow {
+		font-weight: bold;
+		margin-bottom: 5px !important;
+	}
+	
+	.valueStyle {
+		text-align: center;
+	}
+	
+	.listPanel {
+		margin-left: 5px;
+		padding-left: 5px;
+		padding-top: 10px;
+		border-top: 1px solid #e0e0e0;
+	}
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<m:MaterialPanel addStyleNames="{style.basePanel}">
+		<m:MaterialRow addStyleNames="{style.titleRow}">
+			<m:MaterialColumn grid="s8">
+				<g:Label ui:field="title" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s4">
+				<g:Label ui:field="value" addStyleNames="{style.valueStyle}" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m.html:Div ui:field="listPanel"
+			addStyleNames="{style.listPanel}" />
+	</m:MaterialPanel>
+</ui:UiBinder> 

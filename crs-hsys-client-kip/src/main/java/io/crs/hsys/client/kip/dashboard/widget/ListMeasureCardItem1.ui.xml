@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	.titleRow {
+		margin-bottom: 5px !important;
+	}
+	
+	.valueStyle {
+		text-align: center;
+	}
+	</ui:style>
+
+	<m:MaterialRow addStyleNames="{style.titleRow}">
+		<m:MaterialColumn grid=" s8 ">
+			<!-- <g:Label ui:field="title" /> -->
+			<m:MaterialButton ui:field="title" textColor="BLACK"
+				type="FLAT" waves="DEFAULT" />
+		</m:MaterialColumn>
+		<m:MaterialColumn grid="s4">
+			<g:Label ui:field="value" addStyleNames="{style.valueStyle}" />
+		</m:MaterialColumn>
+	</m:MaterialRow>
+</ui:UiBinder> 

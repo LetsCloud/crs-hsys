@@ -107,7 +107,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 		// Dashboard menu item
 		menuItems.add(MenuItemDto.builder().index(1).type(MenuItemType.MENU_ITEM).icon(IconType.DASHBOARD.name())
-				.text(i18n.mainMenuItemDashboard()).nameToken(KipNameTokens.HOME).build());
+				.text("Műszerfal").nameToken(KipNameTokens.HOME).build());
 
 		// Tasks menu item
 		menuItems.add(MenuItemDto.builder().index(2).type(MenuItemType.MENU_ITEM).icon(IconType.ASSIGNMENT.name())
