@@ -14,7 +14,7 @@ import io.crs.hsys.client.kip.chat.creator.ChatCreatorModule;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorModule;
 import io.crs.hsys.client.kip.chat.list.ChatListModule;
 import io.crs.hsys.client.kip.dashboard.DashboardModule;
-import io.crs.hsys.client.kip.filter.FilterModule;
+import io.crs.hsys.client.kip.filter.KipFilterModule;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayModule;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusModule;
 import io.crs.hsys.client.kip.roomstatus.filter.RoomStatusFilterModule;
@@ -22,6 +22,9 @@ import io.crs.hsys.client.kip.roomstatus.list.RoomStatusListModule;
 import io.crs.hsys.client.kip.search.SearchModule;
 import io.crs.hsys.client.kip.task.TaskMngrModule;
 import io.crs.hsys.client.kip.task.creator.TaskCreatorModule;
+import io.crs.hsys.client.core.config.hotel.HotelConfigModule;
+import io.crs.hsys.client.core.config.system.SystemConfigModule;
+import io.crs.hsys.client.core.filter.FilterModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 
 /**
@@ -49,10 +52,16 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new ChatCreatorModule());
 		install(new ChatEditorModule());
 		install(new TaskMngrModule());
-		install(new FilterModule());
+		install(new KipFilterModule());
 		install(new SearchModule());
 		install(new GuestRoomBrowserModule());
 		install(new TaskCreatorModule());
+		
+		install(new SystemConfigModule());
+		install(new HotelConfigModule());
+
+		install(new FilterModule());
+
 		/*
 		 * install(new UserListModule()); install(new RoleListModule()); install(new
 		 * HotelListModule());

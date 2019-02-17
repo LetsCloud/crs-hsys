@@ -135,7 +135,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 			getView().createReceptionistDashboard();
 			break;
 		case UP_ADMIN:
-			getView().showCards();
+			getView().createReceptionistDashboard();
 			break;
 		default:
 			getView().showCards();

@@ -22,7 +22,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
-import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenter;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenterFactory;
@@ -72,7 +72,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 
 	@Inject
 	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, SearchPresenterFactory searchFactory,
-			FilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory) {
+			KipFilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 

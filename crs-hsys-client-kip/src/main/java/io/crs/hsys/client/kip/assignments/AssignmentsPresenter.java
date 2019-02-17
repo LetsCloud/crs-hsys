@@ -35,7 +35,7 @@ import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorFactory;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorPresenter;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetPresenter;
-import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
@@ -68,7 +68,7 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 
 	@Inject
 	AssignmentsPresenter(EventBus eventBus, MyView view, MyProxy proxy, AssignmentWidgetFactory assignmentWidgetFactory,
-			AssignmentEditorFactory assignmentEditFactory, KipMessages i18n, FilterPresenterFactory filterPresenterFactory) {
+			AssignmentEditorFactory assignmentEditFactory, KipMessages i18n, KipFilterPresenterFactory filterPresenterFactory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "AssignmentsPresenter()");
 

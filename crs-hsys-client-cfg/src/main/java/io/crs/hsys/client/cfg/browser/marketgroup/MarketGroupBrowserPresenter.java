@@ -16,10 +16,10 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.cfg.filter.FilterPresenterFactory;
-import io.crs.hsys.client.cfg.filter.hotelchild.HotelChildFilterPresenter;
 import io.crs.hsys.client.cfg.meditor.marketgroup.MarketGroupEditorFactory;
 import io.crs.hsys.client.cfg.meditor.marketgroup.MarketGroupEditorPresenter;
+import io.crs.hsys.client.core.filter.FilterPresenterFactory;
+import io.crs.hsys.client.core.filter.hotelchild.HotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;

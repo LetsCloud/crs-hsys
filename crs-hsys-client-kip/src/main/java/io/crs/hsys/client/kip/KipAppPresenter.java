@@ -17,6 +17,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
 import gwt.material.design.client.constants.IconType;
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
@@ -195,11 +196,14 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	 * @return
 	 */
 	private List<MenuItemDto> createAdminstratorMenu(List<MenuItemDto> menuItems) {
-		MenuItemDto configs = addConfigMenuItem(menuItems, 7);
+		addDashboardMenuItem(menuItems, 1);
+		
+		MenuItemDto configs = addConfigMenuItem(menuItems, 1);
 		addUserConfigMenuItem(configs, 1);
 		addHotelConfigMenuItem(configs, 2);
 		addHousekeepingConfigMenuItem(configs, 3);
 		addMaintenaceConfigMenuItem(configs, 4);
+		
 		return menuItems;
 	}
 
@@ -260,12 +264,12 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	private void addUserConfigMenuItem(MenuItemDto group, Integer index) {
 		addMenuItem(group.getItems(), MenuItemCode.USER_CONFIG, index, MenuItemType.MENU_ITEM, null,
-				i18n.mainMenuItemUsersConfig(), KipNameTokens.USER_CONFIG);
+				i18n.mainMenuItemUsersConfig(), CoreNameTokens.SYSTEM_CONFIG);
 	}
 
 	private void addHotelConfigMenuItem(MenuItemDto group, Integer index) {
 		addMenuItem(group.getItems(), MenuItemCode.HOTEL_CONFIG, index, MenuItemType.MENU_ITEM, null,
-				i18n.mainMenuItemHotelConfig(), KipNameTokens.HOTEL_CONFIG);
+				i18n.mainMenuItemHotelConfig(), CoreNameTokens.HOTEL_CONFIG);
 	}
 
 	private void addHousekeepingConfigMenuItem(MenuItemDto group, Integer index) {
