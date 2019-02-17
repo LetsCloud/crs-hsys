@@ -221,6 +221,11 @@ public class TaskDto extends AccountChildDto {
 			return self();
 		}
 
+		public T reporter(AppUserDtor reporter) {
+			this.reporter = reporter;
+			return self();
+		}
+
 		public T assignee(AppUserDtor assignee) {
 			this.assignee = assignee;
 			return self();

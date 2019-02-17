@@ -141,73 +141,99 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 
 		roomNoLabel.setText(dto.getRoom().getCode());
 
-		Boolean admin = currentUser.getPermissions().containsAll(ADMIN_PERM);
 		Boolean oddLine = false;
 		collection.clear();
 		for (TaskDto task : dto.getTasks()) {
-			Boolean owner = false;
+			Boolean ownedBy = task.getReporter().getCode().equals(currentUser.getCode());
+			Boolean assignedTo = false;
 			if (task.getAssignee() != null)
-				owner = task.getAssignee().getCode().equals(currentUser.getCode());
-			collection.add(new RoomStatusControllTaskWidget(admin, owner, task, oddLine));
+				assignedTo = task.getAssignee().getCode().equals(currentUser.getCode());
+			collection.add(new RoomStatusControllTaskWidget(ownedBy, assignedTo, task, oddLine));
 			oddLine = !oddLine;
 		}
 
-		initButtons(admin, dto.getRoom().getRoomStatus());
+		initButtons(currentUser.getPermissions().get(0), dto.getRoom().getRoomStatus());
 
 		overlay.open();
 	}
 
-	private void initButtons(Boolean admin, RoomStatus roomStatus) {
-		if (admin) {
-			switch (roomStatus) {
-			case DIRTY:
-				cleanButton.setVisible(true);
-				showButton.setVisible(true);
-				oooButton.setVisible(true);
-				oosButton.setVisible(true);
-				minibarButton.setVisible(true);
-				break;
-			case CLEAN:
-				inspectButton.setVisible(true);
-				dirtyButton.setVisible(true);
-				minibarButton.setVisible(true);
-				showButton.setVisible(true);
-				oooButton.setVisible(true);
-				oosButton.setVisible(true);
-				break;
-			case INSPECTED:
-				dirtyButton.setVisible(true);
-				minibarButton.setVisible(true);
-				showButton.setVisible(true);
-				oooButton.setVisible(true);
-				oosButton.setVisible(true);
-				break;
-			case OOO:
-				cleanButton.setVisible(true);
-				dirtyButton.setVisible(true);
-				inspectButton.setVisible(true);
-				break;
-			default:
-				break;
-			}
-		} else {
-			switch (roomStatus) {
-			case DIRTY:
-				cleanButton.setVisible(true);
-				minibarButton.setVisible(true);
-				break;
-			case CLEAN:
-				dirtyButton.setVisible(true);
-				minibarButton.setVisible(true);
-				break;
-			case INSPECTED:
-				minibarButton.setVisible(true);
-				break;
-			case OOO:
-				break;
-			default:
-				break;
-			}
+	private void initButtons(UserPerm permission, RoomStatus roomStatus) {
+		switch (permission) {
+		case UP_HKSUPERVISOR:
+			setHkSvButtons(roomStatus);
+			break;
+		case UP_HOUSEKEEPER:
+			setHkButtons(roomStatus);
+			break;
+		case UP_MAINTMANAGER:
+			setHkSvButtons(roomStatus);
+			break;
+		case UP_TECHNICIAN:
+			setHkSvButtons(roomStatus);
+			break;
+		case UP_RECEPTIONIST:
+			setHkSvButtons(roomStatus);
+			break;
+		case UP_ADMIN:
+			setHkSvButtons(roomStatus);
+			break;
+		default:
+			setHkSvButtons(roomStatus);
+			break;
+		}
+	}
+
+	private void setHkSvButtons(RoomStatus roomStatus) {
+		switch (roomStatus) {
+		case DIRTY:
+			cleanButton.setVisible(true);
+			showButton.setVisible(true);
+			oooButton.setVisible(true);
+			oosButton.setVisible(true);
+			minibarButton.setVisible(true);
+			break;
+		case CLEAN:
+			inspectButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			minibarButton.setVisible(true);
+			showButton.setVisible(true);
+			oooButton.setVisible(true);
+			oosButton.setVisible(true);
+			break;
+		case INSPECTED:
+			dirtyButton.setVisible(true);
+			minibarButton.setVisible(true);
+			showButton.setVisible(true);
+			oooButton.setVisible(true);
+			oosButton.setVisible(true);
+			break;
+		case OOO:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			inspectButton.setVisible(true);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void setHkButtons(RoomStatus roomStatus) {
+		switch (roomStatus) {
+		case DIRTY:
+			cleanButton.setVisible(true);
+			minibarButton.setVisible(true);
+			break;
+		case CLEAN:
+			dirtyButton.setVisible(true);
+			minibarButton.setVisible(true);
+			break;
+		case INSPECTED:
+			minibarButton.setVisible(true);
+			break;
+		case OOO:
+			break;
+		default:
+			break;
 		}
 	}
 

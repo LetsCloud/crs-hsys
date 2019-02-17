@@ -6,48 +6,70 @@
 	xmlns:m.ext="urn:import:gwt.material.design.addext.client.ui"
 	xmlns:ma="urn:import:gwt.material.design.addins.client">
 
-	<ui:style gss="true">
-	.room-status-item {
-		line-height: inherit !important;
-		padding: 0px !important;
-	}
-	
-	/* Create three unequal columns that floats next to each other */
-	.column {
-		float: left;
-		padding: 10px;
-	}
-	
-	.right {
-		background-color: #616161;
-		color: #f5f5f5;
-	}
-	
-	.left, .right {
-		width: 50px;
-	}
-	
-	.middle {
-		width: calc(100% - 100px);
-	}
-	
-	/* Clear floats after the columns */
-	.row:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-	
-	.row {
-		color: #424242;
-		background-color: white;
-	}
-	
-	.taskDescription {
-		font-size: 20px;
-		text-align: left;
-	}
-	</ui:style>
+	<ui:style
+		type="io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllTaskWidget.MyStyle"
+		gss="true">
+		.room-status-item {
+			line-height: inherit !important;
+			padding: 0px !important;
+		}
+		
+		/* Create three unequal columns that floats next to each other */
+		.column {
+			float: left;
+			padding: 10px;
+		}
+		
+		.right {
+			background-color: #616161;
+			color: #f5f5f5;
+		}
+		
+		.left, .right1 {
+			width: 50px;
+		}
+		
+		.right2 {
+			width: 100px;
+		}
+		
+		.right3 {
+			width: 150px;
+		}
+		
+		.middle0 {
+			width: calc(100% - 50px);
+		}
+		
+		.middle1 {
+			width: calc(100% - 100px);
+		}
+		
+		.middle2 {
+			width: calc(100% - 150px);
+		}
+		
+		.middle3 {
+			width: calc(100% - 200px);
+		}
+		
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		
+		.row {
+			color: #424242;
+			background-color: white;
+		}
+		
+		.taskDescription {
+			font-size: 20px;
+			text-align: left;
+		}
+		</ui:style>
 
 	<m:MaterialCollectionItem
 		addStyleNames="{style.room-status-item}">
@@ -57,16 +79,24 @@
 				<m:MaterialIcon ui:field="leftIcon" iconSize="SMALL" />
 			</m.html:Div>
 			<m.html:Div ui:field="middleCol"
-				addStyleNames="{style.column} {style.middle}">
+				addStyleNames="{style.column}">
 				<g:Label ui:field="description"
 					addStyleNames="{style.taskDescription}" />
 			</m.html:Div>
 			<m.html:Div ui:field="rightCol"
 				addStyleNames="{style.column} {style.right}">
-				<m:MaterialIcon ui:field="rightIcon" iconSize="SMALL" />
 			</m.html:Div>
 		</m.html:Div>
 
-		<m:MaterialCollection ui:field="toDoList" margin="0"/>
+		<m:MaterialCollection ui:field="toDoList"
+			margin="0" />
+
+		<m:MaterialDropDown ui:field="dropDown" activator="dp-menu"
+			constrainWidth="false">
+			<m:MaterialLink iconType="EDIT" iconPosition="LEFT"
+				text="Módosít" textColor="WHITE" backgroundColor="GREY_DARKEN_2" />
+			<m:MaterialLink iconType="DELETE" iconPosition="LEFT"
+				text="Töröl" textColor="WHITE" backgroundColor="GREY_DARKEN_2" />
+		</m:MaterialDropDown>
 	</m:MaterialCollectionItem>
 </ui:UiBinder> 

@@ -101,6 +101,14 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 
 	private List<RoomStatusDto> loadData() {
 
+		List<UserPerm> techManPerm = new ArrayList<UserPerm>();
+		techManPerm.add(UserPerm.UP_MAINTMANAGER);
+		AppUserDtor adminUser = new AppUserDtor.Builder().code("ADMIN").name("AdminÁdám").permissions(techManPerm).build();
+
+		List<UserPerm> hkSvPerm = new ArrayList<UserPerm>();
+		hkSvPerm.add(UserPerm.UP_HKSUPERVISOR);
+		AppUserDtor hakaUser = new AppUserDtor.Builder().code("HAKA").name("Háká Kata").permissions(hkSvPerm).build();
+
 		List<UserPerm> hkPerm = new ArrayList<UserPerm>();
 		hkPerm.add(UserPerm.UP_HOUSEKEEPER);
 		AppUserDtor kipiUser = new AppUserDtor.Builder().code("KIPI").name("Kipi Viki").permissions(hkPerm).build();
@@ -248,20 +256,20 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 				.build();
 
 		List<TaskDto> r1001Tasks = new ArrayList<TaskDto>();
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.CLEANING).type(dailyClTT).assignee(kipiUser).build());
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.CLEANING).type(linenChTT).assignee(kipiUser).build());
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).assignee(karaUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.CLEANING).type(dailyClTT).reporter(hakaUser).assignee(kipiUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.CLEANING).type(linenChTT).reporter(hakaUser).assignee(kipiUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
 
 		List<TaskDto> r1002Tasks = new ArrayList<TaskDto>();
-		r1002Tasks.add(TaskDto.builder().kind(TaskKind.REQUEST).assignee(kipiUser).type(fruitRqTT).build());
-		r1002Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).assignee(karaUser).build());
+		r1002Tasks.add(TaskDto.builder().kind(TaskKind.REQUEST).reporter(hakaUser).assignee(hakaUser).type(fruitRqTT).build());
+		r1002Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
 
 		List<TaskDto> r1003Tasks = new ArrayList<TaskDto>();
-		r1003Tasks.add(TaskDto.builder().kind(TaskKind.REQUEST).assignee(kipiUser).type(turcsiRqTT).build());
+		r1003Tasks.add(TaskDto.builder().kind(TaskKind.REQUEST).reporter(hakaUser).assignee(kipiUser).type(turcsiRqTT).build());
 		r1003Tasks.add(TaskDto.builder().kind(TaskKind.COMMON).type(receptionTT).description("Holnaptól OOO").build());
 
 		List<TaskDto> r1004Tasks = new ArrayList<TaskDto>();
-		r1004Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).assignee(karaUser).build());
+		r1004Tasks.add(TaskDto.builder().kind(TaskKind.MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
 		r1004Tasks.add(
 				TaskDto.builder().kind(TaskKind.COMMON).type(receptionTT).description("Holnaptól visszaáll").build());
 
