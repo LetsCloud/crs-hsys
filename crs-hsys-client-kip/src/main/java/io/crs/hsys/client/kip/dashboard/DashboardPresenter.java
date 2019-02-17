@@ -40,6 +40,8 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 		void showCards();
 
 		void showChiefEngBoard(List<MaintenanceSumDto> data, List<MaintenanceSumDto> data2);
+		
+		void createReceptionistDashboard();
 	}
 
 	@ProxyCodeSplit
@@ -80,7 +82,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 	private String getTitle(UserPerm permission) {
 		switch (permission) {
 		case UP_HKSUPERVISOR:
-			return i18n.mainMenuItemDashboard();
+			return i18n.mainMenuItemHousekeepingDashboard();
 		case UP_HOUSEKEEPER:
 			return i18n.mainMenuItemDashboard();
 		case UP_MAINTMANAGER:
@@ -88,7 +90,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 		case UP_TECHNICIAN:
 			return i18n.mainMenuItemDashboard();
 		case UP_RECEPTIONIST:
-			return i18n.mainMenuItemDashboard();
+			return i18n.mainMenuItemReceptionDashboard();
 		case UP_ADMIN:
 			return i18n.mainMenuItemDashboard();
 		default:
@@ -107,7 +109,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 		case UP_TECHNICIAN:
 			return i18n.dashboardSubtitle();
 		case UP_RECEPTIONIST:
-			return i18n.dashboardSubtitle();
+			return i18n.dashboardReceptionSubtitle();
 		case UP_ADMIN:
 			return i18n.dashboardSubtitle();
 		default:
@@ -130,7 +132,7 @@ public class DashboardPresenter extends Presenter<DashboardPresenter.MyView, Das
 			getView().showCards();
 			break;
 		case UP_RECEPTIONIST:
-			getView().showCards();
+			getView().createReceptionistDashboard();
 			break;
 		case UP_ADMIN:
 			getView().showCards();

@@ -151,4 +151,89 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void createReceptionistDashboard() {
+		rowCards.clear();
+		
+		MultiMeasureCard arrivals = new MultiMeasureCard();
+		arrivals.setTitleText("Érkezős szobák");
+		arrivals.setIconType(IconType.FLIGHT_LAND);
+		arrivals.setIconColor(Color.RED_LIGHTEN_2);
+		arrivals.setSumValue("299");
+		arrivals.setPartTitle1("Piszkos");
+		arrivals.setPartValue1("89");
+		arrivals.setPartTitle2("Tiszta");
+		arrivals.setPartValue2("140");
+		arrivals.setPartTitle3("Ellenőrzött");
+		arrivals.setPartValue3("70");
+		addCard(arrivals);
+
+		MultiMeasureCard stayOvers = new MultiMeasureCard();
+		stayOvers.setTitleText("Lakó szobák");
+		stayOvers.setIconType(IconType.LOCAL_HOTEL);
+		stayOvers.setIconColor(Color.BLUE_LIGHTEN_2);
+		stayOvers.setSumValue("11");
+		stayOvers.setPartTitle1("Piszkos");
+		stayOvers.setPartValue1("11");
+		stayOvers.setPartTitle2("Tiszta");
+		stayOvers.setPartValue2("0");
+		stayOvers.setPartTitle3("Ellenőrzött");
+		stayOvers.setPartValue3("0");
+		addCard(stayOvers);
+
+		MultiMeasureCard vacants = new MultiMeasureCard();
+		vacants.setTitleText("Üres szobák");
+		vacants.setIconType(IconType.CHECK_BOX_OUTLINE_BLANK);
+		vacants.setIconColor(Color.GREEN_LIGHTEN_2);
+		vacants.setSumValue("11");
+		vacants.setPartTitle1("Piszkos");
+		vacants.setPartValue1("11");
+		vacants.setPartTitle2("Tiszta");
+		vacants.setPartValue2("0");
+		vacants.setPartTitle3("Ellenőrzött");
+		vacants.setPartValue3("0");
+		addCard(vacants);
+
+		MultiMeasureCard oooRooms = new MultiMeasureCard();
+		oooRooms.setTitleText("OOO szobák");
+		oooRooms.setIconType(IconType.SETTINGS);
+		oooRooms.setIconColor(Color.GREY_DARKEN_3);
+		oooRooms.setSumValue("11");
+		oooRooms.setPartTitle1("V.vett");
+		oooRooms.setPartValue1("11");
+		oooRooms.setPartTitle2("Vár");
+		oooRooms.setPartValue2("5");
+		oooRooms.setPartTitle3("Marad");
+		oooRooms.setPartValue3("6");
+		addCard(oooRooms);
+
+		MultiMeasureCard oosRooms = new MultiMeasureCard();
+		oosRooms.setTitleText("OOS szobák");
+		oosRooms.setIconType(IconType.WARNING);
+		oosRooms.setIconColor(Color.PURPLE_LIGHTEN_2);
+		oosRooms.setSumValue("2");
+		oosRooms.setPartTitle1("");
+		oosRooms.setPartValue1("");
+		oosRooms.setPartTitle2("");
+		oosRooms.setPartValue2("");
+		oosRooms.setPartTitle3("");
+		oosRooms.setPartValue3("");
+		addCard(oosRooms);
+
+		MultiMeasureCard showRooms = new MultiMeasureCard();
+		showRooms.setTitleText("Show rooms");
+		showRooms.setIconType(IconType.VISIBILITY);
+		showRooms.setIconColor(Color.AMBER_LIGHTEN_2);
+		showRooms.setSumValue("1");
+		showRooms.setPartTitle1("");
+		showRooms.setPartValue1("");
+		showRooms.setPartTitle2("");
+		showRooms.setPartValue2("");
+		showRooms.setPartTitle3("");
+		showRooms.setPartValue3("");
+		addCard(showRooms);
+
+		new MaterialAnimation().transition(Transition.SHOW_GRID).animate(rowCards);
+	}
 }

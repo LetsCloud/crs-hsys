@@ -196,9 +196,10 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	 */
 	private List<MenuItemDto> createAdminstratorMenu(List<MenuItemDto> menuItems) {
 		MenuItemDto configs = addConfigMenuItem(menuItems, 7);
-		addHousekeepingConfigMenuItem(configs, 1);
-		addMaintenaceConfigMenuItem(configs, 2);
-
+		addUserConfigMenuItem(configs, 1);
+		addHotelConfigMenuItem(configs, 2);
+		addHousekeepingConfigMenuItem(configs, 3);
+		addMaintenaceConfigMenuItem(configs, 4);
 		return menuItems;
 	}
 
@@ -257,6 +258,16 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 				IconType.SETTINGS.name(), i18n.mainMenuGroupConfig(), null);
 	}
 
+	private void addUserConfigMenuItem(MenuItemDto group, Integer index) {
+		addMenuItem(group.getItems(), MenuItemCode.USER_CONFIG, index, MenuItemType.MENU_ITEM, null,
+				i18n.mainMenuItemUsersConfig(), KipNameTokens.USER_CONFIG);
+	}
+
+	private void addHotelConfigMenuItem(MenuItemDto group, Integer index) {
+		addMenuItem(group.getItems(), MenuItemCode.HOTEL_CONFIG, index, MenuItemType.MENU_ITEM, null,
+				i18n.mainMenuItemHotelConfig(), KipNameTokens.HOTEL_CONFIG);
+	}
+
 	private void addHousekeepingConfigMenuItem(MenuItemDto group, Integer index) {
 		addMenuItem(group.getItems(), MenuItemCode.HOUSEKEEPING_CONFIG, index, MenuItemType.MENU_ITEM, null,
 				i18n.mainMenuItemHousekeepingConfig(), KipNameTokens.ROOM_TASK_ASSIGNMENT);
@@ -264,7 +275,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	private void addMaintenaceConfigMenuItem(MenuItemDto group, Integer index) {
 		addMenuItem(group.getItems(), MenuItemCode.MAINTENANCE_CONFIG, index, MenuItemType.MENU_ITEM, null,
-				i18n.mainMenuGroupMaintenance(), KipNameTokens.MAINTENANCE_CONFIG);
+				i18n.mainMenuItemMaintenanceConfig(), KipNameTokens.MAINTENANCE_CONFIG);
 	}
 
 	private MenuItemDto addMenuItem(List<MenuItemDto> menuItems, MenuItemCode code, Integer index, MenuItemType type,

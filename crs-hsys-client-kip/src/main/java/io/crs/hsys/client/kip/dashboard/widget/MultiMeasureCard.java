@@ -54,27 +54,35 @@ public class MultiMeasureCard extends Composite {
 		sumValue.setText(text);
 	}
 
-	public void setPartTitle1(String text) {
-		partTitle1.setText(text);
+	private void setPartLabel(Label partValue, String text) {
+		if (text.isEmpty()) {
+			text = "*";
+			partValue.getElement().getStyle().setColor("#f5f5f5");
+		}
+		partValue.setText(text);
 	}
 
+	public void setPartTitle1(String text) {
+		setPartLabel(partTitle1, text);
+	}
+	
 	public void setPartValue1(String text) {
-		partValue1.setText(text);
+		setPartLabel(partValue1, text);
 	}
 
 	public void setPartTitle2(String text) {
-		partTitle2.setText(text);
+		setPartLabel(partTitle2, text);
 	}
 
 	public void setPartValue2(String text) {
-		partValue2.setText(text);
+		setPartLabel(partValue2, text);
 	}
 
 	public void setPartTitle3(String text) {
-		partTitle3.setText(text);
+		setPartLabel(partTitle3, text);
 	}
 
 	public void setPartValue3(String text) {
-		partValue3.setText(text);
+		setPartLabel(partValue3, text);
 	}
 }

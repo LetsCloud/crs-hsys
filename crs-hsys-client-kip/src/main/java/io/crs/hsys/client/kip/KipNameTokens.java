@@ -14,6 +14,8 @@ public class KipNameTokens {
 
 	public static final String MINIBAR_CONSUMPTION = "/minibarConsumption";
 
+	public static final String USER_CONFIG = "/userConfig";
+	public static final String HOTEL_CONFIG = "/hotelConfig";
 	public static final String HOUSEKEEPING_CONFIG = "/housekeepingConfig";
 	public static final String MAINTENANCE_CONFIG = "/maintenanceConfig";
 

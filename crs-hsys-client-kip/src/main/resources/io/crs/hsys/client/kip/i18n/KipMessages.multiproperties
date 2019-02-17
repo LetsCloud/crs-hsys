@@ -29,7 +29,14 @@
             <Name>mainMenuItemDashboard</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Housekeeping dashboard</Value>
+            <Value disabled="false">Dashboard</Value>
+            <Value disabled="false">Műszerfal</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemHousekeepingDashboard</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeping Dashboard</Value>
             <Value disabled="false">Gondnoknői műszerfal</Value>
         </Property>
         <Property>
@@ -38,6 +45,13 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance Dashboard</Value>
             <Value disabled="false">Műszaki műszerfal</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemReceptionDashboard</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Reception Dashboard</Value>
+            <Value disabled="false">Recepciós műszerfal</Value>
         </Property>
         <Property>
             <Name>mainMenuItemChatRoom</Name>
@@ -103,11 +117,39 @@
             <Value disabled="false">Mini bár</Value>
         </Property>
         <Property>
-            <Name>mainMenuItemAssignment</Name>
+            <Name>mainMenuGroupConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Assigments</Value>
-            <Value disabled="false">Beosztások</Value>
+            <Value disabled="false">Configuration</Value>
+            <Value disabled="false">Beállítások</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemUsersConfig</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">User Configuration</Value>
+            <Value disabled="false">Felhasználó beállítások</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemHotelConfig</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Hotel Configuration</Value>
+            <Value disabled="false">Hotel beállítások</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemHousekeepingConfig</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeping Configuration</Value>
+            <Value disabled="false">Housekeeping beállítások</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemMaintenanceConfig</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance Confiuration</Value>
+            <Value disabled="false">Karbantartási beállítások</Value>
         </Property>
         <Comment>
             <Value>DASHBOARD</Value>
@@ -125,6 +167,13 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Overview of the open and overdue maintenance tasks</Value>
             <Value disabled="false">Nyitott és lejárt karbantartási feladatok áttekintése</Value>
+        </Property>
+        <Property>
+            <Name>dashboardReceptionSubtitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Overview of the rooms</Value>
+            <Value disabled="false">Vendégszobák áttekintése</Value>
         </Property>
         <Comment>
             <Value>ATTENDANTS</Value>
