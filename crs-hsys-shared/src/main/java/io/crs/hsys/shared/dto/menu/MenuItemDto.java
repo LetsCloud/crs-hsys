@@ -16,6 +16,14 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
 @SuppressWarnings("serial")
 public class MenuItemDto extends AccountChildDto {
 
+	public enum MenuItemCode {
+		KIP_DASHBOARD, TASK_MANAGER, CHAT_ROOM, ROOM_BROWSER, PUBLICAREA_BROWSER, ASSIGNMENT_GROUP, ROOM_ASSIGNMENT,
+		PUBLICAREA_ASSIGNMENT, MAINTENANCE_ASSIGNMENT, MINIBAR_POSTS, CONFIG_GROUP, SYSTEM_CONFIG, PROFILE_CONFIG,
+		HOTEL_CONFIG, HOUSEKEEPING_CONFIG, MAINTENANCE_CONFIG
+	}
+
+	private MenuItemCode code;
+
 	private Integer index;
 
 	private MenuItemType type;
@@ -35,6 +43,7 @@ public class MenuItemDto extends AccountChildDto {
 
 	public MenuItemDto(Builder<?> builder) {
 		super(builder);
+		code = builder.code;
 		index = builder.index;
 		type = builder.type;
 		icon = builder.icon;
@@ -42,6 +51,14 @@ public class MenuItemDto extends AccountChildDto {
 		nameToken = builder.nameToken;
 		items = builder.items;
 		params = builder.params;
+	}
+
+	public MenuItemCode getCode() {
+		return code;
+	}
+
+	public void setCode(MenuItemCode code) {
+		this.code = code;
 	}
 
 	public Integer getIndex() {
@@ -112,6 +129,7 @@ public class MenuItemDto extends AccountChildDto {
 
 	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
 
+		private MenuItemCode code;
 		private Integer index;
 		private MenuItemType type;
 		private String icon;
@@ -120,6 +138,11 @@ public class MenuItemDto extends AccountChildDto {
 		private List<MenuItemDto> items = new ArrayList<MenuItemDto>();
 		private List<MenuItemParamDto> params = new ArrayList<MenuItemParamDto>();
 		private Integer itemIndex = 0;
+
+		public T code(MenuItemCode code) {
+			this.code = code;
+			return self();
+		}
 
 		public T index(Integer index) {
 			this.index = index;

@@ -44,7 +44,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	}
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.TASK_MNGR)
+	@NameToken(KipNameTokens.TASK_MANAGER)
 	interface MyProxy extends ProxyPlace<TaskMngrPresenter> {
 	}
 

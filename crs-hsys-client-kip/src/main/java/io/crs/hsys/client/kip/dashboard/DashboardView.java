@@ -51,7 +51,8 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 
 	@Override
 	public void showCards() {
-
+		rowCards.clear();
+		
 		MultiMeasureCard dirtyRooms2 = new MultiMeasureCard();
 		dirtyRooms2.setTitleText("Piszkos szobák");
 		dirtyRooms2.setIconType(IconType.DELETE);
@@ -135,9 +136,10 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 
 	@Override
 	public void showChiefEngBoard(List<MaintenanceSumDto> data, List<MaintenanceSumDto> data2) {
+		rowCards.clear();
 
 		MaterialColumn column = new MaterialColumn(12, 6, 8);
-		column.add(new ListMeasureCard(data, "NYITOTT ÉS LEJÁRT FELADATOK", IconType.ASSIGNMENT, "s12 m12 l6"));
+		column.add(new ListMeasureCard(data, "FELADAT ÖSSZESÍTŐ MŰSZAAKI TERÜLETENKÉNT", IconType.ASSIGNMENT, "s12 m12 l6"));
 		rowCards.add(column);
 
 		MaterialColumn column2 = new MaterialColumn(12, 6, 4);

@@ -56,7 +56,7 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_ASSIGNMENTS)
+	@NameToken(KipNameTokens.AREA_TASK_ASSIGNMENT)
 	@UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<AssignmentsPresenter> {
 	}

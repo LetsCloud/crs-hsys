@@ -6,12 +6,12 @@
     <Handler>Java Properties Handler</Handler>
     <Columns>
         <Key>
-            <Width>200</Width>
+            <Width>267</Width>
         </Key>
         <Column>
             <Name>default</Name>
             <Description></Description>
-            <Width>150</Width>
+            <Width>308</Width>
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
@@ -61,25 +61,39 @@
             <Value disabled="false">Vendégszobák</Value>
         </Property>
         <Property>
-            <Name>mainMenuGroupPublicAreas</Name>
+            <Name>mainMenuItemPublicAreas</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Public Areas</Value>
-            <Value disabled="false">Közös terek</Value>
+            <Value disabled="false">Közterek</Value>
         </Property>
         <Property>
-            <Name>mainMenuGroupAssignment</Name>
+            <Name>mainMenuGroupTaskAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Assignment</Value>
-            <Value disabled="false">Beosztás</Value>
+            <Value disabled="false">Task Assignment</Value>
+            <Value disabled="false">Feladat beosztás</Value>
         </Property>
         <Property>
-            <Name>mainMenuItemAtendants</Name>
+            <Name>mainMenuItemRoomTasksAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Atendants</Value>
-            <Value disabled="false">Takarítók</Value>
+            <Value disabled="false">Room Tasks Assignment</Value>
+            <Value disabled="false">Szoba feladat beosztása</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemAreaTasksAssignment</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Public Area Tasks Assignment</Value>
+            <Value disabled="false">Köztér feladat beosztás</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemMaintenanceAssignment</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance Assignment</Value>
+            <Value disabled="false">Karbantartás beosztás</Value>
         </Property>
         <Property>
             <Name>mainMenuGroupMinibar</Name>
