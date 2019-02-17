@@ -36,6 +36,9 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Guest Rooms")
 	String mainMenuItemGuestRooms();
 
+	@DefaultMessage("OOO Rooms")
+	String mainMenuItemGuestOoo();
+
 	@DefaultMessage("Public Areas")
 	String mainMenuItemPublicAreas();
 

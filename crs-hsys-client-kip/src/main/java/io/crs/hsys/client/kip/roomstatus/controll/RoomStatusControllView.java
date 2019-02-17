@@ -166,19 +166,19 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 			setHkButtons(roomStatus);
 			break;
 		case UP_MAINTMANAGER:
-			setHkSvButtons(roomStatus);
+			setHkButtons(roomStatus);
 			break;
 		case UP_TECHNICIAN:
-			setHkSvButtons(roomStatus);
+			setHkButtons(roomStatus);
 			break;
 		case UP_RECEPTIONIST:
-			setHkSvButtons(roomStatus);
+			setHkButtons(roomStatus);
 			break;
 		case UP_ADMIN:
-			setHkSvButtons(roomStatus);
+			setHkButtons(roomStatus);
 			break;
 		default:
-			setHkSvButtons(roomStatus);
+			setHkButtons(roomStatus);
 			break;
 		}
 	}
@@ -221,14 +221,14 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		switch (roomStatus) {
 		case DIRTY:
 			cleanButton.setVisible(true);
-			minibarButton.setVisible(true);
+//			minibarButton.setVisible(true);
 			break;
 		case CLEAN:
 			dirtyButton.setVisible(true);
-			minibarButton.setVisible(true);
+//			minibarButton.setVisible(true);
 			break;
 		case INSPECTED:
-			minibarButton.setVisible(true);
+//			minibarButton.setVisible(true);
 			break;
 		case OOO:
 			break;

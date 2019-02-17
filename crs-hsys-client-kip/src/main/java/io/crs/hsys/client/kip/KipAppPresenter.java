@@ -115,13 +115,14 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		addTaskManagerMenuItem(menuItems, 2);
 		addChatRoomMenuItem(menuItems, 3);
 		addGuestRoomMenuItem(menuItems, 4);
-		addPublicAreaMenuItem(menuItems, 5);
+		addOooRoomMenuItem(menuItems, 5);
+		addPublicAreaMenuItem(menuItems, 6);
 
-		MenuItemDto assigments = addAssignmentMenuItem(menuItems, 6);
+		MenuItemDto assigments = addAssignmentMenuItem(menuItems, 7);
 		addRoomAssignmentMenuItem(assigments, 1);
 		addPublicAreaAssignmentMenuItem(assigments, 2);
 
-		addMinibarPostsMenuItem(menuItems, 7);
+		addMinibarPostsMenuItem(menuItems, 8);
 
 		MenuItemDto configs = addConfigMenuItem(menuItems, 8);
 		addHousekeepingConfigMenuItem(configs, 1);
@@ -225,6 +226,11 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	private void addGuestRoomMenuItem(List<MenuItemDto> menuItems, Integer index) {
 		addMenuItem(menuItems, MenuItemCode.ROOM_BROWSER, index, MenuItemType.MENU_ITEM, IconType.HOTEL.name(),
 				i18n.mainMenuItemGuestRooms(), KipNameTokens.GUEST_ROOMS);
+	}
+
+	private void addOooRoomMenuItem(List<MenuItemDto> menuItems, Integer index) {
+		addMenuItem(menuItems, MenuItemCode.OOO_BROWSER, index, MenuItemType.MENU_ITEM, IconType.DO_NOT_DISTURB_ON.name(),
+				i18n.mainMenuItemGuestOoo(), KipNameTokens.OOO_ROOMS);
 	}
 
 	private void addPublicAreaMenuItem(List<MenuItemDto> menuItems, Integer index) {
