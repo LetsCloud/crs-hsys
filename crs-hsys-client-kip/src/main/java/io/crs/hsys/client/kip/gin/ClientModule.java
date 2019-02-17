@@ -56,11 +56,6 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new SearchModule());
 		install(new GuestRoomBrowserModule());
 		install(new TaskCreatorModule());
-		
-		install(new SystemConfigModule());
-		install(new HotelConfigModule());
-
-		install(new FilterModule());
 
 		/*
 		 * install(new UserListModule()); install(new RoleListModule()); install(new

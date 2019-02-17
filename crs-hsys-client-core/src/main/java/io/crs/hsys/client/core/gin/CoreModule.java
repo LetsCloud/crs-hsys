@@ -21,7 +21,10 @@ import com.gwtplatform.mvp.shared.proxy.RouteTokenFormatter;
 
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
+import io.crs.hsys.client.core.config.hotel.HotelConfigModule;
+import io.crs.hsys.client.core.config.system.SystemConfigModule;
 import io.crs.hsys.client.core.datasource.DataSourceModule;
+import io.crs.hsys.client.core.filter.FilterModule;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.menu.MenuModule;
 import io.crs.hsys.client.core.security.AppData;
@@ -58,6 +61,11 @@ public class CoreModule extends AbstractPresenterModule {
 		install(new ServiceModule());
 		install(new DataSourceModule());
 		install(new MenuModule());
+		
+		install(new SystemConfigModule());
+		install(new HotelConfigModule());
+
+		install(new FilterModule());
 	}
 
 	@Provides

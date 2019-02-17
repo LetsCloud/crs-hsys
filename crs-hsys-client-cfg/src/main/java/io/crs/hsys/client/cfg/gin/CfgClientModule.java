@@ -40,16 +40,12 @@ public class CfgClientModule extends AbstractPresenterModule {
 
 		install(new DashboardModule());
 
-		install(new SystemConfigModule());
 		install(new ProfileConfigModule());
-		install(new HotelConfigModule());
 
 		install(new OrganizationConfigModule());
 		install(new ContactConfigModule());
 
 		install(new OrganizationCreateModule());
 		install(new ContactCreateModule());
-
-		install(new FilterModule());
 	}
 }
