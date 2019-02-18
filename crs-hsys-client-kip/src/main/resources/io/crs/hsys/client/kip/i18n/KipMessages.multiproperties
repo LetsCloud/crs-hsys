@@ -100,7 +100,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Tasks Assignment</Value>
-            <Value disabled="false">Szoba feladat beosztása</Value>
+            <Value disabled="false">Szoba feladat beosztás</Value>
         </Property>
         <Property>
             <Name>mainMenuItemAreaTasksAssignment</Name>
