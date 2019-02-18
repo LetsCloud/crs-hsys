@@ -229,7 +229,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	}
 
 	private void addOooRoomMenuItem(List<MenuItemDto> menuItems, Integer index) {
-		addMenuItem(menuItems, MenuItemCode.OOO_BROWSER, index, MenuItemType.MENU_ITEM, IconType.DO_NOT_DISTURB_ON.name(),
+		addMenuItem(menuItems, MenuItemCode.OOO_BROWSER, index, MenuItemType.MENU_ITEM, IconType.SETTINGS.name(),
 				i18n.mainMenuItemGuestOoo(), KipNameTokens.OOO_ROOMS);
 	}
 
