@@ -97,12 +97,12 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		oooRooms2.setIconType(IconType.SETTINGS);
 		oooRooms2.setIconColor(Color.GREY_DARKEN_3);
 		oooRooms2.setSumValue("11");
-		oooRooms2.setPartTitle1("V.vett");
-		oooRooms2.setPartValue1("11");
-		oooRooms2.setPartTitle2("Vár");
-		oooRooms2.setPartValue2("5");
-		oooRooms2.setPartTitle3("Marad");
-		oooRooms2.setPartValue3("6");
+		oooRooms2.setPartTitle1("V.adott");
+		oooRooms2.setPartValue1("-5");
+		oooRooms2.setPartTitle2("Felvett");
+		oooRooms2.setPartValue2("6");
+		oooRooms2.setPartTitle3("Maradt");
+		oooRooms2.setPartValue3("21");
 		addCard(oooRooms2);
 
 		MultiMeasureCard publicAreas2 = new MultiMeasureCard();
@@ -120,7 +120,7 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 
 		MultiMeasureCard tasks2 = new MultiMeasureCard();
 		tasks2.setTitleText("Takarítási készültség");
-		tasks2.setIconType(IconType.ASSISTANT);
+		tasks2.setIconType(IconType.ASSIGNMENT_TURNED_IN);
 		tasks2.setIconColor(Color.TEAL_LIGHTEN_2);
 		tasks2.setSumValue("45%");
 		tasks2.setPartTitle1("Összes");
