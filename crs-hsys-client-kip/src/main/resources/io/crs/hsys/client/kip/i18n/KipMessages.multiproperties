@@ -17,7 +17,7 @@
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
-            <Width>1020</Width>
+            <Width>1275</Width>
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
@@ -73,6 +73,13 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Guest Rooms</Value>
             <Value disabled="false">Vendégszobák</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuItemGuestOoo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">OOO Rooms</Value>
+            <Value disabled="false">OOO szobák</Value>
         </Property>
         <Property>
             <Name>mainMenuItemPublicAreas</Name>
