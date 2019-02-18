@@ -176,7 +176,7 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 			setCommonButtons(roomStatus);
 			break;
 		case UP_RECEPTIONIST:
-			setCommonButtons(roomStatus);
+			setReceptionButtons(roomStatus);
 			break;
 		case UP_ADMIN:
 			setCommonButtons(roomStatus);
@@ -236,7 +236,20 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 			dirtyButton.setVisible(true);
 //			minibarButton.setVisible(true);
 			break;
-		case OOO:
+		default:
+			break;
+		}
+	}
+
+	private void setReceptionButtons(RoomStatus roomStatus) {
+		switch (roomStatus) {
+		case OOS:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			break;
+		case SHOW:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
 			break;
 		default:
 			break;
@@ -244,18 +257,6 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void setCommonButtons(RoomStatus roomStatus) {
-		switch (roomStatus) {
-		case DIRTY:
-			break;
-		case CLEAN:
-			break;
-		case INSPECTED:
-			break;
-		case OOO:
-			break;
-		default:
-			break;
-		}
 	}
 
 	@UiHandler("btnClose")

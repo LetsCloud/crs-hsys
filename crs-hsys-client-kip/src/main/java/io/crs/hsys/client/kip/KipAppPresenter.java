@@ -187,7 +187,8 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		addTaskManagerMenuItem(menuItems, 2);
 		addChatRoomMenuItem(menuItems, 3);
 		addGuestRoomMenuItem(menuItems, 4);
-		addMinibarPostsMenuItem(menuItems, 5);
+		addOooRoomMenuItem(menuItems, 5);
+		addMinibarPostsMenuItem(menuItems, 6);
 		return menuItems;
 	}
 
