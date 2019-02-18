@@ -265,7 +265,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	private MenuItemDto addConfigMenuItem(List<MenuItemDto> menuItems, Integer index) {
 		return addMenuItem(menuItems, MenuItemCode.CONFIG_GROUP, index, MenuItemType.SUB_MENU,
-				IconType.SETTINGS.name(), i18n.mainMenuGroupConfig(), null);
+				IconType.BUILD.name(), i18n.mainMenuGroupConfig(), null);
 	}
 
 	private void addUserConfigMenuItem(MenuItemDto group, Integer index) {
