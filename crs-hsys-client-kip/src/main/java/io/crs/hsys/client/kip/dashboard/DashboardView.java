@@ -139,7 +139,7 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		rowCards.clear();
 
 		MaterialColumn column = new MaterialColumn(12, 6, 8);
-		column.add(new ListMeasureCard(data, "FELADAT ÖSSZESÍTŐ MŰSZAAKI TERÜLETENKÉNT", IconType.ASSIGNMENT, "s12 m12 l6"));
+		column.add(new ListMeasureCard(data, "FELADAT ÖSSZESÍTŐ MŰSZAKI TERÜLETENKÉNT", IconType.ASSIGNMENT, "s12 m12 l6"));
 		rowCards.add(column);
 
 		MaterialColumn column2 = new MaterialColumn(12, 6, 4);
@@ -222,7 +222,7 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		addCard(oosRooms);
 
 		MultiMeasureCard showRooms = new MultiMeasureCard();
-		showRooms.setTitleText("Show rooms");
+		showRooms.setTitleText("Bemutató szobák");
 		showRooms.setIconType(IconType.VISIBILITY);
 		showRooms.setIconColor(Color.AMBER_LIGHTEN_2);
 		showRooms.setSumValue("1");

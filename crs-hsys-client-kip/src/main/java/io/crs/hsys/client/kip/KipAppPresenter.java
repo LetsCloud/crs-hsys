@@ -187,7 +187,8 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 		addTaskManagerMenuItem(menuItems, 2);
 		addChatRoomMenuItem(menuItems, 3);
 		addGuestRoomMenuItem(menuItems, 4);
-		addMinibarPostsMenuItem(menuItems, 5);
+		addOooRoomMenuItem(menuItems, 5);
+		addMinibarPostsMenuItem(menuItems, 6);
 		return menuItems;
 	}
 
@@ -229,7 +230,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 	}
 
 	private void addOooRoomMenuItem(List<MenuItemDto> menuItems, Integer index) {
-		addMenuItem(menuItems, MenuItemCode.OOO_BROWSER, index, MenuItemType.MENU_ITEM, IconType.DO_NOT_DISTURB_ON.name(),
+		addMenuItem(menuItems, MenuItemCode.OOO_BROWSER, index, MenuItemType.MENU_ITEM, IconType.SETTINGS.name(),
 				i18n.mainMenuItemGuestOoo(), KipNameTokens.OOO_ROOMS);
 	}
 

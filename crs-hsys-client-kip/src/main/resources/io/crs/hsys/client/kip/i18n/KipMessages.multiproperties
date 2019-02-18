@@ -17,7 +17,7 @@
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
-            <Width>1020</Width>
+            <Width>1275</Width>
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
@@ -75,6 +75,13 @@
             <Value disabled="false">Vendégszobák</Value>
         </Property>
         <Property>
+            <Name>mainMenuItemGuestOoo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">OOO Rooms</Value>
+            <Value disabled="false">OOO szobák</Value>
+        </Property>
+        <Property>
             <Name>mainMenuItemPublicAreas</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -93,7 +100,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Tasks Assignment</Value>
-            <Value disabled="false">Szoba feladat beosztása</Value>
+            <Value disabled="false">Szoba feladat beosztás</Value>
         </Property>
         <Property>
             <Name>mainMenuItemAreaTasksAssignment</Name>

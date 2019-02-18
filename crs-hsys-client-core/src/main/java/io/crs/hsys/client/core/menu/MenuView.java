@@ -195,14 +195,20 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 
 	@Override
 	public void inactivateSingleLinks() {
-		for (MaterialLink link : singleLinks)
-			link.getParent().removeStyleName("active");
+		logger.info("MenuView().inactivateSingleLinks");
+		for (MaterialLink link : singleLinks) {
+			logger.info("MenuView().inactivateSingleLinks->" + link.getText());
+			link.getParent().removeStyleName("active");			
+		}
 	}
 
 	@Override
 	public void closeCollapisbles() {
-		for (MaterialCollapsible collapsible : collapsibles)
+		logger.info("MenuView().closeCollapisbles");
+		for (MaterialCollapsible collapsible : collapsibles) {
+			logger.info("MenuView().closeCollapisbles->close=" + collapsible.getTitle());
 			collapsible.closeAll();
+		}
 	}
 
 	@Override

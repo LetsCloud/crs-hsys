@@ -144,15 +144,19 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		Boolean oddLine = false;
 		collection.clear();
 		for (TaskDto task : dto.getTasks()) {
-			Boolean ownedBy = task.getReporter().getCode().equals(currentUser.getCode());
+			Boolean ownedBy = false;
+			if (task.getReporter() != null)
+				ownedBy = task.getReporter().getCode().equals(currentUser.getCode());
 			Boolean assignedTo = false;
 			if (task.getAssignee() != null)
 				assignedTo = task.getAssignee().getCode().equals(currentUser.getCode());
 			collection.add(new RoomStatusControllTaskWidget(ownedBy, assignedTo, task, oddLine));
 			oddLine = !oddLine;
 		}
+		logger.log(Level.INFO, "RoomStatusControllView().open()-2");
 
 		initButtons(currentUser.getPermissions().get(0), dto.getRoom().getRoomStatus());
+		logger.log(Level.INFO, "RoomStatusControllView().open()-3");
 
 		overlay.open();
 	}
@@ -166,19 +170,19 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 			setHkButtons(roomStatus);
 			break;
 		case UP_MAINTMANAGER:
-			setHkButtons(roomStatus);
+			setCommonButtons(roomStatus);
 			break;
 		case UP_TECHNICIAN:
-			setHkButtons(roomStatus);
+			setCommonButtons(roomStatus);
 			break;
 		case UP_RECEPTIONIST:
-			setHkButtons(roomStatus);
+			setReceptionButtons(roomStatus);
 			break;
 		case UP_ADMIN:
-			setHkButtons(roomStatus);
+			setCommonButtons(roomStatus);
 			break;
 		default:
-			setHkButtons(roomStatus);
+			setCommonButtons(roomStatus);
 			break;
 		}
 	}
@@ -228,13 +232,31 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 //			minibarButton.setVisible(true);
 			break;
 		case INSPECTED:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
 //			minibarButton.setVisible(true);
-			break;
-		case OOO:
 			break;
 		default:
 			break;
 		}
+	}
+
+	private void setReceptionButtons(RoomStatus roomStatus) {
+		switch (roomStatus) {
+		case OOS:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			break;
+		case SHOW:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void setCommonButtons(RoomStatus roomStatus) {
 	}
 
 	@UiHandler("btnClose")

@@ -86,12 +86,11 @@ public class RoomStatusControllTaskWidget extends Composite {
 			description.setText(task.getDescription());
 		else
 			description.setText(task.getType().getDescription());
-/*
+
 		if (task.getAssignee() != null)
-			description.setText(description.getText() + ">>" + task.getAssignee().getCode());
+			description.setText(description.getText() + " -> " + task.getAssignee().getCode());
 		else
-			description.setText(description.getText() + ">>???");
-*/			
+			description.setText(description.getText() + " -> ???");	
 	}
 
 	private void createIcons() {
@@ -138,6 +137,7 @@ public class RoomStatusControllTaskWidget extends Composite {
 			rightCol.addStyleName(style.right2());
 			rightCol.add(playIcon);
 			rightCol.add(menuIcon);
+			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (ownedBy && assignedTo)");
 			return;
 		} 
 
@@ -145,16 +145,19 @@ public class RoomStatusControllTaskWidget extends Composite {
 			middleCol.addStyleName(style.middle1());
 			rightCol.addStyleName(style.right1());
 			rightCol.add(menuIcon);
+			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (ownedBy");
 			return;
 		} 
 		if (assignedTo) {
 			middleCol.addStyleName(style.middle1());
 			rightCol.addStyleName(style.right1());
 			rightCol.add(playIcon);
+			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (assignedTo");
 			return;
 		} 
 		middleCol.addStyleName(style.middle1());
 		rightCol.addStyleName(style.right1());
 		rightCol.add(dropIcon);
+		logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END");
 	}
 }
