@@ -21,9 +21,9 @@ import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.cfg.CfgNameTokens;
-import io.crs.hsys.client.cfg.editor.AbstractEditorPresenterWidget;
-import io.crs.hsys.client.cfg.editor.AbstractEditorView;
 import io.crs.hsys.client.core.datasource.ProfileGroupDataSource;
+import io.crs.hsys.client.core.editor.AbstractEditorPresenterWidget;
+import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.ApiParameters;

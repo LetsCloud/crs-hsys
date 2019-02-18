@@ -18,73 +18,62 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
+	@DefaultMessage("Housekeeping Dashboard")
+	String mainMenuItemHousekeepingDashboard();
 	
-	@DefaultMessage("Dashboard")
+	@DefaultMessage("Maintenance Dashboard")
 	String mainMenuItemDashboardMaintenance();
-
-	// *********
-	// Chat Room
-	// *********
+	
+	@DefaultMessage("Reception Dashboard")
+	String mainMenuItemReceptionDashboard();
 
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
-	// *********
-	// Tasks
-	// *********
-
 	@DefaultMessage("Tasks")
 	String mainMenuItemTasks();
-
-	// ***********
-	// Guest Rooms
-	// ***********
 
 	@DefaultMessage("Guest Rooms")
 	String mainMenuItemGuestRooms();
 
-	// ************
-	// Public Areas
-	// ************
+	@DefaultMessage("OOO Rooms")
+	String mainMenuItemGuestOoo();
+
 	@DefaultMessage("Public Areas")
-	String mainMenuGroupPublicAreas();
+	String mainMenuItemPublicAreas();
 
-	// ************
-	// Assignment
-	// ************
-	@DefaultMessage("Cleaning Assignment")
-	String mainMenuGroupAssignment();
+	@DefaultMessage("Task Assignment")
+	String mainMenuGroupTaskAssignment();
 
-	@DefaultMessage("Room Cleaning Assignment")
-	String mainMenuItemRoomAssignment();
+	@DefaultMessage("Room Tasks Assignment")
+	String mainMenuItemRoomTasksAssignment();
 
-	@DefaultMessage("Area Cleaning Assignment")
-	String mainMenuItemAreaAssignment();
+	@DefaultMessage("Public Area Tasks Assignment")
+	String mainMenuItemAreaTasksAssignment();
 
-	// ************
-	// Minibar
-	// ************
+	@DefaultMessage("Maintenance Assignment")
+	String mainMenuItemMaintenanceAssignment();
+
 	@DefaultMessage("Minibar")
 	String mainMenuGroupMinibar();
 
 	@DefaultMessage("Minibar Consumption")
 	String mainMenuItemConsumption();
 
-	// ************
-	// Beállítások
-	// ************
 	@DefaultMessage("Beállítások")
 	String mainMenuGroupConfig();
+
+	@DefaultMessage("Users and permissions")
+	String mainMenuItemUsersConfig();
+
+	@DefaultMessage("Hotel configuration")
+	String mainMenuItemHotelConfig();
 
 	@DefaultMessage("Housekeeping")
 	String mainMenuItemHousekeepingConfig();
 
-	// ************
-	// Maintenance
-	// ************
-
 	@DefaultMessage("Maintenance")
-	String mainMenuGroupMaintenance();
+	String mainMenuItemMaintenanceConfig();
 
 	
 	/*
@@ -95,6 +84,9 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Maintenance")
 	String dashboardMaintenanceSubtitle();
+
+	@DefaultMessage("Maintenance")
+	String dashboardReceptionSubtitle();
 
 	
 	/*

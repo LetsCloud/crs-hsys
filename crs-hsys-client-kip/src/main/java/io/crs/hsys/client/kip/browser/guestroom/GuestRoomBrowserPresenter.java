@@ -24,7 +24,7 @@ import io.crs.hsys.client.kip.assignments.AssignmentEditEvent;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorFactory;
 import io.crs.hsys.client.kip.assignments.editor.AssignmentEditorPresenter;
 import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
-import io.crs.hsys.client.kip.filter.FilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.constans.MenuItemType;
@@ -46,7 +46,7 @@ public class GuestRoomBrowserPresenter
 	public static final Slot<PresenterWidget<?>> SLOT_ASSIGNMENTS = new Slot<>();
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.GUEST_ROOMS2)
+	@NameToken(KipNameTokens.PUBLIC_AREAS)
 	interface MyProxy extends ProxyPlace<GuestRoomBrowserPresenter> {
 	}
 
@@ -58,7 +58,7 @@ public class GuestRoomBrowserPresenter
 	@Inject
 	GuestRoomBrowserPresenter(EventBus eventBus, MyView view, MyProxy proxy,
 			AssignmentWidgetFactory assignmentWidgetFactory, AssignmentEditorFactory assignmentEditFactory,
-			KipMessages i18n, FilterPresenterFactory filterPresenterFactory) {
+			KipMessages i18n, KipFilterPresenterFactory filterPresenterFactory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "GuestRoomBrowserPresenter()");
 

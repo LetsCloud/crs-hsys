@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.client.cfg.editor.profile.organization;
 
-import io.crs.hsys.client.cfg.editor.AbstractEditorUiHandlers;
+import io.crs.hsys.client.core.editor.AbstractEditorUiHandlers;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 
 /**

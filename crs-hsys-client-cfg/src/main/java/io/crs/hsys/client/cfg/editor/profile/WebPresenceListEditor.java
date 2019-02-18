@@ -19,7 +19,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
-import io.crs.hsys.client.cfg.editor.HasEditorSwitch;
+import io.crs.hsys.client.core.editor.HasEditorSwitch;
 import io.crs.hsys.shared.constans.WebPresenceType;
 import io.crs.hsys.shared.dto.profile.WebPresenceDto;
 

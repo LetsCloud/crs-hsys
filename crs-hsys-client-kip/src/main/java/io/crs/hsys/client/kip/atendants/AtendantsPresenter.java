@@ -45,7 +45,7 @@ public class AtendantsPresenter extends Presenter<AtendantsPresenter.MyView, Ate
 	}
 
 	@ProxyStandard
-	@NameToken(KipNameTokens.HK_ATENDANTS)
+	@NameToken(KipNameTokens.ROOM_TASK_ASSIGNMENT)
 	@UseGatekeeper(LoggedInGatekeeper.class)
 	interface MyProxy extends ProxyPlace<AtendantsPresenter> {
 	}
@@ -73,7 +73,7 @@ public class AtendantsPresenter extends Presenter<AtendantsPresenter.MyView, Ate
 	@Override
 	public void goToAssignments() {
 		logger.log(Level.INFO, "goToAssignments()");
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(KipNameTokens.HK_ASSIGNMENTS).build();
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(KipNameTokens.AREA_TASK_ASSIGNMENT).build();
 		placeManager.revealPlace(placeRequest);
 	}
 

@@ -85,7 +85,7 @@ public class RoomStatusUtils {
 		case INSPECTED:
 			return IconType.DONE_ALL;
 		case OOO:
-			return IconType.SETTINGS;
+			return IconType.DO_NOT_DISTURB_ON;
 		case OOS:
 			return IconType.WARNING;
 		case SHOW:
@@ -137,9 +137,9 @@ public class RoomStatusUtils {
 		case LATECO:
 			return MdiType.ALPHA_L_BOX;
 		case OOO:
-			return MdiType.SETTINGS_BOX;
+			return MdiType.DO_NOT_DISTURB;
 		case OOS:
-			return MdiType.CLOSE_BOX;
+			return MdiType.ALERT;
 		case SHOW:
 			return MdiType.EYE;
 		default:
