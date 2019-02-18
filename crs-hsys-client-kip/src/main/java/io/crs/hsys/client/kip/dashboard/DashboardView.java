@@ -22,6 +22,7 @@ import gwt.material.design.client.ui.animate.MaterialAnimation;
 import gwt.material.design.client.ui.animate.Transition;
 import io.crs.hsys.client.kip.dashboard.widget.ListMeasureCard;
 import io.crs.hsys.client.kip.dashboard.widget.MultiMeasureCard;
+import io.crs.hsys.client.kip.dashboard.widget.MultiMeasureCard2;
 import io.crs.hsys.shared.dto.hk.MaintenanceSumDto;
 
 /**
@@ -159,7 +160,7 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		MultiMeasureCard arrivals = new MultiMeasureCard();
 		arrivals.setTitleText("Érkezős szobák");
 		arrivals.setIconType(IconType.FLIGHT_LAND);
-		arrivals.setIconColor(Color.RED_LIGHTEN_2);
+		arrivals.setIconColor(Color.GREEN_LIGHTEN_2);
 		arrivals.setSumValue("299");
 		arrivals.setPartTitle1("Piszkos");
 		arrivals.setPartValue1("89");
@@ -182,10 +183,23 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		stayOvers.setPartValue3("0");
 		addCard(stayOvers);
 
+		MultiMeasureCard departures = new MultiMeasureCard();
+		departures.setTitleText("Utazó szobák");
+		departures.setIconType(IconType.FLIGHT_TAKEOFF);
+		departures.setIconColor(Color.RED_LIGHTEN_2);
+		departures.setSumValue("11");
+		departures.setPartTitle1("");
+		departures.setPartValue1("");
+		departures.setPartTitle2("");
+		departures.setPartValue2("");
+		departures.setPartTitle3("");
+		departures.setPartValue3("");
+		addCard(departures);
+
 		MultiMeasureCard vacants = new MultiMeasureCard();
 		vacants.setTitleText("Üres szobák");
 		vacants.setIconType(IconType.CHECK_BOX_OUTLINE_BLANK);
-		vacants.setIconColor(Color.GREEN_LIGHTEN_2);
+		vacants.setIconColor(Color.GREY);
 		vacants.setSumValue("11");
 		vacants.setPartTitle1("Piszkos");
 		vacants.setPartValue1("11");
@@ -200,39 +214,24 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		oooRooms.setIconType(IconType.SETTINGS);
 		oooRooms.setIconColor(Color.GREY_DARKEN_3);
 		oooRooms.setSumValue("11");
-		oooRooms.setPartTitle1("V.vett");
-		oooRooms.setPartValue1("11");
-		oooRooms.setPartTitle2("Vár");
-		oooRooms.setPartValue2("5");
-		oooRooms.setPartTitle3("Marad");
-		oooRooms.setPartValue3("6");
+		oooRooms.setPartTitle1("V.adott");
+		oooRooms.setPartValue1("5");
+		oooRooms.setPartTitle2("Felvett");
+		oooRooms.setPartValue2("6");
+		oooRooms.setPartTitle3("Maradt");
+		oooRooms.setPartValue3("21");
 		addCard(oooRooms);
 
-		MultiMeasureCard oosRooms = new MultiMeasureCard();
+		MultiMeasureCard2 oosRooms = new MultiMeasureCard2();
 		oosRooms.setTitleText("OOS szobák");
 		oosRooms.setIconType(IconType.WARNING);
 		oosRooms.setIconColor(Color.PURPLE_LIGHTEN_2);
 		oosRooms.setSumValue("2");
-		oosRooms.setPartTitle1("");
-		oosRooms.setPartValue1("");
-		oosRooms.setPartTitle2("");
-		oosRooms.setPartValue2("");
-		oosRooms.setPartTitle3("");
-		oosRooms.setPartValue3("");
+		oosRooms.setTitle2Text("Bemutató szobák");
+		oosRooms.setIcon2Type(IconType.VISIBILITY);
+		oosRooms.setIcon2Color(Color.AMBER_LIGHTEN_2);
+		oosRooms.setSumValue2("1");
 		addCard(oosRooms);
-
-		MultiMeasureCard showRooms = new MultiMeasureCard();
-		showRooms.setTitleText("Bemutató szobák");
-		showRooms.setIconType(IconType.VISIBILITY);
-		showRooms.setIconColor(Color.AMBER_LIGHTEN_2);
-		showRooms.setSumValue("1");
-		showRooms.setPartTitle1("");
-		showRooms.setPartValue1("");
-		showRooms.setPartTitle2("");
-		showRooms.setPartValue2("");
-		showRooms.setPartTitle3("");
-		showRooms.setPartValue3("");
-		addCard(showRooms);
 
 		new MaterialAnimation().transition(Transition.SHOW_GRID).animate(rowCards);
 	}

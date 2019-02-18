@@ -19,7 +19,8 @@
 	}
 	
 	.sumRowStyle {
-		margin-bottom: 10px;
+		margin-bottom: 5px;
+		border-bottom: 1px solid #e0e0e0;
 	}
 	
 	.titleStyle {
@@ -39,9 +40,7 @@
 	}
 	
 	.partRowStyle {
-		border-top: 1px solid #e0e0e0;
-		padding-top: 15px;
-		margin-bottom: 5px;
+		margin-bottom: 0px;
 	}
 	
 	.partCellStyle {
@@ -91,27 +90,17 @@
 				</m:MaterialColumn>
 			</m:MaterialRow>
 
+			<g:Label ui:field="title2" addStyleNames="{style.titleStyle}" />
+
 			<m:MaterialRow addStyleNames="{style.partRowStyle}">
-				<m:MaterialColumn grid="s4"
-					addStyleNames="{style.partCellStyle}">
-					<g:Label ui:field="partTitle1"
-						addStyleNames="{style.partTitleStyle}" />
-					<g:Label ui:field="partValue1"
-						addStyleNames="{style.partValueStyle}" />
+				<m:MaterialColumn grid="s3"
+					addStyleNames="{style.iconCellStyle}">
+					<m:MaterialIcon ui:field="icon2" iconSize="MEDIUM"
+						float="LEFT" />
 				</m:MaterialColumn>
-				<m:MaterialColumn grid="s4"
-					addStyleNames="{style.partCellStyle}">
-					<g:Label ui:field="partTitle2"
-						addStyleNames="{style.partTitleStyle}" />
-					<g:Label ui:field="partValue2"
-						addStyleNames="{style.partValueStyle}" />
-				</m:MaterialColumn>
-				<m:MaterialColumn grid="s4"
-					addStyleNames="{style.partCellStyle}">
-					<g:Label ui:field="partTitle3"
-						addStyleNames="{style.partTitleStyle}" />
-					<g:Label ui:field="partValue3"
-						addStyleNames="{style.partValueStyle}" />
+				<m:MaterialColumn grid="s9">
+					<g:Label ui:field="sumValue2"
+						addStyleNames="{style.sumValueStyle}" />
 				</m:MaterialColumn>
 			</m:MaterialRow>
 		</m.html:Div>
