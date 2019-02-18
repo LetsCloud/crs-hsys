@@ -106,7 +106,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 	@Override
 	public void onSetPageTitle(SetPageTitleEvent event) {
 		getView().setPageTitle(event.getTitle(), event.getDescription());
-		menuPresenter.adjustMenuItems(event.getMenuItemType());
+//cr		menuPresenter.adjustMenuItems(event.getMenuItemType());
 	}
 
 	public MenuPresenter getMenuPresenter() {
