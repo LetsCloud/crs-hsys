@@ -20,7 +20,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 import gwt.material.design.addext.client.ui.MaterialDesignIcon;
-import gwt.material.design.addext.client.ui.constants.MdiType;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialIcon;
