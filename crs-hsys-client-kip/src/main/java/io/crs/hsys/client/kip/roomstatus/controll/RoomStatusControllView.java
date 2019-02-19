@@ -243,6 +243,19 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 
 	private void setReceptionButtons(RoomStatus roomStatus) {
 		switch (roomStatus) {
+		case DIRTY:
+			oooButton.setVisible(true);
+			break;
+		case CLEAN:
+			oooButton.setVisible(true);
+			break;
+		case INSPECTED:
+			oooButton.setVisible(true);
+			break;
+		case OOO:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			break;
 		case OOS:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
