@@ -216,6 +216,16 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 			dirtyButton.setVisible(true);
 			inspectButton.setVisible(true);
 			break;
+		case OOS:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			inspectButton.setVisible(true);
+			break;
+		case SHOW:
+			cleanButton.setVisible(true);
+			dirtyButton.setVisible(true);
+			inspectButton.setVisible(true);
+			break;
 		default:
 			break;
 		}
