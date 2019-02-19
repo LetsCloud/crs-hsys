@@ -245,12 +245,16 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		switch (roomStatus) {
 		case DIRTY:
 			oooButton.setVisible(true);
+			oosButton.setVisible(true);
 			break;
 		case CLEAN:
 			oooButton.setVisible(true);
+			oosButton.setVisible(true);
 			break;
 		case INSPECTED:
 			oooButton.setVisible(true);
+			oosButton.setVisible(true);
+			showButton.setVisible(true);
 			break;
 		case OOO:
 			cleanButton.setVisible(true);
@@ -263,6 +267,7 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		case SHOW:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
+			oosButton.setVisible(true);
 			break;
 		default:
 			break;
