@@ -3,9 +3,6 @@
  */
 package io.crs.hsys.shared.dto.task;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 
@@ -14,12 +11,11 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
  *
  */
 @SuppressWarnings("serial")
-public class TaskTypeDto extends AccountChildDto {
+public class TaskGroupDto extends AccountChildDto {
 	private TaskKind kind;
 	private String code;
-	private String description;
-	private TaskGroupDto taskGroup;
-	private List<String> toDos = new ArrayList<String>();
+	private String description; 
+	private Boolean active; 
 
 	public TaskKind getKind() {
 		return kind;
@@ -45,20 +41,12 @@ public class TaskTypeDto extends AccountChildDto {
 		this.description = description;
 	}
 
-	public TaskGroupDto getTaskGroup() {
-		return taskGroup;
+	public Boolean getActive() {
+		return active;
 	}
 
-	public void setTaskGroup(TaskGroupDto taskGroup) {
-		this.taskGroup = taskGroup;
-	}
-
-	public List<String> getToDos() {
-		return toDos;
-	}
-
-	public void setToDos(List<String> toDos) {
-		this.toDos = toDos;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	public static class Builder {
@@ -66,8 +54,7 @@ public class TaskTypeDto extends AccountChildDto {
 		private TaskKind kind;
 		private String code;
 		private String description;
-		private TaskGroupDto taskGroup;
-		private List<String> toDos = new ArrayList<String>();
+		private Boolean active; 
 
 		public Builder() {
 		}
@@ -87,23 +74,17 @@ public class TaskTypeDto extends AccountChildDto {
 			return this;
 		}
 
-		public Builder taskGroup(TaskGroupDto taskGroup) {
-			this.taskGroup = taskGroup;
+		public Builder active(Boolean active) {
+			this.active = active;
 			return this;
 		}
 
-		public Builder toDos(List<String> toDos) {
-			this.toDos = toDos;
-			return this;
-		}
-
-		public TaskTypeDto build() {
-			TaskTypeDto result = new TaskTypeDto();
+		public TaskGroupDto build() {
+			TaskGroupDto result = new TaskGroupDto();
 			result.setKind(kind);
 			result.setCode(code);
 			result.setDescription(description);
-			result.setTaskGroup(taskGroup);
-			result.setToDos(toDos);
+			result.setActive(active);
 			return result;
 		}
 	}
