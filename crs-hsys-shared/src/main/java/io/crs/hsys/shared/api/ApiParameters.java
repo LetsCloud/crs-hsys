@@ -15,6 +15,8 @@ public class ApiParameters {
     public static final String AUTH = "auth";
     public static final String KEY = "key";
 
+    public static final String TASK_KIND = "taskKind";
+
     
     public static final String HOTEL_KEY = "hotelKey";
     public static final String ROOM_KEY = "roomKey";

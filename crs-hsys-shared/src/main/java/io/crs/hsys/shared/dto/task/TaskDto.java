@@ -37,10 +37,6 @@ public class TaskDto extends AccountChildDto {
 
 	private AppUserDtor assignee;
 
-	private AppUserDtor inspector;
-
-	private List<AppUserDtor> assignies = new ArrayList<AppUserDtor>();
-
 	private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 
 	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
@@ -60,8 +56,6 @@ public class TaskDto extends AccountChildDto {
 		description = builder.description;
 		reporter = builder.reporter;
 		assignee = builder.assignee;
-		inspector = builder.inspector;
-		assignies = builder.assignies;
 		attributes = builder.attributes;
 		notes = builder.notes;
 	}
@@ -134,14 +128,6 @@ public class TaskDto extends AccountChildDto {
 		this.reporter = reporter;
 	}
 
-	public List<AppUserDtor> getAssignies() {
-		return assignies;
-	}
-
-	public void setAssignies(List<AppUserDtor> assignies) {
-		this.assignies = assignies;
-	}
-
 	public List<TaskAttrDto> getAttributes() {
 		return attributes;
 	}
@@ -156,14 +142,6 @@ public class TaskDto extends AccountChildDto {
 
 	public void setAssignee(AppUserDtor assignee) {
 		this.assignee = assignee;
-	}
-
-	public AppUserDtor getInspector() {
-		return inspector;
-	}
-
-	public void setInspector(AppUserDtor inspector) {
-		this.inspector = inspector;
 	}
 
 	public List<TaskNoteDto> getNotes() {
@@ -191,8 +169,6 @@ public class TaskDto extends AccountChildDto {
 		private String description;
 		private AppUserDtor reporter;
 		private AppUserDtor assignee;
-		private AppUserDtor inspector;
-		private List<AppUserDtor> assignies = new ArrayList<AppUserDtor>();
 		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
