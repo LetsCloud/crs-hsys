@@ -17,8 +17,6 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialTextBox;
-import gwt.material.design.client.ui.MaterialTitle;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
@@ -51,11 +49,6 @@ public class TaskEditorView extends Composite implements Editor<TaskDto> {
 	@Ignore
 	MaterialComboBox<AppUserDtor> assigneeCombo;
 	TakesValueEditor<AppUserDtor> assignee;
-
-	@UiField
-	@Ignore
-	MaterialComboBox<AppUserDtor> inspectorCombo;
-	TakesValueEditor<AppUserDtor> inspector;
 
 	/**
 	 * 

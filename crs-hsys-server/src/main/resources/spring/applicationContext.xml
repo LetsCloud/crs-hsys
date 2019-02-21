@@ -55,6 +55,13 @@
 		<constructor-arg ref="appUserRepository" />
 		<constructor-arg ref="passwordEncoder" />
 	</bean>
+
+
+	<bean id="taskGroupService"
+		class="io.crs.hsys.server.service.ofy.TaskGroupServiceImpl">
+		<constructor-arg ref="taskGroupRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>	
 	
 	
 	<bean id="profileService"
@@ -141,6 +148,10 @@
  -->
 	<bean id="appUserRepository"
 		class="io.crs.hsys.server.repository.ofy.AppUserRepositoryImpl" />
+
+
+ 	<bean id="taskGroupRepository"
+		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl" />
 
 
 	<bean id="profileRepository"

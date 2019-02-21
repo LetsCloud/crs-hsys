@@ -281,7 +281,7 @@ public class KipAppPresenter extends AbstractAppPresenter<KipAppPresenter.MyProx
 
 	private void addHousekeepingConfigMenuItem(MenuItemDto group, Integer index) {
 		addMenuItem(group.getItems(), MenuItemCode.HOUSEKEEPING_CONFIG, index, MenuItemType.MENU_ITEM, null,
-				i18n.mainMenuItemHousekeepingConfig(), KipNameTokens.ROOM_TASK_ASSIGNMENT);
+				i18n.mainMenuItemHousekeepingConfig(), KipNameTokens.HOUSEKEEPING_CONFIG);
 	}
 
 	private void addMaintenaceConfigMenuItem(MenuItemDto group, Integer index) {
