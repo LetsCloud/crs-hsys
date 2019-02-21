@@ -48,9 +48,10 @@ public class HkTaskGroupBrowserPresenter
 
 	@Inject
 	HkTaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<TaskGroupResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory, HkTaskGroupEditorFactory editorFactory) {
+			ResourceDelegate<TaskGroupResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory,
+			HkTaskGroupEditorFactory editorFactory) {
 		super(eventBus, view, placeManager);
-		logger.info("RoomTypeTablePresenter()");
+		logger.info("HkTaskGroupBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterPresenterFactory.createRoomTypeFilterPresenter();
@@ -80,7 +81,17 @@ public class HkTaskGroupBrowserPresenter
 			public void onSuccess(List<TaskGroupDto> result) {
 				getView().setData(result);
 			}
-		}).getAll("", false);
+		}).getAll();
+	}
+
+	@Override
+	public void addNew() {
+		editor.create();
+	}
+
+	@Override
+	public void edit(TaskGroupDto dto) {
+		editor.edit(dto);
 	}
 
 	@Override
@@ -111,6 +122,6 @@ public class HkTaskGroupBrowserPresenter
 			public void onSuccess(List<TaskGroupDto> result) {
 				getView().setData(result);
 			}
-		}).getAll("", filter.isOnlyActive());
+		}).getAll();
 	}
 }

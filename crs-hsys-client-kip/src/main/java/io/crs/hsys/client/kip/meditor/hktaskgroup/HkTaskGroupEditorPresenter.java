@@ -18,6 +18,7 @@ import io.crs.hsys.client.core.event.RefreshTableEvent;
 import io.crs.hsys.client.core.gin.CustomActionException;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.UserGroupDto;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
@@ -62,6 +63,8 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 
 		TaskGroupDto dto = new TaskGroupDto();
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
+		dto.setKind(TaskKind.CLEANING);
+		dto.setActive(true);
 
 		getView().open(isNew, dto);
 	}

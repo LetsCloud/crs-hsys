@@ -377,5 +377,63 @@
             <Value disabled="false">{0}. floor</Value>
             <Value disabled="false">{0}. emelet</Value>
         </Property>
+        <Comment>
+            <Value>HOUSEKEPING CONFIG</Value>
+        </Comment>
+        <Property>
+            <Name>housekeepingConfigTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeping Configuration</Value>
+            <Value disabled="false">Housekeeping beállítások</Value>
+        </Property>
+        <Property>
+            <Name>housekeepingConfigDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
+            <Value disabled="false">Takarítási feladat csoportok és típusok karbantartása.</Value>
+        </Property>
+        <Comment>
+            <Value>HOUSEKEEPING TASK GROUPS BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>hkTaskGroupBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Groups</Value>
+            <Value disabled="false">Feladat csoportok</Value>
+        </Property>
+        <Comment>
+            <Value>HOUSEKEEPING TASK GROUP EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>hkTaskGroupEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Task Group</Value>
+            <Value disabled="false">Feladat csoport létrehozása</Value>
+        </Property>
+        <Property>
+            <Name>hkTaskGroupEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edit Task Group</Value>
+            <Value disabled="false">Feladat csoport módosítása</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
     </Records>
 </MultiProperties>

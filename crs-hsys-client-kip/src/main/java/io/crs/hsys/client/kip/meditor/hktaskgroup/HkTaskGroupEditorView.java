@@ -17,12 +17,13 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import gwt.material.design.client.ui.MaterialToast;
 
-import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -48,13 +49,16 @@ public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorU
 	MaterialTitle title;
 
 	@UiField
-	MaterialTextBox name;
+	MaterialTextBox code, description;
+
+	@UiField
+	MaterialCheckBox active;
 
 	private final Driver driver;
-	private final CoreMessages i18n;
+	private final KipMessages i18n;
 
 	@Inject
-	HkTaskGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n) {
+	HkTaskGroupEditorView(Binder uiBinder, Driver driver, KipMessages i18n) {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.driver = driver;
@@ -67,9 +71,9 @@ public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorU
 	public void open(Boolean isNew, TaskGroupDto dto) {
 		logger.info("open()");
 		if (isNew) {
-			title.setTitle(i18n.userGroupEditorCreateTitle());
+			title.setTitle(i18n.hkTaskGroupEditorCreateTitle());
 		} else {
-			title.setTitle(i18n.userGroupEditorModifyTitle());
+			title.setTitle(i18n.hkTaskGroupEditorModifyTitle());
 		}
 		driver.edit(dto);
 //name.clearErrorOrSuccess();
@@ -78,7 +82,7 @@ public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorU
 		Timer t = new Timer() {
 			@Override
 			public void run() {
-				name.setFocus(true);
+				code.setFocus(true);
 			}
 		};
 		t.schedule(500);

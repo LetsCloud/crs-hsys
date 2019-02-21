@@ -15,6 +15,7 @@ import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.ui.browser.ActionColumn;
 import io.crs.hsys.client.core.ui.browser.DataColumn;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -27,6 +28,7 @@ public class HkTaskGroupBrowserView extends ViewWithUiHandlers<HkTaskGroupBrowse
 
 	private final AbstractBrowserView<TaskGroupDto> table;
 
+	private final KipMessages i18n;
 	private final CoreMessages i18nCore;
 	private final CoreConstants cnstCore;
 
@@ -34,22 +36,24 @@ public class HkTaskGroupBrowserView extends ViewWithUiHandlers<HkTaskGroupBrowse
 	* 
 	*/
 	@Inject
-	HkTaskGroupBrowserView(AbstractBrowserView<TaskGroupDto> table, CoreMessages i18nCore, CoreConstants cnstCore) {
+	HkTaskGroupBrowserView(AbstractBrowserView<TaskGroupDto> table, KipMessages i18n, CoreMessages i18nCore, CoreConstants cnstCore) {
 		logger.info("HkTaskGroupBrowserView()");
 		initWidget(table);
 
 		this.table = table;
+		this.i18n = i18n;
 		this.i18nCore = i18nCore;
 		this.cnstCore = cnstCore;
 
 		bindSlot(HkTaskGroupBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
+		bindSlot(HkTaskGroupBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
 
 		initTable();
 	}
 
 	private void initTable() {
 
-		table.setTableTitle(i18nCore.roomTypeBrowserTitle());
+		table.setTableTitle(i18n.hkTaskGroupBrowserTitle());
 
 		table.getAddButton().addClickHandler(e -> {
 			getUiHandlers().addNew();

@@ -20,10 +20,10 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Housekeeping Dashboard")
 	String mainMenuItemHousekeepingDashboard();
-	
+
 	@DefaultMessage("Maintenance Dashboard")
 	String mainMenuItemDashboardMaintenance();
-	
+
 	@DefaultMessage("Reception Dashboard")
 	String mainMenuItemReceptionDashboard();
 
@@ -75,7 +75,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Maintenance")
 	String mainMenuItemMaintenanceConfig();
 
-	
 	/*
 	 * DASHBOARD
 	 */
@@ -88,7 +87,6 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Maintenance")
 	String dashboardReceptionSubtitle();
 
-	
 	/*
 	 * CHAT ROOM
 	 */
@@ -210,4 +208,33 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("{0}. floor")
 	String roomStatusFilterRoomFloorChip(String floor);
 
+	/*
+	 * Housekeeping Config
+	 */
+	@DefaultMessage("Housekeeping Configuration")
+	String housekeepingConfigTitle();
+
+	@DefaultMessage("The Housekeeping Configuration form is used to add and modify the Clean TaskGroup and Clean TaskTypes.")
+	String housekeepingConfigDescription();
+
+	/*
+	 * Housekeeping Task Group Browser
+	 */
+	@DefaultMessage("Housekeeping Configuration")
+	String hkTaskGroupBrowserTitle();
+
+	/*
+	 * Housekeeping Task Group Editor
+	 */
+	@DefaultMessage("Create Task Group")
+	String hkTaskGroupEditorCreateTitle();
+
+	@DefaultMessage("Edit Task Group")
+	String hkTaskGroupEditorModifyTitle();
+
+	@DefaultMessage("Code")
+	String taskGroupEditorCode();
+
+	@DefaultMessage("Description")
+	String taskGroupEditorDescription();
 }
