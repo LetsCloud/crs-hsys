@@ -48,7 +48,7 @@ public class HkTaskTypeBrowserPresenter extends AbstractBrowserPresenter<TaskTyp
 	HkTaskTypeBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskTypeResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory) {
 		super(eventBus, view, placeManager);
-		logger.info("RoomTablePresenter()");
+		logger.info("HkTaskTypeBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterPresenterFactory.createRoomFilterPresenter();

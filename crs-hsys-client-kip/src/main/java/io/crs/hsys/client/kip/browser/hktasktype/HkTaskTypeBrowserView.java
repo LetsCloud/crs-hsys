@@ -34,7 +34,7 @@ public class HkTaskTypeBrowserView extends ViewWithUiHandlers<HkTaskTypeBrowserU
 	*/
 	@Inject
 	HkTaskTypeBrowserView(AbstractBrowserView<TaskTypeDto> table, CoreMessages i18nCore) {
-		logger.info("RoomBrowserView()");
+		logger.info("HkTaskTypeBrowserView()");
 		initWidget(table);
 
 		this.table = table;
