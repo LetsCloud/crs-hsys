@@ -9,7 +9,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.UserGroup;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.UserGroupRepository;
@@ -22,24 +21,20 @@ import io.crs.hsys.server.service.UserGroupService;
 public class UserGroupServiceImpl extends CrudServiceImpl<UserGroup, UserGroupRepository> implements UserGroupService {
 	private static final Logger logger = LoggerFactory.getLogger(UserGroupServiceImpl.class.getName());
 
-	private final UserGroupRepository userGroupRepository;
 	private final AccountRepository accountRepository;
 
-	public UserGroupServiceImpl(UserGroupRepository userGroupRepository, AccountRepository accountRepository) {
-		super(userGroupRepository);
+	public UserGroupServiceImpl(UserGroupRepository repository, AccountRepository accountRepository) {
+		super(repository);
 		logger.info("UserGroupServiceImpl(");
-		this.userGroupRepository = userGroupRepository;
 		this.accountRepository = accountRepository;
 	}
 
 	@Override
 	public List<UserGroup> getAll(String accountWebSafeKey) {
-		Account account = accountRepository.findByWebSafeKey(accountWebSafeKey);
-
-		if (account == null)
+		if (accountWebSafeKey == null)
 			return null;
 
-		List<UserGroup> result = userGroupRepository.getAll(account);
+		List<UserGroup> result = getAll(accountWebSafeKey);
 		for (UserGroup group : result) {
 			group.getMembers();
 		}
