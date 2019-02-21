@@ -39,7 +39,7 @@ public class UserGroupServiceImpl extends CrudServiceImpl<UserGroup, UserGroupRe
 		if (account == null)
 			return null;
 
-		List<UserGroup> result = userGroupRepository.getByAccount(account);
+		List<UserGroup> result = userGroupRepository.getAll(account);
 		for (UserGroup group : result) {
 			group.getMembers();
 		}

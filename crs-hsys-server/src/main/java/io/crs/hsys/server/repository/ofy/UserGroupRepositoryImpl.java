@@ -3,8 +3,6 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
-import java.util.List;
-
 import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.common.Account;
@@ -35,11 +33,6 @@ public class UserGroupRepositoryImpl extends CrudRepositoryImpl<UserGroup> imple
 	public String getAccountId(String webSafeString) {
 		Key<UserGroup> key = getKey(webSafeString);
 		return key.getParent().getString();
-	}
-
-	@Override
-	public List<UserGroup> getByAccount(Object account) {
-		return getChildren(account);
 	}
 
 	@Override
