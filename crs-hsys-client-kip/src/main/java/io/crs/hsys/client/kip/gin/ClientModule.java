@@ -14,6 +14,7 @@ import io.crs.hsys.client.kip.chat.creator.ChatCreatorModule;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorModule;
 import io.crs.hsys.client.kip.chat.list.ChatListModule;
 import io.crs.hsys.client.kip.config.hk.HkConfigModule;
+import io.crs.hsys.client.kip.config.mt.MtConfigModule;
 import io.crs.hsys.client.kip.dashboard.DashboardModule;
 import io.crs.hsys.client.kip.filter.KipFilterModule;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayModule;
@@ -56,6 +57,7 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new TaskCreatorModule());
 
 		install(new HkConfigModule());
+		install(new MtConfigModule());
 
 		/*
 		 * install(new UserListModule()); install(new RoleListModule()); install(new

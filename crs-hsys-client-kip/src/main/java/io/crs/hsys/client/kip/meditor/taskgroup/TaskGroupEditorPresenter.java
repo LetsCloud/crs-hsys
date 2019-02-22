@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.meditor.hktaskgroup;
+package io.crs.hsys.client.kip.meditor.taskgroup;
 
 import java.util.logging.Logger;
 
@@ -27,11 +27,11 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  * @author robi
  *
  */
-public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEditorPresenter.MyView>
-		implements HkTaskGroupEditorUiHandlers {
-	private static Logger logger = Logger.getLogger(HkTaskGroupEditorPresenter.class.getName());
+public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroupEditorPresenter.MyView>
+		implements TaskGroupEditorUiHandlers {
+	private static Logger logger = Logger.getLogger(TaskGroupEditorPresenter.class.getName());
 
-	public interface MyView extends View, HasUiHandlers<HkTaskGroupEditorUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<TaskGroupEditorUiHandlers> {
 		void open(Boolean isNew, TaskGroupDto dto);
 
 		void displayError(EntityPropertyCode code, String message);
@@ -46,7 +46,7 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 	private Boolean isNew;
 
 	@Inject
-	HkTaskGroupEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskGroupResource> resourceDelegate,
+	TaskGroupEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskGroupResource> resourceDelegate,
 			CurrentUser currentUser) {
 		super(eventBus, view);
 
@@ -63,7 +63,7 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 
 		TaskGroupDto dto = new TaskGroupDto();
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
-		dto.setKind(TaskKind.CLEANING);
+		dto.setKind(getDefaultTaskKind());
 		dto.setActive(true);
 
 		getView().open(isNew, dto);
@@ -88,7 +88,7 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 		resourceDelegate.withCallback(new AsyncCallback<TaskGroupDto>() {
 			@Override
 			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(HkTaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
 				getView().close();
 			}
 
@@ -107,7 +107,7 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 		resourceDelegate.withCallback(new AsyncCallback<UserGroupDto>() {
 			@Override
 			public void onSuccess(UserGroupDto dto) {
-				RefreshTableEvent.fire(HkTaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
 				getView().close();
 			}
 
@@ -126,4 +126,6 @@ public class HkTaskGroupEditorPresenter extends PresenterWidget<HkTaskGroupEdito
 		getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
 				e.getErDto().getProperty() + "/" + e.getErDto().getExceptionType());
 	}
+	
+	protected abstract TaskKind getDefaultTaskKind();
 }

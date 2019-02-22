@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.hktaskgroup;
+package io.crs.hsys.client.kip.browser.taskgroup;
 
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
@@ -10,7 +10,7 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
  * @author robi
  *
  */
-public class HkTaskGroupBrowserModule extends AbstractPresenterModule {
+public class TaskGroupBrowserModule extends AbstractPresenterModule {
 	@Override
 	protected void configure() {
 
@@ -19,6 +19,9 @@ public class HkTaskGroupBrowserModule extends AbstractPresenterModule {
 		bindPresenterWidget(HkTaskGroupBrowserPresenter.class, HkTaskGroupBrowserPresenter.MyView.class,
 				HkTaskGroupBrowserView.class);
 
-		install(new GinFactoryModuleBuilder().build(HkTaskGroupBrowserFactory.class));
+		bindPresenterWidget(MtTaskGroupBrowserPresenter.class, MtTaskGroupBrowserPresenter.MyView.class,
+				MtTaskGroupBrowserView.class);
+
+		install(new GinFactoryModuleBuilder().build(TaskGroupBrowserFactory.class));
 	}
 }

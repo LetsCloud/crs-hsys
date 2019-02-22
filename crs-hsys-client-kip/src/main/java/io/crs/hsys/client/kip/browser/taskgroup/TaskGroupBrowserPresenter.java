@@ -1,12 +1,10 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.hktaskgroup;
+package io.crs.hsys.client.kip.browser.taskgroup;
 
 import java.util.List;
 import java.util.logging.Logger;
-
-import javax.inject.Inject;
 
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
@@ -21,8 +19,7 @@ import io.crs.hsys.client.core.filter.roomtype.RoomTypeFilterPresenter;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
-import io.crs.hsys.client.kip.meditor.hktaskgroup.HkTaskGroupEditorFactory;
-import io.crs.hsys.client.kip.meditor.hktaskgroup.HkTaskGroupEditorPresenter;
+import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorPresenter;
 import io.crs.hsys.shared.api.TaskGroupResource;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -30,12 +27,12 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  * @author robi
  *
  */
-public class HkTaskGroupBrowserPresenter
-		extends AbstractBrowserPresenter<TaskGroupDto, HkTaskGroupBrowserPresenter.MyView>
-		implements HkTaskGroupBrowserUiHandlers, FilterChangeEvent.FilterChangeHandler {
-	private static Logger logger = Logger.getLogger(HkTaskGroupBrowserPresenter.class.getName());
+public abstract class TaskGroupBrowserPresenter
+		extends AbstractBrowserPresenter<TaskGroupDto, TaskGroupBrowserPresenter.MyView>
+		implements TaskGroupBrowserUiHandlers, FilterChangeEvent.FilterChangeHandler {
+	private static Logger logger = Logger.getLogger(TaskGroupBrowserPresenter.class.getName());
 
-	public interface MyView extends View, HasUiHandlers<HkTaskGroupBrowserUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<TaskGroupBrowserUiHandlers> {
 		void setData(List<TaskGroupDto> data);
 	}
 
@@ -44,18 +41,17 @@ public class HkTaskGroupBrowserPresenter
 
 	private final ResourceDelegate<TaskGroupResource> resourceDelegate;
 	private final RoomTypeFilterPresenter filter;
-	private final HkTaskGroupEditorPresenter editor;
+	private final TaskGroupEditorPresenter editor;
 
-	@Inject
-	HkTaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
+	public TaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskGroupResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory,
-			HkTaskGroupEditorFactory editorFactory) {
+			TaskGroupEditorPresenter editor) {
 		super(eventBus, view, placeManager);
-		logger.info("HkTaskGroupBrowserPresenter()");
+		logger.info("TaskGroupBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterPresenterFactory.createRoomTypeFilterPresenter();
-		this.editor = editorFactory.createHkTaskGroupEditor();
+		this.editor = editor;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 

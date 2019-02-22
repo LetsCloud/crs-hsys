@@ -1,4 +1,7 @@
-package io.crs.hsys.client.kip.config.hk;
+/**
+ * 
+ */
+package io.crs.hsys.client.kip.config.mt;
 
 import java.util.logging.Logger;
 
@@ -18,9 +21,13 @@ import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.browser.taskgroup.TaskGroupBrowserFactory;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
-public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter.MyView, HkConfigPresenter.MyProxy>
-		implements HkConfigUiHandlers {
-	private static Logger logger = Logger.getLogger(HkConfigPresenter.class.getName());
+/**
+ * @author robi
+ *
+ */
+public class MtConfigPresenter extends AbstractConfigPresenter<MtConfigPresenter.MyView, MtConfigPresenter.MyProxy>
+		implements MtConfigUiHandlers {
+	private static Logger logger = Logger.getLogger(MtConfigPresenter.class.getName());
 
 	public static final String TASK_GROUPS = "taskGroups";
 	public static final String ROOM_TYPES = "roomTypes";
@@ -31,23 +38,23 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 	}
 
 	@ProxyCodeSplit
-	@NameToken(KipNameTokens.HOUSEKEEPING_CONFIG)
-//	@UseGatekeeper(LoggedInGatekeeper.class)
-	interface MyProxy extends ProxyPlace<HkConfigPresenter> {
+	@NameToken(KipNameTokens.MAINTENANCE_CONFIG)
+//@UseGatekeeper(LoggedInGatekeeper.class)
+	interface MyProxy extends ProxyPlace<MtConfigPresenter> {
 	}
 
 	@Inject
-	HkConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			TaskGroupBrowserFactory hkTaskGroupBrowserFactory, RoomTypeBrowserFactory roomTypeBrowserFactory,
+	MtConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
+			TaskGroupBrowserFactory taskGroupBrowserFactory, RoomTypeBrowserFactory roomTypeBrowserFactory,
 			RoomBrowserFactory roomBrowserFactory, CoreMessages i18nCore, KipMessages i18n) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
-		logger.info("HkConfigPresenter()");
+		logger.info("MtConfigPresenter()");
 
-		setCaption(i18n.housekeepingConfigTitle());
-		setDescription(i18n.housekeepingConfigDescription());
-		setPlaceToken(KipNameTokens.HOUSEKEEPING_CONFIG);
+		setCaption(i18n.mtConfigTitle());
+		setDescription(i18n.mtConfigDescription());
+		setPlaceToken(KipNameTokens.MAINTENANCE_CONFIG);
 
-		addContent(i18n.hkTaskGroupBrowserTitle(), hkTaskGroupBrowserFactory.createHkTaskGroupBrowser(), TASK_GROUPS);
+		addContent(i18n.mtTaskGroupBrowserTitle(), taskGroupBrowserFactory.createMtTaskGroupBrowser(), TASK_GROUPS);
 		addContent(i18nCore.roomTypeBrowserTitle(), roomTypeBrowserFactory.createRoomTypeTablePresenter(), ROOM_TYPES);
 		addContent(i18nCore.roomBrowserTitle(), roomBrowserFactory.createRoomTablePresenter(), ROOMS);
 

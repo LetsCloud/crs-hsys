@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.meditor.hktaskgroup;
+package io.crs.hsys.client.kip.meditor.taskgroup;
 
 import io.crs.hsys.client.core.meditor.IsDtoEditor;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
@@ -10,6 +10,6 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  * @author robi
  *
  */
-public interface HkTaskGroupEditorUiHandlers extends IsDtoEditor<TaskGroupDto> {
+public interface TaskGroupEditorUiHandlers extends IsDtoEditor<TaskGroupDto> {
 
 }

@@ -324,6 +324,37 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
+	 * TASK GROUP BROWSER
+	 */
+
+	@DefaultMessage("Task Groups")
+	String taskGroupBrowserTitle();
+
+	@DefaultMessage("Code")
+	String taskGroupBrowserCodeColumn();
+
+	@DefaultMessage("Description")
+	String taskGroupBrowserDescriptionColumn();
+
+	
+	/*
+	 * TASK GROUP EDITOR
+	 */
+
+	@DefaultMessage("Create Task Group")
+	String taskGroupEditorCreateTitle();
+
+	@DefaultMessage("Modify Task Group")
+	String taskGroupEditorModifyTitle();
+
+	@DefaultMessage("Code")
+	String taskGroupEditorCode();
+
+	@DefaultMessage("Description")
+	String taskGroupEditorDescription();
+	
+	
+	/*
 	 * PROFILE CONFIG
 	 */
 

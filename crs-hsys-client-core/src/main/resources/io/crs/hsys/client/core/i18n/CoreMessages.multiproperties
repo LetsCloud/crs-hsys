@@ -17,7 +17,7 @@
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
-            <Width>928</Width>
+            <Width>1016</Width>
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
@@ -540,6 +540,61 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Choose a group</Value>
             <Value disabled="false">Válassz csoportot</Value>
+        </Property>
+        <Comment>
+            <Value>TASK GROUP BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>taskGroupBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Groups</Value>
+            <Value disabled="false">Feladat csoportok</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupBrowserCodeColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupBrowserDescriptionColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Comment>
+            <Value>TASK GROUP EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>taskGroupEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Task Group</Value>
+            <Value disabled="false">Feladat csoport létrehozása</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edit Task Group</Value>
+            <Value disabled="false">Feladat csoport módosítása</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
         </Property>
         <Comment>
             <Value>PROFILE CONFIG</Value>

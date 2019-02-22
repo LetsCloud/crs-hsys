@@ -217,24 +217,27 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("The Housekeeping Configuration form is used to add and modify the Clean TaskGroup and Clean TaskTypes.")
 	String housekeepingConfigDescription();
 
+	
 	/*
 	 * Housekeeping Task Group Browser
 	 */
 	@DefaultMessage("Housekeeping Configuration")
 	String hkTaskGroupBrowserTitle();
 
+	
 	/*
-	 * Housekeeping Task Group Editor
+	 * Maintenance Config
 	 */
-	@DefaultMessage("Create Task Group")
-	String hkTaskGroupEditorCreateTitle();
+	@DefaultMessage("Maintenance Configuration")
+	String mtConfigTitle();
 
-	@DefaultMessage("Edit Task Group")
-	String hkTaskGroupEditorModifyTitle();
+	@DefaultMessage("The Maintenance Configuration form is used to add and modify the Clean TaskGroup and Clean TaskTypes.")
+	String mtConfigDescription();
 
-	@DefaultMessage("Code")
-	String taskGroupEditorCode();
-
-	@DefaultMessage("Description")
-	String taskGroupEditorDescription();
+	
+	/*
+	 * Housekeeping Task Group Browser
+	 */
+	@DefaultMessage("Task Groups")
+	String mtTaskGroupBrowserTitle();
 }

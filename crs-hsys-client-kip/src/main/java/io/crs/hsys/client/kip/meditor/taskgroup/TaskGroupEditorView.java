@@ -1,11 +1,9 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.meditor.hktaskgroup;
+package io.crs.hsys.client.kip.meditor.taskgroup;
 
 import java.util.logging.Logger;
-
-import javax.inject.Inject;
 
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -23,7 +21,7 @@ import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import gwt.material.design.client.ui.MaterialToast;
 
-import io.crs.hsys.client.kip.i18n.KipMessages;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -31,14 +29,14 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  * @author robi
  *
  */
-public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorUiHandlers>
-		implements HkTaskGroupEditorPresenter.MyView, Editor<TaskGroupDto> {
-	private static Logger logger = Logger.getLogger(HkTaskGroupEditorView.class.getName());
+public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHandlers>
+		implements TaskGroupEditorPresenter.MyView, Editor<TaskGroupDto> {
+	private static Logger logger = Logger.getLogger(TaskGroupEditorView.class.getName());
 
-	interface Binder extends UiBinder<Widget, HkTaskGroupEditorView> {
+	interface Binder extends UiBinder<Widget, TaskGroupEditorView> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<TaskGroupDto, HkTaskGroupEditorView> {
+	interface Driver extends SimpleBeanEditorDriver<TaskGroupDto, TaskGroupEditorView> {
 	}
 
 	@UiField
@@ -55,10 +53,9 @@ public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorU
 	MaterialCheckBox active;
 
 	private final Driver driver;
-	private final KipMessages i18n;
+	private final CoreMessages i18n;
 
-	@Inject
-	HkTaskGroupEditorView(Binder uiBinder, Driver driver, KipMessages i18n) {
+	TaskGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n) {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.driver = driver;
@@ -71,9 +68,9 @@ public class HkTaskGroupEditorView extends ViewWithUiHandlers<HkTaskGroupEditorU
 	public void open(Boolean isNew, TaskGroupDto dto) {
 		logger.info("open()");
 		if (isNew) {
-			title.setTitle(i18n.hkTaskGroupEditorCreateTitle());
+			title.setTitle(i18n.taskGroupEditorCreateTitle());
 		} else {
-			title.setTitle(i18n.hkTaskGroupEditorModifyTitle());
+			title.setTitle(i18n.taskGroupEditorModifyTitle());
 		}
 		driver.edit(dto);
 //name.clearErrorOrSuccess();
