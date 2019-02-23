@@ -19,7 +19,7 @@ public class TaskTypeDto extends AccountChildDto {
 	private String code;
 	private String description;
 	private TaskGroupDto taskGroup;
-	private List<String> toDos = new ArrayList<String>();
+	private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
 
 	public TaskKind getKind() {
 		return kind;
@@ -53,12 +53,12 @@ public class TaskTypeDto extends AccountChildDto {
 		this.taskGroup = taskGroup;
 	}
 
-	public List<String> getToDos() {
-		return toDos;
+	public List<TaskTodoDto> getTodos() {
+		return todos;
 	}
 
-	public void setToDos(List<String> toDos) {
-		this.toDos = toDos;
+	public void setTodos(List<TaskTodoDto> todos) {
+		this.todos = todos;
 	}
 
 	public static class Builder {
@@ -67,7 +67,7 @@ public class TaskTypeDto extends AccountChildDto {
 		private String code;
 		private String description;
 		private TaskGroupDto taskGroup;
-		private List<String> toDos = new ArrayList<String>();
+		private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
 
 		public Builder() {
 		}
@@ -92,8 +92,8 @@ public class TaskTypeDto extends AccountChildDto {
 			return this;
 		}
 
-		public Builder toDos(List<String> toDos) {
-			this.toDos = toDos;
+		public Builder toDos(List<TaskTodoDto> todos) {
+			this.todos = todos;
 			return this;
 		}
 
@@ -103,7 +103,7 @@ public class TaskTypeDto extends AccountChildDto {
 			result.setCode(code);
 			result.setDescription(description);
 			result.setTaskGroup(taskGroup);
-			result.setToDos(toDos);
+			result.setTodos(todos);
 			return result;
 		}
 	}

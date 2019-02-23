@@ -217,12 +217,11 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("The Housekeeping Configuration form is used to add and modify the Clean TaskGroup and Clean TaskTypes.")
 	String housekeepingConfigDescription();
 
-	
-	/*
-	 * Housekeeping Task Group Browser
-	 */
-	@DefaultMessage("Housekeeping Configuration")
+	@DefaultMessage("Task Groups")
 	String hkTaskGroupBrowserTitle();
+
+	@DefaultMessage("Task Todos")
+	String hkTaskTodosBrowserTitle();
 
 	
 	/*

@@ -326,7 +326,6 @@ public interface CoreMessages extends Messages {
 	/*
 	 * TASK GROUP BROWSER
 	 */
-
 	@DefaultMessage("Task Groups")
 	String taskGroupBrowserTitle();
 
@@ -349,11 +348,11 @@ public interface CoreMessages extends Messages {
 	
 	@DefaultMessage("Choose a Task Kind")
 	String taskGroupFilterTaskKindPlaceholder();
+
 	
 	/*
 	 * TASK GROUP EDITOR
 	 */
-
 	@DefaultMessage("Create Task Group")
 	String taskGroupEditorCreateTitle();
 
@@ -371,6 +370,50 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Description")
 	String taskGroupEditorDescription();
+
+	
+	/*
+	 * TASK TODO BROWSER
+	 */
+	@DefaultMessage("Task Todos")
+	String taskTodoBrowserTitle();
+
+	@DefaultMessage("Kind")
+	String taskTodoBrowserKindColumn();
+
+	@DefaultMessage("Description")
+	String taskTodoBrowserDescriptionColumn();
+
+	@DefaultMessage("Time(m)")
+	String taskTodoBrowserTimeReqColumn();
+
+	
+	/*
+	 * TASK TODO EDITOR
+	 */
+	@DefaultMessage("Create Task Todo")
+	String taskTodoEditorCreateTitle();
+
+	@DefaultMessage("Modify Task Todo")
+	String taskTodoEditorModifyTitle();
+
+	@DefaultMessage("Task Kind")
+	String taskTodoEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskTodoEditorKindPlaceholder();
+
+	@DefaultMessage("Task Type")
+	String taskTodoEditorType();
+
+	@DefaultMessage("Choose a Task Type")
+	String taskTodoEditorTypePlaceholder();
+
+	@DefaultMessage("Description")
+	String taskTodoEditorDescription();
+	
+	@DefaultMessage("Time required(m)")
+	String taskTodoEditorTimeRequired();
 	
 	
 	/*

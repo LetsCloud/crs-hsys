@@ -404,6 +404,13 @@
             <Value disabled="false">Task Groups</Value>
             <Value disabled="false">Feladat csoportok</Value>
         </Property>
+        <Property>
+            <Name>hkTaskTodosBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Todos</Value>
+            <Value disabled="false">Tennivalók</Value>
+        </Property>
         <Comment>
             <Value>HOUSEKEEPING TASK GROUP EDITOR</Value>
         </Comment>

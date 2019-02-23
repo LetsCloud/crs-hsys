@@ -642,6 +642,37 @@
             <Value disabled="false">Megnevezés</Value>
         </Property>
         <Comment>
+            <Value>TASK TODO BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>taskTodoBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Todos</Value>
+            <Value disabled="false">Tennivalók</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoBrowserKindColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Kind</Value>
+            <Value disabled="false">Fajta</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoBrowserDescriptionColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoBrowserTimeReqColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time(s)</Value>
+            <Value disabled="false">Időigény(p)</Value>
+        </Property>
+        <Comment>
             <Value>PROFILE CONFIG</Value>
         </Comment>
         <Property>

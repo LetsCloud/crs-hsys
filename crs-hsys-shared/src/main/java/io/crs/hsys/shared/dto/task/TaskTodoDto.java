@@ -13,8 +13,10 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
 @SuppressWarnings("serial")
 public class TaskTodoDto extends AccountChildDto {
 	private TaskKind kind;
+	private TaskGroupDto taskGroup;
 	private String description;
 	private Integer timeRequired;
+	private Boolean active; 
 
 	public TaskKind getKind() {
 		return kind;
@@ -28,6 +30,14 @@ public class TaskTodoDto extends AccountChildDto {
 		return description;
 	}
 
+	public TaskGroupDto getTaskGroup() {
+		return taskGroup;
+	}
+
+	public void setTaskGroup(TaskGroupDto taskGroup) {
+		this.taskGroup = taskGroup;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -38,6 +48,14 @@ public class TaskTodoDto extends AccountChildDto {
 
 	public void setTimeRequired(Integer timeRequired) {
 		this.timeRequired = timeRequired;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }
