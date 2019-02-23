@@ -22,7 +22,7 @@ public class HkTaskGroupEditorPresenter extends TaskGroupEditorPresenter {
 
 	@Override
 	protected TaskKind getDefaultTaskKind() {
-		return TaskKind.CLEANING;
+		return TaskKind.TK_CLEANING;
 	}
 
 }

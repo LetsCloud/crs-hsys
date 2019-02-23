@@ -23,7 +23,7 @@ public class HkTaskGroupBrowserView extends TaskGroupBrowserView implements HkTa
 
 	@Override
 	protected Boolean isEnabledTaskKind(TaskKind kind) {
-		return kind.equals(TaskKind.CLEANING);
+		return kind.equals(TaskKind.TK_CLEANING);
 	}
 
 }

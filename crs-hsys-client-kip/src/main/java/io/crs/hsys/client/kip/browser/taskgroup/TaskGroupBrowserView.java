@@ -77,7 +77,7 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 				// icon.setIconPosition(IconPosition.NONE);
 				return icon;
 			}
-		});
+		}, i18n.taskGroupBrowserKindColumn());
 
 		// Code Column
 		table.addColumn(

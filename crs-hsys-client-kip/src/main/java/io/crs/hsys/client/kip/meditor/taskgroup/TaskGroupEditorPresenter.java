@@ -20,7 +20,6 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
-import io.crs.hsys.shared.dto.common.UserGroupDto;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -104,9 +103,9 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 	}
 
 	private void updateEntity(TaskGroupDto dto) {
-		resourceDelegate.withCallback(new AsyncCallback<UserGroupDto>() {
+		resourceDelegate.withCallback(new AsyncCallback<TaskGroupDto>() {
 			@Override
-			public void onSuccess(UserGroupDto dto) {
+			public void onSuccess(TaskGroupDto dto) {
 				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
 				getView().close();
 			}

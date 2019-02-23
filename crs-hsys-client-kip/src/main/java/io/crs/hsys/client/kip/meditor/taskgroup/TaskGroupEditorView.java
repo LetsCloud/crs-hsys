@@ -7,14 +7,17 @@ import java.util.logging.Logger;
 
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
+import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.TakesValue;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
@@ -22,6 +25,7 @@ import gwt.material.design.client.ui.MaterialTitle;
 import gwt.material.design.client.ui.MaterialToast;
 
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -44,6 +48,11 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 
 	@UiField
 	@Ignore
+	MaterialComboBox<TaskKind> kindCombo;
+	TakesValueEditor<TaskKind> kind;
+
+	@UiField
+	@Ignore
 	MaterialTitle title;
 
 	@UiField
@@ -61,7 +70,25 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 		this.driver = driver;
 		this.i18n = i18n;
 
+		kind = TakesValueEditor.of(new TakesValue<TaskKind>() {
+
+			@Override
+			public void setValue(TaskKind value) {
+				kindCombo.setSingleValue(value);
+			}
+
+			@Override
+			public TaskKind getValue() {
+				return kindCombo.getSingleValue();
+			}
+		});
+
 		driver.initialize(this);
+	}
+
+	@Ignore
+	protected MaterialComboBox<TaskKind> getKindCombo() {
+		return kindCombo;
 	}
 
 	@Override

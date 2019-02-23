@@ -98,16 +98,16 @@ public class DataBuilder {
 
 	private void buildTaskTypeDtos() {
 		taskTypeDtos.add(
-				new TaskTypeDto.Builder().kind(TaskKind.CLEANING).code(TT_DAILY).description("Napi takarítás").build());
+				new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code(TT_DAILY).description("Napi takarítás").build());
 		taskTypeDtos.add(
-				new TaskTypeDto.Builder().kind(TaskKind.CLEANING).code(TT_LINEN).description("Ágynemű csere").build());
-		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.MAINTENANCE).code(TT_TAPREP)
+				new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code(TT_LINEN).description("Ágynemű csere").build());
+		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_MAINTENANCE).code(TT_TAPREP)
 				.description("Csaptelep javítás").build());
 		taskTypeDtos.add(
-				new TaskTypeDto.Builder().kind(TaskKind.REQUEST).code(TT_FRUIT).description("Gyümölcskosár").build());
-		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.REQUEST).code(TT_TURCSI).description("Extra törölköző")
+				new TaskTypeDto.Builder().kind(TaskKind.TK_REQUEST).code(TT_FRUIT).description("Gyümölcskosár").build());
+		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_REQUEST).code(TT_TURCSI).description("Extra törölköző")
 				.build());
-		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.COMMON).code(TT_RECI).description("Recepció").build());
+		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code(TT_RECI).description("Recepció").build());
 	}
 
 	public TaskTypeDto getTaskTypeDto(String code) {
@@ -115,7 +115,7 @@ public class DataBuilder {
 	}
 
 	private void buildTaskDtos() {
-		taskDtos.add(TaskDto.builder().webSafeKey(T_001).kind(TaskKind.CLEANING).type(getTaskTypeDto(TT_DAILY))
+		taskDtos.add(TaskDto.builder().webSafeKey(T_001).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_DAILY))
 				.assignee(getAppUserDtor(AU_KIPI)).build());
 	}
 }

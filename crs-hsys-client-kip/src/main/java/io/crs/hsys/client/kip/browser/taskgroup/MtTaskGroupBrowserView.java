@@ -23,7 +23,7 @@ public class MtTaskGroupBrowserView extends TaskGroupBrowserView implements MtTa
 
 	@Override
 	protected Boolean isEnabledTaskKind(TaskKind kind) {
-		return kind.equals(TaskKind.MAINTENANCE);
+		return kind.equals(TaskKind.TK_MAINTENANCE);
 	}
 
 }

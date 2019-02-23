@@ -330,6 +330,9 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Task Groups")
 	String taskGroupBrowserTitle();
 
+	@DefaultMessage("Kind")
+	String taskGroupBrowserKindColumn();
+
 	@DefaultMessage("Code")
 	String taskGroupBrowserCodeColumn();
 
@@ -344,6 +347,12 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Create Task Group")
 	String taskGroupEditorCreateTitle();
 
+	@DefaultMessage("Task Kind")
+	String taskGroupEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskGroupEditorKindPlaceholder();
+	
 	@DefaultMessage("Modify Task Group")
 	String taskGroupEditorModifyTitle();
 

@@ -112,17 +112,17 @@ public class TaskDisplay extends Composite {
 
 	private void setTaskType(TaskKind type) {
 		switch (type) {
-		case CLEANING:
+		case TK_CLEANING:
 			taskKind.setIconType(IconType.BRUSH);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
-		case REQUEST:
+		case TK_REQUEST:
 			taskKind.setIconType(IconType.ADD_SHOPPING_CART);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
-		case MAINTENANCE:
+		case TK_MAINTENANCE:
 			taskKind.setIconType(IconType.BUILD);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);

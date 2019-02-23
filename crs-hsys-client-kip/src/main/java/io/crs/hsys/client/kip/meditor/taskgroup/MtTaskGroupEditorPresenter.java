@@ -29,7 +29,7 @@ public class MtTaskGroupEditorPresenter extends TaskGroupEditorPresenter {
 
 	@Override
 	protected TaskKind getDefaultTaskKind() {
-		return TaskKind.MAINTENANCE;
+		return TaskKind.TK_MAINTENANCE;
 	}
 
 }

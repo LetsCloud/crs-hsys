@@ -113,6 +113,44 @@
             <Value disabled="false">Adminisztrátor</Value>
         </Property>
         <Comment>
+            <Value>TASK KINDS</Value>
+        </Comment>
+        <Property>
+            <Name>taskKindMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
+            <Value disabled="false">TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
+        </Property>
+        <Property>
+            <Name>TK_COMMON</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Common</Value>
+            <Value disabled="false">Általános</Value>
+        </Property>
+        <Property>
+            <Name>TK_CLEANING</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Cleaning</Value>
+            <Value disabled="false">Takarítás</Value>
+        </Property>
+        <Property>
+            <Name>TK_MAINTENANCE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance</Value>
+            <Value disabled="false">Műszaki</Value>
+        </Property>
+        <Property>
+            <Name>TK_REQUEST</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Request</Value>
+            <Value disabled="false">Bekészítés</Value>
+        </Property>
+        <Comment>
             <Value>PROFILE TYPES</Value>
         </Comment>
         <Property>

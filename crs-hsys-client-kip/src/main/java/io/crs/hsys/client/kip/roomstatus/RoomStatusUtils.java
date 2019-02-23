@@ -150,13 +150,13 @@ public class RoomStatusUtils {
 
 	public static IconType getTaskIcon(TaskKind kind) {
 		switch (kind) {
-		case COMMON:
+		case TK_COMMON:
 			return IconType.ASSIGNMENT;
-		case CLEANING:
+		case TK_CLEANING:
 			return IconType.BRUSH;
-		case MAINTENANCE:
+		case TK_MAINTENANCE:
 			return IconType.BUILD;
-		case REQUEST:
+		case TK_REQUEST:
 			return IconType.FAVORITE;
 		default:
 			break;
@@ -166,13 +166,13 @@ public class RoomStatusUtils {
 
 	public static Color getTaskBgColor(TaskKind kind) {
 		switch (kind) {
-		case COMMON:
+		case TK_COMMON:
 			return Color.AMBER_LIGHTEN_5;
-		case CLEANING:
+		case TK_CLEANING:
 			return Color.CYAN_LIGHTEN_5;
-		case MAINTENANCE:
+		case TK_MAINTENANCE:
 			return Color.PURPLE_LIGHTEN_5;
-		case REQUEST:
+		case TK_REQUEST:
 			return Color.RED_LIGHTEN_5;
 		default:
 			break;
@@ -182,13 +182,13 @@ public class RoomStatusUtils {
 
 	public static Color getTaskColor(TaskKind kind) {
 		switch (kind) {
-		case COMMON:
+		case TK_COMMON:
 			return Color.AMBER;
-		case CLEANING:
+		case TK_CLEANING:
 			return Color.CYAN_DARKEN_1;
-		case MAINTENANCE:
+		case TK_MAINTENANCE:
 			return Color.PURPLE_LIGHTEN_2;
-		case REQUEST:
+		case TK_REQUEST:
 			return Color.RED_LIGHTEN_2;
 		default:
 			break;
