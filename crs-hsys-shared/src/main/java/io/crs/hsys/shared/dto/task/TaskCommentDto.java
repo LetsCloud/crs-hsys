@@ -13,13 +13,11 @@ import io.crs.hsys.shared.dto.common.AppUserDto;
  *
  */
 @SuppressWarnings("serial")
-public class TaskNoteDto implements Dto {
+public class TaskCommentDto implements Dto {
 
-	private Date created;
-	
-	private AppUserDto who;
-	
-	private String note;
+	private Date created;	
+	private AppUserDto commenter;
+	private String comment;
 
 	public Date getCreated() {
 		return created;
@@ -29,20 +27,20 @@ public class TaskNoteDto implements Dto {
 		this.created = created;
 	}
 
-	public AppUserDto getWho() {
-		return who;
+	public AppUserDto getCommenter() {
+		return commenter;
 	}
 
-	public void setWho(AppUserDto who) {
-		this.who = who;
+	public void setCommenter(AppUserDto commenter) {
+		this.commenter = commenter;
 	}
 
-	public String getNote() {
-		return note;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }
