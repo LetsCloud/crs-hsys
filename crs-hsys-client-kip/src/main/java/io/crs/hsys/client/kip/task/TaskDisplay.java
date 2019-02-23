@@ -117,11 +117,13 @@ public class TaskDisplay extends Composite {
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
+/*
 		case TK_REQUEST:
 			taskKind.setIconType(IconType.ADD_SHOPPING_CART);
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
+*/
 		case TK_MAINTENANCE:
 			taskKind.setIconType(IconType.BUILD);
 			taskKind.setBackgroundColor(Color.WHITE);

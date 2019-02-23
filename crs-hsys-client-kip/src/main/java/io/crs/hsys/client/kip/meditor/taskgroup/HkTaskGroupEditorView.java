@@ -25,9 +25,10 @@ public class HkTaskGroupEditorView extends TaskGroupEditorView implements HkTask
 	}
 
 	private void initTaskKindCombo(Map<String, String> i18nTaskKinds) {
+		kindCombo.setVisible(false);
 		kindCombo.clear();
 		kindCombo.addItem(i18nTaskKinds.get(TaskKind.TK_CLEANING.toString()), TaskKind.TK_CLEANING);
-		kindCombo.addItem(i18nTaskKinds.get(TaskKind.TK_REQUEST.toString()), TaskKind.TK_REQUEST);
+//		kindCombo.addItem(i18nTaskKinds.get(TaskKind.TK_REQUEST.toString()), TaskKind.TK_REQUEST);
 	}
 
 }

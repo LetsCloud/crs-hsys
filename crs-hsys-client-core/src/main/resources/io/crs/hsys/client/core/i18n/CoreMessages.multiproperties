@@ -11,7 +11,7 @@
         <Column>
             <Name>default</Name>
             <Description></Description>
-            <Width>150</Width>
+            <Width>289</Width>
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreMessages.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
@@ -87,6 +87,20 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Browse</Value>
             <Value disabled="false">Böngészés</Value>
+        </Property>
+        <Property>
+            <Name>comActive</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Aktív</Value>
+        </Property>
+        <Property>
+            <Name>comInactive</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Inactive</Value>
+            <Value disabled="false">Inaktív</Value>
         </Property>
         <Property>
             <Name>comRequiredField</Name>
@@ -552,6 +566,13 @@
             <Value disabled="false">Feladat csoportok</Value>
         </Property>
         <Property>
+            <Name>taskGroupBrowserKindColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Kind</Value>
+            <Value disabled="false">Fajta</Value>
+        </Property>
+        <Property>
             <Name>taskGroupBrowserCodeColumn</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -564,6 +585,23 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Description</Value>
             <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Comment>
+            <Value>TASK GROUP FILTER</Value>
+        </Comment>
+        <Property>
+            <Name>taskGroupFilterTaskKindLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Kind</Value>
+            <Value disabled="false">Feladat fajta</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupFilterTaskKindPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Task Kind</Value>
+            <Value disabled="false">Válassz feladat fajtát</Value>
         </Property>
         <Comment>
             <Value>TASK GROUP EDITOR</Value>
@@ -581,6 +619,13 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Edit Task Group</Value>
             <Value disabled="false">Feladat csoport módosítása</Value>
+        </Property>
+        <Property>
+            <Name>taskGroupEditorKind</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Kind</Value>
+            <Value disabled="false">Feladat fajta</Value>
         </Property>
         <Property>
             <Name>taskGroupEditorCode</Name>

@@ -435,5 +435,29 @@
             <Value disabled="false">Description</Value>
             <Value disabled="false">Megnevezés</Value>
         </Property>
+        <Comment>
+            <Value>MAINTENANCE CONFIG</Value>
+        </Comment>
+        <Property>
+            <Name>mtConfigTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance Configuration</Value>
+            <Value disabled="false">Karbantartás beállítások</Value>
+        </Property>
+        <Property>
+            <Name>mtConfigDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The Maintenance Configuration</Value>
+            <Value disabled="false">A karbantartási feladatok törzsadatai.</Value>
+        </Property>
+        <Property>
+            <Name>mtTaskGroupBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Groups</Value>
+            <Value disabled="false">Feladat csoportok</Value>
+        </Property>
     </Records>
 </MultiProperties>

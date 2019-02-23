@@ -104,10 +104,10 @@ public class DataBuilder {
 		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_MAINTENANCE).code(TT_TAPREP)
 				.description("Csaptelep javítás").build());
 		taskTypeDtos.add(
-				new TaskTypeDto.Builder().kind(TaskKind.TK_REQUEST).code(TT_FRUIT).description("Gyümölcskosár").build());
-		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_REQUEST).code(TT_TURCSI).description("Extra törölköző")
+				new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code(TT_FRUIT).description("Gyümölcskosár").build());
+		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code(TT_TURCSI).description("Extra törölköző")
 				.build());
-		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code(TT_RECI).description("Recepció").build());
+//		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code(TT_RECI).description("Recepció").build());
 	}
 
 	public TaskTypeDto getTaskTypeDto(String code) {

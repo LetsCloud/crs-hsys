@@ -5,6 +5,7 @@ package io.crs.hsys.client.kip.browser.taskgroup;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
@@ -14,13 +15,13 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.core.filter.FilterPresenterFactory;
-import io.crs.hsys.client.core.filter.roomtype.RoomTypeFilterPresenter;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
 import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorPresenter;
 import io.crs.hsys.shared.api.TaskGroupResource;
+import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -40,17 +41,17 @@ public abstract class TaskGroupBrowserPresenter
 	public static final SingleSlot<PresenterWidget<?>> SLOT_EDITOR = new SingleSlot<>();
 
 	private final ResourceDelegate<TaskGroupResource> resourceDelegate;
-	private final RoomTypeFilterPresenter filter;
+	private final TaskGroupFilterPresenter filter;
 	private final TaskGroupEditorPresenter editor;
 
 	public TaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<TaskGroupResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory,
+			ResourceDelegate<TaskGroupResource> resourceDelegate, TaskGroupFilterPresenter filter,
 			TaskGroupEditorPresenter editor) {
 		super(eventBus, view, placeManager);
 		logger.info("TaskGroupBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
-		this.filter = filterPresenterFactory.createRoomTypeFilterPresenter();
+		this.filter = filter;
 		this.editor = editor;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
@@ -75,6 +76,11 @@ public abstract class TaskGroupBrowserPresenter
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<TaskGroupDto>>() {
 			@Override
 			public void onSuccess(List<TaskGroupDto> result) {
+				if (filter.isOnlyActive())
+					result = result.stream().filter(tg -> tg.getActive().equals(true)).collect(Collectors.toList());
+				if (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL))
+					result = result.stream().filter(tg -> tg.getKind().equals(filter.getSelectedTaskKind()))
+							.collect(Collectors.toList());
 				getView().setData(result);
 			}
 		}).getAll();
@@ -112,12 +118,6 @@ public abstract class TaskGroupBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
-		logger.info("RoomTypeTablePresenter().onFilterChange()");
-		resourceDelegate.withCallback(new AbstractAsyncCallback<List<TaskGroupDto>>() {
-			@Override
-			public void onSuccess(List<TaskGroupDto> result) {
-				getView().setData(result);
-			}
-		}).getAll();
+		loadData();
 	}
 }

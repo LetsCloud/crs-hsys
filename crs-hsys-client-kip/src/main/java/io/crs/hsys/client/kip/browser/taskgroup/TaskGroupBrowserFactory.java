@@ -13,4 +13,6 @@ public interface TaskGroupBrowserFactory {
 
 	MtTaskGroupBrowserPresenter createMtTaskGroupBrowser();
 
+	AdminTaskGroupBrowserPresenter createAdminTaskGroupBrowser();
+
 }

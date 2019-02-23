@@ -341,6 +341,16 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
+	 * TASK GROUP FILTER
+	 */
+
+	@DefaultMessage("Task Kind")
+	String taskGroupFilterTaskKindLabel();
+	
+	@DefaultMessage("Choose a Task Kind")
+	String taskGroupFilterTaskKindPlaceholder();
+	
+	/*
 	 * TASK GROUP EDITOR
 	 */
 

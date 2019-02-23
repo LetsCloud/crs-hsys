@@ -34,7 +34,7 @@ public class UserGroupServiceImpl extends CrudServiceImpl<UserGroup, UserGroupRe
 		if (accountWebSafeKey == null)
 			return null;
 
-		List<UserGroup> result = getAll(accountWebSafeKey);
+		List<UserGroup> result = super.getAll(accountWebSafeKey);
 		for (UserGroup group : result) {
 			group.getMembers();
 		}
@@ -50,8 +50,9 @@ public class UserGroupServiceImpl extends CrudServiceImpl<UserGroup, UserGroupRe
 
 	@Override
 	protected List<Object> getParents(String accountWebSafeKey) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Object> parents = new ArrayList<Object>();
+		parents.add(accountRepository.findByWebSafeKey(accountWebSafeKey));
+		return parents;
 	}
 
 }

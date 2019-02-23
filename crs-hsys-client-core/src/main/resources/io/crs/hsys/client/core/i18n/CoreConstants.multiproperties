@@ -119,8 +119,15 @@
             <Name>taskKindMap</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
-            <Value disabled="false">TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
+            <Value disabled="false">TK_ALL, TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
+            <Value disabled="false">TK_ALL, TK_COMMON, TK_CLEANING, TK_MAINTENANCE, TK_REQUEST</Value>
+        </Property>
+        <Property>
+            <Name>TK_ALL</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">All</Value>
+            <Value disabled="false">Mind</Value>
         </Property>
         <Property>
             <Name>TK_COMMON</Name>

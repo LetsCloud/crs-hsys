@@ -20,7 +20,7 @@
 			<m:MaterialTextBox ui:field="description"
 				type="TEXT" label="{i18nCore.taskGroupEditorDescription}" />
 			<m:MaterialCheckBox ui:field="active"
-				text="{i18nCore.comActive}" value="true" />
+				text="{i18nCore.comActive}" value="true" marginTop="10" />
 		</m:MaterialDialogContent>
 
 		<m:MaterialDialogFooter>

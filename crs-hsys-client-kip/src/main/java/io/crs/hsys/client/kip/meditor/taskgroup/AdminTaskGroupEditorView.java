@@ -15,18 +15,18 @@ import io.crs.hsys.shared.constans.TaskKind;
  * @author robi
  *
  */
-public class MtTaskGroupEditorView extends TaskGroupEditorView implements MtTaskGroupEditorPresenter.MyView {
+public class AdminTaskGroupEditorView extends TaskGroupEditorView implements HkTaskGroupEditorPresenter.MyView {
 
 	@Inject
-	MtTaskGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n, CoreConstants i18nCoreCnst) {
+	AdminTaskGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n, CoreConstants i18nCoreCnst) {
 		super(uiBinder, driver, i18n);
 
 		initTaskKindCombo(i18nCoreCnst.taskKindMap());
 	}
 
 	private void initTaskKindCombo(Map<String, String> i18nTaskKinds) {
-		kindCombo.setVisible(false);
 		kindCombo.clear();
+		kindCombo.addItem(i18nTaskKinds.get(TaskKind.TK_CLEANING.toString()), TaskKind.TK_CLEANING);
 		kindCombo.addItem(i18nTaskKinds.get(TaskKind.TK_MAINTENANCE.toString()), TaskKind.TK_MAINTENANCE);
 	}
 

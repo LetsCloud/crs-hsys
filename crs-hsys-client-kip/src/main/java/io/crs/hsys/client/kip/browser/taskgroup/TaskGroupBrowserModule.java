@@ -22,6 +22,9 @@ public class TaskGroupBrowserModule extends AbstractPresenterModule {
 		bindPresenterWidget(MtTaskGroupBrowserPresenter.class, MtTaskGroupBrowserPresenter.MyView.class,
 				MtTaskGroupBrowserView.class);
 
+		bindPresenterWidget(AdminTaskGroupBrowserPresenter.class, AdminTaskGroupBrowserPresenter.MyView.class,
+				AdminTaskGroupBrowserView.class);
+
 		install(new GinFactoryModuleBuilder().build(TaskGroupBrowserFactory.class));
 	}
 }

@@ -17,14 +17,14 @@ import io.crs.hsys.shared.api.TaskGroupResource;
  * @author robi
  *
  */
-public class MtTaskGroupBrowserPresenter extends TaskGroupBrowserPresenter {
+public class AdminTaskGroupBrowserPresenter extends TaskGroupBrowserPresenter {
 
 	@Inject
-	MtTaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
+	AdminTaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskGroupResource> resourceDelegate, KipFilterPresenterFactory filterFactory,
 			TaskGroupEditorFactory editorFactory) {
 		super(eventBus, placeManager, view, resourceDelegate, filterFactory.createTaskGroupFilterPresenter(),
-				editorFactory.createMtTaskGroupEditor());
+				editorFactory.createHkTaskGroupEditor());
 	}
 
 	public interface MyView extends TaskGroupBrowserPresenter.MyView {

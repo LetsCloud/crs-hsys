@@ -114,7 +114,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(guestRequest);
-		taskDto.setKind(TaskKind.TK_REQUEST);
+		taskDto.setKind(TaskKind.TK_CLEANING);
 		taskDto.setStatus(TaskStatus.IN_PROGRESS);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
