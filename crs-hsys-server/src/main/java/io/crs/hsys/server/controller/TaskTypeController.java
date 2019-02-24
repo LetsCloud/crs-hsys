@@ -59,8 +59,9 @@ public class TaskTypeController extends CrudController<TaskType, TaskTypeDto> {
 		return super.getAll();
 	}
 
-	@RequestMapping(value = WEBSAFEKEY, method = GET)
+	@RequestMapping(value = PATH_WEBSAFEKEY, method = GET)
 	public ResponseEntity<TaskTypeDto> get(@PathVariable String webSafeKey) throws RestApiException {
+		logger.info("TaskTypeController().get()->webSafeKey=" + webSafeKey);
 		return super.get(webSafeKey);
 	}
 

@@ -1,24 +1,26 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.hktasktype;
+package io.crs.hsys.client.kip.browser.tasktype;
 
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+
+import io.crs.hsys.client.kip.editor.tasktype.TaskTypeEditorModule;
 
 /**
  * @author robi
  *
  */
-public class HkTaskTypeBrowserModule extends AbstractPresenterModule {
+public class TaskTypeBrowserModule extends AbstractPresenterModule {
 	@Override
 	protected void configure() {
 
-//		install(new RoomEditorModule());
+		install(new TaskTypeEditorModule());
 
 		bindPresenterWidget(HkTaskTypeBrowserPresenter.class, HkTaskTypeBrowserPresenter.MyView.class,
 				HkTaskTypeBrowserView.class);
 
-		install(new GinFactoryModuleBuilder().build(HkTaskTypeBrowserFactory.class));
+		install(new GinFactoryModuleBuilder().build(TaskTypeBrowserFactory.class));
 	}
 }

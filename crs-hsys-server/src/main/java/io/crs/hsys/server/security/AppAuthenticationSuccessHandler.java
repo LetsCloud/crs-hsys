@@ -56,7 +56,7 @@ public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHan
 			byte[] decodedBytes = Base64Utils.decodeFromString(request.getParameter(TARGET_URL));
 			targetUrl = new String(decodedBytes);
 		}
-
+	
 		logger.info("targetUrl2=" + targetUrl);
 
 		if (response.isCommitted()) {
@@ -79,6 +79,7 @@ public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHan
 		this.redirectStrategy = redirectStrategy;
 	}
 
+	
 	protected RedirectStrategy getRedirectStrategy() {
 		return redirectStrategy;
 	}

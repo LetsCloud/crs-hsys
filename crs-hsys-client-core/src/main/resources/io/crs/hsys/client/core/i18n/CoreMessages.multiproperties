@@ -673,6 +673,117 @@
             <Value disabled="false">Időigény(p)</Value>
         </Property>
         <Comment>
+            <Value>TASK TYPE BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>taskTypeBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Types</Value>
+            <Value disabled="false">Feladat típusok</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeBrowserKindColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Kind</Value>
+            <Value disabled="false">Fajta</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeBrowserGroupColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Group</Value>
+            <Value disabled="false">Csoport</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeBrowserCodeColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeBrowserDescriptionColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeBrowserTimeReqColumn</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time(m)</Value>
+            <Value disabled="false">Idő(p)</Value>
+        </Property>
+        <Comment>
+            <Value>TASK TYPE EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>taskTypeEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Task Type</Value>
+            <Value disabled="false">Feladat típus létrehozása</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Task Type</Value>
+            <Value disabled="false">Feladat típus módosítása</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorGroup</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Group</Value>
+            <Value disabled="false">Feladat csoport</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorGroupPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Task Group</Value>
+            <Value disabled="false">Válassz feladat csoportot</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorTimeRequired</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time (m)</Value>
+            <Value disabled="false">Időigény (p)</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorTodos</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Todos</Value>
+            <Value disabled="false">Tennivalók</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorAddTodo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Add Todo</Value>
+            <Value disabled="false">Hozzáadás</Value>
+        </Property>
+        <Comment>
             <Value>PROFILE CONFIG</Value>
         </Comment>
         <Property>

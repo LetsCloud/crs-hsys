@@ -10,12 +10,12 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
-import io.crs.hsys.client.core.browser.room.RoomBrowserFactory;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.browser.taskgroup.TaskGroupBrowserFactory;
 import io.crs.hsys.client.kip.browser.tasktodo.TaskTodoBrowserFactory;
+import io.crs.hsys.client.kip.browser.tasktype.TaskTypeBrowserFactory;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
 public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter.MyView, HkConfigPresenter.MyProxy>
@@ -24,8 +24,7 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 
 	public static final String TASK_GROUPS = "taskGroups";
 	public static final String TASK_TODOS = "taskTodos";
-	public static final String ROOMS = "rooms";
-	public static final String MARKET_GROUPS = "marketGroups";
+	public static final String TASK_TYPES = "taskTypes";
 
 	interface MyView extends AbstractConfigPresenter.MyView {
 	}
@@ -39,7 +38,7 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 	@Inject
 	HkConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			TaskGroupBrowserFactory hkTaskGroupBrowserFactory, TaskTodoBrowserFactory hkTaskTodoBrowserFactory,
-			RoomBrowserFactory roomBrowserFactory, CoreMessages i18nCore, KipMessages i18n) {
+			TaskTypeBrowserFactory taskTypeBrowserFactory, CoreMessages i18nCore, KipMessages i18n) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("HkConfigPresenter()");
 
@@ -48,8 +47,8 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 		setPlaceToken(KipNameTokens.HOUSEKEEPING_CONFIG);
 
 		addContent(i18n.hkTaskGroupBrowserTitle(), hkTaskGroupBrowserFactory.createHkTaskGroupBrowser(), TASK_GROUPS);
-		addContent(i18n.hkTaskTodosBrowserTitle(), hkTaskTodoBrowserFactory.createHkTaskTodoBrowser(), TASK_TODOS);
-		addContent(i18nCore.roomBrowserTitle(), roomBrowserFactory.createRoomTablePresenter(), ROOMS);
+		addContent(i18n.hkTaskTodoBrowserTitle(), hkTaskTodoBrowserFactory.createHkTaskTodoBrowser(), TASK_TODOS);
+		addContent(i18n.hkTaskTypeBrowserTitle(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), TASK_TYPES);
 
 		getView().setUiHandlers(this);
 	}

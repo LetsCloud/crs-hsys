@@ -414,6 +414,65 @@ public interface CoreMessages extends Messages {
 	
 	@DefaultMessage("Time required(m)")
 	String taskTodoEditorTimeRequired();
+
+	
+	/*
+	 * TASK TYPE BROWSER
+	 */
+	@DefaultMessage("Task Types")
+	String taskTypeBrowserTitle();
+
+	@DefaultMessage("Kind")
+	String taskTypeBrowserKindColumn();
+
+	@DefaultMessage("Group")
+	String taskTypeBrowserGroupColumn();
+
+	@DefaultMessage("Code")
+	String taskTypeBrowserCodeColumn();
+
+	@DefaultMessage("Description")
+	String taskTypeBrowserDescriptionColumn();
+
+	@DefaultMessage("Time(m)")
+	String taskTypeBrowserTimeReqColumn();
+
+	
+	/*
+	 * TASK TYPE EDITOR
+	 */
+	@DefaultMessage("Create Task Type")
+	String taskTypeEditorCreateTitle();
+
+	@DefaultMessage("Modify Task Type")
+	String taskTypeEditorModifyTitle();
+
+	@DefaultMessage("Task Kind")
+	String taskTypeEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskTypeEditorKindPlaceholder();
+
+	@DefaultMessage("Task Group")
+	String taskTypeEditorGroup();
+
+	@DefaultMessage("Choose a Task Group")
+	String taskTypeEditorGroupPlaceholder();
+
+	@DefaultMessage("Code")
+	String taskTypeEditorCode();
+
+	@DefaultMessage("Description")
+	String taskTypeEditorDescription();
+	
+	@DefaultMessage("Time required(m)")
+	String taskTypeEditorTimeRequired();
+	
+	@DefaultMessage("Todos")
+	String taskTypeEditorTodos();
+	
+	@DefaultMessage("Todos")
+	String taskTypeEditorAddTodo();
 	
 	
 	/*

@@ -394,9 +394,6 @@
             <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
             <Value disabled="false">Takarítási feladat csoportok és típusok karbantartása.</Value>
         </Property>
-        <Comment>
-            <Value>HOUSEKEEPING TASK GROUPS BROWSER</Value>
-        </Comment>
         <Property>
             <Name>hkTaskGroupBrowserTitle</Name>
             <Disabled>false</Disabled>
@@ -405,11 +402,18 @@
             <Value disabled="false">Feladat csoportok</Value>
         </Property>
         <Property>
-            <Name>hkTaskTodosBrowserTitle</Name>
+            <Name>hkTaskTodoBrowserTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Todos</Value>
-            <Value disabled="false">Tennivalók</Value>
+            <Value disabled="false">Feladat tennivalók</Value>
+        </Property>
+        <Property>
+            <Name>hkTaskTypeBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Types</Value>
+            <Value disabled="false">Feladat típusok</Value>
         </Property>
         <Comment>
             <Value>HOUSEKEEPING TASK GROUP EDITOR</Value>

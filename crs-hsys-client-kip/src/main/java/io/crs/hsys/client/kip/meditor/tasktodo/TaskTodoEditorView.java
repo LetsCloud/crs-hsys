@@ -28,7 +28,6 @@ import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 

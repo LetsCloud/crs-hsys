@@ -147,4 +147,12 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	protected void addFilter(String key, String value) {
 		filters.put(key, value);
 	}
+
+	protected void setFilter(String key, String value) {
+		if (filters.containsKey(key)) {
+			filters.replace(key, value);
+			return;
+		}
+		addFilter(key, value);
+	}
 }

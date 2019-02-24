@@ -1,13 +1,13 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.hktasktype;
+package io.crs.hsys.client.kip.browser.tasktype;
 
 /**
  * @author robi
  *
  */
-public interface HkTaskTypeBrowserFactory {
+public interface TaskTypeBrowserFactory {
 
 	HkTaskTypeBrowserPresenter createHkTaskTypeBrowser();
 

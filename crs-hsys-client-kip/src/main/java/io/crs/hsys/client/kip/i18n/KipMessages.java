@@ -221,7 +221,10 @@ public interface KipMessages extends Messages {
 	String hkTaskGroupBrowserTitle();
 
 	@DefaultMessage("Task Todos")
-	String hkTaskTodosBrowserTitle();
+	String hkTaskTodoBrowserTitle();
+
+	@DefaultMessage("Task Types")
+	String hkTaskTypeBrowserTitle();
 
 	
 	/*

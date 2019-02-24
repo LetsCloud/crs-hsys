@@ -23,7 +23,9 @@ public class TaskType extends AccountChild {
 	private String code;
 	private String description;
 	private TaskGroupDto taskGroup;
+	private Integer timeRequired;
 	private List<Ref<TaskTodo>> todos = new ArrayList<Ref<TaskTodo>>();
+	private Boolean active; 
 
 	public TaskType() {
 	}
@@ -60,6 +62,14 @@ public class TaskType extends AccountChild {
 		this.taskGroup = taskGroup;
 	}
 
+	public Integer getTimeRequired() {
+		return timeRequired;
+	}
+
+	public void setTimeRequired(Integer timeRequired) {
+		this.timeRequired = timeRequired;
+	}
+
 	public List<TaskTodo> getTodos() {
 		List<TaskTodo> list = new ArrayList<TaskTodo>();
 		for (Ref<TaskTodo> ref : todos) {
@@ -74,6 +84,14 @@ public class TaskType extends AccountChild {
 			refs.add(Ref.create(tt));
 		}
 		this.todos = refs;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }
