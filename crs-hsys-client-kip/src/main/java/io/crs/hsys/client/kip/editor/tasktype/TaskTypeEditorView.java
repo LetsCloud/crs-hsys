@@ -17,6 +17,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.TakesValue;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -65,6 +66,10 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@UiField
 	MaterialButton saveButton;
 
+	@Ignore
+	@UiField
+	SimplePanel addTaskTodoPanel;
+
 	/**
 	* 
 	*/
@@ -80,6 +85,9 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 		initRoomTypeCombo();
 
 		this.driver = driver;
+		
+		bindSlot(TaskTypeEditorPresenter.SLOT_ADD_TASKTODO, addTaskTodoPanel);
+
 		driver.initialize(this);
 	}
 
@@ -153,5 +161,10 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	public void setTaskTodoData(List<TaskTodoDto> data) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo) {
+		todos.setAddTaskTodo(addTaskTodo);
 	}
 }

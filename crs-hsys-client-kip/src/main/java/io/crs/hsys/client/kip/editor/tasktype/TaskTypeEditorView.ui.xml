@@ -72,5 +72,7 @@
 			addStyleNames="{style.saveButton}" />
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
+
+		<g:SimplePanel ui:field="addTaskTodoPanel" />			
 	</g:HTMLPanel>
 </ui:UiBinder> 

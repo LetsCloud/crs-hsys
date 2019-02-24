@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.kip.editor.tasktype;
 
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 /**
@@ -17,5 +18,8 @@ public class TaskTypeEditorModule extends AbstractPresenterModule {
 				TaskTypeEditorPresenter.MyProxy.class);
 		bind(TaskTodoListEditor.class);
 		bind(TaskTodoEditor.class);
+		bindPresenterWidget(AddTaskTodoPresenter.class, AddTaskTodoPresenter.MyView.class, AddTaskTodoView.class);
+
+		install(new GinFactoryModuleBuilder().build(TaskTypeEditorFactory.class));
 	}
 }

@@ -85,11 +85,16 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
 
+	private AddTaskTodoPresenter addTaskTodo;
 	/**
 	*/
 	@Inject
 	TaskTodoListEditor(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+	public void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo) {
+		this.addTaskTodo = addTaskTodo;
 	}
 
 	@Override
@@ -99,8 +104,9 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	@UiHandler("addButton")
 	void onAddClick(ClickEvent event) {
-		TaskTodoDto dto = new TaskTodoDto();
-		editor.getList().add(dto);
+		addTaskTodo.open();
+//		TaskTodoDto dto = new TaskTodoDto();
+//		editor.getList().add(dto);
 	}
 
 //	@UiHandler("deleteButton")

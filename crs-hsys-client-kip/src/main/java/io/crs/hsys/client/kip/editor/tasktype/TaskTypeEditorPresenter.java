@@ -14,8 +14,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
@@ -50,10 +52,14 @@ public class TaskTypeEditorPresenter
 
 	public static final String PARAM_KIND = "paramKind";
 
+	public static final SingleSlot<PresenterWidget<?>> SLOT_ADD_TASKTODO = new SingleSlot<>();
+
 	public interface MyView extends AbstractEditorView<TaskTypeDto>, HasUiHandlers<TaskTypeEditorUiHandlers> {
 		void setTaskGroupData(List<TaskGroupDto> data);
 
 		void setTaskTodoData(List<TaskTodoDto> data);
+
+		void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo);
 
 		void displayError(EntityPropertyCode code, String message);
 	}
@@ -69,11 +75,13 @@ public class TaskTypeEditorPresenter
 	private final TaskTodoDataSource taskTodoDataSource;
 	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
+	private final AddTaskTodoPresenter addTaskTodo;
 
 	@Inject
 	TaskTypeEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			ResourceDelegate<TaskTypeResource> resourceDelegate, TaskGroupDataSource taskGroupDataSource,
-			TaskTodoDataSource taskTodoDataSource, CurrentUser currentUser, CoreMessages i18nCore) {
+			TaskTodoDataSource taskTodoDataSource, CurrentUser currentUser, CoreMessages i18nCore,
+			TaskTypeEditorFactory factory) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("TaskTypeEditorPresenter()");
 
@@ -83,8 +91,16 @@ public class TaskTypeEditorPresenter
 		this.taskTodoDataSource = taskTodoDataSource;
 		this.currentUser = currentUser;
 		this.i18nCore = i18nCore;
+		this.addTaskTodo = factory.createAddTaskTodo();
 
 		getView().setUiHandlers(this);
+		getView().setAddTaskTodo(addTaskTodo);
+	}
+
+	@Override
+	protected void onBind() {
+		super.onBind();
+		setInSlot(SLOT_ADD_TASKTODO, addTaskTodo);
 	}
 
 	private void start() {
