@@ -11,4 +11,6 @@ public interface TaskTypeBrowserFactory {
 
 	HkTaskTypeBrowserPresenter createHkTaskTypeBrowser();
 
+	MtTaskTypeBrowserPresenter createMtTaskTypeBrowser();
+
 }

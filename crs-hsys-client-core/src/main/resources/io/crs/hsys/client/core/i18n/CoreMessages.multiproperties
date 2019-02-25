@@ -570,7 +570,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Kind</Value>
-            <Value disabled="false">Fajta</Value>
+            <Value disabled="false">Jelleg</Value>
         </Property>
         <Property>
             <Name>taskGroupBrowserCodeColumn</Name>
@@ -594,14 +594,14 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Kind</Value>
-            <Value disabled="false">Feladat fajta</Value>
+            <Value disabled="false">Feladat jelleg</Value>
         </Property>
         <Property>
             <Name>taskGroupFilterTaskKindPlaceholder</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Choose a Task Kind</Value>
-            <Value disabled="false">Válassz feladat fajtát</Value>
+            <Value disabled="false">Válassz feladat jelleget</Value>
         </Property>
         <Comment>
             <Value>TASK GROUP EDITOR</Value>
@@ -656,7 +656,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Kind</Value>
-            <Value disabled="false">Fajta</Value>
+            <Value disabled="false">Jelleg</Value>
         </Property>
         <Property>
             <Name>taskTodoBrowserDescriptionColumn</Name>
@@ -687,7 +687,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Kind</Value>
-            <Value disabled="false">Fajta</Value>
+            <Value disabled="false">Jelleg</Value>
         </Property>
         <Property>
             <Name>taskTypeBrowserGroupColumn</Name>

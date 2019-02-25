@@ -25,6 +25,8 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 	public static final String TASK_GROUPS = "taskGroups";
 	public static final String TASK_TODOS = "taskTodos";
 	public static final String TASK_TYPES = "taskTypes";
+	public static final String STANDARD_CLEANING_TYPES = "standardCleaningTypes";
+	public static final String PUBLIC_AREA_CLEANING_PARAMS = "publicAreaCleaningParams";
 
 	interface MyView extends AbstractConfigPresenter.MyView {
 	}
@@ -49,6 +51,8 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 		addContent(i18n.hkTaskGroupBrowserTitle(), hkTaskGroupBrowserFactory.createHkTaskGroupBrowser(), TASK_GROUPS);
 		addContent(i18n.hkTaskTodoBrowserTitle(), hkTaskTodoBrowserFactory.createHkTaskTodoBrowser(), TASK_TODOS);
 		addContent(i18n.hkTaskTypeBrowserTitle(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), TASK_TYPES);
+		addContent(i18n.hkConfigStandardTypesItem(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), STANDARD_CLEANING_TYPES);
+		addContent(i18n.hkConfigPublicAreaCleaningSetup(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), PUBLIC_AREA_CLEANING_PARAMS);
 
 		getView().setUiHandlers(this);
 	}

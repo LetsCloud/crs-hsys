@@ -17,7 +17,6 @@ import io.crs.hsys.client.core.ui.browser.ActionColumn;
 import io.crs.hsys.client.core.ui.browser.DataColumn;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.dto.task.TaskTodoDto;
 import io.crs.hsys.shared.dto.task.TaskTypeDto;
 
 /**
@@ -69,7 +68,7 @@ public abstract class TaskTypeBrowserView extends ViewWithUiHandlers<TaskTypeBro
 		// Group Column
 		table.addColumn(new DataColumn<TaskTypeDto>((object) -> {
 			if (object.getTaskGroup() != null) {
-				return object.getTaskGroup().getCode();
+				return object.getTaskGroup().getDescription();
 			} else {
 				return null;
 			}

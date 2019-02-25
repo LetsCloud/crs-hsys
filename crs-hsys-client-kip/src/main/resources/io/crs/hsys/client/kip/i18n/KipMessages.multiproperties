@@ -392,7 +392,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
-            <Value disabled="false">Takarítási feladat csoportok és típusok karbantartása.</Value>
+            <Value disabled="false">Housekeeping törzsadatok karbantartása.</Value>
         </Property>
         <Property>
             <Name>hkTaskGroupBrowserTitle</Name>
@@ -414,6 +414,20 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Types</Value>
             <Value disabled="false">Feladat típusok</Value>
+        </Property>
+        <Property>
+            <Name>hkConfigStandardTypesItem</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Standard Room Cleaning Types</Value>
+            <Value disabled="false">Standard szoba takarítási típusok</Value>
+        </Property>
+        <Property>
+            <Name>hkConfigPublicAreaCleaningSetup</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Public Area Cleaning Setup</Value>
+            <Value disabled="false">Köztér takarítási beállítások</Value>
         </Property>
         <Comment>
             <Value>HOUSEKEEPING TASK GROUP EDITOR</Value>
@@ -464,11 +478,25 @@
             <Value disabled="false">A karbantartási feladatok törzsadatai.</Value>
         </Property>
         <Property>
-            <Name>mtTaskGroupBrowserTitle</Name>
+            <Name>mtConfigTaskGroupItem</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Groups</Value>
             <Value disabled="false">Feladat csoportok</Value>
+        </Property>
+        <Property>
+            <Name>mtConfigTaskTodoItem</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Todos</Value>
+            <Value disabled="false">Feladat tennivalók</Value>
+        </Property>
+        <Property>
+            <Name>mtConfigTaskTypeItem</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Types</Value>
+            <Value disabled="false">Feladat típusok</Value>
         </Property>
     </Records>
 </MultiProperties>

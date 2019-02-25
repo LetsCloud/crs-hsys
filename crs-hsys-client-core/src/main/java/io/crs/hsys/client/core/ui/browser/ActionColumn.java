@@ -49,7 +49,7 @@ public class ActionColumn<T extends BaseDto> extends WidgetColumn<T, MaterialIco
 	private Color iconColor = Color.AMBER;
 
 	public ActionColumn() {
-		this.textAlign(TextAlign.CENTER);
+		this.textAlign(TextAlign.LEFT);
 	}
 
 	/**

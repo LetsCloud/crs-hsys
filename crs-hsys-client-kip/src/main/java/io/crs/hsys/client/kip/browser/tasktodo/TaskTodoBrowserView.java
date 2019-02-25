@@ -75,6 +75,15 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 			}
 		}, i18nCore.taskTodoBrowserKindColumn());
 
+		// Group Column
+		table.addColumn(new DataColumn<TaskTodoDto>((object) -> {
+			if (object.getTaskGroup() != null) {
+				return object.getTaskGroup().getDescription();
+			} else {
+				return null;
+			}
+		}), i18nCore.taskTypeBrowserGroupColumn());
+
 		// Description Column
 		table.addColumn(
 				new DataColumn<TaskTodoDto>((object) -> object.getDescription(),

@@ -14,7 +14,7 @@ import io.crs.hsys.shared.dto.task.TaskTypeDto;
  * @author robi
  *
  */
-public class HkTaskTypeBrowserView extends TaskTypeBrowserView {
+public class HkTaskTypeBrowserView extends TaskTypeBrowserView implements HkTaskTypeBrowserPresenter.MyView {
 
 	@Inject
 	HkTaskTypeBrowserView(AbstractBrowserView<TaskTypeDto> table, CoreMessages i18nCore) {

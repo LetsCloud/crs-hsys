@@ -14,11 +14,12 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.browser.room.RoomBrowserFactory;
-import io.crs.hsys.client.core.browser.roomtype.RoomTypeBrowserFactory;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.browser.taskgroup.TaskGroupBrowserFactory;
+import io.crs.hsys.client.kip.browser.tasktodo.TaskTodoBrowserFactory;
+import io.crs.hsys.client.kip.browser.tasktype.TaskTypeBrowserFactory;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 
 /**
@@ -30,9 +31,8 @@ public class MtConfigPresenter extends AbstractConfigPresenter<MtConfigPresenter
 	private static Logger logger = Logger.getLogger(MtConfigPresenter.class.getName());
 
 	public static final String TASK_GROUPS = "taskGroups";
-	public static final String ROOM_TYPES = "roomTypes";
-	public static final String ROOMS = "rooms";
-	public static final String MARKET_GROUPS = "marketGroups";
+	public static final String TASK_TODOS = "taskTodos";
+	public static final String TASK_TYPES = "taskTypes";
 
 	interface MyView extends AbstractConfigPresenter.MyView {
 	}
@@ -45,8 +45,8 @@ public class MtConfigPresenter extends AbstractConfigPresenter<MtConfigPresenter
 
 	@Inject
 	MtConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			TaskGroupBrowserFactory taskGroupBrowserFactory, RoomTypeBrowserFactory roomTypeBrowserFactory,
-			RoomBrowserFactory roomBrowserFactory, CoreMessages i18nCore, KipMessages i18n) {
+			TaskGroupBrowserFactory taskGroupBrowserFactory, TaskTodoBrowserFactory taskTodoBrowserFactory,
+			TaskTypeBrowserFactory taskTypeBrowserFactory, CoreMessages i18nCore, KipMessages i18n) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("MtConfigPresenter()");
 
@@ -54,9 +54,9 @@ public class MtConfigPresenter extends AbstractConfigPresenter<MtConfigPresenter
 		setDescription(i18n.mtConfigDescription());
 		setPlaceToken(KipNameTokens.MAINTENANCE_CONFIG);
 
-		addContent(i18n.mtTaskGroupBrowserTitle(), taskGroupBrowserFactory.createMtTaskGroupBrowser(), TASK_GROUPS);
-		addContent(i18nCore.roomTypeBrowserTitle(), roomTypeBrowserFactory.createRoomTypeTablePresenter(), ROOM_TYPES);
-		addContent(i18nCore.roomBrowserTitle(), roomBrowserFactory.createRoomTablePresenter(), ROOMS);
+		addContent(i18n.mtConfigTaskGroupItem(), taskGroupBrowserFactory.createMtTaskGroupBrowser(), TASK_GROUPS);
+		addContent(i18n.mtConfigTaskTodoItem(), taskTodoBrowserFactory.createMtTaskTodoBrowser(), TASK_TODOS);
+		addContent(i18n.mtConfigTaskTypeItem(), taskTypeBrowserFactory.createMtTaskTypeBrowser(), TASK_TYPES);
 
 		getView().setUiHandlers(this);
 	}

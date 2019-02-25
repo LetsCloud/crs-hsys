@@ -50,7 +50,7 @@ public class TaskGroupFilterView extends AbstractFilterView implements TaskGroup
 		chip.setVisible(false);
 		collapsibleHeader.insert(chip, 1);
 
-//		taskKindComboBox.setMarginTop(30);
+		taskKindComboBox.setMarginTop(30);
 		taskKindComboBox.setLabel(i18nCore.taskGroupFilterTaskKindLabel());
 		taskKindComboBox.setPlaceholder(i18nCore.taskGroupFilterTaskKindPlaceholder());
 
