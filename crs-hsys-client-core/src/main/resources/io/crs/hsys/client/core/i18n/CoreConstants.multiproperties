@@ -140,15 +140,15 @@
             <Name>TK_CLEANING</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Cleaning</Value>
-            <Value disabled="false">Takarítás</Value>
+            <Value disabled="false">Housekeeping</Value>
+            <Value disabled="false">Housekeeping</Value>
         </Property>
         <Property>
             <Name>TK_MAINTENANCE</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance</Value>
-            <Value disabled="false">Műszaki</Value>
+            <Value disabled="false">Karbantartás</Value>
         </Property>
         <Property>
             <Name>TK_REQUEST</Name>

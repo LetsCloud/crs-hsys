@@ -28,6 +28,9 @@ public class HkTaskTypeBrowserPresenter extends TaskTypeBrowserPresenter {
 		setFilter(TaskTypeEditorPresenter.PARAM_KIND, TaskKind.TK_CLEANING.toString());
 	}
 
+	public interface MyView extends TaskTypeBrowserPresenter.MyView {
+	}
+
 	@Override
 	protected String getCreatorNameToken() {
 		return CoreNameTokens.TASK_TYPE_EDITOR;

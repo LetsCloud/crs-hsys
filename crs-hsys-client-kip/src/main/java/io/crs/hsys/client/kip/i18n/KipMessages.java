@@ -226,6 +226,11 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Task Types")
 	String hkTaskTypeBrowserTitle();
 
+	@DefaultMessage("Standard Room Cleaning Types")
+	String hkConfigStandardTypesItem();
+
+	@DefaultMessage("Public Area Cleaning Setup")
+	String hkConfigPublicAreaCleaningSetup();
 	
 	/*
 	 * Maintenance Config
@@ -237,5 +242,11 @@ public interface KipMessages extends Messages {
 	String mtConfigDescription();
 	
 	@DefaultMessage("Task Groups")
-	String mtTaskGroupBrowserTitle();
+	String mtConfigTaskGroupItem();
+	
+	@DefaultMessage("Task Todos")
+	String mtConfigTaskTodoItem();
+	
+	@DefaultMessage("Task Types")
+	String mtConfigTaskTypeItem();
 }

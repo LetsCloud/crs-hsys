@@ -36,8 +36,8 @@
 			<m:MaterialPanel addStyleNames="titleBar"
 				marginTop="56" padding="56" shadow="1">
 				<m:MaterialPanel ui:field="panel">
-					<m:MaterialLabel ui:field="title" fontSize="2.3em"/>
-					<m:MaterialLabel ui:field="description" />
+					<m:MaterialLabel ui:field="title" fontSize="2.3em" truncate="true"/>
+					<m:MaterialLabel ui:field="description" truncate="true" />
 				</m:MaterialPanel>
 			</m:MaterialPanel>
 

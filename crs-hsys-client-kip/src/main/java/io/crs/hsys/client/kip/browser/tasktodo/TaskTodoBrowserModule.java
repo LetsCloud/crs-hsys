@@ -17,6 +17,9 @@ public class TaskTodoBrowserModule extends AbstractPresenterModule {
 		bindPresenterWidget(HkTaskTodoBrowserPresenter.class, HkTaskTodoBrowserPresenter.MyView.class,
 				HkTaskTodoBrowserView.class);
 
+		bindPresenterWidget(MtTaskTodoBrowserPresenter.class, MtTaskTodoBrowserPresenter.MyView.class,
+				MtTaskTodoBrowserView.class);
+
 		install(new GinFactoryModuleBuilder().build(TaskTodoBrowserFactory.class));
 	}
 }

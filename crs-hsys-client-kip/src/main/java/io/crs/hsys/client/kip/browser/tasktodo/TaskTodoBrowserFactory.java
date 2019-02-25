@@ -11,4 +11,6 @@ public interface TaskTodoBrowserFactory {
 
 	HkTaskTodoBrowserPresenter createHkTaskTodoBrowser();
 
+	MtTaskTodoBrowserPresenter createMtTaskTodoBrowser();
+
 }

@@ -21,6 +21,9 @@ public class TaskTypeBrowserModule extends AbstractPresenterModule {
 		bindPresenterWidget(HkTaskTypeBrowserPresenter.class, HkTaskTypeBrowserPresenter.MyView.class,
 				HkTaskTypeBrowserView.class);
 
+		bindPresenterWidget(MtTaskTypeBrowserPresenter.class, MtTaskTypeBrowserPresenter.MyView.class,
+				MtTaskTypeBrowserView.class);
+
 		install(new GinFactoryModuleBuilder().build(TaskTypeBrowserFactory.class));
 	}
 }
