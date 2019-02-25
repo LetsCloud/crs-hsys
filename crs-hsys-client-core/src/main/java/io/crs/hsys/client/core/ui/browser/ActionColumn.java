@@ -48,6 +48,10 @@ public class ActionColumn<T extends BaseDto> extends WidgetColumn<T, MaterialIco
 
 	private Color iconColor = Color.AMBER;
 
+	public ActionColumn() {
+		this.textAlign(TextAlign.CENTER);
+	}
+
 	/**
 	 * Egyszerű Edit ikon kontruktor.
 	 * 
@@ -73,13 +77,25 @@ public class ActionColumn<T extends BaseDto> extends WidgetColumn<T, MaterialIco
 
 	@Override
 	public MaterialIcon getValue(T object) {
+		return getIcon(object);
+	}
+
+	protected Boolean isVisible(T object) {
+		return true;
+	}
+
+	protected MaterialIcon getIcon(T object) {
 		MaterialIcon icon = new MaterialIcon();
-		icon.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				actionRow.onAction(object);
-			}
-		});
+		if (!isVisible(object))
+			return icon;
+
+		if (actionRow != null)
+			icon.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					actionRow.onAction(object);
+				}
+			});
 
 		icon.setWaves(WavesType.DEFAULT);
 		icon.setIconType(iconType);

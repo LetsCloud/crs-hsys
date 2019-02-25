@@ -27,6 +27,8 @@ import io.crs.hsys.server.entity.profile.Relationship;
 import io.crs.hsys.server.entity.reservation.MarketGroup;
 import io.crs.hsys.server.entity.reservation.Reservation;
 import io.crs.hsys.server.entity.task.TaskGroup;
+import io.crs.hsys.server.entity.task.TaskTodo;
+import io.crs.hsys.server.entity.task.TaskType;
 
 
 /**
@@ -43,6 +45,8 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(AppUser.class);
 		ObjectifyService.register(UserGroup.class);
 		ObjectifyService.register(TaskGroup.class);
+		ObjectifyService.register(TaskTodo.class);
+		ObjectifyService.register(TaskType.class);
 		/*		ObjectifyService.register(Role.class);
 		ObjectifyService.register(Currency.class);
 		ObjectifyService.register(Service.class);

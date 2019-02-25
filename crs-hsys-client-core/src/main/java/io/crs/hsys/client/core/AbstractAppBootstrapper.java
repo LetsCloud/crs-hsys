@@ -29,6 +29,7 @@ import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.core.util.Base64;
 import io.crs.hsys.client.core.util.Base64Utils;
 import io.crs.hsys.client.core.util.UrlUtils;
 import io.crs.hsys.shared.api.AuthResource;
@@ -121,7 +122,7 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 
 				checkCurrentUser();
 			}
-			
+
 			@Override
 			public void onFailure(Throwable caught) {
 				logger.info("provideMessagingManager().onFailure()");
@@ -209,8 +210,9 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				String baseUrl = UrlUtils.getBaseUrl();
 
 				String pathString = Window.Location.getPath() + Window.Location.getHash();
-				String pathB64 = Base64Utils.toBase64(pathString.getBytes());
-
+				String pathB64 = Base64.encode(pathString.getBytes());
+//				String pathB64 = Base64Utils.toBase64(pathString.getBytes());
+//				String pathB64 = atob(pathString);
 				Window.Location.replace(baseUrl + LOGIN_URL + "?" + TARGET_URL + "=" + pathB64);
 			}
 		});
@@ -255,4 +257,11 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 												return $wnd.navigator.userAgent.toLowerCase();
 												}-*/;
 
+	public static native String btoa(String b64) /*-{
+													return btoa(b64);
+													}-*/;
+
+	public static native String atob(String encodedData) /*-{
+															return atob(encodedData);
+															}-*/;
 }

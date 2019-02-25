@@ -41,6 +41,7 @@ public class ApiPaths {
 		public static final String TASK = "/task";
 		public static final String TASK_TYPE = "/taskType";
 		public static final String TASK_GROUP = "/taskGroup";
+		public static final String TASK_TODO = "/taskTodo";
 
 		public static final String PROFILE_GROUP = "/profileGroup";
 		public static final String RELATIONSHIP = "/relationship";

@@ -26,6 +26,7 @@ public class LoggedInChecker {
 	private final ModelMapper modelMapper;
 
 	public LoggedInChecker(ModelMapper modelMapper) {
+		logger.info("LoggedInChecker()");
 		this.modelMapper = modelMapper;
 	}
 
@@ -35,31 +36,25 @@ public class LoggedInChecker {
 	 * @return
 	 */
 	public AppUser getLoggedInUser() {
-		logger.info("getLoggedInUser()");
-
 		AppUser appUser = null;
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null) {
-			logger.info("getLoggedInUser()->(authentication != null)");
 			Object principal = authentication.getPrincipal();
 
 			// principal can be "anonymousUser" (String)
 			if (principal instanceof AppUserDetails) {
 				AppUserDetails userDetails = (AppUserDetails) principal;
 				AppUserDto dto = userDetails.getAppUserDto();
-				logger.info("getLoggedInUser()->before mapper->dto=" + dto);
 				try {
 					appUser = modelMapper.map(dto, AppUser.class);
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}
-				logger.info("getLoggedInUser()->after mapper");
 			}
 
 			// GaeUser esetén
 			if (principal instanceof GaeUser) {
-				logger.info("getLoggedInUser()->(principal instanceof GaeUser)");
 				GaeUser gaeUser = (GaeUser) principal;
 				appUser = new AppUser();
 				appUser.setEmailAddress(gaeUser.getEmail());

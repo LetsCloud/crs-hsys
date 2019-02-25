@@ -3,8 +3,6 @@
  */
 package io.crs.hsys.shared.api;
 
-import static io.crs.hsys.shared.api.ApiParameters.TASK_KIND;
-import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.TASK_GROUP;
@@ -17,7 +15,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -29,7 +26,7 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
 public interface TaskGroupResource {
 
 	@GET
-	List<TaskGroupDto> getAll(@QueryParam(TASK_KIND) String taskInd, @QueryParam(ONLY_ACTIVE) Boolean onlyActive);
+	List<TaskGroupDto> getAll();
 
 	@GET
 	@Path(PATH_WEBSAFEKEY)

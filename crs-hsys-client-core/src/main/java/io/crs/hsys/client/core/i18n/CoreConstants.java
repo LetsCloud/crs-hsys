@@ -15,6 +15,8 @@ public interface CoreConstants extends Constants {
 
 	Map<String, String> userPermMap();
 
+	Map<String, String> taskKindMap();
+
 	Map<String, String> profileTypeMap();
 
 	Map<String, String> communicationModeMap();

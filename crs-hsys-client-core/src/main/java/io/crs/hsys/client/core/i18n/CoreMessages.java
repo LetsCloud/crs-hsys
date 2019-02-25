@@ -324,6 +324,158 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
+	 * TASK GROUP BROWSER
+	 */
+	@DefaultMessage("Task Groups")
+	String taskGroupBrowserTitle();
+
+	@DefaultMessage("Kind")
+	String taskGroupBrowserKindColumn();
+
+	@DefaultMessage("Code")
+	String taskGroupBrowserCodeColumn();
+
+	@DefaultMessage("Description")
+	String taskGroupBrowserDescriptionColumn();
+
+	
+	/*
+	 * TASK GROUP FILTER
+	 */
+
+	@DefaultMessage("Task Kind")
+	String taskGroupFilterTaskKindLabel();
+	
+	@DefaultMessage("Choose a Task Kind")
+	String taskGroupFilterTaskKindPlaceholder();
+
+	
+	/*
+	 * TASK GROUP EDITOR
+	 */
+	@DefaultMessage("Create Task Group")
+	String taskGroupEditorCreateTitle();
+
+	@DefaultMessage("Task Kind")
+	String taskGroupEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskGroupEditorKindPlaceholder();
+	
+	@DefaultMessage("Modify Task Group")
+	String taskGroupEditorModifyTitle();
+
+	@DefaultMessage("Code")
+	String taskGroupEditorCode();
+
+	@DefaultMessage("Description")
+	String taskGroupEditorDescription();
+
+	
+	/*
+	 * TASK TODO BROWSER
+	 */
+	@DefaultMessage("Task Todos")
+	String taskTodoBrowserTitle();
+
+	@DefaultMessage("Kind")
+	String taskTodoBrowserKindColumn();
+
+	@DefaultMessage("Description")
+	String taskTodoBrowserDescriptionColumn();
+
+	@DefaultMessage("Time(m)")
+	String taskTodoBrowserTimeReqColumn();
+
+	
+	/*
+	 * TASK TODO EDITOR
+	 */
+	@DefaultMessage("Create Task Todo")
+	String taskTodoEditorCreateTitle();
+
+	@DefaultMessage("Modify Task Todo")
+	String taskTodoEditorModifyTitle();
+
+	@DefaultMessage("Task Kind")
+	String taskTodoEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskTodoEditorKindPlaceholder();
+
+	@DefaultMessage("Task Type")
+	String taskTodoEditorType();
+
+	@DefaultMessage("Choose a Task Type")
+	String taskTodoEditorTypePlaceholder();
+
+	@DefaultMessage("Description")
+	String taskTodoEditorDescription();
+	
+	@DefaultMessage("Time required(m)")
+	String taskTodoEditorTimeRequired();
+
+	
+	/*
+	 * TASK TYPE BROWSER
+	 */
+	@DefaultMessage("Task Types")
+	String taskTypeBrowserTitle();
+
+	@DefaultMessage("Kind")
+	String taskTypeBrowserKindColumn();
+
+	@DefaultMessage("Group")
+	String taskTypeBrowserGroupColumn();
+
+	@DefaultMessage("Code")
+	String taskTypeBrowserCodeColumn();
+
+	@DefaultMessage("Description")
+	String taskTypeBrowserDescriptionColumn();
+
+	@DefaultMessage("Time(m)")
+	String taskTypeBrowserTimeReqColumn();
+
+	
+	/*
+	 * TASK TYPE EDITOR
+	 */
+	@DefaultMessage("Create Task Type")
+	String taskTypeEditorCreateTitle();
+
+	@DefaultMessage("Modify Task Type")
+	String taskTypeEditorModifyTitle();
+
+	@DefaultMessage("Task Kind")
+	String taskTypeEditorKind();
+
+	@DefaultMessage("Choose a Task Kind")
+	String taskTypeEditorKindPlaceholder();
+
+	@DefaultMessage("Task Group")
+	String taskTypeEditorGroup();
+
+	@DefaultMessage("Choose a Task Group")
+	String taskTypeEditorGroupPlaceholder();
+
+	@DefaultMessage("Code")
+	String taskTypeEditorCode();
+
+	@DefaultMessage("Description")
+	String taskTypeEditorDescription();
+	
+	@DefaultMessage("Time required(m)")
+	String taskTypeEditorTimeRequired();
+	
+	@DefaultMessage("Todos")
+	String taskTypeEditorTodos();
+	
+	@DefaultMessage("Todos")
+	String taskTypeEditorAddTodo();
+	
+	
+	/*
 	 * PROFILE CONFIG
 	 */
 

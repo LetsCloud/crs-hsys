@@ -8,6 +8,6 @@ package io.crs.hsys.shared.constans;
  *
  */
 public enum TaskKind {
-	COMMON, CLEANING, MAINTENANCE, REQUEST;
-
+	// , TK_COMMON, TK_REQUEST
+	TK_ALL, TK_CLEANING, TK_MAINTENANCE;
 }

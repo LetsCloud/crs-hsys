@@ -99,7 +99,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(cleaningType);
-		taskDto.setKind(TaskKind.CLEANING);
+		taskDto.setKind(TaskKind.TK_CLEANING);
 		taskDto.setStatus(TaskStatus.NOT_STARTED);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
@@ -114,7 +114,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(guestRequest);
-		taskDto.setKind(TaskKind.REQUEST);
+		taskDto.setKind(TaskKind.TK_CLEANING);
 		taskDto.setStatus(TaskStatus.IN_PROGRESS);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
@@ -131,7 +131,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(text);
 //		taskDto.setReporter(reporter);
-		taskDto.setKind(TaskKind.MAINTENANCE);
+		taskDto.setKind(TaskKind.TK_MAINTENANCE);
 		taskDto.setStatus(TaskStatus.COMPLETED);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;

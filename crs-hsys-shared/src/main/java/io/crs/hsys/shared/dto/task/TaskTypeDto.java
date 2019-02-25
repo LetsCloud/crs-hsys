@@ -19,7 +19,9 @@ public class TaskTypeDto extends AccountChildDto {
 	private String code;
 	private String description;
 	private TaskGroupDto taskGroup;
-	private List<String> toDos = new ArrayList<String>();
+	private Integer timeRequired;
+	private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
+	private Boolean active;
 
 	public TaskKind getKind() {
 		return kind;
@@ -53,12 +55,28 @@ public class TaskTypeDto extends AccountChildDto {
 		this.taskGroup = taskGroup;
 	}
 
-	public List<String> getToDos() {
-		return toDos;
+	public Integer getTimeRequired() {
+		return timeRequired;
 	}
 
-	public void setToDos(List<String> toDos) {
-		this.toDos = toDos;
+	public void setTimeRequired(Integer timeRequired) {
+		this.timeRequired = timeRequired;
+	}
+
+	public List<TaskTodoDto> getTodos() {
+		return todos;
+	}
+
+	public void setTodos(List<TaskTodoDto> todos) {
+		this.todos = todos;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	public static class Builder {
@@ -67,7 +85,9 @@ public class TaskTypeDto extends AccountChildDto {
 		private String code;
 		private String description;
 		private TaskGroupDto taskGroup;
-		private List<String> toDos = new ArrayList<String>();
+		private Integer timeRequired;
+		private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
+		private Boolean active;
 
 		public Builder() {
 		}
@@ -92,8 +112,18 @@ public class TaskTypeDto extends AccountChildDto {
 			return this;
 		}
 
-		public Builder toDos(List<String> toDos) {
-			this.toDos = toDos;
+		public Builder timeRequired(Integer timeRequired) {
+			this.timeRequired = timeRequired;
+			return this;
+		}
+
+		public Builder toDos(List<TaskTodoDto> todos) {
+			this.todos = todos;
+			return this;
+		}
+
+		public Builder taskGroup(Boolean active) {
+			this.active = active;
 			return this;
 		}
 
@@ -103,7 +133,9 @@ public class TaskTypeDto extends AccountChildDto {
 			result.setCode(code);
 			result.setDescription(description);
 			result.setTaskGroup(taskGroup);
-			result.setToDos(toDos);
+			result.setTimeRequired(timeRequired);
+			result.setTodos(todos);
+			result.setActive(active);
 			return result;
 		}
 	}

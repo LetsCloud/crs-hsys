@@ -56,7 +56,8 @@ public class TaskGroupController extends CrudController<TaskGroup, TaskGroupDto>
 
 	@RequestMapping(method = GET)
 	public @ResponseBody ResponseEntity<List<TaskGroupDto>> getAll() {
-		return getAll();
+		logger.info("TaskGroupController().getAll()");
+		return super.getAll();
 	}
 
 	@RequestMapping(value = WEBSAFEKEY, method = GET)

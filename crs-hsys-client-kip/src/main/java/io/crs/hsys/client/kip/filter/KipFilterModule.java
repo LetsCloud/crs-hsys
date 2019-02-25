@@ -10,6 +10,8 @@ import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterView;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterView2;
+import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
+import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterView;
 
 /**
  * @author robi
@@ -19,8 +21,12 @@ public class KipFilterModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
+		bindPresenterWidget(TaskGroupFilterPresenter.class, TaskGroupFilterPresenter.MyView.class,
+				TaskGroupFilterView.class);
+
 		bindPresenterWidget(AssignmentFilterPresenter.class, AssignmentFilterPresenter.MyView.class,
 				AssignmentFilterView.class);
+
 		bindPresenterWidget(RoomStatusFilterPresenter2.class, RoomStatusFilterPresenter2.MyView.class,
 				RoomStatusFilterView2.class);
 

@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<m:MaterialDialog ui:field="modal" type="DEFAULT"
+		inDuration="500" outDuration="500">
+		<m:MaterialDialogContent>
+			<m:MaterialTitle ui:field="title" marginBottom="30" />
+
+			<combobox:MaterialComboBox
+				ui:field="kindCombo" label="{i18nCore.taskGroupEditorKind}"
+				placeholder="{i18nCore.taskGroupEditorKindPlaceholder}" />
+			<m:MaterialTextBox ui:field="code" type="TEXT"
+				label="{i18nCore.taskGroupEditorCode}" />
+			<m:MaterialTextBox ui:field="description"
+				type="TEXT" label="{i18nCore.taskGroupEditorDescription}" />
+			<m:MaterialCheckBox ui:field="active"
+				text="{i18nCore.comActive}" value="true" marginTop="10" />
+		</m:MaterialDialogContent>
+
+		<m:MaterialDialogFooter>
+			<m:MaterialButton ui:field="saveButton"
+				text="{i18nCore.comSave}" iconType="SAVE" iconPosition="LEFT" />
+			<m:MaterialButton ui:field="cancelButton"
+				text="{i18nCore.comCancel}" type="FLAT" />
+		</m:MaterialDialogFooter>
+	</m:MaterialDialog>
+</ui:UiBinder>

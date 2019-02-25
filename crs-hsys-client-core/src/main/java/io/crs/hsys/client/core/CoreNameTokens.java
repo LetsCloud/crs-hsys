@@ -16,6 +16,7 @@ public class CoreNameTokens {
 	public static final String HOTEL_CONFIG = "/hotelConfig";
 
 	// Configuration
+	public static final String TASK_TYPE_EDITOR = "/taskTypeEditor";
 	public static final String ORGANIZATION_CREATOR = "/organizationCreator";
 	public static final String CUSTOMER_EDITOR = "/customerEditor";
 	public static final String CONTACT_CREATOR = "/contactCreator";

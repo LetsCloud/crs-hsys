@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
@@ -15,7 +15,8 @@
 
 	<bean id="modelMapper" class="org.modelmapper.ModelMapper" />
 
-	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean id="objectMapper"
+		class="com.fasterxml.jackson.databind.ObjectMapper" />
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -26,8 +27,8 @@
 	<bean id="objectifyRegistration"
 		class="io.crs.hsys.server.repository.ofy.ObjectifyRegistration" />
 
-	<bean id="requestHolder" class="io.crs.hsys.server.security.RequestHolder"
-		scope="request">
+	<bean id="requestHolder"
+		class="io.crs.hsys.server.security.RequestHolder" scope="request">
 		<aop:scoped-proxy />
 	</bean>
 
@@ -47,7 +48,7 @@
 		class="io.crs.hsys.server.service.ofy.UserGroupServiceImpl">
 		<constructor-arg ref="userGroupRepository" />
 		<constructor-arg ref="accountRepository" />
-	</bean>	
+	</bean>
 	<bean id="appUserService"
 		class="io.crs.hsys.server.service.ofy.AppUserServiceImpl">
 		<constructor-arg ref="loggedInChecker" />
@@ -61,9 +62,19 @@
 		class="io.crs.hsys.server.service.ofy.TaskGroupServiceImpl">
 		<constructor-arg ref="taskGroupRepository" />
 		<constructor-arg ref="accountRepository" />
-	</bean>	
-	
-	
+	</bean>
+	<bean id="taskTodoService"
+		class="io.crs.hsys.server.service.ofy.TaskTodoServiceImpl">
+		<constructor-arg ref="taskTodoRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="taskTypeService"
+		class="io.crs.hsys.server.service.ofy.TaskTypeServiceImpl">
+		<constructor-arg ref="taskTypeRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+
+
 	<bean id="profileService"
 		class="io.crs.hsys.server.service.ofy.ProfileServiceImpl">
 		<constructor-arg ref="profileRepository" />
@@ -106,7 +117,7 @@
 		class="io.crs.hsys.server.service.impl.FcmServiceImpl">
 	</bean>
 
-	
+
 	<bean id="hotelService"
 		class="io.crs.hsys.server.service.ofy.HotelServiceImpl">
 		<constructor-arg ref="accountRepository" />
@@ -132,7 +143,7 @@
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
 	</bean>
-	
+
 
 	<!-- ============ -->
 	<!-- REPOSITORIES -->
@@ -141,17 +152,20 @@
 		class="io.crs.hsys.server.repository.ofy.GlobalConfigRepositoryImpl" />
 	<bean id="accountRepository"
 		class="io.crs.hsys.server.repository.ofy.AccountRepositoryImpl" />
- 	<bean id="userGroupRepository"
+	<bean id="userGroupRepository"
 		class="io.crs.hsys.server.repository.ofy.UserGroupRepositoryImpl" />
-<!--	<bean id="roleRepository"
-		class="io.crs.hsys.cloud.server.repository.ofy.RoleRepositoryImpl" />
- -->
+	<!-- <bean id="roleRepository" class="io.crs.hsys.cloud.server.repository.ofy.RoleRepositoryImpl" 
+		/> -->
 	<bean id="appUserRepository"
 		class="io.crs.hsys.server.repository.ofy.AppUserRepositoryImpl" />
 
 
- 	<bean id="taskGroupRepository"
+	<bean id="taskGroupRepository"
 		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl" />
+	<bean id="taskTodoRepository"
+		class="io.crs.hsys.server.repository.ofy.TaskTodoRepositoryImpl" />
+	<bean id="taskTypeRepository"
+		class="io.crs.hsys.server.repository.ofy.TaskTypeRepositoryImpl" />
 
 
 	<bean id="profileRepository"
@@ -166,10 +180,10 @@
 		class="io.crs.hsys.server.repository.ofy.RelationshipRepositoryImpl" />
 	<bean id="profileLinkRepository"
 		class="io.crs.hsys.server.repository.ofy.ProfileLinkRepositoryImpl" />
-<!-- 	<bean id="guestRepository"
-		class="io.crs.hsys.server.repository.ofy.GuestRepositoryImpl" /> -->
-		
-		
+	<!-- <bean id="guestRepository" class="io.crs.hsys.server.repository.ofy.GuestRepositoryImpl" 
+		/> -->
+
+
 	<bean id="hotelRepository"
 		class="io.crs.hsys.server.repository.ofy.HotelRepositoryImpl" />
 	<bean id="roomRepository"
@@ -187,5 +201,5 @@
 	<bean id="reservationRepository"
 		class="io.crs.hsys.server.repository.ofy.ReservationRepositoryImpl" />
 
-	
+
 </beans>

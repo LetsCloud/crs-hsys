@@ -97,7 +97,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		this.guestNumberLabel.setText(roomStatus.getCurrOccStatus().getGuestNumber().toString());
 
 		Supplier<Stream<TaskDto>> cleaningTasks = () -> roomStatus.getTasks().stream()
-				.filter(o -> o.getKind().equals(TaskKind.CLEANING));
+				.filter(o -> o.getKind().equals(TaskKind.TK_CLEANING));
 
 		Supplier<Stream<TaskDto>> attendantTasks = () -> cleaningTasks.get().filter(o -> o.getAssignee() != null);
 
@@ -112,7 +112,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		cleaningLabel.setText(Long.toString(cleaningTasks.get().count()));
 
 		Supplier<Stream<TaskDto>> maintenanceTasks = () -> roomStatus.getTasks().stream()
-				.filter(o -> o.getKind().equals(TaskKind.MAINTENANCE));
+				.filter(o -> o.getKind().equals(TaskKind.TK_MAINTENANCE));
 
 		maintenanceLabel.setText(Long.toString(maintenanceTasks.get().count()));
 

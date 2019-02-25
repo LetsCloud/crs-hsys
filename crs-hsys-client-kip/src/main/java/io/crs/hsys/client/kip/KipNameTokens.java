@@ -18,6 +18,7 @@ public class KipNameTokens {
 	public static final String USER_CONFIG = "/userConfig";
 	public static final String HOTEL_CONFIG = "/hotelConfig";
 	public static final String HOUSEKEEPING_CONFIG = "/housekeepingConfig";
+	public static final String HK_TASK_TYPE_EDITOR = "/hkTaskTypeEditor";
 	public static final String MAINTENANCE_CONFIG = "/maintenanceConfig";
 
 	// Housekeeping
