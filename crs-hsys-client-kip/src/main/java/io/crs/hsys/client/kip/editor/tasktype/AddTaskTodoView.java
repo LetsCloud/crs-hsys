@@ -3,11 +3,13 @@
  */
 package io.crs.hsys.client.kip.editor.tasktype;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -16,6 +18,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialDialog;
+import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
  * @author robi
@@ -32,25 +35,14 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 
 	@UiField
 	MaterialCollection listPanel;
-	
+
 	/**
 	* 
 	*/
 	@Inject
 	AddTaskTodoView(Binder uiBinder) {
-		logger.info("RoomTypeEditorView()");
+		logger.info("AddTaskTodoView()");
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		listPanel.add(new TaskTodoWidget("Ágynemű csere"));
-		listPanel.add(new TaskTodoWidget("Pótágy elvitel"));
-		listPanel.add(new TaskTodoWidget("Fürdőszoba takarítás"));
-		listPanel.add(new TaskTodoWidget("Poharak elmosása"));
-		listPanel.add(new TaskTodoWidget("Türülköző csere"));
-		listPanel.add(new TaskTodoWidget("Portörlés"));
-		listPanel.add(new TaskTodoWidget("Porszívózás"));
-		listPanel.add(new TaskTodoWidget("Készülékek ellenőrzése"));
-		listPanel.add(new TaskTodoWidget("Világítás lekapcsolása"));
-		listPanel.add(new TaskTodoWidget("Szoba bezárása"));
 	}
 
 	@Override
@@ -60,6 +52,36 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 
 	@UiHandler("saveButton")
 	public void onSaveClick(ClickEvent event) {
+		getUiHandlers().onAddTodos();
 		modal.close();
+	}
+
+	@UiHandler("cancelButton")
+	public void onCancelClick(ClickEvent event) {
+		modal.close();
+	}
+
+	@Override
+	public void setTaskTodoData(List<TaskTodoDto> data) {
+		listPanel.clear();
+
+		for (TaskTodoDto todo : data) {
+			TaskTodoWidget ttw = new TaskTodoWidget(todo.getDescription() + " / " + todo.getTimeRequired());
+			ttw.getCheckBox().addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					logger.info("AddTaskTodoView().onClick()");
+					getUiHandlers().onClickTodo(todo);
+				}
+			});
+			ttw.getMcs().addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					logger.info("AddTaskTodoView().onClick2()");
+					getUiHandlers().onClickTodo(todo);
+				}
+			});
+			listPanel.add(ttw);
+		}
 	}
 }

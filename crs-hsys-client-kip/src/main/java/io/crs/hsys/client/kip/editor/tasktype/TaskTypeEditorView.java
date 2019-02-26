@@ -42,6 +42,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 
 	interface Binder extends UiBinder<Widget, TaskTypeEditorView> {
 	}
+
 	interface Driver extends SimpleBeanEditorDriver<TaskTypeDto, TaskTypeEditorView> {
 	}
 
@@ -76,7 +77,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@Inject
 	TaskTypeEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst,
 			TaskTodoListEditor taskTodoListEditor) {
-		logger.info("RoomTypeEditorView()");
+		logger.info("TaskTypeEditorView()");
 
 		this.todos = taskTodoListEditor;
 
@@ -85,7 +86,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 		initRoomTypeCombo();
 
 		this.driver = driver;
-		
+
 		bindSlot(TaskTypeEditorPresenter.SLOT_ADD_TASKTODO, addTaskTodoPanel);
 
 		driver.initialize(this);
@@ -166,5 +167,13 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@Override
 	public void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo) {
 		todos.setAddTaskTodo(addTaskTodo);
+	}
+
+	@Override
+	public void addTaskTodos(List<TaskTodoDto> todos) {
+		logger.info("TaskTypeEditorView().addTaskTodos()");
+		for (TaskTodoDto tt : todos)
+			logger.info("TaskTypeEditorView().addTaskTodos()->" + tt.getDescription());
+		this.todos.addTaskTodos(todos);
 	}
 }
