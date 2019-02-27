@@ -18,7 +18,7 @@
 
 		<m:MaterialDialogFooter>
 			<m:MaterialButton ui:field="saveButton"
-				text="{i18nCore.comSave}" iconType="SAVE" iconPosition="LEFT" />
+				text="{i18nCore.comOk}" iconType="DONE" iconPosition="LEFT" />
 			<m:MaterialButton ui:field="cancelButton"
 				text="{i18nCore.comCancel}" type="FLAT" />
 		</m:MaterialDialogFooter>

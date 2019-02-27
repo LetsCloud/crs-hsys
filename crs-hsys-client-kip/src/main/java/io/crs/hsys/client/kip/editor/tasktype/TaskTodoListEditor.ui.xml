@@ -7,9 +7,12 @@
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
 	<g:HTMLPanel>
-		<g:FlowPanel ui:field="listPanel" />
+		<m:MaterialCollection ui:field="listPanel" />
+		<m:MaterialButton ui:field="deleteButton"
+			text="{i18nCore.taskTypeEditorDeleteTodo}" waves="DEFAULT"
+			backgroundColor="WHITE" textColor="BLACK" />
 		<m:MaterialButton ui:field="addButton"
 			text="{i18nCore.taskTypeEditorAddTodo}" waves="DEFAULT"
-			backgroundColor="WHITE" textColor="BLACK" />
+			backgroundColor="WHITE" textColor="BLACK" float="RIGHT"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 
