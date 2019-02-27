@@ -471,9 +471,11 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Todos")
 	String taskTypeEditorTodos();
 	
-	@DefaultMessage("Todos")
+	@DefaultMessage("Add Todo")
 	String taskTypeEditorAddTodo();
 	
+	@DefaultMessage("Delete Todo")
+	String taskTypeEditorDeleteTodo();
 	
 	/*
 	 * PROFILE CONFIG

@@ -673,6 +673,65 @@
             <Value disabled="false">Időigény(p)</Value>
         </Property>
         <Comment>
+            <Value>TASK TODO EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>taskTodoEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Task Todo</Value>
+            <Value disabled="false">Feladat tennivaló létrehozása</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Task Todo</Value>
+            <Value disabled="false">Feladat tennivaló módosítása</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorKind</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Kind</Value>
+            <Value disabled="false">Feleadat jelleg</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorKindPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Chhose a Task Kind</Value>
+            <Value disabled="false">Válassz feladat jelleget</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorType</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Type</Value>
+            <Value disabled="false">Feladat csoport</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorTypePlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Task Type</Value>
+            <Value disabled="false">Válassz feladat típust</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoEditorTimeRequired</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time Required (m)</Value>
+            <Value disabled="false">Időigény (p)</Value>
+        </Property>
+        <Comment>
             <Value>TASK TYPE BROWSER</Value>
         </Comment>
         <Property>
@@ -773,15 +832,22 @@
             <Name>taskTypeEditorTodos</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Todos</Value>
-            <Value disabled="false">Tennivalók</Value>
+            <Value disabled="false">Checklist</Value>
+            <Value disabled="false">Ellenőrző lista</Value>
         </Property>
         <Property>
             <Name>taskTypeEditorAddTodo</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Add Todo</Value>
-            <Value disabled="false">Hozzáadás</Value>
+            <Value disabled="false">Hozzáad</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorDeleteTodo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Delete Todo</Value>
+            <Value disabled="false">Töröl</Value>
         </Property>
         <Comment>
             <Value>PROFILE CONFIG</Value>

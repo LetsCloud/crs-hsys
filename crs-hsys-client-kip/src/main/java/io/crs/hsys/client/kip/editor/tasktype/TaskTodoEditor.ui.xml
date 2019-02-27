@@ -6,10 +6,11 @@
 	<ui:with field="i18nCore"
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
-	<g:HTMLPanel>
-		<m:MaterialTextBox ui:field="description"
-			enabled="false" grid="s6" />
-		<m:MaterialIntegerBox ui:field="timeRequired"
-	placeholder="{i18nCore.roomEditorAvailabilityFromDate}" grid="s6" />
-	</g:HTMLPanel>
+	<m:MaterialCollectionItem type="CHECKBOX"
+		waves="DEFAULT">
+		<m:MaterialLabel ui:field="label" />
+		<m:MaterialCollectionSecondary ui:field="mcs">
+			<m:MaterialCheckBox ui:field="checkBox" value="false" type="FILLED" />
+		</m:MaterialCollectionSecondary>
+	</m:MaterialCollectionItem>
 </ui:UiBinder> 
