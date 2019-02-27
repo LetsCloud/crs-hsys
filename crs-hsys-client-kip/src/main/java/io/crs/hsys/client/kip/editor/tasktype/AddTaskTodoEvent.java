@@ -3,9 +3,13 @@
  */
 package io.crs.hsys.client.kip.editor.tasktype;
 
+import java.util.List;
+
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.event.shared.HasHandlers;
+
+import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
  * @author robi
@@ -13,20 +17,15 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class AddTaskTodoEvent extends GwtEvent<AddTaskTodoEvent.AddTaskTodoEventHandler> {
 	public interface AddTaskTodoEventHandler extends EventHandler {
-
-		public void onAddTaskTodoEvent(AddTaskTodoEvent event);
-
+		void onAddTaskTodoEvent(AddTaskTodoEvent event);
 	}
 
 	public static Type<AddTaskTodoEventHandler> TYPE = new Type<AddTaskTodoEventHandler>();
 
-	private Widget source;
+	private List<TaskTodoDto> todos;
 
-	public AddTaskTodoEvent(Widget source) {
-		this.source = source;
-	}
-
-	public AddTaskTodoEvent() {
+	AddTaskTodoEvent(List<TaskTodoDto> todos) {
+		this.todos = todos;
 	}
 
 	@Override
@@ -39,7 +38,12 @@ public class AddTaskTodoEvent extends GwtEvent<AddTaskTodoEvent.AddTaskTodoEvent
 		handler.onAddTaskTodoEvent(this);
 	}
 
-	public Widget getSource() {
-		return source;
+	public List<TaskTodoDto> getTodos() {
+		return todos;
 	}
+
+	public static void fire(HasHandlers source, List<TaskTodoDto> todos) {
+		source.fireEvent(new AddTaskTodoEvent(todos));
+	}
+
 }

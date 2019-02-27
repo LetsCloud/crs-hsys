@@ -9,6 +9,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.ui.MaterialCheckBox;
+import gwt.material.design.client.ui.MaterialCollectionSecondary;
 import gwt.material.design.client.ui.MaterialLabel;
 
 /**
@@ -25,6 +27,12 @@ public class TaskTodoWidget extends Composite {
 	@UiField
 	MaterialLabel label;
 
+	@UiField
+	MaterialCheckBox checkBox;
+
+	@UiField
+	MaterialCollectionSecondary mcs;
+	
 	/**
 	 */
 	public TaskTodoWidget() {
@@ -36,4 +44,11 @@ public class TaskTodoWidget extends Composite {
 		label.setText(title);
 	}
 
+	public MaterialCheckBox getCheckBox() {
+		return checkBox;
+	}
+
+	public MaterialCollectionSecondary getMcs() {
+		return mcs;
+	}
 }

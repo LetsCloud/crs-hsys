@@ -47,7 +47,7 @@ import io.crs.hsys.shared.dto.task.TaskTypeDto;
  */
 public class TaskTypeEditorPresenter
 		extends AbstractEditorPresenter<TaskTypeDto, TaskTypeEditorPresenter.MyView, TaskTypeEditorPresenter.MyProxy>
-		implements TaskTypeEditorUiHandlers {
+		implements TaskTypeEditorUiHandlers, AddTaskTodoEvent.AddTaskTodoEventHandler {
 	private static Logger logger = Logger.getLogger(TaskTypeEditorPresenter.class.getName());
 
 	public static final String PARAM_KIND = "paramKind";
@@ -60,6 +60,8 @@ public class TaskTypeEditorPresenter
 		void setTaskTodoData(List<TaskTodoDto> data);
 
 		void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo);
+
+		void addTaskTodos(List<TaskTodoDto> todos);
 
 		void displayError(EntityPropertyCode code, String message);
 	}
@@ -101,6 +103,7 @@ public class TaskTypeEditorPresenter
 	protected void onBind() {
 		super.onBind();
 		setInSlot(SLOT_ADD_TASKTODO, addTaskTodo);
+		addRegisteredHandler(AddTaskTodoEvent.TYPE, this);
 	}
 
 	private void start() {
@@ -202,5 +205,11 @@ public class TaskTypeEditorPresenter
 				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
 			}
 		}).saveOrCreate(dto);
+	}
+
+	@Override
+	public void onAddTaskTodoEvent(AddTaskTodoEvent event) {
+		logger.info("TaskTypeEditorPresenter().onAddTaskTodoEvent()");
+		getView().addTaskTodos(event.getTodos());
 	}
 }

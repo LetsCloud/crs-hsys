@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.client.kip.editor.tasktype;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
@@ -118,4 +120,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 		editor.getList().remove(index);
 	}
 
+	public void addTaskTodos(List<TaskTodoDto> todos) {
+		editor.getList().addAll(todos);
+	}
 }
