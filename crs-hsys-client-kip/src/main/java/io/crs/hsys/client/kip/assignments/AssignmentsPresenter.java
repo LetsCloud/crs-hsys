@@ -72,7 +72,7 @@ public class AssignmentsPresenter extends Presenter<AssignmentsPresenter.MyView,
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "AssignmentsPresenter()");
 
-		this.filterPresenter = filterPresenterFactory.createAssignmentFilterPresenter();
+		this.filterPresenter = filterPresenterFactory.createAssignmentFilter();
 		this.assignmentWidgetFactory = assignmentWidgetFactory;
 		this.assignmentEditPresenter = assignmentEditFactory.createAssignmentEdit();
 		this.i18n = i18n;

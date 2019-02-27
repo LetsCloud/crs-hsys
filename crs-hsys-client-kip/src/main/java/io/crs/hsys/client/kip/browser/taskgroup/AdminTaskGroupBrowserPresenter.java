@@ -23,7 +23,7 @@ public class AdminTaskGroupBrowserPresenter extends TaskGroupBrowserPresenter {
 	AdminTaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskGroupResource> resourceDelegate, KipFilterPresenterFactory filterFactory,
 			TaskGroupEditorFactory editorFactory) {
-		super(eventBus, placeManager, view, resourceDelegate, filterFactory.createTaskGroupFilterPresenter(),
+		super(eventBus, placeManager, view, resourceDelegate, filterFactory.createTaskGroupFilter(),
 				editorFactory.createHkTaskGroupEditor());
 	}
 
