@@ -23,7 +23,7 @@ public class HkTaskTodoBrowserPresenter extends TaskTodoBrowserPresenter {
 	HkTaskTodoBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskTodoResource> resourceDelegate, KipFilterPresenterFactory filterFactory,
 			TaskTodoEditorFactory editorFactory) {
-		super(eventBus, placeManager, view, resourceDelegate, filterFactory.createTaskGroupFilterPresenter(),
+		super(eventBus, placeManager, view, resourceDelegate, filterFactory.createTaskTodoFilter(),
 				editorFactory.createHkTaskTodoEditor());
 	}
 

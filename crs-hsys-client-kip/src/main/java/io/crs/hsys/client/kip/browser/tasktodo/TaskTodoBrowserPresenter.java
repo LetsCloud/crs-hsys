@@ -18,7 +18,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
-import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
+import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterPresenter;
 import io.crs.hsys.client.kip.meditor.tasktodo.TaskTodoEditorPresenter;
 import io.crs.hsys.shared.api.TaskTodoResource;
 import io.crs.hsys.shared.constans.TaskKind;
@@ -40,11 +40,11 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 	public static final SingleSlot<PresenterWidget<?>> SLOT_EDITOR = new SingleSlot<>();
 
 	private final ResourceDelegate<TaskTodoResource> resourceDelegate;
-	private final TaskGroupFilterPresenter filter;
+	private final TaskTodoFilterPresenter filter;
 	private final TaskTodoEditorPresenter editor;
 
 	public TaskTodoBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<TaskTodoResource> resourceDelegate, TaskGroupFilterPresenter filter,
+			ResourceDelegate<TaskTodoResource> resourceDelegate, TaskTodoFilterPresenter filter,
 			TaskTodoEditorPresenter editor) {
 		super(eventBus, view, placeManager);
 		logger.info("TaskTodoBrowserPresenter()");

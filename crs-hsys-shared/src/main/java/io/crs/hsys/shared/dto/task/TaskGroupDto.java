@@ -14,8 +14,17 @@ import io.crs.hsys.shared.dto.common.AccountChildDto;
 public class TaskGroupDto extends AccountChildDto {
 	private TaskKind kind;
 	private String code;
-	private String description; 
-	private Boolean active; 
+	private String description;
+	private Boolean active;
+
+	public TaskGroupDto() {
+	}
+
+	public TaskGroupDto(String code, String description) {
+		this();
+		this.code = code;
+		this.description = description;
+	}
 
 	public TaskKind getKind() {
 		return kind;
@@ -54,7 +63,7 @@ public class TaskGroupDto extends AccountChildDto {
 		private TaskKind kind;
 		private String code;
 		private String description;
-		private Boolean active; 
+		private Boolean active;
 
 		public Builder() {
 		}

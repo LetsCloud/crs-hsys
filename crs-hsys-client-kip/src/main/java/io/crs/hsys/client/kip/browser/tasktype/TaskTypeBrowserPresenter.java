@@ -18,7 +18,7 @@ import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
-import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
+import io.crs.hsys.client.kip.filter.taskgroup.AbstractTaskGroupFilterPresenter;
 import io.crs.hsys.shared.api.TaskTypeResource;
 import io.crs.hsys.shared.dto.task.TaskTypeDto;
 
@@ -38,7 +38,7 @@ public abstract class TaskTypeBrowserPresenter
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
 
 	private final ResourceDelegate<TaskTypeResource> resourceDelegate;
-	private final TaskGroupFilterPresenter filter;
+	private final AbstractTaskGroupFilterPresenter filter;
 
 	TaskTypeBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskTypeResource> resourceDelegate, KipFilterPresenterFactory filterFactory) {
@@ -46,7 +46,7 @@ public abstract class TaskTypeBrowserPresenter
 		logger.info("TaskTypeBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
-		this.filter = filterFactory.createTaskGroupFilterPresenter();
+		this.filter = filterFactory.createTaskGroupFilter();
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
