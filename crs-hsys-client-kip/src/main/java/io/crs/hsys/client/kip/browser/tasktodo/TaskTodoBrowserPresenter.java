@@ -19,6 +19,7 @@ import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterPresenter;
+import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterView;
 import io.crs.hsys.client.kip.meditor.tasktodo.TaskTodoEditorPresenter;
 import io.crs.hsys.shared.api.TaskTodoResource;
 import io.crs.hsys.shared.constans.TaskKind;
@@ -79,6 +80,9 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 					result = result.stream().filter(tg -> tg.getActive().equals(true)).collect(Collectors.toList());
 				if (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL))
 					result = result.stream().filter(tg -> tg.getKind().equals(filter.getSelectedTaskKind()))
+							.collect(Collectors.toList());
+				if (!filter.getSelectedTaskGroup().getCode().equals(TaskTodoFilterView.ALL_ITEMS))
+					result = result.stream().filter(tg -> tg.getTaskGroup().equals(filter.getSelectedTaskGroup()))
 							.collect(Collectors.toList());
 				getView().setData(result);
 			}

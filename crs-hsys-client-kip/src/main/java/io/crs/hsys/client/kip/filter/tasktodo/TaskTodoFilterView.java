@@ -22,7 +22,7 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
 public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements TaskTodoFilterPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TaskTodoFilterView.class.getName());
 
-	private static final String ALL_ITEMS = "***";
+	public static final String ALL_ITEMS = "*MIND";
 
 	private MaterialComboBox<TaskGroupDto> taskGroupComboBox;
 
@@ -45,8 +45,8 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 		collapsibleHeader.insert(chip, 1);
 
 		taskGroupComboBox.setMarginTop(30);
-		taskGroupComboBox.setLabel(i18nCore.taskGroupFilterTaskKindLabel());
-		taskGroupComboBox.setPlaceholder(i18nCore.taskGroupFilterTaskKindPlaceholder());
+		taskGroupComboBox.setLabel(i18nCore.taskTodoFilterTaskGroupLabel());
+		taskGroupComboBox.setPlaceholder(i18nCore.taskTodoFilterTaskGroupPlaceholder());
 
 		taskGroupComboBox.addSelectionHandler(e -> {
 			setTaskGroupChip(chip, e.getSelectedValues().get(0));
@@ -55,7 +55,7 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 	}
 
 	private void setTaskGroupChip(MaterialChip chip, TaskGroupDto taskGroup) {
-		Boolean visible = ((taskGroup != null) && (taskGroup.getCode().equals(ALL_ITEMS)));
+		Boolean visible = ((taskGroup != null) && (!taskGroup.getCode().equals(ALL_ITEMS)));
 		chip.setVisible(visible);
 		if (visible)
 			chip.setText(taskGroup.getCode());
@@ -63,9 +63,10 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 
 	@Override
 	protected void createLayout() {
-		super.createLayout();
+		setTaskKindLayout();
 		taskGroupComboBox.setGrid("s12 m6");
 		controlPanel.add(taskGroupComboBox);
+		setOnlyActiveLayour();
 	}
 
 	@Override

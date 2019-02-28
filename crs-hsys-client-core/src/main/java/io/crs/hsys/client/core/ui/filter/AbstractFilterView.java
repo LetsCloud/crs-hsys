@@ -59,8 +59,13 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 	}
 
 	protected void createLayout() {
+		setOnlyActiveLayour();
+	}
+
+	protected void setOnlyActiveLayour() {
 		onlyActiveCheckBox.setGrid("s12 m6");
 		controlPanel.add(onlyActiveCheckBox);
+
 	}
 
 	protected void initView() {

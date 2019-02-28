@@ -65,8 +65,7 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 	@Override
 	protected void createLayout() {
 		super.createLayout();
-		taskKindComboBox.setGrid("s12 m6");
-		controlPanel.add(taskKindComboBox);
+		setTaskKindLayout();
 	}
 
 	@Override
@@ -86,4 +85,9 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 		// TODO Auto-generated method stub
 
 	}
+	
+	protected void setTaskKindLayout() {
+		taskKindComboBox.setGrid("s12 m6");
+		controlPanel.add(taskKindComboBox);		
+	};
 }

@@ -673,6 +673,23 @@
             <Value disabled="false">Időigény(p)</Value>
         </Property>
         <Comment>
+            <Value>TASK TODO FILTER</Value>
+        </Comment>
+        <Property>
+            <Name>taskTodoFilterTaskGroupLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Group</Value>
+            <Value disabled="false">Feladat csoport</Value>
+        </Property>
+        <Property>
+            <Name>taskTodoFilterTaskGroupPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Task Group</Value>
+            <Value disabled="false">Válassz feladat csoportot</Value>
+        </Property>
+        <Comment>
             <Value>TASK TODO EDITOR</Value>
         </Comment>
         <Property>
@@ -728,8 +745,8 @@
             <Name>taskTodoEditorTimeRequired</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Time Required (m)</Value>
-            <Value disabled="false">Időigény (p)</Value>
+            <Value disabled="false">Time Required (min)</Value>
+            <Value disabled="false">Időigény (perc)</Value>
         </Property>
         <Comment>
             <Value>TASK TYPE BROWSER</Value>
@@ -773,8 +790,8 @@
             <Name>taskTypeBrowserTimeReqColumn</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Time(m)</Value>
-            <Value disabled="false">Idő(p)</Value>
+            <Value disabled="false">Time(min)</Value>
+            <Value disabled="false">Időigény(p)</Value>
         </Property>
         <Comment>
             <Value>TASK TYPE EDITOR</Value>
@@ -826,7 +843,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Time (m)</Value>
-            <Value disabled="false">Időigény (p)</Value>
+            <Value disabled="false">Időigény (perc)</Value>
         </Property>
         <Property>
             <Name>taskTypeEditorTodos</Name>
