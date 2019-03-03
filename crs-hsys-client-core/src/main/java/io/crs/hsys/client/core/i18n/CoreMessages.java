@@ -389,6 +389,17 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
+	 * TASK TODO FILTER
+	 */
+
+	@DefaultMessage("Task Group")
+	String taskTodoFilterTaskGroupLabel();
+	
+	@DefaultMessage("Choose a Task Group")
+	String taskTodoFilterTaskGroupPlaceholder();
+
+	
+	/*
 	 * TASK TODO EDITOR
 	 */
 	@DefaultMessage("Create Task Todo")
