@@ -98,7 +98,7 @@ public class TaskDisplay extends Composite {
 		menuIcon.setActivates("tm-" + task.getWebSafeKey());
 		menuDropDown.setActivator("tm-" + task.getWebSafeKey());
 		title.setText(task.getTitle());
-		time.setText("1 min ago");
+		time.setText(task.getReporter().getName());
 		setTaskType(task.getKind());
 		setTaskStatus(task.getStatus());
 
@@ -106,8 +106,8 @@ public class TaskDisplay extends Composite {
 			taskLine.add(createAttLink(taskAttr.getType(), taskAttr.getValue()));
 		}
 
-		if (task.getReporter() != null)
-			taskLine.add(createAttLink(TaskAttrType.REPORTER, task.getReporter().getCode()));
+//		if (task.getReporter() != null)
+//			taskLine.add(createAttLink(TaskAttrType.REPORTER, task.getReporter().getCode()));
 	}
 
 	private void setTaskType(TaskKind type) {
@@ -137,16 +137,16 @@ public class TaskDisplay extends Composite {
 	private void setTaskStatus(TaskStatus status) {
 		switch (status) {
 		case NOT_STARTED:
-			taskStatus.setIconType(IconType.STOP);
+			taskStatus.setIconType(IconType.RADIO_BUTTON_UNCHECKED);
 			// taskStatus.setBackgroundColor(Color.WHITE);
-			taskStatus.setTextColor(Color.RED);
+			taskStatus.setTextColor(Color.GREY);
 			
 			startLink.setEnabled(true);
 			closeLink.setEnabled(true);
 			deleteLink.setEnabled(true);
 			break;
 		case IN_PROGRESS:
-			taskStatus.setIconType(IconType.PLAY_ARROW);
+			taskStatus.setIconType(IconType.REFRESH);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.BLUE);
 			
@@ -154,7 +154,7 @@ public class TaskDisplay extends Composite {
 			closeLink.setDisplay(Display.BLOCK);
 			break;
 		case DEFFERED:
-			taskStatus.setIconType(IconType.PAUSE);
+			taskStatus.setIconType(IconType.PAUSE_CIRCLE_OUTLINE);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.AMBER);
 
@@ -169,9 +169,9 @@ public class TaskDisplay extends Composite {
 			startLink.setDisplay(Display.BLOCK);
 			break;
 		case DELETED:
-			taskStatus.setIconType(IconType.DELETE_FOREVER);
+			taskStatus.setIconType(IconType.HIGHLIGHT_OFF);
 			// taskStatus.setBackgroundColor(Color.WHITE);
-			taskStatus.setTextColor(Color.BLACK);
+			taskStatus.setTextColor(Color.RED);
 			break;
 		default:
 			break;

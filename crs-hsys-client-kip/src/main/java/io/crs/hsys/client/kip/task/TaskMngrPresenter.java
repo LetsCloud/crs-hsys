@@ -22,8 +22,10 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskAttrType;
 import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
@@ -92,6 +94,8 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 	private TaskDto createCleaningTask(String key, String room, String cleaningType, AppUserDto inspector) {
 
+		AppUserDtor froSys = new AppUserDtor.Builder().code("FRO").name("Front Office").build();
+
 		List<TaskAttrDto> taskAttrDtos = new ArrayList<TaskAttrDto>();
 		taskAttrDtos.add(new TaskAttrDto(TaskAttrType.ROOM, room));
 		taskAttrDtos.add(new TaskAttrDto(TaskAttrType.INSPECTOR, inspector.getCode()));
@@ -102,10 +106,13 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		taskDto.setKind(TaskKind.TK_CLEANING);
 		taskDto.setStatus(TaskStatus.NOT_STARTED);
 		taskDto.setAttributes(taskAttrDtos);
+		taskDto.setReporter(froSys);
 		return taskDto;
 	}
 
 	private TaskDto createGuestRequestTask(String key, String room, String guestRequest) {
+
+		AppUserDtor froSys = new AppUserDtor.Builder().code("FRO").name("Front Office").build();
 
 		List<TaskAttrDto> taskAttrDtos = new ArrayList<TaskAttrDto>();
 		taskAttrDtos.add(new TaskAttrDto(TaskAttrType.ROOM, room));
@@ -117,10 +124,15 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		taskDto.setKind(TaskKind.TK_CLEANING);
 		taskDto.setStatus(TaskStatus.IN_PROGRESS);
 		taskDto.setAttributes(taskAttrDtos);
+		taskDto.setReporter(froSys);
 		return taskDto;
 	}
 
 	private TaskDto createMaintenanceTask(String key, String room, String text, AppUserDto reporter, String cat, String type) {
+
+		List<UserPerm> techPerm = new ArrayList<UserPerm>();
+		techPerm.add(UserPerm.UP_TECHNICIAN);
+		AppUserDtor karaUser = new AppUserDtor.Builder().code("KARA").name("Kara Karesz").permissions(techPerm).build();
 
 		List<TaskAttrDto> taskAttrDtos = new ArrayList<TaskAttrDto>();
 		taskAttrDtos.add(new TaskAttrDto(TaskAttrType.ROOM, room));
@@ -130,7 +142,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		TaskDto taskDto = new TaskDto();
 		taskDto.setWebSafeKey(key);
 		taskDto.setTitle(text);
-//		taskDto.setReporter(reporter);
+		taskDto.setReporter(karaUser);
 		taskDto.setKind(TaskKind.TK_MAINTENANCE);
 		taskDto.setStatus(TaskStatus.COMPLETED);
 		taskDto.setAttributes(taskAttrDtos);
