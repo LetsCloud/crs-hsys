@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import io.crs.hsys.shared.dto.task.TaskDto;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.resources.KipGssResources;
 import io.crs.hsys.client.kip.task.TaskActionEvent.TaskAction;
 import io.crs.hsys.client.kip.task.TaskActionEvent.TaskActionEventHandler;
@@ -31,10 +32,11 @@ public class TaskWidget2 extends TaskCollapsibleItem implements TaskActionEventH
 	private TaskEditorView taskEditor;
 	
 	private TaskDto task;
-
+	private CurrentUser currentUser;
 	@Inject
-	TaskWidget2(KipGssResources res) {
+	TaskWidget2(KipGssResources res, CurrentUser currentUser) {
 		super();
+		this.currentUser = currentUser;
 		add(new TaskCollapsibleHeader(res));
 		add(new TaskCollapsibleBody(res));
 
@@ -45,7 +47,7 @@ public class TaskWidget2 extends TaskCollapsibleItem implements TaskActionEventH
 		taskEditor = taskEditorProvider.get();
 		taskEditor.setTask(task);
 		
-		taskDisplay = new TaskDisplay(task);
+		taskDisplay = new TaskDisplay(task, currentUser);
 //		taskDisplay.setTask(task);
 		
 		taskDisplay.getEditLink().addClickHandler(e -> {

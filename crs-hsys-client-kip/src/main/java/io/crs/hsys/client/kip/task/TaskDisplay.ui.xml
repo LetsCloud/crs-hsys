@@ -68,12 +68,6 @@
 
 					<m:MaterialColumn grid="s12 m6" margin="0"
 						padding="0" addStyleNames="{style.flexBox}">
-						
-						<m:MaterialIcon ui:field="taskKind" marginTop="5"
-							addStyleNames="{style.noStrech}" />
-
-						<m:MaterialIcon ui:field="taskStatus" marginTop="5"
-							addStyleNames="{style.noStrech}" />
 
 						<g:HTMLPanel ui:field="taskLine" />
 					</m:MaterialColumn>
@@ -112,15 +106,23 @@
 			</m:MaterialColumn>
 		</m:MaterialRow>
 
-		<m:MaterialRow margin="0" paddingTop="10"
-			paddingBottom="10">
+		<m:MaterialRow margin="0" paddingTop="5"
+			paddingBottom="5">
 			<m:MaterialColumn grid="s6" margin="0" padding="0">
-				<g:Label ui:field="time" />
+<!-- 				<g:Label ui:field="time" /> -->
+						
+						<m:MaterialIcon ui:field="taskKind" marginTop="5"
+							addStyleNames="{style.noStrech}" />
+
+						<m:MaterialIcon ui:field="taskStatus" marginTop="5"
+							addStyleNames="{style.noStrech}" />
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s6" margin="0" padding="0">
-				<g:Label ui:field="dueDate" text="Due: 2018.06.01."
-					addStyleNames="{style.floatRight}" />
+<!-- 				<g:Label ui:field="dueDate" text="Due: 2018.06.01."
+					addStyleNames="{style.floatRight}" /> -->
+					<m:MaterialLink text="2018.06.01." iconType="EVENT"
+						iconPosition="LEFT" float="RIGHT" textColor="GREY_DARKEN_2" marginTop="5" fontSize="16px"/>
 			</m:MaterialColumn>
 		</m:MaterialRow>
 	</g:HTMLPanel>

@@ -103,7 +103,8 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 
 		List<UserPerm> techManPerm = new ArrayList<UserPerm>();
 		techManPerm.add(UserPerm.UP_MAINTMANAGER);
-		AppUserDtor adminUser = new AppUserDtor.Builder().code("ADMIN").name("AdminÁdám").permissions(techManPerm).build();
+		AppUserDtor adminUser = new AppUserDtor.Builder().code("ADMIN").name("AdminÁdám").permissions(techManPerm)
+				.build();
 
 		List<UserPerm> hkSvPerm = new ArrayList<UserPerm>();
 		hkSvPerm.add(UserPerm.UP_HKSUPERVISOR);
@@ -237,39 +238,46 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		dailyTD.add("Empty and Clean Sani-bins");
 		dailyTD.add("Replenish Bathroom Amenities");
 
-		TaskTypeDto dailyClTT = new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code("DAILY")
+		TaskTypeDto dailyClTT = TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code("DAILY")
 				.description("Napi takarítás").build();
 
 		List<String> linenTD = new ArrayList<String>();
 		linenTD.add("Change Bed Spreads");
 		linenTD.add("Change Bedding - Once");
-		TaskTypeDto linenChTT = new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code("LINEN")
+		TaskTypeDto linenChTT = TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code("LINEN")
 				.description("Ágynemű csere").build();
 
-		TaskTypeDto tapRepairTT = new TaskTypeDto.Builder().kind(TaskKind.TK_MAINTENANCE).code("TAPREP")
+		TaskTypeDto tapRepairTT = TaskTypeDto.builder().kind(TaskKind.TK_MAINTENANCE).code("TAPREP")
 				.description("Csaptelep javítás").build();
-		TaskTypeDto fruitRqTT = new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code("FRUIT")
+		TaskTypeDto fruitRqTT = TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code("FRUIT")
 				.description("Gyümölcskosár").build();
-		TaskTypeDto turcsiRqTT = new TaskTypeDto.Builder().kind(TaskKind.TK_CLEANING).code("TÜRCSI")
+		TaskTypeDto turcsiRqTT = TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code("TÜRCSI")
 				.description("Extra törölköző").build();
 //		TaskTypeDto receptionTT = new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code("REC").description("Recepció")
 //				.build();
 
 		List<TaskDto> r1001Tasks = new ArrayList<TaskDto>();
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).type(dailyClTT).reporter(hakaUser).assignee(kipiUser).build());
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).type(linenChTT).reporter(hakaUser).assignee(kipiUser).build());
-		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).type(dailyClTT).reporter(hakaUser)
+				.assignee(kipiUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).type(linenChTT).reporter(hakaUser)
+				.assignee(kipiUser).build());
+		r1001Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser)
+				.assignee(karaUser).build());
 
 		List<TaskDto> r1002Tasks = new ArrayList<TaskDto>();
-		r1002Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).reporter(hakaUser).assignee(hakaUser).type(fruitRqTT).build());
-		r1002Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
+		r1002Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).reporter(hakaUser).assignee(hakaUser)
+				.type(fruitRqTT).build());
+		r1002Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser)
+				.assignee(karaUser).build());
 
 		List<TaskDto> r1003Tasks = new ArrayList<TaskDto>();
-		r1003Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).reporter(hakaUser).assignee(kipiUser).type(turcsiRqTT).build());
+		r1003Tasks.add(TaskDto.builder().kind(TaskKind.TK_CLEANING).reporter(hakaUser).assignee(kipiUser)
+				.type(turcsiRqTT).build());
 //		r1003Tasks.add(TaskDto.builder().kind(TaskKind.TK_COMMON).type(receptionTT).description("Holnaptól OOO").build());
 
 		List<TaskDto> r1004Tasks = new ArrayList<TaskDto>();
-		r1004Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser).assignee(karaUser).build());
+		r1004Tasks.add(TaskDto.builder().kind(TaskKind.TK_MAINTENANCE).type(tapRepairTT).reporter(adminUser)
+				.assignee(karaUser).build());
 //		r1004Tasks.add(
 //				TaskDto.builder().kind(TaskKind.TK_COMMON).type(receptionTT).description("Holnaptól visszaáll").build());
 

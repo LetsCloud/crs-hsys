@@ -11,6 +11,7 @@ import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
 
 /**
  * @author robi
@@ -20,25 +21,16 @@ import io.crs.hsys.shared.dto.common.AppUserDtor;
 public class TaskDto extends AccountChildDto {
 
 	private TaskKind kind;
-
 	private TaskTypeDto type;
-
 	private Date created;
-
 	private Date updated;
-
 	private TaskStatus status;
-
 	private String title;
-
 	private String description;
-
 	private AppUserDtor reporter;
-
 	private AppUserDtor assignee;
-
+	private RoomDto room;
 	private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
-
 	private List<TaskCommentDto> notes = new ArrayList<TaskCommentDto>();
 
 	public TaskDto() {
@@ -56,6 +48,7 @@ public class TaskDto extends AccountChildDto {
 		description = builder.description;
 		reporter = builder.reporter;
 		assignee = builder.assignee;
+		room = builder.room;
 		attributes = builder.attributes;
 		notes = builder.notes;
 	}
@@ -144,6 +137,14 @@ public class TaskDto extends AccountChildDto {
 		this.assignee = assignee;
 	}
 
+	public RoomDto getRoom() {
+		return room;
+	}
+
+	public void setRoom(RoomDto room) {
+		this.room = room;
+	}
+
 	public List<TaskCommentDto> getNotes() {
 		return notes;
 	}
@@ -169,6 +170,7 @@ public class TaskDto extends AccountChildDto {
 		private String description;
 		private AppUserDtor reporter;
 		private AppUserDtor assignee;
+		private RoomDto room;
 		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 		private List<TaskCommentDto> notes = new ArrayList<TaskCommentDto>();
 
@@ -204,6 +206,11 @@ public class TaskDto extends AccountChildDto {
 
 		public T assignee(AppUserDtor assignee) {
 			this.assignee = assignee;
+			return self();
+		}
+
+		public T room(RoomDto room) {
+			this.room = room;
 			return self();
 		}
 

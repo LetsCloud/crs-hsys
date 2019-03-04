@@ -26,6 +26,14 @@ public class TaskGroupDto extends AccountChildDto {
 		this.description = description;
 	}
 
+	public TaskGroupDto(Builder<?> builder) {
+		super(builder);
+		kind = builder.kind;
+		code = builder.code;
+		description = builder.description;
+		active = builder.active;
+	}
+
 	public TaskKind getKind() {
 		return kind;
 	}
@@ -58,44 +66,51 @@ public class TaskGroupDto extends AccountChildDto {
 		this.active = active;
 	}
 
-	public static class Builder {
-
+	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
 		private TaskKind kind;
 		private String code;
 		private String description;
 		private Boolean active;
 
-		public Builder() {
-		}
-
-		public Builder kind(TaskKind kind) {
+		public T kind(TaskKind kind) {
 			this.kind = kind;
-			return this;
+			return self();
 		}
 
-		public Builder code(String code) {
+		public T code(String code) {
 			this.code = code;
-			return this;
+			return self();
 		}
 
-		public Builder description(String description) {
+		public T description(String description) {
 			this.description = description;
-			return this;
+			return self();
 		}
 
-		public Builder active(Boolean active) {
+		public T active(Boolean active) {
 			this.active = active;
-			return this;
+			return self();
 		}
 
 		public TaskGroupDto build() {
-			TaskGroupDto result = new TaskGroupDto();
-			result.setKind(kind);
-			result.setCode(code);
-			result.setDescription(description);
-			result.setActive(active);
-			return result;
+			return new TaskGroupDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 
 }

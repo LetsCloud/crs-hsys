@@ -12,7 +12,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
@@ -24,10 +23,15 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLink;
-
+import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
+import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.TaskAttrType;
 import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
@@ -71,8 +75,8 @@ public class TaskDisplay extends Composite {
 	@UiField
 	MaterialCheckBox title;
 
-	@UiField
-	Label time;
+//	@UiField
+//	Label time;
 
 	@UiField
 	MaterialLink startLink, closeLink, editTask, deleteLink;
@@ -84,30 +88,41 @@ public class TaskDisplay extends Composite {
 		iniView();
 	}
 
-	public TaskDisplay(TaskDto task) {
+	public TaskDisplay(TaskDto task, CurrentUser currentUser) {
 		this();
-		setTask(task);
+		setTask(task, currentUser);
 	}
 
 	private void iniView() {
-		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setFontSize(22, Unit.PX);
+		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setFontSize(20, Unit.PX);
 		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setColor("#616161");
 	}
 
-	public void setTask(TaskDto task) {
+	public void setTask(TaskDto task, CurrentUser currentUser) {
 		menuIcon.setActivates("tm-" + task.getWebSafeKey());
 		menuDropDown.setActivator("tm-" + task.getWebSafeKey());
-		title.setText(task.getTitle());
-		time.setText(task.getReporter().getName());
+		title.setText(task.getType().getDescription());
+		title.setEnabled(false);
+//		time.setText(task.getReporter().getName());
 		setTaskType(task.getKind());
 		setTaskStatus(task.getStatus());
+
+		if (task.getRoom() != null) {
+			taskLine.add(createRoomLink(task.getRoom()));
+		}
 
 		for (TaskAttrDto taskAttr : task.getAttributes()) {
 			taskLine.add(createAttLink(taskAttr.getType(), taskAttr.getValue()));
 		}
 
-//		if (task.getReporter() != null)
-//			taskLine.add(createAttLink(TaskAttrType.REPORTER, task.getReporter().getCode()));
+		if (task.getAssignee() != null)
+			taskLine.add(createAssigneeLink(task.getAssignee()));
+
+		if (task.getReporter() != null) {
+			if (task.getReporter().getCode().equals(currentUser.getAppUserDto().getCode()))
+				title.setEnabled(true);
+			taskLine.add(createReporterLink(task.getReporter()));
+		}
 	}
 
 	private void setTaskType(TaskKind type) {
@@ -117,13 +132,11 @@ public class TaskDisplay extends Composite {
 			taskKind.setBackgroundColor(Color.WHITE);
 			taskKind.setTextColor(Color.GREY_DARKEN_2);
 			break;
-/*
-		case TK_REQUEST:
-			taskKind.setIconType(IconType.ADD_SHOPPING_CART);
-			taskKind.setBackgroundColor(Color.WHITE);
-			taskKind.setTextColor(Color.GREY_DARKEN_2);
-			break;
-*/
+		/*
+		 * case TK_REQUEST: taskKind.setIconType(IconType.ADD_SHOPPING_CART);
+		 * taskKind.setBackgroundColor(Color.WHITE);
+		 * taskKind.setTextColor(Color.GREY_DARKEN_2); break;
+		 */
 		case TK_MAINTENANCE:
 			taskKind.setIconType(IconType.BUILD);
 			taskKind.setBackgroundColor(Color.WHITE);
@@ -140,7 +153,7 @@ public class TaskDisplay extends Composite {
 			taskStatus.setIconType(IconType.RADIO_BUTTON_UNCHECKED);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.GREY);
-			
+
 			startLink.setEnabled(true);
 			closeLink.setEnabled(true);
 			deleteLink.setEnabled(true);
@@ -149,7 +162,7 @@ public class TaskDisplay extends Composite {
 			taskStatus.setIconType(IconType.REFRESH);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.BLUE);
-			
+
 //			pauseLink.setDisplay(Display.BLOCK);
 			closeLink.setDisplay(Display.BLOCK);
 			break;
@@ -191,7 +204,51 @@ public class TaskDisplay extends Composite {
 	}
 
 	public void setTime(String time) {
-		this.time.setText(time);
+//		this.time.setText(time);
+	}
+
+	private MaterialLink createRoomLink(RoomDto room) {
+		MaterialLink link = new MaterialLink(room.getCode());
+
+		link.addStyleName(style.badgeStyle());
+		link.setIconSize(IconSize.TINY);
+		link.setTextColor(Color.BLACK);
+		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
+		link.setIconPosition(IconPosition.LEFT);
+		link.getIcon().setMarginRight(5);
+//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
+		link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(room.getRoomStatus()));
+		link.setIconColor(RoomStatusUtils.getStatusBgColor(room.getRoomStatus()));
+		link.setIconType(RoomStatusUtils.getStatusIcon2(room.getRoomStatus()));
+		return link;
+	}
+
+	private MaterialLink createReporterLink(AppUserDtor user) {
+		MaterialLink link = new MaterialLink(user.getCode());
+
+		link.addStyleName(style.badgeStyle());
+		link.setIconSize(IconSize.TINY);
+		link.setTextColor(Color.BLACK);
+		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
+		link.setIconPosition(IconPosition.LEFT);
+		link.getIcon().setMarginRight(5);
+//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
+		link.setIconType(IconType.RECORD_VOICE_OVER);
+		return link;
+	}
+
+	private MaterialLink createAssigneeLink(AppUserDtor user) {
+		MaterialLink link = new MaterialLink(user.getCode());
+
+		link.addStyleName(style.badgeStyle());
+		link.setIconSize(IconSize.TINY);
+		link.setTextColor(Color.BLACK);
+		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
+		link.setIconPosition(IconPosition.LEFT);
+		link.getIcon().setMarginRight(5);
+//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
+		link.setIconType(IconType.ASSIGNMENT_IND);
+		return link;
 	}
 
 	private MaterialLink createAttLink(TaskAttrType type, String value) {
@@ -203,26 +260,29 @@ public class TaskDisplay extends Composite {
 		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
 		link.setIconPosition(IconPosition.LEFT);
 		link.getIcon().setMarginRight(5);
+//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
 
 		switch (type) {
 		case REPORTER:
 			link.setIconType(IconType.PERSON_PIN);
 			break;
-		case INSPECTOR:
-			link.setIconType(IconType.RECORD_VOICE_OVER);
-			break;
+//		case INSPECTOR:
+//			link.setIconType(IconType.RECORD_VOICE_OVER);
+//			break;
 		case ROOM:
-			link.setIconType(IconType.ROOM);
+			link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(RoomStatus.DIRTY));
+			link.setIconColor(RoomStatusUtils.getStatusBgColor(RoomStatus.DIRTY));
+			link.setIconType(IconType.DELETE);
 			break;
-		case GUEST_RQ_TYPE:
-			link.setIconType(IconType.ADD_SHOPPING_CART);
-			break;
-		case MX_CAT:
-			link.setIconType(IconType.STYLE);
-			break;
-		case MX_TYPE:
-			link.setIconType(IconType.LOCAL_OFFER);
-			break;
+//		case GUEST_RQ_TYPE:
+//			link.setIconType(IconType.ADD_SHOPPING_CART);
+//			break;
+//		case MX_CAT:
+//			link.setIconType(IconType.STYLE);
+//			break;
+//		case MX_TYPE:
+//			link.setIconType(IconType.LOCAL_OFFER);
+//			break;
 		default:
 			break;
 		}
