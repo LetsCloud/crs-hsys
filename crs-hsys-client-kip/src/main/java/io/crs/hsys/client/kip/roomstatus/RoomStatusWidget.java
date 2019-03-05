@@ -25,7 +25,7 @@ import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialRow;
 import gwt.material.design.client.ui.html.Div;
-
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.HasRoomStatusEditHandlers;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
@@ -81,7 +81,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 //		overlay.setOpacity(0.8);
 	}
 
-	public RoomStatusWidget(RoomStatusDto roomStatus, Boolean oddItem) {
+	public RoomStatusWidget(RoomStatusDto roomStatus, Boolean oddItem, KipMessages i18n) {
 		this();
 		this.roomStatus = roomStatus;
 
@@ -102,7 +102,7 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		Supplier<Stream<TaskDto>> attendantTasks = () -> cleaningTasks.get().filter(o -> o.getAssignee() != null);
 
 		if (attendantTasks.get().count() == 0) {
-			atendantLabel.setText("Beosztatlan");
+			atendantLabel.setText(i18n.roomStatusUnassigned());
 			atendantLabel.getElement().getStyle().setColor("#bdbdbd");
 //			atendantLabel.getElement().getStyle().setFontSize(14, Unit.PX);
 		} else {

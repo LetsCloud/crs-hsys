@@ -130,6 +130,19 @@ public interface KipMessages extends Messages {
 	String assignmentsCleanType();
 
 	/*
+	 * ROOM STATUS
+	 */
+
+	@DefaultMessage("Room Statuses")
+	String roomStatusTitle();
+
+	@DefaultMessage("Supervisor's favorite ...")
+	String roomStatusSubTitle();
+
+	@DefaultMessage("Unassigned")
+	String roomStatusUnassigned();
+
+	/*
 	 * ROOM STATUS FILTER
 	 */
 

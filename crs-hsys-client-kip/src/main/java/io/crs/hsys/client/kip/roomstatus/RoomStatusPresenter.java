@@ -24,6 +24,7 @@ import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenter;
 import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenterFactory;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
@@ -69,17 +70,19 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	private final RoomStatusSearchPresenter searchPresenter;;
 	private final RoomStatusFilterPresenter2 roomStatusfilter;
 	private final RoomStatusControllPresenter roomStatusControll;
+	private final KipMessages i18n;
 
 	@Inject
 	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, SearchPresenterFactory searchFactory,
-			KipFilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory) {
+			KipFilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory, KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 
 		searchPresenter = searchFactory.createRoomStatusSearch();
 		roomStatusfilter = filterFactory.createRoomStatusFilter();
 		roomStatusControll = factory.createRoomStatusControllPresenter();
-
+		this.i18n = i18n;
+		
 		getView().setUiHandlers(this);
 	}
 
@@ -95,7 +98,7 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	@Override
 	protected void onReveal() {
 		logger.log(Level.INFO, "onReveal()");
-		SetPageTitleEvent.fire("Vendégszobák", "A gondnoknők kedvence...", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire(i18n.roomStatusTitle(), i18n.roomStatusSubTitle(), MenuItemType.MENU_ITEM, this);
 		getView().loadData(loadData());
 	}
 
