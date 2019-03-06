@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>217</Width>
-            <HandlerConfiguration>/hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CountryConstants.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CountryConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
             <Width>302</Width>
-            <HandlerConfiguration>hw-gae-client_core/src/main/resources/hu/hw/cloud/client/core/i18n/CountryConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CountryConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
@@ -153,21 +153,21 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Bahamas</Value>
-            <Value disabled="false">Bahamas</Value>
+            <Value disabled="false">Bahama-szigetek</Value>
         </Property>
         <Property>
             <Name>BH</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Bahrain</Value>
-            <Value disabled="false">Bahrain</Value>
+            <Value disabled="false">Bahrein</Value>
         </Property>
         <Property>
             <Name>BD</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Bangladesh</Value>
-            <Value disabled="false">Bangladesh</Value>
+            <Value disabled="false">Banglades</Value>
         </Property>
         <Property>
             <Name>BB</Name>
@@ -216,7 +216,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Bhutan</Value>
-            <Value disabled="false">Bhutan</Value>
+            <Value disabled="false">Bhután</Value>
         </Property>
         <Property>
             <Name>BO</Name>
@@ -244,7 +244,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Bouvet Island</Value>
-            <Value disabled="false">Bouvet Island</Value>
+            <Value disabled="false">Bouvet-sziget</Value>
         </Property>
         <Property>
             <Name>BR</Name>
@@ -258,14 +258,14 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">British Virgin Islands</Value>
-            <Value disabled="false">British Virgin Islands</Value>
+            <Value disabled="false">Brit Virgin-szigetek</Value>
         </Property>
         <Property>
             <Name>IO</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">British Indian Ocean Territory</Value>
-            <Value disabled="false">British Indian Ocean Territory</Value>
+            <Value disabled="false">Brit Indiai-óceáni Terület</Value>
         </Property>
         <Property>
             <Name>BN</Name>
@@ -307,42 +307,42 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Cameroon</Value>
-            <Value disabled="false">Cameroon</Value>
+            <Value disabled="false">Kamerun</Value>
         </Property>
         <Property>
             <Name>CA</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Canada</Value>
-            <Value disabled="false">Canada</Value>
+            <Value disabled="false">Kanada</Value>
         </Property>
         <Property>
             <Name>CV</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Cape Verde</Value>
-            <Value disabled="false">Cape Verde</Value>
+            <Value disabled="false">Zöld-foki Köztársaság</Value>
         </Property>
         <Property>
             <Name>KY</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Cayman Islands</Value>
-            <Value disabled="false">Cayman Islands</Value>
+            <Value disabled="false">Kajmán-szigetek</Value>
         </Property>
         <Property>
             <Name>CF</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Central African Republic</Value>
-            <Value disabled="false">Central African Republic</Value>
+            <Value disabled="false">Közép-Afrika</Value>
         </Property>
         <Property>
             <Name>TD</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Chad</Value>
-            <Value disabled="false">Chad</Value>
+            <Value disabled="false">Csád</Value>
         </Property>
         <Property>
             <Name>CL</Name>
@@ -356,7 +356,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">China</Value>
-            <Value disabled="false">China</Value>
+            <Value disabled="false">Kína</Value>
         </Property>
         <Property>
             <Name>HK</Name>
@@ -377,7 +377,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Christmas Island</Value>
-            <Value disabled="false">Christmas Island</Value>
+            <Value disabled="false">Karácsony-sziget</Value>
         </Property>
         <Property>
             <Name>CC</Name>
@@ -391,7 +391,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Colombia</Value>
-            <Value disabled="false">Colombia</Value>
+            <Value disabled="false">Kolumbia</Value>
         </Property>
         <Property>
             <Name>KM</Name>

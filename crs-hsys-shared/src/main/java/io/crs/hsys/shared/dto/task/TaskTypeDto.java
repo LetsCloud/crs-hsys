@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
+import io.crs.hsys.shared.dto.common.TranslationDto;
 
 /**
  * @author robi
@@ -18,6 +19,7 @@ public class TaskTypeDto extends AccountChildDto {
 	private TaskKind kind;
 	private String code;
 	private String description;
+	private List<TranslationDto> translations = new ArrayList<TranslationDto>();
 	private TaskGroupDto taskGroup;
 	private Integer timeRequired;
 	private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
@@ -32,6 +34,7 @@ public class TaskTypeDto extends AccountChildDto {
 		kind = builder.kind;
 		code = builder.code;
 		description = builder.description;
+		translations = builder.translations;
 		taskGroup = builder.taskGroup;
 		timeRequired = builder.timeRequired;
 		todos = builder.todos;
@@ -61,6 +64,14 @@ public class TaskTypeDto extends AccountChildDto {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<TranslationDto> getTranslations() {
+		return translations;
+	}
+
+	public void setTranslations(List<TranslationDto> translations) {
+		this.translations = translations;
 	}
 
 	public TaskGroupDto getTaskGroup() {
@@ -99,6 +110,7 @@ public class TaskTypeDto extends AccountChildDto {
 		private TaskKind kind;
 		private String code;
 		private String description;
+		private List<TranslationDto> translations = new ArrayList<TranslationDto>();
 		private TaskGroupDto taskGroup;
 		private Integer timeRequired;
 		private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
@@ -116,6 +128,11 @@ public class TaskTypeDto extends AccountChildDto {
 
 		public T description(String description) {
 			this.description = description;
+			return self();
+		}
+
+		public T translations(List<TranslationDto> translations) {
+			this.translations = translations;
 			return self();
 		}
 
