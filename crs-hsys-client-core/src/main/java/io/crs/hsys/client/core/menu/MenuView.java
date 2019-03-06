@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -128,7 +129,8 @@ public class MenuView extends ViewWithUiHandlers<MenuUiHandlers> implements Menu
 
 	@Override
 	public void setUserName(String userName) {
-		userLink.setText(userName);
+		String locale = LocaleInfo.getCurrentLocale().getLocaleName();
+		userLink.setText(userName+"/"+locale);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -16,9 +17,11 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialCollection;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
+import io.crs.hsys.client.kip.task.editor.TaskEditorView;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 /**
@@ -38,12 +41,13 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 	@UiField
 	MaterialCollection collection;
 
+	private final KipMessages i18n;
 	/**
 	 */
 	@Inject
-	RoomStatusView(Binder uiBinder) {
+	RoomStatusView(Binder uiBinder, KipMessages i18n) {
 		logger.log(Level.INFO, "RoomStatusView()");
-		
+		this.i18n = i18n;
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		bindSlot(RoomStatusPresenter.SEARCH_SLOT, searchPanel);
@@ -83,7 +87,7 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 		Boolean odd = false;
 		collection.clear();
 		for (RoomStatusDto rs: data) {
-			RoomStatusWidget rsi = new RoomStatusWidget(rs, odd);
+			RoomStatusWidget rsi = new RoomStatusWidget(rs, odd, i18n);
 			rsi.addRoomStatusEditHandler(new RoomStatusEditHandler() {
 				@Override
 				public void onEdit(RoomStatusEditEvent event) {

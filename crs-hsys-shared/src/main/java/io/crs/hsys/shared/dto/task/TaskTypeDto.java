@@ -23,6 +23,22 @@ public class TaskTypeDto extends AccountChildDto {
 	private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
 	private Boolean active;
 
+	public TaskTypeDto() {
+		super();
+	}
+
+	public TaskTypeDto(Builder<?> builder) {
+		super(builder);
+		kind = builder.kind;
+		code = builder.code;
+		description = builder.description;
+		taskGroup = builder.taskGroup;
+		timeRequired = builder.timeRequired;
+		todos = builder.todos;
+		taskGroup = builder.taskGroup;
+		active = builder.active;
+	}
+
 	public TaskKind getKind() {
 		return kind;
 	}
@@ -79,8 +95,7 @@ public class TaskTypeDto extends AccountChildDto {
 		this.active = active;
 	}
 
-	public static class Builder {
-
+	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
 		private TaskKind kind;
 		private String code;
 		private String description;
@@ -89,55 +104,60 @@ public class TaskTypeDto extends AccountChildDto {
 		private List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
 		private Boolean active;
 
-		public Builder() {
-		}
-
-		public Builder kind(TaskKind kind) {
+		public T kind(TaskKind kind) {
 			this.kind = kind;
-			return this;
+			return self();
 		}
 
-		public Builder code(String code) {
+		public T code(String code) {
 			this.code = code;
-			return this;
+			return self();
 		}
 
-		public Builder description(String description) {
+		public T description(String description) {
 			this.description = description;
-			return this;
+			return self();
 		}
 
-		public Builder taskGroup(TaskGroupDto taskGroup) {
+		public T taskGroup(TaskGroupDto taskGroup) {
 			this.taskGroup = taskGroup;
-			return this;
+			return self();
 		}
 
-		public Builder timeRequired(Integer timeRequired) {
+		public T timeRequired(Integer timeRequired) {
 			this.timeRequired = timeRequired;
-			return this;
+			return self();
 		}
 
-		public Builder toDos(List<TaskTodoDto> todos) {
+		public T todos(List<TaskTodoDto> todos) {
 			this.todos = todos;
-			return this;
+			return self();
 		}
 
-		public Builder taskGroup(Boolean active) {
+		public T active(Boolean active) {
 			this.active = active;
-			return this;
+			return self();
 		}
 
 		public TaskTypeDto build() {
-			TaskTypeDto result = new TaskTypeDto();
-			result.setKind(kind);
-			result.setCode(code);
-			result.setDescription(description);
-			result.setTaskGroup(taskGroup);
-			result.setTimeRequired(timeRequired);
-			result.setTodos(todos);
-			result.setActive(active);
-			return result;
+			return new TaskTypeDto(this);
 		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 
 }

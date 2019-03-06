@@ -11,14 +11,26 @@
         <Column>
             <Name>default</Name>
             <Description></Description>
-            <Width>308</Width>
+            <Width>150</Width>
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>en</Name>
+            <Description></Description>
+            <Width>223</Width>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_en.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
-            <Width>1275</Width>
+            <Width>267</Width>
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>uk</Name>
+            <Description></Description>
+            <Width>551</Width>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_uk.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
@@ -30,133 +42,171 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Dashboard</Value>
+            <Value disabled="false">Dashboard</Value>
             <Value disabled="false">Műszerfal</Value>
+            <Value disabled="false">Dashboard</Value>
         </Property>
         <Property>
             <Name>mainMenuItemHousekeepingDashboard</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Housekeeping Dashboard</Value>
+            <Value disabled="false">Housekeeping Dashboard</Value>
             <Value disabled="false">Gondnoknői műszerfal</Value>
+            <Value disabled="false">Housekeeping Dashboard</Value>
         </Property>
         <Property>
             <Name>mainMenuItemDashboardMaintenance</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance Dashboard</Value>
+            <Value disabled="false">Maintenance Dashboard</Value>
             <Value disabled="false">Műszaki műszerfal</Value>
+            <Value disabled="false">Maintenance Dashboard</Value>
         </Property>
         <Property>
             <Name>mainMenuItemReceptionDashboard</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Reception Dashboard</Value>
+            <Value disabled="false">Reception Dashboard</Value>
             <Value disabled="false">Recepciós műszerfal</Value>
+            <Value disabled="false">Reception Dashboard</Value>
         </Property>
         <Property>
             <Name>mainMenuItemChatRoom</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Chat Room</Value>
+            <Value disabled="false">Chat Room</Value>
             <Value disabled="false">Csevegés</Value>
+            <Value disabled="false">Chat Room</Value>
         </Property>
         <Property>
             <Name>mainMenuItemTasks</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Tasks</Value>
+            <Value disabled="false">Tasks</Value>
             <Value disabled="false">Feladatok</Value>
+            <Value disabled="false">Завдання</Value>
         </Property>
         <Property>
             <Name>mainMenuItemGuestRooms</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Guest Rooms</Value>
+            <Value disabled="false">Guest Rooms</Value>
             <Value disabled="false">Vendégszobák</Value>
+            <Value disabled="false">Номери</Value>
         </Property>
         <Property>
             <Name>mainMenuItemGuestOoo</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">OOO Rooms</Value>
+            <Value disabled="false">OOO Rooms</Value>
             <Value disabled="false">OOO szobák</Value>
+            <Value disabled="false">OOO Rooms</Value>
         </Property>
         <Property>
             <Name>mainMenuItemPublicAreas</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Public Areas</Value>
+            <Value disabled="false">Public Areas</Value>
             <Value disabled="false">Közterek</Value>
+            <Value disabled="false">Громадські місця</Value>
         </Property>
         <Property>
             <Name>mainMenuGroupTaskAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Assignment</Value>
+            <Value disabled="false">Task Assignment</Value>
             <Value disabled="false">Feladat beosztás</Value>
+            <Value disabled="false">Task Assignment</Value>
         </Property>
         <Property>
             <Name>mainMenuItemRoomTasksAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Tasks Assignment</Value>
+            <Value disabled="false">Room Tasks Assignment</Value>
             <Value disabled="false">Szoba feladat beosztás</Value>
+            <Value disabled="false">Room Tasks Assignment</Value>
         </Property>
         <Property>
             <Name>mainMenuItemAreaTasksAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Public Area Tasks Assignment</Value>
+            <Value disabled="false">Public Area Tasks Assignment</Value>
             <Value disabled="false">Köztér feladat beosztás</Value>
+            <Value disabled="false">Public Area Tasks Assignment</Value>
         </Property>
         <Property>
             <Name>mainMenuItemMaintenanceAssignment</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance Assignment</Value>
+            <Value disabled="false">Maintenance Assignment</Value>
             <Value disabled="false">Karbantartás beosztás</Value>
+            <Value disabled="false">Maintenance Assignment</Value>
         </Property>
         <Property>
             <Name>mainMenuGroupMinibar</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Minibar</Value>
+            <Value disabled="false">Minibar</Value>
             <Value disabled="false">Mini bár</Value>
+            <Value disabled="false">Minibar</Value>
         </Property>
         <Property>
             <Name>mainMenuGroupConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Configuration</Value>
+            <Value disabled="false">Configuration</Value>
             <Value disabled="false">Beállítások</Value>
+            <Value disabled="false">Configuration</Value>
         </Property>
         <Property>
             <Name>mainMenuItemUsersConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">User Configuration</Value>
+            <Value disabled="false">User Configuration</Value>
             <Value disabled="false">Felhasználó beállítások</Value>
+            <Value disabled="false">User Configuration</Value>
         </Property>
         <Property>
             <Name>mainMenuItemHotelConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Hotel Configuration</Value>
+            <Value disabled="false">Hotel Configuration</Value>
             <Value disabled="false">Hotel beállítások</Value>
+            <Value disabled="false">Hotel Configuration</Value>
         </Property>
         <Property>
             <Name>mainMenuItemHousekeepingConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Housekeeping Configuration</Value>
+            <Value disabled="false">Housekeeping Configuration</Value>
             <Value disabled="false">Housekeeping beállítások</Value>
+            <Value disabled="false">Housekeeping Configuration</Value>
         </Property>
         <Property>
             <Name>mainMenuItemMaintenanceConfig</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance Confiuration</Value>
+            <Value disabled="false">Maintenance Confiuration</Value>
             <Value disabled="false">Karbantartási beállítások</Value>
+            <Value disabled="false">Maintenance Confiuration</Value>
         </Property>
         <Comment>
             <Value>DASHBOARD</Value>
@@ -166,21 +216,27 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Overview of the rooms, the public areas and the cleaning tasks</Value>
+            <Value disabled="false">Overview of the rooms, the public areas and the cleaning tasks</Value>
             <Value disabled="false">Szobák,közterek és takarítási feladatok áttekintése</Value>
+            <Value disabled="false">Overview of the rooms, the public areas and the cleaning tasks</Value>
         </Property>
         <Property>
             <Name>dashboardMaintenanceSubtitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Overview of the open and overdue maintenance tasks</Value>
+            <Value disabled="false">Overview of the open and overdue maintenance tasks</Value>
             <Value disabled="false">Nyitott és lejárt karbantartási feladatok áttekintése</Value>
+            <Value disabled="false">Overview of the open and overdue maintenance tasks</Value>
         </Property>
         <Property>
             <Name>dashboardReceptionSubtitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Overview of the rooms</Value>
+            <Value disabled="false">Overview of the rooms</Value>
             <Value disabled="false">Vendégszobák áttekintése</Value>
+            <Value disabled="false">Overview of the rooms</Value>
         </Property>
         <Comment>
             <Value>ATTENDANTS</Value>
@@ -190,14 +246,48 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Attendants</Value>
+            <Value disabled="false">Attendants</Value>
             <Value disabled="false">Takarítók</Value>
+            <Value disabled="false">Attendants</Value>
         </Property>
         <Property>
             <Name>attendantsDescription</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">All attendants</Value>
+            <Value disabled="false">All attendants</Value>
             <Value disabled="false">Összes takarító</Value>
+            <Value disabled="false">All attendants</Value>
+        </Property>
+        <Comment>
+            <Value>ROOM STATUSES</Value>
+        </Comment>
+        <Property>
+            <Name>roomStatusTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room Statuses</Value>
+            <Value disabled="false">Room Statuses</Value>
+            <Value disabled="false">Vendégszobák</Value>
+            <Value disabled="false">Статуси кімнати</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusSubTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Supervisors favorite ...</Value>
+            <Value disabled="false">Supervisors favorite ...</Value>
+            <Value disabled="false">A gondnoknők kedvence...</Value>
+            <Value disabled="false">Улюблений доглядач ...</Value>
+        </Property>
+        <Property>
+            <Name>roomStatusUnassigned</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Unassigned</Value>
+            <Value disabled="false">Unassigned</Value>
+            <Value disabled="false">Beosztatlan</Value>
+            <Value disabled="false">Непризначений</Value>
         </Property>
         <Comment>
             <Value>ROOM STATUS FILTER</Value>
@@ -207,96 +297,124 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Occupancy Statuses</Value>
+            <Value disabled="false">Occupancy Statuses</Value>
             <Value disabled="false">Foglaltsági státuszok</Value>
+            <Value disabled="false">Статуси проживання</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyVacant</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Vacant</Value>
+            <Value disabled="false">Vacant</Value>
             <Value disabled="false">Üres</Value>
+            <Value disabled="false">Вакантні</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyEarlyCheckIn</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Early Check-in</Value>
+            <Value disabled="false">Early Check-in</Value>
             <Value disabled="false">Korai érkező</Value>
+            <Value disabled="false">Ранній заїзд</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyCheckIn</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Check-in</Value>
+            <Value disabled="false">Check-in</Value>
             <Value disabled="false">Érkező</Value>
+            <Value disabled="false">Прибуття</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyCheckedIn</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Checked in</Value>
+            <Value disabled="false">Checked in</Value>
             <Value disabled="false">Megérkezett</Value>
+            <Value disabled="false">Прибули</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyStayOver</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Stay Over</Value>
+            <Value disabled="false">Stay Over</Value>
             <Value disabled="false">Lakó</Value>
+            <Value disabled="false">Залишайтеся</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyCheckout</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Checkout</Value>
+            <Value disabled="false">Checkout</Value>
             <Value disabled="false">Utazó</Value>
+            <Value disabled="false">Checkout</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyLateCheckout</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Late Checkout</Value>
+            <Value disabled="false">Late Checkout</Value>
             <Value disabled="false">Késői utazó</Value>
+            <Value disabled="false">Late Checkout</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterOccupancyCheckedOut</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Checked out</Value>
+            <Value disabled="false">Checked out</Value>
             <Value disabled="false">Elutazott</Value>
+            <Value disabled="false">Checked out</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomStatusTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Statuses</Value>
+            <Value disabled="false">Room Statuses</Value>
             <Value disabled="false">Szobastátuszok</Value>
+            <Value disabled="false">Статуси кімнати</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomDirty</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Dirty</Value>
+            <Value disabled="false">Dirty</Value>
             <Value disabled="false">Piszkos</Value>
+            <Value disabled="false">Брудний</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomClean</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Clean</Value>
+            <Value disabled="false">Clean</Value>
             <Value disabled="false">Tiszta</Value>
+            <Value disabled="false">Чистота</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomInspected</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Inspected</Value>
+            <Value disabled="false">Inspected</Value>
             <Value disabled="false">Rendben</Value>
+            <Value disabled="false">Перевірено</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomOoo</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
+            <Value disabled="false">Out Of Order</Value>
+            <Value disabled="false">Out Of Order</Value>
             <Value disabled="false">Out Of Order</Value>
             <Value disabled="false">Out Of Order</Value>
         </Property>
@@ -306,76 +424,98 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Out Of Service</Value>
             <Value disabled="false">Out Of Service</Value>
+            <Value disabled="false">Out Of Service</Value>
+            <Value disabled="false">Out Of Service</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomShow</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Show Room</Value>
+            <Value disabled="false">Show Room</Value>
             <Value disabled="false">Bemutató szoba</Value>
+            <Value disabled="false">Show Room</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomNumberLabel</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Number</Value>
+            <Value disabled="false">Room Number</Value>
             <Value disabled="false">Szobaszám</Value>
+            <Value disabled="false">Room Number</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomNumberPlaceholder</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Type in a room number</Value>
+            <Value disabled="false">Type in a room number</Value>
             <Value disabled="false">Írd be a szobaszámot</Value>
+            <Value disabled="false">Type in a room number</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomNumberChip</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room:{0}</Value>
+            <Value disabled="false">Room:{0}</Value>
             <Value disabled="false">Szoba:{0}</Value>
+            <Value disabled="false">Room:{0}</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomTypeLabel</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Room Type</Value>
+            <Value disabled="false">Room Type</Value>
             <Value disabled="false">Szobatípus</Value>
+            <Value disabled="false">Room Type</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomTypePlaceholder</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Choose a room type</Value>
+            <Value disabled="false">Choose a room type</Value>
             <Value disabled="false">Válassz szobatípust</Value>
+            <Value disabled="false">Choose a room type</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomTypeAll</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">All Room Types</Value>
+            <Value disabled="false">All Room Types</Value>
             <Value disabled="false">Összes szobatípus</Value>
+            <Value disabled="false">All Room Types</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomFloorLabel</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Floor</Value>
+            <Value disabled="false">Floor</Value>
             <Value disabled="false">Emelet</Value>
+            <Value disabled="false">Floor</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomFloorPlaceholder</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Type in a floor number</Value>
+            <Value disabled="false">Type in a floor number</Value>
             <Value disabled="false">Írj be egy emelet számot</Value>
+            <Value disabled="false">Type in a floor number</Value>
         </Property>
         <Property>
             <Name>roomStatusFilterRoomFloorChip</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">{0}. floor</Value>
+            <Value disabled="false">{0}. floor</Value>
             <Value disabled="false">{0}. emelet</Value>
+            <Value disabled="false">{0}. floor</Value>
         </Property>
         <Comment>
             <Value>HOUSEKEPING CONFIG</Value>
@@ -385,49 +525,63 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Housekeeping Configuration</Value>
+            <Value disabled="false">Housekeeping Configuration</Value>
             <Value disabled="false">Housekeeping beállítások</Value>
+            <Value disabled="false">Housekeeping Configuration</Value>
         </Property>
         <Property>
             <Name>housekeepingConfigDescription</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
+            <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
             <Value disabled="false">Housekeeping törzsadatok karbantartása.</Value>
+            <Value disabled="false">Used to add and modify the Clean TaskGroup and Clean TaskTypes.</Value>
         </Property>
         <Property>
             <Name>hkTaskGroupBrowserTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Groups</Value>
+            <Value disabled="false">Task Groups</Value>
             <Value disabled="false">Feladat csoportok</Value>
+            <Value disabled="false">Task Groups</Value>
         </Property>
         <Property>
             <Name>hkTaskTodoBrowserTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Todos</Value>
+            <Value disabled="false">Task Todos</Value>
             <Value disabled="false">Feladat tennivalók</Value>
+            <Value disabled="false">Task Todos</Value>
         </Property>
         <Property>
             <Name>hkTaskTypeBrowserTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Types</Value>
+            <Value disabled="false">Task Types</Value>
             <Value disabled="false">Feladat típusok</Value>
+            <Value disabled="false">Task Types</Value>
         </Property>
         <Property>
             <Name>hkConfigStandardTypesItem</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Standard Room Cleaning Types</Value>
+            <Value disabled="false">Standard Room Cleaning Types</Value>
             <Value disabled="false">Standard szoba takarítási típusok</Value>
+            <Value disabled="false">Standard Room Cleaning Types</Value>
         </Property>
         <Property>
             <Name>hkConfigPublicAreaCleaningSetup</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Public Area Cleaning Setup</Value>
+            <Value disabled="false">Public Area Cleaning Setup</Value>
             <Value disabled="false">Köztér takarítási beállítások</Value>
+            <Value disabled="false">Public Area Cleaning Setup</Value>
         </Property>
         <Comment>
             <Value>HOUSEKEEPING TASK GROUP EDITOR</Value>
@@ -437,28 +591,36 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Create Task Group</Value>
+            <Value disabled="false">Create Task Group</Value>
             <Value disabled="false">Feladat csoport létrehozása</Value>
+            <Value disabled="false">Create Task Group</Value>
         </Property>
         <Property>
             <Name>hkTaskGroupEditorModifyTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Edit Task Group</Value>
+            <Value disabled="false">Edit Task Group</Value>
             <Value disabled="false">Feladat csoport módosítása</Value>
+            <Value disabled="false">Edit Task Group</Value>
         </Property>
         <Property>
             <Name>taskGroupEditorCode</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
             <Value disabled="false">Kód</Value>
+            <Value disabled="false">Code</Value>
         </Property>
         <Property>
             <Name>taskGroupEditorDescription</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
             <Value disabled="false">Megnevezés</Value>
+            <Value disabled="false">Description</Value>
         </Property>
         <Comment>
             <Value>MAINTENANCE CONFIG</Value>
@@ -468,35 +630,45 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Maintenance Configuration</Value>
+            <Value disabled="false">Maintenance Configuration</Value>
             <Value disabled="false">Karbantartás beállítások</Value>
+            <Value disabled="false">Maintenance Configuration</Value>
         </Property>
         <Property>
             <Name>mtConfigDescription</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">The Maintenance Configuration</Value>
+            <Value disabled="false">The Maintenance Configuration</Value>
             <Value disabled="false">A karbantartási feladatok törzsadatai.</Value>
+            <Value disabled="false">The Maintenance Configuration</Value>
         </Property>
         <Property>
             <Name>mtConfigTaskGroupItem</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Groups</Value>
+            <Value disabled="false">Task Groups</Value>
             <Value disabled="false">Feladat csoportok</Value>
+            <Value disabled="false">Task Groups</Value>
         </Property>
         <Property>
             <Name>mtConfigTaskTodoItem</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Todos</Value>
+            <Value disabled="false">Task Todos</Value>
             <Value disabled="false">Feladat tennivalók</Value>
+            <Value disabled="false">Task Todos</Value>
         </Property>
         <Property>
             <Name>mtConfigTaskTypeItem</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Task Types</Value>
+            <Value disabled="false">Task Types</Value>
             <Value disabled="false">Feladat típusok</Value>
+            <Value disabled="false">Task Types</Value>
         </Property>
     </Records>
 </MultiProperties>
