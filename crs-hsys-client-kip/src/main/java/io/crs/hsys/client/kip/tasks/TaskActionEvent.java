@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;

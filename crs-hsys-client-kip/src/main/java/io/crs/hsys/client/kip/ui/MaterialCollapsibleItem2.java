@@ -24,7 +24,7 @@ import gwt.material.design.client.events.ExpandEvent;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialProgress;
-import io.crs.hsys.client.kip.task.TaskWidget2;
+import io.crs.hsys.client.kip.tasks.TaskWidget2;
 import io.crs.hsys.client.kip.ui.MaterialCollapsible2.HasCollapsibleParent;
 
 /**

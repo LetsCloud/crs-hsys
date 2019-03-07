@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import java.util.Date;
 

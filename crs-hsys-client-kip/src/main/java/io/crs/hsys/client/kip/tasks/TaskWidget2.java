@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import java.util.logging.Logger;
 
@@ -11,9 +11,9 @@ import javax.inject.Provider;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.resources.KipGssResources;
-import io.crs.hsys.client.kip.task.TaskActionEvent.TaskAction;
-import io.crs.hsys.client.kip.task.TaskActionEvent.TaskActionEventHandler;
 import io.crs.hsys.client.kip.task.editor.TaskEditorView;
+import io.crs.hsys.client.kip.tasks.TaskActionEvent.TaskAction;
+import io.crs.hsys.client.kip.tasks.TaskActionEvent.TaskActionEventHandler;
 import io.crs.hsys.client.kip.ui.TaskCollapsibleBody;
 import io.crs.hsys.client.kip.ui.TaskCollapsibleHeader;
 import io.crs.hsys.client.kip.ui.TaskCollapsibleItem;

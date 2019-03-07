@@ -21,10 +21,10 @@
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_en.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
-            <Name>hu_HU</Name>
+            <Name>hu</Name>
             <Description></Description>
             <Width>267</Width>
-            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/KipMessages_hu.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>uk</Name>
@@ -258,6 +258,63 @@
             <Value disabled="false">All attendants</Value>
             <Value disabled="false">Összes takarító</Value>
             <Value disabled="false">All attendants</Value>
+        </Property>
+        <Comment>
+            <Value>TASKS</Value>
+        </Comment>
+        <Property>
+            <Name>tasksFilterTaskStatusTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Task Statuses</Value>
+            <Value disabled="false">Task Statuses</Value>
+            <Value disabled="false">Feladat státuszok</Value>
+            <Value disabled="false">Статуси завдань</Value>
+        </Property>
+        <Property>
+            <Name>tasksFilterStatusNotStarted</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Not Started</Value>
+            <Value disabled="false">Not Started</Value>
+            <Value disabled="false">Rögzített</Value>
+            <Value disabled="false">Не розпочато</Value>
+        </Property>
+        <Property>
+            <Name>tasksFilterStatusInProgress</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">In Progress</Value>
+            <Value disabled="false">In Progress</Value>
+            <Value disabled="false">Folyamatban</Value>
+            <Value disabled="false">В процесі</Value>
+        </Property>
+        <Property>
+            <Name>tasksFilterStatusDeffered</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Deffered</Value>
+            <Value disabled="false">Deffered</Value>
+            <Value disabled="false">Szünetel</Value>
+            <Value disabled="false">Відкладено</Value>
+        </Property>
+        <Property>
+            <Name>tasksFilterStatusCompleted</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Completed</Value>
+            <Value disabled="false">Completed</Value>
+            <Value disabled="false">Befejezve</Value>
+            <Value disabled="false">Завершено</Value>
+        </Property>
+        <Property>
+            <Name>tasksFilterStatusDeleted</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Deleted</Value>
+            <Value disabled="false">Deleted</Value>
+            <Value disabled="false">Törölt</Value>
+            <Value disabled="false">Видалено</Value>
         </Property>
         <Comment>
             <Value>ROOM STATUSES</Value>

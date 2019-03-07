@@ -4,11 +4,19 @@
 <module rename-to="kip_module">
 	<inherits name="io.crs.hsys.KipModuleBase" />
 
-	<extend-property name="locale" values="hu_HU" />
+	<extend-property name="locale" values="hu" />
 	<extend-property name="locale" values="en" />
 	<extend-property name="locale" values="uk" />
 <!--   	<set-property name="locale" value="en" -->
 	<set-property-fallback name="locale" value="en" /> 
+
+	<!-- this will add language selecting based on language selected in browser -->
+	<set-configuration-property
+		name="locale.useragent" value="Y" />
+
+	<!-- You can also control search order for locale by setting -->
+	<set-configuration-property
+		name="locale.searchorder" value="queryparam,cookie,meta,useragent" />
  
 	<set-property name="user.agent" value="safari" />
 

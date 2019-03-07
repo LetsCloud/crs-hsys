@@ -15,10 +15,10 @@
             <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/RoomStatusAbbrConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
-            <Name>hu_HU</Name>
+            <Name>hu</Name>
             <Description></Description>
             <Width>222</Width>
-            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/RoomStatusAbbrConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-kip/src/main/resources/io/crs/hsys/client/kip/i18n/RoomStatusAbbrConstants_hu.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>

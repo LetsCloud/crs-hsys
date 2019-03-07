@@ -22,8 +22,8 @@ import io.crs.hsys.client.kip.roomstatus.RoomStatusModule;
 import io.crs.hsys.client.kip.roomstatus.filter.RoomStatusFilterModule;
 import io.crs.hsys.client.kip.roomstatus.list.RoomStatusListModule;
 import io.crs.hsys.client.kip.search.SearchModule;
-import io.crs.hsys.client.kip.task.TaskMngrModule;
 import io.crs.hsys.client.kip.task.creator.TaskCreatorModule;
+import io.crs.hsys.client.kip.tasks.TaskMngrModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 
 /**

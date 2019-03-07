@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -15,7 +15,6 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
-import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconSize;
 import gwt.material.design.client.constants.IconType;
@@ -97,8 +96,10 @@ public class TaskDisplay extends Composite {
 	private void iniView() {
 //		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setFontSize(20, Unit.PX);
 //		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setColor("#616161");
-		title.getElement().getStyle().setFontSize(22, Unit.PX);
-		title.getElement().getStyle().setColor("#616161");
+		title.setFontSize(22, Unit.PX);
+		title.setTextColor(Color.GREY_DARKEN_2);
+		desde.setFontSize(16, Unit.PX);
+		desde.setTextColor(Color.GREY_DARKEN_2);
 		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
 		
 		menuDropDown.clear();
@@ -190,7 +191,7 @@ public class TaskDisplay extends Composite {
 			taskStatus.setTextColor(Color.RED);
 			break;
 		case IN_PROGRESS:
-			taskStatus.setIconType(IconType.REFRESH);
+			taskStatus.setIconType(IconType.PLAY_CIRCLE_OUTLINE);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.BLUE);
 			break;
@@ -200,7 +201,7 @@ public class TaskDisplay extends Composite {
 			taskStatus.setTextColor(Color.AMBER);
 			break;
 		case COMPLETED:
-			taskStatus.setIconType(IconType.CHECK);
+			taskStatus.setIconType(IconType.RADIO_BUTTON_CHECKED);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.GREEN);
 
