@@ -172,19 +172,28 @@ public class DataBuilder {
 
 	private void buildTaskDtos() {
 		taskDtos.clear();
+		// 1001 szoba takarítása folyamatban van
 		taskDtos.add(TaskDto.builder().webSafeKey(T_001).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_DAILY))
 				.room(getRoomDto(R_1001)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.IN_PROGRESS).build());
 		taskDtos.add(TaskDto.builder().webSafeKey(T_002).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_LINEN))
 				.room(getRoomDto(R_1001)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.IN_PROGRESS).build());
+		// 1002 szobba ellenőrzése még nem vette kezdetét
 		taskDtos.add(TaskDto.builder().webSafeKey(T_003).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_INSPEKT))
 				.room(getRoomDto(R_1002)).assignee(getAppUserDtor(AU_HAKA)).status(TaskStatus.NOT_STARTED).build());
+		// 1003 szobába HAKA kér KIPI-től egy extra törölközőt
 		taskDtos.add(TaskDto.builder().webSafeKey(T_004).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_TURCSI))
 				.room(getRoomDto(R_1003)).assignee(getAppUserDtor(AU_KIPI)).reporter(getAppUserDtor(AU_HAKA))
-				.status(TaskStatus.COMPLETED).build());
+				.status(TaskStatus.NOT_STARTED).build());
+		// 1007 takarítása befejeződött
 		taskDtos.add(TaskDto.builder().webSafeKey(T_007).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_DAILY))
-				.room(getRoomDto(R_1007)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.IN_PROGRESS).build());
+				.room(getRoomDto(R_1007)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.COMPLETED).build());
+		// 1008 takarítása szünetel
 		taskDtos.add(TaskDto.builder().webSafeKey(T_008).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_DAILY))
-				.room(getRoomDto(R_1008)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.IN_PROGRESS).build());
+				.room(getRoomDto(R_1008)).assignee(getAppUserDtor(AU_KIPI)).status(TaskStatus.DEFFERED).build());
+		// 1008 szobába HAKA kér KIPI-től egy extra törölközőt, de törölte
+		taskDtos.add(TaskDto.builder().webSafeKey(T_009).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_TURCSI))
+				.room(getRoomDto(R_1008)).assignee(getAppUserDtor(AU_KIPI)).reporter(getAppUserDtor(AU_HAKA))
+				.status(TaskStatus.DELETED).build());
 	}
 
 	public List<TaskDto> getTaskDtos() {

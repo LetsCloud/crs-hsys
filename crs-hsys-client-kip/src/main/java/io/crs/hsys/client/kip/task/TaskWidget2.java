@@ -33,6 +33,7 @@ public class TaskWidget2 extends TaskCollapsibleItem implements TaskActionEventH
 	
 	private TaskDto task;
 	private CurrentUser currentUser;
+	
 	@Inject
 	TaskWidget2(KipGssResources res, CurrentUser currentUser) {
 		super();
@@ -50,11 +51,11 @@ public class TaskWidget2 extends TaskCollapsibleItem implements TaskActionEventH
 		taskDisplay = new TaskDisplay(task, currentUser);
 //		taskDisplay.setTask(task);
 		
-		taskDisplay.getEditLink().addClickHandler(e -> {
-			logger.info("TaskWidget2()->openClick");
-			this.setActive(true);
-			// body.setVisible(true);
-		});
+//		taskDisplay.getEditLink().addClickHandler(e -> {
+//			logger.info("TaskWidget2()->openClick");
+//			this.setActive(true);
+//			// body.setVisible(true);
+//		});
 		
 		header.add(taskDisplay);
 		

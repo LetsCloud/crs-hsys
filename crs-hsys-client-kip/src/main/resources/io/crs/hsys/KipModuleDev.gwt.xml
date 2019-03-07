@@ -21,7 +21,7 @@
 	<extend-property name="locale" values="en" />
 	<extend-property name="locale" values="uk" />
 	<!-- <set-property name="locale" value="uk" /> -->
-
+	<set-property-fallback name="locale" value="en" />
 
 
 	<!-- this will add language selecting based on language selected in browser -->
