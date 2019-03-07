@@ -19,17 +19,18 @@ import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconSize;
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
+
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.TaskAttrType;
 import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskAttrDto;
@@ -73,13 +74,13 @@ public class TaskDisplay extends Composite {
 	MaterialDropDown menuDropDown;
 
 	@UiField
-	MaterialCheckBox title;
+	MaterialLabel title, desde;
 
 //	@UiField
 //	Label time;
 
 	@UiField
-	MaterialLink startLink, closeLink, editTask, deleteLink;
+	MaterialLink dueDate;
 
 	/**
 	 */
@@ -94,16 +95,21 @@ public class TaskDisplay extends Composite {
 	}
 
 	private void iniView() {
-		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setFontSize(20, Unit.PX);
-		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setColor("#616161");
+//		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setFontSize(20, Unit.PX);
+//		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setColor("#616161");
+		title.getElement().getStyle().setFontSize(22, Unit.PX);
+		title.getElement().getStyle().setColor("#616161");
+		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
+		
+		menuDropDown.clear();
 	}
 
 	public void setTask(TaskDto task, CurrentUser currentUser) {
 		menuIcon.setActivates("tm-" + task.getWebSafeKey());
 		menuDropDown.setActivator("tm-" + task.getWebSafeKey());
 		title.setText(task.getType().getDescription());
-		title.setEnabled(false);
-//		time.setText(task.getReporter().getName());
+//		title.setEnabled(false);
+		desde.setText("1 perce");
 		setTaskType(task.getKind());
 		setTaskStatus(task.getStatus());
 
@@ -115,36 +121,65 @@ public class TaskDisplay extends Composite {
 			taskLine.add(createAttLink(taskAttr.getType(), taskAttr.getValue()));
 		}
 
-		if (task.getAssignee() != null)
-			taskLine.add(createAssigneeLink(task.getAssignee()));
-
 		if (task.getReporter() != null) {
-			if (task.getReporter().getCode().equals(currentUser.getAppUserDto().getCode()))
-				title.setEnabled(true);
+			if (task.getReporter().getCode().equals(currentUser.getAppUserDto().getCode())) {
+				switch (task.getStatus()) {
+				case NOT_STARTED:
+					initButtons(currentUser.getAppUserDto().getPermissions().get(0));
+					menuDropDown.add(createModifyLink());
+					menuDropDown.add(createDeleteLink());
+					break;
+				case IN_PROGRESS:
+					break;
+				case DEFFERED:
+					initButtons(currentUser.getAppUserDto().getPermissions().get(0));
+					break;
+				case COMPLETED:
+//					closeLink.setVisible(true);
+					break;
+				case DELETED:
+//					closeLink.setVisible(true);
+					break;
+				default:
+					break;
+				}
+			}
 			taskLine.add(createReporterLink(task.getReporter()));
 		}
+
+		if (task.getAssignee() != null) {
+			taskLine.add(createAssigneeLink(task.getAssignee()));
+			if (task.getAssignee().getCode().equals(currentUser.getAppUserDto().getCode())) {
+				switch (task.getStatus()) {
+				case NOT_STARTED:
+					menuDropDown.add(createStartLink());
+					break;
+				case IN_PROGRESS:
+					menuDropDown.add(createPauseLink());
+					menuDropDown.add(createCompleteLink());
+					break;
+				case DEFFERED:
+					menuDropDown.add(createStartLink());
+					menuDropDown.add(createCompleteLink());
+					break;
+				case COMPLETED:
+//					closeLink.setVisible(true);
+					break;
+				case DELETED:
+//					closeLink.setVisible(true);
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		menuDropDown.add(createBackLink());
 	}
 
 	private void setTaskType(TaskKind type) {
-		switch (type) {
-		case TK_CLEANING:
-			taskKind.setIconType(IconType.BRUSH);
-			taskKind.setBackgroundColor(Color.WHITE);
-			taskKind.setTextColor(Color.GREY_DARKEN_2);
-			break;
-		/*
-		 * case TK_REQUEST: taskKind.setIconType(IconType.ADD_SHOPPING_CART);
-		 * taskKind.setBackgroundColor(Color.WHITE);
-		 * taskKind.setTextColor(Color.GREY_DARKEN_2); break;
-		 */
-		case TK_MAINTENANCE:
-			taskKind.setIconType(IconType.BUILD);
-			taskKind.setBackgroundColor(Color.WHITE);
-			taskKind.setTextColor(Color.GREY_DARKEN_2);
-			break;
-		default:
-			break;
-		}
+		taskKind.setIconType(RoomStatusUtils.getTaskIcon(type));
+		taskKind.setBackgroundColor(Color.WHITE);
+		taskKind.setTextColor(RoomStatusUtils.getTaskColor(type));
 	}
 
 	private void setTaskStatus(TaskStatus status) {
@@ -152,39 +187,29 @@ public class TaskDisplay extends Composite {
 		case NOT_STARTED:
 			taskStatus.setIconType(IconType.RADIO_BUTTON_UNCHECKED);
 			// taskStatus.setBackgroundColor(Color.WHITE);
-			taskStatus.setTextColor(Color.GREY);
-
-			startLink.setEnabled(true);
-			closeLink.setEnabled(true);
-			deleteLink.setEnabled(true);
+			taskStatus.setTextColor(Color.RED);
 			break;
 		case IN_PROGRESS:
 			taskStatus.setIconType(IconType.REFRESH);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.BLUE);
-
-//			pauseLink.setDisplay(Display.BLOCK);
-			closeLink.setDisplay(Display.BLOCK);
 			break;
 		case DEFFERED:
 			taskStatus.setIconType(IconType.PAUSE_CIRCLE_OUTLINE);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.AMBER);
-
-			startLink.setDisplay(Display.BLOCK);
-			closeLink.setDisplay(Display.BLOCK);
 			break;
 		case COMPLETED:
 			taskStatus.setIconType(IconType.CHECK);
 			// taskStatus.setBackgroundColor(Color.WHITE);
 			taskStatus.setTextColor(Color.GREEN);
 
-			startLink.setDisplay(Display.BLOCK);
+//			startLink.setDisplay(Display.BLOCK);
 			break;
 		case DELETED:
 			taskStatus.setIconType(IconType.HIGHLIGHT_OFF);
 			// taskStatus.setBackgroundColor(Color.WHITE);
-			taskStatus.setTextColor(Color.RED);
+			taskStatus.setTextColor(Color.GREY);
 			break;
 		default:
 			break;
@@ -195,28 +220,27 @@ public class TaskDisplay extends Composite {
 		return menuIcon;
 	}
 
-	public MaterialLink getEditLink() {
-		return editTask;
-	}
-
 	public void setTitle(String title) {
 		this.title.setText(title);
 	}
 
 	public void setTime(String time) {
-//		this.time.setText(time);
+		this.desde.setText(time);
 	}
 
-	private MaterialLink createRoomLink(RoomDto room) {
-		MaterialLink link = new MaterialLink(room.getCode());
-
+	private MaterialLink getBadgeLink(String text) {
+		MaterialLink link = new MaterialLink(text);
 		link.addStyleName(style.badgeStyle());
-		link.setIconSize(IconSize.TINY);
+		link.setIconSize(IconSize.SMALL);
+		link.setFontSize(20, Unit.PX);
 		link.setTextColor(Color.BLACK);
-		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
 		link.setIconPosition(IconPosition.LEFT);
 		link.getIcon().setMarginRight(5);
-//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
+		return link;
+	}
+	
+	private MaterialLink createRoomLink(RoomDto room) {
+		MaterialLink link = getBadgeLink(room.getCode());
 		link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(room.getRoomStatus()));
 		link.setIconColor(RoomStatusUtils.getStatusBgColor(room.getRoomStatus()));
 		link.setIconType(RoomStatusUtils.getStatusIcon2(room.getRoomStatus()));
@@ -224,43 +248,22 @@ public class TaskDisplay extends Composite {
 	}
 
 	private MaterialLink createReporterLink(AppUserDtor user) {
-		MaterialLink link = new MaterialLink(user.getCode());
-
-		link.addStyleName(style.badgeStyle());
-		link.setIconSize(IconSize.TINY);
-		link.setTextColor(Color.BLACK);
+		MaterialLink link = getBadgeLink(user.getCode());
 		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
-		link.setIconPosition(IconPosition.LEFT);
-		link.getIcon().setMarginRight(5);
-//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
 		link.setIconType(IconType.RECORD_VOICE_OVER);
 		return link;
 	}
 
 	private MaterialLink createAssigneeLink(AppUserDtor user) {
-		MaterialLink link = new MaterialLink(user.getCode());
-
-		link.addStyleName(style.badgeStyle());
-		link.setIconSize(IconSize.TINY);
-		link.setTextColor(Color.BLACK);
+		MaterialLink link = getBadgeLink(user.getCode());
 		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
-		link.setIconPosition(IconPosition.LEFT);
-		link.getIcon().setMarginRight(5);
-//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
 		link.setIconType(IconType.ASSIGNMENT_IND);
 		return link;
 	}
 
 	private MaterialLink createAttLink(TaskAttrType type, String value) {
-		MaterialLink link = new MaterialLink(value);
-
-		link.addStyleName(style.badgeStyle());
-		link.setIconSize(IconSize.TINY);
-		link.setTextColor(Color.BLACK);
+		MaterialLink link = getBadgeLink(value);
 		link.setBackgroundColor(Color.GREY_LIGHTEN_2);
-		link.setIconPosition(IconPosition.LEFT);
-		link.getIcon().setMarginRight(5);
-//		link.getElement().getStyle().setMarginTop(0, Unit.PX);
 
 		switch (type) {
 		case REPORTER:
@@ -291,7 +294,7 @@ public class TaskDisplay extends Composite {
 
 	@UiHandler("title")
 	public void onTitleClick(ClickEvent e) {
-		crossOutTitle(title.getValue());
+//		crossOutTitle(title.getValue());
 	}
 
 	private void crossOutTitle(Boolean crossOut) {
@@ -304,5 +307,65 @@ public class TaskDisplay extends Composite {
 			// title.removeStyleName(style.lineThrough());
 
 		}
+	}
+	
+
+	private void initButtons(UserPerm permission) {
+		switch (permission) {
+		case UP_HKSUPERVISOR:
+			menuDropDown.add(createReassignLink());
+			break;
+		case UP_HOUSEKEEPER:
+			break;
+		case UP_MAINTMANAGER:
+			break;
+		case UP_TECHNICIAN:
+			break;
+		case UP_RECEPTIONIST:
+			break;
+		case UP_ADMIN:
+			break;
+		default:
+			break;
+		}
+	}
+
+	private MaterialLink createDropDown(String text, IconType type) {
+		MaterialLink link = new MaterialLink(text);
+		link.setIconType(type);
+		link.setIconPosition(IconPosition.LEFT);
+		link.setSeparator(true);
+		link.setBackgroundColor(Color.GREY_DARKEN_2);
+		link.setTextColor(Color.WHITE);
+		link.setIconColor(Color.WHITE);
+		return link;
+	}
+
+	private MaterialLink createStartLink() {
+		return createDropDown("Indít", IconType.PLAY_ARROW);
+	}
+
+	private MaterialLink createPauseLink() {
+		return createDropDown("Szünetelet", IconType.PAUSE);
+	}
+
+	private MaterialLink createCompleteLink() {
+		return createDropDown("Befejez", IconType.DONE);
+	}
+
+	private MaterialLink createReassignLink() {
+		return createDropDown("Átoszt", IconType.SYNC);
+	}
+
+	private MaterialLink createModifyLink() {
+		return createDropDown("Módosít", IconType.EDIT);
+	}
+
+	private MaterialLink createDeleteLink() {
+		return createDropDown("Töröl", IconType.DELETE);
+	}
+
+	private MaterialLink createBackLink() {
+		return createDropDown("Vissza", IconType.KEYBOARD_RETURN);
 	}
 }
