@@ -130,9 +130,11 @@
 
 		<intercept-url pattern="/kip/start.html"
 			access="authenticated" />
+		<intercept-url pattern="/kip/start-uk.html"
+			access="authenticated" />
 		<intercept-url pattern="/kip/**"
 			access="authenticated" />
-		<intercept-url pattern="/kip_module/**"
+		<intercept-url pattern="/kip/kip_module/**"
 			access="authenticated" />
 
 		<intercept-url pattern="/fro/start.html"
