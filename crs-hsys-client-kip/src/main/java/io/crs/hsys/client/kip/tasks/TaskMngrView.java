@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -11,11 +11,13 @@ import javax.inject.Provider;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.resources.KipGssResources;
+import io.crs.hsys.client.kip.roomstatus.RoomStatusPresenter;
 import io.crs.hsys.client.kip.ui.TaskCollapsible;
 
 /**
@@ -28,6 +30,9 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	interface Binder extends UiBinder<Widget, TaskMngrView> {
 	}
 
+	@UiField
+	SimplePanel filterPanel;
+
 	@UiField(provided = true)
 	TaskCollapsible collapsible;
 
@@ -39,6 +44,7 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 		logger.info("TaskMngrView()");
 		collapsible = new TaskCollapsible(res);
 		initWidget(uiBinder.createAndBindUi(this));
+		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
 		initView(res);
 
 	}

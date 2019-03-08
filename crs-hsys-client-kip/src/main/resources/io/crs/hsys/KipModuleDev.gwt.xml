@@ -17,12 +17,11 @@
 	<!-- <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" 
 		/> -->
 
-	<extend-property name="locale" values="hu_HU" />
+	<extend-property name="locale" values="hu" />
 	<extend-property name="locale" values="en" />
 	<extend-property name="locale" values="uk" />
 	<!-- <set-property name="locale" value="uk" /> -->
 	<set-property-fallback name="locale" value="en" />
-
 
 	<!-- this will add language selecting based on language selected in browser -->
 	<set-configuration-property

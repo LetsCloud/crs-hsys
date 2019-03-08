@@ -129,6 +129,30 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("CleanType")
 	String assignmentsCleanType();
 
+
+	/*
+	 * TASKS FILTER
+	 */
+
+	@DefaultMessage("Task Statuses")
+	String tasksFilterTaskStatusTitle();
+
+	@DefaultMessage("Not Started")
+	String tasksFilterStatusNotStarted();
+
+	@DefaultMessage("In Progress")
+	String tasksFilterStatusInProgress();
+
+	@DefaultMessage("Deffered")
+	String tasksFilterStatusDeffered();
+
+	@DefaultMessage("Completed")
+	String tasksFilterStatusCompleted();
+
+	@DefaultMessage("Deleted")
+	String tasksFilterStatusDeleted();
+
+	
 	/*
 	 * ROOM STATUS
 	 */

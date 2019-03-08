@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.task;
+package io.crs.hsys.client.kip.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,11 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
+import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.datasource.AppUserDataSource;
@@ -30,6 +32,8 @@ import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
+import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.tasks.TasksFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.model.DataBuilder;
 import io.crs.hsys.client.kip.resources.KipGssResources;
@@ -51,15 +55,19 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	interface MyProxy extends ProxyPlace<TaskMngrPresenter> {
 	}
 
+	public static final SingleSlot<PresenterWidget<?>> FILTER_SLOT = new SingleSlot<>();
+
 	private KipGssResources res;
 	private AppUserDataSource appUserDataSource;
 	private CurrentUser currentUser;
 	private KipMessages i18n;
 	private final DataBuilder dataBuilder;
+	private final TasksFilterPresenter filter;
 
 	@Inject
 	TaskMngrPresenter(EventBus eventBus, MyView view, MyProxy proxy, KipGssResources res,
-			AppUserDataSource appUserDataSource, CurrentUser currentUser, KipMessages i18n, DataBuilder dataBuilder) {
+			AppUserDataSource appUserDataSource, CurrentUser currentUser, KipMessages i18n, DataBuilder dataBuilder,
+			KipFilterPresenterFactory filterFactory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
 		this.res = res;
@@ -67,12 +75,14 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		this.currentUser = currentUser;
 		this.i18n = i18n;
 		this.dataBuilder = dataBuilder;
+		this.filter = filterFactory.createTasksFilter();
 		getView().setUiHandlers(this);
 	}
 
 	@Override
 	protected void onBind() {
 		super.onBind();
+		setInSlot(FILTER_SLOT, filter);
 	}
 
 	@Override
@@ -84,15 +94,18 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	}
 
 	private void loadTasks() {
-		/*		List<TaskDto> tasks = new ArrayList<TaskDto>();
-
-		tasks.add(createCleaningTask("1", "203", "Daily Cleaning", currentUser.getAppUserDto()));
-		tasks.add(createCleaningTask("2", "204", "Daily Cleaning", currentUser.getAppUserDto()));
-		tasks.add(createCleaningTask("3", "205", "Departure Cleaning", currentUser.getAppUserDto()));
-		tasks.add(createGuestRequestTask("4", "204", "Champagne"));
-		tasks.add(createGuestRequestTask("5", "205", "Fruit basket"));
-		tasks.add(createMaintenanceTask("6", "301", "Shower curtain change", currentUser.getAppUserDto(), "Bathroom", "Curtain"));
-	*/
+		/*
+		 * List<TaskDto> tasks = new ArrayList<TaskDto>();
+		 * 
+		 * tasks.add(createCleaningTask("1", "203", "Daily Cleaning",
+		 * currentUser.getAppUserDto())); tasks.add(createCleaningTask("2", "204",
+		 * "Daily Cleaning", currentUser.getAppUserDto()));
+		 * tasks.add(createCleaningTask("3", "205", "Departure Cleaning",
+		 * currentUser.getAppUserDto())); tasks.add(createGuestRequestTask("4", "204",
+		 * "Champagne")); tasks.add(createGuestRequestTask("5", "205", "Fruit basket"));
+		 * tasks.add(createMaintenanceTask("6", "301", "Shower curtain change",
+		 * currentUser.getAppUserDto(), "Bathroom", "Curtain"));
+		 */
 		getView().setTasks(dataBuilder.getTaskDtos(), res);
 	}
 
@@ -132,7 +145,8 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		return taskDto;
 	}
 
-	private TaskDto createMaintenanceTask(String key, String room, String text, AppUserDto reporter, String cat, String type) {
+	private TaskDto createMaintenanceTask(String key, String room, String text, AppUserDto reporter, String cat,
+			String type) {
 
 		List<UserPerm> techPerm = new ArrayList<UserPerm>();
 		techPerm.add(UserPerm.UP_TECHNICIAN);

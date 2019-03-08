@@ -15,10 +15,10 @@
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
-            <Name>hu_HU</Name>
+            <Name>hu</Name>
             <Description></Description>
             <Width>938</Width>
-            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants_hu.properties|false|false|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>

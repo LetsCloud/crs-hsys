@@ -61,6 +61,11 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 		if (visible)
 			chip.setText(i18nCoreCnst.taskKindMap().get(taskKind.toString()));
 	}
+	
+	protected void setTaskKindLayout() {
+		taskKindComboBox.setGrid("s12 m6");
+		controlPanel.add(taskKindComboBox);		
+	};
 
 	@Override
 	protected void createLayout() {
@@ -85,9 +90,4 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 		// TODO Auto-generated method stub
 
 	}
-	
-	protected void setTaskKindLayout() {
-		taskKindComboBox.setGrid("s12 m6");
-		controlPanel.add(taskKindComboBox);		
-	};
 }
