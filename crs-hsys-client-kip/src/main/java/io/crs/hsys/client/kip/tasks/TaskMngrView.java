@@ -15,10 +15,9 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.ui.MaterialCollapsible;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.resources.KipGssResources;
-import io.crs.hsys.client.kip.roomstatus.RoomStatusPresenter;
-import io.crs.hsys.client.kip.ui.TaskCollapsible;
 
 /**
  * @author robi
@@ -33,8 +32,8 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@UiField
 	SimplePanel filterPanel;
 
-	@UiField(provided = true)
-	TaskCollapsible collapsible;
+	@UiField
+	MaterialCollapsible collapsible;
 
 	@Inject
 	Provider<TaskWidget2> taskWidget2Provider;
@@ -42,7 +41,6 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@Inject
 	TaskMngrView(Binder uiBinder, KipGssResources res) {
 		logger.info("TaskMngrView()");
-		collapsible = new TaskCollapsible(res);
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
 		initView(res);
