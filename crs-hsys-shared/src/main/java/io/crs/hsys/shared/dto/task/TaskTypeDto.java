@@ -136,6 +136,11 @@ public class TaskTypeDto extends AccountChildDto {
 			return self();
 		}
 
+		public T addTranslation(TranslationDto translation) {
+			this.translations.add(translation);
+			return self();
+		}
+
 		public T taskGroup(TaskGroupDto taskGroup) {
 			this.taskGroup = taskGroup;
 			return self();

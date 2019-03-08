@@ -36,7 +36,7 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	MaterialCollapsible collapsible;
 
 	@Inject
-	Provider<TaskWidget2> taskWidget2Provider;
+	Provider<TaskWidget> taskWidget2Provider;
 
 	@Inject
 	TaskMngrView(Binder uiBinder, KipGssResources res) {
@@ -54,7 +54,7 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	public void setTasks(List<TaskDto> tasks, KipGssResources res) {
 		collapsible.clear();
 		for (TaskDto task : tasks) {
-			TaskWidget2 tw2 = taskWidget2Provider.get();
+			TaskWidget tw2 = taskWidget2Provider.get();
 			collapsible.add(tw2);
 			tw2.setTask(task);
 		}

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.tasks.widget;
 
 import java.util.logging.Logger;
 

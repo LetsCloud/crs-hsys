@@ -129,6 +129,17 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("CleanType")
 	String assignmentsCleanType();
 
+	
+	/*
+	 * TASKS
+	 */
+
+	@DefaultMessage("Tasks")
+	String tasksTitle();
+
+	@DefaultMessage("Go for it ...")
+	String tasksSubTitle();
+
 
 	/*
 	 * TASKS FILTER

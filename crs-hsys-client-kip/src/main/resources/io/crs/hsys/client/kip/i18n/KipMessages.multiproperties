@@ -263,6 +263,24 @@
             <Value>TASKS</Value>
         </Comment>
         <Property>
+            <Name>tasksTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Tasks</Value>
+            <Value disabled="false">Tasks</Value>
+            <Value disabled="false">Feladatok</Value>
+            <Value disabled="false">Завдання</Value>
+        </Property>
+        <Property>
+            <Name>tasksSubTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Go for it ...</Value>
+            <Value disabled="false">Go for it ...</Value>
+            <Value disabled="false">Hajrá ...</Value>
+            <Value disabled="false">Действуй ...</Value>
+        </Property>
+        <Property>
             <Name>tasksFilterTaskStatusTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>

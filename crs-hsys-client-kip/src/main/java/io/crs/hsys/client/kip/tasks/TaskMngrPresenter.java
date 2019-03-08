@@ -88,7 +88,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire(i18n.mainMenuItemTasks(), "Hajrá!", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire(i18n.tasksTitle(), i18n.tasksSubTitle(), MenuItemType.MENU_ITEM, this);
 
 		loadTasks();
 	}

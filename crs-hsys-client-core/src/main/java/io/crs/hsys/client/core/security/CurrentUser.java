@@ -9,6 +9,8 @@ public class CurrentUser {
 
 	private HotelDtor currentHotel;
 
+	private String locale;
+
 	private boolean loggedIn;
 
 	public AppUserDto getAppUserDto() {
@@ -34,6 +36,14 @@ public class CurrentUser {
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 
 	@Override
