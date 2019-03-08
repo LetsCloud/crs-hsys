@@ -6,92 +6,45 @@ package io.crs.hsys.client.kip.tasks;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
+import gwt.material.design.client.ui.MaterialCollapsibleBody;
+import gwt.material.design.client.ui.MaterialCollapsibleHeader;
+import gwt.material.design.client.ui.MaterialCollapsibleItem;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.resources.KipGssResources;
-import io.crs.hsys.client.kip.task.editor.TaskEditorView;
-import io.crs.hsys.client.kip.tasks.TaskActionEvent.TaskAction;
-import io.crs.hsys.client.kip.tasks.TaskActionEvent.TaskActionEventHandler;
-import io.crs.hsys.client.kip.ui.TaskCollapsibleBody;
-import io.crs.hsys.client.kip.ui.TaskCollapsibleHeader;
-import io.crs.hsys.client.kip.ui.TaskCollapsibleItem;
 
 /**
  * @author robi
  *
  */
-public class TaskWidget2 extends TaskCollapsibleItem implements TaskActionEventHandler {
+public class TaskWidget2 extends MaterialCollapsibleItem<TaskDto> {
 	private static Logger logger = Logger.getLogger(TaskWidget2.class.getName());
 
-	private TaskDisplay taskDisplay = new TaskDisplay();
+	private TaskHeaderWidget taskDisplay;
+	private TaskBodyWidget taskBody;
 
-	@Inject
-	Provider<TaskEditorView> taskEditorProvider;
-	private TaskEditorView taskEditor;
-	
-	private TaskDto task;
 	private CurrentUser currentUser;
 	
 	@Inject
 	TaskWidget2(KipGssResources res, CurrentUser currentUser) {
 		super();
+		logger.info("TaskWidget2()");
 		this.currentUser = currentUser;
-		add(new TaskCollapsibleHeader(res));
-		add(new TaskCollapsibleBody(res));
-
+		add(new MaterialCollapsibleHeader());
+		add(new MaterialCollapsibleBody());
+		getBody().setMarginTop(10);
+		getBody().setMarginLeft(15);
+		getBody().setMarginRight(15);
+		getBody().setMarginBottom(0);
+		getBody().setPadding(0);
 	}
 
 	public void setTask(TaskDto task) {
-		this.task = task;
-		taskEditor = taskEditorProvider.get();
-		taskEditor.setTask(task);
-		
-		taskDisplay = new TaskDisplay(task, currentUser);
-//		taskDisplay.setTask(task);
-		
-//		taskDisplay.getEditLink().addClickHandler(e -> {
-//			logger.info("TaskWidget2()->openClick");
-//			this.setActive(true);
-//			// body.setVisible(true);
-//		});
-		
-		header.add(taskDisplay);
-		
-		taskEditor.getSaveButton().addClickHandler(e -> {
-			logger.info("TaskWidget2()->closeClick");
-			// fireCollapsibleHandler();
-			this.setActive(false);
-		});
-		body.add(taskEditor);
-	}
-	
-	public void setActive(boolean active) {
-		logger.info("TaskWidget2().setActive(" + active + ")");
-		super.setActive(active);
-		if (active) {
-			body.add(taskEditor);
-			header.setVisible(false);
-		} else {
-			clearActive();
-		}
-	}
+		taskDisplay = new TaskHeaderWidget(task, currentUser);
+		getHeader().add(taskDisplay);
 
-	@Override
-	protected void clearActive() {
-		logger.info("TaskWidget2().clearActive()");
-		header.setVisible(true);
-		body.setVisible(false);
-		body.clear();
-	}
-
-	@Override
-	public void onTaskActionEvent(TaskActionEvent event) {
-		if (event.getTask().equals(this.task)) {
-			if (event.getAction().equals(TaskAction.EDIT)) {
-				
-			}
-		}
+		taskBody = new TaskBodyWidget(task);
+		getBody().add(taskBody);
 	}
 }

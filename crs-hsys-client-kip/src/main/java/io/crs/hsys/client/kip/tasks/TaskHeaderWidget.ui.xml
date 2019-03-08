@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui">
 
 	<ui:style
-		type="io.crs.hsys.client.kip.tasks.TaskDisplay.MyStyle">
+		type="io.crs.hsys.client.kip.tasks.TaskHeaderWidget.MyStyle">
 		.titleStyle {
 			/* margin-top: 10px; */ /*			margin-right: 5px; */ /*			float: left; */
 			/*			line-height: 1rem; */ /*			display: inline-block; */
@@ -48,7 +48,7 @@
 			overflow: visible;
 			margin-right: 10px;
 			/*			height: 42px !important;
-													width: 42px !important;*/
+															width: 42px !important;*/
 		}
 		
 		.flexBox {
@@ -58,13 +58,11 @@
 
 	<g:HTMLPanel>
 		<m:MaterialRow margin="0" paddingTop="10">
-			<m:MaterialColumn grid="s10 m11" margin="0"
-				padding="0">
+			<m:MaterialColumn grid="s11" margin="0" padding="0">
 				<m:MaterialRow margin="0" padding="0">
 					<m:MaterialColumn grid="s12 m6" margin="0"
 						padding="0">
-						<m:MaterialIcon ui:field="taskKind" marginTop="5"
-							float="LEFT" />
+						<m:MaterialIcon ui:field="taskKind" float="LEFT" />
 
 						<m:MaterialLabel ui:field="title" float="LEFT" />
 					</m:MaterialColumn>
@@ -74,14 +72,14 @@
 
 						<g:HTMLPanel ui:field="taskLine" />
 					</m:MaterialColumn>
+
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
-			<m:MaterialColumn grid="s2 m1" margin="0"
-				padding="0">
+			<m:MaterialColumn grid="s1" margin="0" padding="0">
 				<m:MaterialIcon ui:field="menuIcon"
 					iconType="MORE_VERT" float="RIGHT" waves="DEFAULT" circle="true"
-					activates="dp-3" />
+					activates="dp-3" marginLeft="0" marginRight="0" />
 
 				<!-- My Drop Down -->
 				<m:MaterialDropDown ui:field="menuDropDown"
@@ -89,8 +87,7 @@
 			</m:MaterialColumn>
 		</m:MaterialRow>
 
-		<m:MaterialRow margin="0" paddingTop="5"
-			paddingBottom="5">
+		<m:MaterialRow margin="0">
 			<m:MaterialColumn grid="s6" margin="0" padding="0">
 				<m:MaterialIcon ui:field="taskStatus" marginTop="5"
 					float="LEFT" />

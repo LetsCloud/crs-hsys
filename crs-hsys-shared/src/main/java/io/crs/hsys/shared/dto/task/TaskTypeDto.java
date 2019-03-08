@@ -151,6 +151,11 @@ public class TaskTypeDto extends AccountChildDto {
 			return self();
 		}
 
+		public T addTodo(TaskTodoDto todo) {
+			this.todos.add(todo);
+			return self();
+		}
+
 		public T active(Boolean active) {
 			this.active = active;
 			return self();

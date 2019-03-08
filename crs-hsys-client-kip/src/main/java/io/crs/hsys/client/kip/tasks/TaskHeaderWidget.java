@@ -39,11 +39,11 @@ import io.crs.hsys.shared.dto.task.TaskDto;
  * @author robi
  *
  */
-public class TaskDisplay extends Composite {
+public class TaskHeaderWidget extends Composite {
 
 	private static TaskTemplateUiBinder uiBinder = GWT.create(TaskTemplateUiBinder.class);
 
-	interface TaskTemplateUiBinder extends UiBinder<Widget, TaskDisplay> {
+	interface TaskTemplateUiBinder extends UiBinder<Widget, TaskHeaderWidget> {
 	}
 
 	interface MyStyle extends CssResource {
@@ -83,12 +83,12 @@ public class TaskDisplay extends Composite {
 
 	/**
 	 */
-	public TaskDisplay() {
+	public TaskHeaderWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
 		iniView();
 	}
 
-	public TaskDisplay(TaskDto task, CurrentUser currentUser) {
+	public TaskHeaderWidget(TaskDto task, CurrentUser currentUser) {
 		this();
 		setTask(task, currentUser);
 	}
@@ -98,6 +98,7 @@ public class TaskDisplay extends Composite {
 //		title.getElement().getFirstChildElement().getNextSiblingElement().getStyle().setColor("#616161");
 		title.setFontSize(22, Unit.PX);
 		title.setTextColor(Color.GREY_DARKEN_2);
+		title.setTruncate(true);
 		desde.setFontSize(16, Unit.PX);
 		desde.setTextColor(Color.GREY_DARKEN_2);
 		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
@@ -232,6 +233,7 @@ public class TaskDisplay extends Composite {
 	private MaterialLink getBadgeLink(String text) {
 		MaterialLink link = new MaterialLink(text);
 		link.addStyleName(style.badgeStyle());
+		link.getIcon().getElement().getStyle().setLineHeight(30, Unit.PX);
 		link.setIconSize(IconSize.SMALL);
 		link.setFontSize(20, Unit.PX);
 		link.setTextColor(Color.BLACK);

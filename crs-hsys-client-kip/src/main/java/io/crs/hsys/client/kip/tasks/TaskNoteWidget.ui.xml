@@ -7,15 +7,15 @@
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	</ui:style>
 
-	<m:MaterialRow>
-		<m:MaterialColumn grid="s2">
+	<m:MaterialRow marginBottom="10">
+		<m:MaterialColumn grid="s3" padding="0">
 			<g:Label ui:field="created" />
 		</m:MaterialColumn>
-		<m:MaterialColumn grid="s8">
-			<g:Label ui:field="note" />
-		</m:MaterialColumn>
-		<m:MaterialColumn grid="s2">
+		<m:MaterialColumn grid="s2" padding="0">
 			<g:Label ui:field="who" />
+		</m:MaterialColumn>
+		<m:MaterialColumn grid="s7" padding="0">
+			<g:Label ui:field="note" />
 		</m:MaterialColumn>
 	</m:MaterialRow>
 </ui:UiBinder> 

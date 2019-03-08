@@ -3,24 +3,25 @@
  */
 package io.crs.hsys.client.kip.tasks;
 
-import java.util.Date;
-
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+import io.crs.hsys.shared.dto.task.TaskNoteDto;
+
 /**
  * @author robi
  *
  */
-public class TaskNoteDisplay extends Composite {
+public class TaskNoteWidget extends Composite {
 
 	private static TaskNoteDisplayUiBinder uiBinder = GWT.create(TaskNoteDisplayUiBinder.class);
 
-	interface TaskNoteDisplayUiBinder extends UiBinder<Widget, TaskNoteDisplay> {
+	interface TaskNoteDisplayUiBinder extends UiBinder<Widget, TaskNoteWidget> {
 	}
 
 	@UiField
@@ -29,15 +30,16 @@ public class TaskNoteDisplay extends Composite {
 	/**
 	 * 
 	 */
-	public TaskNoteDisplay() {
+	public TaskNoteWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	public TaskNoteDisplay(Date created, String note, String who) {
+	public TaskNoteWidget(TaskNoteDto note) {
 		this();
-		this.created.setText(created.toString());
-		this.note.setText(note);
-		this.who.setText(who);
+		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd. hh:mm");
+		this.created.setText(fmt.format(note.getCreated()));
+		this.note.setText(note.getNote());
+		this.who.setText(note.getUser().getCode());
 	}
 
 }

@@ -31,7 +31,7 @@ public class TaskDto extends AccountChildDto {
 	private AppUserDtor assignee;
 	private RoomDto room;
 	private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
-	private List<TaskCommentDto> notes = new ArrayList<TaskCommentDto>();
+	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 	public TaskDto() {
 		super();
@@ -145,11 +145,11 @@ public class TaskDto extends AccountChildDto {
 		this.room = room;
 	}
 
-	public List<TaskCommentDto> getNotes() {
+	public List<TaskNoteDto> getNotes() {
 		return notes;
 	}
 
-	public void setNotes(List<TaskCommentDto> notes) {
+	public void setNotes(List<TaskNoteDto> notes) {
 		this.notes = notes;
 	}
 
@@ -172,7 +172,7 @@ public class TaskDto extends AccountChildDto {
 		private AppUserDtor assignee;
 		private RoomDto room;
 		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
-		private List<TaskCommentDto> notes = new ArrayList<TaskCommentDto>();
+		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 		public T kind(TaskKind kind) {
 			this.kind = kind;
@@ -211,6 +211,11 @@ public class TaskDto extends AccountChildDto {
 
 		public T room(RoomDto room) {
 			this.room = room;
+			return self();
+		}
+
+		public T addNote(TaskNoteDto note) {
+			this.notes.add(note);
 			return self();
 		}
 

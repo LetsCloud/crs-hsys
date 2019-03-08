@@ -7,23 +7,31 @@
 	<ui:style>
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	.contentPanel {
+		margin-left: 10px;
+		margin-right: 10px;
 		padding-top: 15px;
 		padding-bottom: 10px;
+	}
+	
+	.filterPanel {
+		margin-left: 24px;
+		margin-right: 24px;
 	}
 	</ui:style>
 
 	<g:HTMLPanel addStyleNames="{style.contentPanel}">
-		<g:SimplePanel ui:field="filterPanel" />
+		<g:SimplePanel ui:field="filterPanel"
+			addStyleNames="{style.filterPanel}" />
 		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
 			widget names. The ui:field attribute binds an element to a field in the owner 
 			class. See the GWT docs on UI Binder for more details. -->
-		<kip.ui:TaskCollapsible ui:field="collapsible" />
-
+		<m:MaterialCollapsible ui:field="collapsible"
+			type="POPOUT" />
 
 		<m:MaterialFAB>
 			<m:MaterialButton ui:field="addButton"
 				type="FLOATING" backgroundColor="BLUE" iconType="ADD" size="LARGE" />
 		</m:MaterialFAB>
-		
+
 	</g:HTMLPanel>
 </ui:UiBinder> 
