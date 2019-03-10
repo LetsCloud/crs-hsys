@@ -28,7 +28,7 @@ import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
-import io.crs.hsys.client.core.datasource.AppUserDataSource;
+import io.crs.hsys.client.core.datasource.AppUserDataSource2;
 import io.crs.hsys.client.core.datasource.RoomDataSource;
 import io.crs.hsys.client.core.datasource.TaskTypeDataSource;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
@@ -41,7 +41,7 @@ import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
-import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.dto.task.TaskTypeDto;
@@ -62,7 +62,7 @@ public class TaskEditorPresenter
 	public interface MyView extends AbstractEditorView<TaskDto>, HasUiHandlers<TaskEditorUiHandlers> {
 		void setTaskTypeData(List<TaskTypeDto> data);
 
-		void setAppUserData(List<AppUserDto> data);
+		void setAppUserData(List<AppUserDtor> data);
 
 		void setRoomData(List<RoomDto> data);
 
@@ -78,7 +78,7 @@ public class TaskEditorPresenter
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<TaskResource> resourceDelegate;
 	private final TaskTypeDataSource taskTypeDataSource;
-	private final AppUserDataSource appUserDataSource;
+	private final AppUserDataSource2 appUserDataSource;
 	private final RoomDataSource roomDataSource;
 	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
@@ -87,7 +87,7 @@ public class TaskEditorPresenter
 	@Inject
 	TaskEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			ResourceDelegate<TaskResource> resourceDelegate, TaskTypeDataSource taskTypeDataSource,
-			AppUserDataSource appUserDataSource, RoomDataSource roomDataSource, CurrentUser currentUser,
+			AppUserDataSource2 appUserDataSource, RoomDataSource roomDataSource, CurrentUser currentUser,
 			CoreMessages i18nCore, KipMessages i18n) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("TaskEditorPresenter()");
@@ -140,9 +140,9 @@ public class TaskEditorPresenter
 	}
 
 	private void loadAppUserData() {
-		LoadCallback<AppUserDto> roomLoadCallback = new LoadCallback<AppUserDto>() {
+		LoadCallback<AppUserDtor> roomLoadCallback = new LoadCallback<AppUserDtor>() {
 			@Override
-			public void onSuccess(LoadResult<AppUserDto> loadResult) {
+			public void onSuccess(LoadResult<AppUserDtor> loadResult) {
 				getView().setAppUserData(loadResult.getData());
 				if ((taskTypeDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
@@ -152,7 +152,7 @@ public class TaskEditorPresenter
 				// TODO Auto-generated method stub
 			}
 		};
-		appUserDataSource.load(new LoadConfig<AppUserDto>(0, 0, null, null), roomLoadCallback);
+		appUserDataSource.load(new LoadConfig<AppUserDtor>(0, 0, null, null), roomLoadCallback);
 	}
 
 	private void loadRoomData() {

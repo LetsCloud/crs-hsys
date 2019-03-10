@@ -37,6 +37,7 @@ import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
@@ -95,8 +96,8 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 
 	@Ignore
 	@UiField
-	MaterialComboBox<AppUserDto> assigneeComboBox;
-	TakesValueEditor<AppUserDto> assignee;
+	MaterialComboBox<AppUserDtor> assigneeComboBox;
+	TakesValueEditor<AppUserDtor> assignee;
 
 	@Ignore
 	@UiField
@@ -235,26 +236,26 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 	}
 
 	private void initAsigneeCombo() {
-		assignee = TakesValueEditor.of(new TakesValue<AppUserDto>() {
+		assignee = TakesValueEditor.of(new TakesValue<AppUserDtor>() {
 			@Override
-			public void setValue(AppUserDto value) {
+			public void setValue(AppUserDtor value) {
 				assigneeComboBox.setSingleValue(value);
 			}
 
 			@Override
-			public AppUserDto getValue() {
+			public AppUserDtor getValue() {
 				return assigneeComboBox.getSingleValue();
 			}
 		});
 	}
 
 	@Override
-	public void setAppUserData(List<AppUserDto> data) {
+	public void setAppUserData(List<AppUserDtor> data) {
 		assigneeComboBox.clear();
 		if ((data == null) || (data.isEmpty()))
 			return;
 
-		for (AppUserDto user : data) {
+		for (AppUserDtor user : data) {
 			assigneeComboBox.addItem(user.getCode() + " - " + user.getName(), user);
 		}
 		assigneeComboBox.unselect();
