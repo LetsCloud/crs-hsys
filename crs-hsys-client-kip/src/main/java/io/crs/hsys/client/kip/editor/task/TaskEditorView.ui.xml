@@ -14,6 +14,14 @@
 		margin-right: 10px;
 	}
 	
+	.todoBox {
+		border-top: none;
+		border-left: 3px solid #2196f3;
+		border-right: none;
+		border-bottom: none;
+		box-shadow: none !important;
+	}
+	
 	.dataGroupBox {
 		margin-top: 8px;
 		padding-left: 10px;
@@ -44,13 +52,13 @@
 				<m:MaterialTab ui:field="taskKindTab"
 					indicatorColor="YELLOW" shadow="1">
 					<m:MaterialTabItem waves="YELLOW" grid="s6">
-						<m:MaterialLink iconType="BRUSH"
-							text="{i18n.taskEditorKindHousekeeping}" href="#tab1"
+						<m:MaterialLink ui:field="housekeepingKindLink"
+							iconType="BRUSH" text="{i18n.taskEditorKindHousekeeping}"
 							textColor="WHITE" />
 					</m:MaterialTabItem>
 					<m:MaterialTabItem waves="YELLOW" grid="s6">
-						<m:MaterialLink iconType="BUILD"
-							text="{i18n.taskEditorKindMaintenance}" href="#tab2"
+						<m:MaterialLink ui:field="maintenanceKindLink"
+							iconType="BUILD" text="{i18n.taskEditorKindMaintenance}"
 							textColor="WHITE" />
 					</m:MaterialTabItem>
 				</m:MaterialTab>
@@ -65,13 +73,42 @@
 					placeholder="{i18n.taskEditorTypePlaceholder}" marginTop="15"
 					marginBottom="30" />
 
+				<m:MaterialCollapsible
+					ui:field="todosCollapsible" addStyleNames="{style.todoBox}"
+					visible="false">
+					<m:MaterialCollapsibleItem
+						ui:field="todosItem">
+						<m:MaterialCollapsibleHeader
+							paddingRight="0" borderBottom="0">
+							<m:MaterialLabel text="{i18n.taskEditorTodos}"
+								float="LEFT" addStyleNames="{style.dataGroupTitle}" />
+							<m:MaterialIcon ui:field="expandTodosIcon"
+								iconType="EXPAND_MORE" float="RIGHT" />
+							<m:MaterialIcon ui:field="collapseTodosIcon"
+								iconType="EXPAND_LESS" float="RIGHT" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody
+							ui:field="todosBody" borderBottom="0" paddingTop="0"
+							paddingLeft="15" paddingRight="0" paddingBottom="0" />
+					</m:MaterialCollapsibleItem>
+				</m:MaterialCollapsible>
+
 				<m:MaterialTextArea ui:field="description"
-					label="{i18n.taskEditorDescription}" resizeRule="AUTO" />
+					label="{i18n.taskEditorDescription}" resizeRule="AUTO"
+					marginTop="30" />
 
 				<combobox:MaterialComboBox
-					ui:field="assigneeComboBox" multiple="false"
+					ui:field="assigneeComboBox" multiple="false" allowClear="true"
 					label="{i18n.taskEditorAssignee}"
 					placeholder="{i18n.taskEditorAssigneePlaceholder}" marginTop="15"
+					marginBottom="30" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m6">
+				<combobox:MaterialComboBox
+					ui:field="roomComboBox" multiple="false" allowClear="true"
+					label="{i18n.taskEditorRoom}"
+					placeholder="{i18n.taskEditorRoomPlaceholder}" marginTop="15"
 					marginBottom="30" />
 
 				<m:MaterialRow addStyleNames="{style.dataGroupBox}"
@@ -88,11 +125,9 @@
 							ui:field="dueTime" placeholder="{i18n.taskEditorDueTime}" />
 					</m:MaterialColumn>
 				</m:MaterialRow>
-			</m:MaterialColumn>
 
-			<m:MaterialColumn grid="s12 m6">
 				<g:HTMLPanel addStyleNames="{style.dataGroupBox}">
-					<g:Label text="{i18n.taskEditorTodos}"
+					<g:Label text="{i18n.taskEditorHistory}"
 						addStyleNames="{style.dataGroupTitle}" />
 				</g:HTMLPanel>
 			</m:MaterialColumn>
@@ -103,7 +138,5 @@
 			addStyleNames="{style.saveButton}" />
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
-
-		<g:SimplePanel ui:field="addTaskTodoPanel" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

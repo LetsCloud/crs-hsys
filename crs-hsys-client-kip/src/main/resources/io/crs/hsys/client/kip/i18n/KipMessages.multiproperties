@@ -260,7 +260,7 @@
             <Value disabled="false">All attendants</Value>
         </Property>
         <Comment>
-            <Value>TASKS</Value>
+            <Value>TASK BROWSER</Value>
         </Comment>
         <Property>
             <Name>tasksTitle</Name>
@@ -401,6 +401,15 @@
             <Value disabled="false">Тип</Value>
         </Property>
         <Property>
+            <Name>taskEditorTypePlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Task Type</Value>
+            <Value disabled="false">Choose a Task Type</Value>
+            <Value disabled="false">Válassz feladat típust</Value>
+            <Value disabled="false">Виберіть тип завдання</Value>
+        </Property>
+        <Property>
             <Name>taskEditorDescription</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -408,6 +417,24 @@
             <Value disabled="false">Description</Value>
             <Value disabled="false">Leírás</Value>
             <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorRoom</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room#</Value>
+            <Value disabled="false">Room#</Value>
+            <Value disabled="false">Szobaszám</Value>
+            <Value disabled="false">номер кімнати</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorRoomPlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a Room</Value>
+            <Value disabled="false">Choose a Room</Value>
+            <Value disabled="false">Válassz szobát</Value>
+            <Value disabled="false">Виберіть номер</Value>
         </Property>
         <Property>
             <Name>taskEditorAssignee</Name>
@@ -462,6 +489,15 @@
             <Value disabled="false">Todos</Value>
             <Value disabled="false">Tennivalók</Value>
             <Value disabled="false">Путівник</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorHistory</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Timeline</Value>
+            <Value disabled="false">Timeline</Value>
+            <Value disabled="false">Idővonal</Value>
+            <Value disabled="false">Хронологія</Value>
         </Property>
         <Comment>
             <Value>ROOM STATUSES</Value>

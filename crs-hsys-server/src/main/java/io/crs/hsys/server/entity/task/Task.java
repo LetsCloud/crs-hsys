@@ -18,17 +18,16 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  *
  */
 @Entity
-public class TaskType extends AccountChild {
+public class Task extends AccountChild {
 	private TaskKind kind;
 	private String code;
 	private String description;
-	private List<Translation> translations = new ArrayList<Translation>();
 	private TaskGroupDto taskGroup;
 	private Integer timeRequired;
 	private List<Ref<TaskTodo>> todos = new ArrayList<Ref<TaskTodo>>();
-	private Boolean active;
+	private Boolean active; 
 
-	public TaskType() {
+	public Task() {
 	}
 
 	public TaskKind getKind() {
@@ -71,20 +70,12 @@ public class TaskType extends AccountChild {
 		this.timeRequired = timeRequired;
 	}
 
-	public List<TaskTodo> getTodos() {
-		List<TaskTodo> list = new ArrayList<TaskTodo>();
-		for (Ref<TaskTodo> ref : todos) {
-			list.add(ref.get());
-		}
-		return list;
+	public List<Ref<TaskTodo>> getTodos() {
+		return todos;
 	}
 
-	public void setTodos(List<TaskTodo> todos) {
-		ArrayList<Ref<TaskTodo>> refs = new ArrayList<Ref<TaskTodo>>();
-		for (TaskTodo tt : todos) {
-			refs.add(Ref.create(tt));
-		}
-		this.todos = refs;
+	public void setTodos(List<Ref<TaskTodo>> todos) {
+		this.todos = todos;
 	}
 
 	public Boolean getActive() {
@@ -94,13 +85,5 @@ public class TaskType extends AccountChild {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-
-	public List<Translation> getTranslations() {
-		return translations;
-	}
-
-	public void setTranslations(List<Translation> translations) {
-		this.translations = translations;
-	}
-
+	
 }

@@ -16,6 +16,7 @@ import io.crs.hsys.client.kip.chat.list.ChatListModule;
 import io.crs.hsys.client.kip.config.hk.HkConfigModule;
 import io.crs.hsys.client.kip.config.mt.MtConfigModule;
 import io.crs.hsys.client.kip.dashboard.DashboardModule;
+import io.crs.hsys.client.kip.editor.task.TaskEditorModule;
 import io.crs.hsys.client.kip.filter.KipFilterModule;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayModule;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusModule;
@@ -24,7 +25,6 @@ import io.crs.hsys.client.kip.roomstatus.list.RoomStatusListModule;
 import io.crs.hsys.client.kip.search.SearchModule;
 import io.crs.hsys.client.kip.task.creator.TaskCreatorModule;
 import io.crs.hsys.client.kip.tasks.TaskMngrModule;
-import io.crs.hsys.client.kip.tasks.editor.TaskEditorModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 
 /**

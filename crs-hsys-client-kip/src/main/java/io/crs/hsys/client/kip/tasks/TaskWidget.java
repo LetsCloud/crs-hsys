@@ -353,8 +353,12 @@ public class TaskWidget extends Composite {
 		if ((translations == null) || (translations.isEmpty()))
 			return defText;
 
-		TranslationDto t = translations.stream().filter(o -> o.getLanguage().equals(currentUser.getLocale()))
-				.findFirst().get();
+		TranslationDto t = null;
+		try {
+			t = translations.stream().filter(o -> o.getLanguage().equals(currentUser.getLocale())).findFirst().get();
+		} catch (Exception e) {
+			// Block of code to handle errors
+		}
 
 		if (t == null)
 			return defText;

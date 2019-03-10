@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks.editor;
+package io.crs.hsys.client.kip.editor.task;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 

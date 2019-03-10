@@ -5,7 +5,6 @@ package io.crs.hsys.client.kip.tasks;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.kip.task.editor.TaskEditorView;
 import io.crs.hsys.client.kip.tasks.widget.TaskWidget2;
 
 /**
@@ -19,6 +18,5 @@ public class TaskMngrModule extends AbstractPresenterModule {
 				TaskMngrPresenter.MyProxy.class);
 		bind(TaskWidget.class);
 		bind(TaskWidget2.class);
-		bind(TaskEditorView.class);
 	}
 }

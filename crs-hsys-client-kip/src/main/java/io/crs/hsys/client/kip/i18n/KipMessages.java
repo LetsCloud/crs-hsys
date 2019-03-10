@@ -4,7 +4,6 @@
 package io.crs.hsys.client.kip.i18n;
 
 import com.google.gwt.i18n.client.Messages;
-import com.google.gwt.i18n.client.Messages.DefaultMessage;
 
 /**
  * @author CR
@@ -200,6 +199,12 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Choose an Assignee")
 	String taskEditorAssigneePlaceholder();
+
+	@DefaultMessage("Room#")
+	String taskEditorRoom();
+
+	@DefaultMessage("Choose a Room")
+	String taskEditorRoomPlaceholder();
 	
 	@DefaultMessage("Due date")
 	String taskEditorDueDateGroup();
@@ -212,6 +217,9 @@ public interface KipMessages extends Messages {
 	
 	@DefaultMessage("Todos")
 	String taskEditorTodos();
+	
+	@DefaultMessage("History")
+	String taskEditorHistory();
 
 	
 	/*

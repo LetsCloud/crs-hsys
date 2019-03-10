@@ -83,7 +83,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 
 		initWidget(uiBinder.createAndBindUi(this));
 
-		initRoomTypeCombo();
+		initTaskGroupCombo();
 
 		this.driver = driver;
 
@@ -92,7 +92,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 		driver.initialize(this);
 	}
 
-	private void initRoomTypeCombo() {
+	private void initTaskGroupCombo() {
 
 		taskGroup = TakesValueEditor.of(new TakesValue<TaskGroupDto>() {
 

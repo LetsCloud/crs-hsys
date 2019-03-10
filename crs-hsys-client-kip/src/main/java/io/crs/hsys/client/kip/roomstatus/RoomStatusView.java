@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -21,7 +20,6 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
-import io.crs.hsys.client.kip.task.editor.TaskEditorView;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 /**
