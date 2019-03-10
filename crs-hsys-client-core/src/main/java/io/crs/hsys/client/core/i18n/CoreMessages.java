@@ -487,6 +487,7 @@ public interface CoreMessages extends Messages {
 	
 	@DefaultMessage("Delete Todo")
 	String taskTypeEditorDeleteTodo();
+
 	
 	/*
 	 * PROFILE CONFIG

@@ -24,6 +24,7 @@ import io.crs.hsys.client.kip.roomstatus.list.RoomStatusListModule;
 import io.crs.hsys.client.kip.search.SearchModule;
 import io.crs.hsys.client.kip.task.creator.TaskCreatorModule;
 import io.crs.hsys.client.kip.tasks.TaskMngrModule;
+import io.crs.hsys.client.kip.tasks.editor.TaskEditorModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 
 /**
@@ -51,6 +52,7 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new ChatCreatorModule());
 		install(new ChatEditorModule());
 		install(new TaskMngrModule());
+		install(new TaskEditorModule());
 		install(new KipFilterModule());
 		install(new SearchModule());
 		install(new GuestRoomBrowserModule());

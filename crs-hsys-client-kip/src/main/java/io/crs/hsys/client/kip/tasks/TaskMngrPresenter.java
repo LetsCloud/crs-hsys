@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.client.kip.tasks;
 
+import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,8 +18,11 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.datasource.AppUserDataSource;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
@@ -57,6 +62,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 	public static final SingleSlot<PresenterWidget<?>> FILTER_SLOT = new SingleSlot<>();
 
+	private final PlaceManager placeManager;
 	private KipGssResources res;
 	private AppUserDataSource appUserDataSource;
 	private CurrentUser currentUser;
@@ -65,11 +71,12 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	private final TasksFilterPresenter filter;
 
 	@Inject
-	TaskMngrPresenter(EventBus eventBus, MyView view, MyProxy proxy, KipGssResources res,
+	TaskMngrPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, KipGssResources res,
 			AppUserDataSource appUserDataSource, CurrentUser currentUser, KipMessages i18n, DataBuilder dataBuilder,
 			KipFilterPresenterFactory filterFactory) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
+		this.placeManager = placeManager;
 		this.res = res;
 		this.appUserDataSource = appUserDataSource;
 		this.currentUser = currentUser;
@@ -165,5 +172,18 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		taskDto.setStatus(TaskStatus.COMPLETED);
 		taskDto.setAttributes(taskAttrDtos);
 		return taskDto;
+	}
+
+	@Override
+	public void create() {
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
+		placeManager.revealPlace(placeBuilder.build());
+	}
+
+	@Override
+	public void modify(String webSafeKey) {
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
+		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
+		placeManager.revealPlace(placeBuilder.build());
 	}
 }

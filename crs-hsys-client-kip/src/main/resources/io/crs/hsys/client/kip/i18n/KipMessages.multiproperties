@@ -335,6 +335,135 @@
             <Value disabled="false">Видалено</Value>
         </Property>
         <Comment>
+            <Value>TASK EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>taskEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create a Task</Value>
+            <Value disabled="false">Create a Task</Value>
+            <Value disabled="false">Feladat létrehozás</Value>
+            <Value disabled="false">Створіть завдання</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorCreateSubTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Tasks to manage workflow</Value>
+            <Value disabled="false">Create Tasks to manage workflow</Value>
+            <Value disabled="false">Feladat létrehozás munkafolyamat kezeléshez</Value>
+            <Value disabled="false">Створити завдання для керування робочим процесом</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Task</Value>
+            <Value disabled="false">Modify Task</Value>
+            <Value disabled="false">Feladat módosítás</Value>
+            <Value disabled="false">Змінити завдання</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorModifySubTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false"></Value>
+            <Value disabled="false"></Value>
+            <Value disabled="false"></Value>
+            <Value disabled="false"></Value>
+        </Property>
+        <Property>
+            <Name>taskEditorKindHousekeeping</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Housekeeping</Value>
+            <Value disabled="false">Housekeeping</Value>
+            <Value disabled="false">Housekeeping</Value>
+            <Value disabled="false">Прибирання</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorKindMaintenance</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maintenance</Value>
+            <Value disabled="false">Maintenance</Value>
+            <Value disabled="false">Karbantartás</Value>
+            <Value disabled="false">Технічне обслуговування</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorType</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Type</Value>
+            <Value disabled="false">Type</Value>
+            <Value disabled="false">Típus</Value>
+            <Value disabled="false">Тип</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Leírás</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorAssignee</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Assignee</Value>
+            <Value disabled="false">Assignee</Value>
+            <Value disabled="false">Felelős</Value>
+            <Value disabled="false">Правонаступник</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorAssigneePlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose an Assignee</Value>
+            <Value disabled="false">Choose an Assignee</Value>
+            <Value disabled="false">Válassz felelőst</Value>
+            <Value disabled="false">Виберіть правонаступника</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorDueDateGroup</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Due Date</Value>
+            <Value disabled="false">Due Date</Value>
+            <Value disabled="false">Határidő</Value>
+            <Value disabled="false">Kрайній термін</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorDueDate</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Date</Value>
+            <Value disabled="false">Date</Value>
+            <Value disabled="false">Dátum</Value>
+            <Value disabled="false">дата</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorDueTime</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time</Value>
+            <Value disabled="false">Time</Value>
+            <Value disabled="false">Időpont</Value>
+            <Value disabled="false">Час</Value>
+        </Property>
+        <Property>
+            <Name>taskEditorTodos</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Todos</Value>
+            <Value disabled="false">Todos</Value>
+            <Value disabled="false">Tennivalók</Value>
+            <Value disabled="false">Путівник</Value>
+        </Property>
+        <Comment>
             <Value>ROOM STATUSES</Value>
         </Comment>
         <Property>

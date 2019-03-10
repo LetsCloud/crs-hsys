@@ -9,12 +9,15 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollapsible;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.resources.KipGssResources;
@@ -35,6 +38,9 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@UiField
 	MaterialCollapsible collapsible;
 
+	@UiField
+	MaterialButton addButton;
+
 	@Inject
 	Provider<TaskWidget> taskWidget2Provider;
 
@@ -44,7 +50,6 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
 		initView(res);
-
 	}
 
 	private void initView(KipGssResources res) {
@@ -58,5 +63,10 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 			collapsible.add(tw2);
 			tw2.setTask(task);
 		}
+	}
+
+	@UiHandler("addButton")
+	public void onClickAddButton(ClickEvent event) {
+		getUiHandlers().create();
 	}
 }
