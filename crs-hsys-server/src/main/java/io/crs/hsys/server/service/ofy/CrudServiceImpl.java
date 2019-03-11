@@ -68,22 +68,20 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 		return repository.findByWebSafeKey(webSafeKey);
 	}
 
-	@Override
-	public T update(final T entity1) throws Throwable {
-		logger.info("update");
+	protected T checkForChanges(T newEntity, T oldEntity) {
+		return newEntity;
+	}
 
+	@Override
+	public T update(final T newEntity) throws Throwable {
 		try {
 			T th = ofy().transact(new Work<T>() {
 				public T run() {
-					logger.info("update->entity1=" + entity1);
-					logger.info("update->entity1.getWebSafeKey()=" + entity1.getWebSafeKey());
-					T entity2 = repository.findByWebSafeKey(entity1.getWebSafeKey());
-					logger.info("update->entity2=" + entity2);
+					T oldEntity = repository.findByWebSafeKey(newEntity.getWebSafeKey());
 					try {
-						if (entity2.getVersion() > entity1.getVersion())
+						if (oldEntity.getVersion() > newEntity.getVersion())
 							throw new EntityVersionConflictException();
-						entity2 = repository.save(entity1);
-						return entity2;
+						return repository.save(checkForChanges(newEntity, oldEntity));
 					} catch (Throwable e) {
 						e.printStackTrace(System.out);
 						throw new RuntimeException(e);
@@ -142,7 +140,7 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 	public List<T> getChildrenByFilters(String parentWebSafeKey, Map<String, Object> filters) {
 		logger.info("CrudServiceImpl().getChildrenByFilters()");
 		if ((filters == null) || (filters.isEmpty())) {
-			logger.info("CrudServiceImpl().getChildrenByFilters()-2->"+parentWebSafeKey);
+			logger.info("CrudServiceImpl().getChildrenByFilters()-2->" + parentWebSafeKey);
 			return repository.getChildren(parentWebSafeKey);
 		}
 		logger.info("CrudServiceImpl().getChildrenByFilters()-3");

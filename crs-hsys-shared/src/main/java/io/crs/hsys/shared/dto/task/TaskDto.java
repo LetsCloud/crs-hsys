@@ -19,7 +19,6 @@ import io.crs.hsys.shared.dto.hotel.RoomDto;
  */
 @SuppressWarnings("serial")
 public class TaskDto extends AccountChildDto {
-
 	private TaskKind kind;
 	private TaskTypeDto type;
 	private Date created;

@@ -6,6 +6,7 @@ package io.crs.hsys.client.kip.editor.task;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -40,6 +41,7 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
@@ -125,6 +127,7 @@ public class TaskEditorPresenter
 				if ((appUserDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -147,6 +150,7 @@ public class TaskEditorPresenter
 				if ((taskTypeDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -163,6 +167,7 @@ public class TaskEditorPresenter
 				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -188,6 +193,8 @@ public class TaskEditorPresenter
 	@Override
 	protected TaskDto createDto() {
 		TaskDto dto = new TaskDto();
+		dto.setCreated(new Date());
+		dto.setStatus(TaskStatus.NOT_STARTED);
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		if (filters.containsKey(PARAM_KIND))
 			dto.setKind(TaskKind.valueOf(filters.get(PARAM_KIND)));

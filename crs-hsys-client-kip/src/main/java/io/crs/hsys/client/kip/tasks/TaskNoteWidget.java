@@ -38,7 +38,7 @@ public class TaskNoteWidget extends Composite {
 		this();
 		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd. hh:mm");
 		this.created.setText(fmt.format(note.getCreated()));
-		this.note.setText(note.getNote());
+		this.note.setText(note.getText());
 		this.who.setText(note.getUser().getCode());
 	}
 

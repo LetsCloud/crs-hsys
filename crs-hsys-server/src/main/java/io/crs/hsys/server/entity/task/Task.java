@@ -4,14 +4,17 @@
 package io.crs.hsys.server.entity.task;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 
 import io.crs.hsys.server.entity.common.AccountChild;
+import io.crs.hsys.server.entity.common.AppUser;
+import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.dto.task.TaskGroupDto;
+import io.crs.hsys.shared.constans.TaskStatus;
 
 /**
  * @author robi
@@ -20,12 +23,16 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
 @Entity
 public class Task extends AccountChild {
 	private TaskKind kind;
-	private String code;
+	private Ref<TaskType> type;
+	private Date created;
+	private Date updated;
+	private TaskStatus status;
 	private String description;
-	private TaskGroupDto taskGroup;
-	private Integer timeRequired;
-	private List<Ref<TaskTodo>> todos = new ArrayList<Ref<TaskTodo>>();
-	private Boolean active; 
+	private Ref<AppUser> reporter;
+	private Ref<AppUser> assignee;
+	private Ref<Room> room;
+	private Date dueDate;
+	private List<TaskNote> notes = new ArrayList<TaskNote>();
 
 	public Task() {
 	}
@@ -38,12 +45,36 @@ public class Task extends AccountChild {
 		this.kind = kind;
 	}
 
-	public String getCode() {
-		return code;
+	public Ref<TaskType> getType() {
+		return type;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setType(Ref<TaskType> type) {
+		this.type = type;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+	public TaskStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(TaskStatus status) {
+		this.status = status;
 	}
 
 	public String getDescription() {
@@ -54,36 +85,57 @@ public class Task extends AccountChild {
 		this.description = description;
 	}
 
-	public TaskGroupDto getTaskGroup() {
-		return taskGroup;
+	public AppUser getReporter() {
+		if (reporter == null)
+			return null;
+		return reporter.get();
 	}
 
-	public void setTaskGroup(TaskGroupDto taskGroup) {
-		this.taskGroup = taskGroup;
+	public void setReporter(AppUser reporter) {
+		if (reporter.getId() != null)
+			this.reporter = Ref.create(reporter);
 	}
 
-	public Integer getTimeRequired() {
-		return timeRequired;
+	public AppUser getAssignee() {
+		if (assignee == null)
+			return null;
+		return assignee.get();
 	}
 
-	public void setTimeRequired(Integer timeRequired) {
-		this.timeRequired = timeRequired;
+	public void setAssignee(AppUser assignee) {
+		if (assignee.getId() != null)
+			this.assignee = Ref.create(assignee);
 	}
 
-	public List<Ref<TaskTodo>> getTodos() {
-		return todos;
+	public Room getRoom() {
+		if (room == null)
+			return null;
+		return room.get();
 	}
 
-	public void setTodos(List<Ref<TaskTodo>> todos) {
-		this.todos = todos;
+	public void setRoom(Room room) {
+		if (room.getId() != null)
+			this.room = Ref.create(room);
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Date getDueDate() {
+		return dueDate;
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
 	}
-	
+
+	public List<TaskNote> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<TaskNote> notes) {
+		this.notes = notes;
+	}
+
+	public void addNote(TaskNote note) {
+		this.notes.add(note);
+	}
+
 }

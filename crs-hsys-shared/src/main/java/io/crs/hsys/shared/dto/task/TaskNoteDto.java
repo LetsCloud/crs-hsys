@@ -14,18 +14,17 @@ import io.crs.hsys.shared.dto.common.AppUserDtor;
  */
 @SuppressWarnings("serial")
 public class TaskNoteDto implements Dto {
-
 	private Date created;
 	private AppUserDtor user;
-	private String note;
+	private String text;
 
 	public TaskNoteDto() {
 	}
 
-	public TaskNoteDto(Date created, AppUserDtor user, String note) {
-		this.created =created;
-		this.user =user;
-		this.note =note;
+	public TaskNoteDto(Date created, AppUserDtor user, String text) {
+		this.created = created;
+		this.user = user;
+		this.text = text;
 	}
 
 	public Date getCreated() {
@@ -44,12 +43,12 @@ public class TaskNoteDto implements Dto {
 		this.user = user;
 	}
 
-	public String getNote() {
-		return note;
+	public String getText() {
+		return text;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }
