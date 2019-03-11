@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.tasks.widget;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialColumn;
+import io.crs.hsys.client.kip.tasks.TaskNoteWidget;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.dto.task.TaskNoteDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;

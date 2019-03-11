@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -189,6 +190,9 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 					currentUser.setLoggedIn(false);
 					return;
 				}
+				String locale = LocaleInfo.getCurrentLocale().getLocaleName();
+
+				currentUser.setLocale(locale);
 				currentUser.setAppUserDto(result);
 				currentUser.getAppUserDto().getAvailableHotels()
 						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));

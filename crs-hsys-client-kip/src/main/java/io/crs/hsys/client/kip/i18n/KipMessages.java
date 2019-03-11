@@ -129,6 +129,17 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("CleanType")
 	String assignmentsCleanType();
 
+	
+	/*
+	 * TASKS
+	 */
+
+	@DefaultMessage("Tasks")
+	String tasksTitle();
+
+	@DefaultMessage("Go for it ...")
+	String tasksSubTitle();
+
 
 	/*
 	 * TASKS FILTER
@@ -151,6 +162,64 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Deleted")
 	String tasksFilterStatusDeleted();
+
+	
+	/*
+	 * TASK TYPE EDITOR
+	 */
+	@DefaultMessage("Create a Task")
+	String taskEditorCreateTitle();
+
+	@DefaultMessage("Create Tasks to manage workflow")
+	String taskEditorCreateSubTitle();
+
+	@DefaultMessage("Modify Task")
+	String taskEditorModifyTitle();
+
+	@DefaultMessage("")
+	String taskEditorModifySubTitle();
+
+	@DefaultMessage("Housekeeping")
+	String taskEditorKindHousekeeping();
+
+	@DefaultMessage("Maintenance")
+	String taskEditorKindMaintenance();
+
+	@DefaultMessage("Task Type")
+	String taskEditorType();
+
+	@DefaultMessage("Choose a Task Type")
+	String taskEditorTypePlaceholder();
+
+	@DefaultMessage("Description")
+	String taskEditorDescription();
+
+	@DefaultMessage("Assignee")
+	String taskEditorAssignee();
+
+	@DefaultMessage("Choose an Assignee")
+	String taskEditorAssigneePlaceholder();
+
+	@DefaultMessage("Room#")
+	String taskEditorRoom();
+
+	@DefaultMessage("Choose a Room")
+	String taskEditorRoomPlaceholder();
+	
+	@DefaultMessage("Due date")
+	String taskEditorDueDateGroup();
+	
+	@DefaultMessage("Date")
+	String taskEditorDueDate();
+	
+	@DefaultMessage("Time")
+	String taskEditorDueTime();
+	
+	@DefaultMessage("Todos")
+	String taskEditorTodos();
+	
+	@DefaultMessage("History")
+	String taskEditorHistory();
 
 	
 	/*

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.tasks.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -32,7 +32,6 @@ import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
-import io.crs.hsys.shared.dto.task.TaskAttrDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -117,10 +116,6 @@ public class TaskHeaderWidget extends Composite {
 
 		if (task.getRoom() != null) {
 			taskLine.add(createRoomLink(task.getRoom()));
-		}
-
-		for (TaskAttrDto taskAttr : task.getAttributes()) {
-			taskLine.add(createAttLink(taskAttr.getType(), taskAttr.getValue()));
 		}
 
 		if (task.getReporter() != null) {

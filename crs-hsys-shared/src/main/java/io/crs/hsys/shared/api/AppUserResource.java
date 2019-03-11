@@ -15,10 +15,12 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.FcmTokenDto;
+import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 import static io.crs.hsys.shared.api.ApiParameters.TOKEN;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.INVITE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.SUBSCRIBE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
@@ -30,6 +32,10 @@ public interface AppUserResource {
 
 	@GET
 	List<AppUserDto> list();
+
+	@GET
+	@Path(REDUCED)
+	List<AppUserDto> listReduced();
 
 	@GET
 	@Path(PATH_WEBSAFEKEY)

@@ -2,17 +2,115 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui">
-	
-	<ui:style>
-	/* Add CSS here. See the GWT docs on UI Binder for more details */
+
+	<ui:style
+		type="io.crs.hsys.client.kip.tasks.TaskWidget.MyStyle">
+		
+		.badgeStyle {
+			/*		margin-bottom: 10px; */ /*		margin-left: 5px; */
+			margin-top: 5px;
+			margin-right: 5px;
+			padding-left: 5px;
+			padding-right: 5px;
+			line-height: 2rem;
+			border-radius: 5px;
+			float: left;
+		}
+		
+		.flexBox {
+			display: flex;
+		}
+		
+		.dataGroupBox {
+			margin-top: 8px;
+			padding-left: 10px;
+			border-left: 3px solid #2196f3;
+		}
+		
+		.dataGroupTitle {
+			color: #2196f3;
+		}
+		
+		.todos {
+			font-size: 18px;
+		}
 	</ui:style>
 
 	<m:MaterialCollapsibleItem ui:field="item">
 		<m:MaterialCollapsibleHeader
 			ui:field="header">
-			<m:MaterialCheckBox ui:field="title" text="Shower curtain"/>
-			<g:Label text="1 min ago"/>
+			<m:MaterialRow margin="0" paddingTop="10">
+				<m:MaterialColumn grid="s11" margin="0" padding="0">
+					<m:MaterialRow margin="0" padding="0">
+						<m:MaterialColumn grid="s12 m6" margin="0"
+							padding="0">
+							<m:MaterialIcon ui:field="taskKind" float="LEFT" />
+
+							<m:MaterialLabel ui:field="title" />
+						</m:MaterialColumn>
+
+						<m:MaterialColumn grid="s12 m6" margin="0"
+							padding="0" addStyleNames="{style.flexBox}">
+
+							<g:HTMLPanel ui:field="taskLine" />
+						</m:MaterialColumn>
+
+					</m:MaterialRow>
+				</m:MaterialColumn>
+
+				<m:MaterialColumn grid="s1" margin="0" padding="0">
+					<m:MaterialIcon ui:field="menuIcon"
+						iconType="MORE_VERT" float="RIGHT" waves="DEFAULT" circle="true"
+						activates="dp-3" marginLeft="0" marginRight="0" padding="0" />
+
+					<!-- My Drop Down -->
+					<m:MaterialDropDown ui:field="menuDropDown"
+						activator="dp-3" constrainWidth="false" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
+
+			<m:MaterialRow margin="0">
+				<m:MaterialColumn grid="s6" margin="0" padding="0">
+					<m:MaterialIcon ui:field="taskStatus" float="LEFT" />
+					<m:MaterialLabel ui:field="desde" float="LEFT" />
+				</m:MaterialColumn>
+
+				<m:MaterialColumn grid="s6" margin="0" padding="0">
+					<!-- <g:Label ui:field="dueDate" text="Due: 2018.06.01." addStyleNames="{style.floatRight}" 
+						/> -->
+					<m:MaterialLink ui:field="dueDate"
+						text="2018.06.01." iconType="EVENT" iconPosition="LEFT"
+						float="RIGHT" textColor="GREY_DARKEN_2" fontSize="16px" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
 		</m:MaterialCollapsibleHeader>
-		<m:MaterialCollapsibleBody ui:field="body" />
+
+		<m:MaterialCollapsibleBody ui:field="body"
+			marginTop="10" marginLeft="15" marginRight="15" marginBottom="0"
+			padding="0">
+			<m:MaterialRow>
+				<m:MaterialColumn ui:field="descriptionPanel"
+					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+					<g:Label text="Leírás"
+						addStyleNames="{style.dataGroupTitle}" />
+					<g:Label ui:field="description"
+						addStyleNames="{style.todos}" />
+				</m:MaterialColumn>
+
+				<m:MaterialColumn ui:field="todosPanel"
+					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+					<g:Label text="Tennivalók"
+						addStyleNames="{style.dataGroupTitle}" />
+					<g:Label ui:field="todos" addStyleNames="{style.todos}" />
+				</m:MaterialColumn>
+
+				<m:MaterialColumn ui:field="notesPanel"
+					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+					<g:Label text="Megjegyzések"
+						addStyleNames="{style.dataGroupTitle}" />
+					<g:HTMLPanel ui:field="notes" />
+				</m:MaterialColumn>
+			</m:MaterialRow>
+		</m:MaterialCollapsibleBody>
 	</m:MaterialCollapsibleItem>
 </ui:UiBinder> 

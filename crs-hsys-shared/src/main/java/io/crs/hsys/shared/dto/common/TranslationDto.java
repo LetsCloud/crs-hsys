@@ -3,19 +3,23 @@
  */
 package io.crs.hsys.shared.dto.common;
 
+import io.crs.hsys.shared.dto.Dto;
+
 /**
  * @author CR
  *
  */
 @SuppressWarnings("serial")
-public class TranslationDto extends AccountChildDto {
+public class TranslationDto implements Dto {
 	private String language;
 	private String text;
 
-	public TranslationDto(Builder<?> builder) {
-		super(builder);
-		language = builder.language;
-		text = builder.text;
+	public TranslationDto() {
+	}
+
+	public TranslationDto(String language, String text) {
+		this.language = language;
+		this.text = text;
 	}
 
 	public String getLanguage() {
@@ -33,40 +37,4 @@ public class TranslationDto extends AccountChildDto {
 	public void setText(String text) {
 		this.text = text;
 	}
-
-	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
-		private String language;
-		private String text;
-
-		public T language(String language) {
-			this.language = language;
-			return self();
-		}
-
-		public T text(String text) {
-			this.text = text;
-			return self();
-		}
-
-		public TranslationDto build() {
-			return new TranslationDto(this);
-		}
-	}
-
-	/**
-	 * 
-	 * @author robi
-	 *
-	 */
-	protected static class Builder2 extends Builder<Builder2> {
-		@Override
-		protected Builder2 self() {
-			return this;
-		}
-	}
-
-	public static Builder<?> builder() {
-		return new Builder2();
-	}
-
 }

@@ -73,6 +73,11 @@
 		<constructor-arg ref="taskTypeRepository" />
 		<constructor-arg ref="accountRepository" />
 	</bean>
+	<bean id="taskService"
+		class="io.crs.hsys.server.service.ofy.TaskServiceImpl">
+		<constructor-arg ref="taskRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
 
 
 	<bean id="profileService"
@@ -166,6 +171,8 @@
 		class="io.crs.hsys.server.repository.ofy.TaskTodoRepositoryImpl" />
 	<bean id="taskTypeRepository"
 		class="io.crs.hsys.server.repository.ofy.TaskTypeRepositoryImpl" />
+	<bean id="taskRepository"
+		class="io.crs.hsys.server.repository.ofy.TaskRepositoryImpl" />
 
 
 	<bean id="profileRepository"

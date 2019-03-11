@@ -1,0 +1,142 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:tasktypeeditor="urn:import:io.crs.hsys.client.kip.editor.tasktype">
+
+	<ui:style>
+	.pp {
+		padding-top: 20px;
+		padding-bottom: 8px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	
+	.todoBox {
+		border-top: none;
+		border-left: 3px solid #2196f3;
+		border-right: none;
+		border-bottom: none;
+		box-shadow: none !important;
+	}
+	
+	.dataGroupBox {
+		margin-top: 8px;
+		padding-left: 10px;
+		border-left: 3px solid #2196f3;
+	}
+	
+	.dataGroupTitle {
+		color: #2196f3;
+	}
+	
+	.saveButton {
+		margin-bottom: 18px;
+	}
+	</ui:style>
+
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<ui:with field="i18n"
+		type="io.crs.hsys.client.kip.i18n.KipMessages" />
+
+	<ui:with field="coreTokens"
+		type="io.crs.hsys.client.core.CoreNameTokens" />
+
+	<g:HTMLPanel addStyleNames="{style.pp}">
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12">
+				<m:MaterialTab ui:field="taskKindTab"
+					indicatorColor="YELLOW" shadow="1">
+					<m:MaterialTabItem waves="YELLOW" grid="s6">
+						<m:MaterialLink ui:field="housekeepingKindLink"
+							iconType="BRUSH" text="{i18n.taskEditorKindHousekeeping}"
+							textColor="WHITE" />
+					</m:MaterialTabItem>
+					<m:MaterialTabItem waves="YELLOW" grid="s6">
+						<m:MaterialLink ui:field="maintenanceKindLink"
+							iconType="BUILD" text="{i18n.taskEditorKindMaintenance}"
+							textColor="WHITE" />
+					</m:MaterialTabItem>
+				</m:MaterialTab>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12 m6">
+				<combobox:MaterialComboBox
+					ui:field="taskTypeComboBox" multiple="false"
+					label="{i18n.taskEditorType}"
+					placeholder="{i18n.taskEditorTypePlaceholder}" marginTop="15"
+					marginBottom="30" />
+
+				<m:MaterialCollapsible
+					ui:field="todosCollapsible" addStyleNames="{style.todoBox}"
+					visible="false">
+					<m:MaterialCollapsibleItem
+						ui:field="todosItem">
+						<m:MaterialCollapsibleHeader
+							paddingRight="0" borderBottom="0">
+							<m:MaterialLabel text="{i18n.taskEditorTodos}"
+								float="LEFT" addStyleNames="{style.dataGroupTitle}" />
+							<m:MaterialIcon ui:field="expandTodosIcon"
+								iconType="EXPAND_MORE" float="RIGHT" />
+							<m:MaterialIcon ui:field="collapseTodosIcon"
+								iconType="EXPAND_LESS" float="RIGHT" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody
+							ui:field="todosBody" borderBottom="0" paddingTop="0"
+							paddingLeft="15" paddingRight="0" paddingBottom="0" />
+					</m:MaterialCollapsibleItem>
+				</m:MaterialCollapsible>
+
+				<m:MaterialTextArea ui:field="description"
+					label="{i18n.taskEditorDescription}" resizeRule="AUTO"
+					marginTop="30" />
+
+				<combobox:MaterialComboBox
+					ui:field="assigneeComboBox" multiple="false" allowClear="true"
+					label="{i18n.taskEditorAssignee}"
+					placeholder="{i18n.taskEditorAssigneePlaceholder}" marginTop="15"
+					marginBottom="30" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m6">
+				<combobox:MaterialComboBox
+					ui:field="roomComboBox" multiple="false" allowClear="true"
+					label="{i18n.taskEditorRoom}"
+					placeholder="{i18n.taskEditorRoomPlaceholder}" marginTop="15"
+					marginBottom="30" />
+
+				<m:MaterialRow addStyleNames="{style.dataGroupBox}"
+					marginBottom="0">
+					<m:MaterialLabel
+						text="{i18n.taskEditorDueDateGroup}"
+						addStyleNames="{style.dataGroupTitle}" />
+					<m:MaterialColumn grid="s6">
+						<m:MaterialDatePicker ui:field="dueDate"
+							placeholder="{i18n.taskEditorDueDate}" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s6">
+						<ma:timepicker.MaterialTimePicker
+							ui:field="dueTime" placeholder="{i18n.taskEditorDueTime}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+				<g:HTMLPanel addStyleNames="{style.dataGroupBox}">
+					<g:Label text="{i18n.taskEditorHistory}"
+						addStyleNames="{style.dataGroupTitle}" />
+				</g:HTMLPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialButton ui:field="saveButton"
+			iconType="SAVE" text="{i18nCore.comSave}" float="RIGHT"
+			addStyleNames="{style.saveButton}" />
+		<m:MaterialButton ui:field="cancelButton"
+			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

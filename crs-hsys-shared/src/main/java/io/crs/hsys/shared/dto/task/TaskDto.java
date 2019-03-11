@@ -25,12 +25,10 @@ public class TaskDto extends AccountChildDto {
 	private Date created;
 	private Date updated;
 	private TaskStatus status;
-	private String title;
 	private String description;
 	private AppUserDtor reporter;
 	private AppUserDtor assignee;
 	private RoomDto room;
-	private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 	public TaskDto() {
@@ -44,12 +42,10 @@ public class TaskDto extends AccountChildDto {
 		created = builder.created;
 		updated = builder.updated;
 		status = builder.status;
-		title = builder.title;
 		description = builder.description;
 		reporter = builder.reporter;
 		assignee = builder.assignee;
 		room = builder.room;
-		attributes = builder.attributes;
 		notes = builder.notes;
 	}
 
@@ -97,36 +93,12 @@ public class TaskDto extends AccountChildDto {
 		this.status = status;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public AppUserDtor getReporter() {
-		return reporter;
-	}
-
-	public void setReporter(AppUserDtor reporter) {
-		this.reporter = reporter;
-	}
-
-	public List<TaskAttrDto> getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(List<TaskAttrDto> attributes) {
-		this.attributes = attributes;
 	}
 
 	public AppUserDtor getAssignee() {
@@ -153,6 +125,14 @@ public class TaskDto extends AccountChildDto {
 		this.notes = notes;
 	}
 
+	public AppUserDtor getReporter() {
+		return reporter;
+	}
+
+	public void setReporter(AppUserDtor reporter) {
+		this.reporter = reporter;
+	}
+
 	/**
 	 * 
 	 * @author robi
@@ -166,12 +146,10 @@ public class TaskDto extends AccountChildDto {
 		private Date created;
 		private Date updated;
 		private TaskStatus status;
-		private String title;
 		private String description;
 		private AppUserDtor reporter;
 		private AppUserDtor assignee;
 		private RoomDto room;
-		private List<TaskAttrDto> attributes = new ArrayList<TaskAttrDto>();
 		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 		public T kind(TaskKind kind) {
