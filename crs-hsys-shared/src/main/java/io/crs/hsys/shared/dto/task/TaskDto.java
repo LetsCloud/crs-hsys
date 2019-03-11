@@ -29,6 +29,7 @@ public class TaskDto extends AccountChildDto {
 	private AppUserDtor reporter;
 	private AppUserDtor assignee;
 	private RoomDto room;
+	private Date dueDate;
 	private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 	public TaskDto() {
@@ -46,6 +47,7 @@ public class TaskDto extends AccountChildDto {
 		reporter = builder.reporter;
 		assignee = builder.assignee;
 		room = builder.room;
+		dueDate = builder.dueDate;
 		notes = builder.notes;
 	}
 
@@ -133,6 +135,14 @@ public class TaskDto extends AccountChildDto {
 		this.reporter = reporter;
 	}
 
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+
 	/**
 	 * 
 	 * @author robi
@@ -150,6 +160,7 @@ public class TaskDto extends AccountChildDto {
 		private AppUserDtor reporter;
 		private AppUserDtor assignee;
 		private RoomDto room;
+		private Date dueDate;
 		private List<TaskNoteDto> notes = new ArrayList<TaskNoteDto>();
 
 		public T kind(TaskKind kind) {
@@ -189,6 +200,11 @@ public class TaskDto extends AccountChildDto {
 
 		public T room(RoomDto room) {
 			this.room = room;
+			return self();
+		}
+
+		public T dueDate(Date dueDate) {
+			this.dueDate = dueDate;
 			return self();
 		}
 

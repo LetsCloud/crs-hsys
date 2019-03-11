@@ -3,7 +3,10 @@
  */
 package io.crs.hsys.server.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -16,20 +19,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import io.crs.hsys.server.entity.common.AppUser;
+import io.crs.hsys.server.entity.hotel.RoomType;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.common.FcmTokenDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
+import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.INVITE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.SUBSCRIBE;
@@ -72,6 +81,27 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@RequestMapping(method = GET)
 	public @ResponseBody ResponseEntity<List<AppUserDto>> getAll() {
 		return super.getAll();
+	}
+
+	/**
+	 * Visszaadja a bejelentkezett felhasználó előfizetéséhez tartozó összes
+	 * szállodát
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = REDUCED, method = GET)
+	public @ResponseBody ResponseEntity<List<AppUserDtor>> getAllReduced() {
+		logger.info("RoomTypeController().getAllReduced()");
+		List<AppUserDtor> dtos = new ArrayList<AppUserDtor>();
+
+		Map<String, Object> filters = new HashMap<String, Object>();
+		
+		for (AppUser entity : service.getAll()) {
+			logger.info("RoomTypeController().getAllReduced()->entity.getCode()" + entity.getCode());
+			dtos.add(modelMapper.map(entity, AppUserDtor.class));
+		}
+
+		return new ResponseEntity<List<AppUserDtor>>(dtos, OK);
 	}
 
 	@Override

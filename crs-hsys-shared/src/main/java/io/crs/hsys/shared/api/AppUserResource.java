@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.common.FcmTokenDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
@@ -35,7 +36,7 @@ public interface AppUserResource {
 
 	@GET
 	@Path(REDUCED)
-	List<AppUserDto> listReduced();
+	List<AppUserDtor> listReduced();
 
 	@GET
 	@Path(PATH_WEBSAFEKEY)

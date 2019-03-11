@@ -24,9 +24,11 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
+import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
+import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
@@ -34,6 +36,7 @@ import gwt.material.design.client.ui.MaterialTab;
 import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
 import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDto;
@@ -104,11 +107,14 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 	MaterialComboBox<RoomDto> roomComboBox;
 	TakesValueEditor<RoomDto> room;
 
+	@UiField
+	MaterialDatePicker dueDate;
+
 	/**
 	* 
 	*/
 	@Inject
-	TaskEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst) {
+	TaskEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, CurrentUser user) {
 		logger.info("TaskEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
@@ -117,6 +123,9 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 		initTaskTypeCombo();
 		initAsigneeCombo();
 		initRoomCombo();
+
+		if (user.getLocale().startsWith("hu"))
+			dueDate.setLanguage(DatePickerLanguage.HU);
 
 		this.driver = driver;
 
