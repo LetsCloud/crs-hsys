@@ -122,7 +122,9 @@
 					</m:MaterialColumn>
 					<m:MaterialColumn grid="s6">
 						<ma:timepicker.MaterialTimePicker
-							ui:field="dueTime" placeholder="{i18n.taskEditorDueTime}" />
+							ui:field="dueTime" placeholder="{i18n.taskEditorDueTime}"
+							hour24="true" cancelText="{i18nCore.comCancel}"
+							okText="{i18nCore.comOk}" />
 					</m:MaterialColumn>
 				</m:MaterialRow>
 
