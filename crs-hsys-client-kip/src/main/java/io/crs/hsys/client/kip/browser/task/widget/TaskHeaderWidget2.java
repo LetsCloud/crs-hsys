@@ -1,13 +1,11 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.task;
+package io.crs.hsys.client.kip.browser.task.widget;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import javax.inject.Inject;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -16,44 +14,36 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconSize;
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialCollapsibleBody;
-import gwt.material.design.client.ui.MaterialCollapsibleHeader;
-import gwt.material.design.client.ui.MaterialCollapsibleItem;
-import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
-
+import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
-import io.crs.hsys.client.kip.browser.task.widget.TaskNoteWidget;
-import io.crs.hsys.client.kip.resources.KipGssResources;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.constans.UserPerm;
 import io.crs.hsys.shared.dto.common.TranslationDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
-import io.crs.hsys.shared.dto.task.TaskNoteDto;
-import io.crs.hsys.shared.dto.task.TaskTodoDto;
 import io.crs.hsys.shared.dto.task.TaskTypeDto;
 
 /**
  * @author robi
  *
  */
-public class TaskWidget extends Composite {
-	private static Logger logger = Logger.getLogger(TaskWidget.class.getName());
+public class TaskHeaderWidget2 extends Composite {
 
-	interface Binder extends UiBinder<Widget, TaskWidget> {
+	private static TaskHeaderWidget2UiBinder uiBinder = GWT.create(TaskHeaderWidget2UiBinder.class);
+
+	interface TaskHeaderWidget2UiBinder extends UiBinder<Widget, TaskHeaderWidget2> {
 	}
 
 	interface MyStyle extends CssResource {
@@ -64,19 +54,13 @@ public class TaskWidget extends Composite {
 	MyStyle style;
 
 	@UiField
-	MaterialCollapsibleItem<TaskDto> item;
-
-	@UiField
-	MaterialCollapsibleHeader header;
-
-	@UiField
 	HTMLPanel taskLine;
 
 	@UiField
 	MaterialIcon menuIcon, taskKind, taskStatus;
 
 	@UiField
-	MaterialDropDown menuDropDown;
+	MaterialDropDown<?> menuDropDown;
 
 	@UiField
 	MaterialLabel title, elapsed;
@@ -84,29 +68,18 @@ public class TaskWidget extends Composite {
 	@UiField
 	MaterialLink dueDate;
 
-	@UiField
-	MaterialCollapsibleBody body;
-
-	@UiField
-	MaterialColumn descriptionPanel, todosPanel, notesPanel;
-
-	@UiField
-	Label description, todos;
-
 	private final CurrentUser currentUser;
 
 	/**
 	 */
-	@Inject
-	TaskWidget(Binder uiBinder, KipGssResources res, CurrentUser currentUser) {
-		logger.info("TaskWidget()");
+	public TaskHeaderWidget2(TaskDto task, CurrentUser currentUser) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.currentUser = currentUser;
 		iniView();
+		setTask(task);
 	}
 
 	private void iniView() {
-
 		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
 		elapsed.setFontSize(16, Unit.PX);
 		elapsed.setTextColor(Color.GREY_DARKEN_2);
@@ -125,6 +98,7 @@ public class TaskWidget extends Composite {
 			public void onClick(ClickEvent event) {
 				event.preventDefault();
 				event.stopPropagation();
+				MaterialToast.fireToast("I Love Material Design");
 			}
 		});
 		return link;
@@ -242,11 +216,6 @@ public class TaskWidget extends Composite {
 		title.setFontSize(22, Unit.PX);
 		title.setTextColor(Color.GREY_DARKEN_2);
 		title.setTruncate(true);
-
-		if ((taskType.getDescription() == null) || (taskType.getDescription().isEmpty())) {
-			descriptionPanel.setVisible(false);
-			return;
-		}
 		title.setText(getTranslated(currentUser.getLocale(), taskType.getTranslations(), taskType.getDescription()));
 	}
 
@@ -324,35 +293,6 @@ public class TaskWidget extends Composite {
 		}
 	}
 
-	public void setDescription(String text) {
-		if ((text == null) || (text.isEmpty())) {
-			descriptionPanel.setVisible(false);
-			return;
-		}
-		description.setText(text);
-		descriptionPanel.setVisible(true);
-	}
-
-	public void setTodos(List<TaskTodoDto> todos) {
-		if ((todos == null) || (todos.isEmpty())) {
-			todosPanel.setVisible(false);
-			return;
-		}
-
-		Boolean first = true;
-		StringBuilder text = new StringBuilder();
-		for (TaskTodoDto todo : todos) {
-			String tmp = getTranslated(currentUser.getLocale(), todo.getTranslations(), todo.getDescription());
-			if (first) {
-				text.append(tmp);
-				first = false;
-			} else
-				text.append(", " + tmp);
-		}
-		this.todos.setText(text.toString());
-		todosPanel.setVisible(true);
-	}
-
 	private String getTranslated(String locale, List<TranslationDto> translations, String defText) {
 		if ((translations == null) || (translations.isEmpty()))
 			return defText;
@@ -370,20 +310,7 @@ public class TaskWidget extends Composite {
 		return t.getText();
 	}
 
-	public void setNotes(List<TaskNoteDto> notes) {
-		if ((notes == null) || (notes.isEmpty())) {
-			notesPanel.setVisible(false);
-			return;
-		}
-
-		for (TaskNoteDto note : notes) {
-			notesPanel.add(new TaskNoteWidget(note));
-		}
-		notesPanel.setVisible(true);
-	}
-
 	public void setTask(TaskDto task) {
-		logger.info("TaskWidget().setTask()");
 		dropDownConfig(task);
 
 		setTaskKind(task.getKind());
@@ -397,9 +324,6 @@ public class TaskWidget extends Composite {
 
 		if (task.getDueDate() != null)
 			dueDate.setText(DateUtils.formatDateTime(task.getDueDate(), currentUser.getLocale()));
-
-		setDescription(task.getDescription());
-		setTodos(task.getType().getTodos());
-		setNotes(task.getNotes());
 	}
+
 }

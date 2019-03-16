@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui">
 
 	<ui:style
-		type="io.crs.hsys.client.kip.browser.task.TaskWidget.MyStyle">
+		type="io.crs.hsys.client.kip.browser.task.old.TaskWidget.MyStyle">
 		.badgeStyle {
 			/*		margin-bottom: 10px; */ /*		margin-left: 5px; */
 			margin-top: 5px;

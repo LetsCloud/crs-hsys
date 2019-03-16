@@ -1,10 +1,12 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.browser.task.widget;
+package io.crs.hsys.client.kip.browser.task.old;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -20,7 +22,7 @@ import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
-
+import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.RoomStatus;
@@ -99,11 +101,15 @@ public class TaskHeaderWidget extends Composite {
 		desde.setFontSize(16, Unit.PX);
 		desde.setTextColor(Color.GREY_DARKEN_2);
 		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
-		
+
 		menuDropDown.clear();
 	}
 
 	public void setTask(TaskDto task, CurrentUser currentUser) {
+		menuIcon.addClickHandler(event -> {
+			event.preventDefault();
+			event.stopPropagation();
+		});
 		menuIcon.setActivates("tm-" + task.getWebSafeKey());
 		menuDropDown.setActivator("tm-" + task.getWebSafeKey());
 		title.setText(task.getType().getDescription());
@@ -234,7 +240,7 @@ public class TaskHeaderWidget extends Composite {
 		link.getIcon().setMarginRight(5);
 		return link;
 	}
-	
+
 	private MaterialLink createRoomLink(RoomDto room) {
 		MaterialLink link = getBadgeLink(room.getCode());
 		link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(room.getRoomStatus()));
@@ -316,6 +322,11 @@ public class TaskHeaderWidget extends Composite {
 		link.setBackgroundColor(Color.GREY_DARKEN_2);
 		link.setTextColor(Color.WHITE);
 		link.setIconColor(Color.WHITE);
+		link.addClickHandler(event -> {
+			event.preventDefault();
+			event.stopPropagation();
+			MaterialToast.fireToast("I Love Material Design");
+		});
 		return link;
 	}
 

@@ -23,8 +23,10 @@ import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget;
-import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget;
+import io.crs.hsys.client.kip.browser.task.old.TaskBodyWidget;
+import io.crs.hsys.client.kip.browser.task.old.TaskHeaderWidget;
+import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget2;
+import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget2;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -46,8 +48,8 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@UiField
 	MaterialButton addButton;
 
-	@Inject
-	Provider<TaskWidget> taskWidget2Provider;
+//	@Inject
+//	Provider<TaskWidget> taskWidgetProvider;
 
 	private final CurrentUser currentUser;
 
@@ -64,8 +66,10 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 		collapsible.clear();
 		for (TaskDto task : tasks) {
 			MaterialCollapsibleItem<TaskDto> item = createItem();
-			item.getHeader().add(new TaskHeaderWidget(task, currentUser));
-			item.getBody().add(new TaskBodyWidget(task));
+	//		TaskWidget taskWidget = taskWidgetProvider.get();
+	//		taskWidget.setTask(task);
+			item.getHeader().add(new TaskHeaderWidget2(task, currentUser));
+			item.getBody().add(new TaskBodyWidget2(task, currentUser));
 			collapsible.add(item);
 		}
 	}

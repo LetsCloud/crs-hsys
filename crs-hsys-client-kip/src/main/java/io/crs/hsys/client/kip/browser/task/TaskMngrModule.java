@@ -14,6 +14,6 @@ public class TaskMngrModule extends AbstractPresenterModule {
 	protected void configure() {
 		bindPresenter(TaskMngrPresenter.class, TaskMngrPresenter.MyView.class, TaskMngrView.class,
 				TaskMngrPresenter.MyProxy.class);
-		bind(TaskWidget.class);
+//		bind(TaskWidget.class);
 	}
 }
