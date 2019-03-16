@@ -1,11 +1,11 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.browser.task;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.kip.tasks.widget.TaskWidget2;
+import io.crs.hsys.client.kip.browser.task.widget.TaskWidget2;
 
 /**
  * @author robi

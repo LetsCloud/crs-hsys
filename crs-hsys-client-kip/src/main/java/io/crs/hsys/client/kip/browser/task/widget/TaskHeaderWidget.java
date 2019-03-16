@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks.widget;
+package io.crs.hsys.client.kip.browser.task.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;

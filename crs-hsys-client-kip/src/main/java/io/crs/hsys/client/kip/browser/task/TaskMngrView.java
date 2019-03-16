@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.browser.task;
 
 import java.util.List;
 import java.util.logging.Logger;
