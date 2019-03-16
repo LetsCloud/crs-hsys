@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,6 +14,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialButton;
@@ -22,9 +22,8 @@ import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
+
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.kip.browser.task.old.TaskBodyWidget;
-import io.crs.hsys.client.kip.browser.task.old.TaskHeaderWidget;
 import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget2;
 import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget2;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -51,11 +50,13 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 //	@Inject
 //	Provider<TaskWidget> taskWidgetProvider;
 
+	private final EventBus eventBus;
 	private final CurrentUser currentUser;
 
 	@Inject
-	TaskMngrView(Binder uiBinder, CurrentUser currentUser) {
+	TaskMngrView(Binder uiBinder, EventBus eventBus, CurrentUser currentUser) {
 		logger.info("TaskMngrView()");
+		this.eventBus = eventBus;
 		this.currentUser = currentUser;
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
@@ -68,7 +69,7 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 			MaterialCollapsibleItem<TaskDto> item = createItem();
 	//		TaskWidget taskWidget = taskWidgetProvider.get();
 	//		taskWidget.setTask(task);
-			item.getHeader().add(new TaskHeaderWidget2(task, currentUser));
+			item.getHeader().add(new TaskHeaderWidget2(eventBus, task, currentUser));
 			item.getBody().add(new TaskBodyWidget2(task, currentUser));
 			collapsible.add(item);
 		}

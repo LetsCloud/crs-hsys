@@ -4,6 +4,7 @@
 package io.crs.hsys.client.kip.browser.task.widget;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -15,6 +16,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconPosition;
@@ -24,9 +26,11 @@ import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
-import gwt.material.design.client.ui.MaterialToast;
+
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
+import io.crs.hsys.client.kip.browser.task.TaskActionEvent;
+import io.crs.hsys.client.kip.browser.task.TaskActionEvent.TaskAction;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.constans.TaskStatus;
@@ -40,6 +44,7 @@ import io.crs.hsys.shared.dto.task.TaskTypeDto;
  *
  */
 public class TaskHeaderWidget2 extends Composite {
+	private static Logger logger = Logger.getLogger(TaskHeaderWidget2.class.getName());
 
 	private static TaskHeaderWidget2UiBinder uiBinder = GWT.create(TaskHeaderWidget2UiBinder.class);
 
@@ -68,12 +73,15 @@ public class TaskHeaderWidget2 extends Composite {
 	@UiField
 	MaterialLink dueDate;
 
+	private final EventBus eventBus;
 	private final CurrentUser currentUser;
 
 	/**
 	 */
-	public TaskHeaderWidget2(TaskDto task, CurrentUser currentUser) {
+	public TaskHeaderWidget2(EventBus eventBus, TaskDto task, CurrentUser currentUser) {
+		logger.info("TaskHeaderWidget2()");
 		initWidget(uiBinder.createAndBindUi(this));
+		this.eventBus = eventBus;
 		this.currentUser = currentUser;
 		iniView();
 		setTask(task);
@@ -93,14 +101,6 @@ public class TaskHeaderWidget2 extends Composite {
 		link.setBackgroundColor(Color.GREY_DARKEN_2);
 		link.setTextColor(Color.WHITE);
 		link.setIconColor(Color.WHITE);
-		link.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				event.preventDefault();
-				event.stopPropagation();
-				MaterialToast.fireToast("I Love Material Design");
-			}
-		});
 		return link;
 	}
 
@@ -120,8 +120,15 @@ public class TaskHeaderWidget2 extends Composite {
 		return createDropDownLink("Átoszt", IconType.SYNC);
 	}
 
-	private MaterialLink createModifyLink() {
-		return createDropDownLink("Módosít", IconType.EDIT);
+	private MaterialLink createModifyLink(TaskDto task) {
+		MaterialLink link = createDropDownLink("Módosít", IconType.EDIT);
+		link.addClickHandler(event -> {
+			logger.info("TaskHeaderWidget2().onModifyClick()");
+			event.preventDefault();
+			event.stopPropagation();
+			eventBus.fireEvent(new TaskActionEvent(TaskAction.EDIT, task));
+		});
+		return link;
 	}
 
 	private MaterialLink createDeleteLink() {
@@ -132,12 +139,12 @@ public class TaskHeaderWidget2 extends Composite {
 		return createDropDownLink("Vissza", IconType.KEYBOARD_RETURN);
 	}
 
-	private void buildReporterDropDown(TaskStatus status) {
-		switch (status) {
+	private void buildReporterDropDown(TaskDto task) {
+		switch (task.getStatus()) {
 		case NOT_STARTED:
 			if (currentUser.getAppUserDto().getPermissions().get(0).equals(UserPerm.UP_HKSUPERVISOR))
 				menuDropDown.add(createReassignLink());
-			menuDropDown.add(createModifyLink());
+			menuDropDown.add(createModifyLink(task));
 			menuDropDown.add(createDeleteLink());
 			break;
 		case IN_PROGRESS:
@@ -194,7 +201,7 @@ public class TaskHeaderWidget2 extends Composite {
 
 		if (task.getReporter() != null) {
 			if (task.getReporter().getCode().equals(currentUser.getAppUserDto().getCode())) {
-				buildReporterDropDown(task.getStatus());
+				buildReporterDropDown(task);
 			}
 		}
 

@@ -30,6 +30,7 @@ import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
+import io.crs.hsys.client.kip.browser.task.TaskActionEvent.TaskActionEventHandler;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.tasks.TasksFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
@@ -39,7 +40,7 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
  *
  */
 public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskMngrPresenter.MyProxy>
-		implements TaskMngrUiHandlers {
+		implements TaskMngrUiHandlers, TaskActionEventHandler {
 	private static Logger logger = Logger.getLogger(TaskMngrPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<TaskMngrUiHandlers> {
@@ -53,6 +54,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 	public static final SingleSlot<PresenterWidget<?>> FILTER_SLOT = new SingleSlot<>();
 
+	private final EventBus eventBus;
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<TaskResource> resourceDelegate;
 	private KipMessages i18n;
@@ -64,6 +66,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 			KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
+		this.eventBus = eventBus;
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createTasksFilter();
@@ -74,6 +77,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	@Override
 	protected void onBind() {
 		super.onBind();
+		this.addRegisteredHandler(TaskActionEvent.TYPE, this);
 		setInSlot(FILTER_SLOT, filter);
 	}
 
@@ -112,5 +116,28 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
 		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
 		placeManager.revealPlace(placeBuilder.build());
+	}
+
+	@Override
+	public void onTaskActionEvent(TaskActionEvent event) {
+		logger.info("onTaskActionEvent().onTaskActionEvent()");
+		switch (event.getAction()) {
+		case CREATE:
+			break;
+		case START:
+			break;
+		case PAUSE:
+			break;
+		case COMPLETE:
+			break;
+		case EDIT:
+			logger.info("onTaskActionEvent().onTaskActionEvent()->EDIT");
+			modify(event.getTask().getWebSafeKey());
+			break;
+		case DELETE:
+			break;
+		default:
+			break;
+		}
 	}
 }
