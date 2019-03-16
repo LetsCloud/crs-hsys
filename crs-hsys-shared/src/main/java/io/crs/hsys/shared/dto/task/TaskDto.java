@@ -232,5 +232,4 @@ public class TaskDto extends AccountChildDto {
 	public static Builder<?> builder() {
 		return new Builder2();
 	}
-
 }

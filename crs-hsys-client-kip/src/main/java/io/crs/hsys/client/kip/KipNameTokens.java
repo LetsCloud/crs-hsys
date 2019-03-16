@@ -6,6 +6,7 @@ public class KipNameTokens {
 	public static final String CHAT_ROOM = "/chatRoom";
 	public static final String TASK_MANAGER = "/taskManager";
 	public static final String GUEST_ROOMS = "/guestRooms";
+	public static final String ROOM_CONTROL = "/roomControl";
 	public static final String OOO_ROOMS = "/oooRooms";
 	public static final String PUBLIC_AREAS = "/publicAreas";
 

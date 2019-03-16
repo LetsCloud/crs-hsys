@@ -5,11 +5,14 @@ package io.crs.hsys.server.service.ofy;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.task.Task;
 import io.crs.hsys.server.entity.task.TaskNote;
 import io.crs.hsys.server.repository.AccountRepository;
@@ -68,6 +71,13 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 	@Override
 	protected Task checkForChanges(Task newEntity, Task oldEntity) {
 		return newEntity;
+	}
+
+	@Override
+	public List<Task> getByRoom(Room room) {
+		Map<String, Object> filters = new HashMap<String, Object>();
+		filters.put("room", room);
+		return getChildrenByFilters(room.getHotel().getWebSafeKey(), filters);
 	}
 
 }

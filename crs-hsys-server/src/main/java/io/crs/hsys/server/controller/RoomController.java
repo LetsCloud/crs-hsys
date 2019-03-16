@@ -6,12 +6,6 @@ package io.crs.hsys.server.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +24,15 @@ import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.service.RoomService;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
+import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.exception.RestApiException;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
@@ -87,10 +88,21 @@ public class RoomController extends HotelChildController<Room, RoomDto> {
 		}
 	}
 
+	@RequestMapping(method = GET, value = ROOM_STATUS)
+	public ResponseEntity<List<RoomStatusDto>> getRoomStatusesByHotel(@RequestParam(HOTEL_KEY) String hotelKey) {
+		List<RoomStatusDto> result = roomService.getRoomStatusesByHotel(hotelKey);
+		return new ResponseEntity<List<RoomStatusDto>>(result, OK);
+	}
+
 	@Override
 	@RequestMapping(method = GET, value = PATH_WEBSAFEKEY)
 	public ResponseEntity<RoomDto> get(@PathVariable String webSafeKey) throws RestApiException {
 		return super.get(webSafeKey);
+	}
+
+	@RequestMapping(method = GET, value = ROOM_STATUS+PATH_WEBSAFEKEY)
+	public ResponseEntity<RoomStatusDto> getRoomStatus(@PathVariable String webSafeKey) throws RestApiException {
+		return new ResponseEntity<RoomStatusDto>(roomService.getRoomStatus(webSafeKey), OK);
 	}
 
 	@Override

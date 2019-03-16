@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.server.entity.common.AppUser;
@@ -30,6 +31,7 @@ public class Task extends AccountChild {
 	private String description;
 	private Ref<AppUser> reporter;
 	private Ref<AppUser> assignee;
+	@Index
 	private Ref<Room> room;
 	private Date dueDate;
 	private List<TaskNote> notes = new ArrayList<TaskNote>();

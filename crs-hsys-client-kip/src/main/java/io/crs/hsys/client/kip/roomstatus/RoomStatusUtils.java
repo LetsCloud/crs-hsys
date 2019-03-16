@@ -17,6 +17,8 @@ import io.crs.hsys.shared.constans.TaskKind;
 public class RoomStatusUtils {
 
 	public static Color getStatusBgColor(RoomStatus roomStatus) {
+		if (roomStatus == null) return Color.BLUE_GREY;
+		
 		switch (roomStatus) {
 		case DIRTY:
 			return Color.RED_LIGHTEN_2;
@@ -37,6 +39,8 @@ public class RoomStatusUtils {
 	}
 
 	public static Color getStatusIconColor(RoomStatus roomStatus) {
+		if (roomStatus == null) return Color.BLACK;
+
 		switch (roomStatus) {
 		case DIRTY:
 			return Color.RED_LIGHTEN_4;
@@ -57,6 +61,8 @@ public class RoomStatusUtils {
 	}
 
 	public static MdiType getStatusIcon(RoomStatus roomStatus) {
+		if (roomStatus == null) return MdiType.ALERT;
+
 		switch (roomStatus) {
 		case DIRTY:
 			return MdiType.DELETE;
@@ -77,6 +83,8 @@ public class RoomStatusUtils {
 	}
 
 	public static IconType getStatusIcon2(RoomStatus roomStatus) {
+		if (roomStatus == null) return IconType.WARNING;
+		
 		switch (roomStatus) {
 		case DIRTY:
 			return IconType.DELETE;
@@ -97,6 +105,8 @@ public class RoomStatusUtils {
 	}
 
 	public static Color getOccStatusColor(OccStatus occStatus) {
+		if (occStatus == null) return Color.BLUE_GREY;
+
 		switch (occStatus) {
 		case VACANT:
 			return Color.GREY;
@@ -123,6 +133,8 @@ public class RoomStatusUtils {
 	}
 
 	public static MdiType getOccStatusIcon(OccStatus occStatus) {
+		if (occStatus == null) return MdiType.ALERT;
+		
 		switch (occStatus) {
 		case VACANT:
 			return MdiType.CHECKBOX_BLANK_OUTLINE;

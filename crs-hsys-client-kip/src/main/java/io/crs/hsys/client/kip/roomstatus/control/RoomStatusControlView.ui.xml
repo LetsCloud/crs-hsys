@@ -33,6 +33,7 @@
 	</ui:style>
 
 	<g:HTMLPanel>
+  	
 		<ma:overlay.MaterialOverlay
 			ui:field="overlay" textAlign="CENTER" textColor="WHITE">
 
@@ -91,6 +92,8 @@
 					textColor="AMBER_LIGHTEN_1" backgroundColor="AMBER_LIGHTEN_4"
 					visible="false" text="Show Room" />
 			</m:MaterialRow>
+
 		</ma:overlay.MaterialOverlay>
+
 	</g:HTMLPanel>
 </ui:UiBinder> 

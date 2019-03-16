@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,13 @@ import io.crs.hsys.server.repository.ReservationRepository;
 import io.crs.hsys.server.repository.RoomRepository;
 import io.crs.hsys.server.service.RoomService;
 import io.crs.hsys.shared.constans.FoRoomStatus;
+import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.dto.hk.GuestNumber;
+import io.crs.hsys.shared.dto.hk.RoomStatusDto;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomOccDto;
+import io.crs.hsys.shared.exception.RestApiException;
 
 /**
  * @author CR
@@ -36,13 +43,15 @@ import io.crs.hsys.shared.constans.RoomStatus;
 public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository> implements RoomService {
 	private static final Logger logger = LoggerFactory.getLogger(RoomServiceImpl.class.getName());
 
-	private ReservationRepository reservationRepository;
+	private final ReservationRepository reservationRepository;
+	private final ModelMapper modelMapper;
 
 	public RoomServiceImpl(RoomRepository repository, AccountRepository accountRepository,
-			HotelRepository hotelRepository, ReservationRepository reservationRepository) {
+			HotelRepository hotelRepository, ReservationRepository reservationRepository, ModelMapper modelMapper) {
 		super(repository, accountRepository, hotelRepository);
 		logger.info("RoomServiceImpl");
 		this.reservationRepository = reservationRepository;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
@@ -151,7 +160,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	}
 
 	@Override
-	public Room changeStatus(final String roomKey, final RoomStatus roomStatus) throws Throwable {
+	public Room changeStatus(final String roomKey, final RoomStatus roomStatus) throws RestApiException {
 		try {
 			// Objectify tranzakció indul
 			Room th = ofy().transact(new Work<Room>() {
@@ -171,8 +180,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 			});
 			return th;
 		} catch (RuntimeException re) {
-			// A csomagolt kivételt elcsípjük és továbbküldjük
-			throw re.getCause();
+			throw new RestApiException(re);
 		}
 	}
 
@@ -248,5 +256,46 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	protected List<Object> getParents(String accountWebSafeKey) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<RoomStatusDto> getRoomStatusesByHotel(String hotelKey) {
+		List<RoomStatusDto> result = new ArrayList<RoomStatusDto>();
+		for (Room room : getActiveRoomsByHotel(hotelKey)) {
+			result.add(createRoomStatus(room));
+		}
+		return result;
+	}
+
+	private RoomStatusDto createRoomStatus(Room room) {
+
+		return RoomStatusDto.builder().room(modelMapper.map(room, RoomDto.class))
+				.currOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0)))
+				.nextOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0))).build();
+	}
+
+	@Override
+	public RoomStatusDto getRoomStatus(String webSafeKey) throws RestApiException {
+		logger.info("RoomServiceImpl().getRoomStatus()->webSafeKey=" + webSafeKey);
+		Room room;
+		try {
+			room = this.read(webSafeKey);
+			logger.info("RoomServiceImpl().getRoomStatus()->room.getCode()=" + room.getCode());
+		} catch (Throwable e) {
+			throw new RestApiException(e);
+		}
+		return createRoomStatus(room);
+	}
+
+	@Override
+	public void resetRoomStatus(String hotelKey) throws RestApiException {
+		for (Room room : getActiveRoomsByHotel(hotelKey)) {
+			room.setRoomStatus(RoomStatus.DIRTY);
+			try {
+				this.update(room);
+			} catch (Throwable e) {
+				throw new RestApiException(e);
+			}
+		}
 	}
 }

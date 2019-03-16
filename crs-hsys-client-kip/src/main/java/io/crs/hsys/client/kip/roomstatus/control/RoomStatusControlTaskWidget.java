@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.roomstatus.controll;
+package io.crs.hsys.client.kip.roomstatus.control;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,13 +32,13 @@ import io.crs.hsys.shared.dto.task.TaskDto;
  * @author robi
  *
  */
-public class RoomStatusControllTaskWidget extends Composite {
-	private static final Logger logger = Logger.getLogger(RoomStatusControllTaskWidget.class.getName());
+public class RoomStatusControlTaskWidget extends Composite {
+	private static final Logger logger = Logger.getLogger(RoomStatusControlTaskWidget.class.getName());
 
 	private static RoomStatusControllTaskWidgetUiBinder uiBinder = GWT
 			.create(RoomStatusControllTaskWidgetUiBinder.class);
 
-	interface RoomStatusControllTaskWidgetUiBinder extends UiBinder<Widget, RoomStatusControllTaskWidget> {
+	interface RoomStatusControllTaskWidgetUiBinder extends UiBinder<Widget, RoomStatusControlTaskWidget> {
 	}
 
 	public interface MyStyle extends CssResource {
@@ -71,14 +71,14 @@ public class RoomStatusControllTaskWidget extends Composite {
 	/**
 	 * 
 	 */
-	public RoomStatusControllTaskWidget() {
+	public RoomStatusControlTaskWidget() {
 		logger.log(Level.INFO, "RoomStatusControllTaskWidget()");
 		initWidget(uiBinder.createAndBindUi(this));
 		createIcons();
 //		initView(true, TaskKind.CLEANING, false);
 	}
 
-	public RoomStatusControllTaskWidget(Boolean ownedBy, Boolean assignedTo, TaskDto task, Boolean oddLine) {
+	public RoomStatusControlTaskWidget(Boolean ownedBy, Boolean assignedTo, TaskDto task, Boolean oddLine) {
 		this();
 		logger.log(Level.INFO, "RoomStatusControllTaskWidget()->admin=" + ownedBy);
 		initView(ownedBy, assignedTo, task.getKind(), oddLine);

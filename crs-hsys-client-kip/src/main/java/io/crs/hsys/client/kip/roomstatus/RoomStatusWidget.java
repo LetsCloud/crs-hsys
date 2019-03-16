@@ -91,30 +91,32 @@ public class RoomStatusWidget extends Composite implements HasRoomStatusEditHand
 		roomStatusPanel.setBackgroundColor(RoomStatusUtils.getStatusBgColor(roomStatus.getRoom().getRoomStatus()));
 		statusIcon.setTextColor(RoomStatusUtils.getStatusIconColor(roomStatus.getRoom().getRoomStatus()));
 		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(roomStatus.getRoom().getRoomStatus()));
+
 		this.roomNoLabel.setText(roomStatus.getRoom().getCode());
 
 		this.roomTypeLabel.setText(roomStatus.getRoom().getRoomType().getCode());
 		this.guestNumberLabel.setText(roomStatus.getCurrOccStatus().getGuestNumber().toString());
 
-		Supplier<Stream<TaskDto>> cleaningTasks = () -> roomStatus.getTasks().stream()
-				.filter(o -> o.getKind().equals(TaskKind.TK_CLEANING));
+		if (roomStatus.getTasks() != null) {
+			Supplier<Stream<TaskDto>> cleaningTasks = () -> roomStatus.getTasks().stream()
+					.filter(o -> o.getKind().equals(TaskKind.TK_CLEANING));
+			Supplier<Stream<TaskDto>> attendantTasks = () -> cleaningTasks.get().filter(o -> o.getAssignee() != null);
 
-		Supplier<Stream<TaskDto>> attendantTasks = () -> cleaningTasks.get().filter(o -> o.getAssignee() != null);
-
-		if (attendantTasks.get().count() == 0) {
-			atendantLabel.setText(i18n.roomStatusUnassigned());
-			atendantLabel.getElement().getStyle().setColor("#bdbdbd");
+			if (attendantTasks.get().count() == 0) {
+				atendantLabel.setText(i18n.roomStatusUnassigned());
+				atendantLabel.getElement().getStyle().setColor("#bdbdbd");
 //			atendantLabel.getElement().getStyle().setFontSize(14, Unit.PX);
-		} else {
-			atendantLabel.setText(attendantTasks.get().findFirst().get().getAssignee().getName());
+			} else {
+				atendantLabel.setText(attendantTasks.get().findFirst().get().getAssignee().getName());
+			}
+
+			cleaningLabel.setText(Long.toString(cleaningTasks.get().count()));
+
+			Supplier<Stream<TaskDto>> maintenanceTasks = () -> roomStatus.getTasks().stream()
+					.filter(o -> o.getKind().equals(TaskKind.TK_MAINTENANCE));
+
+			maintenanceLabel.setText(Long.toString(maintenanceTasks.get().count()));
 		}
-
-		cleaningLabel.setText(Long.toString(cleaningTasks.get().count()));
-
-		Supplier<Stream<TaskDto>> maintenanceTasks = () -> roomStatus.getTasks().stream()
-				.filter(o -> o.getKind().equals(TaskKind.TK_MAINTENANCE));
-
-		maintenanceLabel.setText(Long.toString(maintenanceTasks.get().count()));
 
 		currOccStatusPanel.setTextColor(RoomStatusUtils.getOccStatusColor(roomStatus.getCurrOccStatus().getStatus()));
 		currOccStatusIcon.setIconType(RoomStatusUtils.getOccStatusIcon(roomStatus.getCurrOccStatus().getStatus()));

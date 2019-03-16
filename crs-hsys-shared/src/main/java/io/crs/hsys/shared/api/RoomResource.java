@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
+import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
@@ -41,8 +42,16 @@ public interface RoomResource {
 	List<RoomDto> getByHotel(@QueryParam(HOTEL_KEY) String hotelKey, @QueryParam(ONLY_ACTIVE) Boolean onlyActive);
 
 	@GET
+	@Path(ROOM_STATUS)
+	List<RoomStatusDto> getRoomStatusesByHotel(@QueryParam(HOTEL_KEY) String hotelKey);
+
+	@GET
 	@Path(PATH_WEBSAFEKEY)
 	RoomDto get(@PathParam(WEBSAFEKEY) String webSafeKey);
+
+	@GET
+	@Path(ROOM_STATUS + PATH_WEBSAFEKEY)
+	RoomStatusDto getRoomStatus(@PathParam(WEBSAFEKEY) String webSafeKey);
 
 	@POST
 	RoomDto saveOrCreate(RoomDto dto);
