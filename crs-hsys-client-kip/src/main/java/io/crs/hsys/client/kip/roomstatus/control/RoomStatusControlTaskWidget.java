@@ -20,10 +20,9 @@ import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconSize;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialCollection;
-import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
-import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.html.Div;
+
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -43,17 +42,27 @@ public class RoomStatusControlTaskWidget extends Composite {
 
 	public interface MyStyle extends CssResource {
 		String column();
+
 		String middle0();
+
 		String middle1();
+
 		String middle2();
+
 		String middle3();
+
 		String right();
+
 		String right1();
+
 		String right2();
+
 		String right3();
 	}
-	@UiField MyStyle style;
-	
+
+	@UiField
+	MyStyle style;
+
 	@UiField
 	MaterialIcon leftIcon;
 
@@ -65,9 +74,9 @@ public class RoomStatusControlTaskWidget extends Composite {
 
 	@UiField
 	MaterialCollection toDoList;
-	
+
 	private MaterialIcon playIcon, pauseIcon, closeIcon, dropIcon, menuIcon;
-	
+
 	/**
 	 * 
 	 */
@@ -82,15 +91,13 @@ public class RoomStatusControlTaskWidget extends Composite {
 		this();
 		logger.log(Level.INFO, "RoomStatusControllTaskWidget()->admin=" + ownedBy);
 		initView(ownedBy, assignedTo, task.getKind(), oddLine);
-		if (task.getDescription() != null)
-			description.setText(task.getDescription());
-		else
-			description.setText(task.getType().getDescription());
+
+		description.setText(task.getType().getDescription());
 
 		if (task.getAssignee() != null)
 			description.setText(description.getText() + " -> " + task.getAssignee().getCode());
 		else
-			description.setText(description.getText() + " -> ???");	
+			description.setText(description.getText() + " -> ???");
 	}
 
 	private void createIcons() {
@@ -105,7 +112,7 @@ public class RoomStatusControlTaskWidget extends Composite {
 				rightCol.add(pauseIcon);
 			}
 		});
-		
+
 		pauseIcon = createIcons(IconType.PAUSE);
 		closeIcon = createIcons(IconType.STOP);
 		dropIcon = createIcons(IconType.ARROW_DROP_DOWN);
@@ -120,7 +127,7 @@ public class RoomStatusControlTaskWidget extends Composite {
 		icon.setMarginRight(5);
 		return icon;
 	}
-	
+
 	private void initView(Boolean ownedBy, Boolean assignedTo, TaskKind kind, Boolean oddLine) {
 		logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->admin=" + ownedBy);
 
@@ -139,7 +146,7 @@ public class RoomStatusControlTaskWidget extends Composite {
 			rightCol.add(menuIcon);
 			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (ownedBy && assignedTo)");
 			return;
-		} 
+		}
 
 		if (ownedBy) {
 			middleCol.addStyleName(style.middle1());
@@ -147,14 +154,14 @@ public class RoomStatusControlTaskWidget extends Composite {
 			rightCol.add(menuIcon);
 			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (ownedBy");
 			return;
-		} 
+		}
 		if (assignedTo) {
 			middleCol.addStyleName(style.middle1());
 			rightCol.addStyleName(style.right1());
 			rightCol.add(playIcon);
 			logger.log(Level.INFO, "RoomStatusControllTaskWidget().initView()->END BY (assignedTo");
 			return;
-		} 
+		}
 		middleCol.addStyleName(style.middle1());
 		rightCol.addStyleName(style.right1());
 		rightCol.add(dropIcon);

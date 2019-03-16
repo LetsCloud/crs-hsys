@@ -50,7 +50,7 @@ public interface RoomService extends HotelChildService<Room> {
 
 	List<Room> getAvailableRoomsByHotelOnDateWithReservations(String hotelKey, Date date);
 
-	Room changeStatus(String hotelKey, RoomStatus roomStatus) throws RestApiException;
+	RoomStatusDto changeStatus(String hotelKey, RoomStatus roomStatus) throws RestApiException;
 
 	/**
 	 * 

@@ -28,7 +28,7 @@ import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.AVAILABLE_ON_DATE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOM;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
-import static io.crs.hsys.shared.api.ApiPaths.SpaV1.STATUS_CHANGE;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOM_STATUS_CHANGE;
 
 /**
  * @author CR
@@ -61,8 +61,8 @@ public interface RoomResource {
 	void delete(@PathParam(WEBSAFEKEY) String webSafeKey);
 
 	@GET
-	@Path(STATUS_CHANGE)
-	RoomDto changeRoomStatus(@QueryParam(ROOM_KEY) String roomKey, @QueryParam(ROOM_STATUS) RoomStatus roomStatus);
+	@Path(ROOM_STATUS_CHANGE)
+	RoomStatusDto roomStatusChange(@QueryParam(ROOM_KEY) String roomKey, @QueryParam(ROOM_STATUS) RoomStatus roomStatus);
 
 	@POST
 	@Path(AVAILABLE_ON_DATE)

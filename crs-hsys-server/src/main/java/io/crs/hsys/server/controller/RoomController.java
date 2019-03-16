@@ -42,7 +42,7 @@ import static io.crs.hsys.shared.api.ApiParameters.ROOM_STATUS;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOM;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.AVAILABLE_ON_DATE;
-import static io.crs.hsys.shared.api.ApiPaths.SpaV1.STATUS_CHANGE;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOM_STATUS_CHANGE;
 
 /**
  * @author CR
@@ -100,7 +100,7 @@ public class RoomController extends HotelChildController<Room, RoomDto> {
 		return super.get(webSafeKey);
 	}
 
-	@RequestMapping(method = GET, value = ROOM_STATUS+PATH_WEBSAFEKEY)
+	@RequestMapping(method = GET, value = ROOM_STATUS + PATH_WEBSAFEKEY)
 	public ResponseEntity<RoomStatusDto> getRoomStatus(@PathVariable String webSafeKey) throws RestApiException {
 		return new ResponseEntity<RoomStatusDto>(roomService.getRoomStatus(webSafeKey), OK);
 	}
@@ -119,18 +119,14 @@ public class RoomController extends HotelChildController<Room, RoomDto> {
 		super.delete(webSafeKey);
 	}
 
-	@RequestMapping(method = GET, value = STATUS_CHANGE)
-	public ResponseEntity<RoomDto> changeStatus(@RequestParam(ROOM_KEY) String roomKey,
+	@RequestMapping(method = GET, value = ROOM_STATUS_CHANGE)
+	public ResponseEntity<RoomStatusDto> changeRoomStatus(@RequestParam(ROOM_KEY) String roomKey,
 			@RequestParam(ROOM_STATUS) RoomStatus roomStatus) {
-		Room room;
 		try {
-			room = roomService.changeStatus(roomKey, roomStatus);
-			RoomDto roomDto = modelMapper.map(room, RoomDto.class);
-			// LOGGER.info("changeStatus()->roomDto=" + roomDto);
-			return new ResponseEntity<RoomDto>(roomDto, OK);
+			return new ResponseEntity<RoomStatusDto>(roomService.changeStatus(roomKey, roomStatus), OK);
 		} catch (Throwable e) {
 			e.printStackTrace();
-			return new ResponseEntity<RoomDto>(NOT_FOUND);
+			return new ResponseEntity<RoomStatusDto>(NOT_FOUND);
 		}
 	}
 

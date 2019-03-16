@@ -143,4 +143,11 @@ public class Task extends AccountChild {
 		this.notes.add(note);
 	}
 
+	@Override
+	public String toString() {
+		return "Task [kind=" + kind + ", type=" + type + ", created=" + created + ", updated=" + updated + ", status="
+				+ status + ", description=" + description + ", reporter=" + reporter + ", assignee=" + assignee
+				+ ", room=" + room + ", dueDate=" + dueDate + ", notes=" + notes + "]";
+	}
+
 }

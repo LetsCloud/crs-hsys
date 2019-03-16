@@ -33,7 +33,6 @@ import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.tasks.TasksFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
-import io.crs.hsys.client.kip.resources.KipGssResources;
 
 /**
  * @author robi
@@ -44,7 +43,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	private static Logger logger = Logger.getLogger(TaskMngrPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<TaskMngrUiHandlers> {
-		void setTasks(List<TaskDto> tasks, KipGssResources res);
+		void setTasks(List<TaskDto> tasks);
 	}
 
 	@ProxyStandard
@@ -56,20 +55,18 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<TaskResource> resourceDelegate;
-	private KipGssResources res;
 	private KipMessages i18n;
 	private final TasksFilterPresenter filter;
 
 	@Inject
 	TaskMngrPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager,
 			ResourceDelegate<TaskResource> resourceDelegate, KipFilterPresenterFactory filterFactory,
-			KipGssResources res, KipMessages i18n) {
+			KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createTasksFilter();
-		this.res = res;
 		this.i18n = i18n;
 		getView().setUiHandlers(this);
 	}
@@ -94,7 +91,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		resourceDelegate.withCallback(new AsyncCallback<List<TaskDto>>() {
 			@Override
 			public void onSuccess(List<TaskDto> dto) {
-				getView().setTasks(dto, res);
+				getView().setTasks(dto);
 			}
 
 			@Override

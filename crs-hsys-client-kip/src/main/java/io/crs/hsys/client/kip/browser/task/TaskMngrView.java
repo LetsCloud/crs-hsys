@@ -19,8 +19,13 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollapsible;
+import gwt.material.design.client.ui.MaterialCollapsibleBody;
+import gwt.material.design.client.ui.MaterialCollapsibleHeader;
+import gwt.material.design.client.ui.MaterialCollapsibleItem;
+import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget;
+import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget;
 import io.crs.hsys.shared.dto.task.TaskDto;
-import io.crs.hsys.client.kip.resources.KipGssResources;
 
 /**
  * @author robi
@@ -44,25 +49,37 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@Inject
 	Provider<TaskWidget> taskWidget2Provider;
 
+	private final CurrentUser currentUser;
+
 	@Inject
-	TaskMngrView(Binder uiBinder, KipGssResources res) {
+	TaskMngrView(Binder uiBinder, CurrentUser currentUser) {
 		logger.info("TaskMngrView()");
+		this.currentUser = currentUser;
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
-		initView(res);
-	}
-
-	private void initView(KipGssResources res) {
 	}
 
 	@Override
-	public void setTasks(List<TaskDto> tasks, KipGssResources res) {
+	public void setTasks(List<TaskDto> tasks) {
 		collapsible.clear();
 		for (TaskDto task : tasks) {
-			TaskWidget tw2 = taskWidget2Provider.get();
-			collapsible.add(tw2);
-			tw2.setTask(task);
+			MaterialCollapsibleItem<TaskDto> item = createItem();
+			item.getHeader().add(new TaskHeaderWidget(task, currentUser));
+			item.getBody().add(new TaskBodyWidget(task));
+			collapsible.add(item);
 		}
+	}
+
+	private MaterialCollapsibleItem<TaskDto> createItem() {
+		MaterialCollapsibleItem<TaskDto> item = new MaterialCollapsibleItem<TaskDto>();
+		item.add(new MaterialCollapsibleHeader());
+		item.add(new MaterialCollapsibleBody());
+		item.getBody().setMarginTop(10);
+		item.getBody().setMarginLeft(15);
+		item.getBody().setMarginRight(15);
+		item.getBody().setMarginBottom(0);
+		item.getBody().setPadding(0);
+		return item;
 	}
 
 	@UiHandler("addButton")

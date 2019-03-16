@@ -5,11 +5,9 @@ package io.crs.hsys.client.kip.browser.task.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -289,24 +287,6 @@ public class TaskHeaderWidget extends Composite {
 		}
 		return link;
 	}
-
-	@UiHandler("title")
-	public void onTitleClick(ClickEvent e) {
-//		crossOutTitle(title.getValue());
-	}
-
-	private void crossOutTitle(Boolean crossOut) {
-
-		if (crossOut) {
-			title.getElement().getFirstChildElement().getNextSiblingElement().addClassName(style.lineThrough());
-			// title.addStyleName(style.lineThrough());
-		} else {
-			title.getElement().getFirstChildElement().getNextSiblingElement().removeClassName(style.lineThrough());
-			// title.removeStyleName(style.lineThrough());
-
-		}
-	}
-	
 
 	private void initButtons(UserPerm permission) {
 		switch (permission) {

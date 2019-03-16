@@ -135,6 +135,7 @@
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
 		<constructor-arg ref="reservationRepository" />
+		<constructor-arg ref="taskRepository" />
 		<constructor-arg ref="modelMapper" />
 	</bean>
 	<bean id="roomTypeService"

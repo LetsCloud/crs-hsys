@@ -19,11 +19,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.shared.api.RoomResource;
-import io.crs.hsys.shared.dto.common.AppUserDto;
+import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
@@ -38,7 +37,9 @@ public class RoomStatusControlPresenter
 	private static Logger logger = Logger.getLogger(RoomStatusControlPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<RoomStatusControlUiHandlers> {
-		void open(RoomStatusDto dto, AppUserDto admin);
+		void open(RoomStatusDto dto);
+
+		void setRoomStatus(RoomStatusDto dto);
 
 		void close();
 	}
@@ -52,16 +53,14 @@ public class RoomStatusControlPresenter
 
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<RoomResource> resourceDelegate;
-	private final CurrentUser currentUser;
-
+	
 	@Inject
 	RoomStatusControlPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager,
-			ResourceDelegate<RoomResource> resourceDelegate, CurrentUser currentUser) {
+			ResourceDelegate<RoomResource> resourceDelegate) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusControllPresenter()");
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
-		this.currentUser = currentUser;
 		getView().setUiHandlers(this);
 	}
 
@@ -84,7 +83,7 @@ public class RoomStatusControlPresenter
 			@Override
 			public void onSuccess(RoomStatusDto dto) {
 				logger.log(Level.INFO, "RoomStatusControllPresenter().onReveal().onSuccess()");
-				getView().open(dto, currentUser.getAppUserDto());
+				getView().open(dto);
 			}
 
 			@Override
@@ -98,5 +97,39 @@ public class RoomStatusControlPresenter
 	public void navBack() {
 		getView().close();
 		placeManager.navigateBack();
+	}
+
+	@Override
+	public void makeDirty(String roomKey) {
+		logger.log(Level.INFO, "RoomStatusControllPresenter().makeDirty()");
+		roomStatusChange(roomKey, RoomStatus.DIRTY);
+	}
+
+	@Override
+	public void makeClean(String roomKey) {
+		logger.log(Level.INFO, "RoomStatusControllPresenter().makeClean()");
+		roomStatusChange(roomKey, RoomStatus.CLEAN);
+	}
+
+	@Override
+	public void makeInspected(String roomKey) {
+		logger.log(Level.INFO, "RoomStatusControllPresenter().makeInspected()");
+		roomStatusChange(roomKey, RoomStatus.INSPECTED);
+	}
+
+	private void roomStatusChange(String roomKey, RoomStatus roomStatus) {
+		logger.log(Level.INFO, "RoomStatusControllPresenter().roomStatusChange()");
+		resourceDelegate.withCallback(new AsyncCallback<RoomStatusDto>() {
+			@Override
+			public void onSuccess(RoomStatusDto result) {
+				logger.log(Level.INFO, "RoomStatusControllPresenter().roomStatusChange().onSuccess()");
+				getView().setRoomStatus(result);
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+			}
+		}).roomStatusChange(roomKey, roomStatus);
+
 	}
 }

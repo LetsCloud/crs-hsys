@@ -72,6 +72,6 @@ public class RoomStatusEditorPresenter extends PresenterWidget<RoomStatusEditorP
 				RoomStatusRefreshEvent.fire(RoomStatusEditorPresenter.this, roomDto);
 				getView().hide();
 			}
-		}).changeRoomStatus(roomKey, roomStatus);
+		}).roomStatusChange(roomKey, roomStatus);
 	}
 }

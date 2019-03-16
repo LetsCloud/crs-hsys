@@ -34,6 +34,7 @@ import gwt.material.design.client.ui.MaterialLink;
 
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
+import io.crs.hsys.client.kip.browser.task.widget.TaskNoteWidget;
 import io.crs.hsys.client.kip.resources.KipGssResources;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;

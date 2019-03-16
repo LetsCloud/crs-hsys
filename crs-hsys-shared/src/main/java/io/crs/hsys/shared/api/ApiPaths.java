@@ -54,7 +54,7 @@ public class ApiPaths {
 		public static final String ROOM = "/room";
 		public static final String ROOM_STATUS = "/roomStatus";
 		public static final String AVAILABLE_ON_DATE = "/availableOnDate";
-		public static final String STATUS_CHANGE = "/statusChange";
+		public static final String ROOM_STATUS_CHANGE = "/roomStatusChange";
 		public static final String MARKET_GROUP = "/marketGroup";
 
 		public static final String DATACUBE = "/dataCube";

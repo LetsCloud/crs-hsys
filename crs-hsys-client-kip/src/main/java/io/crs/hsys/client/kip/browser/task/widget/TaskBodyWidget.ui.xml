@@ -35,7 +35,7 @@
 
 		<m:MaterialColumn ui:field="notesPanel" grid="s12 m6"
 			addStyleNames="{style.dataGroupBox}">
-			<g:Label text="Megjegyzések"
+			<g:Label text="Idővonal"
 				addStyleNames="{style.dataGroupTitle}" />
 			<g:HTMLPanel ui:field="notes" />
 		</m:MaterialColumn>

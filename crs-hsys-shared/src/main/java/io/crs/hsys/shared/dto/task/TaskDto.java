@@ -142,6 +142,13 @@ public class TaskDto extends AccountChildDto {
 		this.dueDate = dueDate;
 	}
 
+	@Override
+	public String toString() {
+		return "TaskDto [kind=" + kind + ", type=" + type + ", created=" + created + ", updated=" + updated
+				+ ", status=" + status + ", description=" + description + ", reporter=" + reporter + ", assignee="
+				+ assignee + ", room=" + room + ", dueDate=" + dueDate + ", notes=" + notes + "]";
+	}
+
 	/**
 	 * 
 	 * @author robi

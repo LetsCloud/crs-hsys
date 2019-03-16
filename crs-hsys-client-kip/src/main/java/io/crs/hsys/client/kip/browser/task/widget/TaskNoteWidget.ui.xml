@@ -11,10 +11,10 @@
 		<m:MaterialColumn grid="s3" padding="0">
 			<g:Label ui:field="created" />
 		</m:MaterialColumn>
-		<m:MaterialColumn grid="s2" padding="0">
+		<m:MaterialColumn grid="s3" padding="0">
 			<g:Label ui:field="who" />
 		</m:MaterialColumn>
-		<m:MaterialColumn grid="s7" padding="0">
+		<m:MaterialColumn grid="s6" padding="0">
 			<g:Label ui:field="note" />
 		</m:MaterialColumn>
 	</m:MaterialRow>

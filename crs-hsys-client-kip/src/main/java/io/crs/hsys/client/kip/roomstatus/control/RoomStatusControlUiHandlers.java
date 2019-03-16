@@ -10,6 +10,12 @@ import com.gwtplatform.mvp.client.UiHandlers;
  *
  */
 public interface RoomStatusControlUiHandlers extends UiHandlers {
+
+	void makeDirty(String roomKey);
+
+	void makeClean(String roomKey);
+
+	void makeInspected(String roomKey);
 	
 	void navBack();
 

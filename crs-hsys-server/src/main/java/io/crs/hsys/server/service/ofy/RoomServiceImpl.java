@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -22,10 +24,12 @@ import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.hotel.RoomAvailability;
 import io.crs.hsys.server.entity.reservation.Reservation;
 import io.crs.hsys.server.entity.reservation.RoomStay;
+import io.crs.hsys.server.entity.task.Task;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.HotelRepository;
 import io.crs.hsys.server.repository.ReservationRepository;
 import io.crs.hsys.server.repository.RoomRepository;
+import io.crs.hsys.server.repository.TaskRepository;
 import io.crs.hsys.server.service.RoomService;
 import io.crs.hsys.shared.constans.FoRoomStatus;
 import io.crs.hsys.shared.constans.OccStatus;
@@ -34,6 +38,7 @@ import io.crs.hsys.shared.dto.hk.GuestNumber;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomOccDto;
+import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.exception.RestApiException;
 
 /**
@@ -44,13 +49,16 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	private static final Logger logger = LoggerFactory.getLogger(RoomServiceImpl.class.getName());
 
 	private final ReservationRepository reservationRepository;
+	private final TaskRepository taskRepository;
 	private final ModelMapper modelMapper;
 
 	public RoomServiceImpl(RoomRepository repository, AccountRepository accountRepository,
-			HotelRepository hotelRepository, ReservationRepository reservationRepository, ModelMapper modelMapper) {
+			HotelRepository hotelRepository, ReservationRepository reservationRepository, TaskRepository taskRepository,
+			ModelMapper modelMapper) {
 		super(repository, accountRepository, hotelRepository);
 		logger.info("RoomServiceImpl");
 		this.reservationRepository = reservationRepository;
+		this.taskRepository = taskRepository;
 		this.modelMapper = modelMapper;
 	}
 
@@ -160,7 +168,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	}
 
 	@Override
-	public Room changeStatus(final String roomKey, final RoomStatus roomStatus) throws RestApiException {
+	public RoomStatusDto changeStatus(final String roomKey, final RoomStatus roomStatus) throws RestApiException {
 		try {
 			// Objectify tranzakció indul
 			Room th = ofy().transact(new Work<Room>() {
@@ -178,7 +186,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 					}
 				}
 			});
-			return th;
+			return createRoomStatus(th);
 		} catch (RuntimeException re) {
 			throw new RestApiException(re);
 		}
@@ -268,10 +276,20 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	}
 
 	private RoomStatusDto createRoomStatus(Room room) {
+		logger.info("RoomServiceImpl().createRoomStatus()");
+		Map<String, Object> filters = new HashMap<String, Object>();
+		filters.put("room", room);
+		List<Task> tasks = taskRepository.getChildrenByFilters(room.getHotel().getAccount().getWebSafeKey(), filters);
+
+		List<TaskDto> taskDtos = new ArrayList<TaskDto>();
+		for (Task task : tasks) {
+			logger.info("RoomServiceImpl().createRoomStatus()->task=" + task);
+			taskDtos.add(modelMapper.map(task, TaskDto.class));
+		}
 
 		return RoomStatusDto.builder().room(modelMapper.map(room, RoomDto.class))
 				.currOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0)))
-				.nextOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0))).build();
+				.nextOccStatus(new RoomOccDto(OccStatus.VACANT, new GuestNumber(0, 0, 0, 0))).tasks(taskDtos).build();
 	}
 
 	@Override
