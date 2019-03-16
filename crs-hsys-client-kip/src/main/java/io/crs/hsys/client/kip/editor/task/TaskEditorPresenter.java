@@ -6,7 +6,6 @@ package io.crs.hsys.client.kip.editor.task;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -193,7 +192,6 @@ public class TaskEditorPresenter
 	@Override
 	protected TaskDto createDto() {
 		TaskDto dto = new TaskDto();
-		dto.setCreated(new Date());
 		dto.setStatus(TaskStatus.NOT_STARTED);
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		if (filters.containsKey(PARAM_KIND))

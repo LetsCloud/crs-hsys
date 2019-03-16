@@ -58,7 +58,10 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 
 	@Override
 	public Task create(final Task entity) throws Throwable {
-		entity.addNote(new TaskNote(new Date(), loggedInChecker.getLoggedInUser(), "Created"));
+		entity.setCreated(new Date());
+		entity.setUpdated(entity.getCreated());
+		entity.setReporter(loggedInChecker.getLoggedInUser());
+		entity.addNote(new TaskNote(entity.getCreated(), loggedInChecker.getLoggedInUser(), "Created"));
 		return super.create(entity);
 	}
 

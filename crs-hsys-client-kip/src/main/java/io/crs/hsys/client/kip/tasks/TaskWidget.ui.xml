@@ -5,7 +5,6 @@
 
 	<ui:style
 		type="io.crs.hsys.client.kip.tasks.TaskWidget.MyStyle">
-		
 		.badgeStyle {
 			/*		margin-bottom: 10px; */ /*		margin-left: 5px; */
 			margin-top: 5px;
@@ -34,7 +33,7 @@
 		.todos {
 			font-size: 18px;
 		}
-	</ui:style>
+		</ui:style>
 
 	<m:MaterialCollapsibleItem ui:field="item">
 		<m:MaterialCollapsibleHeader
@@ -70,16 +69,16 @@
 			</m:MaterialRow>
 
 			<m:MaterialRow margin="0">
-				<m:MaterialColumn grid="s6" margin="0" padding="0">
-					<m:MaterialIcon ui:field="taskStatus" float="LEFT" />
-					<m:MaterialLabel ui:field="desde" float="LEFT" />
+				<m:MaterialColumn grid="s5" margin="0" padding="0">
+					<m:MaterialIcon ui:field="taskStatus" float="LEFT" marginRight="0" />
+					<m:MaterialLabel ui:field="elapsed" float="LEFT" />
 				</m:MaterialColumn>
 
-				<m:MaterialColumn grid="s6" margin="0" padding="0">
+				<m:MaterialColumn grid="s7" margin="0" padding="0">
 					<!-- <g:Label ui:field="dueDate" text="Due: 2018.06.01." addStyleNames="{style.floatRight}" 
 						/> -->
 					<m:MaterialLink ui:field="dueDate"
-						text="2018.06.01." iconType="EVENT" iconPosition="LEFT"
+						iconType="EVENT" iconPosition="LEFT"
 						float="RIGHT" textColor="GREY_DARKEN_2" fontSize="16px" />
 				</m:MaterialColumn>
 			</m:MaterialRow>

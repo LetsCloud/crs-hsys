@@ -117,12 +117,12 @@
 						text="{i18n.taskEditorDueDateGroup}"
 						addStyleNames="{style.dataGroupTitle}" />
 					<m:MaterialColumn grid="s6">
-						<m:MaterialDatePicker ui:field="dueDate"
-							placeholder="{i18n.taskEditorDueDate}" />
+						<m:MaterialDatePicker
+							ui:field="dueDatePicker" placeholder="{i18n.taskEditorDueDate}" />
 					</m:MaterialColumn>
 					<m:MaterialColumn grid="s6">
 						<ma:timepicker.MaterialTimePicker
-							ui:field="dueTime" placeholder="{i18n.taskEditorDueTime}"
+							ui:field="dueTimePicker" placeholder="{i18n.taskEditorDueTime}"
 							hour24="true" cancelText="{i18nCore.comCancel}"
 							okText="{i18nCore.comOk}" />
 					</m:MaterialColumn>

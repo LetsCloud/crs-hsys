@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.kip.editor.task;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -24,6 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
+import gwt.material.design.addins.client.timepicker.MaterialTimePicker;
 import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
@@ -37,9 +39,9 @@ import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -107,8 +109,15 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 	MaterialComboBox<RoomDto> roomComboBox;
 	TakesValueEditor<RoomDto> room;
 
+	@Ignore
 	@UiField
-	MaterialDatePicker dueDate;
+	MaterialDatePicker dueDatePicker;
+
+	@Ignore
+	@UiField
+	MaterialTimePicker dueTimePicker;
+
+	TakesValueEditor<Date> dueDate;
 
 	/**
 	* 
@@ -123,9 +132,7 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 		initTaskTypeCombo();
 		initAsigneeCombo();
 		initRoomCombo();
-
-		if (user.getLocale().startsWith("hu"))
-			dueDate.setLanguage(DatePickerLanguage.HU);
+		initDueDate(user.getLocale());
 
 		this.driver = driver;
 
@@ -310,6 +317,28 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 		}
 		roomComboBox.addGroup(optGroup);
 		roomComboBox.unselect();
+	}
+
+	private void initDueDate(String locale) {
+		if (locale.startsWith("hu"))
+			dueDatePicker.setLanguage(DatePickerLanguage.HU);
+
+		dueDate = TakesValueEditor.of(new TakesValue<Date>() {
+
+			@Override
+			public void setValue(Date value) {
+				if (value == null)
+					return;
+				dueDatePicker.setValue(value);
+				dueTimePicker.setValue(value);
+			}
+
+			@Override
+			public Date getValue() {
+				Date date = DateUtils.mergeDateAndTime(dueDatePicker.getValue(), dueTimePicker.getValue());
+				return date;
+			}
+		});
 	}
 
 	@Override

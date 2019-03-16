@@ -45,12 +45,15 @@ public class Task extends AccountChild {
 		this.kind = kind;
 	}
 
-	public Ref<TaskType> getType() {
-		return type;
+	public TaskType getType() {
+		if (type == null)
+			return null;
+		return type.get();
 	}
 
-	public void setType(Ref<TaskType> type) {
-		this.type = type;
+	public void setType(TaskType type) {
+		if (type.getId() != null)
+			this.type = Ref.create(type);
 	}
 
 	public Date getCreated() {

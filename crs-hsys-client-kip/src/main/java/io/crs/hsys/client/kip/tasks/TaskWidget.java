@@ -4,10 +4,10 @@
 package io.crs.hsys.client.kip.tasks;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -33,6 +33,7 @@ import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
 
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.resources.KipGssResources;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
@@ -49,10 +50,9 @@ import io.crs.hsys.shared.dto.task.TaskTypeDto;
  *
  */
 public class TaskWidget extends Composite {
+	private static Logger logger = Logger.getLogger(TaskWidget.class.getName());
 
-	private static TaskWidgetUiBinder uiBinder = GWT.create(TaskWidgetUiBinder.class);
-
-	interface TaskWidgetUiBinder extends UiBinder<Widget, TaskWidget> {
+	interface Binder extends UiBinder<Widget, TaskWidget> {
 	}
 
 	interface MyStyle extends CssResource {
@@ -78,7 +78,7 @@ public class TaskWidget extends Composite {
 	MaterialDropDown menuDropDown;
 
 	@UiField
-	MaterialLabel title, desde;
+	MaterialLabel title, elapsed;
 
 	@UiField
 	MaterialLink dueDate;
@@ -97,7 +97,8 @@ public class TaskWidget extends Composite {
 	/**
 	 */
 	@Inject
-	TaskWidget(KipGssResources res, CurrentUser currentUser) {
+	TaskWidget(Binder uiBinder, KipGssResources res, CurrentUser currentUser) {
+		logger.info("TaskWidget()");
 		initWidget(uiBinder.createAndBindUi(this));
 		this.currentUser = currentUser;
 		iniView();
@@ -106,8 +107,8 @@ public class TaskWidget extends Composite {
 	private void iniView() {
 
 		dueDate.getIcon().getElement().getStyle().setMarginRight(5, Unit.PX);
-		desde.setFontSize(16, Unit.PX);
-		desde.setTextColor(Color.GREY_DARKEN_2);
+		elapsed.setFontSize(16, Unit.PX);
+		elapsed.setTextColor(Color.GREY_DARKEN_2);
 	}
 
 	private MaterialLink createDropDownLink(String text, IconType type) {
@@ -265,9 +266,11 @@ public class TaskWidget extends Composite {
 		if (task.getRoom() == null)
 			return;
 		MaterialLink link = getBadgeLink(task.getRoom().getCode());
-		link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(task.getRoom().getRoomStatus()));
-		link.setIconColor(RoomStatusUtils.getStatusBgColor(task.getRoom().getRoomStatus()));
-		link.setIconType(RoomStatusUtils.getStatusIcon2(task.getRoom().getRoomStatus()));
+		if (task.getRoom().getRoomStatus() != null) {
+			link.setBackgroundColor(RoomStatusUtils.getStatusIconColor(task.getRoom().getRoomStatus()));
+			link.setIconColor(RoomStatusUtils.getStatusBgColor(task.getRoom().getRoomStatus()));
+			link.setIconType(RoomStatusUtils.getStatusIcon2(task.getRoom().getRoomStatus()));
+		}
 		taskLine.add(link);
 	}
 
@@ -379,6 +382,7 @@ public class TaskWidget extends Composite {
 	}
 
 	public void setTask(TaskDto task) {
+		logger.info("TaskWidget().setTask()");
 		dropDownConfig(task);
 
 		setTaskKind(task.getKind());
@@ -387,11 +391,14 @@ public class TaskWidget extends Composite {
 		createTaskLine(task);
 
 		setTaskStatus(task.getStatus());
-		desde.setText("1 perce");
+
+		elapsed.setText(DateUtils.elapsedText(task.getUpdated()));
+
+		if (task.getDueDate() != null)
+			dueDate.setText(DateUtils.formatDateTime(task.getDueDate(), currentUser.getLocale()));
 
 		setDescription(task.getDescription());
 		setTodos(task.getType().getTodos());
 		setNotes(task.getNotes());
 	}
-
 }
