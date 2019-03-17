@@ -94,6 +94,9 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 		}
 	}
 
+	protected void checkDifference(T oldEntity, T newEntity) {
+	}
+
 	@Override
 	public Boolean delete(String webSafeKey) {
 		repository.delete(webSafeKey);

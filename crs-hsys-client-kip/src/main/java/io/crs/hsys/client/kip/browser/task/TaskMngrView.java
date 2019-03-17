@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -24,8 +25,8 @@ import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
 
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget2;
-import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget2;
+import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget;
+import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**
@@ -47,17 +48,15 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@UiField
 	MaterialButton addButton;
 
-//	@Inject
-//	Provider<TaskWidget> taskWidgetProvider;
+	@Inject
+	Provider<TaskHeaderWidget> taskHeaderWidgetProvider;
 
-	private final EventBus eventBus;
-	private final CurrentUser currentUser;
+	@Inject
+	Provider<TaskBodyWidget> taskBodyWidgetProvider;
 
 	@Inject
 	TaskMngrView(Binder uiBinder, EventBus eventBus, CurrentUser currentUser) {
 		logger.info("TaskMngrView()");
-		this.eventBus = eventBus;
-		this.currentUser = currentUser;
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
 	}
@@ -67,10 +66,15 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 		collapsible.clear();
 		for (TaskDto task : tasks) {
 			MaterialCollapsibleItem<TaskDto> item = createItem();
-	//		TaskWidget taskWidget = taskWidgetProvider.get();
-	//		taskWidget.setTask(task);
-			item.getHeader().add(new TaskHeaderWidget2(eventBus, task, currentUser));
-			item.getBody().add(new TaskBodyWidget2(task, currentUser));
+			
+			TaskHeaderWidget header = taskHeaderWidgetProvider.get();
+			header.setTask(task);
+			item.getHeader().add(header);
+
+			TaskBodyWidget body = taskBodyWidgetProvider.get();
+			body.setTask(task);
+			item.getBody().add(body);
+
 			collapsible.add(item);
 		}
 	}

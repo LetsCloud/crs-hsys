@@ -192,7 +192,7 @@ public class TaskEditorPresenter
 	@Override
 	protected TaskDto createDto() {
 		TaskDto dto = new TaskDto();
-		dto.setStatus(TaskStatus.NOT_STARTED);
+		dto.setStatus(TaskStatus.TS_NOT_STARTED);
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		if (filters.containsKey(PARAM_KIND))
 			dto.setKind(TaskKind.valueOf(filters.get(PARAM_KIND)));

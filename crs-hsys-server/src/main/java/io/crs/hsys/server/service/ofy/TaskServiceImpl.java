@@ -19,6 +19,7 @@ import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.TaskRepository;
 import io.crs.hsys.server.security.LoggedInChecker;
 import io.crs.hsys.server.service.TaskService;
+import io.crs.hsys.shared.constans.TaskNoteType;
 
 /**
  * @author robi
@@ -60,17 +61,46 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 	}
 
 	@Override
-	public Task create(final Task entity) throws Throwable {
+	public Task create(Task entity) throws Throwable {
 		entity.setCreated(new Date());
 		entity.setUpdated(entity.getCreated());
 		entity.setReporter(loggedInChecker.getLoggedInUser());
-		entity.addNote(new TaskNote(entity.getCreated(), loggedInChecker.getLoggedInUser(), "Created"));
+		entity = addNote(entity, TaskNoteType.TNT_CREATED);
 		return super.create(entity);
 	}
 
 	@Override
 	protected Task checkForChanges(Task newEntity, Task oldEntity) {
+		if (!oldEntity.getAssignee().getCode().equals(newEntity.getAssignee().getCode()))
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_ASSIGNEE, oldEntity.getAssignee().getCode());
+		if (!oldEntity.getDescription().equals(newEntity.getDescription()))
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_DESCRIPTION, oldEntity.getDescription());
+
+		if ((oldEntity.getDueDate() != null) && (newEntity.getDueDate() != null)
+				&& (!oldEntity.getDueDate().equals(newEntity.getDueDate()))) {
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_DUEDATE,
+					new Long(oldEntity.getDueDate().getTime()).toString());
+		}
+
+		if (!oldEntity.getRoom().getCode().equals(newEntity.getRoom().getCode()))
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_ROOM, oldEntity.getRoom().getCode());
+		if (!oldEntity.getStatus().equals(newEntity.getStatus())) {
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_STATUS, newEntity.getStatus().toString());
+			newEntity.setUpdated(new Date());
+		}
+		if (!oldEntity.getType().getCode().equals(newEntity.getType().getCode()))
+			newEntity = addNote(newEntity, TaskNoteType.TNT_MOD_TYPE, oldEntity.getType().getCode());
 		return newEntity;
+	}
+
+	private Task addNote(Task entity, TaskNoteType type) {
+		entity.addNote(new TaskNote(new Date(), loggedInChecker.getLoggedInUser(), type));
+		return entity;
+	}
+
+	private Task addNote(Task entity, TaskNoteType type, String text) {
+		entity.addNote(new TaskNote(new Date(), loggedInChecker.getLoggedInUser(), type, text));
+		return entity;
 	}
 
 	@Override

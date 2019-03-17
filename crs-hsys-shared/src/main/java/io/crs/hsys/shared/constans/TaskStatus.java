@@ -8,5 +8,5 @@ package io.crs.hsys.shared.constans;
  *
  */
 public enum TaskStatus {
-	NOT_STARTED, IN_PROGRESS, DEFFERED, COMPLETED, DELETED;
+	TS_NOT_STARTED, TS_IN_PROGRESS, TS_DEFFERED, TS_COMPLETED, TS_DELETED;
 }

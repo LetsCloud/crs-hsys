@@ -5,7 +5,9 @@ package io.crs.hsys.client.kip.browser.task.widget;
 
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
+import javax.inject.Inject;
+import javax.inject.Provider;
+
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -23,11 +25,9 @@ import io.crs.hsys.shared.dto.task.TaskTodoDto;
  * @author robi
  *
  */
-public class TaskBodyWidget2 extends Composite {
+public class TaskBodyWidget extends Composite {
 
-	private static TaskBodyWidget2UiBinder uiBinder = GWT.create(TaskBodyWidget2UiBinder.class);
-
-	interface TaskBodyWidget2UiBinder extends UiBinder<Widget, TaskBodyWidget2> {
+	interface Binder extends UiBinder<Widget, TaskBodyWidget> {
 	}
 
 	@UiField
@@ -36,14 +36,17 @@ public class TaskBodyWidget2 extends Composite {
 	@UiField
 	Label description, todos;
 
+	@Inject
+	Provider<TaskNoteWidget> taskNoteWidgetProvider;
+
 	private final CurrentUser currentUser;
 
 	/**
 	 */
-	public TaskBodyWidget2(TaskDto task, CurrentUser currentUser) {
+	@Inject
+	TaskBodyWidget(Binder uiBinder, CurrentUser currentUser) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.currentUser = currentUser;
-		setTask(task);
 	}
 
 	public void setDescription(String text) {
@@ -99,7 +102,9 @@ public class TaskBodyWidget2 extends Composite {
 		}
 
 		for (TaskNoteDto note : notes) {
-			notesPanel.add(new TaskNoteWidget(note));
+			TaskNoteWidget nw = taskNoteWidgetProvider.get();
+			nw.setNote(note);
+			notesPanel.add(nw);
 		}
 		notesPanel.setVisible(true);
 	}

@@ -218,7 +218,7 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Todos")
 	String taskEditorTodos();
 	
-	@DefaultMessage("History")
+	@DefaultMessage("Timeline")
 	String taskEditorHistory();
 
 	
