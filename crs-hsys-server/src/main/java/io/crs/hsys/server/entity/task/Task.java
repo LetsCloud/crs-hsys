@@ -39,6 +39,21 @@ public class Task extends AccountChild {
 	public Task() {
 	}
 
+	public Task(Task source) {
+		super(source);
+		kind = source.kind;
+		type = source.type;
+		created = source.created;
+		updated = source.updated;
+		status = source.status;
+		description = source.description;
+		reporter = source.reporter;
+		assignee = source.assignee;
+		room = source.room;
+		dueDate = source.dueDate;
+		notes = source.notes;
+	}
+
 	public TaskKind getKind() {
 		return kind;
 	}

@@ -83,6 +83,13 @@ public abstract class BaseEntity {
 //		logger.info("BaseEntity()");
 	}
 
+	public BaseEntity(BaseEntity source) {
+		id = source.id;
+		version = source.version;
+		webSafeKey = source.webSafeKey;
+		uniqueIndexes = source.uniqueIndexes;
+	}
+
 	/**
 	 * Entitás fajtán belüli egyedi azonosító visszaadása.
 	 * 
