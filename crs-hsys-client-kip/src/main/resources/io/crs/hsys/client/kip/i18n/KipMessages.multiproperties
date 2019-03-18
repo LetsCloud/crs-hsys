@@ -281,6 +281,72 @@
             <Value disabled="false">Действуй ...</Value>
         </Property>
         <Property>
+            <Name>taskBrowserStartLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Start</Value>
+            <Value disabled="false">Start</Value>
+            <Value disabled="false">Indít</Value>
+            <Value disabled="false">початок</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserPauseLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Pause</Value>
+            <Value disabled="false">Pause</Value>
+            <Value disabled="false">Szünteltet</Value>
+            <Value disabled="false">Пауза</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserCompleteLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Finish</Value>
+            <Value disabled="false">Finish</Value>
+            <Value disabled="false">Befejez</Value>
+            <Value disabled="false">Завершити</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserReassignLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Reassign</Value>
+            <Value disabled="false">Reassign</Value>
+            <Value disabled="false">Átoszt</Value>
+            <Value disabled="false">Перепризначення</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserModifyLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify</Value>
+            <Value disabled="false">Modify</Value>
+            <Value disabled="false">Módosít</Value>
+            <Value disabled="false">Змінити</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserDeleteLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Delete</Value>
+            <Value disabled="false">Delete</Value>
+            <Value disabled="false">Töröl</Value>
+            <Value disabled="false">Видалити</Value>
+        </Property>
+        <Property>
+            <Name>taskBrowserBackLink</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Back</Value>
+            <Value disabled="false">Back</Value>
+            <Value disabled="false">Vissza</Value>
+            <Value disabled="false">Назад</Value>
+        </Property>
+        <Comment>
+            <Value>TASK FILTER</Value>
+        </Comment>
+        <Property>
             <Name>tasksFilterTaskStatusTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>

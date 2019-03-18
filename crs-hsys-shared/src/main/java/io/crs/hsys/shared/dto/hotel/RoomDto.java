@@ -17,7 +17,7 @@ import io.crs.hsys.shared.constans.RoomStatus;
  *
  */
 @SuppressWarnings("serial")
-public class RoomDto extends HotelChildDto {
+public class RoomDto extends HotelChildDto implements Comparable<RoomDto> {
 
 	/**
 	 * Egyedi szobaszám
@@ -121,6 +121,38 @@ public class RoomDto extends HotelChildDto {
 		return "RoomDto [" + super.toString() + ", code=" + this.code + ", floor=" + this.floor + ", description="
 				+ this.description + ", roomType=" + this.roomType + ", roomStatus=" + this.roomStatus
 				+ ", roomAvailabilies=" + this.roomAvailabilities + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RoomDto other = (RoomDto) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(RoomDto other) {
+		if (other == null)
+			return 1;
+		return code.compareTo(other.getCode());
 	}
 
 	@JsonIgnore

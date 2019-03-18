@@ -140,6 +140,27 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Go for it ...")
 	String tasksSubTitle();
 
+	@DefaultMessage("Start")
+	String taskBrowserStartLink();
+
+	@DefaultMessage("Pause")
+	String taskBrowserPauseLink();
+
+	@DefaultMessage("Finish")
+	String taskBrowserCompleteLink();
+
+	@DefaultMessage("Reassign")
+	String taskBrowserReassignLink();
+
+	@DefaultMessage("Modify")
+	String taskBrowserModifyLink();
+
+	@DefaultMessage("Delete")
+	String taskBrowserDeleteLink();
+
+	@DefaultMessage("Back")
+	String taskBrowserBackLink();
+
 
 	/*
 	 * TASKS FILTER

@@ -61,6 +61,11 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 		this.taskRepository = taskRepository;
 		this.modelMapper = modelMapper;
 	}
+	@Override
+	public Room create(Room entity) throws Throwable {
+		entity.setRoomStatus(RoomStatus.DIRTY);
+		return super.create(entity);
+	}
 
 	@Override
 	public List<Room> getActiveRoomsByHotel(String hotelKey) {

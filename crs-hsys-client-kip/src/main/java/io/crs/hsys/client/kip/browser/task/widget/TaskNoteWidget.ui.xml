@@ -7,7 +7,7 @@
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	</ui:style>
 
-	<m:MaterialRow marginBottom="10">
+	<m:MaterialRow ui:field="panel" marginBottom="10">
 		<m:MaterialColumn grid="s3" padding="0">
 			<g:Label ui:field="created" />
 		</m:MaterialColumn>
