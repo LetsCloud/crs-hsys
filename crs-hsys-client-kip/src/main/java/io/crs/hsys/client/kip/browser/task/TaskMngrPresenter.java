@@ -5,8 +5,10 @@ package io.crs.hsys.client.kip.browser.task;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
@@ -27,6 +29,7 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
@@ -54,7 +57,6 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 	public static final SingleSlot<PresenterWidget<?>> FILTER_SLOT = new SingleSlot<>();
 
-	private final EventBus eventBus;
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<TaskResource> resourceDelegate;
 	private KipMessages i18n;
@@ -66,7 +68,6 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 			KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("TaskMngrPresenter()");
-		this.eventBus = eventBus;
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createTasksFilter();
@@ -94,8 +95,10 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 
 		resourceDelegate.withCallback(new AsyncCallback<List<TaskDto>>() {
 			@Override
-			public void onSuccess(List<TaskDto> dto) {
-				getView().setTasks(dto);
+			public void onSuccess(List<TaskDto> result) {
+				getView().setTasks(
+						result.stream().sorted(Comparator.comparing(TaskDto::getRoom).thenComparing(TaskDto::getKind))
+								.collect(Collectors.toList()));
 			}
 
 			@Override
@@ -105,16 +108,22 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		}).list();
 	}
 
-	@Override
-	public void create() {
-		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
-		placeManager.revealPlace(placeBuilder.build());
+	private void changeTaskStatus(String webSafeKey, TaskStatus status) {
+		resourceDelegate.withCallback(new AsyncCallback<TaskDto>() {
+			@Override
+			public void onSuccess(TaskDto result) {
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+//				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
+			}
+		}).changeTaskStatus(webSafeKey, status);
 	}
 
 	@Override
-	public void modify(String webSafeKey) {
+	public void create() {
 		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
-		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
 		placeManager.revealPlace(placeBuilder.build());
 	}
 
@@ -125,13 +134,18 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		case CREATE:
 			break;
 		case START:
+			logger.info("onTaskActionEvent().onTaskActionEvent()->START");
+			changeTaskStatus(event.getTask().getWebSafeKey(), TaskStatus.TS_IN_PROGRESS);
 			break;
 		case PAUSE:
+			logger.info("onTaskActionEvent().onTaskActionEvent()->PAUSE");
+			changeTaskStatus(event.getTask().getWebSafeKey(), TaskStatus.TS_DEFFERED);
 			break;
 		case COMPLETE:
+			logger.info("onTaskActionEvent().onTaskActionEvent()->COMPLETE");
+			changeTaskStatus(event.getTask().getWebSafeKey(), TaskStatus.TS_COMPLETED);
 			break;
 		case EDIT:
-			logger.info("onTaskActionEvent().onTaskActionEvent()->EDIT");
 			modify(event.getTask().getWebSafeKey());
 			break;
 		case DELETE:
@@ -139,5 +153,12 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void modify(String webSafeKey) {
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
+		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
+		placeManager.revealPlace(placeBuilder.build());
 	}
 }

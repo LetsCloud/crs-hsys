@@ -24,10 +24,12 @@ public class DateUtils {
 	public static final long YEAR_IN_MILISEC = 31536000000l;
 
 	public static Date mergeDateAndTime(Date date, Date time) {
-		if (date == null) return time;
-		if (time == null) return date;
+		if (date == null)
+			return time;
+		if (time == null)
+			return date;
 
-		long daysInDate = date.getTime() / DAY_IN_MILISEC;
+		long daysInDate = (date.getTime() / DAY_IN_MILISEC) + 1;
 		date.setTime(daysInDate * DAY_IN_MILISEC);
 
 		long daysInTime = time.getTime() / DAY_IN_MILISEC;

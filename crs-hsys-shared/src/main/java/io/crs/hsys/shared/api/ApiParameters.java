@@ -23,6 +23,7 @@ public class ApiParameters {
     public static final String ONLY_ACTIVE = "onlyActive";
     public static final String SEL_INV_TYPE = "inventoryType";
     public static final String ROOM_STATUS = "roomStatus";
+    public static final String TASK_STATUS = "taskStatus";
     public static final String STAY_DATE = "stayDate";
 
     public static final String WEBSAFEKEY = "webSafeKey";

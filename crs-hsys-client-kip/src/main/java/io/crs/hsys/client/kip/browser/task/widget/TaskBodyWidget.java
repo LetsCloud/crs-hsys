@@ -101,9 +101,11 @@ public class TaskBodyWidget extends Composite {
 			return;
 		}
 
+		Boolean isEven = true;
 		for (TaskNoteDto note : notes) {
 			TaskNoteWidget nw = taskNoteWidgetProvider.get();
 			nw.setNote(note);
+			if (isEven)
 			notesPanel.add(nw);
 		}
 		notesPanel.setVisible(true);

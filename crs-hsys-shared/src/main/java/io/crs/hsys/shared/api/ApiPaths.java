@@ -39,6 +39,7 @@ public class ApiPaths {
 		public static final String ADD_POST = "/addPost";
 
 		public static final String TASK = "/task";
+		public static final String TASK_STATUS_CHANGE = "taskStatusChange";
 		public static final String TASK_TYPE = "/taskType";
 		public static final String TASK_GROUP = "/taskGroup";
 		public static final String TASK_TODO = "/taskTodo";

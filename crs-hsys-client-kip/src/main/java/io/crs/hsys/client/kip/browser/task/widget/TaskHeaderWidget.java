@@ -32,6 +32,7 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.browser.task.TaskActionEvent;
 import io.crs.hsys.client.kip.browser.task.TaskActionEvent.TaskAction;
+import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.constans.TaskStatus;
@@ -64,7 +65,7 @@ public class TaskHeaderWidget extends Composite {
 	MaterialIcon menuIcon, taskKind, taskStatus;
 
 	@UiField
-	MaterialDropDown<?> menuDropDown;
+	MaterialDropDown menuDropDown;
 
 	@UiField
 	MaterialLabel title, elapsed;
@@ -74,15 +75,17 @@ public class TaskHeaderWidget extends Composite {
 
 	private final EventBus eventBus;
 	private final CurrentUser currentUser;
+	private final KipMessages i18n;
 
 	/**
 	 */
 	@Inject
-	TaskHeaderWidget(Binder uiBinder, EventBus eventBus, CurrentUser currentUser) {
+	TaskHeaderWidget(Binder uiBinder, EventBus eventBus, CurrentUser currentUser, KipMessages i18n) {
 		logger.info("TaskHeaderWidget2()");
 		initWidget(uiBinder.createAndBindUi(this));
 		this.eventBus = eventBus;
 		this.currentUser = currentUser;
+		this.i18n = i18n;
 		iniView();
 	}
 
@@ -103,26 +106,43 @@ public class TaskHeaderWidget extends Composite {
 		return link;
 	}
 
-	private MaterialLink createStartLink() {
-		return createDropDownLink("Indít", IconType.PLAY_ARROW);
+	private MaterialLink createStartLink(TaskDto task) {
+		MaterialLink link = createDropDownLink(i18n.taskBrowserStartLink(), IconType.PLAY_ARROW);
+		link.addClickHandler(event -> {
+			event.preventDefault();
+			event.stopPropagation();
+			eventBus.fireEvent(new TaskActionEvent(TaskAction.START, task));
+		});
+		return link;
 	}
 
-	private MaterialLink createPauseLink() {
-		return createDropDownLink("Szünetelet", IconType.PAUSE);
+	private MaterialLink createPauseLink(TaskDto task) {
+		MaterialLink link = createDropDownLink(i18n.taskBrowserPauseLink(), IconType.PAUSE);
+		link.addClickHandler(event -> {
+			event.preventDefault();
+			event.stopPropagation();
+			eventBus.fireEvent(new TaskActionEvent(TaskAction.PAUSE, task));
+		});
+		return link;
 	}
 
-	private MaterialLink createCompleteLink() {
-		return createDropDownLink("Befejez", IconType.DONE);
+	private MaterialLink createCompleteLink(TaskDto task) {
+		MaterialLink link = createDropDownLink(i18n.taskBrowserCompleteLink(), IconType.DONE);
+		link.addClickHandler(event -> {
+			event.preventDefault();
+			event.stopPropagation();
+			eventBus.fireEvent(new TaskActionEvent(TaskAction.COMPLETE, task));
+		});
+		return link;
 	}
 
 	private MaterialLink createReassignLink() {
-		return createDropDownLink("Átoszt", IconType.SYNC);
+		return createDropDownLink(i18n.taskBrowserReassignLink(), IconType.SYNC);
 	}
 
 	private MaterialLink createModifyLink(TaskDto task) {
-		MaterialLink link = createDropDownLink("Módosít", IconType.EDIT);
+		MaterialLink link = createDropDownLink(i18n.taskBrowserModifyLink(), IconType.EDIT);
 		link.addClickHandler(event -> {
-			logger.info("TaskHeaderWidget2().onModifyClick()");
 			event.preventDefault();
 			event.stopPropagation();
 			eventBus.fireEvent(new TaskActionEvent(TaskAction.EDIT, task));
@@ -131,11 +151,11 @@ public class TaskHeaderWidget extends Composite {
 	}
 
 	private MaterialLink createDeleteLink() {
-		return createDropDownLink("Töröl", IconType.DELETE);
+		return createDropDownLink(i18n.taskBrowserDeleteLink(), IconType.DELETE);
 	}
 
 	private MaterialLink createBackLink() {
-		return createDropDownLink("Vissza", IconType.KEYBOARD_RETURN);
+		return createDropDownLink(i18n.taskBrowserBackLink(), IconType.KEYBOARD_RETURN);
 	}
 
 	private void buildReporterDropDown(TaskDto task) {
@@ -161,18 +181,18 @@ public class TaskHeaderWidget extends Composite {
 		}
 	}
 
-	private void buildAssigneeDropDown(TaskStatus status) {
-		switch (status) {
+	private void buildAssigneeDropDown(TaskDto task) {
+		switch (task.getStatus()) {
 		case TS_NOT_STARTED:
-			menuDropDown.add(createStartLink());
+			menuDropDown.add(createStartLink(task));
 			break;
 		case TS_IN_PROGRESS:
-			menuDropDown.add(createPauseLink());
-			menuDropDown.add(createCompleteLink());
+			menuDropDown.add(createPauseLink(task));
+			menuDropDown.add(createCompleteLink(task));
 			break;
 		case TS_DEFFERED:
-			menuDropDown.add(createStartLink());
-			menuDropDown.add(createCompleteLink());
+			menuDropDown.add(createStartLink(task));
+			menuDropDown.add(createCompleteLink(task));
 			break;
 		case TS_COMPLETED:
 			break;
@@ -206,7 +226,7 @@ public class TaskHeaderWidget extends Composite {
 
 		if (task.getAssignee() != null) {
 			if (task.getAssignee().getCode().equals(currentUser.getAppUserDto().getCode())) {
-				buildAssigneeDropDown(task.getStatus());
+				buildAssigneeDropDown(task);
 			}
 		}
 		menuDropDown.add(createBackLink());
