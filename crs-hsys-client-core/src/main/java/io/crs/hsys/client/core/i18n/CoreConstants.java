@@ -17,6 +17,10 @@ public interface CoreConstants extends Constants {
 
 	Map<String, String> taskKindMap();
 
+	Map<String, String> taskStatusMap();
+
+	Map<String, String> taskNoteTypeMap();
+
 	Map<String, String> profileTypeMap();
 
 	Map<String, String> communicationModeMap();

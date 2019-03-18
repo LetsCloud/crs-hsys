@@ -24,7 +24,6 @@ import gwt.material.design.client.events.ExpandEvent;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialProgress;
-import io.crs.hsys.client.kip.tasks.widget.TaskWidget2;
 import io.crs.hsys.client.kip.ui.MaterialCollapsible2.HasCollapsibleParent;
 
 /**
@@ -33,7 +32,7 @@ import io.crs.hsys.client.kip.ui.MaterialCollapsible2.HasCollapsibleParent;
  */
 public class MaterialCollapsibleItem2 extends AbstractButton
 		implements HasWidgets, HasCollapsibleParent, HasProgress, HasActive {
-	private static Logger logger = Logger.getLogger(TaskWidget2.class.getName());
+	private static Logger logger = Logger.getLogger(MaterialCollapsibleItem2.class.getName());
 
 	private boolean active;
 	private MaterialCollapsible2 parent;

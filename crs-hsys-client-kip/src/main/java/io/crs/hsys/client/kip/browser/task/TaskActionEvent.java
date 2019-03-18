@@ -1,10 +1,12 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.tasks;
+package io.crs.hsys.client.kip.browser.task;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.user.client.ui.Widget;
 
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -20,9 +22,11 @@ public class TaskActionEvent extends GwtEvent<TaskActionEvent.TaskActionEventHan
 	}
 
 	public interface TaskActionEventHandler extends EventHandler {
-
 		public void onTaskActionEvent(TaskActionEvent event);
+	}
 
+	public interface HasTaskActionEventHandlers extends HasHandlers {
+		public HandlerRegistration addHasChangeColorEventHandler(TaskActionEventHandler handler);
 	}
 
 	public static Type<TaskActionEventHandler> TYPE = new Type<TaskActionEventHandler>();
@@ -34,10 +38,13 @@ public class TaskActionEvent extends GwtEvent<TaskActionEvent.TaskActionEventHan
 	public TaskActionEvent() {
 	}
 
-	public TaskActionEvent(TaskAction action, TaskDto task, Widget source) {
+	public TaskActionEvent(TaskAction action, TaskDto task) {
 		this.action = action;
 		this.task = task;
-		this.source = source;
+	}
+
+	public static void fire(HasHandlers source, TaskAction action, TaskDto task) {
+		source.fireEvent(new TaskActionEvent(action, task));
 	}
 
 	public TaskAction getAction() {

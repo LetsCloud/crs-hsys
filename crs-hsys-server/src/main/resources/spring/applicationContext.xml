@@ -77,6 +77,7 @@
 		class="io.crs.hsys.server.service.ofy.TaskServiceImpl">
 		<constructor-arg ref="taskRepository" />
 		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="loggedInChecker" />
 	</bean>
 
 
@@ -134,6 +135,8 @@
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
 		<constructor-arg ref="reservationRepository" />
+		<constructor-arg ref="taskRepository" />
+		<constructor-arg ref="modelMapper" />
 	</bean>
 	<bean id="roomTypeService"
 		class="io.crs.hsys.server.service.ofy.RoomTypeServiceImpl">

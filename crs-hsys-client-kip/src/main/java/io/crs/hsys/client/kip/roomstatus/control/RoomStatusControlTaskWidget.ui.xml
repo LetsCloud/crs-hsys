@@ -7,7 +7,7 @@
 	xmlns:ma="urn:import:gwt.material.design.addins.client">
 
 	<ui:style
-		type="io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllTaskWidget.MyStyle"
+		type="io.crs.hsys.client.kip.roomstatus.control.RoomStatusControlTaskWidget.MyStyle"
 		gss="true">
 		.room-status-item {
 			line-height: inherit !important;
@@ -91,8 +91,8 @@
 		<m:MaterialCollection ui:field="toDoList"
 			margin="0" />
 
-		<m:MaterialDropDown ui:field="dropDown" activator="dp-menu"
-			constrainWidth="false">
+		<m:MaterialDropDown ui:field="dropDown"
+			activator="dp-menu" constrainWidth="false">
 			<m:MaterialLink iconType="EDIT" iconPosition="LEFT"
 				text="Módosít" textColor="WHITE" backgroundColor="GREY_DARKEN_2" />
 			<m:MaterialLink iconType="DELETE" iconPosition="LEFT"

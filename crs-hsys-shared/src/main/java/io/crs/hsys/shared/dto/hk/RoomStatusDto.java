@@ -5,6 +5,7 @@ package io.crs.hsys.shared.dto.hk;
 
 import java.util.List;
 
+import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomOccDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -13,7 +14,8 @@ import io.crs.hsys.shared.dto.task.TaskDto;
  * @author robi
  *
  */
-public class RoomStatusDto {
+@SuppressWarnings("serial")
+public class RoomStatusDto extends HotelChildDto {
 
 	private RoomDto room;
 
@@ -29,7 +31,12 @@ public class RoomStatusDto {
 
 	private List<TaskDto> tasks;
 
+	public RoomStatusDto() {
+		super();
+	}
+
 	protected RoomStatusDto(Builder<?> builder) {
+		super(builder);
 		room = builder.room;
 		currOccStatus = builder.currOccStatus;
 		nextOccStatus = builder.nextOccStatus;
@@ -68,9 +75,7 @@ public class RoomStatusDto {
 		this.tasks = tasks;
 	}
 
-	public static abstract class Builder<T extends Builder<T>> {
-
-		protected abstract T self();
+	public static abstract class Builder<T extends Builder<T>> extends HotelChildDto.Builder<T> {
 
 		private RoomDto room;
 		private RoomOccDto currOccStatus;

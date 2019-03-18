@@ -19,7 +19,6 @@ import io.crs.hsys.shared.dto.hotel.RoomDto;
  */
 @SuppressWarnings("serial")
 public class TaskDto extends AccountChildDto {
-
 	private TaskKind kind;
 	private TaskTypeDto type;
 	private Date created;
@@ -143,6 +142,13 @@ public class TaskDto extends AccountChildDto {
 		this.dueDate = dueDate;
 	}
 
+	@Override
+	public String toString() {
+		return "TaskDto [kind=" + kind + ", type=" + type + ", created=" + created + ", updated=" + updated
+				+ ", status=" + status + ", description=" + description + ", reporter=" + reporter + ", assignee="
+				+ assignee + ", room=" + room + ", dueDate=" + dueDate + ", notes=" + notes + "]";
+	}
+
 	/**
 	 * 
 	 * @author robi
@@ -233,5 +239,4 @@ public class TaskDto extends AccountChildDto {
 	public static Builder<?> builder() {
 		return new Builder2();
 	}
-
 }

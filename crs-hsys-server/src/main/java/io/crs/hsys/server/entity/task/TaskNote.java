@@ -1,36 +1,36 @@
 /**
  * 
  */
-package io.crs.hsys.shared.dto.task;
+package io.crs.hsys.server.entity.task;
 
 import java.util.Date;
 
+import com.googlecode.objectify.Ref;
+
+import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.shared.constans.TaskNoteType;
-import io.crs.hsys.shared.dto.Dto;
-import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**
  * @author robi
  *
  */
-@SuppressWarnings("serial")
-public class TaskNoteDto implements Dto {
+public class TaskNote {
 	private Date created;
-	private AppUserDtor user;
+	private Ref<AppUser> user;
 	private TaskNoteType type;
 	private String text;
 
-	public TaskNoteDto() {
+	public TaskNote() {
 	}
 
-	public TaskNoteDto(Date created, AppUserDtor user, TaskNoteType type) {
+	public TaskNote(Date created, AppUser user, TaskNoteType type) {
 		this();
 		this.created = created;
-		this.user = user;
+		setUser(user);
 		this.type = type;
 	}
 
-	public TaskNoteDto(Date created, AppUserDtor user, TaskNoteType type, String text) {
+	public TaskNote(Date created, AppUser user, TaskNoteType type, String text) {
 		this(created, user, type);
 		this.text = text;
 	}
@@ -43,12 +43,15 @@ public class TaskNoteDto implements Dto {
 		this.created = created;
 	}
 
-	public AppUserDtor getUser() {
-		return user;
+	public AppUser getUser() {
+		if (user == null)
+			return null;
+		return user.get();
 	}
 
-	public void setUser(AppUserDtor user) {
-		this.user = user;
+	public void setUser(AppUser user) {
+		if (user.getId() != null)
+			this.user = Ref.create(user);
 	}
 
 	public TaskNoteType getType() {
@@ -69,6 +72,7 @@ public class TaskNoteDto implements Dto {
 
 	@Override
 	public String toString() {
-		return "TaskNoteDto [created=" + created + ", user=" + user + ", type=" + type + ", text=" + text + "]";
+		return "TaskNote [created=" + created + ", user=" + user + ", type=" + type + ", text=" + text + "]";
 	}
+
 }

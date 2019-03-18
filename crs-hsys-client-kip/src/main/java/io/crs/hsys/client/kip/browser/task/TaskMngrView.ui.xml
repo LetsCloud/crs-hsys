@@ -19,7 +19,7 @@
 	}
 	</ui:style>
 
-	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+	<m:MaterialPanel addStyleNames="{style.contentPanel}">
 		<g:SimplePanel ui:field="filterPanel"
 			addStyleNames="{style.filterPanel}" />
 		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
@@ -33,5 +33,5 @@
 				type="FLOATING" backgroundColor="BLUE" iconType="ADD" size="LARGE" />
 		</m:MaterialFAB>
 
-	</g:HTMLPanel>
+	</m:MaterialPanel>
 </ui:UiBinder> 

@@ -244,7 +244,6 @@ public class AppUser extends AccountChild {
 	}
 
 	public void setAvailableHotels(List<Hotel> accessibleHotels) {
-//		logger.info("setAvailableHotels()");
 		ArrayList<Ref<Hotel>> list = new ArrayList<Ref<Hotel>>();
 		for (Hotel hotel : accessibleHotels) {
 			list.add(Ref.create(hotel));

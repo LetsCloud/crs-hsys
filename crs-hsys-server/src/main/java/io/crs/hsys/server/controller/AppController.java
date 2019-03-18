@@ -27,6 +27,7 @@ import io.crs.hsys.server.model.Registration;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.server.service.AppUserService;
+import io.crs.hsys.server.service.RoomService;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -42,21 +43,23 @@ public class AppController {
 
 	private final AppUserService appUserService;
 
+	private final RoomService roomService;
+
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Autowired
-	AppController(AccountService accountService, AppUserService appUserService,
+	AppController(AccountService accountService, AppUserService appUserService, RoomService roomService,
 			ApplicationEventPublisher eventPublisher) {
 		this.accountService = accountService;
 		this.appUserService = appUserService;
+		this.roomService = roomService;
 		this.eventPublisher = eventPublisher;
 	}
 
-
-    @ModelAttribute(value = "globalConfig")
-    public GlobalConfig construct() {
-        return new GlobalConfig();
-    }
+	@ModelAttribute(value = "globalConfig")
+	public GlobalConfig construct() {
+		return new GlobalConfig();
+	}
 
 	@RequestMapping("/signup")
 	public String signup(Model model) {
@@ -115,6 +118,18 @@ public class AppController {
 	public Boolean resetPsw(@PathVariable String token) {
 		try {
 			appUserService.resetPsw(token);
+			return true;
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@RequestMapping(value = "/resetRoomStatus/{token}", method = GET)
+	@ResponseBody
+	public Boolean resetRoomStatus(@PathVariable String token) {
+		try {
+			roomService.resetRoomStatus(token);
 			return true;
 		} catch (Throwable e) {
 			e.printStackTrace();

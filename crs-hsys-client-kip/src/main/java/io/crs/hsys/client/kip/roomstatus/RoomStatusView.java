@@ -90,7 +90,7 @@ public class RoomStatusView extends ViewWithUiHandlers<RoomStatusUiHandlers>
 				@Override
 				public void onEdit(RoomStatusEditEvent event) {
 					logger.log(Level.INFO, "RoomStatusWidget().onEdit()");
-					getUiHandlers().onEdit(event.getRoomStatusDto(), event.getAdmin());
+					getUiHandlers().onEdit(event.getRoomStatusDto().getRoom().getWebSafeKey());
 				}
 			});
 			collection.add(rsi);

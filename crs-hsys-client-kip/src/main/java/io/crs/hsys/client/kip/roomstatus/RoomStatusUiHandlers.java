@@ -5,5 +5,5 @@ import com.gwtplatform.mvp.client.UiHandlers;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 public interface RoomStatusUiHandlers extends UiHandlers {
-	void onEdit(RoomStatusDto dto, Boolean admin);
+	void onEdit(String webSafeKey);
 }

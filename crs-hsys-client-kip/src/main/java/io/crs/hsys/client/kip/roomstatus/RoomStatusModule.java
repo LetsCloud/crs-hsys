@@ -5,7 +5,7 @@ package io.crs.hsys.client.kip.roomstatus;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllModule;
+import io.crs.hsys.client.kip.roomstatus.control.RoomStatusControlModule;
 
 /**
  * @author CR
@@ -18,6 +18,6 @@ public class RoomStatusModule extends AbstractPresenterModule {
 		bindPresenter(RoomStatusPresenter.class, RoomStatusPresenter.MyView.class, RoomStatusView.class,
 				RoomStatusPresenter.MyProxy.class);
 
-		install(new RoomStatusControllModule());
+		install(new RoomStatusControlModule());
 	}
 }

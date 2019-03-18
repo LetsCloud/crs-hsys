@@ -40,6 +40,7 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.constans.TaskStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
@@ -125,6 +126,7 @@ public class TaskEditorPresenter
 				if ((appUserDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -147,6 +149,7 @@ public class TaskEditorPresenter
 				if ((taskTypeDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -163,6 +166,7 @@ public class TaskEditorPresenter
 				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.getIsLoaded()))
 					start();
 			}
+
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -188,6 +192,7 @@ public class TaskEditorPresenter
 	@Override
 	protected TaskDto createDto() {
 		TaskDto dto = new TaskDto();
+		dto.setStatus(TaskStatus.TS_NOT_STARTED);
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		if (filters.containsKey(PARAM_KIND))
 			dto.setKind(TaskKind.valueOf(filters.get(PARAM_KIND)));

@@ -1,8 +1,9 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.roomstatus.controll;
+package io.crs.hsys.client.kip.roomstatus.control;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,10 +11,9 @@ import javax.inject.Inject;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -24,11 +24,10 @@ import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialIcon;
-
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.UserPerm;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
@@ -36,14 +35,14 @@ import io.crs.hsys.shared.dto.task.TaskDto;
  * @author robi
  *
  */
-public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControllUiHandlers>
-		implements RoomStatusControllPresenter.MyView {
-	private static Logger logger = Logger.getLogger(RoomStatusControllView.class.getName());
+public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlUiHandlers>
+		implements RoomStatusControlPresenter.MyView {
+	private static Logger logger = Logger.getLogger(RoomStatusControlView.class.getName());
 
 	public static final ImmutableList<UserPerm> ADMIN_PERM = ImmutableList.of(UserPerm.UP_HKSUPERVISOR,
 			UserPerm.UP_HKSUPERVISOR);
 
-	interface Binder extends UiBinder<HTMLPanel, RoomStatusControllView> {
+	interface Binder extends UiBinder<HTMLPanel, RoomStatusControlView> {
 	}
 
 	@UiField
@@ -65,39 +64,40 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	@UiField
 	MaterialCollection collection;
 
+	HandlerRegistration dirtyHandlerRegistration, cleanHandlerRegistration, inspectedHandlerRegistration;
+
+	private final CurrentUser currentUser;
+
 	@Inject
-	RoomStatusControllView(Binder binder) {
-		logger.log(Level.INFO, "RoomStatusControllView()");
+	RoomStatusControlView(Binder binder, CurrentUser currentUser) {
+		logger.log(Level.INFO, "RoomStatusControlView()");
+
+		this.currentUser = currentUser;
+
 		initWidget(binder.createAndBindUi(this));
 		initCloseButton();
-		initButtons();
+		setButtonsStyle();
 	}
 
 	private void initCloseButton() {
 		btnClose.getIcon().getElement().getStyle().setFontSize(3, Unit.EM);
+		btnClose.addClickHandler(e -> getUiHandlers().navBack());
 	}
 
-	private void initButtons() {
-		initButton2(cleanButton, RoomStatusUtils.getStatusIcon2(RoomStatus.CLEAN));
-		initButton2(inspectButton, RoomStatusUtils.getStatusIcon2(RoomStatus.INSPECTED));
-		initButton2(dirtyButton, RoomStatusUtils.getStatusIcon2(RoomStatus.DIRTY));
-		initButton2(showButton, RoomStatusUtils.getStatusIcon2(RoomStatus.SHOW));
-		initButton2(oosButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOS));
-		initButton2(oooButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOO));
+	private void setButtonsStyle() {
+		setButtonStyle(cleanButton, RoomStatusUtils.getStatusIcon2(RoomStatus.CLEAN));
+		setButtonStyle(inspectButton, RoomStatusUtils.getStatusIcon2(RoomStatus.INSPECTED));
+		setButtonStyle(dirtyButton, RoomStatusUtils.getStatusIcon2(RoomStatus.DIRTY));
+		setButtonStyle(showButton, RoomStatusUtils.getStatusIcon2(RoomStatus.SHOW));
+		setButtonStyle(oosButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOS));
+		setButtonStyle(oooButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOO));
 
-		initButton2(minibarButton, IconType.KITCHEN);
-		initButton2(chatButton, IconType.CHAT);
-		initButton2(addTaskButton, IconType.PLAYLIST_ADD);
+		setButtonStyle(minibarButton, IconType.KITCHEN);
+		setButtonStyle(chatButton, IconType.CHAT);
+		setButtonStyle(addTaskButton, IconType.PLAYLIST_ADD);
 	}
 
-	private void initButton(MaterialButton button) {
-		button.setHeight("100px");
-		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
-		button.getIcon().getElement().getStyle().setMargin(0, Unit.PX);
-		button.getElement().getStyle().setMargin(5, Unit.PX);
-	}
-
-	private void initButton2(MaterialButton2 button, IconType iconType) {
+	private void setButtonStyle(MaterialButton2 button, IconType iconType) {
 		button.setHeight("110px");
 		button.setIconType(iconType);
 		button.getIcon().getElement().getStyle().setFontSize(6, Unit.EM);
@@ -107,61 +107,80 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 		button.getElement().getStyle().setMargin(5, Unit.PX);
 	}
 
-	private void reinitButtons() {
-		reinitButton2(cleanButton);
-		reinitButton2(inspectButton);
-		reinitButton2(dirtyButton);
-		reinitButton2(showButton);
-		reinitButton2(oosButton);
-		reinitButton2(oooButton);
-
-		reinitButton2(minibarButton);
-//		reinitButton(chatButton);
-//		reinitButton(addTaskButton);		
-	}
-
-	private void reinitButton(MaterialButton button) {
-		button.setVisible(false);
-	}
-
-	private void reinitButton2(MaterialButton2 button) {
-		button.setVisible(false);
-	}
-
 	@Override
-	public void open(RoomStatusDto dto, AppUserDto currentUser) {
+	public void open(RoomStatusDto dto) {
 		logger.log(Level.INFO, "RoomStatusControllView().open()");
-
-		overlay.setBackgroundColor(RoomStatusUtils.getStatusBgColor(dto.getRoom().getRoomStatus()));
-		reinitButtons();
-		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(dto.getRoom().getRoomStatus()));
-		statusIcon.setIconColor(RoomStatusUtils.getStatusIconColor(dto.getRoom().getRoomStatus()));
-//		statusIcon.setText(dto.getRoom().getCode());
-//		statusIcon.setTextColor(Color.WHITE);
-
-		roomNoLabel.setText(dto.getRoom().getCode());
-
-		Boolean oddLine = false;
-		collection.clear();
-		for (TaskDto task : dto.getTasks()) {
-			Boolean ownedBy = false;
-			if (task.getReporter() != null)
-				ownedBy = task.getReporter().getCode().equals(currentUser.getCode());
-			Boolean assignedTo = false;
-			if (task.getAssignee() != null)
-				assignedTo = task.getAssignee().getCode().equals(currentUser.getCode());
-			collection.add(new RoomStatusControllTaskWidget(ownedBy, assignedTo, task, oddLine));
-			oddLine = !oddLine;
-		}
-		logger.log(Level.INFO, "RoomStatusControllView().open()-2");
-
-		initButtons(currentUser.getPermissions().get(0), dto.getRoom().getRoomStatus());
-		logger.log(Level.INFO, "RoomStatusControllView().open()-3");
-
+		setClickHandlers(dto.getRoom().getWebSafeKey());
+		setRoomStatus(dto);
 		overlay.open();
 	}
 
-	private void initButtons(UserPerm permission, RoomStatus roomStatus) {
+	@Override
+	public void setRoomStatus(RoomStatusDto dto) {
+		logger.log(Level.INFO, "RoomStatusControllView().setRoomStatus()");
+		overlay.setBackgroundColor(RoomStatusUtils.getStatusBgColor(dto.getRoom().getRoomStatus()));
+		hideButtons();
+		statusIcon.setIconType(RoomStatusUtils.getStatusIcon2(dto.getRoom().getRoomStatus()));
+		statusIcon.setIconColor(RoomStatusUtils.getStatusIconColor(dto.getRoom().getRoomStatus()));
+
+		roomNoLabel.setText(dto.getRoom().getCode());
+
+		setTasks(dto.getTasks());
+
+		configButtons(currentUser.getAppUserDto().getPermissions().get(0), dto.getRoom().getRoomStatus());
+	}
+
+	private void hideButtons() {
+		hideButton(cleanButton);
+		hideButton(inspectButton);
+		hideButton(dirtyButton);
+		hideButton(showButton);
+		hideButton(oosButton);
+		hideButton(oooButton);
+
+		hideButton(minibarButton);
+	}
+
+	private void hideButton(MaterialButton2 button) {
+		button.setVisible(false);
+	}
+
+	private void setClickHandlers(String roomKey) {
+		if (dirtyHandlerRegistration != null)
+			dirtyButton.removeHandler(dirtyHandlerRegistration);
+
+		if (cleanHandlerRegistration != null)
+			cleanButton.removeHandler(cleanHandlerRegistration);
+
+		if (inspectedHandlerRegistration != null)
+			inspectButton.removeHandler(inspectedHandlerRegistration);
+
+		dirtyHandlerRegistration = dirtyButton.addClickHandler(e -> getUiHandlers().makeDirty(roomKey));
+		cleanHandlerRegistration = cleanButton.addClickHandler(e -> getUiHandlers().makeClean(roomKey));
+		inspectedHandlerRegistration = inspectButton.addClickHandler(e -> getUiHandlers().makeInspected(roomKey));
+	}
+
+	private void setTasks(List<TaskDto> tasks) {
+		if (tasks == null)
+			return;
+		Boolean oddLine = false;
+		collection.clear();
+		for (TaskDto task : tasks) {
+			Boolean ownedBy = false;
+			if (task.getReporter() != null)
+				ownedBy = task.getReporter().getCode().equals(currentUser.getAppUserDto().getCode());
+			Boolean assignedTo = false;
+			if (task.getAssignee() != null)
+				assignedTo = task.getAssignee().getCode().equals(currentUser.getAppUserDto().getCode());
+			collection.add(new RoomStatusControlTaskWidget(ownedBy, assignedTo, task, oddLine));
+			oddLine = !oddLine;
+		}
+	}
+
+	private void configButtons(UserPerm permission, RoomStatus roomStatus) {
+		if (roomStatus == null)
+			return;
+
 		switch (permission) {
 		case UP_HKSUPERVISOR:
 			setHkSvButtons(roomStatus);
@@ -188,6 +207,9 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void setHkSvButtons(RoomStatus roomStatus) {
+		if (roomStatus == null)
+			return;
+
 		switch (roomStatus) {
 		case DIRTY:
 			cleanButton.setVisible(true);
@@ -232,6 +254,9 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void setHkButtons(RoomStatus roomStatus) {
+		if (roomStatus == null)
+			return;
+
 		switch (roomStatus) {
 		case DIRTY:
 			cleanButton.setVisible(true);
@@ -252,6 +277,9 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void setReceptionButtons(RoomStatus roomStatus) {
+		if (roomStatus == null)
+			return;
+
 		switch (roomStatus) {
 		case DIRTY:
 			oooButton.setVisible(true);
@@ -285,11 +313,6 @@ public class RoomStatusControllView extends ViewWithUiHandlers<RoomStatusControl
 	}
 
 	private void setCommonButtons(RoomStatus roomStatus) {
-	}
-
-	@UiHandler("btnClose")
-	public void onCloseClick(ClickEvent event) {
-		close();
 	}
 
 	@Override

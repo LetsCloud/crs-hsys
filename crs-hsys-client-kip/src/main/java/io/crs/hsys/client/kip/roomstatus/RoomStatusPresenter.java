@@ -3,13 +3,17 @@
  */
 package io.crs.hsys.client.kip.roomstatus;
 
+import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.PresenterWidget;
@@ -17,19 +21,21 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.i18n.KipMessages;
-import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenter;
-import io.crs.hsys.client.kip.roomstatus.controll.RoomStatusControllPresenterFactory;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.search.SearchPresenterFactory;
 import io.crs.hsys.client.kip.search.roomstatus.RoomStatusSearchPresenter;
+import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.OccStatus;
 import io.crs.hsys.shared.constans.RoomStatus;
@@ -67,22 +73,27 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	interface MyProxy extends ProxyPlace<RoomStatusPresenter> {
 	}
 
+	private final PlaceManager placeManager;
+	private final ResourceDelegate<RoomResource> resourceDelegate;
 	private final RoomStatusSearchPresenter searchPresenter;;
 	private final RoomStatusFilterPresenter2 roomStatusfilter;
-	private final RoomStatusControllPresenter roomStatusControll;
+	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 
 	@Inject
-	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, SearchPresenterFactory searchFactory,
-			KipFilterPresenterFactory filterFactory, RoomStatusControllPresenterFactory factory, KipMessages i18n) {
+	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager,
+			ResourceDelegate<RoomResource> resourceDelegate, SearchPresenterFactory searchFactory,
+			KipFilterPresenterFactory filterFactory, CurrentUser currentUser, KipMessages i18n) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 
-		searchPresenter = searchFactory.createRoomStatusSearch();
-		roomStatusfilter = filterFactory.createRoomStatusFilter();
-		roomStatusControll = factory.createRoomStatusControllPresenter();
+		this.placeManager = placeManager;
+		this.resourceDelegate = resourceDelegate;
+		this.searchPresenter = searchFactory.createRoomStatusSearch();
+		this.roomStatusfilter = filterFactory.createRoomStatusFilter();
+		this.currentUser = currentUser;
 		this.i18n = i18n;
-		
+
 		getView().setUiHandlers(this);
 	}
 
@@ -91,7 +102,6 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		super.onBind();
 //		setInSlot(SEARCH_SLOT, searchPresenter);
 		setInSlot(FILTER_SLOT, roomStatusfilter);
-		setInSlot(EDITOR_SLOT, roomStatusControll);
 //		addRegisteredHandler(RoomStatusEditEvent.getType(), this);
 	}
 
@@ -99,7 +109,22 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	protected void onReveal() {
 		logger.log(Level.INFO, "onReveal()");
 		SetPageTitleEvent.fire(i18n.roomStatusTitle(), i18n.roomStatusSubTitle(), MenuItemType.MENU_ITEM, this);
-		getView().loadData(loadData());
+		loadData2();
+	}
+
+	private void loadData2() {
+		resourceDelegate.withCallback(new AsyncCallback<List<RoomStatusDto>>() {
+			@Override
+			public void onSuccess(List<RoomStatusDto> result) {
+				result.sort((o1, o2) -> o1.getRoom().getCode().compareTo(o2.getRoom().getCode()));
+				getView().loadData(result);
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+//				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
+			}
+		}).getRoomStatusesByHotel(currentUser.getCurrentHotel().getWebSafeKey());
 	}
 
 	private List<RoomStatusDto> loadData() {
@@ -334,8 +359,10 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	}
 
 	@Override
-	public void onEdit(RoomStatusDto dto, Boolean admin) {
-		logger.log(Level.INFO, "RoomStatusPresenter().onEdit()->admin=" + admin);
-		roomStatusControll.open(dto);
+	public void onEdit(String webSafeKey) {
+		logger.log(Level.INFO, "RoomStatusPresenter().onEdit()");
+		Builder placeBuilder = new Builder().nameToken(KipNameTokens.ROOM_CONTROL);
+		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
+		placeManager.revealPlace(placeBuilder.build());
 	}
 }

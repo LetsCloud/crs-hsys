@@ -1,0 +1,47 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.dataGroupBox {
+		margin-top: 8px;
+		padding-left: 10px;
+		border-left: 3px solid #2196f3;
+	}
+	
+	.dataGroupTitle {
+		color: #2196f3;
+	}
+	
+	.todos {
+		font-size: 18px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<m:MaterialRow>
+			<m:MaterialColumn ui:field="descriptionPanel"
+				grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+				<g:Label text="Leírás"
+					addStyleNames="{style.dataGroupTitle}" />
+				<g:Label ui:field="description"
+					addStyleNames="{style.todos}" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn ui:field="todosPanel"
+				grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+				<g:Label text="Tennivalók"
+					addStyleNames="{style.dataGroupTitle}" />
+				<g:Label ui:field="todos" addStyleNames="{style.todos}" />
+			</m:MaterialColumn>
+
+			<m:MaterialColumn ui:field="notesPanel"
+				grid="s12 m6" addStyleNames="{style.dataGroupBox}">
+				<g:Label text="Idővonal"
+					addStyleNames="{style.dataGroupTitle}" />
+				<g:HTMLPanel ui:field="notes" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+	</g:HTMLPanel>
+</ui:UiBinder> 

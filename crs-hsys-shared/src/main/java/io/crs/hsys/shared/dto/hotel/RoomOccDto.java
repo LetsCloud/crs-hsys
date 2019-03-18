@@ -23,10 +23,14 @@ public class RoomOccDto implements Dto {
 	public RoomOccDto() {
 	}
 
-	public RoomOccDto(OccStatus status, GuestNumber guestNumber, String notice) {
+	public RoomOccDto(OccStatus status, GuestNumber guestNumber) {
 		this();
 		this.status = status;
 		this.guestNumber = guestNumber;
+	}
+
+	public RoomOccDto(OccStatus status, GuestNumber guestNumber, String notice) {
+		this(status, guestNumber);
 		this.notice = notice;
 	}
 
