@@ -25,6 +25,7 @@ import gwt.material.design.client.ui.MaterialCollapsibleHeader;
 import gwt.material.design.client.ui.MaterialCollapsibleItem;
 
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.kip.assignments.AssignmentsPresenter;
 import io.crs.hsys.client.kip.browser.task.widget.TaskBodyWidget;
 import io.crs.hsys.client.kip.browser.task.widget.TaskHeaderWidget;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -45,50 +46,12 @@ public class TaskMngrView extends ViewWithUiHandlers<TaskMngrUiHandlers> impleme
 	@UiField
 	MaterialCollapsible collapsible;
 
-	@UiField
-	MaterialButton addButton;
-
 	@Inject
-	Provider<TaskHeaderWidget> taskHeaderWidgetProvider;
-
-	@Inject
-	Provider<TaskBodyWidget> taskBodyWidgetProvider;
-
-	@Inject
-	TaskMngrView(Binder uiBinder, EventBus eventBus, CurrentUser currentUser) {
+	TaskMngrView(Binder uiBinder) {
 		logger.info("TaskMngrView()");
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(TaskMngrPresenter.FILTER_SLOT, filterPanel);
-	}
-
-	@Override
-	public void setTasks(List<TaskDto> tasks) {
-		collapsible.clear();
-		for (TaskDto task : tasks) {
-			MaterialCollapsibleItem<TaskDto> item = createItem();
-			
-			TaskHeaderWidget header = taskHeaderWidgetProvider.get();
-			header.setTask(task);
-			item.getHeader().add(header);
-
-			TaskBodyWidget body = taskBodyWidgetProvider.get();
-			body.setTask(task);
-			item.getBody().add(body);
-
-			collapsible.add(item);
-		}
-	}
-
-	private MaterialCollapsibleItem<TaskDto> createItem() {
-		MaterialCollapsibleItem<TaskDto> item = new MaterialCollapsibleItem<TaskDto>();
-		item.add(new MaterialCollapsibleHeader());
-		item.add(new MaterialCollapsibleBody());
-		item.getBody().setMarginTop(10);
-		item.getBody().setMarginLeft(15);
-		item.getBody().setMarginRight(15);
-		item.getBody().setMarginBottom(0);
-		item.getBody().setPadding(0);
-		return item;
+		bindSlot(TaskMngrPresenter.SLOT_TASKS, collapsible);				
 	}
 
 	@UiHandler("addButton")
