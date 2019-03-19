@@ -175,7 +175,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 		MaterialLink link = createDropDownLink(i18n.taskBrowserBackLink(), IconType.KEYBOARD_RETURN);
 		link.addClickHandler(event -> {
 			event.preventDefault();
-			event.stopPropagation();
+//			event.stopPropagation();			
 		});
 		return link;
 	}
@@ -183,7 +183,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 	private void buildReporterDropDown(TaskDto task) {
 		switch (task.getStatus()) {
 		case TS_NOT_STARTED:
-			if (currentUser.getAppUserDto().getPermissions().get(0).equals(UserPerm.UP_HKSUPERVISOR))
+			if (currentUser.getAppUserDto().getPermissions().contains(UserPerm.UP_HKSUPERVISOR))
 				menuDropDown.add(createReassignLink(task));
 			menuDropDown.add(createModifyLink(task));
 			menuDropDown.add(createDeleteLink());
@@ -191,7 +191,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 		case TS_IN_PROGRESS:
 			break;
 		case TS_DEFFERED:
-			if (currentUser.getAppUserDto().getPermissions().get(0).equals(UserPerm.UP_HKSUPERVISOR))
+			if (currentUser.getAppUserDto().getPermissions().contains(UserPerm.UP_HKSUPERVISOR))
 				menuDropDown.add(createReassignLink(task));
 			break;
 		case TS_COMPLETED:

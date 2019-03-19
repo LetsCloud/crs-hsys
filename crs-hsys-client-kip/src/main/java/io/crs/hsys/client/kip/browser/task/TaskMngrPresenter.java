@@ -3,8 +3,6 @@
  */
 package io.crs.hsys.client.kip.browser.task;
 
-import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -48,6 +46,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	private static Logger logger = Logger.getLogger(TaskMngrPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<TaskMngrUiHandlers> {
+		void clearTasksPanel();
 	}
 
 	@ProxyStandard
@@ -98,6 +97,7 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 			public void onSuccess(List<TaskDto> result) {
 				result = result.stream().sorted(Comparator.comparing(TaskDto::getRoom).thenComparing(TaskDto::getKind))
 						.collect(Collectors.toList());
+				getView().clearTasksPanel();
 				for (TaskDto task : result) {
 					TaskWidgetPresenter taskWidget = taskWidgetFactory.createTaskWidget();
 					taskWidget.setTask(task);
