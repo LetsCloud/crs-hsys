@@ -12,7 +12,5 @@ import com.gwtplatform.mvp.client.UiHandlers;
 public interface TaskMngrUiHandlers extends UiHandlers {
 	
 	void create();
-	
-	void modify(String webSafeKey);
 
 }
