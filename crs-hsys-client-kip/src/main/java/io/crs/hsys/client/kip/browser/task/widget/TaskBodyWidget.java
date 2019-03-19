@@ -105,8 +105,10 @@ public class TaskBodyWidget extends Composite {
 		for (TaskNoteDto note : notes) {
 			TaskNoteWidget nw = taskNoteWidgetProvider.get();
 			nw.setNote(note);
-			if (isEven)
 			notesPanel.add(nw);
+			if (isEven)
+				nw.setDarkerBackgorund();
+			isEven = !isEven;
 		}
 		notesPanel.setVisible(true);
 	}

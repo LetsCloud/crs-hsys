@@ -78,7 +78,7 @@ public class TaskNoteWidget extends Composite {
 	}
 
 	public void setDarkerBackgorund() {
-		panel.setBackgroundColor(Color.BLUE_GREY_LIGHTEN_4);
+		panel.setBackgroundColor(Color.GREY_LIGHTEN_4);
 	}
 
 }

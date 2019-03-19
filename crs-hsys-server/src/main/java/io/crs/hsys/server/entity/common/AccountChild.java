@@ -33,6 +33,11 @@ public class AccountChild extends BaseEntity {
 //		logger.info("AccountChild()");
 	}
 
+	public AccountChild(AccountChild source) {
+		super(source);
+		account = source.account;
+	}
+
 	public Account getAccount() {
 		if (account == null)
 			return null;

@@ -44,7 +44,7 @@ public class DateUtils {
 		long durationMs = endTime.getTime() - startTime.getTime();
 		if (durationMs < MINUTE_IN_MILISEC) {
 			Long durationS = durationMs / SECOND_IN_MILISEC;
-			return durationS.toString() + " perce";
+			return durationS.toString() + " m.perce";
 		}
 
 		if (durationMs < (5 * MINUTE_IN_MILISEC)) {
