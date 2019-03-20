@@ -73,17 +73,22 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 
 	@Override
 	protected void loadData() {
+		logger.info("TaskTodoBrowserPresenter().loadData()");
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<TaskTodoDto>>() {
 			@Override
 			public void onSuccess(List<TaskTodoDto> result) {
+				logger.info("TaskTodoBrowserPresenter().loadData().onSuccess()");
+				// Csak aktív elemek megjelenítése
 				if (filter.isOnlyActive())
 					result = result.stream().filter(tg -> tg.getActive().equals(true)).collect(Collectors.toList());
+				// A kiválasztott feladat jelleg tennivalóinak megjelenítése
 				if (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL))
 					result = result.stream().filter(tg -> tg.getKind().equals(filter.getSelectedTaskKind()))
 							.collect(Collectors.toList());
 				if (!filter.getSelectedTaskGroup().getCode().equals(TaskTodoFilterView.ALL_ITEMS))
 					result = result.stream().filter(tg -> tg.getTaskGroup().equals(filter.getSelectedTaskGroup()))
 							.collect(Collectors.toList());
+				logger.info("TaskTodoBrowserPresenter().loadData().onSuccess()-2");
 				getView().setData(result);
 			}
 		}).getAll();

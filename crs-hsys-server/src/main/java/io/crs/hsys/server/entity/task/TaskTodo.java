@@ -3,6 +3,9 @@
  */
 package io.crs.hsys.server.entity.task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 
@@ -18,6 +21,7 @@ public class TaskTodo extends AccountChild {
 	private TaskKind kind;
 	private Ref<TaskGroup> taskGroup;
 	private String description;
+	private List<Translation> translations = new ArrayList<Translation>();	
 	private Integer timeRequired;
 	private Boolean active;
 
@@ -49,6 +53,14 @@ public class TaskTodo extends AccountChild {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Translation> getTranslations() {
+		return translations;
+	}
+
+	public void setTranslations(List<Translation> translations) {
+		this.translations = translations;
 	}
 
 	public Integer getTimeRequired() {

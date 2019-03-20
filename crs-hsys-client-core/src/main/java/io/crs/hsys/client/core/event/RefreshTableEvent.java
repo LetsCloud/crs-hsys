@@ -14,7 +14,7 @@ import com.google.gwt.event.shared.HasHandlers;
 public class RefreshTableEvent extends GwtEvent<RefreshTableEvent.RefreshTableHandler> {
 
 	public enum TableType {
-		APP_USER, USER_GROUP;
+		APP_USER, USER_GROUP, TASK_TODO;
 	}
 	
 	public interface RefreshTableHandler extends EventHandler {

@@ -37,6 +37,7 @@ import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.api.FcmResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.constans.GlobalParam;
+import io.crs.hsys.shared.constans.Language;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
@@ -193,6 +194,12 @@ public abstract class AbstractAppBootstrapper implements Bootstrapper {
 				String locale = LocaleInfo.getCurrentLocale().getLocaleName();
 
 				currentUser.setLocale(locale);
+				currentUser.setLanguage(Language.en);
+				if (locale.startsWith("uk"))
+					currentUser.setLanguage(Language.uk);
+				if (locale.startsWith("hu"))
+					currentUser.setLanguage(Language.hu);
+
 				currentUser.setAppUserDto(result);
 				currentUser.getAppUserDto().getAvailableHotels()
 						.sort((HotelDtor h1, HotelDtor h2) -> h1.getName().compareTo(h2.getName()));

@@ -161,34 +161,34 @@ public class DataBuilder {
 		taskTypeDtos.clear();
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_DAILY)
 				.description("Lakó szoba takarítás")
-				.addTranslation(new TranslationDto(Language.LNG_UK, "Прибирання в приміщенні"))
+				.addTranslation(new TranslationDto(Language.uk, "Прибирання в приміщенні"))
 				.addTodo(TaskTodoDto.builder().description("Szellőztetés")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Cушильний")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Cушильний")).build())
 				.addTodo(TaskTodoDto.builder().description("Szemetesek űrítése")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Баки для сміття")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Баки для сміття")).build())
 				.addTodo(TaskTodoDto.builder().description("Ágyazás")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Oтложной")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Oтложной")).build())
 				.addTodo(TaskTodoDto.builder().description("Portalanítás")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "пилу")).build())
+						.addTranslation(new TranslationDto(Language.uk, "пилу")).build())
 				.addTodo(TaskTodoDto.builder().description("Porszívózás")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Bакуумна чистка")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Bакуумна чистка")).build())
 				.addTodo(TaskTodoDto.builder().description("Műszaki ellenőzések")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Технічні перевірки")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Технічні перевірки")).build())
 				.addTodo(TaskTodoDto.builder().description("Fürdőszoba takarítás")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Прибирання ванної кімнати")).build())
+						.addTranslation(new TranslationDto(Language.uk, "Прибирання ванної кімнати")).build())
 				.build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_LINEN).description("Ágynemű csere")
-				.addTranslation(new TranslationDto(Language.LNG_UK, "Зміна білизни")).build());
+				.addTranslation(new TranslationDto(Language.uk, "Зміна білизни")).build());
 		taskTypeDtos
 				.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_INSPEKT).description("Szoba ellenőrzés")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Управління кімнатами")).build());
+						.addTranslation(new TranslationDto(Language.uk, "Управління кімнатами")).build());
 		taskTypeDtos.add(
 				TaskTypeDto.builder().kind(TaskKind.TK_MAINTENANCE).code(TT_TAPREP).description("Csaptelep javítás")
-						.addTranslation(new TranslationDto(Language.LNG_UK, "Ремонт крана")).build());
+						.addTranslation(new TranslationDto(Language.uk, "Ремонт крана")).build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_FRUIT).description("Gyümölcskosár")
-				.addTranslation(new TranslationDto(Language.LNG_UK, "Кошик з фруктами")).build());
+				.addTranslation(new TranslationDto(Language.uk, "Кошик з фруктами")).build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_TURCSI).description("Extra törölköző")
-				.addTranslation(new TranslationDto(Language.LNG_UK, "Додаткові рушники")).build());
+				.addTranslation(new TranslationDto(Language.uk, "Додаткові рушники")).build());
 //		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code(TT_RECI).description("Recepció").build());
 	}
 

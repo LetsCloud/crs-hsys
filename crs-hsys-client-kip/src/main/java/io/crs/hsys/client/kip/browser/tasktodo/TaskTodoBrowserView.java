@@ -91,9 +91,11 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 				i18nCore.taskTodoBrowserDescriptionColumn());
 
 		// Time Column
-		table.addColumn(
-				new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString(),
-						(o1, o2) -> o1.getData().getTimeRequired().compareTo(o2.getData().getTimeRequired())),
+//		table.addColumn(
+//				new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString(),
+//						(o1, o2) -> o1.getData().getTimeRequired().compareTo(o2.getData().getTimeRequired())),
+//				i18nCore.taskTodoBrowserTimeReqColumn());
+		table.addColumn(new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString()),
 				i18nCore.taskTodoBrowserTimeReqColumn());
 
 		// Active Column
@@ -116,6 +118,10 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 
 	@Override
 	public void setData(List<TaskTodoDto> data) {
+		logger.info("TaskTodoBrowserView().setData()");
+		for(TaskTodoDto taskTodo: data) {
+			logger.info("TaskTodoBrowserView().setData()->taskTodo=" + taskTodo);
+		}
 		table.setData(data);
 	}
 

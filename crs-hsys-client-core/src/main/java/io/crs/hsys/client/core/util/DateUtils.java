@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 
+import io.crs.hsys.client.core.i18n.CoreMessages;
+
 /**
  * @author robi
  *
@@ -39,47 +41,63 @@ public class DateUtils {
 		return dateTime;
 	}
 
-	public static String elapsedText(Date startTime) {
+	public static String elapsedText(Date startTime, CoreMessages i18n) {
 		Date endTime = new Date();
 		long durationMs = endTime.getTime() - startTime.getTime();
 		if (durationMs < MINUTE_IN_MILISEC) {
 			Long durationS = durationMs / SECOND_IN_MILISEC;
-			return durationS.toString() + " m.perce";
+			if (durationS < 2)
+				return i18n.com1SecondAgo(durationS.toString());
+			if (durationS < 5)
+				return i18n.com2SecondsAgo(durationS.toString());
+			return i18n.com5SecondsAgo(durationS.toString());
 		}
 
 		if (durationMs < (5 * MINUTE_IN_MILISEC)) {
 			Long durationS = durationMs / MINUTE_IN_MILISEC;
-			return durationS.toString() + " perce";
-		}
-
-		if (durationMs < HOUR_IN_MILISEC) {
-			Long durationS = durationMs / (5 * MINUTE_IN_MILISEC);
-			durationS = durationS * 5;
-			return durationS.toString() + " perce";
+			if (durationS < 2)
+				return i18n.com1MinuteAgo(durationS.toString());
+			return i18n.com2MinutesAgo(durationS.toString());
 		}
 
 		if (durationMs < DAY_IN_MILISEC) {
 			Long durationS = durationMs / HOUR_IN_MILISEC;
-			return durationS.toString() + " órája";
+			if (durationS < 2)
+				return i18n.com1HourAgo(durationS.toString());
+			if (durationS < 5)
+				return i18n.com2HoursAgo(durationS.toString());
+			return i18n.com5HoursAgo(durationS.toString());
 		}
 
 		if (durationMs < WEEK_IN_MILISEC) {
 			Long durationS = durationMs / DAY_IN_MILISEC;
-			return durationS.toString() + " napja";
+			if (durationS < 2)
+				return i18n.com1DayAgo(durationS.toString());
+			if (durationS < 5)
+				return i18n.com2DaysAgo(durationS.toString());
+			return i18n.com5DaysAgo(durationS.toString());
 		}
 
 		if (durationMs < MONTH_IN_MILISEC) {
 			Long durationS = durationMs / WEEK_IN_MILISEC;
-			return durationS.toString() + " hete";
+			if (durationS < 2)
+				return i18n.com1WeekAgo(durationS.toString());
+			if (durationS < 5)
+				return i18n.com2WeeksAgo(durationS.toString());
+			return i18n.com5WeeksAgo(durationS.toString());
 		}
 
 		if (durationMs < YEAR_IN_MILISEC) {
 			Long durationS = durationMs / MONTH_IN_MILISEC;
-			return durationS.toString() + " hete";
+			if (durationS < 2)
+				return i18n.com1MonthAgo(durationS.toString());
+			if (durationS < 5)
+				return i18n.com2MonthsAgo(durationS.toString());
+			return i18n.com5MonthsAgo(durationS.toString());
 		}
 
 		Long durationS = durationMs / YEAR_IN_MILISEC;
-		return durationS.toString() + " éve";
+		return i18n.com1YearAgo(durationS.toString());
 	}
 
 	public static String formatDateTime(Date date, String locale) {
