@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.shared.dto.common;
 
+import io.crs.hsys.shared.constans.Language;
 import io.crs.hsys.shared.dto.Dto;
 
 /**
@@ -11,22 +12,22 @@ import io.crs.hsys.shared.dto.Dto;
  */
 @SuppressWarnings("serial")
 public class TranslationDto implements Dto {
-	private String language;
+	private Language language;
 	private String text;
 
 	public TranslationDto() {
 	}
 
-	public TranslationDto(String language, String text) {
+	public TranslationDto(Language language, String text) {
 		this.language = language;
 		this.text = text;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 

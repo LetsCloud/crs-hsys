@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.editor.tasktype;
+package io.crs.hsys.client.kip.editor.tasktype.todo;
 
 import java.util.ArrayList;
 import java.util.List;

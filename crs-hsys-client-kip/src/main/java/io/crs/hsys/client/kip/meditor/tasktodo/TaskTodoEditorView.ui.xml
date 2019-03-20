@@ -2,7 +2,20 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:translateeditor="urn:import:io.crs.hsys.client.kip.editor.translate">
+
+	<ui:style>
+	.dGB2 {
+		margin-top: 8px;
+		padding-left: 10px;
+		border-left: 3px solid #2196f3;
+	}
+	
+	.dataGroupTitle2 {
+		color: #2196f3;
+	}
+	</ui:style>
 
 	<ui:with field="i18nCore"
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
@@ -18,9 +31,22 @@
 			<combobox:MaterialComboBox
 				ui:field="taskGroupComboBox" multiple="false"
 				label="{i18nCore.taskTodoEditorType}"
-				placeholder="{i18nCore.taskTodoEditorTypePlaceholder}" marginTop="25" />
+				placeholder="{i18nCore.taskTodoEditorTypePlaceholder}"
+				marginTop="25" />
 			<m:MaterialTextBox ui:field="description"
 				type="TEXT" label="{i18nCore.taskTodoEditorDescription}" />
+
+			<m:MaterialRow marginBottom="30">
+				<m:MaterialColumn grid="s12" padding="0">
+					<g:HTMLPanel addStyleNames="{style.dGB2}">
+						<g:Label text="{i18nCore.taskTypeEditorTranslations}"
+							addStyleNames="{style.dataGroupTitle2}" />
+						<translateeditor:TranslateListEditor
+							ui:field="translations" />
+					</g:HTMLPanel>
+				</m:MaterialColumn>
+			</m:MaterialRow>
+
 			<m:MaterialIntegerBox ui:field="timeRequired"
 				label="{i18nCore.taskTodoEditorTimeRequired}" />
 			<m:MaterialCheckBox ui:field="active"

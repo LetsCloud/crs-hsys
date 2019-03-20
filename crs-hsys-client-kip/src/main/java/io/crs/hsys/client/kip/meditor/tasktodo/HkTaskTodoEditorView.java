@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.kip.editor.translate.TranslateListEditor;
 import io.crs.hsys.shared.constans.TaskKind;
 
 /**
@@ -18,8 +19,9 @@ import io.crs.hsys.shared.constans.TaskKind;
 public class HkTaskTodoEditorView extends TaskTodoEditorView implements HkTaskTodoEditorPresenter.MyView {
 
 	@Inject
-	HkTaskTodoEditorView(Binder uiBinder, Driver driver, CoreMessages i18n, CoreConstants i18nCoreCnst) {
-		super(uiBinder, driver, i18n);
+	HkTaskTodoEditorView(Binder uiBinder, Driver driver, CoreMessages i18n, CoreConstants i18nCoreCnst,
+			TranslateListEditor translateListEditor) {
+		super(uiBinder, driver, i18n, translateListEditor);
 
 		initTaskKindCombo(i18nCoreCnst.taskKindMap());
 	}

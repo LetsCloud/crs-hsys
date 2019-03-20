@@ -27,6 +27,9 @@ import gwt.material.design.client.ui.MaterialIntegerBox;
 import gwt.material.design.client.ui.MaterialTextBox;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.kip.editor.tasktype.todo.AddTaskTodoPresenter;
+import io.crs.hsys.client.kip.editor.tasktype.todo.TaskTodoListEditor;
+import io.crs.hsys.client.kip.editor.translate.TranslateListEditor;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
@@ -58,6 +61,9 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@UiField
 	MaterialTextBox code, description;
 
+	@UiField(provided = true)
+	TranslateListEditor translations;
+
 	@UiField
 	MaterialIntegerBox timeRequired;
 
@@ -75,10 +81,11 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	* 
 	*/
 	@Inject
-	TaskTypeEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst,
+	TaskTypeEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, TranslateListEditor translateListEditor,
 			TaskTodoListEditor taskTodoListEditor) {
 		logger.info("TaskTypeEditorView()");
 
+		this.translations = translateListEditor;
 		this.todos = taskTodoListEditor;
 
 		initWidget(uiBinder.createAndBindUi(this));

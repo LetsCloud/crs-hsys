@@ -11,19 +11,19 @@
         <Column>
             <Name>default</Name>
             <Description></Description>
-            <Width>82</Width>
+            <Width>143</Width>
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>en</Name>
             <Description></Description>
-            <Width>66</Width>
+            <Width>160</Width>
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants_en.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>uk</Name>
             <Description></Description>
-            <Width>58</Width>
+            <Width>201</Width>
             <HandlerConfiguration>/crs-hsys-client-core/src/main/resources/io/crs/hsys/client/core/i18n/CoreConstants_uk.properties|false|false|false|false</HandlerConfiguration>
         </Column>
         <Column>
@@ -34,6 +34,45 @@
         </Column>
     </Columns>
     <Records>
+        <Comment>
+            <Value>LANGUGAES</Value>
+        </Comment>
+        <Property>
+            <Name>languageMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">LNG_EN,LNG_HU,LNG_UK</Value>
+            <Value disabled="false">LNG_EN,LNG_HU,LNG_UK</Value>
+            <Value disabled="false">LNG_EN,LNG_HU,LNG_UK</Value>
+            <Value disabled="false">LNG_EN,LNG_HU,LNG_UK</Value>
+        </Property>
+        <Property>
+            <Name>LNG_EN</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">English</Value>
+            <Value disabled="false">English</Value>
+            <Value disabled="false">Англійська</Value>
+            <Value disabled="false">Angol</Value>
+        </Property>
+        <Property>
+            <Name>LNG_HU</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Hungarian</Value>
+            <Value disabled="false">Hungarian</Value>
+            <Value disabled="false">Угорська</Value>
+            <Value disabled="false">Magyar</Value>
+        </Property>
+        <Property>
+            <Name>LNG_UK</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Ukrainian</Value>
+            <Value disabled="false">Ukrainian</Value>
+            <Value disabled="false">Українська</Value>
+            <Value disabled="false">Ukrán</Value>
+        </Property>
         <Comment>
             <Value>ERROR CODES</Value>
         </Comment>

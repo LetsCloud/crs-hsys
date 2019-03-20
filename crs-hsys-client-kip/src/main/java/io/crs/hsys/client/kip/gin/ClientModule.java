@@ -18,6 +18,7 @@ import io.crs.hsys.client.kip.config.hk.HkConfigModule;
 import io.crs.hsys.client.kip.config.mt.MtConfigModule;
 import io.crs.hsys.client.kip.dashboard.DashboardModule;
 import io.crs.hsys.client.kip.editor.task.TaskEditorModule;
+import io.crs.hsys.client.kip.editor.translate.TranslateEditorModule;
 import io.crs.hsys.client.kip.filter.KipFilterModule;
 import io.crs.hsys.client.kip.gfilter.display.GfilterDisplayModule;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusModule;
@@ -60,6 +61,8 @@ public class ClientModule extends AbstractPresenterModule {
 
 		install(new HkConfigModule());
 		install(new MtConfigModule());
+		
+		install(new TranslateEditorModule());
 
 		/*
 		 * install(new UserListModule()); install(new RoleListModule()); install(new
