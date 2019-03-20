@@ -71,16 +71,16 @@
             <Value disabled="false">Create</Value>
             <Value disabled="false">Create</Value>
             <Value disabled="false">Létrehoz</Value>
-            <Value disabled="false">Create</Value>
+            <Value disabled="false">Створити</Value>
         </Property>
         <Property>
             <Name>comEdit</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Edit</Value>
-            <Value disabled="false">Edit</Value>
-            <Value disabled="false">Szerkeszt</Value>
-            <Value disabled="false">Edit</Value>
+            <Value disabled="false">Modify</Value>
+            <Value disabled="false">Modify</Value>
+            <Value disabled="false">Módosít</Value>
+            <Value disabled="false">Змінити</Value>
         </Property>
         <Property>
             <Name>comSave</Name>
@@ -89,7 +89,7 @@
             <Value disabled="false">Save</Value>
             <Value disabled="false">Save</Value>
             <Value disabled="false">Mentés</Value>
-            <Value disabled="false">Save</Value>
+            <Value disabled="false">Зберегти</Value>
         </Property>
         <Property>
             <Name>comCancel</Name>
@@ -98,7 +98,7 @@
             <Value disabled="false">Cancel</Value>
             <Value disabled="false">Cancel</Value>
             <Value disabled="false">Mégsem</Value>
-            <Value disabled="false">Cancel</Value>
+            <Value disabled="false">Скасувати</Value>
         </Property>
         <Property>
             <Name>comDelete</Name>
@@ -107,7 +107,7 @@
             <Value disabled="false">Delete</Value>
             <Value disabled="false">Delete</Value>
             <Value disabled="false">Töröl</Value>
-            <Value disabled="false">Delete</Value>
+            <Value disabled="false">Видалити</Value>
         </Property>
         <Property>
             <Name>comBrowse</Name>
@@ -116,7 +116,7 @@
             <Value disabled="false">Browse</Value>
             <Value disabled="false">Browse</Value>
             <Value disabled="false">Böngészés</Value>
-            <Value disabled="false">Browse</Value>
+            <Value disabled="false">Огляд</Value>
         </Property>
         <Property>
             <Name>comActive</Name>
@@ -125,7 +125,7 @@
             <Value disabled="false">Active</Value>
             <Value disabled="false">Active</Value>
             <Value disabled="false">Aktív</Value>
-            <Value disabled="false">Active</Value>
+            <Value disabled="false">Активний</Value>
         </Property>
         <Property>
             <Name>comInactive</Name>
@@ -134,7 +134,7 @@
             <Value disabled="false">Inactive</Value>
             <Value disabled="false">Inactive</Value>
             <Value disabled="false">Inaktív</Value>
-            <Value disabled="false">Inactive</Value>
+            <Value disabled="false">Неактивний</Value>
         </Property>
         <Property>
             <Name>comRequiredField</Name>
@@ -708,6 +708,27 @@
             <Value disabled="false">Choose a group</Value>
         </Property>
         <Comment>
+            <Value>TRANSLATE EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>translateEditorLanguage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Language</Value>
+            <Value disabled="false">Language</Value>
+            <Value disabled="false">Nyelv</Value>
+            <Value disabled="false">Мова</Value>
+        </Property>
+        <Property>
+            <Name>translateEditorLanguagePlaceholder</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Choose a language</Value>
+            <Value disabled="false">Choose a language</Value>
+            <Value disabled="false">Válassz nyelvet</Value>
+            <Value disabled="false">Виберіть мову</Value>
+        </Property>
+        <Comment>
             <Value>TASK GROUP BROWSER</Value>
         </Comment>
         <Property>
@@ -1063,6 +1084,15 @@
             <Value disabled="false">Description</Value>
             <Value disabled="false">Megnevezés</Value>
             <Value disabled="false">Description</Value>
+        </Property>
+        <Property>
+            <Name>taskTypeEditorTranslations</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Language versions</Value>
+            <Value disabled="false">Language versions</Value>
+            <Value disabled="false">Nyelvi változatok</Value>
+            <Value disabled="false">Мовні версії</Value>
         </Property>
         <Property>
             <Name>taskTypeEditorTimeRequired</Name>

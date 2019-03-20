@@ -1,9 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.editor.tasktype;
-
-import java.util.List;
+package io.crs.hsys.client.kip.editor.translate;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -19,26 +17,26 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollection;
+import gwt.material.design.client.ui.MaterialPanel;
 import io.crs.hsys.client.core.editor.room.DeleteEvent;
-import io.crs.hsys.shared.dto.task.TaskTodoDto;
+import io.crs.hsys.shared.dto.common.TranslationDto;
 
 /**
  * @author robi
  *
  */
-public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor<TaskTodoDto, TaskTodoEditor>> {
+public class TranslateListEditor extends Composite implements IsEditor<ListEditor<TranslationDto, TranslateEditor>> {
 
-	interface Binder extends UiBinder<Widget, TaskTodoListEditor> {
+	interface Binder extends UiBinder<Widget, TranslateListEditor> {
 	}
 
 	@Ignore
 	@UiField
-	MaterialCollection listPanel;
+	MaterialPanel listPanel;
 
 	@Inject
-	Provider<TaskTodoEditor> editorProvider;
+	Provider<TranslateEditor> editorProvider;
 
 	/**
 	 * An entity capable of creating and destroying instances of Editors. This type
@@ -47,15 +45,15 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 	 * @author cr
 	 * 
 	 */
-	private class TaskTodoEditorSource extends EditorSource<TaskTodoEditor> {
+	private class TranslateEditorSource extends EditorSource<TranslateEditor> {
 
 		/**
 		 * Create a new Editor. Parameters: index - the position at which the new Editor
 		 * should be displayed Returns: an Editor of type E
 		 */
 		@Override
-		public TaskTodoEditor create(final int index) {
-			TaskTodoEditor subEditor = editorProvider.get();
+		public TranslateEditor create(final int index) {
+			TranslateEditor subEditor = editorProvider.get();
 
 			listPanel.insert(subEditor, index);
 
@@ -73,7 +71,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 		 * implementation is a no-op.
 		 */
 		@Override
-		public void dispose(TaskTodoEditor subEditor) {
+		public void dispose(TranslateEditor subEditor) {
 			subEditor.removeFromParent();
 		}
 
@@ -81,35 +79,29 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 		 * Re-order a sub-Editor. The default implementation is a no-op.
 		 */
 		@Override
-		public void setIndex(TaskTodoEditor editor, int index) {
+		public void setIndex(TranslateEditor editor, int index) {
 			listPanel.insert(editor, index);
 		}
 	}
 
-	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
+	private ListEditor<TranslationDto, TranslateEditor> editor = ListEditor.of(new TranslateEditorSource());
 
-	private AddTaskTodoPresenter addTaskTodo;
 	/**
-	*/
+	 */
 	@Inject
-	TaskTodoListEditor(Binder uiBinder) {
+	TranslateListEditor(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	public void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo) {
-		this.addTaskTodo = addTaskTodo;
-	}
-
 	@Override
-	public ListEditor<TaskTodoDto, TaskTodoEditor> asEditor() {
+	public ListEditor<TranslationDto, TranslateEditor> asEditor() {
 		return editor;
 	}
 
 	@UiHandler("addButton")
 	void onAddClick(ClickEvent event) {
-		addTaskTodo.open();
-//		TaskTodoDto dto = new TaskTodoDto();
-//		editor.getList().add(dto);
+		TranslationDto dto = new TranslationDto();
+		editor.getList().add(dto);
 	}
 
 //	@UiHandler("deleteButton")
@@ -119,9 +111,5 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	private void remove(final int index) {
 		editor.getList().remove(index);
-	}
-
-	public void addTaskTodos(List<TaskTodoDto> todos) {
-		editor.getList().addAll(todos);
 	}
 }

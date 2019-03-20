@@ -324,6 +324,19 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
+	 * TRANSLATE EDITOR
+	 */
+	@DefaultMessage("Language")
+	String translateEditorLanguage();
+
+	@DefaultMessage("Choose a language")
+	String translateEditorLanguagePlaceholder();
+
+	@DefaultMessage("Text")
+	String translateEditorText();
+
+	
+	/*
 	 * TASK GROUP BROWSER
 	 */
 	@DefaultMessage("Task Groups")
@@ -475,6 +488,9 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Description")
 	String taskTypeEditorDescription();
+
+	@DefaultMessage("Translations")
+	String taskTypeEditorTranslations();
 	
 	@DefaultMessage("Time required(m)")
 	String taskTypeEditorTimeRequired();

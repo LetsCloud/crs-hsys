@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.google.inject.Inject;
 
+import io.crs.hsys.shared.constans.Language;
 import io.crs.hsys.shared.constans.RoomStatus;
 import io.crs.hsys.shared.constans.TaskKind;
 import io.crs.hsys.shared.constans.TaskNoteType;
@@ -160,33 +161,34 @@ public class DataBuilder {
 		taskTypeDtos.clear();
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_DAILY)
 				.description("Lakó szoba takarítás")
-				.addTranslation(new TranslationDto(LNG_UK, "Прибирання в приміщенні"))
+				.addTranslation(new TranslationDto(Language.LNG_UK, "Прибирання в приміщенні"))
 				.addTodo(TaskTodoDto.builder().description("Szellőztetés")
-						.addTranslation(new TranslationDto(LNG_UK, "Cушильний")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Cушильний")).build())
 				.addTodo(TaskTodoDto.builder().description("Szemetesek űrítése")
-						.addTranslation(new TranslationDto(LNG_UK, "Баки для сміття")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Баки для сміття")).build())
 				.addTodo(TaskTodoDto.builder().description("Ágyazás")
-						.addTranslation(new TranslationDto(LNG_UK, "Oтложной")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Oтложной")).build())
 				.addTodo(TaskTodoDto.builder().description("Portalanítás")
-						.addTranslation(new TranslationDto(LNG_UK, "пилу")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "пилу")).build())
 				.addTodo(TaskTodoDto.builder().description("Porszívózás")
-						.addTranslation(new TranslationDto(LNG_UK, "Bакуумна чистка")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Bакуумна чистка")).build())
 				.addTodo(TaskTodoDto.builder().description("Műszaki ellenőzések")
-						.addTranslation(new TranslationDto(LNG_UK, "Технічні перевірки")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Технічні перевірки")).build())
 				.addTodo(TaskTodoDto.builder().description("Fürdőszoba takarítás")
-						.addTranslation(new TranslationDto(LNG_UK, "Прибирання ванної кімнати")).build())
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Прибирання ванної кімнати")).build())
 				.build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_LINEN).description("Ágynemű csere")
-				.addTranslation(new TranslationDto(LNG_UK, "Зміна білизни")).build());
+				.addTranslation(new TranslationDto(Language.LNG_UK, "Зміна білизни")).build());
 		taskTypeDtos
 				.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_INSPEKT).description("Szoba ellenőrzés")
-						.addTranslation(new TranslationDto(LNG_UK, "Управління кімнатами")).build());
-		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_MAINTENANCE).code(TT_TAPREP)
-				.description("Csaptelep javítás").addTranslation(new TranslationDto(LNG_UK, "Ремонт крана")).build());
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Управління кімнатами")).build());
+		taskTypeDtos.add(
+				TaskTypeDto.builder().kind(TaskKind.TK_MAINTENANCE).code(TT_TAPREP).description("Csaptelep javítás")
+						.addTranslation(new TranslationDto(Language.LNG_UK, "Ремонт крана")).build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_FRUIT).description("Gyümölcskosár")
-				.addTranslation(new TranslationDto(LNG_UK, "Кошик з фруктами")).build());
+				.addTranslation(new TranslationDto(Language.LNG_UK, "Кошик з фруктами")).build());
 		taskTypeDtos.add(TaskTypeDto.builder().kind(TaskKind.TK_CLEANING).code(TT_TURCSI).description("Extra törölköző")
-				.addTranslation(new TranslationDto(LNG_UK, "Додаткові рушники")).build());
+				.addTranslation(new TranslationDto(Language.LNG_UK, "Додаткові рушники")).build());
 //		taskTypeDtos.add(new TaskTypeDto.Builder().kind(TaskKind.TK_COMMON).code(TT_RECI).description("Recepció").build());
 	}
 
@@ -226,9 +228,8 @@ public class DataBuilder {
 		// 1008 szobába HAKA kér KIPI-től egy extra törölközőt, de törölte
 		taskDtos.add(TaskDto.builder().webSafeKey(T_009).kind(TaskKind.TK_CLEANING).type(getTaskTypeDto(TT_TURCSI))
 				.room(getRoomDto(R_1008)).assignee(getAppUserDtor(AU_KIPI)).reporter(getAppUserDtor(AU_HAKA))
-				.status(TaskStatus.TS_DELETED)
-				.addNote(
-						new TaskNoteDto(new Date(), getAppUserDtor(AU_HAKA), TaskNoteType.TNT_MOD_DESCRIPTION, "Törlés"))
+				.status(TaskStatus.TS_DELETED).addNote(new TaskNoteDto(new Date(), getAppUserDtor(AU_HAKA),
+						TaskNoteType.TNT_MOD_DESCRIPTION, "Törlés"))
 				.build());
 	}
 

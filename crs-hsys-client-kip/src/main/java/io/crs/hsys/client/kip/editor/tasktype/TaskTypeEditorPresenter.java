@@ -33,6 +33,8 @@ import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.kip.editor.tasktype.todo.AddTaskTodoEvent;
+import io.crs.hsys.client.kip.editor.tasktype.todo.AddTaskTodoPresenter;
 import io.crs.hsys.shared.api.TaskTypeResource;
 import io.crs.hsys.shared.constans.MenuItemType;
 import io.crs.hsys.shared.constans.TaskKind;

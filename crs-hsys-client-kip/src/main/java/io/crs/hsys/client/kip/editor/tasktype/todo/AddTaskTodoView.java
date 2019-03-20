@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.editor.tasktype;
+package io.crs.hsys.client.kip.editor.tasktype.todo;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialDialog;
+import io.crs.hsys.client.kip.editor.tasktype.TaskTypeEditorView;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
