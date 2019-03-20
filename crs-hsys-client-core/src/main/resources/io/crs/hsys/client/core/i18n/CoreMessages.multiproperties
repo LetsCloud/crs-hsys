@@ -145,6 +145,177 @@
             <Value disabled="false">A mező kitöltése kötelező!</Value>
             <Value disabled="false">The field is requried!</Value>
         </Property>
+        <Property>
+            <Name>com1SecondAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} second ago</Value>
+            <Value disabled="false">{0} second ago</Value>
+            <Value disabled="false">{0} másodperce</Value>
+            <Value disabled="false">{0} секунду</Value>
+        </Property>
+        <Property>
+            <Name>com2SecondsAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} seconds ago</Value>
+            <Value disabled="false">{0} seconds ago</Value>
+            <Value disabled="false">{0} másodperce</Value>
+            <Value disabled="false">{0} секунди</Value>
+        </Property>
+        <Property>
+            <Name>com5SecondsAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} seconds ago</Value>
+            <Value disabled="false">{0} seconds ago</Value>
+            <Value disabled="false">{0} másodperce</Value>
+            <Value disabled="false">{0} секунд</Value>
+        </Property>
+        <Property>
+            <Name>com1MinuteAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} minute ago</Value>
+            <Value disabled="false">{0} minute ago</Value>
+            <Value disabled="false">{0} perce</Value>
+            <Value disabled="false">{0} хвилину</Value>
+        </Property>
+        <Property>
+            <Name>com2MinutesAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} minutes ago</Value>
+            <Value disabled="false">{0} minutes ago</Value>
+            <Value disabled="false">{0} perce</Value>
+            <Value disabled="false">{0} хвилини</Value>
+        </Property>
+        <Property>
+            <Name>com5MinutesAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} minutes ago</Value>
+            <Value disabled="false">{0} minutes ago</Value>
+            <Value disabled="false">{0} perce</Value>
+            <Value disabled="false">{0} хвилин</Value>
+        </Property>
+        <Property>
+            <Name>com1HourAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} hour ago</Value>
+            <Value disabled="false">{0} hour ago</Value>
+            <Value disabled="false">{0} órája</Value>
+            <Value disabled="false">{0} годину</Value>
+        </Property>
+        <Property>
+            <Name>com2HoursAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} hours ago</Value>
+            <Value disabled="false">{0} hours ago</Value>
+            <Value disabled="false">{0} órája</Value>
+            <Value disabled="false">{0} години</Value>
+        </Property>
+        <Property>
+            <Name>com5HoursAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} hours ago</Value>
+            <Value disabled="false">{0} hours ago</Value>
+            <Value disabled="false">{0} órája</Value>
+            <Value disabled="false">{0} годин</Value>
+        </Property>
+        <Property>
+            <Name>com1DayAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} day ago</Value>
+            <Value disabled="false">{0} day ago</Value>
+            <Value disabled="false">{0} napja</Value>
+            <Value disabled="false">{0} день тому</Value>
+        </Property>
+        <Property>
+            <Name>com2DaysAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} days ago</Value>
+            <Value disabled="false">{0} days ago</Value>
+            <Value disabled="false">{0} napja</Value>
+            <Value disabled="false">{0} дні тому</Value>
+        </Property>
+        <Property>
+            <Name>com5DaysAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} days ago</Value>
+            <Value disabled="false">{0} days ago</Value>
+            <Value disabled="false">{0} napja</Value>
+            <Value disabled="false">{0} днів тому</Value>
+        </Property>
+        <Property>
+            <Name>com1WeekAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} week ago</Value>
+            <Value disabled="false">{0} week ago</Value>
+            <Value disabled="false">{0} hete</Value>
+            <Value disabled="false">{0} тиждень тому</Value>
+        </Property>
+        <Property>
+            <Name>com2WeeksAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} weeks</Value>
+            <Value disabled="false">{0} weeks</Value>
+            <Value disabled="false">{0} hete</Value>
+            <Value disabled="false">{0} тижні тому</Value>
+        </Property>
+        <Property>
+            <Name>com5WeeksAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} weeks ago</Value>
+            <Value disabled="false">{0} weeks ago</Value>
+            <Value disabled="false">{0} hete</Value>
+            <Value disabled="false">{0} тижнів тому</Value>
+        </Property>
+        <Property>
+            <Name>com1MonthAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} month ago</Value>
+            <Value disabled="false">{0} month ago</Value>
+            <Value disabled="false">{0} hónapja</Value>
+            <Value disabled="false">{0} місяць тому</Value>
+        </Property>
+        <Property>
+            <Name>com2MonthsAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} months ago</Value>
+            <Value disabled="false">{0} months ago</Value>
+            <Value disabled="false">{0} hónapja</Value>
+            <Value disabled="false">{0} місяці тому</Value>
+        </Property>
+        <Property>
+            <Name>com5MonthsAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} months ago</Value>
+            <Value disabled="false">{0} months ago</Value>
+            <Value disabled="false">{0} hónapja</Value>
+            <Value disabled="false">{0} місяців тому</Value>
+        </Property>
+        <Property>
+            <Name>com1YearAgo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">{0} year ago</Value>
+            <Value disabled="false">{0} year ago</Value>
+            <Value disabled="false">{0} éve</Value>
+            <Value disabled="false">{0} рік</Value>
+        </Property>
         <Comment>
             <Value>LOGIN</Value>
         </Comment>

@@ -49,6 +49,63 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Required field")
 	String comRequiredField();
 
+	@DefaultMessage("")
+	String com1SecondAgo();
+
+	@DefaultMessage("")
+	String com2SecondsAgo();
+
+	@DefaultMessage("")
+	String com5SecondsAgo();
+
+	@DefaultMessage("")
+	String com1MinuteAgo();
+
+	@DefaultMessage("")
+	String com2MinutesAgo();
+
+	@DefaultMessage("")
+	String com5MinutesAgo();
+
+	@DefaultMessage("")
+	String com1HourAgo();
+
+	@DefaultMessage("")
+	String com2HoursAgo();
+
+	@DefaultMessage("")
+	String com5HoursAgo();
+
+	@DefaultMessage("")
+	String com1DayAgo();
+
+	@DefaultMessage("")
+	String com2DaysAgo();
+
+	@DefaultMessage("")
+	String com5DaysAgo();
+
+	@DefaultMessage("")
+	String com1WeekAgo();
+
+	@DefaultMessage("")
+	String com2WeeksAgo();
+
+	@DefaultMessage("")
+	String com5WeeksAgo();
+
+	@DefaultMessage("")
+	String com1MonthAgo();
+
+	@DefaultMessage("")
+	String com2MonthsAgo();
+
+	@DefaultMessage("")
+	String com5MonthsAgo();
+
+	@DefaultMessage("")
+	String com1YearAgo();
+
 	
 	/*
 	 * Server data exceptions

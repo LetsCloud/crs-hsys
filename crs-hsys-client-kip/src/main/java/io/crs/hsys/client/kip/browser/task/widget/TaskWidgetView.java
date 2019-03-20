@@ -28,6 +28,7 @@ import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.i18n.KipMessages;
@@ -64,7 +65,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 	MaterialIcon menuIcon, taskKind, taskStatus;
 
 	@UiField
-	MaterialDropDown menuDropDown;
+	MaterialDropDown<String> menuDropDown;
 
 	@UiField
 	MaterialLabel title, elapsed;
@@ -82,15 +83,17 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 	Provider<TaskNoteWidget> taskNoteWidgetProvider;
 
 	private final CurrentUser currentUser;
+	private final CoreMessages i18nCore;
 	private final KipMessages i18n;
 
 	/**
 	 * 
 	 */
 	@Inject
-	TaskWidgetView(Binder uiBinder, CurrentUser currentUser, KipMessages i18n) {
+	TaskWidgetView(Binder uiBinder, CurrentUser currentUser, CoreMessages i18nCore, KipMessages i18n) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.currentUser = currentUser;
+		this.i18nCore = i18nCore;
 		this.i18n = i18n;
 		iniView();
 	}
@@ -417,7 +420,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 
 		setTaskStatus(task.getStatus());
 
-		elapsed.setText(DateUtils.elapsedText(task.getUpdated()));
+		elapsed.setText(DateUtils.elapsedText(task.getUpdated(), i18nCore));
 
 		if (task.getDueDate() != null)
 			dueDate.setText(DateUtils.formatDateTime(task.getDueDate(), currentUser.getLocale()));
