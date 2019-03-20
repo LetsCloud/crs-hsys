@@ -377,7 +377,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 
 		TranslationDto t = null;
 		try {
-			t = translations.stream().filter(o -> o.getLanguage().equals(currentUser.getLocale())).findFirst().get();
+			t = translations.stream().filter(o -> o.getLanguage().equals(currentUser.getLanguage())).findFirst().get();
 		} catch (Exception e) {
 			// Block of code to handle errors
 		}

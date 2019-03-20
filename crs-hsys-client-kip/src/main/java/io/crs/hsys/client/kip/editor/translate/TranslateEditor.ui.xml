@@ -4,7 +4,10 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
 
-	<ui:style>
+	<ui:style gss="true">
+	.lngCombo {
+		width: calc(100% - 35px);
+	}
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	</ui:style>
 
@@ -12,21 +15,19 @@
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
 	<m:MaterialRow marginBottom="0">
-		<m:MaterialColumn grid="s5">
+		<m:MaterialColumn grid="s6" paddingLeft="0">
+			<m:MaterialCheckBox ui:field="checkBox"
+				value="false" type="FILLED" float="LEFT" marginTop="30"/>
 			<combobox:MaterialComboBox
 				ui:field="languageComboBox" multiple="false"
 				label="{i18nCore.translateEditorLanguage}"
-				placeholder="{i18nCore.translateEditorLanguagePlaceholder}" />
+				placeholder="{i18nCore.translateEditorLanguagePlaceholder}"
+				float="LEFT" addStyleNames="{style.lngCombo}" />
 		</m:MaterialColumn>
 
-		<m:MaterialColumn grid="s6">
+		<m:MaterialColumn grid="s6" paddingRight="0">
 			<m:MaterialTextBox ui:field="text" type="TEXT"
 				label="{i18nCore.translateEditorText}" />
-		</m:MaterialColumn>
-
-		<m:MaterialColumn grid="s1">
-			<m:MaterialCheckBox ui:field="checkBox"
-				value="false" type="FILLED" />
 		</m:MaterialColumn>
 	</m:MaterialRow>
 </ui:UiBinder> 

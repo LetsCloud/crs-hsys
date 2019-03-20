@@ -728,6 +728,15 @@
             <Value disabled="false">Válassz nyelvet</Value>
             <Value disabled="false">Виберіть мову</Value>
         </Property>
+        <Property>
+            <Name>translateEditorText</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Text</Value>
+            <Value disabled="false">Text</Value>
+            <Value disabled="false">Szöveg</Value>
+            <Value disabled="false">Tекст</Value>
+        </Property>
         <Comment>
             <Value>TASK GROUP BROWSER</Value>
         </Comment>

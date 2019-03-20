@@ -1,5 +1,6 @@
 package io.crs.hsys.client.core.security;
 
+import io.crs.hsys.shared.constans.Language;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
@@ -10,6 +11,8 @@ public class CurrentUser {
 	private HotelDtor currentHotel;
 
 	private String locale;
+
+	private Language language;
 
 	private boolean loggedIn;
 
@@ -44,6 +47,14 @@ public class CurrentUser {
 
 	public void setLocale(String locale) {
 		this.locale = locale;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	@Override

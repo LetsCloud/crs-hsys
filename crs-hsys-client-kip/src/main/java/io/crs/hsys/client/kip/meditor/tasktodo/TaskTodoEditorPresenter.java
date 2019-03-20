@@ -110,7 +110,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 		resourceDelegate.withCallback(new AsyncCallback<TaskTodoDto>() {
 			@Override
 			public void onSuccess(TaskTodoDto dto) {
-				RefreshTableEvent.fire(TaskTodoEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskTodoEditorPresenter.this, RefreshTableEvent.TableType.TASK_TODO);
 				getView().close();
 			}
 
