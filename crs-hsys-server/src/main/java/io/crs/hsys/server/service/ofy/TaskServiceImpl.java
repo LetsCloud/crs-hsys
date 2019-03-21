@@ -145,7 +145,8 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 
 		public checkDueDateChange(Task oldTask, Task newTask) {
 			super(newTask, oldTask.getDueDate(), newTask.getDueDate(), TaskNoteType.TNT_MOD_DUEDATE);
-			text = new Long(oldTask.getDueDate().getTime()).toString();
+			if (oldTask.getDueDate() != null)
+				text = new Long(oldTask.getDueDate().getTime()).toString();
 		}
 	}
 
