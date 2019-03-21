@@ -37,10 +37,10 @@
 				</m:MaterialCollapsibleHeader>
 				<m:MaterialCollapsibleBody
 					addStyleNames="{style.padding0}">
-					<m:MaterialRow>
+					<m:MaterialRow marginBottom="0">
 						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
 							paddingRight="0">
-							<m:MaterialRow>
+							<m:MaterialRow marginBottom="0">
 								<m:MaterialTextBox label="Vendégnév"
 									value="Smith John, Mr." grid="s12" iconType="MORE_HORIZ" />
 
@@ -74,9 +74,14 @@
 									<m:html.Option value="TWIN" text="1002" />
 									<m:html.Option value="SNGL" text="1003" />
 								</combobox:MaterialComboBox>
+							</m:MaterialRow>
+						</m:MaterialColumn>
 
+						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+							paddingRight="0">
+							<m:MaterialRow marginBottom="0">
 								<m:MaterialLabel text="2018.07.20 - 2018.07.21"
-									grid="s12" addStyleNames="{style.textAlignRight}" />
+									grid="s12" />
 								<combobox:MaterialComboBox
 									label="Árkód" grid="s3">
 									<m:html.Option value="DBLB" text="RACK" />
@@ -99,7 +104,7 @@
 								</combobox:MaterialComboBox>
 
 								<m:MaterialLabel text="2018.07.20 - 2018.07.21"
-									grid="s12" addStyleNames="{style.textAlignRight}" />
+									grid="s12" />
 								<combobox:MaterialComboBox
 									label="Árkód" grid="s3">
 									<m:html.Option value="DBLB" text="RACK" />
@@ -120,12 +125,7 @@
 									<m:html.Option value="TWIN" text="Rátéve" />
 									<m:html.Option value="SNGL" text="Mentes" />
 								</combobox:MaterialComboBox>
-							</m:MaterialRow>
-						</m:MaterialColumn>
 
-						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
-							paddingRight="0">
-							<m:MaterialRow>
 								<m:MaterialCheckBox text="EarlyCI"
 									value="true" grid="s6" />
 								<m:MaterialCheckBox text="LateCO"
@@ -140,7 +140,21 @@
 									value="true" grid="s6" />
 								<m:MaterialCheckBox text="IFA szobára"
 									value="true" grid="s6" />
+							</m:MaterialRow>
+						</m:MaterialColumn>
+					</m:MaterialRow>
 
+
+					<m:MaterialRow>
+						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+							paddingRight="0">
+							<m:MaterialRow>
+							</m:MaterialRow>
+						</m:MaterialColumn>
+
+						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+							paddingRight="0">
+							<m:MaterialRow>
 								<combobox:MaterialComboBox
 									label="Bekészítés" placeholder="Válassz bekészítést" grid="s12"
 									closeOnSelect="false" multiple="true">
