@@ -1,6 +1,6 @@
 @require "theme";
 
-@external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, side-nav, 
+@external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, selected, side-nav, 
 multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, 
 materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, 
 select2-container--focus, select2-container--default, read-only, dataGroupBox, dataGroupTitle;
@@ -67,10 +67,32 @@ textarea.materialize-textarea {
 	border-bottom: 2px solid C_PRIMARY
 }
 
-.dropdown-content li>a, .dropdown-content li>span {
-	color: C_PRIMARY
+/*
+* DROPDOWN
+*/
+.dropdown-content li:hover,
+.dropdown-content li.active,
+.dropdown-content li.selected{
+	background-color: C_PRIMARY; 
+}
+.dropdown-content li.active.selected{
+	background-color: C_PRIMARY_LIGHT; 
 }
 
+.dropdown-content li>a,
+.dropdown-content li>span{
+	color: C_PRIMARY;
+}
+
+.dropdown-content li>a:hover,
+.dropdown-content li>span:hover{
+	color: #fff;
+}
+
+
+/*
+*
+*/
 .titleBar {
 	color: #fff;
 	background-color: C_PRIMARY

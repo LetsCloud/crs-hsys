@@ -2149,6 +2149,7 @@ button.btn-floating{border:none}
 	opacity:0;position:absolute;z-index:999;will-change:width, height}
 .dropdown-content li{
 	clear:both;color:rgba(0,0,0,0.87);cursor:pointer;min-height:50px;line-height:1.5rem;width:100%;text-align:left;text-transform:none}
+
 .dropdown-content li:hover,.dropdown-content li.active,.dropdown-content li.selected{background-color:#eee}
 .dropdown-content li.active.selected{
 	background-color:#e1e1e1
