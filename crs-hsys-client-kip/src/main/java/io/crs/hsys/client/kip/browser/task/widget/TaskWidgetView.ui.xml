@@ -20,16 +20,6 @@
 			display: flex;
 		}
 		
-		.dataGroupBox {
-			margin-top: 8px;
-			padding-left: 10px;
-			border-left: 3px solid #2196f3;
-		}
-		
-		.dataGroupTitle {
-			color: #2196f3;
-		}
-		
 		.todos {
 			font-size: 18px;
 		}
@@ -88,24 +78,21 @@
 			marginLeft="15" marginRight="15" marginBottom="0" padding="0">
 			<m:MaterialRow>
 				<m:MaterialColumn ui:field="descriptionPanel"
-					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
-					<g:Label text="Leírás"
-						addStyleNames="{style.dataGroupTitle}" />
+					grid="s12 m6" addStyleNames="dataGroupBox">
+					<g:Label text="Leírás" addStyleNames="dataGroupTitle" />
 					<g:Label ui:field="description"
 						addStyleNames="{style.todos}" />
 				</m:MaterialColumn>
 
 				<m:MaterialColumn ui:field="todosPanel"
-					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
-					<g:Label text="Tennivalók"
-						addStyleNames="{style.dataGroupTitle}" />
+					grid="s12 m6" addStyleNames="dataGroupBox">
+					<g:Label text="Tennivalók" addStyleNames="dataGroupTitle" />
 					<g:Label ui:field="todos" addStyleNames="{style.todos}" />
 				</m:MaterialColumn>
 
 				<m:MaterialColumn ui:field="notesPanel"
-					grid="s12 m6" addStyleNames="{style.dataGroupBox}">
-					<g:Label text="Idővonal"
-						addStyleNames="{style.dataGroupTitle}" />
+					grid="s12 m6" addStyleNames="dataGroupBox">
+					<g:Label text="Idővonal" addStyleNames="dataGroupTitle" />
 					<g:HTMLPanel ui:field="notes" />
 				</m:MaterialColumn>
 			</m:MaterialRow>

@@ -36,7 +36,7 @@
 		clear: both;
 	}
 	
-	@external .sidebar, .nav-wrapper, .select2-selection__rendered;
+	@external .sidebar, .nav-wrapper;
 	.sidebar {
 		padding: 10% !important;
 		font-size: 1em;

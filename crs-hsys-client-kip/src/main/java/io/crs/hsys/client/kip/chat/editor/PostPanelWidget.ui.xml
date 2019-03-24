@@ -3,10 +3,13 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 	<ui:style>
+	
 	</ui:style>
 
-	<ui:with field="res" type="io.crs.hsys.client.core.resources.GssResources" />
+	<ui:with field="res"
+		type="io.crs.hsys.client.core.resources.GssResources" />
 
-	<g:HTMLPanel ui:field="panel" styleName="{res.common.chat_details_widget}">
+	<g:HTMLPanel ui:field="panel"
+		styleName="{res.common.chat_details_widget}">
 	</g:HTMLPanel>
 </ui:UiBinder> 

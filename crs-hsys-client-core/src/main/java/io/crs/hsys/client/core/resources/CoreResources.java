@@ -2,12 +2,16 @@ package io.crs.hsys.client.core.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.TextResource;
 
 public interface CoreResources extends ClientBundle {
 	public static final CoreResources INSTANCE = GWT.create(CoreResources.class);
+
+	interface Style extends CssResource {
+		String dataGroupBox();
+		String dataGroupTitle();
+	}
 
 	@Source("io/crs/hsys/client/core/resources/css/materialize.min.css")
 	TextResource materialize();
@@ -30,10 +34,13 @@ public interface CoreResources extends ClientBundle {
 
 //	@Source("img/red-wallpaper.png")
 //	DataResource redWallpaperRes();
-	
-	@Source("css/core.css")
+
+	@Source("io/crs/hsys/client/core/resources/css/core.css")
+	TextResource core();
+
+	@Source("io/crs/hsys/client/core/resources/css/core2.css")
 	TextResource coreCss();
 
 //	@Source("js/select2-tab-fix.min.js")
- //   TextResource select2TabFix();
+	// TextResource select2TabFix();
 }
