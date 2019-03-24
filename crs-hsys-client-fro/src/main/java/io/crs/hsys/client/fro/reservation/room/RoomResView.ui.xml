@@ -35,23 +35,26 @@
 					<m:MaterialLink text="205 - Smith John, Mr."
 						iconType="HOTEL" iconPosition="LEFT" textColor="BLACK" />
 				</m:MaterialCollapsibleHeader>
+
 				<m:MaterialCollapsibleBody
 					addStyleNames="{style.padding0}">
 					<m:MaterialRow marginBottom="0">
 						<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
 							paddingRight="0">
+							<!-- ELSŐ SOR -->
 							<m:MaterialRow marginBottom="0">
-								<m:MaterialTextBox label="Vendégnév"
-									value="Smith John, Mr." grid="s12" iconType="MORE_HORIZ" />
+								<m:MaterialTextBox ui:field="guetsName"
+									label="Vendégnév" value="Smith John, Mr." grid="s12"
+									iconType="MORE_HORIZ" />
 
-								<m:MaterialIntegerBox label="Felnőtt"
-									value="2" placeholder="Adults" grid="s3" />
-								<m:MaterialIntegerBox label="Tini"
-									value="1" placeholder="Teens" grid="s3" />
-								<m:MaterialIntegerBox label="Gyerek"
-									value="1" placeholder="Children" grid="s3" />
-								<m:MaterialIntegerBox label="Csecsemő"
-									value="0" placeholder="Infants" grid="s3" />
+								<m:MaterialIntegerBox ui:field="adults"
+									label="Felnőtt" value="2" placeholder="Adults" grid="s3" />
+								<m:MaterialIntegerBox ui:field="tinies"
+									label="Tini" value="1" placeholder="Teens" grid="s3" />
+								<m:MaterialIntegerBox ui:field="children"
+									label="Gyerek" value="1" placeholder="Children" grid="s3" />
+								<m:MaterialIntegerBox ui:field="infants"
+									label="Csecsemő" value="0" placeholder="Infants" grid="s3" />
 
 								<m:MaterialDatePicker ui:field="arrival"
 									placeholder="Érkezés" grid="s4" format="yyyy.mm.dd" />
@@ -197,8 +200,9 @@
 						waves="LIGHT" backgroundColor="CYAN" iconType="MAIL" />
 				</m:MaterialTooltip>
 				<m:MaterialTooltip text="Check-IN" position="LEFT">
-					<m:MaterialAnchorButton type="FLOATING"
-						waves="LIGHT" backgroundColor="GREEN" iconType="FLIGHT_LAND" />
+					<m:MaterialAnchorButton ui:field="checkin"
+						type="FLOATING" waves="LIGHT" backgroundColor="GREEN"
+						iconType="FLIGHT_LAND" />
 				</m:MaterialTooltip>
 				<m:MaterialTooltip text="Kulcskártya"
 					position="LEFT">

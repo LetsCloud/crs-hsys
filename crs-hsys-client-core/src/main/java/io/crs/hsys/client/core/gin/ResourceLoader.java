@@ -19,7 +19,7 @@ public class ResourceLoader {
     ResourceLoader(CoreResources resources, GssResources gssResources) {
 
 		StyleInjector.injectAtStart(resources.materialize().getText());
-		StyleInjector.inject(resources.gwtMaterial().getText());
+//		StyleInjector.inject(resources.gwtMaterial().getText());
 		StyleInjector.injectAtEnd(resources.coreCss().getText());
 		
 //		resources.wallpaperCss().ensureInjected();

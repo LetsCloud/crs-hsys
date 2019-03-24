@@ -9,11 +9,11 @@ import com.google.gwt.resources.client.TextResource;
 public interface CoreResources extends ClientBundle {
 	public static final CoreResources INSTANCE = GWT.create(CoreResources.class);
 
-	@Source("io/crs/hsys/client/core/resources/css/materialize.css")
+	@Source("io/crs/hsys/client/core/resources/css/materialize.min.css")
 	TextResource materialize();
 
-	@Source("io/crs/hsys/client/core/resources/css/gwt-material.css")
-	TextResource gwtMaterial();
+//	@Source("io/crs/hsys/client/core/resources/css/gwt-material.css")
+//	TextResource gwtMaterial();
 
 //	@Source("img/profile.jpg")
 //	ImageResource profileImg();
