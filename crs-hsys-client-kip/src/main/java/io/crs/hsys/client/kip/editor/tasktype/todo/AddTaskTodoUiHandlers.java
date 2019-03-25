@@ -12,6 +12,15 @@ import io.crs.hsys.shared.dto.task.TaskTodoDto;
  *
  */
 public interface AddTaskTodoUiHandlers extends UiHandlers {
+	/**
+	 * Tennivaló kiválasztása, vagy a kiválasztás törlése
+	 * 
+	 * @param todo
+	 */
 	void onClickTodo(TaskTodoDto todo);
+
+	/**
+	 * A kiválasztott tennivalók hozzáadása a feladat típushoz
+	 */
 	void onAddTodos();
 }

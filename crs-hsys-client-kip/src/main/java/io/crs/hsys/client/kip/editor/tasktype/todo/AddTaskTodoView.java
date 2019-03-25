@@ -67,7 +67,7 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 		listPanel.clear();
 
 		for (TaskTodoDto todo : data) {
-			TaskTodoWidget ttw = new TaskTodoWidget(todo.getDescription() + " / " + todo.getTimeRequired());
+			TaskTodoWidget ttw = new TaskTodoWidget(todo.getDescription() + " (" + todo.getTimeRequired()+" perc)");
 			ttw.getCheckBox().addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {

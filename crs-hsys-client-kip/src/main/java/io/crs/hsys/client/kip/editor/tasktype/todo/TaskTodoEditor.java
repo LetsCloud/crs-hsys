@@ -14,6 +14,7 @@ import com.google.gwt.user.client.TakesValue;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialLabel;
 
 import io.crs.hsys.client.core.editor.room.DeleteEvent;
@@ -37,6 +38,10 @@ public class TaskTodoEditor extends Composite implements Editor<TaskTodoDto> {
 	TakesValueEditor<String> description;
 
 	TakesValueEditor<Integer> timeRequired;
+
+	@Ignore
+	@UiField
+	MaterialCheckBox checkBox;
 
 	private String descriptionText;
 	private Integer timeRequredInt;
@@ -88,5 +93,9 @@ public class TaskTodoEditor extends Composite implements Editor<TaskTodoDto> {
 	 */
 	public final HandlerRegistration addDeleteHandler(DeleteEventHandler handler) {
 		return addHandler(handler, DeleteEvent.TYPE);
+	}
+	
+	public Boolean isSelected() {
+		return checkBox.getValue();
 	}
 }

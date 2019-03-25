@@ -73,7 +73,7 @@ textarea.materialize-textarea {
 .dropdown-content li:hover,
 .dropdown-content li.active,
 .dropdown-content li.selected{
-	background-color: C_PRIMARY; 
+	background-color: C_PRIMARY !important;
 }
 .dropdown-content li.active.selected{
 	background-color: C_PRIMARY_LIGHT; 
@@ -86,7 +86,7 @@ textarea.materialize-textarea {
 
 .dropdown-content li>a:hover,
 .dropdown-content li>span:hover{
-	color: #fff;
+	color: #fff !important;
 }
 
 
