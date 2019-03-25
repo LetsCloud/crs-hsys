@@ -85,7 +85,7 @@ public class TaskTodoEditor extends Composite implements Editor<TaskTodoDto> {
 	}
 
 	private void setLabelText() {
-		label.setText(descriptionText + " / " + timeRequredInt);
+		label.setText(descriptionText + " ( " + timeRequredInt + " perc)");
 	}
 
 	/*
@@ -94,7 +94,7 @@ public class TaskTodoEditor extends Composite implements Editor<TaskTodoDto> {
 	public final HandlerRegistration addDeleteHandler(DeleteEventHandler handler) {
 		return addHandler(handler, DeleteEvent.TYPE);
 	}
-	
+
 	public Boolean isSelected() {
 		return checkBox.getValue();
 	}
