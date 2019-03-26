@@ -12,6 +12,8 @@ import io.crs.hsys.shared.dto.task.TaskTodoDto;
  *
  */
 public interface AddTaskTodoUiHandlers extends UiHandlers {
+	void onTodoSearchChange(String todo);
+	void onTaskGroupFilterChange(String code);
 	/**
 	 * Tennivaló kiválasztása, vagy a kiválasztás törlése
 	 * 

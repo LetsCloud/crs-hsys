@@ -176,10 +176,10 @@ public class TaskTypeEditorPresenter
 		resourceDelegate.withCallback(new AsyncCallback<TaskTypeDto>() {
 			@Override
 			public void onSuccess(TaskTypeDto dto) {
-				if (dto.getTodos() != null) {
-					List<TaskTodoDto> todos = dto.getTodos();
-					todos.sort((TaskTodoDto o1, TaskTodoDto o2) -> o1.getDescription().compareTo(o2.getDescription()));
-				}
+//				if (dto.getTodos() != null) {
+//					List<TaskTodoDto> todos = dto.getTodos();
+//					todos.sort((TaskTodoDto o1, TaskTodoDto o2) -> o1.getDescription().compareTo(o2.getDescription()));
+//				}
 
 				SetPageTitleEvent.fire(i18nCore.taskTypeEditorModifyTitle(), "", MenuItemType.MENU_ITEM,
 						TaskTypeEditorPresenter.this);
