@@ -18,6 +18,8 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addext.client.ui.MaterialTextBoxAdd;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
+import gwt.material.design.client.base.viewport.Resolution;
+import gwt.material.design.client.base.viewport.ViewPort;
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialDialog;
 import io.crs.hsys.client.kip.editor.tasktype.TaskTypeEditorView;
@@ -55,8 +57,6 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 	AddTaskTodoView(Binder uiBinder) {
 		logger.info("AddTaskTodoView()");
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		modal.setFullscreen(true);
 
 		taskGroupComboBox.addSelectionHandler(e -> {
 			getUiHandlers().onTaskGroupFilterChange(e.getSelectedValues().get(0).getCode());
@@ -70,6 +70,16 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 	@Override
 	public void open() {
 		logger.info("AddTaskTodoView().open()->start");
+		modal.setFullscreen(false);
+		ViewPort.when(Resolution.MOBILE_SMALL).then(viewPortChange -> {
+			modal.setFullscreen(true);
+		});
+		ViewPort.when(Resolution.MOBILE_MEDIUM).then(viewPortChange -> {
+			modal.setFullscreen(true);
+		});
+		ViewPort.when(Resolution.MOBILE_LARGE).then(viewPortChange -> {
+			modal.setFullscreen(true);
+		});
 		modal.open();
 		logger.info("AddTaskTodoView().open()->end");
 	}

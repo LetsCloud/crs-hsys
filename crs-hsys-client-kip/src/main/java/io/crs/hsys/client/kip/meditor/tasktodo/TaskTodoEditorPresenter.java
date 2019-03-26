@@ -142,6 +142,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 					dto.setAccount(currentUser.getAppUserDto().getAccount());
 					dto.setKind(getDefaultTaskKind());
 					dto.setActive(true);
+					dto.setTimeRequired(0);
 
 					getView().open(isNew, dto);
 				} else {

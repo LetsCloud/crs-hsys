@@ -3,7 +3,10 @@
  */
 package io.crs.hsys.client.kip.editor.tasktype.todo;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -20,9 +23,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialCollection;
-
+import gwt.material.design.client.ui.MaterialIcon;
 import io.crs.hsys.client.core.editor.room.DeleteEvent;
-import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
@@ -30,6 +32,7 @@ import io.crs.hsys.shared.dto.task.TaskTodoDto;
  *
  */
 public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor<TaskTodoDto, TaskTodoEditor>> {
+	private static Logger logger = Logger.getLogger(TaskTodoListEditor.class.getName());
 
 	interface Binder extends UiBinder<Widget, TaskTodoListEditor> {
 	}
@@ -37,6 +40,10 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 	@Ignore
 	@UiField
 	MaterialCollection listPanel;
+
+	@Ignore
+	@UiField
+	MaterialIcon moveUp, moveDown;
 
 	@Inject
 	Provider<TaskTodoEditor> editorProvider;
@@ -89,14 +96,21 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
 
-	private TaskGroupDto taskGroup;
+	private String taskGroupKey;
 	private AddTaskTodoPresenter addTaskTodo;
 
 	/**
 	*/
 	@Inject
 	TaskTodoListEditor(Binder uiBinder) {
+		logger.info("TaskTodoListEditor()");
 		initWidget(uiBinder.createAndBindUi(this));
+		moveUp.addClickHandler(e -> {
+			moveTodoUp(true);
+		});
+		moveDown.addClickHandler(e -> {
+			moveTodoUp(false);
+		});
 	}
 
 	public void setAddTaskTodo(AddTaskTodoPresenter addTaskTodo) {
@@ -110,24 +124,50 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	@UiHandler("addButton")
 	void onAddClick(ClickEvent event) {
-		addTaskTodo.open(taskGroup.getCode());
+		addTaskTodo.open(taskGroupKey);
 //		TaskTodoDto dto = new TaskTodoDto();
 //		editor.getList().add(dto);
 	}
 
 	@UiHandler("deleteButton")
 	void onDeleteClick(ClickEvent event) {
+		List<TaskTodoDto> toDelete = new ArrayList<TaskTodoDto>();
 		for (int i = 0; i < editor.getEditors().size(); i++) {
 			if (editor.getEditors().get(i).isSelected())
-				remove(i);
+				toDelete.add(editor.getList().get(i));
 		}
+		removeAll(toDelete);
 	}
 
 	private void remove(final int index) {
 		editor.getList().remove(index);
 	}
 
+	private void removeAll(List<TaskTodoDto> toDelete) {
+		editor.getList().removeAll(toDelete);
+	}
+
 	public void addTaskTodos(List<TaskTodoDto> todos) {
 		editor.getList().addAll(todos);
+	}
+
+	public void setTaskGroupKey(String taskGroupKey) {
+		this.taskGroupKey = taskGroupKey;
+	}
+
+	private void moveTodoUp(Boolean moveUp) {
+		for (int i = 0; i < editor.getEditors().size(); i++) {
+			if (editor.getEditors().get(i).isSelected()) {
+				editor.getEditors().get(i).checkBox.setValue(false);
+				int newPos = i;
+				if (moveUp)
+					newPos--;
+				else
+					newPos++;
+				Collections.swap(editor.getList(), i, newPos);
+				editor.getEditors().get(newPos).checkBox.setValue(true);
+				break;
+			}
+		}
 	}
 }

@@ -76,13 +76,13 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@Ignore
 	@UiField
 	SimplePanel addTaskTodoPanel;
-	
+
 	/**
 	* 
 	*/
 	@Inject
-	TaskTypeEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, TranslateListEditor translateListEditor,
-			TaskTodoListEditor taskTodoListEditor) {
+	TaskTypeEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst,
+			TranslateListEditor translateListEditor, TaskTodoListEditor taskTodoListEditor) {
 		logger.info("TaskTypeEditorView()");
 
 		this.translations = translateListEditor;
@@ -101,11 +101,16 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 
 	private void initTaskGroupCombo() {
 
+		taskGroupComboBox.addValueChangeHandler(e -> {
+			todos.setTaskGroupKey(taskGroupComboBox.getSelectedValue().get(0).getWebSafeKey());
+		});
+
 		taskGroup = TakesValueEditor.of(new TakesValue<TaskGroupDto>() {
 
 			@Override
 			public void setValue(TaskGroupDto value) {
 				taskGroupComboBox.setSingleValue(value);
+				todos.setTaskGroupKey(value.getWebSafeKey());
 			}
 
 			@Override
