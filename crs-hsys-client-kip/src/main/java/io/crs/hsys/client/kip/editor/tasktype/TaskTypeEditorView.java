@@ -76,7 +76,7 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 	@Ignore
 	@UiField
 	SimplePanel addTaskTodoPanel;
-
+	
 	/**
 	* 
 	*/

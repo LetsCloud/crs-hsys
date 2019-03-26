@@ -36,7 +36,7 @@
 		clear: both;
 	}
 	
-	@external .sidebar, .nav-wrapper, .select2-selection__rendered;
+	@external .sidebar, .nav-wrapper;
 	.sidebar {
 		padding: 10% !important;
 		font-size: 1em;
@@ -84,18 +84,19 @@
 				activates="sideBar">
 
 				<g:SimplePanel ui:field="navBarSlot" />
-				
+
 				<m:MaterialNavSection hideOn="NONE"
 					float="RIGHT">
-					
-					<m:MaterialLink href="#/chatRoom" iconPosition="NONE"
-						iconType="FORUM" layoutPosition="RELATIVE">
+
+					<m:MaterialLink href="#/chatRoom"
+						iconPosition="NONE" iconType="FORUM" layoutPosition="RELATIVE">
 						<m:MaterialBadge text="2" backgroundColor="PINK"
 							textColor="WHITE" circle="true" />
 					</m:MaterialLink>
-					
-					<m:MaterialLink href="#/taskMngr" iconPosition="NONE"
-						iconType="ASSIGNMENT_LATE" layoutPosition="RELATIVE">
+
+					<m:MaterialLink href="#/taskMngr"
+						iconPosition="NONE" iconType="ASSIGNMENT_LATE"
+						layoutPosition="RELATIVE">
 						<m:MaterialBadge text="2" backgroundColor="PINK"
 							textColor="WHITE" circle="true" />
 					</m:MaterialLink>
@@ -126,16 +127,16 @@
 					activator="accountDropDown" constrainWidth="true">
 					<m:MaterialLink iconType="ACCOUNT_BALANCE"
 						text="{i18n.accountMenuItemSetup}" iconPosition="LEFT"
-						textColor="BLACK" waves="DEFAULT" />
+						waves="DEFAULT" />
 					<m:MaterialLink iconType="SETTINGS"
 						text="{i18n.accountMenuItemSystem}" iconPosition="LEFT"
-						textColor="BLACK" waves="DEFAULT" />
+						waves="DEFAULT" />
 				</m:MaterialDropDown>
 
 				<!-- propertyLink -->
 				<m:MaterialLink ui:field="hotelLink"
 					activates="propertyDropDown" iconType="DOMAIN" iconPosition="LEFT"
-					textColor="GREY_LIGHTEN_5" addStyleNames="{style.clearBoth}" />
+					addStyleNames="{style.clearBoth}" />
 
 				<!-- propertyDropDown -->
 				<m:MaterialDropDown ui:field="hotelDropDown"
@@ -149,7 +150,7 @@
 						addStyleNames="{style.userImg}" float="LEFT" />
 					<!-- userLink -->
 					<m:MaterialLink ui:field="userLink"
-						activates="userDropDown" textColor="GREY_LIGHTEN_5" float="RIGHT"
+						activates="userDropDown" float="RIGHT"
 						addStyleNames="{style.userDrop}" />
 				</m.html:Div>
 			</ma:sideprofile.MaterialSideProfile>
@@ -159,14 +160,12 @@
 		<m:MaterialDropDown ui:field="userDropDown"
 			activator="userDropDown" constrainWidth="false">
 			<m:MaterialLink text="{i18n.userMenuItemProfile}"
-				iconType="PORTRAIT" iconPosition="LEFT" textColor="BLACK"
-				waves="DEFAULT" />
+				iconType="PORTRAIT" iconPosition="LEFT" waves="DEFAULT" />
 			<m:MaterialLink text="{i18n.userMenuItemSwitch}"
-				iconType="SWAP_HORIZ" iconPosition="LEFT" textColor="BLACK"
-				waves="DEFAULT" />
+				iconType="SWAP_HORIZ" iconPosition="LEFT" waves="DEFAULT" />
 			<m:MaterialLink ui:field="logoutLink"
 				text="{i18n.userMenuItemLogout}" iconType="POWER_SETTINGS_NEW"
-				iconPosition="LEFT" textColor="BLACK" waves="DEFAULT" />
+				iconPosition="LEFT" waves="DEFAULT" />
 		</m:MaterialDropDown>
 	</m:MaterialPanel>
 </ui:UiBinder>

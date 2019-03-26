@@ -89,6 +89,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
 
 	private AddTaskTodoPresenter addTaskTodo;
+
 	/**
 	*/
 	@Inject
@@ -112,9 +113,12 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 //		editor.getList().add(dto);
 	}
 
-//	@UiHandler("deleteButton")
+	@UiHandler("deleteButton")
 	void onDeleteClick(ClickEvent event) {
-		remove(editor.getList().size() - 1);
+		for (int i = 0; i < editor.getEditors().size(); i++) {
+			if (editor.getEditors().get(i).isSelected())
+				remove(i);
+		}
 	}
 
 	private void remove(final int index) {

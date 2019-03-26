@@ -15,8 +15,6 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
@@ -106,10 +104,9 @@ public class RoomTypeEditorPresenter
 
 	@Override
 	protected RoomTypeDto createDto() {
-		logger.info("RoomTypeEditorPresenter().createDto()");
 		RoomTypeDto dto = new RoomTypeDto();
 		dto.setHotel(currentUser.getAppUserDto().getDefaultHotel());
-		logger.info("RoomTypeEditorPresenter().createDto()->dto=" + dto);
+		dto.setActive(true);
 		return dto;
 	}
 

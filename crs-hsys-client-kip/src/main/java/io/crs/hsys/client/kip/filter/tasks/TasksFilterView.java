@@ -17,7 +17,6 @@ import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.resources.BlueThemeColors;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.constans.TaskKind;
@@ -68,6 +67,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initTaskStatusPanel() {
 		Label title = new Label(i18n.tasksFilterTaskStatusTitle());
+		title.addStyleName("dataGroupTitle");
 		taskStatusPanel.add(title);
 
 		initCheckBox(taskStatusPanel, i18n.tasksFilterStatusNotStarted());
@@ -79,6 +79,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initCleaningStatusPanel() {
 		Label title = new Label(i18n.roomStatusFilterRoomStatusTitle());
+		title.addStyleName("dataGroupTitle");
 		cleaningStatusPanel.add(title);
 
 		initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomDirty());
@@ -213,13 +214,15 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void createCleaningStatusLayout() {
 		cleaningStatusPanel.setGrid("s6 m4");
-		cleaningStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
+//		cleaningStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
+		cleaningStatusPanel.addStyleName("dataGroupBox");
 		controlPanel.add(cleaningStatusPanel);
 	}
 
 	private void createOccupancyStatusLayout() {
 		taskStatusPanel.setGrid("s6 m4");
-		taskStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
+//		taskStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
+		taskStatusPanel.addStyleName("dataGroupBox");
 		controlPanel.add(taskStatusPanel);
 	}
 	

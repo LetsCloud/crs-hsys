@@ -267,7 +267,11 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 		title.setFontSize(22, Unit.PX);
 		title.setTextColor(Color.GREY_DARKEN_2);
 		title.setTruncate(true);
-		title.setText(getTranslated(currentUser.getLocale(), taskType.getTranslations(), taskType.getDescription()));
+		if (taskType.getTranslations() == null)
+			title.setText(taskType.getDescription());
+		else
+			title.setText(
+					getTranslated(currentUser.getLocale(), taskType.getTranslations(), taskType.getDescription()));
 	}
 
 	private MaterialLink getBadgeLink(String text) {

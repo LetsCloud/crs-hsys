@@ -15,16 +15,6 @@
 		margin-right: 10px;
 	}
 	
-	.dataGroupBox {
-		margin-top: 8px;
-		padding-left: 10px;
-		border-left: 3px solid #2196f3;
-	}
-	
-	.dataGroupTitle {
-		color: #2196f3;
-	}
-	
 	.saveButton {
 		margin-bottom: 18px;
 	}
@@ -53,9 +43,9 @@
 
 				<m:MaterialRow marginBottom="30">
 					<m:MaterialColumn grid="s12" padding="0">
-						<g:HTMLPanel addStyleNames="{style.dataGroupBox}">
+						<g:HTMLPanel addStyleNames="dataGroupBox">
 							<g:Label text="{i18nCore.taskTypeEditorTranslations}"
-								addStyleNames="{style.dataGroupTitle}" />
+								addStyleNames="dataGroupTitle" />
 							<translateeditor:TranslateListEditor
 								ui:field="translations" />
 						</g:HTMLPanel>
@@ -70,9 +60,9 @@
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s12 m6">
-				<g:HTMLPanel addStyleNames="{style.dataGroupBox}">
+				<g:HTMLPanel addStyleNames="dataGroupBox">
 					<g:Label text="{i18nCore.taskTypeEditorTodos}"
-						addStyleNames="{style.dataGroupTitle}" />
+						addStyleNames="dataGroupTitle" />
 					<tasktypeeditor:TaskTodoListEditor
 						ui:field="todos" />
 				</g:HTMLPanel>

@@ -9,8 +9,10 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.CalendarUtil;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -18,6 +20,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialFloatBox;
 import gwt.material.design.client.ui.MaterialIntegerBox;
+import gwt.material.design.client.ui.MaterialTextBox;
 
 /**
  * @author robi
@@ -30,10 +33,13 @@ public class RoomResView extends ViewWithUiHandlers<RoomResUiHandlers> implement
 	}
 	
 	@UiField
+	MaterialTextBox guetsName;
+	
+	@UiField
 	MaterialDatePicker arrival, departure;
 
 	@UiField
-	MaterialIntegerBox nights;
+	MaterialIntegerBox nights, adults, tinies, children, infants;
 	
 	@UiField
 	MaterialFloatBox rate;
@@ -55,5 +61,14 @@ public class RoomResView extends ViewWithUiHandlers<RoomResUiHandlers> implement
 		CalendarUtil.addDaysToDate(depDate, nightsValue);
 		departure.setValue(depDate);
 		rate.setValue(999999f);
+	}
+	
+	@UiHandler("checkin")
+	public void onCheckIn(ClickEvent event) {
+		guetsName.setReadOnly(true);
+		adults.setReadOnly(true); 
+		tinies.setReadOnly(true); 
+		children.setReadOnly(true); 
+		infants.setReadOnly(true);
 	}
 }

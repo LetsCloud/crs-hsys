@@ -356,102 +356,294 @@
 .transparent{background-color:transparent !important}
 .transparent-text{color:transparent !important}
 
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*** Colors ***/
+/*** Badges ***/
+/*** Buttons ***/
+/*** Cards ***/
+/*** Collapsible ***/
+/*** Chips ***/
+/*** Date Picker ***/
+/*** Dropdown ***/
+/*** Fonts ***/
+/*** Forms ***/
+/*** Global ***/
+/*** Navbar ***/
+/*** SideNav ***/
+/*** Photo Slider ***/
+/*** Spinners | Loaders ***/
+/*** Tabs ***/
+/*** Tables ***/
+/*** Toasts ***/
+/*** Typography ***/
+/*** Collections ***/
+/* Progress Bar */
 
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
 html{
 	font-family:sans-serif;
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%}
 
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
 body{margin:0}
 
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
 
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
 audio,canvas,progress,video{
 	display:inline-block;
 	vertical-align:baseline}
 
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
 audio:not([controls]){
 	display:none;
 	height:0}
 
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
 [hidden],template{display:none}
 
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
 a{background-color:transparent}
 
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
 a:active,a:hover{outline:0}
 
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
 abbr[title]{border-bottom:1px dotted}
 
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
 b,strong{font-weight:bold}
 
+/**
+ * Address styling not present in Safari and Chrome.
+ */
 dfn{font-style:italic}
 
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
 h1{font-size:2em;margin:0.67em 0}
 
+/**
+ * Address styling not present in IE 8/9.
+ */
 mark{background:#ff0;color:#000}
 
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
 small{font-size:80%}
 
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
 sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
-
 sup{top:-0.5em}
-
 sub{bottom:-0.25em}
 
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
 img{border:0}
 
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
 svg:not(:root){overflow:hidden}
 
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
 figure{margin:1em 40px}
 
-hr{box-sizing:content-box;height:0}
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr{-moz-box-sizing: content-box;box-sizing:content-box;height:0}
 
+/**
+ * Contain overflow in all browsers.
+ */
 pre{overflow:auto}
 
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
 code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}
 
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
 
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
 button{overflow:visible}
 
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
 button,select{text-transform:none}
 
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* 1 */
 html input[type="button"],button,input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
 
+/**
+ * Re-set default cursor for disabled elements.
+ */
 button[disabled],html input[disabled]{cursor:default}
 
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
 button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
 
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
 input{
 	line-height:normal
 }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
 input[type="checkbox"],
 input[type="radio"]{
 	box-sizing:border-box;
 	padding:0
 }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button{
 	height:auto
 }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
 input[type="search"]{
 	-webkit-appearance:textfield;
+	-moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
 	box-sizing:content-box
 }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration{
 	-webkit-appearance:none
 }
 
+/**
+ * Define consistent border, margin, and padding.
+ */
 fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}
 
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
 legend{border:0;padding:0}
 
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
 textarea{overflow:auto}
 
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
 optgroup{font-weight:bold}
 
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
 table{border-collapse:collapse;border-spacing:0}
 
 td,th{padding:0}
@@ -564,10 +756,16 @@ img.responsive-img,video.responsive-video{max-width:100%;height:auto}
 .pin-top,.pin-bottom{position:relative}
 .pinned{position:fixed !important}
 
+/*********************
+  Transition Classes
+**********************/
 ul.staggered-list li{opacity:0}
 
 .fade-in{opacity:0;-webkit-transform-origin:0 50%;transform-origin:0 50%}
 
+/*********************
+  Media Query Classes
+**********************/
 @media only screen and (max-width: 600px){
 	.hide-on-small-only,.hide-on-small-and-down{display:none !important}
 }
@@ -757,6 +955,9 @@ nav ul a span.badge{position:static;margin-left:4px;line-height:0}
 @-webkit-keyframes indeterminate-short{0%{left:-200%;right:100%}60%{left:107%;right:-8%}100%{left:107%;right:-8%}}
 @keyframes indeterminate-short{0%{left:-200%;right:100%}60%{left:107%;right:-8%}100%{left:107%;right:-8%}}
 
+/*******************
+  Utility Classes
+*******************/
 .hide{display:none !important}
 .left-align{text-align:left}
 .right-align{text-align:right}
@@ -783,6 +984,7 @@ input[type=range]+.thumb{
 * MATERIAL-ICONS
 *
 */
+/* This is needed for some mobile phones to display the Google Icon font properly */
 .material-icons{
 	text-rendering:optimizeLegibility;
 	-webkit-font-feature-settings:'liga';
@@ -1277,25 +1479,52 @@ input[type=range]+.thumb{
 @media only screen and (min-width: 601px){
 	.row .col.m1{width:8.3333333333%;margin-left:auto;left:auto;right:auto}
 	.row .col.m2{width:16.6666666667%;margin-left:auto;left:auto;right:auto}
-	.row .col.m3{width:25%;margin-left:auto;left:auto;right:auto}.row .col.m4{width:33.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.m3{width:25%;margin-left:auto;left:auto;right:auto}
+	.row .col.m4{width:33.3333333333%;margin-left:auto;left:auto;right:auto}
 	.row .col.m5{width:41.6666666667%;margin-left:auto;left:auto;right:auto}
-	.row .col.m6{width:50%;margin-left:auto;left:auto;right:auto}.row .col.m7{width:58.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.m6{width:50%;margin-left:auto;left:auto;right:auto}
+	.row .col.m7{width:58.3333333333%;margin-left:auto;left:auto;right:auto}
 	.row .col.m8{width:66.6666666667%;margin-left:auto;left:auto;right:auto}
-	.row .col.m9{width:75%;margin-left:auto;left:auto;right:auto}.row .col.m10{width:83.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.m9{width:75%;margin-left:auto;left:auto;right:auto}
+	.row .col.m10{width:83.3333333333%;margin-left:auto;left:auto;right:auto}
 	.row .col.m11{width:91.6666666667%;margin-left:auto;left:auto;right:auto}
-	.row .col.m12{width:100%;margin-left:auto;left:auto;right:auto}.row .col.offset-m1{margin-left:8.3333333333%}
-	.row .col.pull-m1{right:8.3333333333%}.row .col.push-m1{left:8.3333333333%}.row .col.offset-m2{margin-left:16.6666666667%}
-	.row .col.pull-m2{right:16.6666666667%}.row .col.push-m2{left:16.6666666667%}.row .col.offset-m3{margin-left:25%}
-	.row .col.pull-m3{right:25%}.row .col.push-m3{left:25%}.row .col.offset-m4{margin-left:33.3333333333%}
-	.row .col.pull-m4{right:33.3333333333%}.row .col.push-m4{left:33.3333333333%}.row .col.offset-m5{margin-left:41.6666666667%}
-	.row .col.pull-m5{right:41.6666666667%}.row .col.push-m5{left:41.6666666667%}.row .col.offset-m6{margin-left:50%}
-	.row .col.pull-m6{right:50%}.row .col.push-m6{left:50%}.row .col.offset-m7{margin-left:58.3333333333%}
-	.row .col.pull-m7{right:58.3333333333%}.row .col.push-m7{left:58.3333333333%}.row .col.offset-m8{margin-left:66.6666666667%}
-	.row .col.pull-m8{right:66.6666666667%}.row .col.push-m8{left:66.6666666667%}.row .col.offset-m9{margin-left:75%}
-	.row .col.pull-m9{right:75%}.row .col.push-m9{left:75%}.row .col.offset-m10{margin-left:83.3333333333%}
-	.row .col.pull-m10{right:83.3333333333%}.row .col.push-m10{left:83.3333333333%}.row .col.offset-m11{margin-left:91.6666666667%}
-	.row .col.pull-m11{right:91.6666666667%}.row .col.push-m11{left:91.6666666667%}
-	.row .col.offset-m12{margin-left:100%}.row .col.pull-m12{right:100%}.row .col.push-m12{left:100%}
+	.row .col.m12{width:100%;margin-left:auto;left:auto;right:auto}
+	.row .col.offset-m1{margin-left:8.3333333333%}
+	.row .col.pull-m1{right:8.3333333333%}
+	.row .col.push-m1{left:8.3333333333%}
+	.row .col.offset-m2{margin-left:16.6666666667%}
+	.row .col.pull-m2{right:16.6666666667%}
+	.row .col.push-m2{left:16.6666666667%}
+	.row .col.offset-m3{margin-left:25%}
+	.row .col.pull-m3{right:25%}
+	.row .col.push-m3{left:25%}
+	.row .col.offset-m4{margin-left:33.3333333333%}
+	.row .col.pull-m4{right:33.3333333333%}
+	.row .col.push-m4{left:33.3333333333%}
+	.row .col.offset-m5{margin-left:41.6666666667%}
+	.row .col.pull-m5{right:41.6666666667%}
+	.row .col.push-m5{left:41.6666666667%}
+	.row .col.offset-m6{margin-left:50%}
+	.row .col.pull-m6{right:50%}
+	.row .col.push-m6{left:50%}
+	.row .col.offset-m7{margin-left:58.3333333333%}
+	.row .col.pull-m7{right:58.3333333333%}
+	.row .col.push-m7{left:58.3333333333%}
+	.row .col.offset-m8{margin-left:66.6666666667%}
+	.row .col.pull-m8{right:66.6666666667%}
+	.row .col.push-m8{left:66.6666666667%}
+	.row .col.offset-m9{margin-left:75%}
+	.row .col.pull-m9{right:75%}
+	.row .col.push-m9{left:75%}
+	.row .col.offset-m10{margin-left:83.3333333333%}
+	.row .col.pull-m10{right:83.3333333333%}
+	.row .col.push-m10{left:83.3333333333%}
+	.row .col.offset-m11{margin-left:91.6666666667%}
+	.row .col.pull-m11{right:91.6666666667%}
+	.row .col.push-m11{left:91.6666666667%}
+	.row .col.offset-m12{margin-left:100%}
+	.row .col.pull-m12{right:100%}
+	.row .col.push-m12{left:100%}
 }
 @media only screen and (min-width: 993px){
 	.row .col.l1{width:8.3333333333%;margin-left:auto;left:auto;right:auto}
@@ -1326,7 +1555,8 @@ input[type=range]+.thumb{
 	.row .col.pull-l5{right:41.6666666667%}
 	.row .col.push-l5{left:41.6666666667%}
 	.row .col.offset-l6{margin-left:50%}
-	.row .col.pull-l6{right:50%}.row .col.push-l6{left:50%}
+	.row .col.pull-l6{right:50%}
+	.row .col.push-l6{left:50%}
 	.row .col.offset-l7{margin-left:58.3333333333%}
 	.row .col.pull-l7{right:58.3333333333%}
 	.row .col.push-l7{left:58.3333333333%}
@@ -1530,6 +1760,7 @@ input[type=range]+.thumb{
     left: 100%;
   }
 }
+
 /*
 * NAV
 */
@@ -1592,7 +1823,11 @@ nav .input-field label.active{-webkit-transform:translateY(0);transform:translat
 	.navbar-fixed{height:64px}}
 
 
+
+
+
 a{text-decoration:none}
+
 html{line-height:1.5;font-family:"Roboto", sans-serif;font-weight:normal;color:rgba(0,0,0,0.87)}
 
 @media only screen and (min-width: 0){
@@ -1896,6 +2131,9 @@ button.btn-floating{border:none}
 .fixed-action-btn ul li{margin-bottom:15px}
 .fixed-action-btn ul a.btn-floating{opacity:0}
 
+/*
+* BTN-FLAT
+*/
 .btn-flat{box-shadow:none;background-color:transparent;color:#343434;cursor:pointer}
 .btn-flat.disabled{color:#b3b3b3;cursor:default}
 .btn-large{height:54px;line-height:56px}
@@ -1911,6 +2149,7 @@ button.btn-floating{border:none}
 	opacity:0;position:absolute;z-index:999;will-change:width, height}
 .dropdown-content li{
 	clear:both;color:rgba(0,0,0,0.87);cursor:pointer;min-height:50px;line-height:1.5rem;width:100%;text-align:left;text-transform:none}
+
 .dropdown-content li:hover,.dropdown-content li.active,.dropdown-content li.selected{background-color:#eee}
 .dropdown-content li.active.selected{
 	background-color:#e1e1e1
@@ -1989,6 +2228,7 @@ button.btn-floating{border:none}
 .waves-input-wrapper .waves-button-input{position:relative;top:0;left:0;z-index:1}
 .waves-circle{text-align:center;width:2.5em;height:2.5em;line-height:2.5em;border-radius:50%;-webkit-mask-image:none}
 .waves-block{display:block}
+/* Firefox Bug: link not triggered */
 a.waves-effect .waves-ripple{z-index:-1}
 
 
@@ -2070,6 +2310,35 @@ a.waves-effect .waves-ripple{z-index:-1}
 .collapsible-header i{width:2rem;font-size:1.6rem;line-height:3rem;display:block;float:left;text-align:center;margin-right:1rem}
 .collapsible-body{display:none;border-bottom:1px solid #ddd;box-sizing:border-box}
 .collapsible-body p{margin:0;padding:2rem}
+.side-nav .collapsible {
+    border: none;
+    box-shadow: none;
+}
+
+.side-nav .collapsible li {
+    padding: 0;
+}
+
+.side-nav .collapsible-header {
+    background-color: transparent;
+    border: none;
+    line-height: inherit;
+    height: inherit;
+    margin: 0 1rem;
+}
+
+.side-nav .collapsible-header i {
+    line-height: inherit;
+}
+
+.side-nav .collapsible-body {
+    border: 0;
+    background-color: #fff;
+}
+
+.side-nav .collapsible-body li a {
+    margin: 0 1rem 0 2rem;
+}
 .collapsible.popout{border:none;box-shadow:none}
 .collapsible.popout>li{
 	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
@@ -2109,12 +2378,16 @@ a.waves-effect .waves-ripple{z-index:-1}
 #materialbox-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:#292929;z-index:999;will-change:opacity}
 .materialbox-caption{position:fixed;display:none;color:#fff;line-height:50px;bottom:0;width:100%;text-align:center;padding:0% 15%;height:50px;z-index:1000;-webkit-font-smoothing:antialiased}
 
+/* Remove Focus Boxes */
 select:focus{outline:1px solid #c9f3ef}
 
 button:focus{outline:none;background-color:#2ab7a9}
 
 label{font-size:0.8rem;color:#9e9e9e}
 
+/***************************
+   Text Inputs + Textarea
+****************************/
 ::-webkit-input-placeholder{color:#d1d1d1}
 :-moz-placeholder{color:#d1d1d1}
 ::-moz-placeholder{color:#d1d1d1}
@@ -2270,10 +2543,34 @@ textarea.materialize-textarea:focus.invalid{
 	border-bottom:1px solid #F44336;
 	box-shadow:0 1px 0 0 #F44336
 }
-input:not([type]).invalid+label:after,input:not([type]):focus.invalid+label:after,input[type=text].invalid+label:after,input[type=text]:focus.invalid+label:after,input[type=password].invalid+label:after,input[type=password]:focus.invalid+label:after,input[type=email].invalid+label:after,input[type=email]:focus.invalid+label:after,input[type=url].invalid+label:after,input[type=url]:focus.invalid+label:after,input[type=time].invalid+label:after,input[type=time]:focus.invalid+label:after,input[type=date].invalid+label:after,input[type=date]:focus.invalid+label:after,input[type=datetime-local].invalid+label:after,input[type=datetime-local]:focus.invalid+label:after,input[type=tel].invalid+label:after,input[type=tel]:focus.invalid+label:after,input[type=number].invalid+label:after,input[type=number]:focus.invalid+label:after,input[type=search].invalid+label:after,input[type=search]:focus.invalid+label:after,textarea.materialize-textarea.invalid+label:after,textarea.materialize-textarea:focus.invalid+label:after{
+input:not([type]).invalid+label:after,
+input:not([type]):focus.invalid+label:after,
+input[type=text].invalid+label:after,
+input[type=text]:focus.invalid+label:after,
+input[type=password].invalid+label:after,
+input[type=password]:focus.invalid+label:after,
+input[type=email].invalid+label:after,
+input[type=email]:focus.invalid+label:after,
+input[type=url].invalid+label:after,
+input[type=url]:focus.invalid+label:after,
+input[type=time].invalid+label:after,
+input[type=time]:focus.invalid+label:after,
+input[type=date].invalid+label:after,
+input[type=date]:focus.invalid+label:after,
+input[type=datetime-local].invalid+label:after,
+input[type=datetime-local]:focus.invalid+label:after,
+input[type=tel].invalid+label:after,
+input[type=tel]:focus.invalid+label:after,
+input[type=number].invalid+label:after,
+input[type=number]:focus.invalid+label:after,
+input[type=search].invalid+label:after,
+input[type=search]:focus.invalid+label:after,
+textarea.materialize-textarea.invalid+label:after,
+textarea.materialize-textarea:focus.invalid+label:after{
 	content:attr(data-error);
 	color:#F44336;
-	opacity:1}
+	opacity:1
+}
 input:not([type])+label:after,input[type=text]+label:after,input[type=password]+label:after,input[type=email]+label:after,input[type=url]+label:after,input[type=time]+label:after,input[type=date]+label:after,input[type=datetime-local]+label:after,input[type=tel]+label:after,input[type=number]+label:after,input[type=search]+label:after,textarea.materialize-textarea+label:after{
 	display:block;
 	content:"";
@@ -2296,7 +2593,9 @@ input:not([type])+label:after,input[type=text]+label:after,input[type=password]+
 	.input-field .prefix ~ input{width:80%;width:calc(100% - 3rem)}}
 .input-field input[type=search]{display:block;line-height:inherit;padding-left:4rem;width:calc(100% - 4rem)}
 .input-field input[type=search]:focus{background-color:#fff;border:0;box-shadow:none;color:#444}
-.input-field input[type=search]:focus+label i,.input-field input[type=search]:focus ~ .mdi-navigation-close,.input-field input[type=search]:focus ~ .material-icons{
+.input-field input[type=search]:focus+label i,
+.input-field input[type=search]:focus ~ .mdi-navigation-close,
+.input-field input[type=search]:focus ~ .material-icons{
 	color:#444}
 .input-field input[type=search]+label{left:1rem}
 .input-field input[type=search] ~ .mdi-navigation-close,.input-field input[type=search] ~ .material-icons{
@@ -2307,17 +2606,24 @@ textarea.materialize-textarea{overflow-y:hidden;padding:1.6rem 0;resize:none;min
 
 .hiddendiv{display:none;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;padding-top:1.2rem}
 
+/***************
+  Radio Buttons
+***************/
+/* Remove default Radio Buttons */
 [type="radio"]:not(:checked),[type="radio"]:checked{position:absolute;left:-9999px;visibility:hidden}
 [type="radio"]:not(:checked)+label,[type="radio"]:checked+label{
 	position:relative;padding-left:35px;cursor:pointer;display:inline-block;height:25px;line-height:25px;font-size:1rem;transition:.28s ease;
 	-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 [type="radio"]+label:before,[type="radio"]+label:after{
 	content:'';position:absolute;left:0;top:0;margin:4px;width:16px;height:16px;z-index:0;transition:.28s ease}
+/* Unchecked styles */
 [type="radio"]:not(:checked)+label:before{border-radius:50%;border:2px solid #5a5a5a}
 [type="radio"]:not(:checked)+label:after{border-radius:50%;border:2px solid #5a5a5a;z-index:-1;-webkit-transform:scale(0);transform:scale(0)}
+/* Checked styles */
 [type="radio"]:checked+label:before{border-radius:50%;border:2px solid transparent}
 [type="radio"]:checked+label:after{
 	border-radius:50%;border:2px solid #26a69a;background-color:#26a69a;z-index:0;-webkit-transform:scale(1.02);transform:scale(1.02)}
+/* Radio With gap */
 [type="radio"].with-gap:checked+label:before{
 	border-radius:50%;border:2px solid #26a69a}
 [type="radio"].with-gap:checked+label:after{
@@ -2325,15 +2631,24 @@ textarea.materialize-textarea{overflow-y:hidden;padding:1.6rem 0;resize:none;min
 [type="radio"].with-gap:disabled:checked+label:before{border:2px solid rgba(0,0,0,0.26)}
 [type="radio"].with-gap:disabled:checked+label:after{
 	border:none;background-color:rgba(0,0,0,0.26)}
+/* Disabled style */
 [type="radio"]:disabled:not(:checked)+label:before,[type="radio"]:disabled:checked+label:before{
 	background-color:transparent;border-color:rgba(0,0,0,0.26)}
 [type="radio"]:disabled+label{color:rgba(0,0,0,0.26)}
 [type="radio"]:disabled:not(:checked)+label:before{border-color:rgba(0,0,0,0.26)}
 [type="radio"]:disabled:checked+label:after{background-color:rgba(0,0,0,0.26);border-color:#BDBDBD}
 
-form p{margin-bottom:10px;text-align:left}
+/***************
+   Checkboxes
+***************/
+/* CUSTOM CSS CHECKBOXES */
+form p{
+	margin-bottom:10px;
+	text-align:left
+}
 form p:last-child{margin-bottom:0}
 
+/* Remove default checkbox */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked{
 	position:absolute;left:-9999px;
@@ -2390,7 +2705,11 @@ form p:last-child{margin-bottom:0}
 	left:-10px;top:-11px;width:10px;height:22px;border-top:none;border-left:none;border-right:2px solid #26a69a;border-bottom:none;
 	-webkit-transform:rotate(90deg);transform:rotate(90deg);-webkit-backface-visibility:hidden;backface-visibility:hidden;
 	-webkit-transform-origin:100% 100%;transform-origin:100% 100%}
-[type="checkbox"]:indeterminate:disabled+label:before{border-right:2px solid rgba(0,0,0,0.26);background-color:transparent}
+/* Indeterminate checkbox */
+[type="checkbox"]:indeterminate:disabled+label:before{
+	border-right:2px solid rgba(0,0,0,0.26);
+	background-color:transparent
+}
 [type="checkbox"].filled-in+label:after{border-radius:2px}
 [type="checkbox"].filled-in+label:before,[type="checkbox"].filled-in+label:after{
 	content:'';left:0;position:absolute;
@@ -2411,6 +2730,9 @@ form p:last-child{margin-bottom:0}
 [type="checkbox"].filled-in:disabled:checked+label:before{background-color:transparent}
 [type="checkbox"].filled-in:disabled:checked+label:after{background-color:#BDBDBD;border-color:#BDBDBD}
 
+/***************
+     Switch
+***************/
 .switch,.switch *{-webkit-user-select:none;-moz-user-select:none;-khtml-user-select:none;-ms-user-select:none}
 .switch label{cursor:pointer}.switch label input[type=checkbox]{opacity:0;width:0;height:0}
 .switch label input[type=checkbox]:checked+.lever{background-color:#84c7c1}
@@ -2428,6 +2750,10 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after{box-shadow:0 1px 3px 1
 .switch label input[type=checkbox]:checked+.lever:after{left:24px}
 .switch input[type=checkbox][disabled]+.lever{cursor:default}
 .switch label input[type=checkbox][disabled]+.lever:after,.switch label input[type=checkbox][disabled]:checked+.lever:after{background-color:#BDBDBD}
+
+/***************
+  Select Field
+***************/
 .select-label{position:absolute}
 .select-wrapper{position:relative}
 .select-wrapper input.select-dropdown{
@@ -2469,9 +2795,9 @@ select:disabled{color:rgba(0,0,0,0.3)}
 .select-dropdown li.optgroup ~ li:not(.optgroup){padding-left:1rem}
 
 
-/*
-* FILE-FIELD
-*/
+/*********************
+      File Input
+**********************/
 .file-field{position:relative}
 .file-field .file-path-wrapper{overflow:hidden;padding-left:10px}
 .file-field input.file-path{width:100%}
@@ -2496,11 +2822,6 @@ select:disabled{color:rgba(0,0,0,0.3)}
 * RANGE-FIELD
 */
 .range-field{position:relative}
-
-
-/*
-* FILE-FIELD
-*/
 input[type=range],input[type=range]+.thumb{cursor:pointer}
 input[type=range]{position:relative;background-color:transparent;border:none;outline:none;width:100%;margin:15px 0px;padding:0}
 input[type=range]+.thumb{
@@ -2530,6 +2851,7 @@ input[type=range]:focus::-webkit-slider-runnable-track{background:#ccc}
 input[type=range]{border:1px solid white}
 input[type=range]::-moz-range-track{height:3px;background:#ddd;border:none}
 input[type=range]::-moz-range-thumb{border:none;height:14px;width:14px;border-radius:50%;background:#26a69a;margin-top:-5px}
+/*hide the outline behind the border*/
 input[type=range]:-moz-focusring{outline:1px solid white;outline-offset:-1px}
 input[type=range]:focus::-moz-range-track{background:#ccc}
 input[type=range]::-ms-track{height:3px;background:transparent;border-color:transparent;border-width:6px 0;color:transparent}
@@ -2539,8 +2861,14 @@ input[type=range]::-ms-thumb{border:none;height:14px;width:14px;border-radius:50
 input[type=range]:focus::-ms-fill-lower{background:#888}
 input[type=range]:focus::-ms-fill-upper{background:#ccc}
 
+/***************************
+   Text Inputs + Textarea
+****************************/
 select{background-color:rgba(255,255,255,0.9);width:100%;padding:5px;border:1px solid #f2f2f2;border-radius:2px;height:3rem}
 
+/***************
+    Nav List
+***************/
 .table-of-contents.fixed{position:fixed}
 .table-of-contents li{padding:2px 0}
 .table-of-contents a{
@@ -2568,114 +2896,42 @@ select{background-color:rgba(255,255,255,0.9);width:100%;padding:5px;border:1px 
 	position:fixed;
 	width:240px;
 	left:-105%;
-	top:0;margin:0;
+	top:0;
+	margin:0;
 	height:100%;
 	height:calc(100% + 60px);
 	height:-moz-calc(100%);
 	padding-bottom:60px;
-	/* background-color:#fff; */
-	background-color: #424242; /* GREY_DARKEN_3 */
+	background-color: #fff;	
 	z-index:999;
 	overflow-y:auto;
-	will-change:left}
+	will-change:left
+}
 
 .side-nav.right-aligned{
 	will-change:right;
 	right:-105%;
-	left:auto}
+	left:auto
+}
 
-/* Az oldalmen� elemei */
+/* Az oldalmenü összes almenüjét magába foglaló összecsukható konténer (ul) */
+.side-nav .collapsible{
+	margin:0
+}
+
+/* Az oldalmenü elemei */
 .side-nav li{
 	float:none;
 	padding:0 15px;
-	line-height:64px}
+	line-height:64px
+}
 
-
-/* 
 .side-nav li:hover,.side-nav li.active{
 	background-color:#ddd}
-*/
-/* F�men� f�kuszban lev� k�zvetlen eleme */
-.side-nav > li > a:hover {
-	background-color: #212121; /* GREY_DARKEN_4 */ 
-}
-/* Az oldalmen� �sszecsukhat� elem�nek f�kuszban lev� k�zvetlen eleme (f�kuszban l�v� almen�) */
-.side-nav .collapsible > li a:hover {
-	background-color: #212121; /* GREY_DARKEN_4 */ 
-}
-/* Az oldalmen� elmen�j�nek f�kuszban lev� k�zvetlen eleme */
-.side-nav .collapsible-body li a:hover {
-	background-color: #212121; /* GREY_DARKEN_4 */ 
-}
-/* Főmenü aktiv eleme */
-/*
-.side-nav li.active {
-	background-color: transparent;
-}
- */
-/* Akt�v elem k�zvetlen linkje */
-.side-nav li.active > a {
-	color: #29b6f6 ; /* LIGHT_BLUE_LIGHTEN_1 */
-}
 
-/* Akt�v elem k�zvetlen div-�nek k�zvetlen linkje (almen� fejl�ce) */
-.side-nav li.active > div > a {
-	color: #29b6f6 ; /* LIGHT_BLUE_LIGHTEN_1 */
-}
-
-/* Az oldalmen� �sszes almen�j�t mag�ba foglal� �sszecsukhat� kont�ner (ul) */
-.side-nav .collapsible{
-	margin:0}
-.side-nav .collapsible{
-	border:none;
-	box-shadow:none}
-	 
-/* Az oldalmen� egyes almen�it valalmint az almen�k egyes men�t�teleit tartalmaz� elem */
-.side-nav .collapsible li{
-	padding:0}
-
-/* Az oldalmenü almnüinek fejléce */
-.side-nav .collapsible-header{
-	background-color:transparent;
-	border:none;
-	line-height:inherit;
-	height:inherit;
-	margin:0 1rem}
-	
-/* Az oldalmenü almnüinek fejlécében lévő ikon */
-.side-nav .collapsible-header i {
-	line-height:inherit}
-	
-/* Az oldalmen� almn�inek teste */
-.side-nav .collapsible-body{
-	/* background-color:#fff; */
-	background-color: #616161; /* GREY_DARKEN_2 */
-	border:0}
-
-/* Az almen� test�nek akt�v eleme */
-.side-nav .collapsible-body li.active,
-.side-nav.fixed .collapsible-body li.active{
-	/* background-color:#ee6e73 */
-	background-color:transparent
-}
-
-/* Az oldalmenü almnüinek tételeiben lévő linkek */
-.side-nav .collapsible-body li a{
-/*	cr margin:0 1rem 0 2rem */
-padding-left: 60px;
-	}
-
-/* Az almen� test akt�v elem�nek linkje */
-.side-nav .collapsible-body li.active a,
-.side-nav.fixed .collapsible-body li.active a {
-    /* color: white; */
-    color: #29b6f6  /* LIGHT_BLUE_LIGHTEN_1 */; 
-}
-
-/* Az oldalmen�ben elhelyezked� �sszes link */
+/* Az oldalmenüben elhelyezkedü összes link */
 .side-nav a{
-    /* color: #444; */
-    color: #fafafa; /* GREY_LIGHTEN_5 */
+   color: #444;
 	display:block;
 	font-size:1rem;
 	height:64px;
@@ -2696,14 +2952,89 @@ padding-left: 60px;
 	.side-nav.fixed.right-aligned{right:-105%;left:auto}
 }
 
+/* Az almen� test�nek akt�v eleme */
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active{
+	background-color:#64B5F6
+}
+
+/* Az almen� test akt�v elem�nek linkje */
+.side-nav .collapsible-body li.active a,
+.side-nav.fixed .collapsible-body li.active a {
+    color: white;
+}
+
 #sidenav-overlay{position:fixed;top:0;left:0;right:0;height:120vh;background-color:rgba(0,0,0,0.5);z-index:997;will-change:opacity}
 
 
-/********************
-*                   *
-* PRELOADER-WRAPPER *
-*                   *
-********************/
+
+
+
+
+
+
+.side-nav .collapsible{
+	border:none;
+	box-shadow:none
+}
+	 
+/* Az oldalmen� egyes almen�it valalmint az almen�k egyes men�t�teleit tartalmaz� elem */
+.side-nav .collapsible li{
+	padding:0}
+
+/* Az oldalmenü almnüinek fejléce */
+.side-nav .collapsible-header{
+	background-color:transparent;
+	border:none;
+	line-height:inherit;
+	height:inherit;
+	margin:0 1rem}
+	
+/* Az oldalmenü almnüinek fejlécében lévő ikon */
+.side-nav .collapsible-header i {
+	line-height:inherit}
+	
+/* Az oldalmen� almn�inek teste */
+.side-nav .collapsible-body{
+	background-color:#fff;
+	border:0
+}
+
+/* Az oldalmenü almnüinek tételeiben lévő linkek */
+.side-nav .collapsible-body li a{
+	margin:0 1rem 0 2rem
+}
+
+
+
+
+
+
+/*
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+/**************************/
+/* STYLES FOR THE SPINNER */
+/**************************/
+/*
+ * Constants:
+ *      STROKEWIDTH = 3px
+ *      ARCSIZE     = 270 degrees (amount of circle the arc takes up)
+ *      ARCTIME     = 1333ms (time it takes to expand and contract arc)
+ *      ARCSTARTROT = 216 degrees (how much the start location of the arc
+ *                                should rotate each time, 216 gives us a
+ *                                5 pointed star shape (it's 360/5 * 3).
+ *                                For a 7 pointed star, we might do
+ *                                360/7 * 3 = 154.286)
+ *      CONTAINERWIDTH = 28px
+ *      SHRINK_TIME = 400ms
+ */
 .preloader-wrapper{display:inline-block;position:relative;width:48px;height:48px}
 
 .preloader-wrapper.small{width:36px;height:36px}.preloader-wrapper.big{width:64px;height:64px}
@@ -2725,6 +3056,19 @@ padding-left: 60px;
 .spinner-yellow,.spinner-yellow-only{border-color:#f4b400}
 .spinner-green,.spinner-green-only{border-color:#0f9d58}
 
+/**
+ * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+ *
+ * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't
+ * guarantee that the animation will start _exactly_ after that value. So we avoid using
+ * animation-delay and instead set custom keyframes for each color (as redundant as it
+ * seems).
+ *
+ * We write out each animation in full (instead of separating animation-name,
+ * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+ * specific properties properly, treats them as -webkit-animation, and overrides the
+ * other animation rules. See https://github.com/Polymer/platform/issues/53.
+ */
 .active .spinner-layer.spinner-blue{
 	-webkit-animation:fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both,blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 	animation:fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both,blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both}
@@ -2777,6 +3121,10 @@ padding-left: 60px;
 * GAP-PATCH         *
 *                   *
 ********************/
+/**
+ * Patch the gap that appear between the two adjacent div.circle-clipper while the
+ * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+ */
 .gap-patch{position:absolute;top:0;left:45%;width:10%;height:100%;overflow:hidden;border-color:inherit}
 .gap-patch .circle{width:1000%;left:-450%}
 
@@ -2882,32 +3230,66 @@ padding-left: 60px;
 * PICKER            *
 *                   *
 ********************/
+/* ==========================================================================
+   $BASE-PICKER
+   ========================================================================== */
+/**
+ * Note: the root picker element should *NOT* be styled more than what's here.
+ */
 .picker{
 	font-size:16px;
 	text-align:left;
 	line-height:1.2;
 	color:#000000;
 	position:absolute;
-	z-index:10000;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+	z-index:10000;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none}
+/**
+ * The picker input element.
+ */
 .picker__input{
 	cursor:default}
+/**
+ * When the picker is opened, the input element is "activated".
+ */
 .picker__input.picker__input--active{
 	border-color:#0089ec
 }
+/**
+ * The holder is the only "scrollable" top-level container element.
+ */
 .picker__holder{width:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
 
 /*!
  * Default mobile-first, responsive styling for pickadate.js
  * Demo: http://amsul.github.io/pickadate.js
  */
- 
+ /**
+ * Note: the root picker element should *NOT* be styled more than what's here.
+ */
+/**
+ * Make the holder and frame fullscreen.
+ */
 .picker__holder,.picker__frame{
 	bottom:0;
 	left:0;
 	right:0;
 	top:100%
 }
-.picker__holder{position:fixed;transition:background 0.15s ease-out, top 0s 0.15s;-webkit-backface-visibility:hidden}
+/**
+ * The holder should overlay the entire screen.
+ */
+.picker__holder{
+	position:fixed;
+	transition:background 0.15s ease-out, top 0s 0.15s;
+	-webkit-backface-visibility:hidden
+}
+/**
+ * The frame that bounds the box contents of the picker.
+ */
 .picker__frame{
 	 position:absolute;
 	 margin:0 auto;
@@ -2924,9 +3306,22 @@ padding-left: 60px;
 	
 @media (min-height: 40.125em){
 	.picker__frame{margin-bottom:7.5%}}
-	
-.picker__wrap{display:table;width:100%;height:100%}
-@media (min-height: 28.875em){.picker__wrap{display:block}}
+/**
+ * The wrapper sets the stage to vertically align the box contents.
+ */	
+.picker__wrap{
+	display:table;
+	width:100%;
+	height:100%
+}
+@media (min-height: 28.875em){
+	.picker__wrap{
+		display:block
+	}
+}
+/**
+ * The box contains all the picker contents.
+ */
 .picker__box{
 	background:#ffffff;
 	display:table-cell;
@@ -2939,8 +3334,12 @@ padding-left: 60px;
 		border-top-color:#898989;
 		border-bottom-width:0;
 		border-radius:5px 5px 0 0;
-		box-shadow:0 12px 36px 16px rgba(0,0,0,0.24)}
+		box-shadow:0 12px 36px 16px rgba(0,0,0,0.24)
+	}
 }
+/**
+ * When the picker opens...
+ */
 .picker--opened .picker__holder{
 	top:0;
 	background:transparent;
@@ -2957,11 +3356,34 @@ padding-left: 60px;
 @media (min-height: 35.875em){
 	.picker--opened .picker__frame{top:10%;bottom:20%auto}
 }
+/**
+ * For `large` screens, transform into an inline picker.
+ */
+/* ==========================================================================
+   CUSTOM MATERIALIZE STYLES
+   ========================================================================== */
+
 .picker__input.picker__input--active{border-color:#E3F2FD}
 .picker__frame{margin:0 auto;max-width:325px}
 @media (min-height: 38.875em){.picker--opened .picker__frame{top:10%;bottom:auto}}
-.picker__box{padding:0 1em}.picker__header{text-align:center;position:relative;margin-top:.75em}
+/* ==========================================================================
+   $BASE-DATE-PICKER
+   ========================================================================== */
+/**
+ * The picker box.
+ */
+.picker__box{padding:0 1em}
+/**
+ * The header containing the month and year stuff.
+ */
+.picker__header{text-align:center;position:relative;margin-top:.75em}
+/**
+ * The month and year labels.
+ */
 .picker__month,.picker__year{display:inline-block;margin-left:.25em;margin-right:.25em}
+/**
+ * The month and year selectors.
+ */
 .picker__select--month,.picker__select--year{height:2em;padding:0;margin-left:.25em;margin-right:.25em}
 .picker__select--month.browser-default{
 	display:inline;
@@ -2974,6 +3396,9 @@ padding-left: 60px;
 	width:25%
 }
 .picker__select--month:focus,.picker__select--year:focus{border-color:rgba(0,0,0,0.05)}
+/**
+ * The month navigation buttons.
+ */
 .picker__nav--prev,.picker__nav--next{position:absolute;padding:.5em 1.25em;width:1em;height:1em;box-sizing:content-box;top:-0.25em}
 .picker__nav--prev{left:-1em;padding-right:1.25em}
 .picker__nav--next{right:-1em;padding-left:1.25em}
@@ -2982,6 +3407,9 @@ padding-left: 60px;
 	background:none;
 	border-right-color:#f5f5f5;
 	border-left-color:#f5f5f5}
+/**
+ * The calendar table of dates
+ */
 .picker__table{
 	text-align:center;
 	border-collapse:collapse;
@@ -2990,8 +3418,14 @@ padding-left: 60px;
 .picker__table td{
 	margin:0;
 	padding:0}
+/**
+ * The weekday labels
+ */
 .picker__weekday{width:14.285714286%;font-size:.75em;padding-bottom:.25em;color:#999999;font-weight:500}
 @media (min-height: 33.875em){.picker__weekday{padding-bottom:.5em}}
+/**
+ * The days on the calendar
+ */
 .picker__day--today{position:relative;color:#595959;letter-spacing:-.3;padding:.75rem 0;font-weight:400;border:1px solid transparent}
 .picker__day--disabled:before{border-top-color:#aaaaaa}
 .picker__day--infocus:hover{cursor:pointer;color:#000;font-weight:500}.picker__day--outfocus{display:none;padding:.75rem 0;color:#fff}
@@ -2999,7 +3433,7 @@ padding-left: 60px;
 .picker__day--highlighted:hover,.picker--focused .picker__day--highlighted{
 	cursor:pointer
 }
-/* �GY T�NIK FELESLEGES
+/* ÚGY TŰNIK FELESLEGES
 .picker__day--selected,
 .picker__day--selected:hover,
 .picker--focused .picker__day--selected{
@@ -3025,6 +3459,9 @@ padding-left: 60px;
 .picker--focused .picker__day--disabled{
 	background:#f5f5f5;border-color:#f5f5f5;color:#dddddd;cursor:default}
 .picker__day--highlighted.picker__day--disabled,.picker__day--highlighted.picker__day--disabled:hover{background:#bbbbbb}
+/**
+ * The footer containing the "today", "clear", and "close" buttons.
+ */
 .picker__footer{
 	text-align:center;
 	display:-webkit-flex;
@@ -3084,6 +3521,9 @@ padding-left: 60px;
 .picker__button--close:before{content:"\D7";top:-0.1em;vertical-align:top;font-size:1.1em;margin-right:.35em;color:#777777}
 .picker__button--today[disabled],.picker__button--today[disabled]:hover{background:#f5f5f5;border-color:#f5f5f5;color:#dddddd;cursor:default}
 .picker__button--today[disabled]:before{border-top-color:#aaaaaa}
+/* ==========================================================================
+   CUSTOM MATERIALIZE STYLES
+   ========================================================================== */
 .picker__box{border-radius:2px;overflow:hidden}
 .picker__date-display{
 	text-align:center;
@@ -3156,12 +3596,32 @@ button.picker__clear:focus,
 button.picker__close:focus{
 	background-color:#a1ded8
 }
-.picker__list{list-style:none;padding:0.75em 0 4.2em;margin:0}
+/* ==========================================================================
+   $BASE-TIME-PICKER
+   ========================================================================== */
+/**
+ * The list of times.
+ */
+.picker__list{
+	list-style:none;
+	padding:0.75em 0 4.2em;
+	margin:0
+}
+/**
+ * The times on the clock.
+ */
 .picker__list-item{
-	border-bottom:1px solid #dddddd;border-top:1px solid #dddddd;margin-bottom:-1px;position:relative;background:#ffffff;padding:.75em 1.25em}
+	border-bottom:1px solid #dddddd;
+	border-top:1px solid #dddddd;
+	margin-bottom:-1px;
+	position:relative;
+	background:#ffffff;
+	padding:.75em 1.25em
+}
 @media (min-height: 46.75em){
 	.picker__list-item{padding:.5em 1em}
 }
+/* Hovered time */
 .picker__list-item:hover{
 	cursor:pointer;
 	color:#000000;
@@ -3169,6 +3629,7 @@ button.picker__close:focus{
 	border-color:#0089ec;
 	z-index:10
 }
+/* Highlighted and hovered/focused time */
 .picker__list-item--highlighted{
 	border-color:#0089ec;
 	z-index:10
@@ -3179,6 +3640,7 @@ button.picker__close:focus{
 	color:#000000;
 	background:#b1dcfb
 }
+/* Selected and hovered/focused time */
 .picker__list-item--selected,
 .picker__list-item--selected:hover,
 .picker--focused .picker__list-item--selected{
@@ -3186,10 +3648,14 @@ button.picker__close:focus{
 	color:#ffffff;
 	z-index:10
 }
+/* Disabled time */
 .picker__list-item--disabled,
 .picker__list-item--disabled:hover,
 .picker--focused .picker__list-item--disabled{
 	background:#f5f5f5;border-color:#f5f5f5;color:#dddddd;cursor:default;border-color:#dddddd;z-index:auto}
+/**
+ * The clear button
+ */
 .picker--time .picker__button--clear{
 	display:block;
 	width:80%;
@@ -3215,8 +3681,2181 @@ button.picker__close:focus{
 }
 .picker--time .picker__button--clear:before{top:-0.25em;color:#666;font-size:1.25em;font-weight:bold}
 .picker--time .picker__button--clear:hover:before,.picker--time .picker__button--clear:focus:before{color:#ffffff}
+/* ==========================================================================
+   $DEFAULT-TIME-PICKER
+   ========================================================================== */
+/**
+ * The frame the bounds the time picker.
+ */
 .picker--time .picker__frame{min-width:256px;max-width:320px}
+/**
+ * The picker box.
+ */
 .picker--time .picker__box{font-size:1em;background:#f2f2f2;padding:0}
 
 @media (min-height: 40.125em){
 	.picker--time .picker__box{margin-bottom:5em}}
+
+
+
+/** Global **/
+* html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: no-repeat fixed;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+* {
+    outline: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+a:hover,
+a:visited {
+    color: none !important;
+    text-decoration: none !important;
+}
+
+a span {
+    vertical-align: middle;
+}
+
+div {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.material-label {
+    display: block;
+}
+
+/*
+* IE Fixed for staircase issue
+* Read more under SECTION 2 : https://code.tutsplus.com/tutorials/9-most-common-ie-bugs-and-how-to-fix-them--net-7764
+*/
+nav ul li a {
+    float: left;
+}
+
+/**
+* Async Switch and CheckBox
+*/
+.async.gwt-CheckBox,
+.async.switch {
+    position: relative;
+    display: inline-block !important;
+}
+
+.async.gwt-CheckBox .loader-wrapper,
+.async.switch .loader-wrapper {
+    position: absolute;
+    background: transparent;
+}
+
+.async.gwt-CheckBox .preloader-wrapper.active,
+.async.switch .preloader-wrapper.active {
+    margin: auto;
+    width: 28px;
+    height: 28px;
+}
+
+.async.gwt-CheckBox .preloader-wrapper.active {
+    position: absolute;
+    left: -4px;
+    top: -2px;
+}
+
+.async.gwt-CheckBox.loading label:before, .async.gwt-CheckBox.loading label:after {
+    visibility: hidden;
+}
+
+/**
+* Async Button
+*/
+button.async.loading i {
+    -webkit-animation: spin 400ms linear infinite;
+    -moz-animation: spin 400ms linear infinite;
+    animation: spin 400ms linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/**
+* Async ListBox
+**/
+.async.listbox-wrapper .progress-wrapper {
+    top: unset;
+    bottom: -4px;
+}
+
+/**
+* Async Collapsible
+**/
+ul.collapsible li.async .valign-wrapper {
+    top: unset;
+    bottom: 0px;
+}
+
+/* ==========================================================================
+   OVERRIDE CSS STYLES
+   ========================================================================== */
+/**
+* Badge
+**/
+nav ul a span.badge {
+    margin-left: 8px !important;
+    float: right;
+    margin-top: 22px;
+}
+
+.side-nav .badge {
+    float: right;
+    top: 22px;
+}
+
+.sideBarBadge {
+    height: 20px !important;
+    line-height: 0 !important;
+    padding: 10px !important;
+    color: #fff !important;
+    border-radius: 3px !important;
+    font-size: 0.7em !important;
+}
+
+.badge.circle {
+    position: absolute;
+    min-width: 0 !important;
+    border-radius: 100% !important;
+    height: 24px !important;
+    top: -12px;
+    width: 24px;
+    font-size: 0.6rem !important;
+    text-align: center;
+    padding: 0 !important;
+    padding-top: 12px !important;
+    right: 8px;
+}
+
+.badge > div:first-child {
+    display: inline;
+}
+
+.badge {
+    background: #42A5F5;
+}
+
+/**
+* Button
+**/
+button.btn-flat:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+button.disabled,
+i.disabled,
+a.disabled {
+    background-color: #DFDFDF !important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    color: #9F9F9F !important;
+    cursor: default !important;
+    transition: none !important;
+    pointer-events: none;
+}
+
+i.disabled,
+a.disabled,
+a.disabled i {
+    color: #9F9F9F !important;
+    background-color: transparent !important;
+}
+
+button.disabled:hover,
+i.disabled:hover {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}
+
+.disabled:hover {
+    cursor: default !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}
+
+/**
+* Outlined Button (MD2)
+**/
+button.btn-outlined,
+button.btn-outlined:hover,
+button.btn-outlined:focus,
+button.btn-outlined:active {
+    border: 1px solid #00001e;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+button.btn-outlined.disabled {
+    background-color: transparent !important;
+}
+
+/**
+* Ghost Button
+**/
+button.btn-ghost, button.btn-ghost:focus {
+    padding: 0px 20px;
+    border-radius: 4px;
+    color: #42A5F5;
+    font-size: 1em;
+    font-weight: 400;
+    background: 0;
+    height: 36px;
+    text-transform: uppercase;
+    border: 1.6px solid #42A5F5;
+    outline: 0;
+    -webkit-transition: all .16s linear;
+    -moz-transition: all .16s linear;
+    -o-transition: all .16s linear;
+    transition: all .16s linear;
+}
+
+button.btn-ghost.disabled {
+    border: none;
+}
+
+button.btn-ghost:hover, button.btn-ghost:active {
+    background: #42A5F5;
+    color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/**
+* Breadcrumbs
+**/
+.breadcrumb i {
+    float: none !important;
+    margin-right: 15px;
+}
+
+.breadcrumb span {
+    vertical-align: top;
+}
+
+.breadcrumb:nth-child(2):before {
+    display: none;
+}
+/**
+* Cards
+**/
+.card .card-action a {
+    display: inline-block;
+}
+
+/**
+* Cards - Horizontal
+**/
+.landscape .card-action a {
+    margin-left: 20px;
+    margin-right: 0 !important;
+}
+
+.landscape .card-action {
+    padding: 0;
+    margin-top: 8px;
+}
+
+.landscape .card-content {
+    width: 70% !important;
+    float: left;
+}
+
+.landscape .card-image {
+    width: 30% !important;
+    float: left;
+}
+
+.landscape .card-image img,
+.horizontal.card {
+    height: 120px;
+}
+
+.landscape .card-image {
+    padding: 0;
+}
+
+/**
+* InputField - Outlined
+**/
+.input-field label {
+    left: 0 !important;
+}
+
+.input-field label.required:before,
+.input-field label span.required:before {
+    content: "*";
+    float: right;
+    margin-left: 8px;
+    font-size: "1.2em";
+    color: #F44336;
+}
+
+.input-field.disabled label.required:before,
+.input-field.disabled label span.required:before,
+.input-field.listbox-wrapper label.disabled:before {
+    display: none;
+}
+
+.col .input-field label {
+    left: 0px;
+}
+
+.row .col.input-field {
+    min-height: 72px;
+    margin-bottom: 0px;
+}
+
+.row .col.input-field textarea {
+    margin-bottom: 4px;
+}
+
+.row .col.input-field input {
+    margin-bottom: 8px;
+}
+
+.row > .input-field label {
+    left: 0.75rem !important;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        background: transparent;
+    }
+}
+
+/**
+* IE Fixed for having the huge clear button
+**/
+.input-field input::-ms-clear {
+    display: none;
+}
+
+/**
+* Autofill fixed layout
+**/
+input:-webkit-autofill + label {
+    font-size: 0.8rem !important;
+    transform: translateY(-112%);
+}
+
+nav .input-field {
+    height: 100%;
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill !important;
+    -webkit-animation-fill-mode: both !important;
+}
+
+/**
+* Type[number] spinner fixed for firefox and safari
+**/
+.input-field.disabled input[type=number]::-webkit-inner-spin-button,
+.input-field.disabled input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-field.disabled input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.input-field.disabled input[type="number"]:focus {
+    color: rgba(0, 0, 0, 0.26);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.input-field.disabled label {
+    color: rgba(0, 0, 0, 0.26) !important;
+}
+
+/**
+* Aligned Label
+**/
+.input-field.aligned-label input {
+    width: 70%;
+    display: inline;
+    position: relative;
+    vertical-align: middle;
+}
+
+.input-field.aligned-label label,
+.input-field.aligned-label label.active {
+    width: 30%;
+    display: inline;
+    position: relative;
+    float: left;
+    vertical-align: middle;
+    transform: none;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.87);
+    top: 24px;
+}
+
+.input-field.aligned-label .field-error-label,
+.input-field.aligned-label .field-success-label,
+.input-field.aligned-label .field-helper-label {
+    padding-left: 30%;
+}
+
+.input-field.filled input,
+.input-field.outlined input {
+    padding: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+.input-field.filled label,
+.input-field.outlined label {
+    margin-left: 12px;
+}
+
+.input-field.filled label:active,
+.input-field.outlined label:active {
+    margin-left: 8px;
+}
+
+/**
+* With Icons
+**/
+.input-field.filled .prefix ~ input,
+.input-field.filled .prefix ~ textarea,
+.input-field.outlined .prefix ~ input,
+.input-field.outlined .prefix ~ textarea {
+    margin-left: 0px;
+    padding-left: 56px !important;
+    width: 100%;
+}
+
+.input-field.filled .prefix,
+.input-field.outlined .prefix {
+    padding-top: 6px;
+    padding-left: 8px;
+    color: #757575;
+}
+
+/**
+* Filled Type
+**/
+.input-field.filled input,
+.input-field.filled textarea {
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 4px 4px 0px 0px;
+    padding-top: 18px;
+}
+
+.input-field.filled.disabled input,
+.input-field.filled.disabled textarea,
+.input-field.filled.listbox-wrapper input.select-dropdown[disabled] {
+    background: transparent;
+}
+
+.input-field.filled textarea,
+.input-field.outlined textarea {
+    padding-left: 12px;
+    width: calc(100% - 24px);
+    padding-right: 12px;
+}
+
+.input-field.filled input:focus {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.input-field.filled label.active {
+    -webkit-transform: translateY(-64%);
+    -moz-transform: translateY(-64%);
+    -ms-transform: translateY(-64%);
+    -o-transform: translateY(-64%);
+    transform: translateY(-64%);
+}
+
+.input-field.filled.listbox-wrapper input.select-dropdown {
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 4px 4px 0px 0px;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.input-field.filled.listbox-wrapper label {
+    padding-top: 14px;
+}
+
+.input-field.filled .field-error-label,
+.input-field.filled .field-success-label,
+.input-field.filled .field-helper-label {
+    padding-left: 12px;
+}
+
+/**
+* Outlined Type
+**/
+.input-field.outlined input,
+.input-field.outlined input.valid,
+.input-field.outlined textarea,
+.input-field.outlined input.select-dropdown {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.input-field.outlined input.select-dropdown {
+    padding-left: 12px;
+}
+
+.input-field.outlined .select-wrapper + label {
+    top: -10px;
+    background: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 8px;
+}
+
+.input-field.outlined input:focus,
+.input-field.outlined textarea:focus,
+.input-field.outlined input.picker__input--active {
+    border: 2px solid #42A5F5;
+    box-shadow: none;
+}
+.input-field.outlined label.active,
+.input-field.outlined input:-webkit-autofill + label {
+    padding: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background: white;
+    margin-top: 4px;
+    margin-left: 8px;
+    z-index: 1;
+}
+
+.modal .input-field.outlined label.active,
+.modal .input-field.outlined .select-wrapper + label,
+.modal .input-field.outlined input:-webkit-autofill + label {
+    background-color: #fafafa;
+}
+
+.input-field.outlined.field-error input.select-dropdown,
+.input-field.outlined input.invalid,
+.input-field.outlined input.invalid:focus,
+.input-field.outlined textarea.invalid,
+.input-field.outlined textarea.invalid:focus,
+.input-field.outlined input.invalid.picker__input--active {
+    border: 2px solid #F44336;
+    box-shadow: none;
+    margin-bottom: 8px;
+}
+
+.input-field.outlined.field-success input.select-dropdown,
+.input-field.outlined input.valid,
+.input-field.outlined input.valid:focus,
+.input-field.outlined textarea.valid,
+.input-field.outlined textarea.valid:focus,
+.input-field.outlined input.valid.picker__input--active {
+    border: 2px solid #4CAF50;
+    box-shadow: none;
+}
+
+.input-field.outlined .field-error-label,
+.input-field.outlined .field-success-label,
+.input-field.outlined .field-helper-label {
+    margin-left: 14px;
+}
+.input-field.field-error.listbox-wrapper.outlined input.select-dropdown {
+    border: 2px solid #F44336;
+}
+
+/**
+* TextArea
+**/
+.input-field.aligned-label textarea {
+    width: 70%;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+/**
+* ListBox
+**/
+.input-field .select-wrapper.gwt-ListBox + label.active {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.input-field .select-wrapper.gwt-ListBox .caret:before {
+    content: "";
+    position: absolute;
+    right: 8px;
+    bottom: 12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 12px 12px;
+    border-color: transparent transparent #9c9c9c;
+}
+
+.input-field.aligned-label .select-wrapper.gwt-ListBox .caret:before {
+    bottom: 26px;
+}
+
+.input-field .select-wrapper.gwt-ListBox .caret.disabled:before {
+    border-color: transparent transparent #c7c7c7 transparent;
+}
+
+.input-field .select-wrapper.gwt-ListBox .caret.disabled,
+.input-field .select-wrapper .caret {
+    color: transparent;
+    bottom: 0;
+}
+
+.input-field.listbox-wrapper {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.field-error.input-field.listbox-wrapper input.select-dropdown {
+    border-bottom: 1px solid #F44336 !important;
+    box-shadow: 0 1px 0 0 #F44336 !important;
+}
+
+.field-success.input-field.listbox-wrapper input.select-dropdown {
+    border-bottom: 1px solid #4CAF50 !important;
+    box-shadow: 0 1px 0 0 #4CAF50 !important;
+}
+
+/**
+* ListBox - AlignedLabel
+**/
+.input-field.aligned-label .select-wrapper {
+    width: 70%;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+/**
+* ListBox - Fixed for Safari9+ Issue with Blinking Indicator on IOS Devices
+* Read More - https://stackoverflow.com/questions/38848742/material-select-blinking-on-ios
+**/
+input.select-dropdown {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.input-field.outlined input:focus,
+.input-field.outlined textarea:focus,
+.input-field.outlined input.picker__input--active {
+    border: 2px solid #42A5F5;
+    box-shadow: none;
+}
+
+.input-field.hoverable-status.listbox-wrapper.field-error .caret,
+.input-field.hoverable-status.listbox-wrapper.field-success .caret {
+    display: none;
+}
+
+/**
+* Blockquote
+**/
+blockquote {
+    border-left: 5px solid #42A5F5 !important;
+}
+
+/**
+* CheckBox
+**/
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+.oldCheckBox input {
+    position: initial !important;
+    opacity: 0 !important;
+}
+
+.oldCheckBox input {
+    position: initial !important;
+    opacity: 0 !important;
+}
+
+/**
+* ReadOnly States
+**/
+.read-only-toggle input:hover {
+    cursor: text;
+    box-shadow: 1px 1px #e9e9e9;
+}
+
+.read-only input,
+.read-only textarea {
+    border: none !important;
+    box-shadow: none !important;
+    color: #000 !important;
+}
+
+.read-only label {
+    top: 12px !important;
+    -webkit-transform: translateY(-140%) !important;
+    transform: translateY(-140%) !important;
+    font-size: 0.8em !important;
+    color: #9e9e9e !important;
+}
+
+.read-only .select-wrapper .caret {
+    display: none !important;
+}
+
+/**
+* Search
+**/
+.input-field input[type=search] + label {
+    left: 1rem !important;
+}
+
+/**
+* Search Result
+**/
+
+.input-field input[type=search] {
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.search-result {
+    margin: 0;
+    border-top: 1px solid #e9e9e9;
+    background-color: #ffffff;
+    max-height: 500px;
+    overflow: auto;
+    z-index: 995;
+    position: relative;
+}
+
+.search-result a {
+    display: block;
+    border-bottom: 1px solid #e9e9e9;
+    padding-left: 20px;
+}
+
+.search-result a span {
+    margin-left: 0px;
+}
+
+.search-result a:hover,
+.search-result a.higlighted {
+    background-color: #eeeeee;
+}
+
+.search-result a img {
+    width: 52px;
+    margin-top: 5px;
+    float: left;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    height: 52px;
+}
+
+/**
+* Switch
+**/
+.switch label input[type=checkbox]:checked + .lever.disabled {
+    background-color: #D4D4D4;
+}
+
+/**
+* Range Slider
+* Fixed for IE issue with multiple indicator https://github.com/GwtMaterialDesign/gwt-material/issues/815
+**/
+::-ms-tooltip {
+    display: none;
+}
+
+input[type=range]::-ms-fill-lower {
+    background-color: #deddde !important;
+}
+
+/**
+* Chips
+**/
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #E4E4E4;
+}
+
+.chip img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32 32px;
+    border-radius: 50%;
+}
+
+.chip i.material-icons {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
+}
+
+.chip.disabled img {
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+    /* Firefox 10+, Firefox on Android */
+    -webkit-filter: grayscale(100%);
+    /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+}
+
+/**
+* Outlined Chips (MD2)
+**/
+.chip.outlined,
+.chip.outlined:hover,
+.chip.outlined:active,
+.chip.outlined:focus {
+    border: 1px solid #00001e;
+    background-color: transparent;
+}
+
+/**
+* Letter Chips
+**/
+.letter {
+    float: left;
+    margin: 0 8px 0 -12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.outlined.chip .letter {
+    width: 30px;
+    height: 30px;
+}
+
+/**
+* Collapsible
+**/
+.collapsible-body {
+    margin: 0;
+    padding: 2rem;
+}
+
+.collapsible li.active .collapsible-body .input-field label {
+    font-size: 0.8rem;
+    transform: translateY(-140%);
+}
+
+.collapsible-header > i {
+    font-size: 1.4rem !important;
+    line-height: 2.5rem !important;
+    width: 3rem !important;
+    margin: 0 !important;
+}
+
+/** Collection **/
+ul.collection .collection-item.waves-effect {
+    display: block;
+    padding-bottom: 0;
+    will-change: initial;
+}
+
+ul.collection .collection-item .secondary-content i {
+    margin-top: -28px;
+}
+
+ul.collection .collection-item .gwt-Label,
+ul.collection .collection-item a:first-child {
+    display: block;
+}
+
+ul.collection > li > div > div:first-child {
+    float: left;
+}
+
+/**
+* Table
+**/
+.striped table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2 !important;
+}
+
+.bordered table tr {
+    border-bottom: 1px solid #d0d0d0 !important;
+}
+
+table .gwt-CheckBox label {
+    margin-bottom: -10px;
+}
+
+.hoverable table > tbody > tr:hover {
+    background: #f2f2f2 !important;
+    transition: 1s all;
+    -webkit-transition: 1s all;
+    -moz-transition: 1s all;
+}
+
+.table-container .top-panel {
+    background: #42A5F5;
+}
+
+/**
+* Date Picker - Landscape
+**/
+.picker__close,
+.picker__today,
+.picker__clear {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.landscape .picker__frame {
+    margin: 0 auto;
+    max-width: 585px;
+    width: 585px;
+    max-height: 350px !important;
+}
+
+.landscape .picker__wrap {
+    height: 0 !important;
+}
+
+.landscape .picker__date-display {
+    text-align: center;
+    padding-bottom: 15px;
+    font-weight: 300;
+    float: left;
+    width: 40%;
+    height: 342px;
+    clear: both;
+}
+
+.landscape .picker__calendar-container {
+    padding: 0 1rem;
+    float: left;
+    width: 60%;
+}
+
+.landscape .picker__footer {
+    text-align: right;
+    padding: 5px 10px;
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 300px;
+    height: 40px;
+}
+
+.landscape .picker__box {
+    height: 342px;
+}
+.landscape .picker__month-display {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 78px;
+}
+
+.landscape .picker__day--infocus {
+    padding: 8px !important;
+    width: 36px !important;
+    margin: auto !important;
+}
+
+.picker__table .picker__day--outfocus {
+    display: block;
+    color: #dddddd;
+}
+
+.picker__table td {
+    padding: 0 !important;
+}
+
+.picker .picker__select--year.browser-default {
+    width: 26%;
+}
+
+/**
+* DatePicker Focus
+**/
+.picker__input.picker__input--active {
+    border-bottom: 1px solid #42A5F5;
+    box-shadow: 0 1px 0 0 #42A5F5;
+}
+
+/**
+* Dropdown
+**/
+ul.dropdown-content {
+    max-height: 70vh !important;
+}
+ul.dropdown-content li > div {
+    font-size: 1.2rem;
+    display: block;
+    padding: 1rem 1rem;
+}
+
+ul.dropdown-content.disabled {
+    visibility: hidden;
+    display: none;
+}
+
+ul.dropdown-content li > a,
+.dropdown-content li > span {
+    width: 100%;
+}
+
+ul.dropdown-content a.disabled {
+    color: #e9e9e9 !important;
+}
+
+ul.dropdown-content a.disabled:hover {
+    background: #fff !important;
+}
+
+ul.dropdown-content {
+    z-index: 995 !important;
+}
+
+/**
+* Error States
+**/
+.field-error,
+.field-error-picker input {
+    border-bottom: 1px solid #F44336 !important;
+    box-shadow: 0 1px 0 0 #F44336 !important;
+}
+.field-error-label,
+.field-success-label {
+    color: #F44336 !important;
+    font-size: 12px;
+    opacity: 1 !important;
+}
+
+.field-success-label {
+    color: #4CAF50 !important;
+}
+
+.field-helper-label {
+    color: #9E9E9E !important;
+    font-size: 12px;
+    opacity: 1 !important;
+}
+
+.field-success,
+.field-success-picker input {
+    border-bottom: 1px solid #4CAF50 !important;
+    box-shadow: 0 1px 0 0 #4CAF50 !important;
+}
+
+/**
+* Errors - Hoverable
+**/
+.input-field.hoverable-status .field-error-label,
+.input-field.hoverable-status .field-success-label {
+    position: absolute;
+    background: #F44336;
+    color: white !important;
+    min-height: 40px;
+    border-radius: 4px;
+    padding: 12px;
+    margin-right: 12px;
+    visibility: hidden;
+    font-size: 0.9em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    z-index: 999;
+    max-width: 400px;
+    display: inline;
+    min-width: 120px;
+    right: 0px;
+    top: 54px;
+}
+
+.input-field.hoverable-status .field-success-label {
+    background: #4CAF50;
+}
+
+/**
+* Arrow Default (LEFT Position)
+**/
+.input-field.hoverable-status .field-error-label::before,
+.input-field.hoverable-status .field-success-label::before {
+    content: "";
+    width: 10px;
+    height: 12px;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    top: -12px;
+    position: absolute;
+    left: unset;
+    right: 12px;
+}
+.input-field.hoverable-status .field-error-label.left:before {
+    border-bottom: solid 12px #F44336;
+}
+
+.input-field.hoverable-status .field-success-label.left:before {
+    border-bottom: solid 12px #4CAF50;
+}
+
+.input-field.hoverable-status .field-error-label.top:before,
+.input-field.hoverable-status .field-success-label.top:before {
+    left: unset;
+    right: 12px;
+    border-bottom: none;
+    bottom: -12px;
+    top: unset;
+}
+
+.input-field.hoverable-status .field-error-label.top:before {
+    border-top: solid 12px #F44336;
+}
+
+.input-field.hoverable-status .field-success-label.top:before {
+    border-top: solid 12px #4CAF50;
+}
+
+/**
+* Status Icon
+**/
+.input-field.hoverable-status i.status-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #F44336;
+    z-index: 1;
+}
+
+.input-field.hoverable-status.disabled .status-icon {
+    display: none;
+}
+.input-field.hoverable-status input.invalid,
+.input-field.hoverable-status input.valid {
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+/**
+* Floating Action Button
+**/
+.horizontal.fixed-action-btn ul {
+    left: auto;
+}
+
+.fixed-action-btn.active ul {
+    visibility: visible;
+}
+
+.fixed-action-btn ul {
+    left: 0;
+    right: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 64px;
+    margin: 0;
+    visibility: hidden;
+}
+
+.fixed-action-btn.horizontal ul li {
+    display: inline-block;
+    margin: 15px 15px 0 0;
+}
+
+.fixed-action-btn.horizontal ul {
+    text-align: right;
+    right: 54px;
+    height: 100%;
+    left: initial;
+    width: 500px;
+}
+ul li button.btn-floating {
+    opacity: 0;
+}
+
+.floatingButtonsItem ul li div {
+    transform: scale(0.4) translateY(40px);
+    -moz-transform: scale(0.4) translateY(40px);
+    -webkit-transform: scale(0.4) translateY(40px);
+    opacity: 0;
+    transition: 400ms all;
+    -webkit-transition: 400ms all;
+    -moz-transition: 400ms all;
+    margin-bottom: -10px;
+}
+
+.floatingButtonsItem:hover ul li div {
+    transform: scale(1) translateY(0px);
+    -moz-transform: scale(1) translateY(0px);
+    -webkit-transform: scale(1) translateY(0px);
+    opacity: 1;
+}
+
+/**
+* Image Slider
+**/
+.slider .indicators .indicator-item.active {
+    background-color: #42A5F5;
+}
+
+/**
+* Footer
+**/
+footer.fixed {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding-top: 0 !important;
+}
+
+/**
+* Loader
+*/
+.loader-wrapper {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.701961);
+    text-align: center;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.progress-wrapper {
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+
+.loader-wrapper span.material-label {
+    display: inline;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    margin-top: 60px;
+}
+
+/** Dialogs **/
+.modal.fullscreen,
+.modal.modal-fixed-footer.fullscreen {
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    top: 0 !important;
+}
+
+/**
+* NavBar
+**/
+nav button i {
+    line-height: inherit !important;
+}
+
+nav .nav-content {
+    position: relative;
+    line-height: normal;
+    width: 100%;
+    display: flex;
+}
+
+/**
+* NavBar tall
+**/
+nav .navbar-tall {
+    height: 128px;
+}
+
+nav .nav-wrapper .side-nav i {
+    display: inline !important;
+    vertical-align: middle;
+}
+
+/**
+* NavBar Shrink
+**/
+nav.navbar-shrink {
+    height: 200px;
+    line-height: 64px;
+    top: 0;
+    left: 0;
+    background-color: #42A5F5;
+}
+
+nav .brand-logo img {
+    height: 100%;
+    padding: 12px;
+}
+
+nav.navbar-shrink,
+nav.navbar-shrink .brand-logo {
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+nav.navbar-shrink .brand-logo {
+    line-height: 264px;
+    height: 200px;
+}
+
+nav.smaller {
+    height: 64px;
+}
+
+nav.smaller .brand-logo img {
+    width: auto;
+}
+
+nav.smaller .brand-logo {
+    line-height: 64px;
+    height: 64px;
+    font-size: 2.1rem;
+}
+
+nav .nav-wrapper .collapsible-body {
+    padding: 0 !important;
+}
+
+/**
+* NavBar Fixed
+**/
+nav.pinned {
+    z-index: 996;
+}
+
+.navmenu-permanent,
+.drag-target {
+    visibility: hidden !important;
+}
+
+/**
+* Progress
+*/
+.progress {
+    background-color: #EBEEF1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #fff;
+    transition: 1s all;
+    -webkit-transition: 1s all;
+    -moz-transition: 1s all;
+}
+
+.progress div {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    transition: 1s all;
+    -webkit-transition: 1s all;
+    -moz-transition: 1s all;
+    background-color: #42A5F5;
+}
+
+/**
+* SideNav
+**/
+ul.side-nav {
+    padding-bottom: 0px;
+    height: 100%;
+}
+ul.side-nav li > div {
+    width: 100%;
+    margin-left: 0 !important;
+}
+
+ul.side-nav .brand-logo {
+    font-size: 2.1rem;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+ul.side-nav.fixed a,
+ul.side-nav a {
+    width: 100%;
+    display: flex;
+    line-height: normal;
+    align-items: center;
+}
+
+ul.side-nav li {
+    padding: 0 !important;
+}
+
+ul.side-nav i {
+    font-size: 2em;
+    width: 2rem;
+    line-height: inherit;
+}
+
+ul.side-nav .sidenav-content i {
+    font-size: 1.6em;
+}
+
+ul.side-nav .collapsible-header,
+.side-nav .collapsible-body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+ul.side-nav .collapsible-body li {
+    overflow: hidden;
+}
+
+ul.side-nav .collapsible-body li.active {
+    background-color: #eeeeee !important;
+}
+
+ul.side-nav.right-aligned {
+    left: auto !important;
+}
+
+/**
+* Sidenav Content
+**/
+.sidenav-content {
+    padding: 0 15px;
+}
+
+/**
+* SideNav Card
+**/
+ul.side-nav.card,
+.side-nav.drawer-with-header {
+    position: absolute;
+}
+
+ul.side-nav.card {
+    margin: 20px;
+    height: auto;
+    width: 232px;
+    padding-bottom: 0;
+    top: 64px;
+}
+
+/**
+* SideNav Drawer
+**/
+ul.side-nav.drawer-with-header {
+    top: 64px;
+    height: calc(100vh - 64px);
+}
+
+ul.side-nav.push-with-header {
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    top: 64px;
+    height: calc(100vh - 64px);
+}
+
+/**
+* Sidenav Mini
+**/
+ul.side-nav.mini,
+ul.side-nav.mini-with-expand {
+    top: 65px;
+    text-align: center;
+    overflow-x: hidden;
+    height: 65px;
+}
+
+ul.side-nav.mini li div {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+ul.side-nav.mini li a span {
+    display: none;
+}
+
+ul.side-nav .collapsible-body li.active a {
+    color: #444;
+}
+
+/**
+* SideNav - Mini with Expand
+**/
+ul.side-nav.mini-with-expand {
+    left: 0px !important;
+}
+
+ul.side-nav.mini-with-expand.right-aligned {
+    right: 0px !important;
+    left: inherit !important;
+}
+
+ul.side-nav.mini-with-expand.expanded li a span {
+    opacity: 1;
+    visibility: visible;
+}
+
+ul.side-nav.mini-with-expand li a span {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s all;
+    -webkit-transition: 0.2s all;
+    -moz-transition: 0.2s all;
+}
+
+/**
+* SideNav - Overlay
+**/
+#sidenav-overlay {
+    visibility: hidden;
+}
+
+/** SideNav - Compact Density **/
+.compact.side-nav a {
+    height: 32px;
+    line-height: 32px;
+}
+
+.compact.side-nav li {
+    line-height: 32px;
+}
+.compact.side-nav i {
+    font-size: 1.4em !important;
+    margin-left: 4px !important;
+}
+
+/** SideNav - Comfortable Density **/
+.comfortable.side-nav a {
+    height: 40px;
+    line-height: 40px;
+}
+
+.comfortable.side-nav li {
+    line-height: 40px;
+}
+.comfortable.side-nav i {
+    font-size: 1.6em !important;
+    margin-left: 4px !important;
+}
+
+/** SplashScreen */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.splash-screen .progress {
+    margin: 0;
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    bottom: 0;
+    height: 8px;
+}
+
+/**
+* Tabs
+**/
+ul.tabs {
+    overflow: hidden !important;
+}
+
+ul.tabs .tab a i {
+    margin-top: 12px;
+    padding-left: 36%;
+}
+
+ul.tabs .tab a span:nth-child(2) {
+    float: left;
+}
+
+ul.tabs .tab.disabled {
+    opacity: 0.5;
+}
+
+ul.tabs .tab a i,
+.tabs .tab a span {
+    float: none !important;
+    display: inline-block;
+    vertical-align: top;
+}
+
+ul.tabs .tab a i {
+    padding-left: 0;
+}
+
+.tabs {
+    background: #42A5F5;
+}
+
+/**
+* Waves
+**/
+
+i[class*="waves-"].material-icons {
+    vertical-align: top;
+    width: initial;
+    height: auto;
+    text-align: center;
+    padding: 4px;
+}
+
+/**
+* Animations
+**/
+.materialScaleInitial,
+.pullInitial {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+}
+
+.materialScaleInitial {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform-origin: 50% 10%;
+    -webkit-transform-origin: 50% 10%;
+    -moz-transform-origin: 50% 10%;
+}
+
+.materialScale {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+}
+
+.pullInitial {
+    margin-top: 500px !important;
+}
+
+.pull {
+    margin-top: -150px !important;
+}
+
+/**
+* Others
+**/
+.fullBackground {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.showPanel {
+    -webkit-transform: scale(1) !important;
+    -ms-transform: scale(1) !important;
+    transform: scale(1) !important;
+}
+
+.weatherContainer .card {
+    background-color: initial !important;
+}
+
+/**
+* Media Queries
+**/
+@media screen and (max-width: 992px) {
+    /** Global **/
+    header,
+    footer,
+    main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+
+    main {
+        padding-bottom: 70px !important;
+    }
+    /** NavBar **/
+    .navmenu-permanent,
+    .drag-target,
+    #sidenav-overlay {
+        visibility: visible !important;
+    }
+
+    nav .nav-wrapper {
+        padding: 0;
+    }
+
+    nav.pinned {
+        width: 100% !important;
+    }
+
+    nav.navbar-shrink .brand-logo img {
+        width: auto;
+    }
+
+    nav.navbar-shrink .brand-logo {
+        left: 60px;
+        transform: translateX(0);
+    }
+
+    /** Search Bar **/
+    .input-field input[type=search] {
+        width: calc(100% - 10rem) !important;
+        margin-bottom: 0 !important;
+        padding-left: 0px !important;
+    }
+
+    .input-field input[type=search] + label {
+        z-index: 998 !important;
+    }
+
+    .search-result {
+        max-height: 400px;
+        overflow: auto;
+    }
+    /** SideNav **/
+    ul.side-nav.fixed,
+    ul.side-nav.card,
+    ul.side-nav.drawer-with-header,
+    ul.side-nav.push-with-header,
+    ul.side-nav.mini {
+        margin: 0;
+        top: 0 !important;
+        left: 0;
+        height: 100%;
+        background: #fff;
+    }
+
+    ul.side-nav.mini-with-expand {
+        top: 56px;
+        height: calc(100vh - 56px);
+    }
+
+    ul.side-nav.mini {
+        top: 55px;
+    }
+
+    ul.side-nav.drawer-with-header {
+        margin-top: 0px;
+        background: white;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    ul.side-nav.card {
+        margin: initial;
+        position: fixed;
+    }
+
+    /** Badge **/
+    nav ul a span.badge {
+        margin-top: 18px;
+    }
+
+/** Tabs **/
+    .tabs.tab-icon a span {
+        display: none !important;
+    }
+
+    .tabs .tab a i {
+        margin: auto;
+        margin-top: 12px;
+    }
+
+    /** Images **/
+    .card .card-image img {
+        height: auto !important;
+    }
+
+    /** Table **/
+    .responsive-table table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        display: block;
+        position: relative;
+    }
+
+    .responsive-table table th {
+        display: block;
+    }
+
+    .responsive-table table tbody tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .responsive-table table tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+.responsive-table table tbody tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .responsive-table table td {
+        display: block;
+        min-height: 1.25em;
+        text-align: left;
+    }
+
+    .responsive-table > div:nth-child(1) {
+        width: 20% !important;
+    }
+
+    .responsive-table > div:nth-child(3) {
+        top: 0 !important;
+        left: 20% !important;
+        width: 80% !important;
+        height: 100% !important;
+    }
+
+    .responsive-table table thead {
+        border: 0;
+        border-right: 1px solid #d0d0d0;
+    }
+
+    .responsive-table table thead tr {
+        display: block;
+        padding: 0 10px 0 0;
+    }
+
+    .responsive-table table thead {
+        display: block;
+        float: left;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    /** SideNav **/
+    ul.side-nav.fixed.right-aligned {
+        right: 0 !important;
+        left: initial !important;
+    }
+
+    ul.side-nav.right-aligned:not(.drawer) {
+        position: fixed;
+        z-index: 997;
+    }
+
+    ul.side-nav.fixed {
+        left: 0 !important;
+    }
+}
+
+/**
+* Fix IOS Issue - Auto zooms when focusing on input element. And also the excess box-shadow
+* Causing a border on the left part of input-fields on mobile devices.
+* Read more - https://github.com/Dogfalo/materialize/issues/5008
+**/
+@media screen and (max-width: 768px) {
+    .input-field input:not([type]),
+    .input-field input[type=text],
+    .input-field input[type=password],
+    .input-field input[type=email],
+    .input-field input[type=url],
+    .input-field input[type=time],
+    .input-field input[type=date],
+    .input-field input[type=datetime-local],
+    .input-field input[type=tel],
+    .input-field input[type=number],
+    .input-field input[type=search],
+    .input-field textarea.materialize-textarea {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================================================
+   ADDINS CSS STYLES
+   ========================================================================== */
+/**
+* Autocomplete
+**/
+.multiValueSuggestBox-panel:focus {
+    border-bottom: 2px solid #42A5F5 !important;
+}
+
+/**
+* Carousel
+**/
+.slick-dots li {
+    background: #b1dafb;
+}
+
+.slick-dots li.slick-active {
+    background: #42A5F5;
+}
+
+/**
+* ComboBox
+**/
+ul.select2-results__options[aria-multiselectable="true"] li.select2-results__option:not([role="group"])[aria-selected="true"]:after {
+    border: 2px solid #42A5F5;
+    background-color: #42A5F5;
+}
+
+.input-field.outlined.combobox .select2-container--open .select2-selection {
+    border: 2px solid #42A5F5;
+    box-shadow: none;
+}
+
+/**
+* ComboBox Focus
+**/
+.input-field.combobox .select2-container--focus .select2-selection {
+    border-bottom: 1px solid #42A5F5;
+    box-shadow: 0 1px 0 0 #42A5F5;
+}
+
+.input-field.outlined.combobox .select2-container--focus .select2-selection {
+    border: 2px solid #42A5F5;
+    box-shadow: none;
+}
+
+/**
+* File Uploader
+**/
+.fileuploader .upload-label {
+    background-color: #42A5F5 !important;
+}
+
+.fileuploader .upload-label i {
+    background: #ffffff !important;
+    color: #42A5F5 !important;
+}
+
+.fileuploader.active {
+    background: #42A5F5 !important;
+}
+
+.fileuploader.active .upload-label {
+    color: #fff !important;
+}
+
+.preview-container .previews .zdrop-info .preview-icon {
+    color: #42A5F5 !important;
+}
+
+.preview-container .header {
+    background-color: #42A5F5 !important;
+}
+
+/**
+* Rating
+**/
+.material-rating {
+    color: #42A5F5;
+}
+
+/**
+* Rich Editor
+**/
+
+.editorDialogs .modal .btn, .editorDialogs .modal .btn-large, .editorDialogs .modal .btn-large, .note-editor .modal .btn, .note-editor .modal .btn-large, .note-editor .modal .btn-large {
+    background: #42A5F5 !important;
+}
+
+.editorDialogs .modal .btn-large:hover, .editorDialogs .modal .btn:hover, .editorDialogs .modal .btn-large:hover, .note-editor .modal .btn-large:hover, .note-editor .modal .btn:hover, .note-editor .modal .btn-large:hover, .note-editor .modal .btn.modal-close:hover, .note-editor .modal .modal-close.btn-large:hover, .note-editor .modal .file-field .btn:hover, .note-editor .modal .file-field .btn-large:hover, .note-editor .modal .modal-footer .note-link-btn:hover, .note-editor .modal .modal-footer .note-image-btn:hover {
+    background: #42A5F5 !important;
+}
+
+button.waves-effect.waves-light.btn.disabled, button.waves-effect.waves-light.disabled.btn-large, button.waves-effect.waves-light.btn.disabled:hover, button.waves-effect.waves-light.disabled.btn-large:hover {
+    background: #DFDFDF !important;
+}
+
+/**
+* Scrollspy
+**/
+.table-of-contents a.active {
+    border-left: 2px solid #42A5F5 !important;
+}
+
+.table-of-contents a:hover {
+    border-left: 1px solid #42A5F5 !important;
+}
+
+/**
+* Stepper
+**/
+.stepper .step.success > div:first-child i, .stepper .step.success .title, .stepper .step.success .description {
+    color: #42A5F5 !important;
+}
+
+.stepper .step > div:first-child .circle {
+    background: #42A5F5 !important;
+}
+
+/**
+* Time Picker
+**/
+.lolliclock-header {
+    background: #42A5F5 !important;
+}
+
+.lolliclock-active-button-background {
+    background-color: #42A5F5 !important;
+}
+
+.lolliclock-button {
+    color: #42A5F5 !important;
+}
+
+.lolliclock-canvas-bg {
+    fill: #bbdffb !important;
+}
+
+.lolliclock-canvas-fg {
+    fill: #42A5F5 !important;
+}
+
+.lolliclock-canvas line {
+    stroke: white !important;
+}
+
+.lolliclock-tick.active, .lolliclock-tick:hover {
+    background-color: #42A5F5 !important;
+}
+
+/** TimePicker - Outlined **/
+.input-field.outlined.timepicker input:focus,
+.input-field.outlined.timepicker input.valid {
+    border: 2px solid #42A5F5;
+    box-shadow: none;
+}
+
+/** Time Picker Focus **/
+.input-field.timepicker input.valid {
+    border-bottom: 1px solid #42A5F5;
+    box-shadow: 0 1px 0 0 #42A5F5;
+}
+
+/**
+* Tree Item
+**/
+
+.tree-item i {
+    color: #42A5F5;
+}
+
+/**
+* Window
+**/
+.window .window-toolbar {
+    background-color: #42A5F5;
+}
+
+/* ==========================================================================
+   INCUBATOR CSS STYLES
+   ========================================================================== */
+/**
+* Group Toggle Button
+**/
+.group-toggle-button button.active {
+    background: #42A5F5;
+}
+
+/**
+* Progress Line Bar
+**/
+.progress-line-bar .progress-item.active {
+    background: #42A5F5;
+}
+
+.progress-line-bar {
+    background: #e9e9e9;
+}
+
+.timer-progress .fill {
+    background: #42A5F5;
+    -webkit-animation: 6s fullw infinite;
+    animation: 6s fullw infinite;
+}
+
+.timer-progress.bouncing .fill {
+    background: #42A5F5;
+    -webkit-animation: 1.5s cubic-bezier(0.08, -0.18, 0.91, 1.14) barbounce alternate infinite;
+    animation: 1.5s cubic-bezier(0.08, -0.18, 0.91, 1.14) barbounce alternate infinite;
+}

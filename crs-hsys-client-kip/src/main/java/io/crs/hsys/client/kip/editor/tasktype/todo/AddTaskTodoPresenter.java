@@ -50,6 +50,7 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 	}
 
 	public void open() {
+		todos.clear();
 		loadTaskTodoData();
 	}
 

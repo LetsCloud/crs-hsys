@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import com.google.gwt.dom.client.StyleInjector;
 
 import io.crs.hsys.client.core.resources.CoreResources;
-import io.crs.hsys.client.core.resources.GssResources;
 
 /**
  * @author CR
@@ -16,14 +15,11 @@ import io.crs.hsys.client.core.resources.GssResources;
  */
 public class ResourceLoader {
 	@Inject
-    ResourceLoader(CoreResources resources, GssResources gssResources) {
-
+    ResourceLoader(CoreResources resources) {
 		StyleInjector.injectAtStart(resources.materialize().getText());
-		StyleInjector.inject(resources.gwtMaterial().getText());
-		StyleInjector.injectAtEnd(resources.coreCss().getText());
+		StyleInjector.inject(resources.coreCss().getText());
+		StyleInjector.injectAtEnd(resources.core().getText());
 		
-//		resources.wallpaperCss().ensureInjected();
-		gssResources.common().ensureInjected();
-       
+//		resources.coreCss().ensureInjected();
     }
 }

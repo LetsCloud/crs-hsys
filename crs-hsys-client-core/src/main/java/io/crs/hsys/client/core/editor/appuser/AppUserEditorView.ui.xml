@@ -6,17 +6,6 @@
 	xmlns:ma="urn:import:gwt.material.design.addins.client">
 
 	<ui:style>
-	
-	.bb {
-		margin-top: 8px;
-		padding-left: 10px;
-		border-left: 3px solid #e91e63;
-	}
-
-	.cc {
-		color: #e91e63;
-	}
-
 	.pp {
 		padding-top: 20px;
 		margin-left: 10px;
@@ -81,8 +70,8 @@
 
 			<m:MaterialColumn grid="s12 m8">
 				<!-- BEÁLLÍTÁSOK -->
-				<g:HTMLPanel addStyleNames="{style.bb}">
-					<g:Label text="Beállítások" addStyleNames="{style.cc}" />
+				<g:HTMLPanel addStyleNames="dataGroupBox">
+					<g:Label text="Beállítások" addStyleNames="dataGroupTitle" />
 					<m:MaterialCheckBox ui:field="enabled"
 						text="{i18nCore.userEditorEnabled}" addStyleNames="{style.cb}" />
 
@@ -96,14 +85,13 @@
 				</g:HTMLPanel>
 
 				<!-- JOGOSULTSÁGOK -->
-				<g:HTMLPanel addStyleNames="{style.bb}">
-					<g:Label text="Jogosultság" addStyleNames="{style.cc}" />
+				<g:HTMLPanel addStyleNames="dataGroupBox">
+					<g:Label text="Jogosultság" addStyleNames="dataGroupTitle" />
 					<m:MaterialCheckBox ui:field="admin"
 						text="{i18nCore.userEditorIsAdmin}" addStyleNames="{style.cb}" />
 
 					<combobox:MaterialComboBox
-						ui:field="permissions" multiple="true"
-						label="Permitions"
+						ui:field="permissions" multiple="true" label="Permitions"
 						placeholder="Permitions" marginTop="30" />
 
 					<combobox:MaterialComboBox

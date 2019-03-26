@@ -14,16 +14,6 @@
 		margin-right: 10px;
 	}
 	
-	.dataGroupBox {
-		margin-top: 8px;
-		padding-left: 10px;
-		border-left: 3px solid #e91e63;
-	}
-	
-	.dataGroupTitle {
-		color: #e91e63;
-	}
-	
 	.saveButton {
 		margin-bottom: 18px;
 	}
@@ -55,9 +45,9 @@
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s12 m6">
-				<g:HTMLPanel ui:field="availabilityPanel" addStyleNames="{style.dataGroupBox}">
+				<g:HTMLPanel ui:field="availabilityPanel" addStyleNames="dataGroupBox">
 					<g:Label text="{i18nCore.roomEditorAvailability}"
-						addStyleNames="{style.dataGroupTitle}" />
+						addStyleNames="dataGroupTitle" />
 						<roomeditor:AvailabilityListEditor ui:field="roomAvailabilities"/>
 				</g:HTMLPanel>
 			</m:MaterialColumn>
