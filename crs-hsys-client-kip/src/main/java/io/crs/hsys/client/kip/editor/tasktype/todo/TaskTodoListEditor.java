@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.client.ui.MaterialCollection;
 
 import io.crs.hsys.client.core.editor.room.DeleteEvent;
+import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
@@ -88,6 +89,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
 
+	private TaskGroupDto taskGroup;
 	private AddTaskTodoPresenter addTaskTodo;
 
 	/**
@@ -108,7 +110,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	@UiHandler("addButton")
 	void onAddClick(ClickEvent event) {
-		addTaskTodo.open();
+		addTaskTodo.open(taskGroup.getCode());
 //		TaskTodoDto dto = new TaskTodoDto();
 //		editor.getList().add(dto);
 	}

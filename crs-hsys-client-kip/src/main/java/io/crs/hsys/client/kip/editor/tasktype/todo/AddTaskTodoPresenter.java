@@ -6,6 +6,7 @@ package io.crs.hsys.client.kip.editor.tasktype.todo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -18,8 +19,11 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
+import io.crs.hsys.client.core.datasource.TaskGroupDataSource;
 import io.crs.hsys.client.core.datasource.TaskTodoDataSource;
 import io.crs.hsys.client.kip.browser.tasktodo.TaskTodoBrowserPresenter;
+import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterView;
+import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
@@ -30,36 +34,57 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 		implements AddTaskTodoUiHandlers {
 	private static Logger logger = Logger.getLogger(TaskTodoBrowserPresenter.class.getName());
 
-	private final TaskTodoDataSource taskTodoDataSource;
-	private final List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
-
 	public interface MyView extends View, HasUiHandlers<AddTaskTodoUiHandlers> {
+		void setTaskGroupData(List<TaskGroupDto> data);
 
 		void setTaskTodoData(List<TaskTodoDto> data);
 
 		void open();
 	}
 
+	private String filterTaskGroupCode, todoSearch;
+	private final TaskTodoDataSource taskTodoDataSource;
+	private final List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
+	private final TaskGroupDataSource taskGroupDataSource;
+
 	@Inject
 	AddTaskTodoPresenter(EventBus eventBus, AddTaskTodoPresenter.MyView view, PlaceManager placeManager,
-			TaskTodoDataSource taskTodoDataSource) {
+			TaskTodoDataSource taskTodoDataSource, TaskGroupDataSource taskGroupDataSource) {
 		super(eventBus, view);
 		logger.info("AddTaskTodoPresenter()");
 		this.taskTodoDataSource = taskTodoDataSource;
+		this.taskGroupDataSource = taskGroupDataSource;
 		getView().setUiHandlers(this);
 	}
 
-	public void open() {
+	public void open(String taskGroup) {
+		this.filterTaskGroupCode = taskGroup;
+		logger.info("AddTaskTodoPresenter().open()->start");
 		todos.clear();
 		loadTaskTodoData();
+		loadTaskGroupData();
+		logger.info("AddTaskTodoPresenter().open()->end");
 	}
 
 	private void loadTaskTodoData() {
 		LoadCallback<TaskTodoDto> taskTodoLoadCallback = new LoadCallback<TaskTodoDto>() {
 			@Override
 			public void onSuccess(LoadResult<TaskTodoDto> loadResult) {
-				getView().setTaskTodoData(loadResult.getData());
+				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->start");
+				List<TaskTodoDto> result = loadResult.getData();
+				if ((todoSearch != null) || (!todoSearch.isEmpty()))
+					result = result.stream().filter(tg -> tg.getDescription().contains(todoSearch))
+							.collect(Collectors.toList());
+				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->1");
+
+				if (!filterTaskGroupCode.equals(TaskTodoFilterView.ALL_ITEMS))
+					result = result.stream().filter(tg -> tg.getTaskGroup().getCode().equals(filterTaskGroupCode))
+							.collect(Collectors.toList());
+				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->2");
+
+				getView().setTaskTodoData(result);
 				getView().open();
+				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->end");
 			}
 
 			@Override
@@ -68,6 +93,21 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 			}
 		};
 		taskTodoDataSource.load(new LoadConfig<TaskTodoDto>(0, 0, null, null), taskTodoLoadCallback);
+	}
+
+	private void loadTaskGroupData() {
+		LoadCallback<TaskGroupDto> taskGroupLoadCallback = new LoadCallback<TaskGroupDto>() {
+			@Override
+			public void onSuccess(LoadResult<TaskGroupDto> loadResult) {
+				getView().setTaskGroupData(loadResult.getData());
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		};
+		taskGroupDataSource.load(new LoadConfig<TaskGroupDto>(0, 0, null, null), taskGroupLoadCallback);
 	}
 
 	@Override
@@ -85,6 +125,18 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 		for (TaskTodoDto tt : todos)
 			logger.info("AddTaskTodoPresenter().onAddTodos()->" + tt.getDescription());
 		AddTaskTodoEvent.fire(this, todos);
+	}
+
+	@Override
+	public void onTaskGroupFilterChange(String code) {
+		filterTaskGroupCode = code;
+		loadTaskTodoData();
+	}
+
+	@Override
+	public void onTodoSearchChange(String todo) {
+		todoSearch = todo;
+		loadTaskTodoData();
 	}
 
 }

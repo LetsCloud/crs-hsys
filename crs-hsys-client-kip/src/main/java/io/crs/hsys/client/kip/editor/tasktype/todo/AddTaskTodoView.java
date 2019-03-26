@@ -16,9 +16,12 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.addext.client.ui.MaterialTextBoxAdd;
+import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialDialog;
 import io.crs.hsys.client.kip.editor.tasktype.TaskTypeEditorView;
+import io.crs.hsys.shared.dto.task.TaskGroupDto;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**
@@ -28,11 +31,19 @@ import io.crs.hsys.shared.dto.task.TaskTodoDto;
 public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> implements AddTaskTodoPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TaskTypeEditorView.class.getName());
 
+	public static final String ALL_ITEMS = "*MIND";
+
 	interface Binder extends UiBinder<Widget, AddTaskTodoView> {
 	}
 
 	@UiField
 	MaterialDialog modal;
+
+	@UiField
+	MaterialComboBox<TaskGroupDto> taskGroupComboBox;
+
+	@UiField
+	MaterialTextBoxAdd todoSearch;
 
 	@UiField
 	MaterialCollection listPanel;
@@ -44,11 +55,23 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 	AddTaskTodoView(Binder uiBinder) {
 		logger.info("AddTaskTodoView()");
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		modal.setFullscreen(true);
+
+		taskGroupComboBox.addSelectionHandler(e -> {
+			getUiHandlers().onTaskGroupFilterChange(e.getSelectedValues().get(0).getCode());
+		});
+
+		todoSearch.addValueChangeHandler(e -> {
+			getUiHandlers().onTaskGroupFilterChange(e.getValue());
+		});
 	}
 
 	@Override
 	public void open() {
+		logger.info("AddTaskTodoView().open()->start");
 		modal.open();
+		logger.info("AddTaskTodoView().open()->end");
 	}
 
 	@UiHandler("saveButton")
@@ -64,10 +87,11 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 
 	@Override
 	public void setTaskTodoData(List<TaskTodoDto> data) {
+		logger.info("AddTaskTodoView().setTaskTodoData()->start");
 		listPanel.clear();
 
 		for (TaskTodoDto todo : data) {
-			TaskTodoWidget ttw = new TaskTodoWidget(todo.getDescription() + " (" + todo.getTimeRequired()+" perc)");
+			TaskTodoWidget ttw = new TaskTodoWidget(todo.getDescription() + " (" + todo.getTimeRequired() + " perc)");
 			ttw.getCheckBox().addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -83,6 +107,16 @@ public class AddTaskTodoView extends ViewWithUiHandlers<AddTaskTodoUiHandlers> i
 				}
 			});
 			listPanel.add(ttw);
+		}
+		logger.info("AddTaskTodoView().setTaskTodoData()->end");
+	}
+
+	@Override
+	public void setTaskGroupData(List<TaskGroupDto> data) {
+		taskGroupComboBox.clear();
+		taskGroupComboBox.addItem("Mind", new TaskGroupDto(ALL_ITEMS, "Mind"));
+		for (TaskGroupDto tg : data) {
+			taskGroupComboBox.addItem(tg.getCode() + "-" + tg.getDescription(), tg);
 		}
 	}
 }

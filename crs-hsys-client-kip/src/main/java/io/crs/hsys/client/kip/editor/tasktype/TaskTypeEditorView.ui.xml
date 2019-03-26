@@ -70,7 +70,7 @@
 		</m:MaterialRow>
 
 		<m:MaterialButton ui:field="saveButton"
-			text="{i18nCore.comSave}" float="RIGHT"
+			iconType="SAVE" text="{i18nCore.comSave}" float="RIGHT"
 			addStyleNames="{style.saveButton}" />
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />

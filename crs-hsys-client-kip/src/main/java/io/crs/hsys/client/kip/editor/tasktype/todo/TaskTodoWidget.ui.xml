@@ -2,16 +2,23 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui">
-	
-	<ui:style>
-	/* Add CSS here. See the GWT docs on UI Binder for more details */
+
+	<ui:style gss="true">
+	@media screen and (max-width: 600px) {
+		.itemStyle {
+			padding-left: 10px !important;
+			padding-right: 0px !important;
+		}
+	}
 	</ui:style>
-	
+
 	<m:MaterialCollectionItem type="CHECKBOX"
-		waves="DEFAULT">
+		waves="DEFAULT" addStyleNames="{style.itemStyle}">
 		<m:MaterialLabel ui:field="label" />
-		<m:MaterialCollectionSecondary ui:field="mcs">
-			<m:MaterialCheckBox ui:field="checkBox" value="false" type="FILLED" />
+		<m:MaterialCollectionSecondary
+			ui:field="mcs">
+			<m:MaterialCheckBox ui:field="checkBox"
+				value="false" type="FILLED" />
 		</m:MaterialCollectionSecondary>
 	</m:MaterialCollectionItem>
 </ui:UiBinder> 
