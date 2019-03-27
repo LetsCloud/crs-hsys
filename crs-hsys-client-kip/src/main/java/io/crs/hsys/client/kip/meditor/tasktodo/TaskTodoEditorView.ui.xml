@@ -39,7 +39,7 @@
 			<m:MaterialRow marginBottom="30">
 				<m:MaterialColumn grid="s12" padding="0">
 					<g:HTMLPanel addStyleNames="{style.dGB2}">
-						<g:Label text="{i18nCore.taskTypeEditorTranslations}"
+						<m:MaterialLabel text="{i18nCore.taskTypeEditorTranslations}" marginBottom="10"
 							addStyleNames="{style.dataGroupTitle2}" />
 						<translateeditor:TranslateListEditor
 							ui:field="translations" />

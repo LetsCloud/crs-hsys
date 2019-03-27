@@ -44,8 +44,8 @@
 				<m:MaterialRow marginBottom="30">
 					<m:MaterialColumn grid="s12" padding="0">
 						<g:HTMLPanel addStyleNames="dataGroupBox">
-							<g:Label text="{i18nCore.taskTypeEditorTranslations}"
-								addStyleNames="dataGroupTitle" />
+							<m:MaterialLabel text="{i18nCore.taskTypeEditorTranslations}"
+								marginBottom="10" addStyleNames="dataGroupTitle" />
 							<translateeditor:TranslateListEditor
 								ui:field="translations" />
 						</g:HTMLPanel>
@@ -61,8 +61,6 @@
 
 			<m:MaterialColumn grid="s12 m6">
 				<g:HTMLPanel addStyleNames="dataGroupBox">
-					<g:Label text="{i18nCore.taskTypeEditorTodos}"
-						addStyleNames="dataGroupTitle" />
 					<tasktypeeditor:TaskTodoListEditor
 						ui:field="todos" />
 				</g:HTMLPanel>

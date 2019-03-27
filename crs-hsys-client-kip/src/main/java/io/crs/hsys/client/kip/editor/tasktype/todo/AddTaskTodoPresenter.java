@@ -42,7 +42,7 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 		void open();
 	}
 
-	private String filterTaskGroupCode, todoSearch;
+	private String filterTaskGroupKey, todoSearch;
 	private final TaskTodoDataSource taskTodoDataSource;
 	private final List<TaskTodoDto> todos = new ArrayList<TaskTodoDto>();
 	private final TaskGroupDataSource taskGroupDataSource;
@@ -57,33 +57,34 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 		getView().setUiHandlers(this);
 	}
 
-	public void open(String taskGroup) {
-		this.filterTaskGroupCode = taskGroup;
+	public void open(String taskGroupKey) {
+		this.filterTaskGroupKey = taskGroupKey;
 		logger.info("AddTaskTodoPresenter().open()->start");
 		todos.clear();
-		loadTaskTodoData();
+		loadTaskTodoData(true);
 		loadTaskGroupData();
 		logger.info("AddTaskTodoPresenter().open()->end");
 	}
 
-	private void loadTaskTodoData() {
+	private void loadTaskTodoData(Boolean open) {
 		LoadCallback<TaskTodoDto> taskTodoLoadCallback = new LoadCallback<TaskTodoDto>() {
 			@Override
 			public void onSuccess(LoadResult<TaskTodoDto> loadResult) {
 				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->start");
 				List<TaskTodoDto> result = loadResult.getData();
-				if ((todoSearch != null) || (!todoSearch.isEmpty()))
+				if ((todoSearch != null) && (!todoSearch.isEmpty()))
 					result = result.stream().filter(tg -> tg.getDescription().contains(todoSearch))
 							.collect(Collectors.toList());
 				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->1");
 
-				if (!filterTaskGroupCode.equals(TaskTodoFilterView.ALL_ITEMS))
-					result = result.stream().filter(tg -> tg.getTaskGroup().getCode().equals(filterTaskGroupCode))
+				if (!filterTaskGroupKey.equals(TaskTodoFilterView.ALL_ITEMS))
+					result = result.stream().filter(tg -> tg.getTaskGroup().getWebSafeKey().equals(filterTaskGroupKey))
 							.collect(Collectors.toList());
 				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->2");
 
 				getView().setTaskTodoData(result);
-				getView().open();
+				if (open)
+					getView().open();
 				logger.info("AddTaskTodoPresenter().loadTaskTodoData().onSuccess()->end");
 			}
 
@@ -129,14 +130,14 @@ public class AddTaskTodoPresenter extends PresenterWidget<AddTaskTodoPresenter.M
 
 	@Override
 	public void onTaskGroupFilterChange(String code) {
-		filterTaskGroupCode = code;
-		loadTaskTodoData();
+		filterTaskGroupKey = code;
+		loadTaskTodoData(false);
 	}
 
 	@Override
 	public void onTodoSearchChange(String todo) {
 		todoSearch = todo;
-		loadTaskTodoData();
+		loadTaskTodoData(false);
 	}
 
 }
