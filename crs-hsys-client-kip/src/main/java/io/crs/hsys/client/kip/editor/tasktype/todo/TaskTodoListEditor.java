@@ -96,7 +96,7 @@ public class TaskTodoListEditor extends Composite implements IsEditor<ListEditor
 
 	private ListEditor<TaskTodoDto, TaskTodoEditor> editor = ListEditor.of(new TaskTodoEditorSource());
 
-	private String taskGroupKey;
+	private String taskGroupKey = null;
 	private AddTaskTodoPresenter addTaskTodo;
 
 	/**

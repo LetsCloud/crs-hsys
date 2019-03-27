@@ -110,7 +110,8 @@ public class TaskTypeEditorView extends ViewWithUiHandlers<TaskTypeEditorUiHandl
 			@Override
 			public void setValue(TaskGroupDto value) {
 				taskGroupComboBox.setSingleValue(value);
-				todos.setTaskGroupKey(value.getWebSafeKey());
+				if (value != null)
+					todos.setTaskGroupKey(value.getWebSafeKey());
 			}
 
 			@Override
