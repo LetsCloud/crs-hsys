@@ -16,7 +16,7 @@ import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.ui.browser.ActionColumn;
 import io.crs.hsys.client.core.ui.browser.DataColumn;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskTypeDto;
 
 /**

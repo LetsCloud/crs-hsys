@@ -6,9 +6,9 @@ package io.crs.hsys.shared.dto.hotel;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.CityTaxMethod;
-import io.crs.hsys.shared.constans.RateCalcMethod;
-import io.crs.hsys.shared.constans.RateSubject;
+import io.crs.hsys.shared.cnst.CityTaxMethod;
+import io.crs.hsys.shared.cnst.RateCalcMethod;
+import io.crs.hsys.shared.cnst.RateSubject;
 
 /**
  * @author CR

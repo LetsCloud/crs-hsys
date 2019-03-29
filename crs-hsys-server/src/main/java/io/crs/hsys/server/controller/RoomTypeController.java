@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.hotel.RoomType;
 import io.crs.hsys.server.service.RoomTypeService;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.exception.RestApiException;

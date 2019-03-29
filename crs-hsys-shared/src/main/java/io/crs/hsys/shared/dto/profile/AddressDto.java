@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.profile;
 
 import com.google.common.base.Strings;
 
-import io.crs.hsys.shared.constans.PostalAddressLabel;
+import io.crs.hsys.shared.cnst.PostalAddressLabel;
 import io.crs.hsys.shared.dto.Dto;
 
 /**

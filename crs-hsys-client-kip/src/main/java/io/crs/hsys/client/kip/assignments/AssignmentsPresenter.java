@@ -23,8 +23,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
-import io.crs.hsys.shared.constans.AssignmentStatus;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.AssignmentStatus;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hk.CleanTypeDto;
 import io.crs.hsys.shared.dto.hk.HkAssignmentDto;

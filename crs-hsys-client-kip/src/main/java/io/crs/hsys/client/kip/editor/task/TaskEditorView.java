@@ -4,7 +4,9 @@
 package io.crs.hsys.client.kip.editor.task;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -40,7 +42,7 @@ import gwt.material.design.client.ui.html.OptGroup;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
@@ -119,6 +121,8 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 
 	TakesValueEditor<Date> dueDate;
 
+	private Map<String, Long> avwEventsMap = new HashMap<String, Long>();
+
 	/**
 	* 
 	*/
@@ -136,6 +140,23 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 
 		this.driver = driver;
 
+		dueDatePicker.addOpenHandler(avw -> {
+			logger.info(avw.getTarget().getId() + " opened");
+			avwEventsMap.put(avw.getTarget().getId(), new Date().getTime());
+		});
+
+		dueDatePicker.addCloseHandler(avw -> {
+			logger.info(avw.getTarget().getId() + " closed");
+			Long ts = avwEventsMap.get(avw.getTarget().getId());
+			if (ts != null) {
+				long elapsed = new Date().getTime() - ts;
+				logger.info(avw.getTarget().getId() + "open / close interval: " + elapsed + "ms");
+				if (elapsed < 500) {
+					avw.getTarget().open();
+				}
+			}
+		});
+		
 		driver.initialize(this);
 	}
 

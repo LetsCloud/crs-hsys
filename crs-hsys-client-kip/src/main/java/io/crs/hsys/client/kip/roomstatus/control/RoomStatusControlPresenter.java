@@ -22,7 +22,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.shared.api.RoomResource;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;

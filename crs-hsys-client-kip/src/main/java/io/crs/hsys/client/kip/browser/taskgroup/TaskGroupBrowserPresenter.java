@@ -21,7 +21,7 @@ import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
 import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorPresenter;
 import io.crs.hsys.shared.api.TaskGroupResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**

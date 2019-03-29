@@ -8,7 +8,7 @@ import java.util.List;
 import com.googlecode.objectify.Ref;
 
 import io.crs.hsys.server.entity.profile.Organization;
-import io.crs.hsys.shared.constans.ProfileType;
+import io.crs.hsys.shared.cnst.ProfileType;
 
 /**
  * @author CR

@@ -6,7 +6,7 @@ package io.crs.hsys.server.entity.common;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
-import io.crs.hsys.shared.constans.ServiceType;
+import io.crs.hsys.shared.cnst.ServiceType;
 
 /**
  * @author CR

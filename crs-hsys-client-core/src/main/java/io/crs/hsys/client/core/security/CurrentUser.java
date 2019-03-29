@@ -1,6 +1,6 @@
 package io.crs.hsys.client.core.security;
 
-import io.crs.hsys.shared.constans.Language;
+import io.crs.hsys.shared.cnst.Language;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 

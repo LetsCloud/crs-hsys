@@ -11,10 +11,10 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
 import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.shared.constans.InventoryType;
 
 /**
  * @author robi

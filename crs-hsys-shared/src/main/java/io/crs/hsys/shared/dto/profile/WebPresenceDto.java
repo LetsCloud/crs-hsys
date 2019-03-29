@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.profile;
 
-import io.crs.hsys.shared.constans.WebPresenceType;
+import io.crs.hsys.shared.cnst.WebPresenceType;
 import io.crs.hsys.shared.dto.Dto;
 
 /**

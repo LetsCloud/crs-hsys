@@ -17,7 +17,7 @@ import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.RoomTypeResource;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 
 /**

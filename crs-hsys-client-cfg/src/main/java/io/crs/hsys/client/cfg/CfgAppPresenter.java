@@ -28,8 +28,8 @@ import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
-import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.SubSystem;
+import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 
 /**

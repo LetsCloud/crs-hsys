@@ -7,7 +7,7 @@ import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 public class HkTaskGroupEditorPresenter extends TaskGroupEditorPresenter {
 

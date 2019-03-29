@@ -11,7 +11,7 @@ import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import io.crs.hsys.client.core.datasource.TaskGroupDataSource;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskTodoResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi

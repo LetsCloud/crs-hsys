@@ -22,7 +22,7 @@ import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.fro.NameTokens;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.reservation.ReservationSearchDto;
 
 /**

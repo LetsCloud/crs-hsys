@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.task;
 
-import io.crs.hsys.shared.constans.TaskAttrType;
+import io.crs.hsys.shared.cnst.TaskAttrType;
 import io.crs.hsys.shared.dto.Dto;
 
 /**

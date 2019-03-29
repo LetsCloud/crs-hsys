@@ -16,7 +16,7 @@ import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.ui.browser.ActionColumn;
 import io.crs.hsys.client.core.ui.browser.DataColumn;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 
 /**

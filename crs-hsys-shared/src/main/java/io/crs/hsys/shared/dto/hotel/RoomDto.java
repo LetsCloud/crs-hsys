@@ -9,8 +9,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import io.crs.hsys.shared.constans.OccStatus;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.OccStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 
 /**
  * @author CR

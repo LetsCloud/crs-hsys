@@ -19,7 +19,7 @@ import com.googlecode.objectify.annotation.Index;
 import io.crs.hsys.server.entity.common.Currency;
 import io.crs.hsys.server.entity.hotel.HotelChild;
 import io.crs.hsys.server.entity.hotel.Room;
-import io.crs.hsys.shared.constans.ReservationStatus;
+import io.crs.hsys.shared.cnst.ReservationStatus;
 
 /**
  * @author CR

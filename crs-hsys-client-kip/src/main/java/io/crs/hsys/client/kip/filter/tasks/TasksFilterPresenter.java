@@ -21,7 +21,7 @@ import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**

@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.server.entity.profile;
 
-import io.crs.hsys.shared.constans.WebPresenceType;
+import io.crs.hsys.shared.cnst.WebPresenceType;
 
 /**
  * @author CR

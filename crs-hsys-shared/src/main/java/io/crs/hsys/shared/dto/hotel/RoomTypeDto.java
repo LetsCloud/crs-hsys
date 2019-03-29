@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.hotel;
 
 import java.util.List;
 
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 
 /**
  * @author CR

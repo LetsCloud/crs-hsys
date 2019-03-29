@@ -21,7 +21,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 
 /**
  * @author robi

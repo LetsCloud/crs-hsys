@@ -17,7 +17,7 @@ import com.gwtplatform.mvp.client.proxy.RevealRootPopupContentEvent;
 
 import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.RoomResource;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusRefreshEvent;
 

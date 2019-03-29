@@ -10,9 +10,9 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.hotel.HotelChild;
-import io.crs.hsys.shared.constans.CityTaxMethod;
-import io.crs.hsys.shared.constans.RateCalcMethod;
-import io.crs.hsys.shared.constans.RateSubject;
+import io.crs.hsys.shared.cnst.CityTaxMethod;
+import io.crs.hsys.shared.cnst.RateCalcMethod;
+import io.crs.hsys.shared.cnst.RateSubject;
 
 /**
  * @author CR

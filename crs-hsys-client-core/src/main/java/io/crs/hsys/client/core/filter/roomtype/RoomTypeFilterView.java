@@ -14,7 +14,7 @@ import gwt.material.design.client.ui.MaterialChip;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterView;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 
 /**
  * @author robi

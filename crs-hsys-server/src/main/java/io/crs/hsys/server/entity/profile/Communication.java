@@ -6,7 +6,7 @@ package io.crs.hsys.server.entity.profile;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.CommMode;
+import io.crs.hsys.shared.cnst.CommMode;
 import io.crs.hsys.shared.dto.profile.CommunicationDto;
 
 /**

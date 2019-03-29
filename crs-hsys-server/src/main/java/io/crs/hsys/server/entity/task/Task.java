@@ -14,8 +14,8 @@ import com.googlecode.objectify.annotation.Index;
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.hotel.Room;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.TaskKind;
+import io.crs.hsys.shared.cnst.TaskStatus;
 
 /**
  * @author robi

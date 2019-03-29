@@ -22,7 +22,7 @@ import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterPresenter;
 import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterView;
 import io.crs.hsys.client.kip.meditor.tasktodo.TaskTodoEditorPresenter;
 import io.crs.hsys.shared.api.TaskTodoResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
 
 /**

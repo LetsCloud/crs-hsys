@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.shared.constans;
+package io.crs.hsys.shared.cnst;
 
 /**
  * Szolgáltatáskód típusa

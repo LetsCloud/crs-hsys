@@ -18,7 +18,7 @@ import io.crs.hsys.server.entity.hotel.Hotel;
 import io.crs.hsys.server.entity.reservation.Reservation;
 import io.crs.hsys.server.entity.reservation.RoomStay;
 import io.crs.hsys.server.repository.ReservationRepository;
-import io.crs.hsys.shared.constans.ReservationStatus;
+import io.crs.hsys.shared.cnst.ReservationStatus;
 
 /**
  * @author CR

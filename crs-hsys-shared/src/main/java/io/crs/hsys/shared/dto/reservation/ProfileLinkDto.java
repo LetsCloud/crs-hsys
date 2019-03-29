@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.reservation;
 
-import io.crs.hsys.shared.constans.ProfileType;
+import io.crs.hsys.shared.cnst.ProfileType;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 

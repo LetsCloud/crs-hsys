@@ -9,7 +9,7 @@ import gwt.material.design.client.ui.MaterialChip;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 
 public class AssignmentFilterView extends AbstractFilterView implements AssignmentFilterPresenter.MyView {
 	private static Logger logger = Logger.getLogger(AssignmentFilterView.class.getName());

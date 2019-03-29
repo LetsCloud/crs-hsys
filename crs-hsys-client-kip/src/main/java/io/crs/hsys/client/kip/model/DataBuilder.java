@@ -10,12 +10,12 @@ import java.util.List;
 
 import com.google.inject.Inject;
 
-import io.crs.hsys.shared.constans.Language;
-import io.crs.hsys.shared.constans.RoomStatus;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.constans.TaskNoteType;
-import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.Language;
+import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.cnst.TaskKind;
+import io.crs.hsys.shared.cnst.TaskNoteType;
+import io.crs.hsys.shared.cnst.TaskStatus;
+import io.crs.hsys.shared.cnst.UserPerm;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.common.TranslationDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

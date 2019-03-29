@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import io.crs.hsys.server.entity.GlobalConfig;
 import io.crs.hsys.server.repository.GlobalConfigRepository;
 import io.crs.hsys.server.service.GlobalConfigService;
-import io.crs.hsys.shared.constans.GlobalParam;
+import io.crs.hsys.shared.cnst.GlobalParam;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 

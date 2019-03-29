@@ -29,7 +29,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.OrganizationResource;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 
 /**

@@ -10,7 +10,7 @@ import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 
 import io.crs.hsys.server.entity.common.AccountChild;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi

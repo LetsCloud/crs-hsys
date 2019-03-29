@@ -15,7 +15,7 @@ import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.hotel.Hotel;
 import io.crs.hsys.server.model.Registration;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.UserPerm;
 
 /**
  * @author robi

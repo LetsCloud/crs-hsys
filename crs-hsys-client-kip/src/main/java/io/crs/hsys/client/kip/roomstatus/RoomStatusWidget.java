@@ -29,9 +29,9 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.HasRoomStatusEditHandlers;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusEditEvent.RoomStatusEditHandler;
-import io.crs.hsys.shared.constans.OccStatus;
-import io.crs.hsys.shared.constans.RoomStatus;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.OccStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 

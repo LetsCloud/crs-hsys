@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.crs.hsys.server.entity.task.Task;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.server.service.TaskService;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.exception.RestApiException;
 

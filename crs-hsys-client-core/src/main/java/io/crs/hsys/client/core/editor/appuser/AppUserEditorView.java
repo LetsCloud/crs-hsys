@@ -30,7 +30,7 @@ import gwt.material.design.client.ui.MaterialImage;
 import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.util.UrlUtils;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.UserPerm;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.UserGroupDto;

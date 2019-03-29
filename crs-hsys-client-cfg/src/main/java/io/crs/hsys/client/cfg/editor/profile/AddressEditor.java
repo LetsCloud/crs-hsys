@@ -37,7 +37,7 @@ import io.crs.hsys.client.cfg.editor.profile.AddressActionEvent.AddressActiEvent
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.i18n.CountryConstants;
-import io.crs.hsys.shared.constans.PostalAddressLabel;
+import io.crs.hsys.shared.cnst.PostalAddressLabel;
 import io.crs.hsys.shared.dto.profile.AddressDto;
 
 public class AddressEditor extends Composite implements Editor<AddressDto> {

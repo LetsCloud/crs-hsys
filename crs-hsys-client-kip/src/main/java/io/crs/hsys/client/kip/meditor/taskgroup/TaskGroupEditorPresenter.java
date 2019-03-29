@@ -18,7 +18,7 @@ import io.crs.hsys.client.core.event.RefreshTableEvent;
 import io.crs.hsys.client.core.gin.CustomActionException;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 

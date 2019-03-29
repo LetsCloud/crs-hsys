@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.profile;
 
 import java.util.Date;
 
-import io.crs.hsys.shared.constans.Gender;
+import io.crs.hsys.shared.cnst.Gender;
 
 /**
  * @author CR

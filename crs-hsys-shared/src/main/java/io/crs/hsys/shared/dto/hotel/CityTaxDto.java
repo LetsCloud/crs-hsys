@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.hotel;
 
 import java.util.Date;
 
-import io.crs.hsys.shared.constans.CityTaxBase;
+import io.crs.hsys.shared.cnst.CityTaxBase;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.ServiceDto;
 

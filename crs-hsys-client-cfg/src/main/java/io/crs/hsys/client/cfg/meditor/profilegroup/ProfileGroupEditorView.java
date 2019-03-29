@@ -26,7 +26,7 @@ import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.shared.constans.ProfileType;
+import io.crs.hsys.shared.cnst.ProfileType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
 

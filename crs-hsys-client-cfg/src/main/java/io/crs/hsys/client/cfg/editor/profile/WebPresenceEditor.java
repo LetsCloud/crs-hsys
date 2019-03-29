@@ -32,7 +32,7 @@ import gwt.material.design.client.ui.MaterialRow;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.i18n.CountryConstants;
-import io.crs.hsys.shared.constans.WebPresenceType;
+import io.crs.hsys.shared.cnst.WebPresenceType;
 import io.crs.hsys.shared.dto.profile.WebPresenceDto;
 
 /**

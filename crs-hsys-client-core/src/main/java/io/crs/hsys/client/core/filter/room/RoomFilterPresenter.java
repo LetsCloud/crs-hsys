@@ -17,7 +17,7 @@ import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 
 /**

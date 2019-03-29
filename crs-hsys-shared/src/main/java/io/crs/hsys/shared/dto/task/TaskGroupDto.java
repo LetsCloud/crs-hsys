@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.task;
 
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 
 /**

@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.common;
 
-import io.crs.hsys.shared.constans.Language;
+import io.crs.hsys.shared.cnst.Language;
 import io.crs.hsys.shared.dto.Dto;
 
 /**
@@ -38,4 +38,10 @@ public class TranslationDto implements Dto {
 	public void setText(String text) {
 		this.text = text;
 	}
+
+	@Override
+	public String toString() {
+		return "TranslationDto [language=" + language + ", text=" + text + "]";
+	}
+	
 }

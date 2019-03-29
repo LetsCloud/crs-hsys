@@ -28,7 +28,7 @@ import gwt.material.design.client.ui.MaterialFloatBox;
 import gwt.material.design.client.ui.MaterialIntegerBox;
 import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 

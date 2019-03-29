@@ -27,7 +27,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.shared.api.TaskResource;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
