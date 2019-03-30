@@ -10,6 +10,12 @@
 
 	<mvc:annotation-driven />
 
+<mvc:cors>
+
+        <mvc:mapping path="/spa/v1/**"
+                allowed-methods="GET, POST, DELETE" />
+</mvc:cors>
+
 	<context:component-scan
 		base-package="io.crs.hsys.server.controller" />
 

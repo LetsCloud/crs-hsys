@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
  *
  */
 public class CsrfSecurityRequestMatcher implements RequestMatcher {
-    private Pattern allowedMethods = Pattern.compile("^(GET|POST|HEAD|TRACE|OPTIONS)$");
+    private Pattern allowedMethods = Pattern.compile("^(GET|POST|DELETE|HEAD|TRACE|OPTIONS)$");
     private RegexRequestMatcher unprotectedMatcher = new RegexRequestMatcher("/logout", null);
 
     @Override

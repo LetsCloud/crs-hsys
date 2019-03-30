@@ -137,8 +137,11 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 
 	@Override
 	public void delete(List<T> dtos) {
-		for (T dto : dtos)
+		logger.info("AbstractBrowserPresenter().delete()");
+		for (T dto : dtos) {
+			logger.info("AbstractBrowserPresenter().delete()->dto.getWebSafeKey()=" + dto.getWebSafeKey());
 			deleteData(dto.getWebSafeKey());
+		}
 		loadData();
 	}
 

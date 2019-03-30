@@ -130,7 +130,9 @@ public abstract class CrudController<T extends BaseEntity, D extends BaseDto> ex
 	}
 
 	public void delete(String webSafeKey) throws RestApiException {
+		logger.info("CrudController().delete()->webSafeKey=" + webSafeKey);
 		try {
+			logger.info("CrudController().delete()2->webSafeKey=" + webSafeKey);
 			service.delete(webSafeKey);
 		} catch (Throwable e) {
 			throw new RestApiException(e);

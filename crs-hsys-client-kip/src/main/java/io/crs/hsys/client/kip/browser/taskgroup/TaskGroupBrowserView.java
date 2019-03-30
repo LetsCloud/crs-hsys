@@ -60,6 +60,7 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
+			logger.info("TaskGroupBrowserView().onDeleteClick()");
 			getUiHandlers().delete(table.getSelected());
 		});
 

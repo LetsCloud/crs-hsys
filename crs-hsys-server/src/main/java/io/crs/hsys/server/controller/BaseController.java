@@ -16,6 +16,7 @@ import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.shared.dto.ErrorResponseDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.RestApiException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -62,6 +63,10 @@ public abstract class BaseController {
 			error = createUiceResponse((UniqueIndexConflictException) ex.getCause());
 		}
 
+		if (ex.getCause() instanceof ForeignKeyConflictException) {
+			error = createForeignKeyConflictResponse((ForeignKeyConflictException) ex.getCause());
+		}
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json; charset=utf-8");
 
@@ -73,6 +78,14 @@ public abstract class BaseController {
 		error.setExceptionType(ExceptionType.UNIQUE_INDEX_CONFLICT);
 		error.setProperty(e.getProperty());
 		error.setMessage(ExceptionType.UNIQUE_INDEX_CONFLICT.toString() + "-" + e.getMessage());
+		return error;
+	}
+
+	private ErrorResponseDto createForeignKeyConflictResponse(ForeignKeyConflictException e) {
+		ErrorResponseDto error = new ErrorResponseDto();
+		error.setExceptionType(ExceptionType.FOREIGN_KEY_CONFLICT);
+		error.setProperty(e.getForeignKey().toString());
+		error.setMessage(ExceptionType.FOREIGN_KEY_CONFLICT.toString() + "-" + e.getMessage());
 		return error;
 	}
 

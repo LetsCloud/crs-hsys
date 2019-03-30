@@ -169,7 +169,10 @@
 
 
 	<bean id="taskGroupRepository"
-		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl" />
+		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl" >
+		<constructor-arg ref="taskTodoRepository" />
+		<constructor-arg ref="taskTypeRepository" />
+	</bean>
 	<bean id="taskTodoRepository"
 		class="io.crs.hsys.server.repository.ofy.TaskTodoRepositoryImpl" />
 	<bean id="taskTypeRepository"

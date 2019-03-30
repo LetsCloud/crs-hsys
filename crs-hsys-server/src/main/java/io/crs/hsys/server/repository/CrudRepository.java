@@ -8,6 +8,7 @@ import java.util.Map;
 
 import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.shared.exception.EntityValidationException;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
 /**
@@ -33,7 +34,9 @@ public interface CrudRepository<T extends BaseEntity> {
 
 	T findById(Long id);
 
-	void delete(String webSafeString);
+	Boolean isExists(String webSafeKey);
+
+	void delete(String webSafeKey) throws ForeignKeyConflictException;
 
 	List<T> getAll();
 

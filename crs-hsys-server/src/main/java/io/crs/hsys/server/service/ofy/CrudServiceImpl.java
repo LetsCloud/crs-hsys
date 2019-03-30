@@ -18,6 +18,7 @@ import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.server.repository.CrudRepository;
 import io.crs.hsys.server.service.CrudService;
 import io.crs.hsys.shared.exception.EntityVersionConflictException;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 
 /**
  * @author robi
@@ -98,7 +99,7 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 	}
 
 	@Override
-	public Boolean delete(String webSafeKey) {
+	public Boolean delete(String webSafeKey) throws ForeignKeyConflictException {
 		repository.delete(webSafeKey);
 		return true;
 	}

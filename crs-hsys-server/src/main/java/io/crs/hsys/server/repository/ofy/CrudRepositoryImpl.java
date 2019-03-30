@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.server.repository.CrudRepository;
+import io.crs.hsys.shared.cnst.ForeignKey;
 import io.crs.hsys.shared.exception.EntityValidationException;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
 /**
@@ -23,6 +26,8 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 public abstract class CrudRepositoryImpl<T extends BaseEntity> extends ObjectifyBaseRepository<T>
 		implements CrudRepository<T> {
 	private static final Logger logger = LoggerFactory.getLogger(CrudRepositoryImpl.class.getName());
+
+	protected Map<ForeignKey, CrudRepository<?>> foreignKeys = new HashMap<ForeignKey, CrudRepository<?>>();
 
 	protected CrudRepositoryImpl(Class<T> clazz) {
 		super(clazz);
@@ -52,12 +57,23 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 	}
 
 	@Override
-	public T findByWebSafeKey(String id) {
-		return get(id);
+	public T findByWebSafeKey(String webSafeKey) {
+		return get(webSafeKey);
 	}
 
 	@Override
-	public void delete(String webSafeKey) {
+	public Boolean isExists(String webSafeKey) {
+		return (findByWebSafeKey(webSafeKey) != null);
+	}
+
+	@Override
+	public void delete(String webSafeKey) throws ForeignKeyConflictException {
+		for (Map.Entry<ForeignKey, CrudRepository<?>> foreignKey : foreignKeys.entrySet()) {
+			CrudRepository<?> repo = foreignKey.getValue();
+			if (repo.isExists(webSafeKey))
+				throw new ForeignKeyConflictException(foreignKey.getKey());
+			;
+		}
 		delete(getKey(webSafeKey));
 	}
 

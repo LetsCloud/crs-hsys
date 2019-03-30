@@ -55,4 +55,11 @@ public class ErrorResponseDto implements Dto {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	@Override
+	public String toString() {
+		return "ErrorResponseDto [errorCode=" + errorCode + ", exceptionType=" + exceptionType + ", property="
+				+ property + ", message=" + message + "]";
+	}
+	
 }

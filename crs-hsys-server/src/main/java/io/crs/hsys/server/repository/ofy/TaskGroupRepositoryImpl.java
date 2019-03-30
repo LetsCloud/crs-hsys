@@ -8,6 +8,9 @@ import com.googlecode.objectify.Key;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.task.TaskGroup;
 import io.crs.hsys.server.repository.TaskGroupRepository;
+import io.crs.hsys.server.repository.TaskTodoRepository;
+import io.crs.hsys.server.repository.TaskTypeRepository;
+import io.crs.hsys.shared.cnst.ForeignKey;
 
 /**
  * @author CR
@@ -20,8 +23,10 @@ public class TaskGroupRepositoryImpl extends CrudRepositoryImpl<TaskGroup> imple
 	 */
 	private static final String PROPERTY_CODE = "code";
 
-	protected TaskGroupRepositoryImpl() {
+	protected TaskGroupRepositoryImpl(TaskTodoRepository taskTodoRepository, TaskTypeRepository taskTypeRepository) {
 		super(TaskGroup.class);
+		foreignKeys.put(ForeignKey.TASKGROUP_TASKTODO, taskTodoRepository);
+		foreignKeys.put(ForeignKey.TASKGROUP_TASKTYPE, taskTypeRepository);
 	}
 
 	@Override
@@ -46,5 +51,4 @@ public class TaskGroupRepositoryImpl extends CrudRepositoryImpl<TaskGroup> imple
 		if ((entiy.getCode() != null) && (!entiy.getCode().isEmpty()))
 			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode());
 	}
-
 }

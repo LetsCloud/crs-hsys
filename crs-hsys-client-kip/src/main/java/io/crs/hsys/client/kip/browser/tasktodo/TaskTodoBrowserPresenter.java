@@ -82,10 +82,11 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 				if (filter.isOnlyActive())
 					result = result.stream().filter(tg -> tg.getActive().equals(true)).collect(Collectors.toList());
 				// A kiválasztott feladat jelleg tennivalóinak megjelenítése
-				if (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL))
+				if ((filter.getSelectedTaskKind() != null) && (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL)))
 					result = result.stream().filter(tg -> tg.getKind().equals(filter.getSelectedTaskKind()))
 							.collect(Collectors.toList());
-				if (!filter.getSelectedTaskGroup().getCode().equals(TaskTodoFilterView.ALL_ITEMS))
+				if ((filter.getSelectedTaskGroup() != null)
+						&& (!filter.getSelectedTaskGroup().getCode().equals(TaskTodoFilterView.ALL_ITEMS)))
 					result = result.stream().filter(tg -> tg.getTaskGroup().equals(filter.getSelectedTaskGroup()))
 							.collect(Collectors.toList());
 				logger.info("TaskTodoBrowserPresenter().loadData().onSuccess()-2");
