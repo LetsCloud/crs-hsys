@@ -11,6 +11,7 @@ import com.googlecode.objectify.Key;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.profile.ProfileGroup;
 import io.crs.hsys.server.repository.ProfileGroupRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author robi
@@ -46,7 +47,8 @@ public class ProfileGroupRepositoryImpl extends CrudRepositoryImpl<ProfileGroup>
 	protected void loadUniqueIndexMap(ProfileGroup entiy) {
 
 		if (entiy.getCode() != null) {
-			entiy.addUniqueIndex(ProfileGroup.PROFILEGROUP_CODE, entiy.getCode());
+			entiy.addUniqueIndex(ProfileGroup.PROFILEGROUP_CODE, entiy.getCode(),
+					ExceptionSubType.PROFILEGROUP_CODE_ALREADY_EXISTS);
 		}
 	}
 }

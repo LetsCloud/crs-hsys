@@ -8,6 +8,7 @@ import com.googlecode.objectify.Key;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.task.TaskType;
 import io.crs.hsys.server.repository.TaskTypeRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author robi
@@ -44,7 +45,7 @@ public class TaskTypeRepositoryImpl extends CrudRepositoryImpl<TaskType> impleme
 	@Override
 	protected void loadUniqueIndexMap(TaskType entiy) {
 		if ((entiy.getCode() != null) && (!entiy.getCode().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode());
+			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode(), ExceptionSubType.TASKTYPE_CODE_ALREADY_EXISTS);
 	}
 
 }

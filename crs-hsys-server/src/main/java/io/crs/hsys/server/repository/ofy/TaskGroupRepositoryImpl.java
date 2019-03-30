@@ -49,6 +49,6 @@ public class TaskGroupRepositoryImpl extends CrudRepositoryImpl<TaskGroup> imple
 	@Override
 	protected void loadUniqueIndexMap(TaskGroup entiy) {
 		if ((entiy.getCode() != null) && (!entiy.getCode().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode());
+			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode(), ExceptionSubType.TASKGROUP_CODE_ALREADY_EXISTS);
 	}
 }

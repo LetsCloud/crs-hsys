@@ -11,6 +11,7 @@ import com.googlecode.objectify.Key;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.repository.AppUserRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author robi
@@ -73,9 +74,10 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	@Override
 	protected void loadUniqueIndexMap(AppUser entiy) {
 		if ((entiy.getEmailAddress() != null) && (!entiy.getEmailAddress().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_EMAIL, entiy.getEmailAddress());
+			entiy.addUniqueIndex(PROPERTY_EMAIL, entiy.getEmailAddress(),
+					ExceptionSubType.APPUSER_EMAIL_ALREADY_EXISTS);
 
 		if ((entiy.getUsername() != null) && (!entiy.getUsername().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername());
+			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername(), ExceptionSubType.APPUSER_CODE_ALREADY_EXISTS);
 	}
 }

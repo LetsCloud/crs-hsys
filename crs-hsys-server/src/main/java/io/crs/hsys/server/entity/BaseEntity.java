@@ -3,8 +3,8 @@
  */
 package io.crs.hsys.server.entity;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +16,7 @@ import com.googlecode.objectify.annotation.OnLoad;
 import com.googlecode.objectify.annotation.OnSave;
 
 import io.crs.hsys.shared.exception.EntityValidationException;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * Minden entitás őse.
@@ -53,8 +54,9 @@ public abstract class BaseEntity {
 	 * A leképezés kulcsa a mező neve, értéke pedig a mező értéke.
 	 */
 	@Ignore
-	private Map<String, Object> uniqueIndexes = new HashMap<String, Object>();
+	private List<UniqueKey> uniqueIndexes = new ArrayList<UniqueKey>();
 
+//	private Map<String, Object> uniqueIndexes = new HashMap<String, Object>();
 	/**
 	 * Az entitás verziiószámát növelő trigger, amely az entitás mentése előtt fut
 	 * le.
@@ -160,8 +162,8 @@ public abstract class BaseEntity {
 	 * @param property Mező név.
 	 * @param value    Mező érték.
 	 */
-	public void addUniqueIndex(String property, Object value) {
-		uniqueIndexes.put(property, value);
+	public void addUniqueIndex(String property, Object value, ExceptionSubType exception) {
+		uniqueIndexes.add(new UniqueKey(property, value, exception));
 	}
 
 	/**
@@ -170,7 +172,7 @@ public abstract class BaseEntity {
 	 * 
 	 * @return Mező nevek és értékek leképezése.
 	 */
-	public Map<String, Object> getUniqueIndexes() {
+	public List<UniqueKey> getUniqueIndexes() {
 		return uniqueIndexes;
 	}
 

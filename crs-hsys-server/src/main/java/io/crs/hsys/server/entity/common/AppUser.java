@@ -28,6 +28,7 @@ public class AppUser extends AccountChild {
 	/**
 	 * Kód
 	 */
+	@Index
 	private String code;
 
 	/**
@@ -48,7 +49,6 @@ public class AppUser extends AccountChild {
 	/**
 	 * Bejelentkezőnév
 	 */
-	@Index
 	private String username;
 
 	/**

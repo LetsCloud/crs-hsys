@@ -75,9 +75,10 @@ public abstract class BaseController {
 
 	private ErrorResponseDto createUiceResponse(UniqueIndexConflictException e) {
 		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.UNIQUE_INDEX_CONFLICT);
+		error.setExceptionType(ExceptionType.CANNOT_BE_SAVED);
+		error.setExceptionSubType(e.getException());
 		error.setProperty(e.getProperty());
-		error.setMessage(ExceptionType.UNIQUE_INDEX_CONFLICT.toString() + "-" + e.getMessage());
+		error.setMessage(ExceptionType.CANNOT_BE_SAVED.toString() + "-" + e.getMessage());
 		return error;
 	}
 

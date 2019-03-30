@@ -8,6 +8,7 @@ import com.googlecode.objectify.Key;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.task.TaskTodo;
 import io.crs.hsys.server.repository.TaskTodoRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author robi
@@ -44,7 +45,8 @@ public class TaskTodoRepositoryImpl extends CrudRepositoryImpl<TaskTodo> impleme
 	@Override
 	protected void loadUniqueIndexMap(TaskTodo entiy) {
 		if ((entiy.getDescription() != null) && (!entiy.getDescription().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_DESCRIPTION, entiy.getDescription());
+			entiy.addUniqueIndex(PROPERTY_DESCRIPTION, entiy.getDescription(),
+					ExceptionSubType.TASKTODO_DESCRIPTION_ALREADY_EXISTS);
 	}
 
 }

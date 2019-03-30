@@ -29,7 +29,7 @@ public enum ExceptionType implements Serializable {
 
 	FAILD_ENTITIY_VALIDATION,
 
-	UNIQUE_INDEX_CONFLICT,
+	CANNOT_BE_SAVED,
 
 	CANNOT_BE_DELETED,
 
