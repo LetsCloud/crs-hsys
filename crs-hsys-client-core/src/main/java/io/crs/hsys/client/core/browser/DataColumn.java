@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.browser;
+package io.crs.hsys.client.core.browser;
 
 import java.util.Comparator;
 

@@ -10,7 +10,7 @@ import io.crs.hsys.server.entity.task.TaskGroup;
 import io.crs.hsys.server.repository.TaskGroupRepository;
 import io.crs.hsys.server.repository.TaskTodoRepository;
 import io.crs.hsys.server.repository.TaskTypeRepository;
-import io.crs.hsys.shared.cnst.ForeignKey;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author CR
@@ -25,8 +25,8 @@ public class TaskGroupRepositoryImpl extends CrudRepositoryImpl<TaskGroup> imple
 
 	protected TaskGroupRepositoryImpl(TaskTodoRepository taskTodoRepository, TaskTypeRepository taskTypeRepository) {
 		super(TaskGroup.class);
-		foreignKeys.put(ForeignKey.TASKGROUP_TASKTODO, taskTodoRepository);
-		foreignKeys.put(ForeignKey.TASKGROUP_TASKTYPE, taskTypeRepository);
+		foreignKeys.put(ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTODO, taskTodoRepository);
+		foreignKeys.put(ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTYPE, taskTypeRepository);
 	}
 
 	@Override

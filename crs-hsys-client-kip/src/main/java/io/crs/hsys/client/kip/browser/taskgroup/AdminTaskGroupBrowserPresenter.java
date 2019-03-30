@@ -9,6 +9,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+import io.crs.hsys.client.core.event.DisplayMessageEvent;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorFactory;
 import io.crs.hsys.shared.api.TaskGroupResource;

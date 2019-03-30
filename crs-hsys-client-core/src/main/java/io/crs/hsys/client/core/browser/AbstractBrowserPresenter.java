@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.browser;
+package io.crs.hsys.client.core.browser;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +16,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import io.crs.hsys.client.core.event.RefreshTableEvent;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.shared.dto.BaseDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
@@ -130,9 +131,12 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 		return placeBuilder.build();
 	}
 
+	protected abstract TableType getTableType();
+
 	@Override
 	public void onRefresh(RefreshTableEvent event) {
-		loadData();
+		if (event.getTableType().equals(getTableType()))
+			loadData();
 	}
 
 	@Override

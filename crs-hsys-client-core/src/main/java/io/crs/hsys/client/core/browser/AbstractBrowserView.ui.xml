@@ -2,7 +2,8 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:m.table="urn:import:gwt.material.design.client.ui.table">
+	xmlns:m.table="urn:import:gwt.material.design.client.ui.table"
+	xmlns:message="urn:import:io.crs.hsys.client.core.message.dialog">
 
 	<g:HTMLPanel>
 		<g:SimplePanel ui:field="filterPanel" />
@@ -16,6 +17,8 @@
 				type="FLOATING" backgroundColor="BLUE" iconType="ADD" size="LARGE" />
 		</m:MaterialFAB>
 
+		<message:MessageDialogWidget ui:field="messageDialog"/>
+		
 		<g:SimplePanel ui:field="editorPanel" />
 
 	</g:HTMLPanel>

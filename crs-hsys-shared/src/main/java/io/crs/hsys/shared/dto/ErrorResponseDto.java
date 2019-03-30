@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.shared.dto;
 
+import io.crs.hsys.shared.exception.ExceptionSubType;
 import io.crs.hsys.shared.exception.ExceptionType;
 
 /**
@@ -15,6 +16,8 @@ public class ErrorResponseDto implements Dto {
 	private int errorCode;
 
 	private ExceptionType exceptionType;
+
+	private ExceptionSubType exceptionSubType;
 
 	private String property;
 
@@ -38,6 +41,14 @@ public class ErrorResponseDto implements Dto {
 
 	public void setExceptionType(ExceptionType exceptionType) {
 		this.exceptionType = exceptionType;
+	}
+
+	public ExceptionSubType getExceptionSubType() {
+		return exceptionSubType;
+	}
+
+	public void setExceptionSubType(ExceptionSubType exceptionSubType) {
+		this.exceptionSubType = exceptionSubType;
 	}
 
 	public String getProperty() {

@@ -16,8 +16,12 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import gwt.material.design.client.ui.MaterialToast;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.gin.CustomActionException;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
@@ -25,9 +29,7 @@ import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
 import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorPresenter;
 import io.crs.hsys.shared.api.TaskGroupResource;
 import io.crs.hsys.shared.cnst.TaskKind;
-import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.ErrorResponseDto;
-import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -36,11 +38,13 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  */
 public abstract class TaskGroupBrowserPresenter
 		extends AbstractBrowserPresenter<TaskGroupDto, TaskGroupBrowserPresenter.MyView>
-		implements TaskGroupBrowserUiHandlers, FilterChangeEvent.FilterChangeHandler {
+		implements TaskGroupBrowserUiHandlers, FilterChangeEvent.FilterChangeHandler, DisplayMessageHandler {
 	private static Logger logger = Logger.getLogger(TaskGroupBrowserPresenter.class.getName());
 
 	public interface MyView extends View, HasUiHandlers<TaskGroupBrowserUiHandlers> {
 		void setData(List<TaskGroupDto> data);
+
+		void showMessage(MessageData message);
 	}
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
@@ -70,6 +74,7 @@ public abstract class TaskGroupBrowserPresenter
 		super.onBind();
 		setInSlot(SLOT_FILTER, filter);
 		setInSlot(SLOT_EDITOR, editor);
+		addRegisteredHandler(DisplayMessageEvent.TYPE, this);
 	}
 
 	@Override
@@ -111,19 +116,19 @@ public abstract class TaskGroupBrowserPresenter
 				logger.info("TaskGroupBrowserPresenter().deleteData().onSuccess()->webSafeKey=" + webSafeKey);
 				loadData();
 			}
-
+/*
 			@Override
 			public void onFailure(Throwable caught) {
 				if (caught instanceof CustomActionException) {
-					CustomActionException e = (CustomActionException)caught;
+					CustomActionException e = (CustomActionException) caught;
 					MaterialToast.fireToast(e.getMessage());
 					ErrorResponseDto erd = e.getErDto();
 					MaterialToast.fireToast(erd.toString(), 10000);
 				}
 				MaterialToast.fireToast(caught.getMessage());
-
+*/
 //				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
-			}
+//			}
 		}).delete(webSafeKey);
 	}
 
@@ -141,4 +146,15 @@ public abstract class TaskGroupBrowserPresenter
 	public void onFilterChange(FilterChangeEvent event) {
 		loadData();
 	}
+
+	@Override
+	public void onDisplayMessage(DisplayMessageEvent event) {
+		getView().showMessage(event.getMessage());
+	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.TASK_GROUP;
+	}
+
 }

@@ -18,10 +18,11 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.CoreNameTokens;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.browser.roomtype.RoomTypeBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.room.RoomFilterPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
@@ -120,5 +121,10 @@ public class RoomBrowserPresenter extends AbstractBrowserPresenter<RoomDto, Room
 		floors.sort((p1, p2) -> p1.compareTo(p2));
 		floors.add(0, "");
 		return floors;
+	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.ROOM;
 	}
 }

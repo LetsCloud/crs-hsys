@@ -7,7 +7,7 @@ import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;
 
-import io.crs.hsys.client.core.ui.message.Message;
+import io.crs.hsys.client.core.message.MessageData;
 
 /**
  * @author CR
@@ -19,11 +19,11 @@ public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMes
 		void onDisplayMessage(DisplayMessageEvent event);
 	}
 
-	private static final Type<DisplayMessageHandler> TYPE = new Type<>();
+	public static final Type<DisplayMessageHandler> TYPE = new Type<>();
 
-	private Message message;
+	private MessageData message;
 
-	DisplayMessageEvent(Message message) {
+	DisplayMessageEvent(MessageData message) {
 		this.message = message;
 	}
 
@@ -31,7 +31,7 @@ public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMes
 		return TYPE;
 	}
 
-	public static void fire(HasHandlers source, Message message) {
+	public static void fire(HasHandlers source, MessageData message) {
 		source.fireEvent(new DisplayMessageEvent(message));
 	}
 
@@ -40,7 +40,7 @@ public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMes
 		return TYPE;
 	}
 
-	public Message getMessage() {
+	public MessageData getMessage() {
 		return message;
 	}
 

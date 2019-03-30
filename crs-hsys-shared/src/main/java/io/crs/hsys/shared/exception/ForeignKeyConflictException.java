@@ -3,8 +3,6 @@
  */
 package io.crs.hsys.shared.exception;
 
-import io.crs.hsys.shared.cnst.ForeignKey;
-
 /**
  * @author robi
  *
@@ -12,18 +10,18 @@ import io.crs.hsys.shared.cnst.ForeignKey;
 @SuppressWarnings("serial")
 public class ForeignKeyConflictException extends Exception {
 
-	private ForeignKey foreignKey;
+	private ExceptionSubType foreignKey;
 
-	public ForeignKeyConflictException(ForeignKey foreignKey) {
+	public ForeignKeyConflictException(ExceptionSubType foreignKey) {
 		super();
 		this.foreignKey = foreignKey;
 	}
 
-	public ForeignKey getForeignKey() {
+	public ExceptionSubType getForeignKey() {
 		return foreignKey;
 	}
 
-	public void setForeignKey(ForeignKey foreignKey) {
+	public void setForeignKey(ExceptionSubType foreignKey) {
 		this.foreignKey = foreignKey;
 	}
 	

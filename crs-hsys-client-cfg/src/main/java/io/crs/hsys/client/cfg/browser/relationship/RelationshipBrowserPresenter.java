@@ -18,9 +18,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.meditor.relationship.RelationshipEditorFactory;
 import io.crs.hsys.client.cfg.meditor.relationship.RelationshipEditorPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.accountchild.AccountChildFilterPresenter;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.RelationshipResource;
 import io.crs.hsys.shared.dto.profile.RelationshipDto;
@@ -109,5 +110,10 @@ public class RelationshipBrowserPresenter
 	protected String getEditorNameToken() {
 //TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.RELATIONSHIP;
 	}
 }

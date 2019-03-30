@@ -16,9 +16,10 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.CoreNameTokens;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.roomtype.RoomTypeFilterPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
@@ -106,4 +107,10 @@ public class RoomTypeBrowserPresenter extends AbstractBrowserPresenter<RoomTypeD
 
 		addFilter(HOTEL_KEY, filter.getSelectedHotel().getWebSafeKey());
 	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.ROOM_TYPE;
+	}
+
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.browser;
+package io.crs.hsys.client.core.browser;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -25,6 +25,8 @@ import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.table.MaterialDataTable;
 import gwt.material.design.client.ui.table.cell.Column;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.shared.dto.BaseDto;
 
 /**
@@ -62,6 +64,9 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	MaterialButton addButton;
 
 	MaterialIcon deleteIcon;
+
+	@UiField
+	MessageDialogWidget messageDialog;
 
 	@UiField
 	SimplePanel editorPanel;
@@ -202,8 +207,12 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	public SimplePanel getEditorPanel() {
 		return editorPanel;
 	}
-	
+
 	public void setTableTitle(String title) {
 		table.getTableTitle().setText(title);
+	}
+
+	public void showMessage(MessageData messageData) {
+		messageDialog.showMessage(messageData);
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.message;
+package io.crs.hsys.client.core.message;
 
 /**
  * @author CR

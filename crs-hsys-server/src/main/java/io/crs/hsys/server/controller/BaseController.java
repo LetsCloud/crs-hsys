@@ -83,9 +83,10 @@ public abstract class BaseController {
 
 	private ErrorResponseDto createForeignKeyConflictResponse(ForeignKeyConflictException e) {
 		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.FOREIGN_KEY_CONFLICT);
+		error.setExceptionType(ExceptionType.CANNOT_BE_DELETED);
+		error.setExceptionSubType(e.getForeignKey());
 		error.setProperty(e.getForeignKey().toString());
-		error.setMessage(ExceptionType.FOREIGN_KEY_CONFLICT.toString() + "-" + e.getMessage());
+		error.setMessage(ExceptionType.CANNOT_BE_DELETED.toString() + "-" + e.getMessage());
 		return error;
 	}
 

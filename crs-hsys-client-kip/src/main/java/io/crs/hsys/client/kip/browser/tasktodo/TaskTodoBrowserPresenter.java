@@ -15,7 +15,8 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.filter.tasktodo.TaskTodoFilterPresenter;
@@ -128,5 +129,10 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
 		loadData();
+	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.TASK_TODO;
 	}
 }

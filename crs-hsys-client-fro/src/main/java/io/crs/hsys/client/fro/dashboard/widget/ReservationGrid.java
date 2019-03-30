@@ -13,8 +13,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.data.SortDir;
-import io.crs.hsys.client.core.ui.browser.ActionColumn;
-import io.crs.hsys.client.core.ui.browser.DataColumn;
+import io.crs.hsys.client.core.browser.ActionColumn;
+import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.shared.dto.reservation.ReservationSearchDto;
 
 /**

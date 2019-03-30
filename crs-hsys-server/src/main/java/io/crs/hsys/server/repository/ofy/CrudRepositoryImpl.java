@@ -14,8 +14,8 @@ import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.server.repository.CrudRepository;
-import io.crs.hsys.shared.cnst.ForeignKey;
 import io.crs.hsys.shared.exception.EntityValidationException;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -27,7 +27,7 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 		implements CrudRepository<T> {
 	private static final Logger logger = LoggerFactory.getLogger(CrudRepositoryImpl.class.getName());
 
-	protected Map<ForeignKey, CrudRepository<?>> foreignKeys = new HashMap<ForeignKey, CrudRepository<?>>();
+	protected Map<ExceptionSubType, CrudRepository<?>> foreignKeys = new HashMap<ExceptionSubType, CrudRepository<?>>();
 
 	protected CrudRepositoryImpl(Class<T> clazz) {
 		super(clazz);
@@ -68,7 +68,7 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 
 	@Override
 	public void delete(String webSafeKey) throws ForeignKeyConflictException {
-		for (Map.Entry<ForeignKey, CrudRepository<?>> foreignKey : foreignKeys.entrySet()) {
+		for (Map.Entry<ExceptionSubType, CrudRepository<?>> foreignKey : foreignKeys.entrySet()) {
 			CrudRepository<?> repo = foreignKey.getValue();
 			if (repo.isExists(webSafeKey))
 				throw new ForeignKeyConflictException(foreignKey.getKey());

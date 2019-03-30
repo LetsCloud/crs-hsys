@@ -31,7 +31,7 @@ public enum ExceptionType implements Serializable {
 
 	UNIQUE_INDEX_CONFLICT,
 
-	FOREIGN_KEY_CONFLICT,
+	CANNOT_BE_DELETED,
 
 	UNKNOWN;
 }

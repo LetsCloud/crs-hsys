@@ -18,9 +18,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.meditor.profilegroup.ProfileGroupEditorFactory;
 import io.crs.hsys.client.cfg.meditor.profilegroup.ProfileGroupEditorPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.accountchild.AccountChildFilterPresenter;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.ProfileGroupResource;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
@@ -110,5 +111,9 @@ public class ProfileGroupBrowserPresenter
 	protected String getEditorNameToken() {
 //TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	protected TableType getTableType() {
+		return TableType.PROFILE_GROUP;
 	}
 }

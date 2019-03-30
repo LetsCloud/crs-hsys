@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<m:MaterialDialog ui:field="dialog" type="DEFAULT"
+		dismissible="false" inDuration="500" outDuration="500">
+		<m:MaterialDialogContent>
+			<m:MaterialTitle ui:field="title" />
+		</m:MaterialDialogContent>
+		<m:MaterialDialogFooter>
+			<m:MaterialButton ui:field="closeButton"
+				text="Rendbem" type="FLAT" />
+		</m:MaterialDialogFooter>
+	</m:MaterialDialog>
+</ui:UiBinder> 

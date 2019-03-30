@@ -10,11 +10,11 @@ import javax.inject.Inject;
 
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.ActionColumn;
+import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
-import io.crs.hsys.client.core.ui.browser.ActionColumn;
-import io.crs.hsys.client.core.ui.browser.DataColumn;
 import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 
 /**
