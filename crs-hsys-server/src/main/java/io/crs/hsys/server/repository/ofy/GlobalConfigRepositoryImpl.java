@@ -40,4 +40,10 @@ public class GlobalConfigRepositoryImpl extends CrudRepositoryImpl<GlobalConfig>
 		return null;
 	}
 
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

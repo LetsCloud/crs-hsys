@@ -46,4 +46,10 @@ public class ProfileRepositoryImpl extends CrudRepositoryImpl<Profile> implement
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

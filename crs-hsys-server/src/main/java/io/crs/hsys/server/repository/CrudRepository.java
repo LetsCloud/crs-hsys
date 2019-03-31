@@ -34,7 +34,7 @@ public interface CrudRepository<T extends BaseEntity> {
 
 	T findById(Long id);
 
-	Boolean isExists(String webSafeKey);
+	Boolean isExists(String property, Object value, Object parent);
 
 	void delete(String webSafeKey) throws ForeignKeyConflictException;
 

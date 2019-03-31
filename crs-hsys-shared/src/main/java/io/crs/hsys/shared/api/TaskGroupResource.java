@@ -37,5 +37,5 @@ public interface TaskGroupResource {
 
 	@DELETE
 	@Path(PATH_WEBSAFEKEY)
-	Boolean delete(@PathParam(WEBSAFEKEY) String webSafeKey);
+	void delete(@PathParam(WEBSAFEKEY) String webSafeKey);
 }

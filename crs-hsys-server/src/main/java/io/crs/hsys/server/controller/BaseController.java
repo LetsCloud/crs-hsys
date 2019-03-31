@@ -49,7 +49,7 @@ public abstract class BaseController {
 	 */
 	@ExceptionHandler(RestApiException.class)
 	public ResponseEntity<ErrorResponseDto> exceptionHandler(RestApiException ex) {
-		logger.info("exceptionHandler()");
+		logger.info("exceptionHandler()->"+ex);
 		ErrorResponseDto error = new ErrorResponseDto();
 		error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
 		error.setMessage(ExceptionType.UNKNOWN.toString() + "-" + ex.getMessage());

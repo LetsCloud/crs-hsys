@@ -3,6 +3,9 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.common.Account;
@@ -15,6 +18,7 @@ import io.crs.hsys.shared.exception.ExceptionSubType;
  *
  */
 public class TaskTodoRepositoryImpl extends CrudRepositoryImpl<TaskTodo> implements TaskTodoRepository {
+	private static final Logger logger = LoggerFactory.getLogger(TaskTodoRepositoryImpl.class.getName());
 
 	/**
 	 * 
@@ -23,6 +27,7 @@ public class TaskTodoRepositoryImpl extends CrudRepositoryImpl<TaskTodo> impleme
 
 	protected TaskTodoRepositoryImpl() {
 		super(TaskTodo.class);
+		logger.info("TaskTodoRepositoryImpl");
 	}
 
 	@Override
@@ -47,6 +52,12 @@ public class TaskTodoRepositoryImpl extends CrudRepositoryImpl<TaskTodo> impleme
 		if ((entiy.getDescription() != null) && (!entiy.getDescription().isEmpty()))
 			entiy.addUniqueIndex(PROPERTY_DESCRIPTION, entiy.getDescription(),
 					ExceptionSubType.TASKTODO_DESCRIPTION_ALREADY_EXISTS);
+	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

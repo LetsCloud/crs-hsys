@@ -87,4 +87,10 @@ public class HotelRepositoryImpl extends CrudRepositoryImpl<Hotel> implements Ho
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

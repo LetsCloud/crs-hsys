@@ -80,4 +80,10 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 		if ((entiy.getUsername() != null) && (!entiy.getUsername().isEmpty()))
 			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername(), ExceptionSubType.APPUSER_CODE_ALREADY_EXISTS);
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

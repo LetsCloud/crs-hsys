@@ -96,7 +96,7 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
 			}
 			/*
@@ -112,7 +112,7 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
 			}
 			/*

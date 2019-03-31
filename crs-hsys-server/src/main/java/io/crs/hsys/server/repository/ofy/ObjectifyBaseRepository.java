@@ -116,6 +116,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 */
 	public T get(String webSafeKey) {
 		try {
+			ofy().clear();
 			Key<T> key = Key.create(webSafeKey);
 			return ofy().load().key(key).now();
 		} catch (IllegalArgumentException e) {
@@ -217,7 +218,8 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param entity
 	 */
 	public void delete(T entity) {
-		ofy().delete().entity(entity);
+		ofy().delete().entity(entity).now();
+		ofy().clear();
 	}
 
 	/**
@@ -226,7 +228,8 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param key
 	 */
 	public void delete(Key<T> key) {
-		ofy().delete().entity(key);
+		ofy().delete().entity(key).now();
+		ofy().clear();
 	}
 
 	/**
@@ -235,7 +238,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param entities
 	 */
 	public void delete(List<T> entities) {
-		ofy().delete().entities(entities);
+		ofy().delete().entities(entities).now();
 	}
 
 	/**
@@ -244,7 +247,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param keys
 	 */
 	public void deleteByKeys(List<Key<T>> keys) {
-		ofy().delete().entities(keys);
+		ofy().delete().entities(keys).now();
 	}
 
 	/*************************************

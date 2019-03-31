@@ -48,4 +48,10 @@ public class UserGroupRepositoryImpl extends CrudRepositoryImpl<UserGroup> imple
 			entiy.addUniqueIndex(PROPERTY_NAME, entiy.getName(), ExceptionSubType.USERGROUP_NAME_ALREADY_EXISTS);
 	}
 
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

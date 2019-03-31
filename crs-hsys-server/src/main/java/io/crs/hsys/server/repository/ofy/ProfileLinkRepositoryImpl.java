@@ -44,4 +44,10 @@ public class ProfileLinkRepositoryImpl extends CrudRepositoryImpl<ProfileLink> i
 	@Override
 	protected void loadUniqueIndexMap(ProfileLink entiy) {
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

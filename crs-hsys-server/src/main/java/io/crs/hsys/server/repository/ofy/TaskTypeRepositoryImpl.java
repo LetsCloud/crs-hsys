@@ -48,4 +48,10 @@ public class TaskTypeRepositoryImpl extends CrudRepositoryImpl<TaskType> impleme
 			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode(), ExceptionSubType.TASKTYPE_CODE_ALREADY_EXISTS);
 	}
 
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -46,4 +46,10 @@ public class ContactRepositoryImpl extends CrudRepositoryImpl<Contact> implement
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

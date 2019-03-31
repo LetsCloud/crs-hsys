@@ -24,5 +24,10 @@ public class ForeignKeyConflictException extends Exception {
 	public void setForeignKey(ExceptionSubType foreignKey) {
 		this.foreignKey = foreignKey;
 	}
+
+	@Override
+	public String toString() {
+		return "ForeignKeyConflictException [foreignKey=" + foreignKey + "]";
+	}
 	
 }

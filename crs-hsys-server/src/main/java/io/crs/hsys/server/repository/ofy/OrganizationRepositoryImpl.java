@@ -46,4 +46,10 @@ public class OrganizationRepositoryImpl extends CrudRepositoryImpl<Organization>
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

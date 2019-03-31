@@ -40,4 +40,10 @@ public class TaskRepositoryImpl extends CrudRepositoryImpl<Task> implements Task
 	protected void loadUniqueIndexMap(Task entiy) {
 	}
 
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

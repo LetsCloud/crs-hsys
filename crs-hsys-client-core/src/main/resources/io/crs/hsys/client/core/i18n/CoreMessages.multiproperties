@@ -361,8 +361,17 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">The task group is used by Task Todo.</Value>
             <Value disabled="false">The task group is used by Task Todo.</Value>
-            <Value disabled="false">A feladat csoport használatban van a tennivalóknál.</Value>
+            <Value disabled="false">A feladat csoport használatban van a feladat tennivalóknál.</Value>
             <Value disabled="false">Цільова група використовується завданням Todo.</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_ID_USED_BY_TASKTYPE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group is used by Task Type.</Value>
+            <Value disabled="false">The task group is used by Task Type.</Value>
+            <Value disabled="false">A feledat csoport használatban van a feladat típusoknál.</Value>
+            <Value disabled="false">Групу завдань використовує тип завдання.</Value>
         </Property>
         <Comment>
             <Value>LOGIN</Value>

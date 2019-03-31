@@ -8,10 +8,10 @@ import java.util.List;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.shared.cnst.TaskKind;
-import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
  * @author robi
@@ -20,10 +20,12 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
 @Entity
 public class TaskType extends AccountChild {
 	private TaskKind kind;
+	@Index
 	private String code;
 	private String description;
 	private List<Translation> translations = new ArrayList<Translation>();
-	private TaskGroupDto taskGroup;
+	@Index
+	private Ref<TaskGroup> taskGroup;
 	private Integer timeRequired;
 	private List<Ref<TaskTodo>> todos = new ArrayList<Ref<TaskTodo>>();
 	private Boolean active;
@@ -55,12 +57,15 @@ public class TaskType extends AccountChild {
 		this.description = description;
 	}
 
-	public TaskGroupDto getTaskGroup() {
-		return taskGroup;
+	public TaskGroup getTaskGroup() {
+		if (taskGroup == null)
+			return null;
+		return taskGroup.get();
 	}
 
-	public void setTaskGroup(TaskGroupDto taskGroup) {
-		this.taskGroup = taskGroup;
+	public void setTaskGroup(TaskGroup taskGroup) {
+		if (taskGroup.getId() != null)
+			this.taskGroup = Ref.create(taskGroup);
 	}
 
 	public Integer getTimeRequired() {

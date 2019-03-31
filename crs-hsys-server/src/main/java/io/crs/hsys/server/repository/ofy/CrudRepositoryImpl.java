@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
 import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.BaseEntity;
+import io.crs.hsys.server.entity.ForeignKey;
 import io.crs.hsys.server.repository.CrudRepository;
 import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionSubType;
 import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -27,7 +27,7 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 		implements CrudRepository<T> {
 	private static final Logger logger = LoggerFactory.getLogger(CrudRepositoryImpl.class.getName());
 
-	protected Map<ExceptionSubType, CrudRepository<?>> foreignKeys = new HashMap<ExceptionSubType, CrudRepository<?>>();
+	protected List<ForeignKey> foreignKeys = new ArrayList<ForeignKey>();
 
 	protected CrudRepositoryImpl(Class<T> clazz) {
 		super(clazz);
@@ -62,17 +62,30 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 	}
 
 	@Override
-	public Boolean isExists(String webSafeKey) {
-		return (findByWebSafeKey(webSafeKey) != null);
+	public Boolean isExists(String property, Object value, Object parent) {
+		logger.info("property=" + property);
+		logger.info("value=" + value);
+		logger.info("parent=" + parent);
+		Key<T> key = getChildKeyByProperty(parent, property, value);
+		if (key == null) {
+			logger.info(value + " is not exist");
+			return false;
+		}
+		logger.info("Entity is exist-> ");
+		return true;
 	}
+
+	protected abstract void prepareForeignKeys(String webSafeKey);
 
 	@Override
 	public void delete(String webSafeKey) throws ForeignKeyConflictException {
-		for (Map.Entry<ExceptionSubType, CrudRepository<?>> foreignKey : foreignKeys.entrySet()) {
-			CrudRepository<?> repo = foreignKey.getValue();
-			if (repo.isExists(webSafeKey))
-				throw new ForeignKeyConflictException(foreignKey.getKey());
-			;
+		logger.info("delete->webSafeKey=" + webSafeKey);
+		prepareForeignKeys(webSafeKey);
+		for (ForeignKey foreignKey : foreignKeys) {
+			logger.info("ForeignKey=" + foreignKey.getException());
+			CrudRepository<?> repo = foreignKey.getRepo();
+			if (repo.isExists(foreignKey.getProperty(), foreignKey.getValue(), foreignKey.getParent()))
+				throw new ForeignKeyConflictException(foreignKey.getException());
 		}
 		delete(getKey(webSafeKey));
 	}

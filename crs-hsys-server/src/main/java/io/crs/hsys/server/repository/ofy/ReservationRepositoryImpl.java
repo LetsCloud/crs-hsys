@@ -107,4 +107,10 @@ public class ReservationRepositoryImpl extends CrudRepositoryImpl<Reservation> i
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

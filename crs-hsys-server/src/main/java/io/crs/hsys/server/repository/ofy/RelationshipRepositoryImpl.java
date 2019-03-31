@@ -44,4 +44,10 @@ public class RelationshipRepositoryImpl extends CrudRepositoryImpl<Relationship>
 	@Override
 	protected void loadUniqueIndexMap(Relationship entiy) {
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

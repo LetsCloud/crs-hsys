@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.shared.cnst.TaskKind;
@@ -19,7 +20,9 @@ import io.crs.hsys.shared.cnst.TaskKind;
 @Entity
 public class TaskTodo extends AccountChild {
 	private TaskKind kind;
+	@Index
 	private Ref<TaskGroup> taskGroup;
+	@Index
 	private String description;
 	private List<Translation> translations = new ArrayList<Translation>();	
 	private Integer timeRequired;

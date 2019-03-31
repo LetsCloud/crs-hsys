@@ -39,7 +39,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 
 	public interface MyView extends View, HasUiHandlers<TaskTodoEditorUiHandlers> {
 		void setTaskGroupData(List<TaskGroupDto> data);
-		
+
 		void open(Boolean isNew, TaskTodoDto dto);
 
 		void displayError(EntityPropertyCode code, String message);
@@ -54,8 +54,8 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 	private Boolean isNew;
 
 	@Inject
-	TaskTodoEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskTodoResource> resourceDelegate,TaskGroupDataSource taskGroupDataSource,
-			CurrentUser currentUser) {
+	TaskTodoEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskTodoResource> resourceDelegate,
+			TaskGroupDataSource taskGroupDataSource, CurrentUser currentUser) {
 		super(eventBus, view);
 		logger.info("TaskTodoEditorPresenter()");
 
@@ -91,7 +91,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 		resourceDelegate.withCallback(new AsyncCallback<TaskTodoDto>() {
 			@Override
 			public void onSuccess(TaskTodoDto dto) {
-				RefreshTableEvent.fire(TaskTodoEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskTodoEditorPresenter.this, RefreshTableEvent.TableType.TASK_TODO);
 				getView().close();
 			}
 
@@ -131,7 +131,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 	}
 
 	protected abstract TaskKind getDefaultTaskKind();
-	
+
 	private void loadData(Boolean isNew, TaskTodoDto dto) {
 		LoadCallback<TaskGroupDto> taskGroupLoadCallback = new LoadCallback<TaskGroupDto>() {
 			@Override
@@ -156,6 +156,6 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 			}
 		};
 		taskGroupDataSource.load(new LoadConfig<TaskGroupDto>(0, 0, null, null), taskGroupLoadCallback);
-		
+
 	}
 }

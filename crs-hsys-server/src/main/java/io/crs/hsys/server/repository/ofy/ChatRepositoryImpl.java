@@ -49,4 +49,10 @@ public class ChatRepositoryImpl extends CrudRepositoryImpl<Chat> implements Chat
 		
 	}
 
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

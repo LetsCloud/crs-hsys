@@ -61,6 +61,8 @@ public abstract class ErrorHandlerAsyncCallback<R> implements AsyncCallback<R> {
 			return i18n.TASKGROUP_CODE_ALREADY_EXISTS(value);
 		case TASKGROUP_ID_USED_BY_TASKTODO:
 			return i18n.TASKGROUP_ID_USED_BY_TASKTODO();
+		case TASKGROUP_ID_USED_BY_TASKTYPE:
+			return i18n.TASKGROUP_ID_USED_BY_TASKTYPE();
 		default:
 			return exception.toString();
 		}

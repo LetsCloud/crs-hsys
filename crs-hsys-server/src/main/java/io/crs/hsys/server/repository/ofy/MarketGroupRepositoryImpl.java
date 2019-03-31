@@ -33,4 +33,10 @@ public class MarketGroupRepositoryImpl extends HotelChildRepositoryImpl<MarketGr
 		if (entiy.getCode() != null)
 			entiy.addUniqueIndex(MARKET_GROUP_CODE, entiy.getCode(), ExceptionSubType.MARKETGROUP_CODE_ALREADY_EXISTS);
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

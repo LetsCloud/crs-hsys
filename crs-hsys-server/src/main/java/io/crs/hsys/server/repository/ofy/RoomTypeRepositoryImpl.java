@@ -33,4 +33,10 @@ public class RoomTypeRepositoryImpl extends HotelChildRepositoryImpl<RoomType> i
 		if (entiy.getCode() != null)
 			entiy.addUniqueIndex(ROOMTYPE_CODE, entiy.getCode(), ExceptionSubType.ROOMTYPECODE_CODE_ALREADY_EXISTS);
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }

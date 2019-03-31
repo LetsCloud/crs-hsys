@@ -124,6 +124,9 @@ public interface CoreMessages extends Messages {
 	
 	@DefaultMessage("The task group is used by Task Todo.")
 	String TASKGROUP_ID_USED_BY_TASKTODO();
+
+	@DefaultMessage("The task group is used by Task Type.")
+	String TASKGROUP_ID_USED_BY_TASKTYPE();
 	
 	/*
 	 * LOGIN

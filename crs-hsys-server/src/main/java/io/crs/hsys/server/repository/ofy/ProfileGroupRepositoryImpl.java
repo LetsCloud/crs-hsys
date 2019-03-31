@@ -51,4 +51,10 @@ public class ProfileGroupRepositoryImpl extends CrudRepositoryImpl<ProfileGroup>
 					ExceptionSubType.PROFILEGROUP_CODE_ALREADY_EXISTS);
 		}
 	}
+
+	@Override
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
+		
+	}
 }
