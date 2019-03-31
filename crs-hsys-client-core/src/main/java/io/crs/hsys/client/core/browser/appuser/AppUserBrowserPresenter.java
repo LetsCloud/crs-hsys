@@ -19,9 +19,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
+import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
-import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.AppUserResource;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 
@@ -40,14 +41,16 @@ public class AppUserBrowserPresenter extends AbstractBrowserPresenter<AppUserDto
 	public static final SingleSlot<PresenterWidget<?>> SLOT_EDITOR = new SingleSlot<>();
 
 	private final ResourceDelegate<AppUserResource> resourceDelegate;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	AppUserBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<AppUserResource> resourceDelegate, CurrentUser currentUser) {
+			ResourceDelegate<AppUserResource> resourceDelegate, CurrentUser currentUser, CoreMessages i18nCore) {
 		super(eventBus, view, placeManager);
 		logger.info("AppUserBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
+		this.i18nCore = i18nCore;
 
 		getView().setUiHandlers(this);
 	}
@@ -85,7 +88,7 @@ public class AppUserBrowserPresenter extends AbstractBrowserPresenter<AppUserDto
 	@Override
 	public void inviteItem(List<AppUserDto> dtos) {
 		for (AppUserDto dto : dtos) {
-			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this) {
+			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, i18nCore) {
 				@Override
 				public void onSuccess(AppUserDto userDto) {
 				}
@@ -101,7 +104,7 @@ public class AppUserBrowserPresenter extends AbstractBrowserPresenter<AppUserDto
 	public void clearFcmTokens(List<AppUserDto> dtos) {
 		for (AppUserDto dto : dtos) {
 			dto.getFcmTokens().clear();
-			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this) {
+			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, i18nCore) {
 				@Override
 				public void onSuccess(AppUserDto userDto) {
 				}

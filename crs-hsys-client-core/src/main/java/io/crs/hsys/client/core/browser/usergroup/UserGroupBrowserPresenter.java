@@ -19,8 +19,8 @@ import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.meditor.usergroup.UserGroupEditorFactory;
 import io.crs.hsys.client.core.meditor.usergroup.UserGroupEditorPresenter;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.UserGroupResource;
 import io.crs.hsys.shared.dto.common.UserGroupDto;
 

@@ -75,19 +75,19 @@ public abstract class BaseController {
 
 	private ErrorResponseDto createUiceResponse(UniqueIndexConflictException e) {
 		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.CANNOT_BE_SAVED);
+		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_SAVED);
 		error.setExceptionSubType(e.getException());
 		error.setProperty(e.getProperty());
-		error.setMessage(ExceptionType.CANNOT_BE_SAVED.toString() + "-" + e.getMessage());
+		error.setMessage(ExceptionType.CRUD_CANNOT_BE_SAVED.toString() + "-" + e.getMessage());
 		return error;
 	}
 
 	private ErrorResponseDto createForeignKeyConflictResponse(ForeignKeyConflictException e) {
 		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.CANNOT_BE_DELETED);
+		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_DELETED);
 		error.setExceptionSubType(e.getForeignKey());
 		error.setProperty(e.getForeignKey().toString());
-		error.setMessage(ExceptionType.CANNOT_BE_DELETED.toString() + "-" + e.getMessage());
+		error.setMessage(ExceptionType.CRUD_CANNOT_BE_DELETED.toString() + "-" + e.getMessage());
 		return error;
 	}
 

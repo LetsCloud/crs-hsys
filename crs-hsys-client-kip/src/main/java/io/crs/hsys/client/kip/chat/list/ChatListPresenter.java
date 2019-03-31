@@ -19,9 +19,9 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.ChatResource;
 import io.crs.hsys.shared.dto.chat.ChatDto;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorFactory;
 import io.crs.hsys.client.kip.chat.editor.ChatEditorPresenter;

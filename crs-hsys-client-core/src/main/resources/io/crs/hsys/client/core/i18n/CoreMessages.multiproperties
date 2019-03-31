@@ -65,6 +65,15 @@
             <Value disabled="false">Гаразд</Value>
         </Property>
         <Property>
+            <Name>comClose</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Bezár</Value>
+            <Value disabled="false">Закрити</Value>
+        </Property>
+        <Property>
             <Name>comCreate</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -315,6 +324,45 @@
             <Value disabled="false">{0} year ago</Value>
             <Value disabled="false">{0} éve</Value>
             <Value disabled="false">{0} рік</Value>
+        </Property>
+        <Comment>
+            <Value>CRUD MESSAGES</Value>
+        </Comment>
+        <Property>
+            <Name>CRUD_CANNOT_BE_SAVED</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Data cannot be saved</Value>
+            <Value disabled="false">Data cannot be saved</Value>
+            <Value disabled="false">Az adat nem menthető le</Value>
+            <Value disabled="false">Дані неможливо зберегти</Value>
+        </Property>
+        <Property>
+            <Name>CRUD_CANNOT_BE_DELETED</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Data cannot be deleted</Value>
+            <Value disabled="false">Data cannot be deleted</Value>
+            <Value disabled="false">Az adat nem törölhető</Value>
+            <Value disabled="false">Дані не можна видалити</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_CODE_ALREADY_EXISTS</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group code ({0}) already exists.</Value>
+            <Value disabled="false">The task group code ({0}) already exists.</Value>
+            <Value disabled="false">Feladat csoport kód ({0}) már létezik.</Value>
+            <Value disabled="false">Код групи завдань ({0}) вже існує</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_ID_USED_BY_TASKTODO</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group is used by Task Todo.</Value>
+            <Value disabled="false">The task group is used by Task Todo.</Value>
+            <Value disabled="false">A feladat csoport használatban van a tennivalóknál.</Value>
+            <Value disabled="false">Цільова група використовується завданням Todo.</Value>
         </Property>
         <Comment>
             <Value>LOGIN</Value>

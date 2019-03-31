@@ -7,6 +7,9 @@
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	</ui:style>
 
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
 	<m:MaterialDialog ui:field="dialog" type="DEFAULT"
 		dismissible="false" inDuration="500" outDuration="500">
 		<m:MaterialDialogContent>
@@ -14,7 +17,7 @@
 		</m:MaterialDialogContent>
 		<m:MaterialDialogFooter>
 			<m:MaterialButton ui:field="closeButton"
-				text="Rendbem" type="FLAT" />
+				text="{i18nCore.comClose}" />
 		</m:MaterialDialogFooter>
 	</m:MaterialDialog>
 </ui:UiBinder> 

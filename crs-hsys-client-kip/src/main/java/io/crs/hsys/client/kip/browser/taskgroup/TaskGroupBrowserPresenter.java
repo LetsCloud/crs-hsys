@@ -15,21 +15,19 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import gwt.material.design.client.ui.MaterialToast;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
 import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
-import io.crs.hsys.client.core.gin.CustomActionException;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
-import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
 import io.crs.hsys.client.kip.meditor.taskgroup.TaskGroupEditorPresenter;
 import io.crs.hsys.shared.api.TaskGroupResource;
 import io.crs.hsys.shared.cnst.TaskKind;
-import io.crs.hsys.shared.dto.ErrorResponseDto;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -53,16 +51,18 @@ public abstract class TaskGroupBrowserPresenter
 	private final ResourceDelegate<TaskGroupResource> resourceDelegate;
 	private final TaskGroupFilterPresenter filter;
 	private final TaskGroupEditorPresenter editor;
+	private final CoreMessages i18nCore;
 
 	public TaskGroupBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<TaskGroupResource> resourceDelegate, TaskGroupFilterPresenter filter,
-			TaskGroupEditorPresenter editor) {
+			TaskGroupEditorPresenter editor, CoreMessages i18nCore) {
 		super(eventBus, view, placeManager);
 		logger.info("TaskGroupBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filter;
 		this.editor = editor;
+		this.i18nCore = i18nCore;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
@@ -110,23 +110,19 @@ public abstract class TaskGroupBrowserPresenter
 	@Override
 	protected void deleteData(String webSafeKey) {
 		logger.info("TaskGroupBrowserPresenter().deleteData()->webSafeKey=" + webSafeKey);
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<Void>(this) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<Void>(this, i18nCore) {
 			@Override
 			public void onSuccess(Void result) {
 				logger.info("TaskGroupBrowserPresenter().deleteData().onSuccess()->webSafeKey=" + webSafeKey);
 				loadData();
 			}
-/*
-			@Override
-			public void onFailure(Throwable caught) {
-				if (caught instanceof CustomActionException) {
-					CustomActionException e = (CustomActionException) caught;
-					MaterialToast.fireToast(e.getMessage());
-					ErrorResponseDto erd = e.getErDto();
-					MaterialToast.fireToast(erd.toString(), 10000);
-				}
-				MaterialToast.fireToast(caught.getMessage());
-*/
+			/*
+			 * @Override public void onFailure(Throwable caught) { if (caught instanceof
+			 * CustomActionException) { CustomActionException e = (CustomActionException)
+			 * caught; MaterialToast.fireToast(e.getMessage()); ErrorResponseDto erd =
+			 * e.getErDto(); MaterialToast.fireToast(erd.toString(), 10000); }
+			 * MaterialToast.fireToast(caught.getMessage());
+			 */
 //				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
 //			}
 		}).delete(webSafeKey);

@@ -19,8 +19,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.HotelResource;
 import io.crs.hsys.shared.dto.hotel.HotelDto;
 

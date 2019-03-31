@@ -16,8 +16,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.taskgroup.AbstractTaskGroupFilterPresenter;
 import io.crs.hsys.shared.api.TaskTypeResource;

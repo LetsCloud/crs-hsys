@@ -25,7 +25,7 @@ import io.crs.hsys.client.core.browser.roomtype.RoomTypeBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.room.RoomFilterPresenter;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 

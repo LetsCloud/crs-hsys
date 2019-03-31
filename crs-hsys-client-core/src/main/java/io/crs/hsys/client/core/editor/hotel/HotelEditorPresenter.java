@@ -22,8 +22,8 @@ import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.HotelResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
@@ -53,7 +53,7 @@ public class HotelEditorPresenter
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<HotelResource> resourceDelegate;
 	private final CurrentUser currentUser;
-	private final CoreMessages i18n;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	HotelEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
@@ -64,7 +64,7 @@ public class HotelEditorPresenter
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
 		this.currentUser = currentUser;
-		this.i18n = i18n;
+		this.i18nCore = i18n;
 
 		getView().setUiHandlers(this);
 	}
@@ -72,10 +72,12 @@ public class HotelEditorPresenter
 	@Override
 	protected void loadData() {
 		if (isNew()) {
-			SetPageTitleEvent.fire(i18n.hotelEditorCreateTitle(), "", MenuItemType.MENU_ITEM, HotelEditorPresenter.this);
+			SetPageTitleEvent.fire(i18nCore.hotelEditorCreateTitle(), "", MenuItemType.MENU_ITEM,
+					HotelEditorPresenter.this);
 			create();
 		} else {
-			SetPageTitleEvent.fire(i18n.hotelEditorModifyTitle(), "", MenuItemType.MENU_ITEM, HotelEditorPresenter.this);
+			SetPageTitleEvent.fire(i18nCore.hotelEditorModifyTitle(), "", MenuItemType.MENU_ITEM,
+					HotelEditorPresenter.this);
 			edit(filters.get(WEBSAFEKEY));
 		}
 	}
@@ -104,7 +106,7 @@ public class HotelEditorPresenter
 
 	@Override
 	public void save(HotelDto userDto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<HotelDto>(this) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<HotelDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(HotelDto userDto) {
 				placeManager.navigateBack();

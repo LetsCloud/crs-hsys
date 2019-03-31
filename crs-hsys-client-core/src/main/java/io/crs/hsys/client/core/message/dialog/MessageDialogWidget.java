@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.client.core.message.dialog;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -20,6 +22,7 @@ import io.crs.hsys.client.core.message.MessageData;
  *
  */
 public class MessageDialogWidget extends Composite implements HasShowMessage {
+	private static Logger logger = Logger.getLogger(MessageDialogWidget.class.getName());
 
 	private static MessageDialogWidgetUiBinder uiBinder = GWT.create(MessageDialogWidgetUiBinder.class);
 
@@ -36,6 +39,7 @@ public class MessageDialogWidget extends Composite implements HasShowMessage {
 	 * 
 	 */
 	public MessageDialogWidget() {
+		logger.info("MessageDialogWidget()");
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 

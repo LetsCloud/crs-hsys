@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -15,10 +16,10 @@ import com.gwtplatform.mvp.client.PopupView;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.proxy.RevealRootPopupContentEvent;
 
-import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusRefreshEvent;
 
 /**
@@ -60,7 +61,7 @@ public class RoomStatusEditorPresenter extends PresenterWidget<RoomStatusEditorP
 	}
 
 	private void changeStatus(String roomKey, RoomStatus roomStatus) {
-		roomResourceDelegate.withCallback(new ErrorHandlerAsyncCallback<RoomDto>(this) {
+		roomResourceDelegate.withCallback(new AsyncCallback<RoomDto>() {
 			@Override
 			public void onSuccess(RoomDto roomDto) {
 				/*
@@ -71,6 +72,12 @@ public class RoomStatusEditorPresenter extends PresenterWidget<RoomStatusEditorP
 				 */
 				RoomStatusRefreshEvent.fire(RoomStatusEditorPresenter.this, roomDto);
 				getView().hide();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
 			}
 		}).roomStatusChange(roomKey, roomStatus);
 	}

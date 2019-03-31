@@ -25,8 +25,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

@@ -22,6 +22,9 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("OK")
 	String comOk();
 
+	@DefaultMessage("Close")
+	String comClose();
+
 	@DefaultMessage("Create")
 	String comCreate();
 
@@ -108,11 +111,19 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
-	 * Server data exceptions
+	 * CRUD MESSIGES
 	 */
-	@DefaultMessage("Login")
-	String UNIQUE_INDEX_CONFLICT();
+	@DefaultMessage("Data cannot be saved")
+	String CRUD_CANNOT_BE_SAVED();
+	
+	@DefaultMessage("Data cannot be deleted")
+	String CRUD_CANNOT_BE_DELETED();
 
+	@DefaultMessage("The task group code {0} already exists.")
+	String TASKGROUP_CODE_ALREADY_EXISTS(String code);
+	
+	@DefaultMessage("The task group is used by Task Todo.")
+	String TASKGROUP_ID_USED_BY_TASKTODO();
 	
 	/*
 	 * LOGIN
