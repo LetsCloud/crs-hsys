@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.addext.client.ui.MaterialTimePickerFixed;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.addins.client.timepicker.MaterialTimePicker;
 import gwt.material.design.client.constants.DatePickerLanguage;
@@ -39,6 +40,7 @@ import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialTab;
 import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
@@ -156,7 +158,7 @@ public class TaskEditorView extends ViewWithUiHandlers<TaskEditorUiHandlers>
 				}
 			}
 		});
-		
+
 		driver.initialize(this);
 	}
 
