@@ -192,7 +192,8 @@ public abstract class BaseEntity {
 
 	@Override
 	public String toString() {
-		return "BaseEntity:[id=" + id + ", webSafeKey=" + webSafeKey + ", version=" + version + "]";
+		return "BaseEntity [id=" + id + ", webSafeKey=" + webSafeKey + ", version=" + version + ", uniqueIndexes="
+				+ uniqueIndexes + "]";
 	}
 
 }

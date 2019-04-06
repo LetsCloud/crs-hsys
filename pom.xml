@@ -60,6 +60,8 @@
 
 		<fasterxml.jackson.core.version>2.9.8</fasterxml.jackson.core.version>
 
+		<itext.version>7.1.5</itext.version>
+
 		<modelmapper.version>2.3.2</modelmapper.version>
 		<appengine.version>1.9.71</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
@@ -383,6 +385,11 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${fasterxml.jackson.core.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-csv</artifactId>
+				<version>${fasterxml.jackson.core.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.modelmapper</groupId>
@@ -471,6 +478,17 @@
 				<artifactId>spring-test</artifactId>
 				<version>${spring.framework.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<!-- For iText -->
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>kernel</artifactId>
+				<version>${itext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>layout</artifactId>
+				<version>${itext.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

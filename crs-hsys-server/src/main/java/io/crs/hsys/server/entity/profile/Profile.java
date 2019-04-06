@@ -99,7 +99,9 @@ public class Profile extends AccountChild {
 
 	@Override
 	public String toString() {
-		return "Profile:[name=" + name + ", profileGroup=" + getProfileGroup() + "]>>" + super.toString();
+		return "Profile [active=" + active + ", name=" + name + ", profileGroup=" + profileGroup + ", communications="
+				+ communications + ", addresses=" + addresses + ", webPresences=" + webPresences + "]"
+				+ super.toString();
 	}
 
 	/**
@@ -110,7 +112,7 @@ public class Profile extends AccountChild {
 	public static class Builder extends AccountChild.Builder<Builder> {
 
 		private Boolean active;
-		
+
 		private String name;
 
 		private Ref<ProfileGroup> profileGroup;

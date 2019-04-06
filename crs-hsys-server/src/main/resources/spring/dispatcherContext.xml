@@ -35,6 +35,8 @@
 		view-name="launchboard" />
 	<mvc:view-controller path="/launchboard"
 		view-name="launchboard" />
+	<mvc:view-controller path="/upload"
+		view-name="upload" />
 
 	<!-- **************************************************************** -->
 	<!-- THYMELEAF-SPECIFIC ARTIFACTS ................................... -->

@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.server.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +16,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.profile.Organization;
 import io.crs.hsys.server.service.OrganizationService;
+import io.crs.hsys.server.utils.CsvUtils;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.UPLOAD;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ORGANIZATION;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 
@@ -65,7 +72,6 @@ public class OrganizationController extends CrudController<Organization, Organiz
 	public ResponseEntity<List<OrganizationDtor>> getAllx() {
 		List<OrganizationDtor> dtos = new ArrayList<OrganizationDtor>();
 
-		
 		AppUser appUser = userService.getCurrentUser();
 		if (appUser == null)
 			return new ResponseEntity<List<OrganizationDtor>>(dtos, OK);
@@ -99,6 +105,19 @@ public class OrganizationController extends CrudController<Organization, Organiz
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable(WEBSAFEKEY) String webSafeKey) throws RestApiException {
 		super.delete(webSafeKey);
+	}
+
+	@PostMapping(value = UPLOAD, consumes = "multipart/form-data")
+	public void uploadSimple(@RequestParam("file") MultipartFile file) {
+		logger.info("uploadSimple()");
+		try {
+			List<Organization> orgList = CsvUtils.read(Organization.class, file.getInputStream());
+			for (Organization o : orgList)
+				logger.info(o.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

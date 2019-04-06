@@ -32,7 +32,8 @@
 	<!-- RequestContextListener, a request header olvasás céljából -->
 	<listener>
 		<listener-class>
-			org.springframework.web.context.request.RequestContextListener</listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
 	</listener>
 	<!-- RequestContextListener END -->
 
@@ -57,6 +58,12 @@
 			<param-value>classpath:spring/dispatcherContext.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>/tmp</location>
+			<max-file-size>5242880</max-file-size><!--5MB -->
+			<max-request-size>20971520</max-request-size><!--20MB -->
+			<file-size-threshold>0</file-size-threshold>
+		</multipart-config>
 	</servlet>
 
 	<servlet-mapping>

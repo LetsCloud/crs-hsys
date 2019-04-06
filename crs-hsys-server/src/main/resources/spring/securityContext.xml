@@ -127,6 +127,7 @@
 
 		<intercept-url pattern="/**" access="authenticated" />
 		<intercept-url pattern="/launchboard*" access="authenticated" />
+		<intercept-url pattern="/upload" access="authenticated" />
 
 		<intercept-url pattern="/kip/start.html"
 			access="authenticated" />
