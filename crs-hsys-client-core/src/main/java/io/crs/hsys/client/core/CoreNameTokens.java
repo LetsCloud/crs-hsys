@@ -13,6 +13,7 @@ public class CoreNameTokens {
 	public static final String SYSTEM_CONFIG = "/systemConfig";
 	public static final String COMMON_CONFIG = "/commonConfig";
 	public static final String PROFILE_CONFIG = "/profleConfig";
+	public static final String DOC_CONFIG = "/docConfig";
 	public static final String HOTEL_CONFIG = "/hotelConfig";
 
 	// Configuration
