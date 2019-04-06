@@ -13,6 +13,7 @@ import io.crs.hsys.server.entity.common.AccountChild;
  */
 @Entity
 public class ContractType extends AccountChild {
+	public static final String PROPERTY_CODE = "code";
 
 	private String code;
 

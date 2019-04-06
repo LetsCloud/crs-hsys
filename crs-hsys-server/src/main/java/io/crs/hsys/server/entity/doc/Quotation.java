@@ -12,26 +12,27 @@ import com.googlecode.objectify.annotation.Subclass;
  */
 @Subclass(index = true)
 public class Quotation extends Document {
+	public static final String PROPERTY_STATUS = "status";
 
-	private Ref<QuotationType> type;
+	private Ref<QuotationStatus> status;
 
 	public Quotation() {
 	}
 
-	public QuotationType getType() {
-		if (type == null)
+	public QuotationStatus getStatus() {
+		if (status == null)
 			return null;
-		return type.get();
+		return status.get();
 	}
 
-	public void setType(QuotationType type) {
+	public void setStatus(QuotationStatus type) {
 		if (type.getId() != null)
-			this.type = Ref.create(type);
+			this.status = Ref.create(type);
 	}
 
 	@Override
 	public String toString() {
-		return "Quotation [type=" + getType() + "]";
+		return "Quotation [type=" + getStatus() + "]";
 	}
 
 }

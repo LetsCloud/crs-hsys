@@ -12,13 +12,14 @@ import io.crs.hsys.server.entity.common.AccountChild;
  *
  */
 @Entity
-public class QuotationType extends AccountChild {
+public class QuotationStatus extends AccountChild {
+	public static final String PROPERTY_CODE = "code";
 
 	private String code;
 
 	private String description;
 
-	public QuotationType() {
+	public QuotationStatus() {
 	}
 
 	public String getCode() {

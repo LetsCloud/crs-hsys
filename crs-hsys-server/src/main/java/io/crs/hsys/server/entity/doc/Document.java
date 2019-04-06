@@ -5,15 +5,11 @@ package io.crs.hsys.server.entity.doc;
 
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.server.entity.profile.Organization;
-import io.crs.hsys.server.entity.profile.Profile;
 
 /**
  * @author robi
@@ -21,7 +17,7 @@ import io.crs.hsys.server.entity.profile.Profile;
  */
 @Entity
 public class Document extends AccountChild {
-	private static final Logger logger = LoggerFactory.getLogger(Profile.class);
+	public static final String PROPERTY_CODE = "code";
 
 	private String code;
 

@@ -16,6 +16,8 @@ import com.googlecode.objectify.annotation.Subclass;
  */
 @Subclass(index = true)
 public class Contract extends Document {
+	public static final String PROPERTY_TYPE = "type";
+	public static final String PROPERTY_PRICESTYPE = "prices.type";
 
 	private Ref<ContractType> type;
 	private List<ContractPrice> prices = new ArrayList<ContractPrice>();

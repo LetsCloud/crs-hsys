@@ -169,7 +169,7 @@
 
 
 	<bean id="taskGroupRepository"
-		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl" >
+		class="io.crs.hsys.server.repository.ofy.TaskGroupRepositoryImpl">
 		<constructor-arg ref="taskTodoRepository" />
 		<constructor-arg ref="taskTypeRepository" />
 	</bean>
@@ -181,21 +181,39 @@
 		class="io.crs.hsys.server.repository.ofy.TaskRepositoryImpl" />
 
 
+	<bean id="profileGroupRepository"
+		class="io.crs.hsys.server.repository.ofy.ProfileGroupRepositoryImpl" />
+	<bean id="relationshipRepository"
+		class="io.crs.hsys.server.repository.ofy.RelationshipRepositoryImpl" />
 	<bean id="profileRepository"
 		class="io.crs.hsys.server.repository.ofy.ProfileRepositoryImpl" />
 	<bean id="organizationRepository"
 		class="io.crs.hsys.server.repository.ofy.OrganizationRepositoryImpl" />
 	<bean id="contactRepository"
 		class="io.crs.hsys.server.repository.ofy.ContactRepositoryImpl" />
-	<bean id="profileGroupRepository"
-		class="io.crs.hsys.server.repository.ofy.ProfileGroupRepositoryImpl" />
-	<bean id="relationshipRepository"
-		class="io.crs.hsys.server.repository.ofy.RelationshipRepositoryImpl" />
 	<bean id="profileLinkRepository"
 		class="io.crs.hsys.server.repository.ofy.ProfileLinkRepositoryImpl" />
 	<!-- <bean id="guestRepository" class="io.crs.hsys.server.repository.ofy.GuestRepositoryImpl" 
 		/> -->
 
+	<bean id="quotationRepository"
+		class="io.crs.hsys.server.repository.ofy.QuotationRepositoryImpl" />
+	<bean id="quotationStatusRepository"
+		class="io.crs.hsys.server.repository.ofy.QuotationStatusRepositoryImpl">
+		<constructor-arg ref="quotationRepository" />
+	</bean>
+
+
+	<bean id="contractRepository"
+		class="io.crs.hsys.server.repository.ofy.ContractRepositoryImpl" />
+	<bean id="contractTypeRepository"
+		class="io.crs.hsys.server.repository.ofy.ContractTypeRepositoryImpl">
+		<constructor-arg ref="contractRepository" />
+	</bean>
+	<bean id="productTypeRepository"
+		class="io.crs.hsys.server.repository.ofy.ProductTypeRepositoryImpl">
+		<constructor-arg ref="contractRepository" />
+	</bean>
 
 	<bean id="hotelRepository"
 		class="io.crs.hsys.server.repository.ofy.HotelRepositoryImpl" />

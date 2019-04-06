@@ -4,9 +4,6 @@
 package io.crs.hsys.server.repository.ofy;
 
 import java.util.List;
-import java.util.logging.Logger;
-
-import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
@@ -17,8 +14,7 @@ import io.crs.hsys.shared.exception.ExceptionSubType;
  * @author robi
  *
  */
-public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implements AppUserRepository {
-	private static final Logger LOGGER = Logger.getLogger(AppUserRepositoryImpl.class.getName());
+public class AppUserRepositoryImpl extends AccountChildRepositoryImpl<AppUser> implements AppUserRepository {
 
 	/**
 	 * 
@@ -44,18 +40,6 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	}
 
 	@Override
-	protected Object getParent(AppUser entity) {
-		return entity.getAccount();
-	}
-
-	@Override
-	public String getAccountId(String webSafeString) {
-		LOGGER.info("getAccountId->id=" + webSafeString);
-		Key<AppUser> key = getKey(webSafeString);
-		return key.getParent().getString();
-	}
-
-	@Override
 	public List<AppUser> getByAccount(Object account) {
 		return getChildren(account);
 	}
@@ -63,12 +47,6 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	@Override
 	public AppUser findByToken(String token) {
 		return getFirstByProperty("verificationTokens.token", token);
-	}
-
-	@Override
-	protected Object getParentKey(String parentWebSafeKey) {
-		Key<Account> key = Key.create(parentWebSafeKey);
-		return key;
 	}
 
 	@Override
@@ -84,6 +62,6 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	@Override
 	protected void prepareForeignKeys(String webSafeKey) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

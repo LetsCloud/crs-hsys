@@ -17,8 +17,6 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
  */
 public interface CrudRepository<T extends BaseEntity> {
 
-	String getAccountId(String id);
-
 	/**
 	 * Az entitás mentését végző metódus definiciója.
 	 * 

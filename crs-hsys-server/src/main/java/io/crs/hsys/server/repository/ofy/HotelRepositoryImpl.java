@@ -5,9 +5,6 @@ package io.crs.hsys.server.repository.ofy;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.common.Account;
@@ -18,23 +15,10 @@ import io.crs.hsys.server.repository.HotelRepository;
  * @author robi
  *
  */
-public class HotelRepositoryImpl extends CrudRepositoryImpl<Hotel> implements HotelRepository {
-	private static final Logger LOGGER = LoggerFactory.getLogger(HotelRepositoryImpl.class.getName());
+public class HotelRepositoryImpl extends AccountChildRepositoryImpl<Hotel> implements HotelRepository {
 
 	public HotelRepositoryImpl() {
 		super(Hotel.class);
-	}
-
-	@Override
-	public String getAccountId(String id) {
-		LOGGER.info("getAccountId->id=" + id);
-		Key<Hotel> key = getKey(id);
-		return key.getParent().getString();
-	}
-
-	@Override
-	protected Object getParent(Hotel entity) {
-		return entity.getAccount();
 	}
 
 	@Override
@@ -74,23 +58,5 @@ public class HotelRepositoryImpl extends CrudRepositoryImpl<Hotel> implements Ho
 	public List<Key<Hotel>> getKeysByCode(Account parent, String code) {
 		List<Key<Hotel>> keys = getChildrenKeysByProperty(parent, "code", code);
 		return keys;
-	}
-
-	@Override
-	protected Object getParentKey(String parentWebSafeKey) {
-		Key<Account> key = Key.create(parentWebSafeKey);
-		return key;
-	}
-
-	@Override
-	protected void loadUniqueIndexMap(Hotel entiy) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void prepareForeignKeys(String webSafeKey) {
-		// TODO Auto-generated method stub
-		
 	}
 }

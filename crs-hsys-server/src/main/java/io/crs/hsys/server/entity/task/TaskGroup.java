@@ -15,6 +15,8 @@ import io.crs.hsys.shared.cnst.TaskKind;
  */
 @Entity
 public class TaskGroup extends AccountChild {
+	public static final String PROPERTY_CODE = "code";
+
 	private TaskKind kind;
 	@Index
 	private String code;

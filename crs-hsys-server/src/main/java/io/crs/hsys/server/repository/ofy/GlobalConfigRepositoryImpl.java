@@ -36,11 +36,6 @@ public class GlobalConfigRepositoryImpl extends CrudRepositoryImpl<GlobalConfig>
 	}
 
 	@Override
-	public String getAccountId(String webSafeKey) {
-		return null;
-	}
-
-	@Override
 	protected void prepareForeignKeys(String webSafeKey) {
 		// TODO Auto-generated method stub
 		

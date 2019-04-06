@@ -9,9 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.hotel.Hotel;
@@ -24,23 +21,10 @@ import io.crs.hsys.shared.cnst.ReservationStatus;
  * @author CR
  *
  */
-public class ReservationRepositoryImpl extends CrudRepositoryImpl<Reservation> implements ReservationRepository {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ReservationRepositoryImpl.class.getName());
+public class ReservationRepositoryImpl extends HotelChildRepositoryImpl<Reservation> implements ReservationRepository {
 
 	public ReservationRepositoryImpl() {
 		super(Reservation.class);
-		LOGGER.info("ReservationRepositoryImpl()");
-	}
-
-	@Override
-	protected Object getParent(Reservation entity) {
-		return entity.getHotel();
-	}
-
-	@Override
-	public String getAccountId(String webSafeString) {
-		Key<Reservation> key = getKey(webSafeString);
-		return key.getParent().getParent().getString();
 	}
 
 	@Override
@@ -94,23 +78,5 @@ public class ReservationRepositoryImpl extends CrudRepositoryImpl<Reservation> i
 		filters.put(Reservation.FLD_ROOMSTAYS + "." + RoomStay.FLD_ARRIVAL + " =", onDate);
 		List<Reservation> result = getChildrenByFilters(hotelKey, filters);
 		return result;
-	}
-
-	@Override
-	protected Object getParentKey(String parentWebSafeKey) {
-		Key<Hotel> key = Key.create(parentWebSafeKey);
-		return key;
-	}
-
-	@Override
-	protected void loadUniqueIndexMap(Reservation entiy) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void prepareForeignKeys(String webSafeKey) {
-		// TODO Auto-generated method stub
-		
 	}
 }

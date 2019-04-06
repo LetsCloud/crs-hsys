@@ -19,6 +19,8 @@ import io.crs.hsys.shared.cnst.TaskKind;
  */
 @Entity
 public class TaskTodo extends AccountChild {
+	public static final String PROPERTY_TASKGROUP = "taskGroup";
+
 	private TaskKind kind;
 	@Index
 	private Ref<TaskGroup> taskGroup;
