@@ -112,6 +112,36 @@
 		<constructor-arg ref="accountRepository" />
 	</bean>
 
+	<bean id="contractService"
+		class="io.crs.hsys.server.service.ofy.ContractServiceImpl">
+		<constructor-arg ref="contractRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="contractTypeService"
+		class="io.crs.hsys.server.service.ofy.ContractTypeServiceImpl">
+		<constructor-arg ref="contractTypeRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="productTypeService"
+		class="io.crs.hsys.server.service.ofy.ProductTypeServiceImpl">
+		<constructor-arg ref="productTypeRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="quotationService"
+		class="io.crs.hsys.server.service.ofy.QuotationServiceImpl">
+		<constructor-arg ref="quotationRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean id="quotationStatusService"
+		class="io.crs.hsys.server.service.ofy.QuotationStatusServiceImpl">
+		<constructor-arg ref="quotationStatusRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+
+
+
+
+
 	<bean id="chatService"
 		class="io.crs.hsys.server.service.ofy.ChatServiceImpl">
 		<constructor-arg ref="chatRepository" />
