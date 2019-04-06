@@ -52,8 +52,10 @@ public class ApiPaths {
 		public static final String CONTACT = "/contact";
 
 		public static final String CONTRACT_TYPE = "/contractType";
+		public static final String PRODUCT_TYPE = "/productType";
 		public static final String CONTRACT = "/contract";
 
+		public static final String QUOTATION_STATUS = "/quotationStatus";
 		public static final String QUOTATION = "/quotation";
 
 		public static final String HOTEL = "/hotel";

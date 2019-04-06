@@ -5,6 +5,8 @@ package io.crs.hsys.server.controller;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.QUOTATION_STATUS;
+import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -16,11 +18,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.doc.QuotationStatus;
 import io.crs.hsys.server.service.QuotationStatusService;
@@ -31,6 +35,8 @@ import io.crs.hsys.shared.exception.RestApiException;
  * @author robi
  *
  */
+@RestController
+@RequestMapping(value = ROOT + QUOTATION_STATUS, produces = MediaType.APPLICATION_JSON_VALUE)
 public class QuotationStatusController extends CrudController<QuotationStatus, QuotationStatusDto> {
 	private static final Logger logger = LoggerFactory.getLogger(ContractController.class);
 
