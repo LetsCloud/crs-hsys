@@ -1506,6 +1506,105 @@
             <Value disabled="false">Active</Value>
         </Property>
         <Comment>
+            <Value>DOCUMENT CONFIG</Value>
+        </Comment>
+        <Property>
+            <Name>documentConfigTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Document Config</Value>
+            <Value disabled="false">Document Config</Value>
+            <Value disabled="false">Dokumentum beállítások</Value>
+            <Value disabled="false">Параметри документа</Value>
+        </Property>
+        <Property>
+            <Name>documentConfigDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Manage document properties</Value>
+            <Value disabled="false">Manage document properties</Value>
+            <Value disabled="false">Dokumentum tulajdonságok kezelése</Value>
+            <Value disabled="false">Керувати властивостями документа</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION STATUS BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>quotationStatusBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Quotation Statuses</Value>
+            <Value disabled="false">Quotation Statuses</Value>
+            <Value disabled="false">Árajánlat státuszok</Value>
+            <Value disabled="false">Статуси пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">Код</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserActive</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Aktív</Value>
+            <Value disabled="false">Активний</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION STATUS EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>quotationStatusCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Quotation Status</Value>
+            <Value disabled="false">Create Quotation Status</Value>
+            <Value disabled="false">Árajánlat státusz létrehozás</Value>
+            <Value disabled="false">Створити статус пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusEditTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Quotation Status</Value>
+            <Value disabled="false">Modify Quotation Status</Value>
+            <Value disabled="false">Árajánlat státusz módosítás</Value>
+            <Value disabled="false">Змінити статус пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">Код</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Comment>
             <Value>PROFILE FILTER</Value>
         </Comment>
         <Property>

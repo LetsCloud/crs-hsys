@@ -13,7 +13,6 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
-import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 
@@ -28,19 +27,17 @@ public class MarketGroupBrowserView extends ViewWithUiHandlers<MarketGroupBrowse
 	private final AbstractBrowserView<MarketGroupDto> table;
 
 	private final CoreMessages i18nCore;
-	private final CoreConstants cnstCore;
 
 	/**
 	* 
 	*/
 	@Inject
-	MarketGroupBrowserView(AbstractBrowserView<MarketGroupDto> table, CoreMessages i18nCore, CoreConstants cnstCore) {
+	MarketGroupBrowserView(AbstractBrowserView<MarketGroupDto> table, CoreMessages i18nCore) {
 		logger.info("MarketGroupTableView()");
 		initWidget(table);
 
 		this.table = table;
 		this.i18nCore = i18nCore;
-		this.cnstCore = cnstCore;
 
 		bindSlot(MarketGroupBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
 		bindSlot(MarketGroupBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());

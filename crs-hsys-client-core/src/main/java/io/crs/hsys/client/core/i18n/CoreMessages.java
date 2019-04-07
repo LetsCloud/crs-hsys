@@ -109,25 +109,24 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("")
 	String com1YearAgo(String time);
 
-	
 	/*
 	 * CRUD MESSIGES
 	 */
 	@DefaultMessage("Data cannot be saved")
 	String CRUD_CANNOT_BE_SAVED();
-	
+
 	@DefaultMessage("Data cannot be deleted")
 	String CRUD_CANNOT_BE_DELETED();
 
 	@DefaultMessage("The task group code {0} already exists.")
 	String TASKGROUP_CODE_ALREADY_EXISTS(String code);
-	
+
 	@DefaultMessage("The task group is used by Task Todo.")
 	String TASKGROUP_ID_USED_BY_TASKTODO();
 
 	@DefaultMessage("The task group is used by Task Type.")
 	String TASKGROUP_ID_USED_BY_TASKTYPE();
-	
+
 	/*
 	 * LOGIN
 	 */
@@ -167,7 +166,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Umknwon login problem!")
 	String loginErrorUnknownProblem();
 
-	
 	/*
 	 * REGISTER
 	 */
@@ -207,7 +205,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Submit")
 	String regSubmit();
 
-	
 	/*
 	 * SUCCESS
 	 */
@@ -224,7 +221,6 @@ public interface CoreMessages extends Messages {
 			+ "registration details and activate your account!")
 	String sucLine3();
 
-
 	/*
 	 * ACTIVATE
 	 */
@@ -237,7 +233,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Clicking on the link below you can login and start your work:")
 	String actLine2();
 
-	
 	/*
 	 * SIDE PROFILE
 	 */
@@ -256,7 +251,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Log Out")
 	String userMenuItemLogout();
 
-	
 	/*
 	 * SIDE NAV
 	 */
@@ -272,28 +266,25 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Roles")
 	String mainMenuItemRoles();
 
-	
 	/*
 	 * BREADCRUMBS
 	 */
-	
+
 	@DefaultMessage("Home")
 	String breadcrumbsHome();
-	
+
 	@DefaultMessage("Users")
 	String breadcrumbsUsersTable();
-	
+
 	@DefaultMessage("Editor")
 	String breadcrumbsUserEditor();
 
-	
 	/*
 	 * DASHBOARD
 	 */
 	@DefaultMessage("Dashboard")
 	String pageDashboardTitle();
 
-	
 	/*
 	 * SYSTEM CONFIG
 	 */
@@ -304,7 +295,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Basic settings that determine the operation of the system")
 	String systemConfigDescription();
 
-	
 	/*
 	 * USER GROUP BROWSER
 	 */
@@ -315,7 +305,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Name")
 	String userGroupBrowserName();
 
-	
 	/*
 	 * USER_GROUP EDITOR
 	 */
@@ -328,8 +317,7 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Name")
 	String userGroupEditorName();
-	
-	
+
 	/*
 	 * USER BROWSER
 	 */
@@ -343,7 +331,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Email")
 	String usersTableEmail();
 
-	
 	/*
 	 * USER EDITOR
 	 */
@@ -371,29 +358,28 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Enabled")
 	String userEditorEnabled();
-	
+
 	@DefaultMessage("Admin user")
 	String userEditorIsAdmin();
-	
+
 	@DefaultMessage("Permitted hotels")
 	String userEditorAvailableHotels();
-	
+
 	@DefaultMessage("Chhoose a hotel")
 	String userEditorChooseHotel();
-	
+
 	@DefaultMessage("Deafult hotel")
 	String userEditorDefaultHotel();
-	
+
 	@DefaultMessage("Chat groups")
 	String userEditorChatGroups();
-	
+
 	@DefaultMessage("Choose a group")
 	String userEditorChooseGroup();
-	
+
 	@DefaultMessage("Password")
 	String userEditorPassword();
 
-	
 	/*
 	 * TRANSLATE EDITOR
 	 */
@@ -406,7 +392,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Text")
 	String translateEditorText();
 
-	
 	/*
 	 * TASK GROUP BROWSER
 	 */
@@ -422,18 +407,16 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Description")
 	String taskGroupBrowserDescriptionColumn();
 
-	
 	/*
 	 * TASK GROUP FILTER
 	 */
 
 	@DefaultMessage("Task Kind")
 	String taskGroupFilterTaskKindLabel();
-	
+
 	@DefaultMessage("Choose a Task Kind")
 	String taskGroupFilterTaskKindPlaceholder();
 
-	
 	/*
 	 * TASK GROUP EDITOR
 	 */
@@ -445,7 +428,7 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Choose a Task Kind")
 	String taskGroupEditorKindPlaceholder();
-	
+
 	@DefaultMessage("Modify Task Group")
 	String taskGroupEditorModifyTitle();
 
@@ -455,7 +438,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Description")
 	String taskGroupEditorDescription();
 
-	
 	/*
 	 * TASK TODO BROWSER
 	 */
@@ -471,18 +453,16 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Time(m)")
 	String taskTodoBrowserTimeReqColumn();
 
-	
 	/*
 	 * TASK TODO FILTER
 	 */
 
 	@DefaultMessage("Task Group")
 	String taskTodoFilterTaskGroupLabel();
-	
+
 	@DefaultMessage("Choose a Task Group")
 	String taskTodoFilterTaskGroupPlaceholder();
 
-	
 	/*
 	 * TASK TODO EDITOR
 	 */
@@ -506,11 +486,10 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Description")
 	String taskTodoEditorDescription();
-	
+
 	@DefaultMessage("Time required(m)")
 	String taskTodoEditorTimeRequired();
 
-	
 	/*
 	 * TASK TYPE BROWSER
 	 */
@@ -532,7 +511,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Time(m)")
 	String taskTypeBrowserTimeReqColumn();
 
-	
 	/*
 	 * TASK TYPE EDITOR
 	 */
@@ -562,20 +540,19 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Translations")
 	String taskTypeEditorTranslations();
-	
+
 	@DefaultMessage("Time required(m)")
 	String taskTypeEditorTimeRequired();
-	
+
 	@DefaultMessage("Todos")
 	String taskTypeEditorTodos();
-	
+
 	@DefaultMessage("Add Todo")
 	String taskTypeEditorAddTodo();
-	
+
 	@DefaultMessage("Delete Todo")
 	String taskTypeEditorDeleteTodo();
 
-	
 	/*
 	 * PROFILE CONFIG
 	 */
@@ -586,7 +563,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Manage your organization's profile or contact information")
 	String profileConfigDescription();
 
-	
 	/*
 	 * RELATIONSHIP BROWSER
 	 */
@@ -602,7 +578,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Active")
 	String relationshipBrowserColActive();
 
-	
 	/*
 	 * RELATIONSHIPP EDITOR
 	 */
@@ -619,7 +594,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Reverse")
 	String relationshipFldReverse();
 
-	
 	/*
 	 * PROFILE GROUP BROWSER
 	 */
@@ -636,17 +610,53 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Active")
 	String profileGroupBrowserActive();
 
-	
+	/*
+	 * DOCUMENT CONFIG
+	 */
+
+	@DefaultMessage("Profile configuration")
+	String documentConfigTitle();
+
+	@DefaultMessage("Manage document properties")
+	String documentConfigDescription();
+
+	/*
+	 * QUOTATION STATUS BROWSER
+	 */
+	@DefaultMessage("Quotation Statuses")
+	String quotationStatusBrowserTitle();
+
+	@DefaultMessage("Code")
+	String quotationStatusBrowserCode();
+
+	@DefaultMessage("Description")
+	String quotationStatusBrowserDescription();
+
+	/*
+	 * QUOTATION STATUS EDITOR
+	 */
+
+	@DefaultMessage("Create Quotation Status")
+	String quotationStatusCreateTitle();
+
+	@DefaultMessage("Modify Quotation Status")
+	String quotationStatusEditTitle();
+
+	@DefaultMessage("Code")
+	String quotationStatusCode();
+
+	@DefaultMessage("Description")
+	String quotationStatusDescription();
+
 	/*
 	 * ORGANIZATION CONFIG
 	 */
 	@DefaultMessage("Organizations")
 	String organizationConfigTitle();
-	
+
 	@DefaultMessage("Organizations ...")
 	String organizationConfigDescription();
-	
-	
+
 	/*
 	 * ORGANIZATION BROWSER
 	 */
@@ -660,30 +670,28 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Name")
 	String organizationBrowserColName();
 
-	
 	/*
 	 * PROFILE FILTER
 	 */
-	
+
 	@DefaultMessage("Code filter")
 	String profileFilterCodeLabel();
-	
+
 	@DefaultMessage("Code~")
 	String profileFilterCode();
-	
+
 	@DefaultMessage("Name filter")
 	String profileFilterNameLabel();
-	
+
 	@DefaultMessage("Name~")
 	String profileFilterName();
-	
+
 	@DefaultMessage("ProfileGroup filter")
 	String profileFilterProfileGroupLabel();
-	
+
 	@DefaultMessage("Group~")
 	String profileFilterProfileGroup();
 
-	
 	/*
 	 * ORGANIZATION CREATOR
 	 */
@@ -693,7 +701,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Common data...")
 	String organizationCreatorDescription();
 
-	
 	/*
 	 * ORGANIZATION EDITOR
 	 */
@@ -714,14 +721,13 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Communication")
 	String organizationEditorCommunication();
-	
+
 	@DefaultMessage("Addresses")
 	String organizationEditorAdresses();
-	
+
 	@DefaultMessage("Web Presence")
 	String organizationEditorWebPresence();
 
-	
 	/*
 	 * CONTACT BROWSER
 	 */
@@ -731,7 +737,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Name")
 	String contactBrowserColName();
 
-	
 	/*
 	 * CONTACT CREATOR
 	 */
@@ -741,7 +746,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Common data...")
 	String contactCreatorDescription();
 
-	
 	/*
 	 * CONTACT DISPLAY
 	 */
@@ -751,7 +755,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Contact information ...")
 	String contactDisplayDescription();
 
-	
 	/*
 	 * CONTACT EDITOR
 	 */
@@ -769,13 +772,13 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Links")
 	String contactEditorLink();
-	
+
 	@DefaultMessage("Communication")
 	String contactEditorCommunication();
-	
+
 	@DefaultMessage("Addresses")
 	String contactEditorAdresses();
-	
+
 	@DefaultMessage("Web Presence")
 	String contactEditorWebPresence();
 
@@ -785,7 +788,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Delete Profile")
 	String contactDisplayDelete();
 
-	
 	/*
 	 * HOTEL CONFIG
 	 */
@@ -795,7 +797,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Hotel Configuration...")
 	String hotelConfigDescription();
 
-	
 	/*
 	 * COMMUNICATION EDITOR
 	 */
@@ -804,7 +805,7 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Primary")
 	String communicationEditorPrimary();
-	
+
 	/*
 	 * ADDRESS EDITOR
 	 */
@@ -817,40 +818,38 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Primary")
 	String addressEditorPrimary();
-	
+
 	@DefaultMessage("Street and number")
 	String addressEditorStreet();
-	
+
 	@DefaultMessage("Country")
 	String addressEditorCountry();
-	
+
 	@DefaultMessage("Choose a Coountry")
 	String addressEditorCountryPlaceholder();
-	
+
 	@DefaultMessage("Postal code")
 	String addressEditorPostcode();
-	
+
 	@DefaultMessage("Choose an Postal code")
 	String addressEditorPostcodePlaceholder();
-	
+
 	@DefaultMessage("City")
 	String addressEditorCity();
-	
-	
+
 	/*
 	 * HOTEL BROWSER
 	 */
-	
+
 	@DefaultMessage("Hotels Data")
 	String hotelBrowserTitle();
-	
+
 	@DefaultMessage("Code")
 	String hotelsTableCode();
 
 	@DefaultMessage("Name")
 	String hotelsTableName();
 
-	
 	/*
 	 * HOTEL EDITOR
 	 */
@@ -867,23 +866,22 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Name")
 	String hotelEditorName();
 
-	
 	/*
 	 * ROOMTYPE BROWSER
 	 */
-	
+
 	@DefaultMessage("Room Types")
 	String roomTypeBrowserTitle();
-	
+
 	@DefaultMessage("Choose a hotel")
 	String roomTypesTableHotelsPlaceholder();
-	
+
 	@DefaultMessage("Selected hotel")
 	String roomTypesTableHotelsLabel();
-	
+
 	@DefaultMessage("Only active types")
 	String roomTypesTableOnlyActive();
-	
+
 	@DefaultMessage("Code")
 	String roomTypesTableCode();
 
@@ -902,18 +900,16 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Inactive")
 	String roomTypesTableInactive();
 
-	
 	/*
 	 * ROOMTYPE FILTER
 	 */
-	
+
 	@DefaultMessage("Choose inventory type")
 	String roomTypeFilterInventoryTypePlaceholder();
-	
+
 	@DefaultMessage("Selected inventory type")
 	String roomTypeFilterInventoryTypeLabel();
 
-	
 	/*
 	 * ROOMTYPE EDITOR
 	 */
@@ -956,44 +952,42 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Cleaning factor")
 	String roomTypeEditorCleaningFactor();
-	
+
 	/*
 	 * ROOMS TABLE
 	 */
-	
+
 	@DefaultMessage("Rooms")
 	String roomBrowserTitle();
-	
+
 	@DefaultMessage("Code")
 	String roomsTableCode();
-	
+
 	@DefaultMessage("Floor")
 	String roomsTableFloor();
 
 	@DefaultMessage("Type")
 	String roomsTableType();
 
-	
 	/*
 	 * ROOM FILTER
 	 */
-	
+
 	@DefaultMessage("Selected floor")
 	String roomFilterFloorLabel();
-	
+
 	@DefaultMessage("Choose floor")
 	String roomFilterFloorPlaceholder();
-	
+
 	@DefaultMessage("Floor=")
 	String roomFilterFloor();
-	
+
 	@DefaultMessage("Selected Room Types")
 	String roomFilterRoomTypesLabel();
-	
+
 	@DefaultMessage("Choose Room Type")
 	String roomFilterRoomTypesPlaceholder();
 
-	
 	/*
 	 * ROOM EDITOR
 	 */
@@ -1009,37 +1003,35 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Floor")
 	String roomTypeEditorFloor();
-	
+
 	@DefaultMessage("Choose Room Type")
 	String roomEditorChooseRoomtype();
 
 	@DefaultMessage("Room Type")
 	String roomEditorRoomtype();
-	
+
 	@DefaultMessage("Description")
 	String roomEditorDescription();
-	
+
 	@DefaultMessage("Availability")
 	String roomEditorAvailability();
-	
+
 	@DefaultMessage("From Date")
 	String roomEditorAvailabilityFromDate();
-	
+
 	@DefaultMessage("Add")
 	String roomEditorAvailabilityAdd();
-	
+
 	@DefaultMessage("Remove")
 	String roomEditorAvailabilityRemove();
 
-	
 	/*
 	 * MARKET GROUP BROWSER
 	 */
 
 	@DefaultMessage("Market Groups")
 	String marketGroupBrowserTitle();
-	
-	
+
 	/*
 	 * SEND MESSAGE
 	 */
@@ -1047,7 +1039,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Type a message")
 	String sendMessagePlaceHolder();
 
-	
 	/*
 	 * CREATE CHAT
 	 */
@@ -1060,10 +1051,10 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Invited groups and users")
 	String createChatInvited();
-	
+
 	@DefaultMessage("Choose group or user")
 	String createChatToInvite();
-	
+
 	@DefaultMessage("Groups")
 	String createChatGroupGroup();
 

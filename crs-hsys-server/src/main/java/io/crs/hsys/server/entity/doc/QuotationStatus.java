@@ -19,6 +19,8 @@ public class QuotationStatus extends AccountChild {
 
 	private String description;
 
+	private Boolean active;
+
 	public QuotationStatus() {
 	}
 
@@ -38,9 +40,18 @@ public class QuotationStatus extends AccountChild {
 		this.description = description;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
-		return "QuotationType [code=" + code + ", description=" + description + "]" + super.toString();
+		return "QuotationType [code=" + code + ", description=" + description + ", active=" + active + "]"
+				+ super.toString();
 	}
 
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.browser.relationship;
+package io.crs.hsys.client.cfg.config.doc;
 
 import java.util.logging.Logger;
 
@@ -51,7 +51,7 @@ public class DocConfigPresenter extends AbstractConfigPresenter<DocConfigPresent
 
 		logger.info("DocConfigPresenter()");
 
-		setCaption(i18nCore.profileConfigTitle());
+		setCaption(i18nCore.documentConfigTitle());
 		setDescription(i18nCore.profileConfigDescription());
 		setPlaceToken(CoreNameTokens.PROFILE_CONFIG);
 

@@ -15,6 +15,8 @@ public class QuotationStatusDto extends AccountChildDto {
 
 	private String description;
 
+	private Boolean active;
+
 	public QuotationStatusDto() {
 	}
 
@@ -34,8 +36,17 @@ public class QuotationStatusDto extends AccountChildDto {
 		this.description = description;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
-		return "QuotationStatusDto [code=" + code + ", description=" + description + "]";
+		return "QuotationStatusDto [code=" + code + ", description=" + description + ", active=" + active + "]"
+				+ super.toString();
 	}
 }
