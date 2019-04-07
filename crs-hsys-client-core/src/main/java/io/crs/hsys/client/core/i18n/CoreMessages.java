@@ -710,6 +710,9 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("General Data")
 	String organizationEditorDescription();
 
+	@DefaultMessage("Quotations")
+	String organizationEditorQuotations();
+
 	@DefaultMessage("Organization name")
 	String organizationEditorName();
 
@@ -727,6 +730,36 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Web Presence")
 	String organizationEditorWebPresence();
+
+	/*
+	 * QUOTATION EDITOR
+	 */
+	@DefaultMessage("Create Quotation")
+	String quotationEditorCreateTitle();
+
+	@DefaultMessage("Create Quotation")
+	String quotationEditorCreateDescription();
+
+	@DefaultMessage("Modify Quotation")
+	String quotationEditorModifyTitle();
+
+	@DefaultMessage("Modify Quotation")
+	String quotationEditorModifyDescription();
+
+	@DefaultMessage("Code")
+	String quotationEditorCode();
+
+	@DefaultMessage("Status")
+	String quotationEditorStatus();
+
+	@DefaultMessage("Description")
+	String quotationEditorDescription();
+
+	@DefaultMessage("Organization")
+	String quotationEditorOrganization();
+
+	@DefaultMessage("Posting Date")
+	String quotationEditorPosting();
 
 	/*
 	 * CONTACT BROWSER

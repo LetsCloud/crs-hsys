@@ -16,7 +16,6 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.common.FcmTokenDto;
-import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
 import static io.crs.hsys.shared.api.ApiParameters.TOKEN;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;

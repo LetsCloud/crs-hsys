@@ -14,7 +14,10 @@ import io.crs.hsys.shared.dto.profile.OrganizationDtor;
  */
 @SuppressWarnings("serial")
 public class DocumentDto extends AccountChildDto {
+	
 	private String code;
+	
+	private String description;
 
 	private Date postingDate;
 
@@ -29,6 +32,14 @@ public class DocumentDto extends AccountChildDto {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getPostingDate() {

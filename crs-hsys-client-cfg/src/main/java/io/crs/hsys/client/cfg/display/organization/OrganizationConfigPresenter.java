@@ -15,7 +15,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserFactory;
+import io.crs.hsys.client.cfg.browser.quotation.QuotationBrowserFactory;
 import io.crs.hsys.client.cfg.editor.profile.organization.OrganizationEditorFactory;
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
@@ -37,6 +37,7 @@ public class OrganizationConfigPresenter
 	private static Logger logger = Logger.getLogger(OrganizationConfigPresenter.class.getName());
 
 	private static final String GENERAL_DATA = "generalData";
+	private static final String QUOTATIONS = "quotattions";
 
 	interface MyView extends AbstractConfigPresenter.MyView {
 	}
@@ -51,7 +52,7 @@ public class OrganizationConfigPresenter
 
 	@Inject
 	OrganizationConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			OrganizationEditorFactory organizationEditorFactory, OrganizationBrowserFactory customerFactory,
+			OrganizationEditorFactory organizationEditorFactory, QuotationBrowserFactory quotationsFactory,
 			CfgMessages i18n, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("OrganizationConfigPresenter()");
@@ -59,8 +60,9 @@ public class OrganizationConfigPresenter
 		setDescription(i18nCore.organizationConfigDescription());
 		setPlaceToken(CoreNameTokens.ORGANIZATION_DISPLAY);
 
-		addContent(i18nCore.organizationEditorDescription(), organizationEditorFactory.createOrganizationEditor(), GENERAL_DATA);
-//		addContent(i18nCore.customerBrowserTitle(), customerFactory.createCustomerBrowser());
+		addContent(i18nCore.organizationEditorDescription(), organizationEditorFactory.createOrganizationEditor(),
+				GENERAL_DATA);
+		addContent(i18nCore.organizationEditorQuotations(), quotationsFactory.createQuotationBrowser(), QUOTATIONS);
 
 		getView().setUiHandlers(this);
 	}
@@ -69,9 +71,10 @@ public class OrganizationConfigPresenter
 	public void prepareFromRequest(PlaceRequest request) {
 		webSafeKey = request.getParameter(WEBSAFEKEY, null);
 		logger.info("OrganizationConfigPresenter().prepareFromRequest()->webSafeKey=" + webSafeKey);
-		
+
 		Integer index = placeParams.indexOf(request.getParameter(PLACE_PARAM, null));
-		if (index == -1) index = 0;
+		if (index == -1)
+			index = 0;
 		getView().setDesktopMenu(index);
 		getView().setMobileButtonText(captions.get(index));
 		setInSlot(SLOT_CONTENT, beforeShowContent(browsers.get(index)));
