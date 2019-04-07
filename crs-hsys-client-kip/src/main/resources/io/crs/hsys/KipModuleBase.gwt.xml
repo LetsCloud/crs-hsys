@@ -15,7 +15,6 @@
 	<inherits
 		name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate" />
 	<inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' />
-	<!-- <inherits name="com.gwtplatform.mvp.MvpWithFormFactor" /> -->
 
 	<!-- GWT Material -->
 	<inherits

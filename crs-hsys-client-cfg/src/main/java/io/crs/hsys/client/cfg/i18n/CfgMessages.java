@@ -29,6 +29,9 @@ public interface CfgMessages extends Messages {
 	@DefaultMessage("Profiles")
 	String menuItemProfileConfig();
 
+	@DefaultMessage("Document properties")
+	String menuItemDocConfig();
+
 	
 	// Front Office
 	@DefaultMessage("Front Office Config")

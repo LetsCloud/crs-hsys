@@ -134,7 +134,6 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 
 	@Override
 	public void showMessage(MessageData message) {
-		logger.info("TaskGroupEditorView().showMessage()");
 		messageDialog.showMessage(message);
 	}
 }

@@ -15,8 +15,6 @@
 	<inherits
 		name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate" />
 	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
-	<!-- <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' /> -->
-	<!-- <inherits name="com.gwtplatform.mvp.Mvp" /> -->
 
 	<!-- GWT Material -->
 	<inherits
@@ -38,11 +36,12 @@
 
 	<set-configuration-property
 		name="gwtp.bootstrapper" value="io.crs.hsys.client.cfg.CfgApp" />
- 
-	<!-- <entry-point class='io.crs.hsys.client.cfg.CfgAppEntryPoint' /> -->
+ 	<set-configuration-property
+		name="CssResource.enableGss" value="true" />
 
 	<public path="client/cfg/resources"
 		excludes="**/*.java,**/*.class" />
+		
 	<stylesheet src="css/fonts.css" />
 
 	<add-linker name="xsiframe" />

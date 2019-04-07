@@ -14,15 +14,15 @@ import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import io.crs.hsys.client.cfg.browser.profilegroup.ProfileGroupBrowserFactory;
+import io.crs.hsys.client.cfg.browser.qtnstatus.QuotationStatusBrowserFactory;
 import io.crs.hsys.client.cfg.config.profile.ProfileConfigUiHandlers;
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 
 /**
  * @author robi
@@ -45,8 +45,7 @@ public class DocConfigPresenter extends AbstractConfigPresenter<DocConfigPresent
 
 	@Inject
 	DocConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			ProfileGroupBrowserFactory profileGroupFactory, CfgMessages i18n,
-			CoreMessages i18nCore) {
+			QuotationStatusBrowserFactory quotationStatusFactory, CfgMessages i18n, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 
 		logger.info("DocConfigPresenter()");
@@ -55,7 +54,7 @@ public class DocConfigPresenter extends AbstractConfigPresenter<DocConfigPresent
 		setDescription(i18nCore.profileConfigDescription());
 		setPlaceToken(CoreNameTokens.PROFILE_CONFIG);
 
-		addContent(i18nCore.profileGroupBrowserTitle(), profileGroupFactory.createProfileGroupBrowser(),
+		addContent(i18nCore.quotationStatusBrowserTitle(), quotationStatusFactory.createQuotationStatusBrowser(),
 				QUOTATION_STATUS);
 
 		getView().setUiHandlers(this);

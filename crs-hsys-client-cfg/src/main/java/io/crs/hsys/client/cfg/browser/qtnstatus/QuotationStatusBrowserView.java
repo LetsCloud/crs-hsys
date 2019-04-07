@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import io.crs.hsys.client.cfg.browser.marketgroup.MarketGroupBrowserPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
@@ -40,14 +39,13 @@ public class QuotationStatusBrowserView extends ViewWithUiHandlers<QuotationStat
 		this.table = table;
 		this.i18nCore = i18nCore;
 
-		bindSlot(MarketGroupBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
-		bindSlot(MarketGroupBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
+		bindSlot(QuotationStatusBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
+		bindSlot(QuotationStatusBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
 
 		initTable();
 	}
 
 	private void initTable() {
-
 		table.setTableTitle(i18nCore.quotationStatusBrowserTitle());
 
 		table.getAddButton().addClickHandler(e -> {
@@ -58,19 +56,19 @@ public class QuotationStatusBrowserView extends ViewWithUiHandlers<QuotationStat
 			getUiHandlers().delete(table.getSelected());
 		});
 
-//Code Column
+		// Code Column
 		table.addColumn(
 				new DataColumn<QuotationStatusDto>((object) -> object.getCode(),
 						(o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode())),
 				i18nCore.quotationStatusBrowserCode());
 
-//Name Column
+		// Description Column
 		table.addColumn(
 				new DataColumn<QuotationStatusDto>((object) -> object.getDescription(),
 						(o1, o2) -> o1.getData().getDescription().compareToIgnoreCase(o2.getData().getDescription())),
 				i18nCore.quotationStatusBrowserDescription());
 
-//Active Column
+		//Active Column
 		table.addColumn(new DataColumn<QuotationStatusDto>((object) -> {
 			if (object.getActive()) {
 				return i18nCore.comActive();
@@ -79,7 +77,7 @@ public class QuotationStatusBrowserView extends ViewWithUiHandlers<QuotationStat
 			}
 		}), i18nCore.comActive());
 
-//Edit Column
+		//Edit Column
 		table.addColumn(new ActionColumn<QuotationStatusDto>((object) -> getUiHandlers().edit(object)));
 	}
 

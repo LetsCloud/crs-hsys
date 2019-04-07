@@ -6,6 +6,8 @@ package io.crs.hsys.client.core.meditor;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PresenterWidget;
 
+import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
 import io.crs.hsys.shared.dto.BaseDto;
 
 /**
@@ -13,7 +15,7 @@ import io.crs.hsys.shared.dto.BaseDto;
  *
  */
 public abstract class AbstractMeditorPresenter<T extends BaseDto, V extends MeditorView<T>> extends PresenterWidget<V>
-		implements MeditorUiHandlers<T> {
+		implements MeditorUiHandlers<T>, DisplayMessageHandler {
 
 	public AbstractMeditorPresenter(EventBus eventBus, V view) {
 		super(eventBus, view);
@@ -32,6 +34,11 @@ public abstract class AbstractMeditorPresenter<T extends BaseDto, V extends Medi
 		getView().open(dto);
 	}
 
+	@Override
+	public void onDisplayMessage(DisplayMessageEvent event) {
+		getView().showMessage(event.getMessage());
+	}
+
 	protected abstract void saveDto(T dto);
 
 	@Override
@@ -39,4 +46,8 @@ public abstract class AbstractMeditorPresenter<T extends BaseDto, V extends Medi
 		saveDto(dto);
 	}
 
+	@Override
+	public void cancel() {
+		getView().close();
+	}
 }

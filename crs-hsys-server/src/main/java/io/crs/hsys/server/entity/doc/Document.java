@@ -7,6 +7,7 @@ import java.util.Date;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.server.entity.profile.Organization;
@@ -19,10 +20,12 @@ import io.crs.hsys.server.entity.profile.Organization;
 public class Document extends AccountChild {
 	public static final String PROPERTY_CODE = "code";
 
+	@Index
 	private String code;
 
 	private Date postingDate;
 
+	@Index
 	private Ref<Organization> organization;
 
 	public Document() {

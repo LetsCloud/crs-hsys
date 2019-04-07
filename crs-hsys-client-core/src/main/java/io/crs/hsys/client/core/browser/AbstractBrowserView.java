@@ -159,7 +159,9 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	public void setData(List<T> data) {
 		table.setVisibleRange(0, data.size());
 		table.setRowData(0, data);
-		table.sort(0, SortDir.ASC);
+		if (!data.isEmpty()) {
+			table.sort(0, SortDir.ASC);
+		}
 	}
 
 	/**

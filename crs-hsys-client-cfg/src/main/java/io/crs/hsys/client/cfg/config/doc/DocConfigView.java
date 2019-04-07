@@ -5,7 +5,7 @@ package io.crs.hsys.client.cfg.config.doc;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.core.ui.config.AbstractConfigView;
+import io.crs.hsys.client.core.config.AbstractConfigView;
 
 /**
  * @author robi

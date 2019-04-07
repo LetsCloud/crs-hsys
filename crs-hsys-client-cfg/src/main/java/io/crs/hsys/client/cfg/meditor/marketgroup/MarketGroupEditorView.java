@@ -21,7 +21,10 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 
@@ -54,6 +57,10 @@ public class MarketGroupEditorView extends ViewWithUiHandlers<MarketGroupEditorU
 
 	@UiField
 	MaterialButton saveButton;
+
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
 
 	/**
 	* 
@@ -104,5 +111,10 @@ public class MarketGroupEditorView extends ViewWithUiHandlers<MarketGroupEditorU
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent event) {
 		getUiHandlers().cancel();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

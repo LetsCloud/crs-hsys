@@ -4,6 +4,7 @@
 package io.crs.hsys.server.entity.doc;
 
 import com.googlecode.objectify.Ref;
+import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Subclass;
 
 /**
@@ -14,6 +15,7 @@ import com.googlecode.objectify.annotation.Subclass;
 public class Quotation extends Document {
 	public static final String PROPERTY_STATUS = "status";
 
+	@Index
 	private Ref<QuotationStatus> status;
 
 	public Quotation() {

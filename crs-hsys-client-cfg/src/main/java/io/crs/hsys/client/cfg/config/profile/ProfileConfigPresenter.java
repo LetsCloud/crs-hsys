@@ -22,9 +22,9 @@ import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.LoggedInGatekeeper;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 
 /**
  * @author robi

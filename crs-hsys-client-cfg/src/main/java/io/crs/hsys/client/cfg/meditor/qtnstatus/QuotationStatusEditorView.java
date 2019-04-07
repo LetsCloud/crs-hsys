@@ -24,7 +24,8 @@ import gwt.material.design.client.ui.MaterialTitle;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.shared.dto.EntityPropertyCode;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 
 /**
@@ -57,6 +58,10 @@ public class QuotationStatusEditorView extends ViewWithUiHandlers<QuotationStatu
 
 	@UiField
 	MaterialCheckBox active;
+
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
 
 	/**
 	* 
@@ -96,12 +101,6 @@ public class QuotationStatusEditorView extends ViewWithUiHandlers<QuotationStatu
 		modal.close();
 	}
 
-	@Override
-	public void displayError(EntityPropertyCode code, String message) {
-//TODO Auto-generated method stub
-
-	}
-
 	@UiHandler("saveButton")
 	void onSaveClick(ClickEvent event) {
 		getUiHandlers().save(driver.flush());
@@ -110,5 +109,10 @@ public class QuotationStatusEditorView extends ViewWithUiHandlers<QuotationStatu
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent event) {
 		getUiHandlers().cancel();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

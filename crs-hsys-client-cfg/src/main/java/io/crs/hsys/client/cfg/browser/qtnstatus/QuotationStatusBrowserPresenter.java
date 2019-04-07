@@ -63,15 +63,18 @@ public class QuotationStatusBrowserPresenter
 	@Override
 	protected void onBind() {
 		super.onBind();
+		logger.info("QuotationStatusBrowserPresenter().onBind()");
 		setInSlot(SLOT_FILTER, filter);
 		setInSlot(SLOT_EDITOR, editor);
 	}
 
 	@Override
 	protected void loadData() {
+		logger.info("QuotationStatusBrowserPresenter().loadData()");
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<QuotationStatusDto>>() {
 			@Override
 			public void onSuccess(List<QuotationStatusDto> result) {
+				logger.info("QuotationStatusBrowserPresenter().loadData().onSuccess()");
 				getView().setData(result);
 			}
 		}).getAll(false);
@@ -79,6 +82,7 @@ public class QuotationStatusBrowserPresenter
 
 	@Override
 	public void addNew() {
+		logger.info("QuotationStatusBrowserPresenter().addNew()");
 		editor.create();
 	}
 

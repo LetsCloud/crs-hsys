@@ -38,14 +38,14 @@ import io.crs.hsys.shared.exception.RestApiException;
 @RestController
 @RequestMapping(value = ROOT + QUOTATION_STATUS, produces = MediaType.APPLICATION_JSON_VALUE)
 public class QuotationStatusController extends CrudController<QuotationStatus, QuotationStatusDto> {
-	private static final Logger logger = LoggerFactory.getLogger(ContractController.class);
+	private static final Logger logger = LoggerFactory.getLogger(QuotationStatusController.class);
 
 	private final ModelMapper modelMapper;
 
 	@Autowired
 	QuotationStatusController(QuotationStatusService service, ModelMapper modelMapper) {
 		super(QuotationStatus.class, service, modelMapper);
-		logger.info("ContactController()");
+		logger.info("QuotationStatusController()");
 		this.modelMapper = modelMapper;
 	}
 
@@ -64,7 +64,6 @@ public class QuotationStatusController extends CrudController<QuotationStatus, Q
 	@Override
 	@RequestMapping(value = PATH_WEBSAFEKEY, method = GET)
 	public ResponseEntity<QuotationStatusDto> get(@PathVariable String webSafeKey) throws RestApiException {
-		logger.info("get()->webSafeKey=" + webSafeKey);
 		return super.get(webSafeKey);
 	}
 

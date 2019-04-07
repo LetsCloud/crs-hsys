@@ -4,6 +4,7 @@
 package io.crs.hsys.server.entity.doc;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 
@@ -15,6 +16,7 @@ import io.crs.hsys.server.entity.common.AccountChild;
 public class QuotationStatus extends AccountChild {
 	public static final String PROPERTY_CODE = "code";
 
+	@Index
 	private String code;
 
 	private String description;

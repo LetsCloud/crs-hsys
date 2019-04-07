@@ -20,6 +20,7 @@ import gwt.material.design.client.constants.IconType;
 
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.cfg.resources.CfgResources;
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
@@ -100,6 +101,13 @@ public class CfgAppPresenter extends AbstractAppPresenter<CfgAppPresenter.MyProx
 		configMenuItem2.setText(i18n.menuItemProfileConfig());
 		configMenuItem2.setNameToken(CfgNameTokens.PROFILE_CONFIG);
 		commonConfigSubMenu.addItem(configMenuItem2);
+
+		MenuItemDto docConfigMenuItem = new MenuItemDto();
+		docConfigMenuItem.setIndex(3);
+		docConfigMenuItem.setType(MenuItemType.MENU_ITEM);
+		docConfigMenuItem.setText(i18n.menuItemDocConfig());
+		docConfigMenuItem.setNameToken(CoreNameTokens.DOC_CONFIG);
+		commonConfigSubMenu.addItem(docConfigMenuItem);
 
 		// ***************************
 		// Front office configurations

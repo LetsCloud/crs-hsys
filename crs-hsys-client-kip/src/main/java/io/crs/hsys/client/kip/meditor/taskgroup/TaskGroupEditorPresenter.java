@@ -99,12 +99,6 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
 			}
-			/*
-			 * @Override public void onFailure(Throwable caught) { if (caught instanceof
-			 * CustomActionException) { customMessage((CustomActionException) caught);
-			 * return; } getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-			 * caught.getMessage()); }
-			 */
 		}).saveOrCreate(dto);
 	}
 
@@ -115,20 +109,9 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
 			}
-			/*
-			 * @Override public void onFailure(Throwable caught) { if (caught instanceof
-			 * CustomActionException) { customMessage((CustomActionException) caught);
-			 * return; } getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-			 * caught.getMessage()); }
-			 */
 		}).saveOrCreate(dto);
 	}
 
-	/*
-	 * private void customMessage(CustomActionException e) {
-	 * getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-	 * e.getErDto().getProperty() + "/" + e.getErDto().getExceptionType()); }
-	 */
 	protected abstract TaskKind getDefaultTaskKind();
 
 	@Override

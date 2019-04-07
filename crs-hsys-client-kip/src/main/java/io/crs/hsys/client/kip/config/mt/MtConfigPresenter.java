@@ -14,8 +14,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.browser.room.RoomBrowserFactory;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.browser.taskgroup.TaskGroupBrowserFactory;
 import io.crs.hsys.client.kip.browser.tasktodo.TaskTodoBrowserFactory;

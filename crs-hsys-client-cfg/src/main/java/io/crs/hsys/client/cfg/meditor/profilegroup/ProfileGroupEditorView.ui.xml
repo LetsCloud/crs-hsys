@@ -2,7 +2,8 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:message="urn:import:io.crs.hsys.client.core.message.dialog">
 
 	<ui:with field="i18nCore"
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
@@ -10,29 +11,34 @@
 	<ui:with field="i18nCfg"
 		type="io.crs.hsys.client.cfg.i18n.CfgMessages" />
 
-	<m:MaterialDialog ui:field="modal" type="DEFAULT"
-		inDuration="500" outDuration="500">
-		<m:MaterialDialogContent>
-			<m:MaterialTitle ui:field="title" />
+	<g:HTMLPanel>
+		<m:MaterialDialog ui:field="modal" type="DEFAULT"
+			inDuration="500" outDuration="500">
+			<m:MaterialDialogContent>
+				<m:MaterialTitle ui:field="title" />
 
-			<m:MaterialTextBox ui:field="code" type="TEXT"
-				label="{i18nCfg.profileGroupCode}" />
+				<m:MaterialTextBox ui:field="code" type="TEXT"
+					label="{i18nCfg.profileGroupCode}" />
 
-			<m:MaterialTextBox ui:field="description"
-				type="TEXT" label="{i18nCfg.profileGroupDescription}" />
+				<m:MaterialTextBox ui:field="description"
+					type="TEXT" label="{i18nCfg.profileGroupDescription}" />
 
-			<combobox:MaterialComboBox
-				ui:field="typeCombo" label="{i18nCfg.profileGroupType}" />
+				<combobox:MaterialComboBox
+					ui:field="typeCombo" label="{i18nCfg.profileGroupType}" />
 
-			<m:MaterialCheckBox ui:field="active"
-				text="{i18nCfg.profileGroupActive}" value="true" type="FILLED" />
-		</m:MaterialDialogContent>
+				<m:MaterialCheckBox ui:field="active"
+					text="{i18nCfg.profileGroupActive}" value="true" type="FILLED" />
+			</m:MaterialDialogContent>
 
-		<m:MaterialDialogFooter>
-			<m:MaterialButton ui:field="saveButton"
-				text="{i18nCore.comSave}" iconType="SAVE" iconPosition="LEFT" />
-			<m:MaterialButton ui:field="cancelButton"
-				text="{i18nCore.comCancel}" type="FLAT" />
-		</m:MaterialDialogFooter>
-	</m:MaterialDialog>
+			<m:MaterialDialogFooter>
+				<m:MaterialButton ui:field="saveButton"
+					text="{i18nCore.comSave}" iconType="SAVE" iconPosition="LEFT" />
+				<m:MaterialButton ui:field="cancelButton"
+					text="{i18nCore.comCancel}" type="FLAT" />
+			</m:MaterialDialogFooter>
+		</m:MaterialDialog>
+
+		<message:MessageDialogWidget
+			ui:field="messageDialog" />
+	</g:HTMLPanel>
 </ui:UiBinder>
