@@ -732,6 +732,18 @@ public interface CoreMessages extends Messages {
 	String organizationEditorWebPresence();
 
 	/*
+	 * QUOTATION BROWSER
+	 */
+	@DefaultMessage("Quotations")
+	String quotationBrowserTitle();
+
+	@DefaultMessage("Code")
+	String quotationBrowserCode();
+
+	@DefaultMessage("Description")
+	String quotationBrowserDescription();
+
+	/*
 	 * QUOTATION EDITOR
 	 */
 	@DefaultMessage("Create Quotation")

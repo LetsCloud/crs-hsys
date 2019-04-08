@@ -56,7 +56,7 @@
 
 			<m:MaterialColumn grid="s12 m6">
 				<combobox:MaterialComboBox
-					ui:field="organizationCombo" grid="s12 xm6" multiple="false"
+					ui:field="organizationCombo" multiple="false"
 					label="{i18nCore.quotationEditorOrganization}" />
 				<m:MaterialDatePicker ui:field="postingDate"
 					placeholder="{i18nCore.quotationEditorPosting}" />

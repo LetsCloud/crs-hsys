@@ -15,6 +15,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import io.crs.hsys.client.core.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.core.event.RefreshTableEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.shared.dto.BaseDto;
@@ -41,7 +42,7 @@ import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
  * @author robi
  *
  */
-public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View> extends PresenterWidget<V>
+public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View> extends AbstractDisplayPresenterWidget<V>
 		implements AbstractBrowserUiHandlers<T>, RefreshTableEvent.RefreshTableHandler {
 	private static Logger logger = Logger.getLogger(AbstractBrowserPresenter.class.getName());
 
@@ -113,6 +114,7 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 
 	@Override
 	public void addNew() {
+		logger.info("AbstractBrowserPresenter().addNew()");
 		Builder placeBuilder = new Builder().nameToken(getCreatorNameToken());
 		placeManager.revealPlace(addFilters(placeBuilder));
 	}
@@ -126,8 +128,12 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	}
 
 	private PlaceRequest addFilters(Builder placeBuilder) {
-		if (!filters.isEmpty())
+		logger.info("AbstractBrowserPresenter().addFilters()");
+		if (!filters.isEmpty()) {
+			logger.info("AbstractBrowserPresenter().addFilters()-2");
 			placeBuilder.with(filters);
+		}
+		logger.info("AbstractBrowserPresenter().addFilters()-3");
 		return placeBuilder.build();
 	}
 

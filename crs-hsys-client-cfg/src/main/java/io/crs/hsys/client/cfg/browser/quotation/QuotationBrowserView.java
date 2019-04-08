@@ -42,7 +42,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 	*/
 	@Inject
 	QuotationBrowserView(AbstractBrowserView<QuotationDto> table, CoreMessages i18nCore) {
-		logger.info("CustomerBrowserView()");
+		logger.info("QuotationBrowserView()");
 
 		initWidget(table);
 
@@ -56,7 +56,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 
 	private void init() {
 
-		table.setTableTitle(i18nCore.organizationBrowserTitle());
+		table.setTableTitle(i18nCore.quotationBrowserTitle());
 
 		table.getAddButton().addClickHandler(e -> {
 			getUiHandlers().addNew();
@@ -65,7 +65,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		/*
 		 * CODE
 		 */
-		table.getTable().addColumn(i18nCore.organizationBrowserColCode(), new TextColumn<QuotationDto>() {
+		table.getTable().addColumn(i18nCore.quotationBrowserCode(), new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -80,7 +80,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		/*
 		 * DESCRIPTION
 		 */
-		table.getTable().addColumn(i18nCore.organizationBrowserColName(), new TextColumn<QuotationDto>() {
+		table.getTable().addColumn(i18nCore.quotationBrowserDescription(), new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return false;

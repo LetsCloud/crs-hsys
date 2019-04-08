@@ -68,7 +68,7 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 	*/
 	@Inject
 	QuotationEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, CurrentUser user) {
-		logger.info("TaskEditorView()");
+		logger.info("QuotationEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -124,11 +124,13 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 
 	@Override
 	public void setOrganizationData(List<OrganizationDtor> data) {
+		logger.info("QuotationEditorView().setOrganizationData()");
 		organizationCombo.clear();
 		if ((data == null) || (data.isEmpty()))
 			return;
 
 		for (OrganizationDtor org : data) {
+			logger.info("QuotationEditorView().setOrganizationData()->code=" + org.getCode());
 			organizationCombo.addItem(org.getCode() + " - " + org.getName(), org);
 		}
 		organizationCombo.unselect();
@@ -172,6 +174,6 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 	@Override
 	public void show(QuotationDto dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

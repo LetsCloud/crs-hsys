@@ -32,8 +32,10 @@ import io.crs.hsys.shared.dto.profile.OrganizationDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
+import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.UPLOAD;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ORGANIZATION;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
@@ -67,9 +69,27 @@ public class OrganizationController extends CrudController<Organization, Organiz
 		return dto;
 	}
 
-	// @RequestParam(ONLY_ACTIVE) Boolean onlyActive
 	@RequestMapping(method = GET)
-	public ResponseEntity<List<OrganizationDtor>> getAllx() {
+	public ResponseEntity<List<OrganizationDtor>> getAllxx() {
+		List<OrganizationDtor> dtos = new ArrayList<OrganizationDtor>();
+
+		AppUser appUser = userService.getCurrentUser();
+		if (appUser == null)
+			return new ResponseEntity<List<OrganizationDtor>>(dtos, OK);
+
+		String accountWebSafeKey = appUser.getAccount().getWebSafeKey();
+		if (accountWebSafeKey == null)
+			return new ResponseEntity<List<OrganizationDtor>>(dtos, OK);
+
+		for (Organization entity : service.getChildren(accountWebSafeKey))
+			dtos.add(modelMapper.map(entity, OrganizationDtor.class));
+
+		return new ResponseEntity<List<OrganizationDtor>>(dtos, OK);
+	}
+
+	// @RequestParam(ONLY_ACTIVE) Boolean onlyActive
+	@RequestMapping(value = REDUCED, method = GET)
+	public ResponseEntity<List<OrganizationDtor>> getAllx(@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
 		List<OrganizationDtor> dtos = new ArrayList<OrganizationDtor>();
 
 		AppUser appUser = userService.getCurrentUser();

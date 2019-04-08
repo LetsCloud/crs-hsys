@@ -42,6 +42,7 @@ public class CfgClientModule extends AbstractPresenterModule {
 
 		install(new OrganizationConfigModule());
 		install(new OrganizationCreateModule());
+		
 		install(new QuotationBrowserModule());
 		install(new QuotationEditorModule());
 

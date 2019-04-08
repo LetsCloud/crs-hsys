@@ -91,11 +91,13 @@ public class QuotationBrowserPresenter
 
 	@Override
 	protected String getCreatorNameToken() {
+		logger.info("QuotationBrowserPresenter().getCreatorNameToken()");
 		return CoreNameTokens.QUOTATION_CREATOR;
 	}
 
 	@Override
 	protected String getEditorNameToken() {
+		logger.info("QuotationBrowserPresenter().getEditorNameToken()");
 		return CoreNameTokens.QUOTATION_CREATOR;
 	}
 

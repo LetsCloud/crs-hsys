@@ -87,10 +87,13 @@ public class QuotationEditorPresenter
 
 	@Override
 	protected void loadData() {
+		logger.info("QuotationEditorPresenter().loadData()");
 		loadQuotationStatusData();
+		loadOrganizationStatusData();
 	}
 
 	private void loadQuotationStatusData() {
+		logger.info("QuotationEditorPresenter().loadQuotationStatusData()");
 		quotationStatusDataSource.setOnlyActive(true);
 		LoadCallback<QuotationStatusDto> quotationStatusLoadCallback = new LoadCallback<QuotationStatusDto>() {
 			@Override
@@ -109,7 +112,27 @@ public class QuotationEditorPresenter
 				quotationStatusLoadCallback);
 	}
 
+	private void loadOrganizationStatusData() {
+		logger.info("QuotationEditorPresenter().loadOrganizationStatusData()");
+		organizationDataSource.setOnlyActive(true);
+		LoadCallback<OrganizationDtor> organizationLoadCallback = new LoadCallback<OrganizationDtor>() {
+			@Override
+			public void onSuccess(LoadResult<OrganizationDtor> loadResult) {
+				getView().setOrganizationData(loadResult.getData());
+				if (quotationStatusDataSource.getIsLoaded())
+					start();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		};
+		organizationDataSource.load(new LoadConfig<OrganizationDtor>(0, 0, null, null), organizationLoadCallback);
+	}
+
 	private void start() {
+		logger.info("QuotationEditorPresenter().start()");
 		if (isNew()) {
 			SetPageTitleEvent.fire(i18nCore.quotationEditorCreateTitle(), i18nCore.quotationEditorCreateDescription(),
 					MenuItemType.MENU_ITEM, QuotationEditorPresenter.this);
@@ -123,7 +146,7 @@ public class QuotationEditorPresenter
 
 	@Override
 	protected QuotationDto createDto() {
-		logger.info("createDto()->currentUser=" + currentUser);
+		logger.info("createDto()");
 		QuotationDto dto = new QuotationDto();
 		dto.setAccount(currentUser.getAppUserDto().getAccount());
 		return dto;
