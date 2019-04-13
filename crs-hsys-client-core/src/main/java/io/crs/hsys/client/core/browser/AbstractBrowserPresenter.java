@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
@@ -42,7 +41,8 @@ import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
  * @author robi
  *
  */
-public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View> extends AbstractDisplayPresenterWidget<V>
+public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View>
+		extends AbstractDisplayPresenterWidget<V>
 		implements AbstractBrowserUiHandlers<T>, RefreshTableEvent.RefreshTableHandler {
 	private static Logger logger = Logger.getLogger(AbstractBrowserPresenter.class.getName());
 
@@ -116,7 +116,12 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	public void addNew() {
 		logger.info("AbstractBrowserPresenter().addNew()");
 		Builder placeBuilder = new Builder().nameToken(getCreatorNameToken());
+		placeBuilder = configCreatePlaceBuilder(placeBuilder);
 		placeManager.revealPlace(addFilters(placeBuilder));
+	}
+
+	protected Builder configCreatePlaceBuilder(Builder builder) {
+		return builder;
 	}
 
 	@Override
@@ -124,7 +129,12 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 		logger.info("AbstractBrowserPresenter().edit(" + dto + ")");
 		Builder placeBuilder = new Builder().nameToken(getEditorNameToken());
 		placeBuilder.with(WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
+		placeBuilder = configEditPlaceBuilder(placeBuilder, dto);
 		placeManager.revealPlace(addFilters(placeBuilder));
+	}
+
+	protected Builder configEditPlaceBuilder(Builder builder, T dto) {
+		return builder;
 	}
 
 	private PlaceRequest addFilters(Builder placeBuilder) {
@@ -167,5 +177,9 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 			return;
 		}
 		addFilter(key, value);
+	}
+
+	protected String getFilter(String key) {
+		return filters.get(key);
 	}
 }

@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.server.service;
 
+import java.util.List;
+
 import io.crs.hsys.server.entity.doc.Quotation;
 
 /**
@@ -10,5 +12,7 @@ import io.crs.hsys.server.entity.doc.Quotation;
  *
  */
 public interface QuotationService extends CrudService<Quotation> {
+	
+	List<Quotation> findByOrg(String organizationKey);
 
 }

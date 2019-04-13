@@ -23,6 +23,8 @@ import gwt.material.design.client.ui.table.cell.WidgetColumn;
 import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.shared.dto.doc.QuotationDto;
 
 /**
@@ -35,18 +37,20 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 
 	private final AbstractBrowserView<QuotationDto> table;
 
+	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
 
 	/**
 	* 
 	*/
 	@Inject
-	QuotationBrowserView(AbstractBrowserView<QuotationDto> table, CoreMessages i18nCore) {
+	QuotationBrowserView(AbstractBrowserView<QuotationDto> table, CurrentUser currentUser, CoreMessages i18nCore) {
 		logger.info("QuotationBrowserView()");
 
 		initWidget(table);
 
 		this.table = table;
+		this.currentUser = currentUser;
 		this.i18nCore = i18nCore;
 
 		bindSlot(OrganizationBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
@@ -54,17 +58,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		init();
 	}
 
-	private void init() {
-
-		table.setTableTitle(i18nCore.quotationBrowserTitle());
-
-		table.getAddButton().addClickHandler(e -> {
-			getUiHandlers().addNew();
-		});
-
-		/*
-		 * CODE
-		 */
+	private void createCodeColumn(AbstractBrowserView<QuotationDto> table) {
 		table.getTable().addColumn(i18nCore.quotationBrowserCode(), new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
@@ -76,10 +70,9 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 				return object.getCode();
 			}
 		}.sortComparator((o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode())));
+	}
 
-		/*
-		 * DESCRIPTION
-		 */
+	private void createDescriptionColumn(AbstractBrowserView<QuotationDto> table) {
 		table.getTable().addColumn(i18nCore.quotationBrowserDescription(), new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
@@ -91,10 +84,59 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 				return object.getDescription();
 			}
 		});
+	}
 
-//
-// EDIT ICON
-//
+	private void createOrganizationColumn(AbstractBrowserView<QuotationDto> table) {
+		table.getTable().addColumn(i18nCore.quotationBrowserOrganization(), new TextColumn<QuotationDto>() {
+			@Override
+			public boolean sortable() {
+				return true;
+			}
+
+			@Override
+			public String getValue(QuotationDto object) {
+				if (object.getOrganization() == null)
+					return null;
+				return object.getOrganization().getCode();
+			}
+		}.sortComparator((o1, o2) -> (o1.getData().getOrganization() == null) ? null
+				: o1.getData().getOrganization().getCode().compareToIgnoreCase(
+						(o2.getData().getOrganization() == null) ? null : o2.getData().getOrganization().getCode())));
+	}
+
+	private void createIssuedByColumn(AbstractBrowserView<QuotationDto> table) {
+		table.getTable().addColumn(i18nCore.quotationBrowserIssuedBy(), new TextColumn<QuotationDto>() {
+			@Override
+			public boolean sortable() {
+				return true;
+			}
+
+			@Override
+			public String getValue(QuotationDto object) {
+				if (object.getIssuedBy() == null)
+					return null;
+				return object.getIssuedBy().getCode();
+			}
+		}.sortComparator((o1, o2) -> (o1.getData().getIssuedBy() == null) ? null
+				: o1.getData().getIssuedBy().getCode().compareToIgnoreCase(
+						(o2.getData().getIssuedBy() == null) ? null : o2.getData().getIssuedBy().getCode())));
+	}
+
+	private void createIssueDateColumn(AbstractBrowserView<QuotationDto> table) {
+		table.getTable().addColumn(i18nCore.quotationBrowserIssueDate(), new TextColumn<QuotationDto>() {
+			@Override
+			public boolean sortable() {
+				return true;
+			}
+
+			@Override
+			public String getValue(QuotationDto object) {
+				return DateUtils.formatDateTime(object.getIssueDate(), currentUser.getLocale());
+			}
+		}.sortComparator((o1, o2) -> o1.getData().getIssueDate().compareTo(o2.getData().getIssueDate())));
+	}
+
+	private void createEditActionColumn(AbstractBrowserView<QuotationDto> table) {
 		table.getTable().addColumn(new WidgetColumn<QuotationDto, MaterialIcon>() {
 
 			@Override
@@ -115,6 +157,22 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 				return icon;
 			}
 		}.textAlign(TextAlign.RIGHT));
+	}
+
+	private void init() {
+
+		table.setTableTitle(i18nCore.quotationBrowserTitle());
+
+		table.getAddButton().addClickHandler(e -> {
+			getUiHandlers().addNew();
+		});
+
+		createCodeColumn(table);
+		createDescriptionColumn(table);
+		createOrganizationColumn(table);
+		createIssuedByColumn(table);
+		createIssueDateColumn(table);
+		createEditActionColumn(table);
 	}
 
 	@Override

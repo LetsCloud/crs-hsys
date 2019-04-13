@@ -123,7 +123,7 @@ public class TaskEditorPresenter
 			public void onSuccess(LoadResult<TaskTypeDto> loadResult) {
 				taskTypes = loadResult.getData();
 				filterTaskTypes(TaskKind.TK_CLEANING);
-				if ((appUserDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
+				if ((appUserDataSource.isLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
 
@@ -163,7 +163,7 @@ public class TaskEditorPresenter
 			@Override
 			public void onSuccess(LoadResult<RoomDto> loadResult) {
 				getView().setRoomData(loadResult.getData());
-				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.getIsLoaded()))
+				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.isLoaded()))
 					start();
 			}
 

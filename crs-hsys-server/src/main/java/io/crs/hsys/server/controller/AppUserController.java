@@ -26,16 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import io.crs.hsys.server.entity.common.AppUser;
-import io.crs.hsys.server.entity.hotel.RoomType;
 import io.crs.hsys.server.security.OnRegistrationCompleteEvent;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.common.FcmTokenDto;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
-import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
+import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
@@ -80,6 +78,7 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@Override
 	@RequestMapping(method = GET)
 	public @ResponseBody ResponseEntity<List<AppUserDto>> getAll() {
+		logger.info("AppUserController().getAll");
 		return super.getAll();
 	}
 
@@ -90,16 +89,19 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	 * @return
 	 */
 	@RequestMapping(value = REDUCED, method = GET)
-	public @ResponseBody ResponseEntity<List<AppUserDtor>> getAllReduced() {
-		logger.info("RoomTypeController().getAllReduced()");
+	public @ResponseBody ResponseEntity<List<AppUserDtor>> getAllReduced(
+			@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
+		logger.info("AppUserController().getAllReduced()->onlyActive=" + onlyActive);
 		List<AppUserDtor> dtos = new ArrayList<AppUserDtor>();
 
 		Map<String, Object> filters = new HashMap<String, Object>();
-		
-		for (AppUser entity : service.getAll()) {
-			logger.info("RoomTypeController().getAllReduced()->entity.getCode()" + entity.getCode());
+		if (onlyActive)
+			filters.put("enabled", onlyActive);
+
+		for (AppUser entity : service.getChildrenByFilters(getCurrentAccount().getWebSafeKey(), filters))
 			dtos.add(modelMapper.map(entity, AppUserDtor.class));
-		}
+
+		logger.info("AppUserController().getAllReduced()->beforeEnd");
 
 		return new ResponseEntity<List<AppUserDtor>>(dtos, OK);
 	}

@@ -4,8 +4,8 @@
 package io.crs.hsys.server.service.ofy;
 
 import io.crs.hsys.server.entity.profile.Organization;
-import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.OrganizationRepository;
+import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.server.service.OrganizationService;
 
 /**
@@ -15,7 +15,7 @@ import io.crs.hsys.server.service.OrganizationService;
 public class OrganizationServiceImpl extends AccountChildServiceImpl<Organization, OrganizationRepository>
 		implements OrganizationService {
 
-	public OrganizationServiceImpl(OrganizationRepository repository, AccountRepository accountRepository) {
-		super(repository, accountRepository);
+	public OrganizationServiceImpl(OrganizationRepository repository, AccountService accountService) {
+		super(repository, accountService);
 	}
 }

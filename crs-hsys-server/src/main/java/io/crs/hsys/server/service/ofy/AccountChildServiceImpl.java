@@ -6,35 +6,43 @@ package io.crs.hsys.server.service.ofy;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.CrudRepository;
+import io.crs.hsys.server.service.AccountChildService;
+import io.crs.hsys.server.service.AccountService;
 
 /**
  * @author robi
  *
  */
 public abstract class AccountChildServiceImpl<T extends AccountChild, R extends CrudRepository<T>>
-		extends CrudServiceImpl<T, R> {
+		extends CrudServiceImpl<T, R> implements AccountChildService<T> {
 
-	protected final AccountRepository accountRepository;
+	protected final AccountService accountService;
 
-	public AccountChildServiceImpl(R repository, AccountRepository accountRepository) {
+	public AccountChildServiceImpl(R repository, AccountService accountService) {
 		super(repository);
-		this.accountRepository = accountRepository;
+		this.accountService = accountService;
 	}
 
 	@Override
 	protected List<Object> getParents(Long accountId) {
 		List<Object> parents = new ArrayList<Object>();
-		parents.add(accountRepository.findById(accountId));
+		parents.add(accountService.findById(accountId));
 		return parents;
 	}
 
 	@Override
 	protected List<Object> getParents(String accountWebSafeKey) {
 		List<Object> parents = new ArrayList<Object>();
-		parents.add(accountRepository.findByWebSafeKey(accountWebSafeKey));
+		parents.add(accountService.findByWebSafeKey(accountWebSafeKey));
 		return parents;
+	}
+
+	@Override
+	public Account getCurrentAccount() {
+		return accountService.getCurrentAccount();
 	}
 }

@@ -743,6 +743,15 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Description")
 	String quotationBrowserDescription();
 
+	@DefaultMessage("Organization")
+	String quotationBrowserOrganization();
+
+	@DefaultMessage("Issued By")
+	String quotationBrowserIssuedBy();
+
+	@DefaultMessage("Issue Date")
+	String quotationBrowserIssueDate();
+
 	/*
 	 * QUOTATION EDITOR
 	 */
@@ -770,8 +779,11 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Organization")
 	String quotationEditorOrganization();
 
-	@DefaultMessage("Posting Date")
-	String quotationEditorPosting();
+	@DefaultMessage("Issued by")
+	String quotationEditorIssuedBy();
+
+	@DefaultMessage("Issue Date")
+	String quotationEditorIssueDate();
 
 	/*
 	 * CONTACT BROWSER

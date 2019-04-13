@@ -65,6 +65,7 @@ public class AppUser extends AccountChild {
 	/**
 	 * Engedélyezett
 	 */
+	@Index
 	private Boolean enabled;
 
 	/**

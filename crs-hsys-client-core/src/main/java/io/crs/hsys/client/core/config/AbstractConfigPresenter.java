@@ -107,14 +107,18 @@ public abstract class AbstractConfigPresenter<V extends AbstractConfigPresenter.
 	@Override
 	public void showContent(Integer index) {
 		logger.info("AbstractConfigPresenter().showContent(" + index + ")");
-		PlaceRequest placeRequest = new PlaceRequest.Builder()
+		PlaceRequest.Builder builder = new PlaceRequest.Builder()
 	            .nameToken(placeToken)
-	            .with(PLACE_PARAM, placeParams.get(index))
-	            .build();
+	            .with(PLACE_PARAM, placeParams.get(index));
+		buildPlaceRequest(builder);
 
-	    placeManager.revealPlace(placeRequest);
+	    placeManager.revealPlace(builder.build());
 	}
 
+	protected void buildPlaceRequest(PlaceRequest.Builder builder) {
+		return;
+	}
+	
 	public void addContent(String caption, PresenterWidget<?> widget, String placeParam) {
 		captions.add(caption);
 		browsers.add(widget);

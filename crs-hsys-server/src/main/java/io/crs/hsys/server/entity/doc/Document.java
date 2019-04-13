@@ -10,6 +10,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
+import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.entity.profile.Organization;
 
 /**
@@ -23,7 +24,12 @@ public class Document extends AccountChild {
 	@Index
 	private String code;
 
-	private Date postingDate;
+	private String description;
+
+	private Date issueDate;
+
+	@Index
+	private Ref<AppUser> issuedBy;
 
 	@Index
 	private Ref<Organization> organization;
@@ -39,12 +45,31 @@ public class Document extends AccountChild {
 		this.code = code;
 	}
 
-	public Date getPostingDate() {
-		return postingDate;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPostingDate(Date postingDate) {
-		this.postingDate = postingDate;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public AppUser getIssuedBy() {
+		if (issuedBy == null)
+			return null;
+		return issuedBy.get();
+	}
+
+	public void setIssuedBy(AppUser issuedBy) {
+		if (issuedBy.getId() != null)
+			this.issuedBy = Ref.create(issuedBy);
 	}
 
 	public Organization getOrganization() {
@@ -60,7 +85,7 @@ public class Document extends AccountChild {
 
 	@Override
 	public String toString() {
-		return "Document [code=" + code + ", postingDate=" + postingDate + ", organization=" + getOrganization() + "]"
+		return "Document [code=" + code + ", issueDate=" + issueDate + ", organization=" + getOrganization() + "]"
 				+ super.toString();
 	}
 

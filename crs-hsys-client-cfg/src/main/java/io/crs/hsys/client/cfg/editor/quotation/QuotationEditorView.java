@@ -27,6 +27,7 @@ import gwt.material.design.client.ui.MaterialTextBox;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.doc.QuotationDto;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
@@ -60,8 +61,13 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 	MaterialComboBox<QuotationStatusDto> statusCombo;
 	TakesValueEditor<QuotationStatusDto> status;
 
+	@Ignore
 	@UiField
-	MaterialDatePicker postingDate;
+	MaterialComboBox<AppUserDtor> issuedByCombo;
+	TakesValueEditor<AppUserDtor> issuedBy;
+
+	@UiField
+	MaterialDatePicker issueDate;
 
 	/**
 	* 
@@ -74,6 +80,7 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 
 		initQuotationStatusCombo();
 		initOrganizationCombo();
+		initIssuedCombo();
 		initPostingDate(user.getLocale());
 
 		this.driver = driver;
@@ -136,9 +143,37 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 		organizationCombo.unselect();
 	}
 
+	private void initIssuedCombo() {
+		issuedBy = TakesValueEditor.of(new TakesValue<AppUserDtor>() {
+			@Override
+			public void setValue(AppUserDtor value) {
+				issuedByCombo.setSingleValue(value);
+			}
+
+			@Override
+			public AppUserDtor getValue() {
+				return issuedByCombo.getSingleValue();
+			}
+		});
+	}
+
+	@Override
+	public void setIssuedByData(List<AppUserDtor> users) {
+		logger.info("QuotationEditorView().setIssuedByData()");
+		issuedByCombo.clear();
+		if ((users == null) || (users.isEmpty()))
+			return;
+
+		for (AppUserDtor user : users) {
+			logger.info("QuotationEditorView().setIssuedByData()->code=" + user.getCode());
+			issuedByCombo.addItem(user.getCode() + " - " + user.getName(), user);
+		}
+		issuedByCombo.unselect();
+	}
+
 	private void initPostingDate(String locale) {
 		if (locale.startsWith("hu"))
-			postingDate.setLanguage(DatePickerLanguage.HU);
+			issueDate.setLanguage(DatePickerLanguage.HU);
 	}
 
 	@Override
@@ -167,13 +202,11 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 
 	@Override
 	public void close() {
-//TODO Auto-generated method stub
-
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void show(QuotationDto dto) {
 		// TODO Auto-generated method stub
-
 	}
 }

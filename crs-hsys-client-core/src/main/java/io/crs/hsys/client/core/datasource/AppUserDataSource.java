@@ -41,8 +41,8 @@ public class AppUserDataSource implements DataSource<AppUserDto> {
 		usersDelegate.withCallback(new AbstractAsyncCallback<List<AppUserDto>>() {
 			@Override
 			public void onSuccess(List<AppUserDto> result) {
-				callback.onSuccess(new LoadResult<>(result, loadConfig.getOffset(), result.size()));
 				isLoaded = true;
+				callback.onSuccess(new LoadResult<>(result, loadConfig.getOffset(), result.size()));
 			}
 		}).list();
 	}

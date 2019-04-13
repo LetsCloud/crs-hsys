@@ -4,7 +4,6 @@
 package io.crs.hsys.server.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +88,7 @@ public class OrganizationController extends CrudController<Organization, Organiz
 
 	// @RequestParam(ONLY_ACTIVE) Boolean onlyActive
 	@RequestMapping(value = REDUCED, method = GET)
-	public ResponseEntity<List<OrganizationDtor>> getAllx(@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
+	public ResponseEntity<List<OrganizationDtor>> getAllReduced(@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
 		List<OrganizationDtor> dtos = new ArrayList<OrganizationDtor>();
 
 		AppUser appUser = userService.getCurrentUser();

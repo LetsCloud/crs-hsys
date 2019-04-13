@@ -9,10 +9,9 @@
 
 	<ui:style>
 	.pp {
-		padding-top: 0px;
-		padding-bottom: 0px;
-		margin-left: 0px;
-		margin-right: 0px;
+		padding-top: 20px;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 	
 	.dataGroupBox {
@@ -43,29 +42,32 @@
 		type="io.crs.hsys.client.core.CoreNameTokens" />
 
 	<g:HTMLPanel addStyleNames="{style.pp}">
-		<m:MaterialRow marginBottom="0">
+		<m:MaterialRow>
 			<m:MaterialColumn grid="s12 m6">
 				<m:MaterialTextBox ui:field="code" type="TEXT"
 					label="{i18nCore.quotationEditorCode}" />
-				<combobox:MaterialComboBox
-					ui:field="statusCombo" multiple="false"
-					label="{i18nCore.quotationEditorStatus}" />
 				<m:MaterialTextBox ui:field="description"
 					type="TEXT" label="{i18nCore.quotationEditorDescription}" />
+				<combobox:MaterialComboBox
+					ui:field="statusCombo" multiple="false"
+					label="{i18nCore.quotationEditorStatus}" paddingBottom="5" />
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s12 m6">
 				<combobox:MaterialComboBox
 					ui:field="organizationCombo" multiple="false"
-					label="{i18nCore.quotationEditorOrganization}" />
-				<m:MaterialDatePicker ui:field="postingDate"
-					placeholder="{i18nCore.quotationEditorPosting}" />
+					label="{i18nCore.quotationEditorOrganization}" paddingBottom="5" />
+				<combobox:MaterialComboBox
+					ui:field="issuedByCombo" multiple="false"
+					label="{i18nCore.quotationEditorIssuedBy}" paddingBottom="5" />
+				<m:MaterialDatePicker ui:field="issueDate"
+					placeholder="{i18nCore.quotationEditorIssueDate}" />
 			</m:MaterialColumn>
 		</m:MaterialRow>
 
 		<m:MaterialButton ui:field="saveButton"
 			iconType="SAVE" text="{i18nCore.comSave}" float="RIGHT"
-			addStyleNames="{style.saveButton}" />
+			addStyleNames="{style.saveButton}" marginRight="10" />
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
 

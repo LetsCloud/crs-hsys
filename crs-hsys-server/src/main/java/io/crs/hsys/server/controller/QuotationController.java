@@ -4,13 +4,16 @@
 package io.crs.hsys.server.controller;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiParameters.ORGANIZATION_KEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.QUOTATION;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
+import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -23,6 +26,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,15 +42,17 @@ import io.crs.hsys.shared.exception.RestApiException;
 @RestController
 @RequestMapping(value = ROOT + QUOTATION, produces = MediaType.APPLICATION_JSON_VALUE)
 public class QuotationController extends CrudController<Quotation, QuotationDto> {
-	private static final Logger logger = LoggerFactory.getLogger(ContractController.class);
+	private static final Logger logger = LoggerFactory.getLogger(QuotationController.class);
 
+	private final QuotationService quotationService;
 	private final ModelMapper modelMapper;
 
 	@Autowired
-	QuotationController(QuotationService service, ModelMapper modelMapper) {
-		super(Quotation.class, service, modelMapper);
+	QuotationController(QuotationService quotationService, ModelMapper modelMapper) {
+		super(Quotation.class, quotationService, modelMapper);
 		logger.info("ContactController()");
 		this.modelMapper = modelMapper;
+		this.quotationService = quotationService;
 	}
 
 	@Override
@@ -57,8 +63,13 @@ public class QuotationController extends CrudController<Quotation, QuotationDto>
 
 	// @RequestParam(ONLY_ACTIVE) Boolean onlyActive
 	@RequestMapping(method = GET)
-	public ResponseEntity<List<QuotationDto>> getAll() {
-		return super.getAll();
+	public ResponseEntity<List<QuotationDto>> getAll(@RequestParam(ORGANIZATION_KEY) String organizationKey) {
+		List<QuotationDto> dtos = new ArrayList<QuotationDto>();
+
+		for (Quotation entity : quotationService.findByOrg(organizationKey))
+			dtos.add(modelMapper.map(entity, QuotationDto.class));
+
+		return new ResponseEntity<List<QuotationDto>>(dtos, OK);
 	}
 
 	@Override

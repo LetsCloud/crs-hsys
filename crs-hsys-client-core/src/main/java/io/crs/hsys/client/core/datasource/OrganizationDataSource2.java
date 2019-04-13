@@ -42,8 +42,8 @@ public class OrganizationDataSource2 implements DataSource<OrganizationDtor> {
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<OrganizationDtor>>() {
 			@Override
 			public void onSuccess(List<OrganizationDtor> result) {
-				callback.onSuccess(new LoadResult<>(result, loadConfig.getOffset(), result.size()));
 				isLoaded = true;
+				callback.onSuccess(new LoadResult<>(result, loadConfig.getOffset(), result.size()));
 			}
 		}).listReduced(onlyActive);
 	}
