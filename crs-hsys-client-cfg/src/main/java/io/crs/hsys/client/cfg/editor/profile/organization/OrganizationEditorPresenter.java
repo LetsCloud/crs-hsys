@@ -16,15 +16,21 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.cfg.CfgNameTokens;
+import io.crs.hsys.client.cfg.display.organization.OrganizationConfigPresenter;
+import io.crs.hsys.client.core.CoreNameTokens;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.datasource.ProfileGroupDataSource;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenterWidget;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
+import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.OrganizationResource;
@@ -106,11 +112,22 @@ public final class OrganizationEditorPresenter
 		return dto;
 	}
 
+	private String createTargetHistory(String webSafeKey) {
+		return CoreNameTokens.ORGANIZATION_DISPLAY + "?" + ApiParameters.WEBSAFEKEY + "=" + webSafeKey + "&"
+				+ AbstractConfigPresenter.PLACE_PARAM + "=" + OrganizationConfigPresenter.GENERAL_DATA;
+	}
+
+	private BreadcrumbConfig createBreadcrumbConfig(String text, String targetHistory) {
+		return new BreadcrumbConfig(2, IconType.VIEW_QUILT, text, targetHistory);
+	}
+
 	private void showOrEdit(String webSafeKey) {
 		resourceDelegate.withCallback(new AsyncCallback<OrganizationDto>() {
 			@Override
 			public void onSuccess(OrganizationDto dto) {
 				SetPageTitleEvent.fire(dto.getCode(), dto.getName(), MenuItemType.MENU_ITEM,
+						OrganizationEditorPresenter.this);
+				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(dto.getCode(), createTargetHistory(webSafeKey)),
 						OrganizationEditorPresenter.this);
 
 				if (getReadOnly()) {
@@ -136,13 +153,13 @@ public final class OrganizationEditorPresenter
 //				setReadOnly(true);
 
 				// placeManager.navigateBack();
-				
+
 //				eventBus.fireEvent(new CommunicationActionEvent(CommunicationActionEvent.Action.CLOSE, -1));
-				
+
 				Builder placeBuilder = new Builder().nameToken(CfgNameTokens.ORGANIZATION_DISPLAY);
 				placeBuilder.with(ApiParameters.WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
 				placeManager.revealPlace(placeBuilder.build());
-				
+
 //				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.PROFILE_CONFIG)
 //				.with(AbstractConfigPresenter.PLACE_PARAM, ProfileConfigPresenter.ORGANIZATIONS).build();
 //		placeManager.revealPlace(placeRequest);

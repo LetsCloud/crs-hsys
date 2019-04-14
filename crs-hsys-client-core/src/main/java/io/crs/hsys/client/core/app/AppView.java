@@ -1,5 +1,6 @@
 package io.crs.hsys.client.core.app;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -11,8 +12,13 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import gwt.material.design.client.base.viewport.Resolution;
+import gwt.material.design.client.base.viewport.ViewPort;
+import gwt.material.design.client.ui.MaterialBreadcrumb;
 import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialRow;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 
 public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 	private static Logger logger = Logger.getLogger(AppView.class.getName());
@@ -31,6 +37,9 @@ public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 
 	@UiField
 	SimplePanel modalSlot;
+
+	@UiField
+	MaterialPanel breadcrumbsPanel;
 
 	@Inject
 	AppView(Binder uiBinder) {
@@ -52,5 +61,20 @@ public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 	public void setPageTitle(String title, String description) {
 		this.title.setText(title);
 		this.description.setText(description);
+		breadcrumbsPanel.clear();
+	}
+
+	@Override
+	public void setBreadcrumbs(List<BreadcrumbConfig> breadcrumbConfigs) {
+		breadcrumbsPanel.clear();
+		for (BreadcrumbConfig breadcrumbConfig : breadcrumbConfigs) {
+			logger.info("ApplicationView().setBreadcrumbs()->breadcrumbConfig=" + breadcrumbConfig);
+			MaterialBreadcrumb breadcrumb = new MaterialBreadcrumb(breadcrumbConfig.getIcon());
+			ViewPort.when(Resolution.ALL_LAPTOP).then(viewPortChange -> {
+				breadcrumb.setText(breadcrumbConfig.getText());
+			});
+			breadcrumb.setTargetHistoryToken(breadcrumbConfig.getTargetHistory());
+			breadcrumbsPanel.add(breadcrumb);
+		}
 	}
 }

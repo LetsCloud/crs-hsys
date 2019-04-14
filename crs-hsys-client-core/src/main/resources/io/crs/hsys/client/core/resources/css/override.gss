@@ -3,7 +3,7 @@
 @external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, selected, side-nav, 
 multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, 
 materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, 
-select2-container--focus, select2-container--default, read-only, dataGroupBox, dataGroupTitle;
+select2-container--focus, select2-container--default, read-only, dataGroupBox, dataGroupTitle, breadcrumb;
 	/*
 * BTN, BTN-LARGE, BTN-FLAT, BTN-FLOATING
 */
@@ -287,3 +287,23 @@ blockquote {
 .dataGroupTitle {
 	color: C_PRIMARY;
 }
+
+
+/*
+* BREADCRUMB
+*/
+.breadcrumb i{
+	float: none !important;
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+.breadcrumb span {
+	vertical-align: middle;
+}
+
+.breadcrumb:nth-child(2):before {
+	display: inline-block;
+}
+
+

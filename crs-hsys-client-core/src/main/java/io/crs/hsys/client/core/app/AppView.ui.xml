@@ -18,12 +18,12 @@
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 	}
-
-@media only screen and (max-width:600px) {
-	.panel {
-		padding: 0px ! important;
+	
+	@media only screen and (max-width:600px) {
+		.panel {
+			padding: 0px ! important;
+		}
 	}
-}
 	
 	.footer {
 		margin-top: -50px !important;
@@ -62,6 +62,7 @@
 						truncate="true" />
 					<m:MaterialLabel ui:field="description"
 						truncate="true" />
+					<m:MaterialPanel ui:field="breadcrumbsPanel" marginTop="5" height="30px"/>
 				</m:MaterialPanel>
 			</m:MaterialPanel>
 

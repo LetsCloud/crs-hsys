@@ -19,16 +19,23 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import gwt.material.design.client.constants.IconType;
+import io.crs.hsys.client.cfg.display.organization.OrganizationConfigPresenter;
 import io.crs.hsys.client.cfg.editor.quotation.QuotationEditorPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
+import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.profile.ProfileFilterPresenter;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.QuotationResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.doc.QuotationDto;
@@ -50,16 +57,18 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	private final ResourceDelegate<QuotationResource> resourceDelegate;
 	private final ProfileFilterPresenter filter;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	QuotationBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<QuotationResource> resourceDelegate, CurrentUser currentUser,
-			FilterPresenterFactory filterFactory) {
+			FilterPresenterFactory filterFactory, CoreMessages i18nCore) {
 		super(eventBus, view, placeManager);
 		logger.info("QuotationBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createProfileFilterPresenter();
+		this.i18nCore = i18nCore;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
@@ -75,7 +84,15 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM, this);
+	}
+
+	private String createTargetHistory(String webSafeKey) {
+		return CoreNameTokens.ORGANIZATION_DISPLAY + "?" + ApiParameters.WEBSAFEKEY + "=" + webSafeKey + "&"
+				+ AbstractConfigPresenter.PLACE_PARAM + "=" + OrganizationConfigPresenter.QUOTATIONS;
+	}
+
+	private BreadcrumbConfig createBreadcrumbConfig(String targetHistory) {
+		return new BreadcrumbConfig(3, IconType.VIEW_LIST, i18nCore.quotationBrowserTitle(), targetHistory);
 	}
 
 	@Override
@@ -83,6 +100,10 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<QuotationDto>>() {
 			@Override
 			public void onSuccess(List<QuotationDto> result) {
+				SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM,
+						QuotationBrowserPresenter.this);
+				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(createTargetHistory(getWebSafeKey())),
+						QuotationBrowserPresenter.this);
 				/*
 				 * if ((filter.getCode() != null) && (!filter.getCode().isEmpty())) result =
 				 * result.stream().filter(org -> org.getCode().contains(filter.getCode()))

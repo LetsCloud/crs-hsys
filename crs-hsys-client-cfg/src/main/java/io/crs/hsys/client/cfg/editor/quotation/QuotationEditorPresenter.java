@@ -20,6 +20,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
@@ -34,8 +35,10 @@ import io.crs.hsys.client.core.datasource.OrganizationDataSource2;
 import io.crs.hsys.client.core.datasource.QuotationStatusDataSource;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
+import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.QuotationResource;
@@ -189,6 +192,18 @@ public class QuotationEditorPresenter
 		logger.info("QuotationEditorPresenter().start()->WEBSAFEKEY=" + filters.get(WEBSAFEKEY));
 	}
 
+	private String createNewTargetHistory() {
+		return CoreNameTokens.QUOTATION_CREATOR;
+	}
+
+	private String createModifyTargetHistory(String webSafeKey) {
+		return CoreNameTokens.QUOTATION_CREATOR + "?" + ApiParameters.WEBSAFEKEY + "=" + webSafeKey;
+	}
+
+	private BreadcrumbConfig createBreadcrumbConfig(String text, String targetHistory) {
+		return new BreadcrumbConfig(4, IconType.VIEW_QUILT, text, targetHistory);
+	}
+
 	@Override
 	protected QuotationDto createDto() {
 		String description = "";
@@ -199,7 +214,10 @@ public class QuotationEditorPresenter
 			dto.setOrganization(organization);
 			description = organization.getCode() + " - " + organization.getName();
 		}
+
 		SetPageTitleEvent.fire(i18nCore.quotationEditorCreateTitle(), description, MenuItemType.MENU_ITEM,
+				QuotationEditorPresenter.this);
+		SetBreadcrumbsEvent.fire(createBreadcrumbConfig("NEW", createNewTargetHistory()),
 				QuotationEditorPresenter.this);
 		return dto;
 	}
@@ -212,6 +230,8 @@ public class QuotationEditorPresenter
 						dto.getCode() + " / " + dto.getOrganization().getCode() + " - "
 								+ dto.getOrganization().getName(),
 						MenuItemType.MENU_ITEM, QuotationEditorPresenter.this);
+				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(dto.getCode(), createModifyTargetHistory(webSafeKey)),
+						QuotationEditorPresenter.this);
 				getView().edit(dto);
 			}
 

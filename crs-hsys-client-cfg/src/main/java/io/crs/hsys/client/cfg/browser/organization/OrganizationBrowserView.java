@@ -40,7 +40,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 	*/
 	@Inject
 	OrganizationBrowserView(AbstractBrowserView<OrganizationDtor> table, CoreMessages i18nCore) {
-		logger.info("CustomerBrowserView()");
+		logger.info("OrganizationBrowserView()");
 
 		initWidget(table);
 
@@ -117,6 +117,11 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 
 	@Override
 	public void setData(List<OrganizationDtor> data) {
+		logger.info("OrganizationBrowserView().setData()");
+		if (data == null) {
+			logger.info("OrganizationBrowserView().setData()->data==null");
+			return;
+		}
 		table.setData(data);
 	}
 }

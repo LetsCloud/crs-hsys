@@ -44,7 +44,7 @@ public class OrganizationConfigPresenter
 
 	public static final String GENERAL_DATA = "generalData";
 	public static final String QUOTATIONS = "quotattions";
-
+	
 	interface MyView extends AbstractConfigPresenter.MyView {
 	}
 
@@ -108,7 +108,7 @@ public class OrganizationConfigPresenter
 		logger.info("OrganizationConfigPresenter().onReveal()");
 		loadOrganizationData();
 	}
-
+	
 	private void loadOrganizationData() {
 		logger.info("OrganizationConfigPresenter().loadOrganizationData()->webSafeKey=" + webSafeKey);
 		resourceDelegate.withCallback(new AsyncCallback<OrganizationDto>() {

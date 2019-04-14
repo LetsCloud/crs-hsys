@@ -17,13 +17,19 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+import gwt.material.design.client.constants.IconType;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.client.cfg.config.profile.ProfileConfigPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
+import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.profile.ProfileFilterPresenter;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.OrganizationResource;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
@@ -46,16 +52,18 @@ public class OrganizationBrowserPresenter
 
 	private final ResourceDelegate<OrganizationResource> resourceDelegate;
 	private final ProfileFilterPresenter filter;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	OrganizationBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<OrganizationResource> resourceDelegate, CurrentUser currentUser,
-			FilterPresenterFactory filterFactory) {
+			FilterPresenterFactory filterFactory, CoreMessages i18nCore) {
 		super(eventBus, view, placeManager);
 		logger.info("OrganizationBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createProfileFilterPresenter();
+		this.i18nCore = i18nCore;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
@@ -85,6 +93,11 @@ public class OrganizationBrowserPresenter
 							.collect(Collectors.toList());
 
 				getView().setData(result);
+				
+				SetBreadcrumbsEvent.fire(new BreadcrumbConfig(1, IconType.VIEW_LIST,
+						i18nCore.organizationBrowserTitle(), CoreNameTokens.PROFILE_CONFIG + "?"
+								+ AbstractConfigPresenter.PLACE_PARAM + "=" + ProfileConfigPresenter.ORGANIZATIONS),
+						OrganizationBrowserPresenter.this);
 			}
 		}).list();
 	}
@@ -113,6 +126,7 @@ public class OrganizationBrowserPresenter
 	public void onFilterChange(FilterChangeEvent event) {
 		loadData();
 	}
+
 	@Override
 	protected TableType getTableType() {
 		return TableType.ORGANIZATION;
