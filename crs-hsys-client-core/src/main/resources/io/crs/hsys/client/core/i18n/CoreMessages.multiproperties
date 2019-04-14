@@ -1728,13 +1728,22 @@
             <Value>ORGANIZATION EDITOR</Value>
         </Comment>
         <Property>
-            <Name>organizationEditorTitle</Name>
+            <Name>organizationEditorDisplayTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Edit Organization Profile</Value>
-            <Value disabled="false">Edit Organization Profile</Value>
-            <Value disabled="false">Szervezet profile szerkesztése</Value>
-            <Value disabled="false">Edit Organization Profile</Value>
+            <Value disabled="false">Organization Profile</Value>
+            <Value disabled="false">Organization Profile</Value>
+            <Value disabled="false">Szervezet profil</Value>
+            <Value disabled="false">Organization Profile</Value>
+        </Property>
+        <Property>
+            <Name>organizationEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Organization Profile</Value>
+            <Value disabled="false">Modify Organization Profile</Value>
+            <Value disabled="false">Szervezet profil módosítás</Value>
+            <Value disabled="false">Modify Organization Profile</Value>
         </Property>
         <Property>
             <Name>organizationEditorDescription</Name>

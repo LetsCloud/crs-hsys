@@ -21,7 +21,6 @@ import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
-import io.crs.hsys.client.cfg.CfgNameTokens;
 import io.crs.hsys.client.cfg.display.organization.OrganizationConfigPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.config.AbstractConfigPresenter;
@@ -30,6 +29,7 @@ import io.crs.hsys.client.core.editor.AbstractEditorPresenterWidget;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.ApiParameters;
@@ -63,11 +63,12 @@ public final class OrganizationEditorPresenter
 	private final ResourceDelegate<OrganizationResource> resourceDelegate;
 	private final ProfileGroupDataSource profileGroupDataSource;
 	private final CurrentUser currentUser;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	OrganizationEditorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<OrganizationResource> resourceDelegate, ProfileGroupDataSource profileGroupDataSource,
-			CurrentUser currentUser) {
+			CurrentUser currentUser, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view);
 		logger.info("OrganizationEditorPresenter()");
 
@@ -75,6 +76,7 @@ public final class OrganizationEditorPresenter
 		this.resourceDelegate = resourceDelegate;
 		this.profileGroupDataSource = profileGroupDataSource;
 		this.currentUser = currentUser;
+		this.i18nCore = i18nCore;
 
 		getView().setUiHandlers(this);
 	}
@@ -125,16 +127,19 @@ public final class OrganizationEditorPresenter
 		resourceDelegate.withCallback(new AsyncCallback<OrganizationDto>() {
 			@Override
 			public void onSuccess(OrganizationDto dto) {
-				SetPageTitleEvent.fire(dto.getCode(), dto.getName(), MenuItemType.MENU_ITEM,
+				String title = null;
+				if (getReadOnly()) {
+					getView().show(dto);
+					title = i18nCore.organizationEditorDisplayTitle();
+				} else {
+					getView().edit(dto);
+					title = i18nCore.organizationEditorModifyTitle();
+				}
+
+				SetPageTitleEvent.fire(title, dto.getName(), MenuItemType.MENU_ITEM,
 						OrganizationEditorPresenter.this);
 				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(dto.getCode(), createTargetHistory(webSafeKey)),
 						OrganizationEditorPresenter.this);
-
-				if (getReadOnly()) {
-					getView().show(dto);
-				} else {
-					getView().edit(dto);
-				}
 			}
 
 			@Override
@@ -156,7 +161,7 @@ public final class OrganizationEditorPresenter
 
 //				eventBus.fireEvent(new CommunicationActionEvent(CommunicationActionEvent.Action.CLOSE, -1));
 
-				Builder placeBuilder = new Builder().nameToken(CfgNameTokens.ORGANIZATION_DISPLAY);
+				Builder placeBuilder = new Builder().nameToken(CoreNameTokens.ORGANIZATION_DISPLAY);
 				placeBuilder.with(ApiParameters.WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
 				placeManager.revealPlace(placeBuilder.build());
 

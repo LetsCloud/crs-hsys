@@ -246,7 +246,7 @@ public class QuotationEditorPresenter
 		resourceDelegate.withCallback(new AsyncCallback<QuotationDto>() {
 			@Override
 			public void onSuccess(QuotationDto dto) {
-				Builder placeBuilder = new Builder().nameToken(CfgNameTokens.ORGANIZATION_DISPLAY);
+				Builder placeBuilder = new Builder().nameToken(CoreNameTokens.ORGANIZATION_DISPLAY);
 				placeBuilder.with(ApiParameters.WEBSAFEKEY, String.valueOf(dto.getWebSafeKey()));
 				placeBuilder.with(AbstractConfigPresenter.PLACE_PARAM, OrganizationConfigPresenter.QUOTATIONS);
 				placeManager.revealPlace(placeBuilder.build());

@@ -651,7 +651,7 @@ public interface CoreMessages extends Messages {
 	/*
 	 * ORGANIZATION CONFIG
 	 */
-	@DefaultMessage("Organizations")
+	@DefaultMessage("Organizations Data")
 	String organizationConfigTitle();
 
 	@DefaultMessage("Organizations ...")
@@ -704,8 +704,11 @@ public interface CoreMessages extends Messages {
 	/*
 	 * ORGANIZATION EDITOR
 	 */
-	@DefaultMessage("Edit Organization Profile")
-	String organizationEditorTitle();
+	@DefaultMessage("Display Organization Profile")
+	String organizationEditorDisplayTitle();
+
+	@DefaultMessage("Modify Organization Profile")
+	String organizationEditorModifyTitle();
 
 	@DefaultMessage("General Data")
 	String organizationEditorDescription();

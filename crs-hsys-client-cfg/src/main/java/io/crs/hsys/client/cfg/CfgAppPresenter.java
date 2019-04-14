@@ -78,6 +78,24 @@ public class CfgAppPresenter extends AbstractAppPresenter<CfgAppPresenter.MyProx
 		menuItems.add(dasboardMenuItem);
 
 		// *********************
+		// Office functions
+		// *********************
+		MenuItemDto officeSubMenu = new MenuItemDto();
+		officeSubMenu.setIndex(2);
+		officeSubMenu.setType(MenuItemType.SUB_MENU);
+		officeSubMenu.setIcon(IconType.DESCRIPTION.name());
+		officeSubMenu.setText(i18n.mainMenuOffice());
+		officeSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(officeSubMenu);
+
+		MenuItemDto organizationsMenuItem = new MenuItemDto();
+		organizationsMenuItem.setIndex(1);
+		organizationsMenuItem.setType(MenuItemType.MENU_ITEM);
+		organizationsMenuItem.setText(i18n.menuItemOrganizations());
+		organizationsMenuItem.setNameToken(CoreNameTokens.ORGANIZATIONS);
+		officeSubMenu.addItem(organizationsMenuItem);
+
+		// *********************
 		// Common configurations
 		// *********************
 		MenuItemDto commonConfigSubMenu = new MenuItemDto();

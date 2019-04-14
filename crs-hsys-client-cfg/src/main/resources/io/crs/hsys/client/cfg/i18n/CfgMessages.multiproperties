@@ -12,13 +12,13 @@
             <Name>default</Name>
             <Description></Description>
             <Width>150</Width>
-            <HandlerConfiguration>/crs-hsys-client-cfg/src/main/resources/io/crs/hsys/client/cfg/i18n/CfgMessages.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-cfg/src/main/resources/io/crs/hsys/client/cfg/i18n/CfgMessages.properties|false|false|false|false|UTF-8</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hu_HU</Name>
             <Description></Description>
             <Width>1306</Width>
-            <HandlerConfiguration>/crs-hsys-client-cfg/src/main/resources/io/crs/hsys/client/cfg/i18n/CfgMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/crs-hsys-client-cfg/src/main/resources/io/crs/hsys/client/cfg/i18n/CfgMessages_hu.properties|false|false|false|false|UTF-8</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
@@ -31,6 +31,20 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Dashboard</Value>
             <Value disabled="false">Vezérlőpult</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuOffice</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Office</Value>
+            <Value disabled="false">Iroda</Value>
+        </Property>
+        <Property>
+            <Name>menuItemOrganizations</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Organizations</Value>
+            <Value disabled="false">Szervezetek</Value>
         </Property>
         <Property>
             <Name>mainMenuCommonConfig</Name>

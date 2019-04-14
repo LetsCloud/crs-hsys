@@ -17,6 +17,7 @@ import io.crs.hsys.client.cfg.dashboard.DashboardModule;
 import io.crs.hsys.client.cfg.display.contact.ContactConfigModule;
 import io.crs.hsys.client.cfg.display.organization.OrganizationConfigModule;
 import io.crs.hsys.client.cfg.editor.quotation.QuotationEditorModule;
+import io.crs.hsys.client.cfg.page.organizations.OrganizationsPageModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 import io.crs.hsys.client.core.resources.ThemeParams;
 
@@ -42,11 +43,13 @@ public class CfgClientModule extends AbstractPresenterModule {
 
 		install(new OrganizationConfigModule());
 		install(new OrganizationCreateModule());
-		
+
 		install(new QuotationBrowserModule());
 		install(new QuotationEditorModule());
 
 		install(new ContactConfigModule());
 		install(new ContactCreateModule());
+
+		install(new OrganizationsPageModule());
 	}
 }

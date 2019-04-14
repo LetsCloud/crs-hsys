@@ -20,10 +20,12 @@ public class CfgNameTokens {
 	public static final String ROLE_CONFIG = "/roleconfig";
 
 	public static final String PROFILE_CONFIG = "/profleConfig";
+/*
+	public static final String ORGANIZATIONS = "/organizations";
 	public static final String ORGANIZATION_CREATOR = "/organizationCreator";
-	public static final String CUSTOMER_EDITOR = "/customerEditor";
-	public static final String CONTACT_CREATOR = "/contactCreator";
 	public static final String ORGANIZATION_DISPLAY = "/organizationDisplay";
+*/
+	public static final String CONTACT_CREATOR = "/contactCreator";
 	public static final String CONTACT_DISPLAY = "/contactDisplay";
 
 	// Hotel configurations

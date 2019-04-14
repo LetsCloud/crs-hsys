@@ -20,6 +20,7 @@ public class CoreNameTokens {
 	public static final String TASK_TYPE_EDITOR = "/taskTypeEditor";
 	public static final String TASK_EDITOR = "/taskEditor";
 
+	public static final String ORGANIZATIONS = "/organizations";
 	public static final String ORGANIZATION_CREATOR = "/organizationCreator";
 	public static final String ORGANIZATION_DISPLAY = "/organizationDisplay";
 

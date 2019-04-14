@@ -17,6 +17,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 import io.crs.hsys.client.core.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.core.event.RefreshTableEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
+import io.crs.hsys.client.core.model.BreadcrumbConfig;
 import io.crs.hsys.shared.dto.BaseDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
@@ -50,6 +51,7 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	 * A megjelenítő komponens felirat.
 	 */
 	private String caption;
+	private BreadcrumbConfig breadcrumbConfig;
 	private Map<String, String> filters = new HashMap<String, String>();
 	private final PlaceManager placeManager;
 
@@ -182,4 +184,13 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 	protected String getFilter(String key) {
 		return filters.get(key);
 	}
+
+	public BreadcrumbConfig getBreadcrumbConfig() {
+		return breadcrumbConfig;
+	}
+
+	public void setBreadcrumbConfig(BreadcrumbConfig breadcrumbConfig) {
+		this.breadcrumbConfig = breadcrumbConfig;
+	}
+	
 }

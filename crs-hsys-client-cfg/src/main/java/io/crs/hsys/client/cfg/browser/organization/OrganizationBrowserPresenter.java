@@ -65,6 +65,10 @@ public class OrganizationBrowserPresenter
 		this.filter = filterFactory.createProfileFilterPresenter();
 		this.i18nCore = i18nCore;
 
+		setBreadcrumbConfig(new BreadcrumbConfig(1, IconType.VIEW_LIST, i18nCore.organizationBrowserTitle(),
+				CoreNameTokens.PROFILE_CONFIG + "?" + AbstractConfigPresenter.PLACE_PARAM + "="
+						+ ProfileConfigPresenter.ORGANIZATIONS));
+
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
 		getView().setUiHandlers(this);
@@ -93,11 +97,8 @@ public class OrganizationBrowserPresenter
 							.collect(Collectors.toList());
 
 				getView().setData(result);
-				
-				SetBreadcrumbsEvent.fire(new BreadcrumbConfig(1, IconType.VIEW_LIST,
-						i18nCore.organizationBrowserTitle(), CoreNameTokens.PROFILE_CONFIG + "?"
-								+ AbstractConfigPresenter.PLACE_PARAM + "=" + ProfileConfigPresenter.ORGANIZATIONS),
-						OrganizationBrowserPresenter.this);
+
+				SetBreadcrumbsEvent.fire(getBreadcrumbConfig(), OrganizationBrowserPresenter.this);
 			}
 		}).list();
 	}
