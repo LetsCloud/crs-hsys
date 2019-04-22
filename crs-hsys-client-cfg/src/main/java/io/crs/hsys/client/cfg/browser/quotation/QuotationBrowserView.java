@@ -22,7 +22,6 @@ import gwt.material.design.client.ui.table.cell.Column;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
 
-import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -70,9 +69,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		this.browserView = browserView;
 		this.currentUser = currentUser;
 		this.i18nCore = i18nCore;
+
+		bindSlot(QuotationBrowserPresenter.SLOT_FILTER, browserView.getFilterPanel());
+
 		init();
 
-		bindSlot(OrganizationBrowserPresenter.SLOT_FILTER, browserView.getFilterPanel());
 	}
 
 	private void init() {
