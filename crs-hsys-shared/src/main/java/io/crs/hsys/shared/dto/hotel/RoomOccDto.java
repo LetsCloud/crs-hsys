@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.hotel;
 
-import io.crs.hsys.shared.constans.OccStatus;
+import io.crs.hsys.shared.cnst.OccStatus;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.hk.GuestNumber;
 

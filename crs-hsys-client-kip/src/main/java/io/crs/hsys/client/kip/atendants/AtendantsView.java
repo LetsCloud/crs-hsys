@@ -16,7 +16,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.ui.table.MaterialList;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hk.AssignmentSummaryDto;
 import io.crs.hsys.client.kip.atendants.widget.AtendantWidget;
 

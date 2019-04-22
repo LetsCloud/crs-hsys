@@ -32,7 +32,7 @@ import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.security.HasPermissionsGatekeeper;
 import io.crs.hsys.client.core.util.UrlUtils;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 

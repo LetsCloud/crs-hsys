@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.CityTaxBase;
+import io.crs.hsys.shared.cnst.CityTaxBase;
 
 /**
  * IFA mérték.

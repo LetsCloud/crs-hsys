@@ -36,6 +36,7 @@ public class LoggedInChecker {
 	 * @return
 	 */
 	public AppUser getLoggedInUser() {
+		logger.info("getLoggedInUser()");
 		AppUser appUser = null;
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -48,6 +49,8 @@ public class LoggedInChecker {
 				AppUserDto dto = userDetails.getAppUserDto();
 				try {
 					appUser = modelMapper.map(dto, AppUser.class);
+					logger.info("getLoggedInUser()-1");
+					return appUser;
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}
@@ -59,8 +62,11 @@ public class LoggedInChecker {
 				appUser = new AppUser();
 				appUser.setEmailAddress(gaeUser.getEmail());
 				appUser.setName(gaeUser.getNickname());
+				logger.info("getLoggedInUser()-2");
+				return appUser;
 			}
 		}
+		logger.info("getLoggedInUser()-3");
 		return appUser;
 	}
 }

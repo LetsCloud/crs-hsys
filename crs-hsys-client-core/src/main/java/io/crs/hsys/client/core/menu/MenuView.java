@@ -38,7 +38,7 @@ import gwt.material.design.client.ui.MaterialSideNavPush;
 import gwt.material.design.client.ui.MaterialToast;
 
 import io.crs.hsys.client.core.event.ContentPushEvent.MenuState;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 

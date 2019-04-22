@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import io.crs.hsys.server.entity.BaseEntity;
+import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.server.service.CrudService;
@@ -55,11 +56,11 @@ public abstract class CrudController<T extends BaseEntity, D extends BaseDto> ex
 	public ResponseEntity<List<D>> getAll() {
 		List<D> dtos = new ArrayList<D>();
 
-		AppUser appUser = userService.getCurrentUser();
-		if (appUser == null)
+		Account currentAccount = getCurrentAccount();
+		if (currentAccount == null)
 			return new ResponseEntity<List<D>>(dtos, OK);
 
-		String accountWebSafeKey = appUser.getAccount().getWebSafeKey();
+		String accountWebSafeKey = currentAccount.getWebSafeKey();
 		if (accountWebSafeKey == null)
 			return new ResponseEntity<List<D>>(dtos, OK);
 
@@ -130,7 +131,9 @@ public abstract class CrudController<T extends BaseEntity, D extends BaseDto> ex
 	}
 
 	public void delete(String webSafeKey) throws RestApiException {
+		logger.info("CrudController().delete()->webSafeKey=" + webSafeKey);
 		try {
+			logger.info("CrudController().delete()2->webSafeKey=" + webSafeKey);
 			service.delete(webSafeKey);
 		} catch (Throwable e) {
 			throw new RestApiException(e);
@@ -159,4 +162,9 @@ public abstract class CrudController<T extends BaseEntity, D extends BaseDto> ex
 		return new ResponseEntity<List<D>>(dtos, HttpStatus.OK);
 	}
 
+	public Account getCurrentAccount() {
+		if (userService.getCurrentUser() == null)
+			return null;
+		return userService.getCurrentUser().getAccount();
+	}
 }

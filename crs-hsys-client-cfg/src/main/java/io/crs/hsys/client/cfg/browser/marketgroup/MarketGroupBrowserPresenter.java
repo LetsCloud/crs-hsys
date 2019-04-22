@@ -18,11 +18,12 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.cfg.meditor.marketgroup.MarketGroupEditorFactory;
 import io.crs.hsys.client.cfg.meditor.marketgroup.MarketGroupEditorPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.hotelchild.HotelChildFilterPresenter;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.MarketGroupResource;
 import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
 
@@ -30,7 +31,8 @@ import io.crs.hsys.shared.dto.hotel.MarketGroupDto;
  * @author robi
  *
  */
-public class MarketGroupBrowserPresenter extends AbstractBrowserPresenter<MarketGroupDto, MarketGroupBrowserPresenter.MyView>
+public class MarketGroupBrowserPresenter
+		extends AbstractBrowserPresenter<MarketGroupDto, MarketGroupBrowserPresenter.MyView>
 		implements MarketGroupBrowserUiHandlers {
 	private static Logger logger = Logger.getLogger(MarketGroupBrowserPresenter.class.getName());
 
@@ -111,5 +113,10 @@ public class MarketGroupBrowserPresenter extends AbstractBrowserPresenter<Market
 	protected String getEditorNameToken() {
 // TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.MARKET_GROUP;
 	}
 }

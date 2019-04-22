@@ -27,8 +27,8 @@ import io.crs.hsys.client.kip.assignments.widget.AssignmentWidgetFactory;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
-import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 

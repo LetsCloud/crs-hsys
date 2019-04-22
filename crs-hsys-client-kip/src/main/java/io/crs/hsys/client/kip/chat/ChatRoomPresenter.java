@@ -29,7 +29,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
 import io.crs.hsys.client.core.util.Base64Utils;
 import io.crs.hsys.shared.api.FcmResource;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.chat.creator.ChatCreatorFactory;

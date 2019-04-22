@@ -19,7 +19,7 @@ import io.crs.hsys.client.cfg.CfgNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 
 /**
  * @author CR

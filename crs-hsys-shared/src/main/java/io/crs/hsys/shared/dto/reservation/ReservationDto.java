@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.reservation;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.ReservationStatus;
+import io.crs.hsys.shared.cnst.ReservationStatus;
 import io.crs.hsys.shared.dto.common.CurrencyDto;
 import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.MarketCodeDto;

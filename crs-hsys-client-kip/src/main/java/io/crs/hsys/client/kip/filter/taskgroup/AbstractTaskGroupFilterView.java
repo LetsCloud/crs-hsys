@@ -11,7 +11,7 @@ import gwt.material.design.client.ui.MaterialChip;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi
@@ -61,10 +61,10 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 		if (visible)
 			chip.setText(i18nCoreCnst.taskKindMap().get(taskKind.toString()));
 	}
-	
+
 	protected void setTaskKindLayout() {
 		taskKindComboBox.setGrid("s12 m6");
-		controlPanel.add(taskKindComboBox);		
+		controlPanel.add(taskKindComboBox);
 	};
 
 	@Override
@@ -82,7 +82,9 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 
 	@Override
 	public TaskKind getSelectedTaskKind() {
-		return taskKindComboBox.getSelectedValue().get(0);
+		if (!taskKindComboBox.getSelectedValue().isEmpty())
+			return taskKindComboBox.getSelectedValue().get(0);
+		return null;
 	}
 
 	@Override

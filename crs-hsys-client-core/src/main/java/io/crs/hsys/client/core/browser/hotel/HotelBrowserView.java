@@ -19,9 +19,8 @@ import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
-
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
 import io.crs.hsys.shared.dto.hotel.HotelDto;
 
 /**

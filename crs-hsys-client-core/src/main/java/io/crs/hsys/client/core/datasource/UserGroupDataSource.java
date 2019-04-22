@@ -14,8 +14,7 @@ import gwt.material.design.client.data.DataSource;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
-
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.UserGroupResource;
 import io.crs.hsys.shared.dto.common.UserGroupDto;
 

@@ -23,7 +23,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 

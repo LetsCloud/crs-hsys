@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
-import io.crs.hsys.shared.constans.GlobalParam;
+import io.crs.hsys.shared.cnst.GlobalParam;
 
 /**
  * @author robi

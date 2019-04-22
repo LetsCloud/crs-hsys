@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;

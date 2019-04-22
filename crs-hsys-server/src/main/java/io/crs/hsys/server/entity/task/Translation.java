@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.server.entity.task;
 
-import io.crs.hsys.shared.constans.Language;
+import io.crs.hsys.shared.cnst.Language;
 
 /**
  * @author robi

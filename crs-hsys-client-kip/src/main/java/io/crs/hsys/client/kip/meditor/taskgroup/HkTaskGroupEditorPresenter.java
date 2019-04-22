@@ -5,16 +5,17 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 public class HkTaskGroupEditorPresenter extends TaskGroupEditorPresenter {
 
 	@Inject
 	HkTaskGroupEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskGroupResource> resourceDelegate,
-			CurrentUser currentUser) {
-		super(eventBus, view, resourceDelegate, currentUser);
+			CurrentUser currentUser, CoreMessages i18nCore) {
+		super(eventBus, view, resourceDelegate, currentUser, i18nCore);
 	}
 
 	public interface MyView extends TaskGroupEditorPresenter.MyView {

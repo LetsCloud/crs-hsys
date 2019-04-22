@@ -6,9 +6,9 @@ package io.crs.hsys.client.kip.roomstatus;
 import gwt.material.design.addext.client.ui.constants.MdiType;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconType;
-import io.crs.hsys.shared.constans.OccStatus;
-import io.crs.hsys.shared.constans.RoomStatus;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.OccStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi

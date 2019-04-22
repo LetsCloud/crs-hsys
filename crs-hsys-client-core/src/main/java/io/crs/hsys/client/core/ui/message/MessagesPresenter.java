@@ -9,6 +9,7 @@ import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.message.MessageData;
 
 /**
  * @author CR
@@ -18,7 +19,7 @@ public class MessagesPresenter extends PresenterWidget<MessagesPresenter.MyView>
 		implements DisplayMessageEvent.DisplayMessageHandler {
 	
 	interface MyView extends View {
-		void addMessage(Message message);
+		void addMessage(MessageData message);
 	}
 
 	@Inject

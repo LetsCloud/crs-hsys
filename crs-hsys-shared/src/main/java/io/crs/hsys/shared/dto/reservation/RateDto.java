@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.CityTaxMethod;
+import io.crs.hsys.shared.cnst.CityTaxMethod;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.CurrencyDto;
 import io.crs.hsys.shared.dto.hotel.RateElementDto;

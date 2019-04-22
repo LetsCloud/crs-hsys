@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.googlecode.objectify.annotation.Subclass;
 
-import io.crs.hsys.shared.constans.Gender;
+import io.crs.hsys.shared.cnst.Gender;
 import io.crs.hsys.shared.dto.profile.StructuredName;
 
 /**

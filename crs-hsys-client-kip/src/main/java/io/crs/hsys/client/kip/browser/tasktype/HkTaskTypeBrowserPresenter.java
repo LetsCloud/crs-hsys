@@ -13,7 +13,7 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.kip.editor.tasktype.TaskTypeEditorPresenter;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
 import io.crs.hsys.shared.api.TaskTypeResource;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi

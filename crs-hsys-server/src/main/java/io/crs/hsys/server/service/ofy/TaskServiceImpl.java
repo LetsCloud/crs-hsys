@@ -25,8 +25,9 @@ import io.crs.hsys.server.repository.AccountRepository;
 import io.crs.hsys.server.repository.TaskRepository;
 import io.crs.hsys.server.security.LoggedInChecker;
 import io.crs.hsys.server.service.TaskService;
-import io.crs.hsys.shared.constans.TaskNoteType;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.Constants;
+import io.crs.hsys.shared.cnst.TaskNoteType;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.exception.RestApiException;
 
 /**
@@ -210,7 +211,7 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 		}
 
 		protected String getNoPrevNote() {
-			return "-";
+			return Constants.NO_PREV_NOTE;
 		};
 
 		protected Task modifyTask(Task task) {

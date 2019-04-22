@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 
 /**
  * @author robi

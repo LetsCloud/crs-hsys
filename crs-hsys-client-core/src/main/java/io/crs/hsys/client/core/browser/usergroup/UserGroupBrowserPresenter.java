@@ -15,11 +15,12 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.meditor.usergroup.UserGroupEditorFactory;
 import io.crs.hsys.client.core.meditor.usergroup.UserGroupEditorPresenter;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.UserGroupResource;
 import io.crs.hsys.shared.dto.common.UserGroupDto;
 
@@ -99,4 +100,10 @@ public class UserGroupBrowserPresenter extends AbstractBrowserPresenter<UserGrou
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	protected TableType getTableType() {
+		return TableType.USER_GROUP;
+	}
+	
 }

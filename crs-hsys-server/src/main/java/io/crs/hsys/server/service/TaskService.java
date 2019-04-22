@@ -7,7 +7,7 @@ import java.util.List;
 
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.task.Task;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.exception.RestApiException;
 
 /**

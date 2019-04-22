@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.AssignmentStatus;
+import io.crs.hsys.shared.cnst.AssignmentStatus;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

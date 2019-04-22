@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.menu;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 
 /**

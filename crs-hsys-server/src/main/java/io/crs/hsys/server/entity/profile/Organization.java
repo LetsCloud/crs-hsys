@@ -52,5 +52,4 @@ public class Organization extends Profile {
 		return "Organization:[code=" + code + ", taxNumber=" + taxNumber + ", euTaxNumber=" + euTaxNumber + "]>>"
 				+ super.toString();
 	}
-
 }

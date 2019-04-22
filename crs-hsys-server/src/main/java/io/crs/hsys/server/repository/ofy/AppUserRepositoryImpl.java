@@ -4,20 +4,17 @@
 package io.crs.hsys.server.repository.ofy;
 
 import java.util.List;
-import java.util.logging.Logger;
-
-import com.googlecode.objectify.Key;
 
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.repository.AppUserRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author robi
  *
  */
-public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implements AppUserRepository {
-	private static final Logger LOGGER = Logger.getLogger(AppUserRepositoryImpl.class.getName());
+public class AppUserRepositoryImpl extends AccountChildRepositoryImpl<AppUser> implements AppUserRepository {
 
 	/**
 	 * 
@@ -43,18 +40,6 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	}
 
 	@Override
-	protected Object getParent(AppUser entity) {
-		return entity.getAccount();
-	}
-
-	@Override
-	public String getAccountId(String webSafeString) {
-		LOGGER.info("getAccountId->id=" + webSafeString);
-		Key<AppUser> key = getKey(webSafeString);
-		return key.getParent().getString();
-	}
-
-	@Override
 	public List<AppUser> getByAccount(Object account) {
 		return getChildren(account);
 	}
@@ -65,17 +50,18 @@ public class AppUserRepositoryImpl extends CrudRepositoryImpl<AppUser> implement
 	}
 
 	@Override
-	protected Object getParentKey(String parentWebSafeKey) {
-		Key<Account> key = Key.create(parentWebSafeKey);
-		return key;
+	protected void loadUniqueIndexMap(AppUser entiy) {
+		if ((entiy.getEmailAddress() != null) && (!entiy.getEmailAddress().isEmpty()))
+			entiy.addUniqueIndex(PROPERTY_EMAIL, entiy.getEmailAddress(),
+					ExceptionSubType.APPUSER_EMAIL_ALREADY_EXISTS);
+
+		if ((entiy.getUsername() != null) && (!entiy.getUsername().isEmpty()))
+			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername(), ExceptionSubType.APPUSER_CODE_ALREADY_EXISTS);
 	}
 
 	@Override
-	protected void loadUniqueIndexMap(AppUser entiy) {
-		if ((entiy.getEmailAddress() != null) && (!entiy.getEmailAddress().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_EMAIL, entiy.getEmailAddress());
+	protected void prepareForeignKeys(String webSafeKey) {
+		// TODO Auto-generated method stub
 
-		if ((entiy.getUsername() != null) && (!entiy.getUsername().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername());
 	}
 }

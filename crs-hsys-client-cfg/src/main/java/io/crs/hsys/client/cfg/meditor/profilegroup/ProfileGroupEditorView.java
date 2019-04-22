@@ -24,9 +24,12 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
+
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.shared.constans.ProfileType;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
+import io.crs.hsys.shared.cnst.ProfileType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;
 
@@ -64,6 +67,10 @@ public class ProfileGroupEditorView extends ViewWithUiHandlers<ProfileGroupEdito
 
 	@UiField
 	MaterialButton saveButton;
+
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
 
 	private final CfgMessages i18n;
 
@@ -145,5 +152,10 @@ public class ProfileGroupEditorView extends ViewWithUiHandlers<ProfileGroupEdito
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent event) {
 		getUiHandlers().cancel();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

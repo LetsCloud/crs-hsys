@@ -7,19 +7,21 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 
+import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
 import io.crs.hsys.client.core.event.RefreshTableEvent;
-import io.crs.hsys.client.core.gin.CustomActionException;
+import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.TaskGroupResource;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.dto.EntityPropertyCode;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -27,37 +29,44 @@ import io.crs.hsys.shared.dto.task.TaskGroupDto;
  *
  */
 public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroupEditorPresenter.MyView>
-		implements TaskGroupEditorUiHandlers {
+		implements TaskGroupEditorUiHandlers, DisplayMessageHandler {
 	private static Logger logger = Logger.getLogger(TaskGroupEditorPresenter.class.getName());
 
 	public interface MyView extends View, HasUiHandlers<TaskGroupEditorUiHandlers> {
 		void open(Boolean isNew, TaskGroupDto dto);
 
-		void displayError(EntityPropertyCode code, String message);
+		void showMessage(MessageData message);
 
 		void close();
 	}
 
 	private final ResourceDelegate<TaskGroupResource> resourceDelegate;
-
 	private final CurrentUser currentUser;
+	private final CoreMessages i18nCore;
 
 	private Boolean isNew;
 
 	@Inject
 	TaskGroupEditorPresenter(EventBus eventBus, MyView view, ResourceDelegate<TaskGroupResource> resourceDelegate,
-			CurrentUser currentUser) {
+			CurrentUser currentUser, CoreMessages i18nCore) {
 		super(eventBus, view);
+		logger.info("TaskGroupEditorPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
 		this.currentUser = currentUser;
+		this.i18nCore = i18nCore;
 
 		getView().setUiHandlers(this);
 	}
 
 	@Override
+	protected void onBind() {
+		super.onBind();
+		addRegisteredHandler(DisplayMessageEvent.TYPE, this);
+	}
+
+	@Override
 	public void create() {
-		logger.info("create()");
 		isNew = true;
 
 		TaskGroupDto dto = new TaskGroupDto();
@@ -84,47 +93,30 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 	}
 
 	private void createEntity(TaskGroupDto dto) {
-		resourceDelegate.withCallback(new AsyncCallback<TaskGroupDto>() {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				if (caught instanceof CustomActionException) {
-					customMessage((CustomActionException) caught);
-					return;
-				}
-				getView().displayError(EntityPropertyCode.USER_GROUP_NAME, caught.getMessage());
 			}
 		}).saveOrCreate(dto);
 	}
 
 	private void updateEntity(TaskGroupDto dto) {
-		resourceDelegate.withCallback(new AsyncCallback<TaskGroupDto>() {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.USER_GROUP);
+				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
 				getView().close();
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				if (caught instanceof CustomActionException) {
-					customMessage((CustomActionException) caught);
-					return;
-				}
-				getView().displayError(EntityPropertyCode.USER_GROUP_NAME, caught.getMessage());
 			}
 		}).saveOrCreate(dto);
 	}
 
-	private void customMessage(CustomActionException e) {
-		getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-				e.getErDto().getProperty() + "/" + e.getErDto().getExceptionType());
-	}
-	
 	protected abstract TaskKind getDefaultTaskKind();
+
+	@Override
+	public void onDisplayMessage(DisplayMessageEvent event) {
+//		logger.info("TaskGroupEditorPresenter().onDisplayMessage()");
+//		getView().showMessage(event.getMessage());
+	}
 }

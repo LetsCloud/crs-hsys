@@ -8,6 +8,7 @@ import java.util.Map;
 
 import io.crs.hsys.server.entity.BaseEntity;
 import io.crs.hsys.shared.exception.EntityValidationException;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
 /**
@@ -15,8 +16,6 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
  *
  */
 public interface CrudRepository<T extends BaseEntity> {
-
-	String getAccountId(String id);
 
 	/**
 	 * Az entitás mentését végző metódus definiciója.
@@ -33,7 +32,9 @@ public interface CrudRepository<T extends BaseEntity> {
 
 	T findById(Long id);
 
-	void delete(String webSafeString);
+	Boolean isExists(String property, Object value, Object parent);
+
+	void delete(String webSafeKey) throws ForeignKeyConflictException;
 
 	List<T> getAll();
 

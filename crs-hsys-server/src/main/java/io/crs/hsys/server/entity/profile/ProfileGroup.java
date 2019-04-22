@@ -10,7 +10,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
-import io.crs.hsys.shared.constans.ProfileType;
+import io.crs.hsys.shared.cnst.ProfileType;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.ExceptionType;
 

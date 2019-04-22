@@ -5,6 +5,7 @@ package io.crs.hsys.client.kip.browser.task.widget;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
@@ -18,7 +19,8 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialRow;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.shared.constans.TaskNoteType;
+import io.crs.hsys.shared.cnst.Constants;
+import io.crs.hsys.shared.cnst.TaskNoteType;
 import io.crs.hsys.shared.dto.task.TaskNoteDto;
 
 /**
@@ -26,6 +28,7 @@ import io.crs.hsys.shared.dto.task.TaskNoteDto;
  *
  */
 public class TaskNoteWidget extends Composite {
+	private static Logger logger = Logger.getLogger(TaskNoteWidget.class.getName());
 
 	interface Binder extends UiBinder<Widget, TaskNoteWidget> {
 	}
@@ -70,9 +73,13 @@ public class TaskNoteWidget extends Composite {
 	}
 
 	private String createDueDateText(String label, String dueDateMiliSec) {
-		if ((dueDateMiliSec == null) || (dueDateMiliSec.isEmpty()))
+		logger.info("createDueDateText()->label=" + label);
+		logger.info("createDueDateText()->dueDateMiliSec=" + dueDateMiliSec);
+		if ((dueDateMiliSec == null) || (dueDateMiliSec.isEmpty()) || (dueDateMiliSec.equals(Constants.NO_PREV_NOTE)))
 			return label + ": -";
+		logger.info("createDueDateText()->3");
 		Date dueDate = new Date(new Long(dueDateMiliSec));
+		logger.info("createDueDateText()->dueDate=" + dueDate);
 		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd. hh:mm");
 		return label + ": " + fmt.format(dueDate);
 	}

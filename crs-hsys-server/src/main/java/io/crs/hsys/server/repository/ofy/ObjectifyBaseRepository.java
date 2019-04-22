@@ -17,6 +17,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.cmd.Query;
 
 import io.crs.hsys.server.entity.BaseEntity;
+import io.crs.hsys.server.entity.UniqueKey;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -216,7 +217,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param entity
 	 */
 	public void delete(T entity) {
-		ofy().delete().entity(entity);
+		ofy().delete().entity(entity).now();
 	}
 
 	/**
@@ -225,7 +226,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param key
 	 */
 	public void delete(Key<T> key) {
-		ofy().delete().entity(key);
+		ofy().delete().entity(key).now();
 	}
 
 	/**
@@ -234,7 +235,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param entities
 	 */
 	public void delete(List<T> entities) {
-		ofy().delete().entities(entities);
+		ofy().delete().entities(entities).now();
 	}
 
 	/**
@@ -243,7 +244,7 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	 * @param keys
 	 */
 	public void deleteByKeys(List<Key<T>> keys) {
-		ofy().delete().entities(keys);
+		ofy().delete().entities(keys).now();
 	}
 
 	/*************************************
@@ -479,14 +480,14 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 	public void checkUniqueIndexConflict(Object parent, T entity) throws UniqueIndexConflictException {
 //		logger.info("checkUniqueIndexConflict()->entity" + entity);
 		// Az entitás egyedi indexeinek begyűjtése
-		Map<String, Object> uniqueIndexes = entity.getUniqueIndexes();
+		List<UniqueKey> uniqueIndexes = entity.getUniqueIndexes();
 		// A egyedi indexek végigpásztázása
-		for (String property : uniqueIndexes.keySet()) {
-			// Az egyedi kulcs érték kiolvasása
-			Object value = uniqueIndexes.get(property);
+		for (UniqueKey uniqueindex : uniqueIndexes) {
 			// Az egyedi kulcs ütközés vizsgálata
-			if (isUniqueIndexConflict(parent, entity.getWebSafeKey(), property, value)) {
-				throw new UniqueIndexConflictException(entity.getClass().getSimpleName(), property, value);
+			if (isUniqueIndexConflict(parent, entity.getWebSafeKey(), uniqueindex.getProperty(),
+					uniqueindex.getValue())) {
+				throw new UniqueIndexConflictException(uniqueindex.getException(), entity.getClass().getSimpleName(),
+						uniqueindex.getProperty(), uniqueindex.getValue());
 			}
 		}
 	}

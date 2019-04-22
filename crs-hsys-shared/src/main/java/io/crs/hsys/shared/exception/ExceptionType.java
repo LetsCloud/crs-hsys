@@ -29,7 +29,10 @@ public enum ExceptionType implements Serializable {
 
 	FAILD_ENTITIY_VALIDATION,
 
-	UNIQUE_INDEX_CONFLICT,
+	// CRUD MESSAGES
+	CRUD_CANNOT_BE_SAVED,
+
+	CRUD_CANNOT_BE_DELETED,
 
 	UNKNOWN;
 }

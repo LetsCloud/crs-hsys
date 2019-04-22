@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PopupViewWithUiHandlers;
 
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import gwt.material.design.client.ui.MaterialRadioButton;
 

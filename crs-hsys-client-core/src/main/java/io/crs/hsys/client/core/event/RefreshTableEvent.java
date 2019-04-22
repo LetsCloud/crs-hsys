@@ -14,9 +14,10 @@ import com.google.gwt.event.shared.HasHandlers;
 public class RefreshTableEvent extends GwtEvent<RefreshTableEvent.RefreshTableHandler> {
 
 	public enum TableType {
-		APP_USER, USER_GROUP, TASK_TODO;
+		APP_USER, USER_GROUP, TASK_GROUP, TASK_TODO, TASK_TYPE, PROFILE_GROUP, RELATIONSHIP, QUOTATION_STATUS,
+		ORGANIZATION, QUOTATION, CONTACT, MARKET_GROUP, HOTEL, ROOM_TYPE, ROOM;
 	}
-	
+
 	public interface RefreshTableHandler extends EventHandler {
 		void onRefresh(RefreshTableEvent event);
 	}
@@ -24,7 +25,7 @@ public class RefreshTableEvent extends GwtEvent<RefreshTableEvent.RefreshTableHa
 	public static final Type<RefreshTableHandler> TYPE = new Type<>();
 
 	private TableType tableType;
-	
+
 	RefreshTableEvent(TableType tableType) {
 		this.tableType = tableType;
 	}

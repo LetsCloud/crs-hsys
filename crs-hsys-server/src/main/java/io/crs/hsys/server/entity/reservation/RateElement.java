@@ -7,8 +7,8 @@ import com.googlecode.objectify.Ref;
 
 import io.crs.hsys.server.entity.common.Currency;
 import io.crs.hsys.server.entity.common.Service;
-import io.crs.hsys.shared.constans.RateBase;
-import io.crs.hsys.shared.constans.RatePostingRhythm;
+import io.crs.hsys.shared.cnst.RateBase;
+import io.crs.hsys.shared.cnst.RatePostingRhythm;
 
 /**
  * Árkód összetevő.

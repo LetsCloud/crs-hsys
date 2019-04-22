@@ -22,7 +22,7 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.kip.browser.task.TaskActionEvent;
 import io.crs.hsys.client.kip.browser.task.TaskActionEvent.TaskActionEventHandler;
 import io.crs.hsys.shared.api.TaskResource;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**

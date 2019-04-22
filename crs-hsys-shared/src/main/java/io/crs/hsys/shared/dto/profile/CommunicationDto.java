@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.profile;
 
-import io.crs.hsys.shared.constans.CommMode;
+import io.crs.hsys.shared.cnst.CommMode;
 import io.crs.hsys.shared.dto.Dto;
 
 /**

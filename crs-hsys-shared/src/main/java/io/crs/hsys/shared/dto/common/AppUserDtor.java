@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.UserPerm;
 
 /**
  * @author robi

@@ -80,6 +80,8 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 
 	@Override
 	public TaskGroupDto getSelectedTaskGroup() {
-		return taskGroupComboBox.getSelectedValue().get(0);
+		if (!taskGroupComboBox.getSelectedValue().isEmpty())
+			return taskGroupComboBox.getSelectedValue().get(0);
+		return null;
 	}
 }

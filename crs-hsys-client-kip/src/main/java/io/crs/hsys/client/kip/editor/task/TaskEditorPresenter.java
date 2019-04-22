@@ -38,9 +38,9 @@ import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.TaskResource;
-import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.constans.TaskStatus;
+import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.TaskKind;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
@@ -123,7 +123,7 @@ public class TaskEditorPresenter
 			public void onSuccess(LoadResult<TaskTypeDto> loadResult) {
 				taskTypes = loadResult.getData();
 				filterTaskTypes(TaskKind.TK_CLEANING);
-				if ((appUserDataSource.getIsLoaded()) && (roomDataSource.getIsLoaded()))
+				if ((appUserDataSource.isLoaded()) && (roomDataSource.getIsLoaded()))
 					start();
 			}
 
@@ -163,7 +163,7 @@ public class TaskEditorPresenter
 			@Override
 			public void onSuccess(LoadResult<RoomDto> loadResult) {
 				getView().setRoomData(loadResult.getData());
-				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.getIsLoaded()))
+				if ((taskTypeDataSource.getIsLoaded()) && (appUserDataSource.isLoaded()))
 					start();
 			}
 

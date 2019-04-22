@@ -902,19 +902,6 @@ input:-webkit-autofill {
 
 /** Fixed breadcrumb **/
 
-.breadcrumb i{
-	float: none !important;
-	margin-right: 15px;
-}
-
-.breadcrumb span {
-	vertical-align: top;
-}
-
-.breadcrumb:nth-child(2):before {
-	display: none;
-}
-
 .picker__close, .picker__today, .picker__clear {
 	white-space: nowrap;
 	overflow: hidden;

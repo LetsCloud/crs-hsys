@@ -3,8 +3,8 @@
  */
 package io.crs.hsys.shared.dto.hotel;
 
-import io.crs.hsys.shared.constans.RateBase;
-import io.crs.hsys.shared.constans.RatePostingRhythm;
+import io.crs.hsys.shared.cnst.RateBase;
+import io.crs.hsys.shared.cnst.RatePostingRhythm;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.CurrencyDto;
 import io.crs.hsys.shared.dto.common.ServiceDto;

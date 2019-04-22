@@ -13,7 +13,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Ignore;
 import com.googlecode.objectify.annotation.Index;
 
-import io.crs.hsys.shared.constans.InventoryType;
+import io.crs.hsys.shared.cnst.InventoryType;
 
 /**
  * @author CR

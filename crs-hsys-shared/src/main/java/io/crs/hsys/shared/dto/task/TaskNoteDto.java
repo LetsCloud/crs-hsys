@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.task;
 
 import java.util.Date;
 
-import io.crs.hsys.shared.constans.TaskNoteType;
+import io.crs.hsys.shared.cnst.TaskNoteType;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 

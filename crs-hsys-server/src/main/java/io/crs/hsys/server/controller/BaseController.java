@@ -16,6 +16,7 @@ import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.shared.dto.ErrorResponseDto;
 import io.crs.hsys.shared.exception.EntityValidationException;
 import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.ForeignKeyConflictException;
 import io.crs.hsys.shared.exception.RestApiException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
@@ -48,7 +49,7 @@ public abstract class BaseController {
 	 */
 	@ExceptionHandler(RestApiException.class)
 	public ResponseEntity<ErrorResponseDto> exceptionHandler(RestApiException ex) {
-		logger.info("exceptionHandler()");
+		logger.info("exceptionHandler()->"+ex);
 		ErrorResponseDto error = new ErrorResponseDto();
 		error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
 		error.setMessage(ExceptionType.UNKNOWN.toString() + "-" + ex.getMessage());
@@ -62,6 +63,10 @@ public abstract class BaseController {
 			error = createUiceResponse((UniqueIndexConflictException) ex.getCause());
 		}
 
+		if (ex.getCause() instanceof ForeignKeyConflictException) {
+			error = createForeignKeyConflictResponse((ForeignKeyConflictException) ex.getCause());
+		}
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json; charset=utf-8");
 
@@ -70,9 +75,19 @@ public abstract class BaseController {
 
 	private ErrorResponseDto createUiceResponse(UniqueIndexConflictException e) {
 		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.UNIQUE_INDEX_CONFLICT);
+		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_SAVED);
+		error.setExceptionSubType(e.getException());
 		error.setProperty(e.getProperty());
-		error.setMessage(ExceptionType.UNIQUE_INDEX_CONFLICT.toString() + "-" + e.getMessage());
+		error.setMessage(ExceptionType.CRUD_CANNOT_BE_SAVED.toString() + "-" + e.getMessage());
+		return error;
+	}
+
+	private ErrorResponseDto createForeignKeyConflictResponse(ForeignKeyConflictException e) {
+		ErrorResponseDto error = new ErrorResponseDto();
+		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_DELETED);
+		error.setExceptionSubType(e.getForeignKey());
+		error.setProperty(e.getForeignKey().toString());
+		error.setMessage(ExceptionType.CRUD_CANNOT_BE_DELETED.toString() + "-" + e.getMessage());
 		return error;
 	}
 

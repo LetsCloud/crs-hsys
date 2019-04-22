@@ -10,7 +10,7 @@ import java.util.List;
 import com.googlecode.objectify.Ref;
 
 import io.crs.hsys.server.entity.common.Currency;
-import io.crs.hsys.shared.constans.CityTaxMethod;
+import io.crs.hsys.shared.cnst.CityTaxMethod;
 
 /**
  * @author CR

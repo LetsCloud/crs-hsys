@@ -3,48 +3,36 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
-import com.googlecode.objectify.Key;
-
-import io.crs.hsys.server.entity.common.Account;
+import io.crs.hsys.server.entity.ForeignKey;
 import io.crs.hsys.server.entity.task.TaskGroup;
+import io.crs.hsys.server.entity.task.TaskTodo;
+import io.crs.hsys.server.entity.task.TaskType;
 import io.crs.hsys.server.repository.TaskGroupRepository;
+import io.crs.hsys.server.repository.TaskTodoRepository;
+import io.crs.hsys.server.repository.TaskTypeRepository;
+import io.crs.hsys.shared.exception.ExceptionSubType;
 
 /**
  * @author CR
  *
  */
-public class TaskGroupRepositoryImpl extends CrudRepositoryImpl<TaskGroup> implements TaskGroupRepository {
+public class TaskGroupRepositoryImpl extends AccountChildRepositoryImpl<TaskGroup> implements TaskGroupRepository {
 
 	/**
 	 * 
 	 */
-	private static final String PROPERTY_CODE = "code";
-
-	protected TaskGroupRepositoryImpl() {
+	protected TaskGroupRepositoryImpl(TaskTodoRepository taskTodoRepository, TaskTypeRepository taskTypeRepository) {
 		super(TaskGroup.class);
-	}
-
-	@Override
-	protected Object getParent(TaskGroup entity) {
-		return entity.getAccount();
-	}
-
-	@Override
-	public String getAccountId(String webSafeString) {
-		Key<TaskGroup> key = getKey(webSafeString);
-		return key.getParent().getString();
-	}
-
-	@Override
-	protected Object getParentKey(String parentWebSafeKey) {
-		Key<Account> key = Key.create(parentWebSafeKey);
-		return key;
+		foreignKeys.add(new ForeignKey(TaskTodo.PROPERTY_TASKGROUP, taskTodoRepository,
+				ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTODO));
+		foreignKeys.add(new ForeignKey(TaskType.PROPERTY_TASKGROUP, taskTypeRepository,
+				ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTYPE));
 	}
 
 	@Override
 	protected void loadUniqueIndexMap(TaskGroup entiy) {
 		if ((entiy.getCode() != null) && (!entiy.getCode().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_CODE, entiy.getCode());
+			entiy.addUniqueIndex(TaskGroup.PROPERTY_CODE, entiy.getCode(),
+					ExceptionSubType.TASKGROUP_CODE_ALREADY_EXISTS);
 	}
-
 }

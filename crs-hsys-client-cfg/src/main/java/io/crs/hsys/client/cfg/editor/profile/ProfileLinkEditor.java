@@ -43,7 +43,7 @@ import gwt.material.design.client.ui.MaterialRow;
 import io.crs.hsys.client.cfg.editor.profile.AddressActionEvent.AddressActiEventHandler;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.datasource.RelationshipDataSource;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.ProfileResource;
 import io.crs.hsys.shared.dto.profile.ProfileDtor;
 import io.crs.hsys.shared.dto.profile.ProfileLinkDto;

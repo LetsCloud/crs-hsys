@@ -26,8 +26,8 @@ import gwt.material.design.client.ui.MaterialCollection;
 import gwt.material.design.client.ui.MaterialIcon;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
-import io.crs.hsys.shared.constans.RoomStatus;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.cnst.UserPerm;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 

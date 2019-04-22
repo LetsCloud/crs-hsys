@@ -14,6 +14,10 @@ import io.crs.hsys.server.entity.BaseEntity;
  */
 public interface CrudService<T extends BaseEntity> {
 
+	T findById(Long id);
+
+	T findByWebSafeKey(String webSafeKey);
+	
 	T create(T entity) throws Throwable;
 
 	T read(String webSafeKey) throws Throwable;

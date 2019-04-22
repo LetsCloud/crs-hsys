@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.crs.hsys.server.entity.hotel.Room;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.exception.RestApiException;
 

@@ -10,12 +10,13 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.ActionColumn;
+import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
-import io.crs.hsys.client.core.ui.browser.ActionColumn;
-import io.crs.hsys.client.core.ui.browser.DataColumn;
+import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -60,6 +61,7 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
+			logger.info("TaskGroupBrowserView().onDeleteClick()");
 			getUiHandlers().delete(table.getSelected());
 		});
 
@@ -115,4 +117,11 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 	}
 
 	protected abstract Boolean isEnabledTaskKind(TaskKind kind);
+	
+
+	@Override
+	public void showMessage(MessageData message) {
+		table.showMessage(message);
+	}
+
 }

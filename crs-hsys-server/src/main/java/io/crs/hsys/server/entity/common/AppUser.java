@@ -15,7 +15,7 @@ import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.hotel.Hotel;
 import io.crs.hsys.server.model.Registration;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.UserPerm;
 
 /**
  * @author robi
@@ -28,6 +28,7 @@ public class AppUser extends AccountChild {
 	/**
 	 * Kód
 	 */
+	@Index
 	private String code;
 
 	/**
@@ -48,7 +49,6 @@ public class AppUser extends AccountChild {
 	/**
 	 * Bejelentkezőnév
 	 */
-	@Index
 	private String username;
 
 	/**
@@ -65,6 +65,7 @@ public class AppUser extends AccountChild {
 	/**
 	 * Engedélyezett
 	 */
+	@Index
 	private Boolean enabled;
 
 	/**

@@ -8,7 +8,7 @@ import java.util.Date;
 import com.googlecode.objectify.Ref;
 
 import io.crs.hsys.server.entity.common.AppUser;
-import io.crs.hsys.shared.constans.TaskNoteType;
+import io.crs.hsys.shared.cnst.TaskNoteType;
 
 /**
  * @author robi

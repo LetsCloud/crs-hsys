@@ -4,7 +4,8 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
 	xmlns:ma="urn:import:gwt.material.design.addins.client"
-	xmlns:tasktypeeditor="urn:import:io.crs.hsys.client.kip.editor.tasktype">
+	xmlns:tasktypeeditor="urn:import:io.crs.hsys.client.kip.editor.tasktype"
+	xmlns:addext="urn:import:gwt.material.design.addext.client.ui">
 
 	<ui:style>
 	.pp {

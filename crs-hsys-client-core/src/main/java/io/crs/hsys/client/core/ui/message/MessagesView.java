@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.core.ui.message.ui.MessageWidget;
 import io.crs.hsys.client.core.ui.message.ui.MessageWidgetFactory;
 
@@ -37,7 +38,7 @@ public class MessagesView extends ViewImpl implements MessagesPresenter.MyView {
     }
 
     @Override
-    public void addMessage(Message message) {
+    public void addMessage(MessageData message) {
         MessageWidget messageWidget = messageWidgetFactory.createMessage(message);
         messages.add(messageWidget);
     }

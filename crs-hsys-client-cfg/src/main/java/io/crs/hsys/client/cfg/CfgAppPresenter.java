@@ -20,6 +20,7 @@ import gwt.material.design.client.constants.IconType;
 
 import io.crs.hsys.client.cfg.i18n.CfgMessages;
 import io.crs.hsys.client.cfg.resources.CfgResources;
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
@@ -28,8 +29,8 @@ import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
-import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.SubSystem;
+import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.SubSystem;
 import io.crs.hsys.shared.dto.menu.MenuItemDto;
 
 /**
@@ -77,6 +78,24 @@ public class CfgAppPresenter extends AbstractAppPresenter<CfgAppPresenter.MyProx
 		menuItems.add(dasboardMenuItem);
 
 		// *********************
+		// Office functions
+		// *********************
+		MenuItemDto officeSubMenu = new MenuItemDto();
+		officeSubMenu.setIndex(2);
+		officeSubMenu.setType(MenuItemType.SUB_MENU);
+		officeSubMenu.setIcon(IconType.DESCRIPTION.name());
+		officeSubMenu.setText(i18n.mainMenuOffice());
+		officeSubMenu.setItems(new ArrayList<MenuItemDto>());
+		menuItems.add(officeSubMenu);
+
+		MenuItemDto organizationsMenuItem = new MenuItemDto();
+		organizationsMenuItem.setIndex(1);
+		organizationsMenuItem.setType(MenuItemType.MENU_ITEM);
+		organizationsMenuItem.setText(i18n.menuItemOrganizations());
+		organizationsMenuItem.setNameToken(CoreNameTokens.ORGANIZATIONS);
+		officeSubMenu.addItem(organizationsMenuItem);
+
+		// *********************
 		// Common configurations
 		// *********************
 		MenuItemDto commonConfigSubMenu = new MenuItemDto();
@@ -100,6 +119,13 @@ public class CfgAppPresenter extends AbstractAppPresenter<CfgAppPresenter.MyProx
 		configMenuItem2.setText(i18n.menuItemProfileConfig());
 		configMenuItem2.setNameToken(CfgNameTokens.PROFILE_CONFIG);
 		commonConfigSubMenu.addItem(configMenuItem2);
+
+		MenuItemDto docConfigMenuItem = new MenuItemDto();
+		docConfigMenuItem.setIndex(3);
+		docConfigMenuItem.setType(MenuItemType.MENU_ITEM);
+		docConfigMenuItem.setText(i18n.menuItemDocConfig());
+		docConfigMenuItem.setNameToken(CoreNameTokens.DOC_CONFIG);
+		commonConfigSubMenu.addItem(docConfigMenuItem);
 
 		// ***************************
 		// Front office configurations

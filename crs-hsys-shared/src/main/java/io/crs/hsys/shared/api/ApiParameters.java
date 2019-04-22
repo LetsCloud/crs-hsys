@@ -18,6 +18,7 @@ public class ApiParameters {
     public static final String TASK_KIND = "taskKind";
 
     
+    public static final String ORGANIZATION_KEY = "organizationKey";
     public static final String HOTEL_KEY = "hotelKey";
     public static final String ROOM_KEY = "roomKey";
     public static final String ONLY_ACTIVE = "onlyActive";

@@ -18,8 +18,8 @@ import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.assistedinject.Assisted;
 
-import io.crs.hsys.client.core.ui.message.Message;
-import io.crs.hsys.client.core.ui.message.MessageCloseDelay;
+import io.crs.hsys.client.core.message.MessageCloseDelay;
+import io.crs.hsys.client.core.message.MessageData;
 
 /**
  * @author CR
@@ -38,7 +38,7 @@ public class MessageWidget extends Composite {
     @UiField
     InlineLabel messageLabel;
 
-    private final Message message;
+    private final MessageData message;
     private final Timer closeTimer = new Timer() {
         @Override
         public void run() {
@@ -50,7 +50,7 @@ public class MessageWidget extends Composite {
     MessageWidget(
             Binder binder,
   //          AppResources appResources,
-            @Assisted Message message) {
+            @Assisted MessageData message) {
  //       this.appResources = appResources;
         this.message = message;
 
@@ -81,7 +81,7 @@ public class MessageWidget extends Composite {
     }
 
     private void initContent() {
-        messageLabel.setText(message.getMessage());
+        messageLabel.setText(message.getDescription());
 
         switch (message.getStyle()) {
             case SUCCESS:

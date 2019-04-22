@@ -31,7 +31,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.api.RoomResource;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.HotelDto;
 import io.crs.hsys.shared.dto.hotel.RoomAvailabilityDto;

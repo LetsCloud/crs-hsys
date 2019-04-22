@@ -65,6 +65,15 @@
             <Value disabled="false">Гаразд</Value>
         </Property>
         <Property>
+            <Name>comClose</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Bezár</Value>
+            <Value disabled="false">Закрити</Value>
+        </Property>
+        <Property>
             <Name>comCreate</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
@@ -315,6 +324,54 @@
             <Value disabled="false">{0} year ago</Value>
             <Value disabled="false">{0} éve</Value>
             <Value disabled="false">{0} рік</Value>
+        </Property>
+        <Comment>
+            <Value>CRUD MESSAGES</Value>
+        </Comment>
+        <Property>
+            <Name>CRUD_CANNOT_BE_SAVED</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Data cannot be saved</Value>
+            <Value disabled="false">Data cannot be saved</Value>
+            <Value disabled="false">Az adat nem menthető le</Value>
+            <Value disabled="false">Дані неможливо зберегти</Value>
+        </Property>
+        <Property>
+            <Name>CRUD_CANNOT_BE_DELETED</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Data cannot be deleted</Value>
+            <Value disabled="false">Data cannot be deleted</Value>
+            <Value disabled="false">Az adat nem törölhető</Value>
+            <Value disabled="false">Дані не можна видалити</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_CODE_ALREADY_EXISTS</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group code ({0}) already exists.</Value>
+            <Value disabled="false">The task group code ({0}) already exists.</Value>
+            <Value disabled="false">Feladat csoport kód ({0}) már létezik.</Value>
+            <Value disabled="false">Код групи завдань ({0}) вже існує</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_ID_USED_BY_TASKTODO</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group is used by Task Todo.</Value>
+            <Value disabled="false">The task group is used by Task Todo.</Value>
+            <Value disabled="false">A feladat csoport használatban van a feladat tennivalóknál.</Value>
+            <Value disabled="false">Цільова група використовується завданням Todo.</Value>
+        </Property>
+        <Property>
+            <Name>TASKGROUP_ID_USED_BY_TASKTYPE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">The task group is used by Task Type.</Value>
+            <Value disabled="false">The task group is used by Task Type.</Value>
+            <Value disabled="false">A feledat csoport használatban van a feladat típusoknál.</Value>
+            <Value disabled="false">Групу завдань використовує тип завдання.</Value>
         </Property>
         <Comment>
             <Value>LOGIN</Value>
@@ -1449,6 +1506,105 @@
             <Value disabled="false">Active</Value>
         </Property>
         <Comment>
+            <Value>DOCUMENT CONFIG</Value>
+        </Comment>
+        <Property>
+            <Name>documentConfigTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Document Config</Value>
+            <Value disabled="false">Document Config</Value>
+            <Value disabled="false">Dokumentum beállítások</Value>
+            <Value disabled="false">Параметри документа</Value>
+        </Property>
+        <Property>
+            <Name>documentConfigDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Manage document properties</Value>
+            <Value disabled="false">Manage document properties</Value>
+            <Value disabled="false">Dokumentum tulajdonságok kezelése</Value>
+            <Value disabled="false">Керувати властивостями документа</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION STATUS BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>quotationStatusBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Quotation Statuses</Value>
+            <Value disabled="false">Quotation Statuses</Value>
+            <Value disabled="false">Árajánlat státuszok</Value>
+            <Value disabled="false">Статуси пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">Код</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusBrowserActive</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Active</Value>
+            <Value disabled="false">Aktív</Value>
+            <Value disabled="false">Активний</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION STATUS EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>quotationStatusCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Quotation Status</Value>
+            <Value disabled="false">Create Quotation Status</Value>
+            <Value disabled="false">Árajánlat státusz létrehozás</Value>
+            <Value disabled="false">Створити статус пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusEditTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Quotation Status</Value>
+            <Value disabled="false">Modify Quotation Status</Value>
+            <Value disabled="false">Árajánlat státusz módosítás</Value>
+            <Value disabled="false">Змінити статус пропозиції</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">Код</Value>
+        </Property>
+        <Property>
+            <Name>quotationStatusDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Megnevezés</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Comment>
             <Value>PROFILE FILTER</Value>
         </Comment>
         <Property>
@@ -1572,13 +1728,22 @@
             <Value>ORGANIZATION EDITOR</Value>
         </Comment>
         <Property>
-            <Name>organizationEditorTitle</Name>
+            <Name>organizationEditorDisplayTitle</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">Edit Organization Profile</Value>
-            <Value disabled="false">Edit Organization Profile</Value>
-            <Value disabled="false">Szervezet profile szerkesztése</Value>
-            <Value disabled="false">Edit Organization Profile</Value>
+            <Value disabled="false">Organization Profile</Value>
+            <Value disabled="false">Organization Profile</Value>
+            <Value disabled="false">Szervezet profil</Value>
+            <Value disabled="false">Organization Profile</Value>
+        </Property>
+        <Property>
+            <Name>organizationEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Organization Profile</Value>
+            <Value disabled="false">Modify Organization Profile</Value>
+            <Value disabled="false">Szervezet profil módosítás</Value>
+            <Value disabled="false">Modify Organization Profile</Value>
         </Property>
         <Property>
             <Name>organizationEditorDescription</Name>
@@ -1707,7 +1872,7 @@
             <Value disabled="false">Contact information ...</Value>
         </Property>
         <Comment>
-            <Value>COMTACT EDITOR</Value>
+            <Value>CONTACT EDITOR</Value>
         </Comment>
         <Property>
             <Name>contactEditorTitle</Name>
@@ -1798,6 +1963,156 @@
             <Value disabled="false">Delete Profile</Value>
             <Value disabled="false">Profil törlése</Value>
             <Value disabled="false">Delete Profile</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>quotationBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Quotations</Value>
+            <Value disabled="false">Quotations</Value>
+            <Value disabled="false">Árajánlatok</Value>
+            <Value disabled="false">лапки</Value>
+        </Property>
+        <Property>
+            <Name>quotationBrowserCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">код</Value>
+        </Property>
+        <Property>
+            <Name>quotationBrowserDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Leírás</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>quotationBrowserOrganization</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Organization</Value>
+            <Value disabled="false">Organization</Value>
+            <Value disabled="false">Szervezet</Value>
+            <Value disabled="false">Організація</Value>
+        </Property>
+        <Property>
+            <Name>quotationBrowserIssuedBy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Issued By</Value>
+            <Value disabled="false">Issued By</Value>
+            <Value disabled="false">Készítette</Value>
+            <Value disabled="false">Видано</Value>
+        </Property>
+        <Property>
+            <Name>quotationBrowserIssueDate</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Issue Date</Value>
+            <Value disabled="false">Issue Date</Value>
+            <Value disabled="false">Kiadás dátuma</Value>
+            <Value disabled="false">Дата випуску</Value>
+        </Property>
+        <Comment>
+            <Value>QUOTATION EDITOR</Value>
+        </Comment>
+        <Property>
+            <Name>quotationEditorCreateTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Create Quotation</Value>
+            <Value disabled="false">Create Quotation</Value>
+            <Value disabled="false">Árajánlat létrehozása</Value>
+            <Value disabled="false">Створити пропозицію</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorCreateDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorModifyTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Modify Quotation</Value>
+            <Value disabled="false">Modify Quotation</Value>
+            <Value disabled="false">Árajánlat módosítás</Value>
+            <Value disabled="false">Змінити пропозицію</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorModifyDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorCode</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Code</Value>
+            <Value disabled="false">Kód</Value>
+            <Value disabled="false">Код</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorStatus</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Status</Value>
+            <Value disabled="false">Status</Value>
+            <Value disabled="false">Státusz</Value>
+            <Value disabled="false">Статус</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorDescription</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Description</Value>
+            <Value disabled="false">Leírás</Value>
+            <Value disabled="false">Опис</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorOrganization</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Organization</Value>
+            <Value disabled="false">Organization</Value>
+            <Value disabled="false">Szervezet</Value>
+            <Value disabled="false">Організація</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorIssuedBy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Issued By</Value>
+            <Value disabled="false">Issued By</Value>
+            <Value disabled="false">Készítette</Value>
+            <Value disabled="false">Видано</Value>
+        </Property>
+        <Property>
+            <Name>quotationEditorIssueDate</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Issue Date</Value>
+            <Value disabled="false">Issue Date</Value>
+            <Value disabled="false">Kiküldés dátuma</Value>
+            <Value disabled="false">Дата випуску</Value>
         </Property>
         <Comment>
             <Value>HOTEL CONFIG</Value>

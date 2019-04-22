@@ -23,8 +23,8 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.i18n.KipMessages;
-import io.crs.hsys.shared.constans.MenuItemType;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.UserPerm;
 import io.crs.hsys.shared.dto.hk.MaintenanceSubTotalDto;
 import io.crs.hsys.shared.dto.hk.MaintenanceSumDto;
 

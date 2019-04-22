@@ -18,8 +18,13 @@ public interface CfgMessages extends Messages {
 	@DefaultMessage("Dashboard")
 	String mainMenuItemDashboard();
 
+	@DefaultMessage("Office")
+	String mainMenuOffice();
 	
-	// Coommon	
+	@DefaultMessage("Organizations")
+	String menuItemOrganizations();
+	
+	// Common	
 	@DefaultMessage("Common")
 	String mainMenuCommonConfig();
 	
@@ -28,6 +33,9 @@ public interface CfgMessages extends Messages {
 
 	@DefaultMessage("Profiles")
 	String menuItemProfileConfig();
+
+	@DefaultMessage("Document properties")
+	String menuItemDocConfig();
 
 	
 	// Front Office

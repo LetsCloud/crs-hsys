@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.service.RoomService;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
 import io.crs.hsys.shared.dto.hk.RoomStatusDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

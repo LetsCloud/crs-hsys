@@ -22,11 +22,11 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
-import gwt.material.design.client.ui.MaterialToast;
 
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.dto.EntityPropertyCode;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
 /**
@@ -61,10 +61,15 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 	@UiField
 	MaterialCheckBox active;
 
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
+
 	private final Driver driver;
 	private final CoreMessages i18n;
 
 	TaskGroupEditorView(Binder uiBinder, Driver driver, CoreMessages i18n) {
+		logger.info("TaskGroupEditorView()");
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.driver = driver;
@@ -93,14 +98,13 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 
 	@Override
 	public void open(Boolean isNew, TaskGroupDto dto) {
-		logger.info("open()");
 		if (isNew) {
 			title.setTitle(i18n.taskGroupEditorCreateTitle());
 		} else {
 			title.setTitle(i18n.taskGroupEditorModifyTitle());
 		}
 		driver.edit(dto);
-//name.clearErrorOrSuccess();
+
 		modal.open();
 
 		Timer t = new Timer() {
@@ -129,14 +133,7 @@ public class TaskGroupEditorView extends ViewWithUiHandlers<TaskGroupEditorUiHan
 	}
 
 	@Override
-	public void displayError(EntityPropertyCode code, String message) {
-		switch (code) {
-		case NONE:
-			break;
-		case USER_GROUP_NAME:
-//		name.setError(message);
-			break;
-		}
-		MaterialToast.fireToast(message);
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

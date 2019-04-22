@@ -1,10 +1,11 @@
 package io.crs.hsys.shared.api;
 
 public class ApiPaths {
-    public static final String PATH_WEBSAFEKEY = "/{" + ApiParameters.WEBSAFEKEY + "}";
-    public static final String PATH_HOTEL_KEY = "/{" + ApiParameters.HOTEL_KEY + "}";
-    public static final String REDUCED = "/reduced";
-	
+	public static final String PATH_WEBSAFEKEY = "/{" + ApiParameters.WEBSAFEKEY + "}";
+	public static final String PATH_HOTEL_KEY = "/{" + ApiParameters.HOTEL_KEY + "}";
+	public static final String REDUCED = "/reduced";
+	public static final String UPLOAD = "/upload";
+
 	public class AdminV1 {
 		public static final String ADMIN = "/admin";
 		public static final String LOGIN = "/login";
@@ -14,7 +15,7 @@ public class ApiPaths {
 		public static final String LOGGEDOUT = "/loggedout";
 		public static final String GLOBAL_CONFIG = "/globalConfig";
 	}
-	
+
 	public class SpaV1 {
 		public static final String ROOT = "/spa/v1";
 		public static final String FILTER = "/filter";
@@ -23,12 +24,12 @@ public class ApiPaths {
 		public static final String CURRENTUSER = "/currentuser";
 		public static final String IS_LOGGED_IN = "/isLoggedIn";
 		public static final String LOGOUT = "/logout";
-		
+
 		public static final String FCM = "/fcm";
 		public static final String MESSAGE = "/message";
-		
+
 		public static final String ACCOUNT = "/account";
-		
+
 		public static final String USER_GROUP = "/userGroup";
 		public static final String USER = "/user";
 		public static final String INVITE = "/invite";
@@ -50,6 +51,13 @@ public class ApiPaths {
 		public static final String ORGANIZATION = "/organization";
 		public static final String CONTACT = "/contact";
 
+		public static final String CONTRACT_TYPE = "/contractType";
+		public static final String PRODUCT_TYPE = "/productType";
+		public static final String CONTRACT = "/contract";
+
+		public static final String QUOTATION_STATUS = "/quotationStatus";
+		public static final String QUOTATION = "/quotation";
+
 		public static final String HOTEL = "/hotel";
 		public static final String ROOMTYPE = "/roomtype";
 		public static final String ROOM = "/room";
@@ -64,7 +72,7 @@ public class ApiPaths {
 		public static final String M1_QUERY = "/m1Query";
 		public static final String FORECAST = "/forecast";
 		public static final String ACTUAL = "/actual";
-}
+	}
 
 	public class ApiV1 {
 		public static final String API = "/api/v1";

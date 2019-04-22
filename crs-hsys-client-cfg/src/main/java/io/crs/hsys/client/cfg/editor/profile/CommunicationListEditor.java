@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
 import io.crs.hsys.client.core.editor.HasEditorSwitch;
-import io.crs.hsys.shared.constans.CommMode;
+import io.crs.hsys.shared.cnst.CommMode;
 import io.crs.hsys.shared.dto.profile.CommunicationDto;
 
 /**

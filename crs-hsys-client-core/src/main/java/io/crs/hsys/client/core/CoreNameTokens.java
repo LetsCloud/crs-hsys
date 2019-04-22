@@ -13,16 +13,25 @@ public class CoreNameTokens {
 	public static final String SYSTEM_CONFIG = "/systemConfig";
 	public static final String COMMON_CONFIG = "/commonConfig";
 	public static final String PROFILE_CONFIG = "/profleConfig";
+	public static final String DOC_CONFIG = "/docConfig";
 	public static final String HOTEL_CONFIG = "/hotelConfig";
 
 	// Configuration
 	public static final String TASK_TYPE_EDITOR = "/taskTypeEditor";
 	public static final String TASK_EDITOR = "/taskEditor";
+
+	public static final String ORGANIZATIONS = "/organizations";
 	public static final String ORGANIZATION_CREATOR = "/organizationCreator";
-	public static final String CUSTOMER_EDITOR = "/customerEditor";
-	public static final String CONTACT_CREATOR = "/contactCreator";
 	public static final String ORGANIZATION_DISPLAY = "/organizationDisplay";
+
+	public static final String QUOTATION_CREATOR = "/quotationCreator";
+	public static final String QUOTATION_DISPLAY = "/quotationDisplay";
+
+	public static final String CUSTOMER_EDITOR = "/customerEditor";
+
+	public static final String CONTACT_CREATOR = "/contactCreator";
 	public static final String CONTACT_DISPLAY = "/contactDisplay";
+
 	public static final String HOTEL_EDITOR = "/hotelEditor";
 	public static final String ROOMTYPE_EDITOR = "/roomTypeEditor";
 	public static final String ROOM_EDITOR = "/roomEditor";

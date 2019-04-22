@@ -4,6 +4,7 @@
 package io.crs.hsys.client.kip.browser.task.widget;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -28,14 +29,15 @@ import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
+
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
-import io.crs.hsys.shared.constans.TaskKind;
-import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.UserPerm;
+import io.crs.hsys.shared.cnst.TaskKind;
+import io.crs.hsys.shared.cnst.TaskStatus;
+import io.crs.hsys.shared.cnst.UserPerm;
 import io.crs.hsys.shared.dto.common.TranslationDto;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.shared.dto.task.TaskNoteDto;
@@ -47,6 +49,7 @@ import io.crs.hsys.shared.dto.task.TaskTypeDto;
  *
  */
 public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> implements TaskWidgetPresenter.MyView {
+	private static Logger logger = Logger.getLogger(TaskWidgetView.class.getName());
 
 	interface Binder extends UiBinder<Widget, TaskWidgetView> {
 	}
@@ -264,6 +267,9 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 	}
 
 	private void setTaskTitle(TaskTypeDto taskType) {
+		if (taskType == null)
+			return;
+		logger.info("TaskWidgetView().setTaskTitle()->taskType=" + taskType);
 		title.setFontSize(22, Unit.PX);
 		title.setTextColor(Color.GREY_DARKEN_2);
 		title.setTruncate(true);
@@ -358,15 +364,15 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 		descriptionPanel.setVisible(true);
 	}
 
-	public void setTodos(List<TaskTodoDto> todos) {
-		if ((todos == null) || (todos.isEmpty())) {
+	public void setTodos(TaskTypeDto type) {
+		if ((type == null) || (type.getTodos() == null) || (type.getTodos().isEmpty())) {
 			todosPanel.setVisible(false);
 			return;
 		}
 
 		Boolean first = true;
 		StringBuilder text = new StringBuilder();
-		for (TaskTodoDto todo : todos) {
+		for (TaskTodoDto todo : type.getTodos()) {
 			String tmp = getTranslated(currentUser.getLocale(), todo.getTranslations(), todo.getDescription());
 			if (first) {
 				text.append(tmp);
@@ -430,7 +436,7 @@ public class TaskWidgetView extends ViewWithUiHandlers<TaskWidgetUiHandlers> imp
 			dueDate.setText(DateUtils.formatDateTime(task.getDueDate(), currentUser.getLocale()));
 
 		setDescription(task.getDescription());
-		setTodos(task.getType().getTodos());
+		setTodos(task.getType());
 		setNotes(task.getNotes());
 	}
 

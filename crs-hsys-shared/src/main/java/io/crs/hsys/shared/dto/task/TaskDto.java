@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.TaskStatus;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
+import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

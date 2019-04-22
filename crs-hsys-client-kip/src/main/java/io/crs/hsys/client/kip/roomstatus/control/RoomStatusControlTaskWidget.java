@@ -24,7 +24,7 @@ import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.html.Div;
 
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskDto;
 
 /**

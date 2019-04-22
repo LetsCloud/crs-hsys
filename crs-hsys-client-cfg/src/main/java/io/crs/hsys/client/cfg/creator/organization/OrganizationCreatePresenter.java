@@ -27,9 +27,9 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.client.core.util.ErrorHandlerAsyncCallback;
+import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.OrganizationResource;
-import io.crs.hsys.shared.constans.MenuItemType;
+import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 
 /**
@@ -57,7 +57,7 @@ public class OrganizationCreatePresenter
 
 	private final OrganizationEditorPresenter editor;
 
-	private final CoreMessages i18n;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	OrganizationCreatePresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
@@ -69,7 +69,7 @@ public class OrganizationCreatePresenter
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
 		this.editor = editorFactory.createOrganizationEditor();
-		this.i18n = i18n;
+		this.i18nCore = i18n;
 
 		getView().setUiHandlers(this);
 	}
@@ -84,13 +84,13 @@ public class OrganizationCreatePresenter
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire(i18n.organizationCreatorTitle(), i18n.organizationCreatorDescription(),
+		SetPageTitleEvent.fire(i18nCore.organizationCreatorTitle(), i18nCore.organizationCreatorDescription(),
 				MenuItemType.MENU_ITEM, this);
 	}
 
 	@Override
 	public void save(OrganizationDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<OrganizationDto>(this) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<OrganizationDto>(this, i18nCore) {
 			@Override
 			public void onSuccess(OrganizationDto dto) {
 				PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG).build();

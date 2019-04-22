@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.hk;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.AppUserDto;
 

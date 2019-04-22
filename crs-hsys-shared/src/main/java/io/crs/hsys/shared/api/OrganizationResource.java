@@ -11,13 +11,16 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import io.crs.hsys.shared.dto.profile.OrganizationDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
+import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
+import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ORGANIZATION;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
 
@@ -31,6 +34,10 @@ public interface OrganizationResource {
 
 	@GET
 	List<OrganizationDtor> list();
+
+	@GET
+	@Path(REDUCED)
+	List<OrganizationDtor> listReduced(@QueryParam(ONLY_ACTIVE) Boolean onlyActive);
 
 	@GET
 	@Path(PATH_WEBSAFEKEY)

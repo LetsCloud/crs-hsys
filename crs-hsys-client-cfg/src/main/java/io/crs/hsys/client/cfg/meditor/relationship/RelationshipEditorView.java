@@ -22,8 +22,11 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.profile.RelationshipDto;
 
@@ -60,6 +63,10 @@ public class RelationshipEditorView extends ViewWithUiHandlers<RelationshipEdito
 
 	@UiField
 	MaterialButton saveButton;
+
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
 
 	private final CoreMessages i18n;
 
@@ -119,5 +126,10 @@ public class RelationshipEditorView extends ViewWithUiHandlers<RelationshipEdito
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent event) {
 		getUiHandlers().cancel();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

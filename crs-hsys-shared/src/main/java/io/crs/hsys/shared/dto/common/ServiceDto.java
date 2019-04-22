@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.shared.dto.common;
 
-import io.crs.hsys.shared.constans.ServiceType;
+import io.crs.hsys.shared.cnst.ServiceType;
 
 /**
  * @author CR

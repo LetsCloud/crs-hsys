@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.task;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 import io.crs.hsys.shared.dto.common.TranslationDto;
 

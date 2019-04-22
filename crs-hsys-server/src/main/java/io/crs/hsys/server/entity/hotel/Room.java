@@ -17,8 +17,8 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Ignore;
 import com.googlecode.objectify.annotation.Index;
 
-import io.crs.hsys.shared.constans.FoRoomStatus;
-import io.crs.hsys.shared.constans.RoomStatus;
+import io.crs.hsys.shared.cnst.FoRoomStatus;
+import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
 
 /**

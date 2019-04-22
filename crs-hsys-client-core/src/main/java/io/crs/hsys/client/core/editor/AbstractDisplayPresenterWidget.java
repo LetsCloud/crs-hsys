@@ -18,7 +18,10 @@ public abstract class AbstractDisplayPresenterWidget<V extends View> extends Pre
 
 	private Boolean readOnly = true;
 
+	private Integer index;
 	private String webSafeKey;
+	private String title;
+	private String description;
 
 	public AbstractDisplayPresenterWidget(EventBus eventBus, V view) {
 		super(eventBus, view);
@@ -33,13 +36,35 @@ public abstract class AbstractDisplayPresenterWidget<V extends View> extends Pre
 	}
 
 	public String getWebSafeKey() {
-		logger.info("AbstractEditorPresenterWidget().getWebSafeKey()->webSafeKey=" + webSafeKey);
 		return webSafeKey;
 	}
 
 	public void setWebSafeKey(String webSafeKey) {
-		logger.info("AbstractEditorPresenterWidget().setWebSafeKey(" + webSafeKey + ")");
 		this.webSafeKey = webSafeKey;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getIndex() {
+		return index;
+	}
+
+	public void setIndex(Integer index) {
+		this.index = index;
 	}
 
 }

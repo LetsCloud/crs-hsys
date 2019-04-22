@@ -6,7 +6,7 @@ package io.crs.hsys.shared.dto.task;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.crs.hsys.shared.constans.TaskKind;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.common.AccountChildDto;
 import io.crs.hsys.shared.dto.common.TranslationDto;
 
@@ -104,6 +104,13 @@ public class TaskTypeDto extends AccountChildDto {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+	@Override
+	public String toString() {
+		return "TaskTypeDto [kind=" + kind + ", code=" + code + ", description=" + description + ", translations="
+				+ translations + ", taskGroup=" + taskGroup + ", timeRequired=" + timeRequired + ", todos=" + todos
+				+ ", active=" + active + "]";
 	}
 
 	public static abstract class Builder<T extends Builder<T>> extends AccountChildDto.Builder<T> {
