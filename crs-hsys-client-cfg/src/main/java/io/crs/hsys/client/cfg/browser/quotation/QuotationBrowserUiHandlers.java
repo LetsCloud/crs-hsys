@@ -11,5 +11,5 @@ import io.crs.hsys.shared.dto.doc.QuotationDto;
  *
  */
 public interface QuotationBrowserUiHandlers extends AbstractBrowserUiHandlers<QuotationDto> {
-
+	String getOrganizationKey();
 }

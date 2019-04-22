@@ -26,7 +26,6 @@ import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
-import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.filter.FilterPresenterFactory;
 import io.crs.hsys.client.core.filter.profile.ProfileFilterPresenter;
@@ -37,7 +36,6 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.shared.api.ApiParameters;
 import io.crs.hsys.shared.api.QuotationResource;
-import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.doc.QuotationDto;
 
 /**
@@ -50,6 +48,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	public interface MyView extends View, HasUiHandlers<QuotationBrowserUiHandlers> {
 		void setData(List<QuotationDto> data);
+		void reConfigColumns();
 	}
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
@@ -84,6 +83,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		getView().reConfigColumns();
 	}
 
 	private String createTargetHistory(String webSafeKey) {
@@ -100,8 +100,10 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<QuotationDto>>() {
 			@Override
 			public void onSuccess(List<QuotationDto> result) {
+				/*
 				SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM,
 						QuotationBrowserPresenter.this);
+						*/
 				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(createTargetHistory(getWebSafeKey())),
 						QuotationBrowserPresenter.this);
 				/*
@@ -168,5 +170,10 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	@Override
 	protected TableType getTableType() {
 		return TableType.QUOTATION;
+	}
+
+	@Override
+	public String getOrganizationKey() {
+		return getWebSafeKey();
 	}
 }

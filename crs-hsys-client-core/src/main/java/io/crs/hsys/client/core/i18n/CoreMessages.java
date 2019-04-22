@@ -713,9 +713,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("General Data")
 	String organizationEditorDescription();
 
-	@DefaultMessage("Quotations")
-	String organizationEditorQuotations();
-
 	@DefaultMessage("Organization name")
 	String organizationEditorName();
 

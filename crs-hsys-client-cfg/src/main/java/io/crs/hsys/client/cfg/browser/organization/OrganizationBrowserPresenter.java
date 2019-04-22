@@ -52,7 +52,6 @@ public class OrganizationBrowserPresenter
 
 	private final ResourceDelegate<OrganizationResource> resourceDelegate;
 	private final ProfileFilterPresenter filter;
-	private final CoreMessages i18nCore;
 
 	@Inject
 	OrganizationBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
@@ -63,7 +62,6 @@ public class OrganizationBrowserPresenter
 
 		this.resourceDelegate = resourceDelegate;
 		this.filter = filterFactory.createProfileFilterPresenter();
-		this.i18nCore = i18nCore;
 
 		setBreadcrumbConfig(new BreadcrumbConfig(1, IconType.VIEW_LIST, i18nCore.organizationBrowserTitle(),
 				CoreNameTokens.PROFILE_CONFIG + "?" + AbstractConfigPresenter.PLACE_PARAM + "="

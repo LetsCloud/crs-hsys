@@ -31,7 +31,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 		implements OrganizationBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(OrganizationBrowserView.class.getName());
 
-	private final AbstractBrowserView<OrganizationDtor> table;
+	private final AbstractBrowserView<OrganizationDtor> browserView;
 
 	private final CoreMessages i18nCore;
 
@@ -44,7 +44,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 
 		initWidget(table);
 
-		this.table = table;
+		this.browserView = table;
 		this.i18nCore = i18nCore;
 
 		bindSlot(OrganizationBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
@@ -54,16 +54,16 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 
 	private void init() {
 
-		table.setTableTitle(i18nCore.organizationBrowserTitle());
+		browserView.setTableTitle(i18nCore.organizationBrowserTitle());
 
-		table.getAddButton().addClickHandler(e -> {
+		browserView.getAddButton().addClickHandler(e -> {
 			getUiHandlers().addNew();
 		});
 
 		/*
 		 * CODE
 		 */
-		table.getTable().addColumn(i18nCore.organizationBrowserColCode(), new TextColumn<OrganizationDtor>() {
+		browserView.getTable().addColumn(i18nCore.organizationBrowserColCode(), new TextColumn<OrganizationDtor>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -78,7 +78,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 		/*
 		 * NAME
 		 */
-		table.getTable().addColumn(i18nCore.organizationBrowserColName(), new TextColumn<OrganizationDtor>() {
+		browserView.getTable().addColumn(i18nCore.organizationBrowserColName(), new TextColumn<OrganizationDtor>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -93,7 +93,7 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 		//
 		// EDIT ICON
 		//
-		table.getTable().addColumn(new WidgetColumn<OrganizationDtor, MaterialIcon>() {
+		browserView.getTable().addColumn(new WidgetColumn<OrganizationDtor, MaterialIcon>() {
 
 			@Override
 			public MaterialIcon getValue(OrganizationDtor object) {
@@ -122,6 +122,6 @@ public class OrganizationBrowserView extends ViewWithUiHandlers<OrganizationBrow
 			logger.info("OrganizationBrowserView().setData()->data==null");
 			return;
 		}
-		table.setData(data);
+		browserView.setData(data);
 	}
 }

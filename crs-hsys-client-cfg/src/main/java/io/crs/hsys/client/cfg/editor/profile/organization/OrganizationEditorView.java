@@ -72,7 +72,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 
 	@UiField(provided = true)
 	WebPresenceListEditor webPresences;
-	
+
 	@Ignore
 	@UiField
 	MaterialIcon addCommunication, addAddress, addWebPresence;
@@ -80,7 +80,7 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 	@Ignore
 	@UiField
 	MaterialAnchorButton editButton, saveButton, cancelButton, deleteButton, browseButton;
-	
+
 	@Ignore
 	@UiField
 	MaterialFAB operationsFab;
@@ -138,7 +138,10 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 		Timer t = new Timer() {
 			@Override
 			public void run() {
-				name.setFocus(true);
+				if (dto.getId() == null)
+					code.setFocus(true);
+				else
+					name.setFocus(true);
 //				profileGroupCombo.setFocus(true);
 			}
 		};
@@ -206,27 +209,27 @@ public class OrganizationEditorView extends ViewWithUiHandlers<OrganizationEdito
 		if (operationsFab.isOpen()) {
 			operationsFab.close();
 		}
-		
+
 		active.setEnabled(!readOnly);
-		code.setReadOnly(readOnly);
+		code.setReadOnly(createMode ? readOnly : true);
 		name.setReadOnly(readOnly);
 		profileGroupCombo.setReadOnly(readOnly);
 
 		addCommunication.setVisible(!readOnly);
 		communications.setReadOnly(readOnly);
-		
+
 		addAddress.setVisible(!readOnly);
 		addresses.setReadOnly(readOnly);
 
 		addWebPresence.setVisible(!readOnly);
 		webPresences.setReadOnly(readOnly);
-		
+
 		editButton.setVisible(readOnly);
 		deleteButton.setVisible(readOnly);
 
 		saveButton.setVisible(!readOnly);
 		cancelButton.setVisible(!readOnly && !createMode);
-		
+
 		browseButton.setVisible(readOnly || (!readOnly && createMode));
 	}
 }

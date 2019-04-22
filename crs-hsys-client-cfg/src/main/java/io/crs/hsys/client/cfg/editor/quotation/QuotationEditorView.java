@@ -178,12 +178,17 @@ public class QuotationEditorView extends ViewWithUiHandlers<QuotationEditorUiHan
 
 	@Override
 	public void edit(QuotationDto dto) {
+		code.setReadOnly(dto.getId() != null);
+
 		driver.edit(dto);
 
 		Timer t = new Timer() {
 			@Override
 			public void run() {
-				description.setFocus(true);
+				if (dto.getId() == null)
+					code.setFocus(true);
+				else
+					description.setFocus(true);
 			}
 		};
 		t.schedule(100);

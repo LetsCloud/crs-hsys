@@ -58,7 +58,8 @@ public class OrganizationConfigPresenter
 	private String title;
 	private String description;
 	private final ResourceDelegate<OrganizationResource> resourceDelegate;
-
+	private final CoreMessages i18nCore;
+	
 	@Inject
 	OrganizationConfigPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
 			ResourceDelegate<OrganizationResource> resourceDelegate,
@@ -67,6 +68,7 @@ public class OrganizationConfigPresenter
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("OrganizationConfigPresenter()");
 		this.resourceDelegate = resourceDelegate;
+		this.i18nCore = i18nCore;
 
 		setCaption(i18nCore.organizationConfigTitle());
 		setDescription(i18nCore.organizationConfigDescription());
@@ -74,7 +76,7 @@ public class OrganizationConfigPresenter
 
 		addContent(i18nCore.organizationEditorDescription(), organizationEditorFactory.createOrganizationEditor(),
 				GENERAL_DATA);
-		addContent(i18nCore.organizationEditorQuotations(), quotationsFactory.createQuotationBrowser(), QUOTATIONS);
+		addContent(i18nCore.quotationBrowserTitle(), quotationsFactory.createQuotationBrowser(), QUOTATIONS);
 
 		getView().setUiHandlers(this);
 	}
@@ -117,7 +119,7 @@ public class OrganizationConfigPresenter
 				logger.info("OrganizationConfigPresenter().loadOrganizationData().onSuccess()");
 				title = dto.getCode();
 				description = dto.getName();
-				SetPageTitleEvent.fire(title, description, MenuItemType.MENU_ITEM, OrganizationConfigPresenter.this);
+				SetPageTitleEvent.fire(i18nCore.organizationEditorDisplayTitle(), description, MenuItemType.MENU_ITEM, OrganizationConfigPresenter.this);
 			}
 
 			@Override

@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.Color;
@@ -17,11 +18,13 @@ import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.TextAlign;
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.table.cell.Column;
 import gwt.material.design.client.ui.table.cell.TextColumn;
 import gwt.material.design.client.ui.table.cell.WidgetColumn;
 
 import io.crs.hsys.client.cfg.browser.organization.OrganizationBrowserPresenter;
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
@@ -35,8 +38,22 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		implements QuotationBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(QuotationBrowserView.class.getName());
 
-	private final AbstractBrowserView<QuotationDto> table;
+	private static final int COL_ORGANIZATION = 2;
+//	private static final int COL_ISSUEDBY = 3;
+	private static final int COL_ISSUEDATE = 4;
 
+	public class ColumnConfig extends AbstractColumnConfig<QuotationDto> {
+
+		public ColumnConfig(Column<QuotationDto, ?> column) {
+			super(column);
+		}
+
+		public ColumnConfig(String header, Column<QuotationDto, ?> column) {
+			super(header, column);
+		}
+	}
+
+	private final AbstractBrowserView<QuotationDto> browserView;
 	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
 
@@ -44,22 +61,56 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 	* 
 	*/
 	@Inject
-	QuotationBrowserView(AbstractBrowserView<QuotationDto> table, CurrentUser currentUser, CoreMessages i18nCore) {
+	QuotationBrowserView(AbstractBrowserView<QuotationDto> browserView, CurrentUser currentUser,
+			CoreMessages i18nCore) {
 		logger.info("QuotationBrowserView()");
 
-		initWidget(table);
+		initWidget(browserView);
 
-		this.table = table;
+		this.browserView = browserView;
 		this.currentUser = currentUser;
 		this.i18nCore = i18nCore;
-
-		bindSlot(OrganizationBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
-
 		init();
+
+		bindSlot(OrganizationBrowserPresenter.SLOT_FILTER, browserView.getFilterPanel());
 	}
 
-	private void createCodeColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(i18nCore.quotationBrowserCode(), new TextColumn<QuotationDto>() {
+	private void init() {
+		browserView.setTableTitle(i18nCore.quotationBrowserTitle());
+
+		browserView.getAddButton().addClickHandler(e -> {
+			getUiHandlers().addNew();
+		});
+
+		browserView.clearColumnConfigs();
+		// 0
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.quotationBrowserCode(), createCodeColumn()));
+		// 1
+		browserView
+				.addColumnConfigs(new ColumnConfig(i18nCore.quotationBrowserDescription(), createDescriptionColumn()));
+		// 2 - COL_ORGANIZATION
+		browserView.addColumnConfigs(
+				new ColumnConfig(i18nCore.quotationBrowserOrganization(), createOrganizationColumn()));
+		// 3 - COL_ISSUEDBY
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.quotationBrowserIssuedBy(), createIssuedByColumn()));
+
+		// 4 - COL_ISSUEDATE
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.quotationBrowserIssueDate(), createIssueDateColumn()));
+
+		// 5
+		browserView.addColumnConfigs(new ColumnConfig(createEditActionColumn()));
+
+		browserView.addAllColumns();
+	}
+
+	@Override
+	public void reConfigColumns() {
+		browserView.hideColumn(COL_ORGANIZATION, getUiHandlers().getOrganizationKey() != null);
+		browserView.hideColumn(COL_ISSUEDATE, Window.getClientWidth() <= 1024);
+	}
+
+	private TextColumn<QuotationDto> createCodeColumn() {
+		return (TextColumn<QuotationDto>) new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -69,11 +120,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			public String getValue(QuotationDto object) {
 				return object.getCode();
 			}
-		}.sortComparator((o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode())));
+		}.sortComparator((o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode()));
 	}
 
-	private void createDescriptionColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(i18nCore.quotationBrowserDescription(), new TextColumn<QuotationDto>() {
+	private TextColumn<QuotationDto> createDescriptionColumn() {
+		return new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return false;
@@ -83,11 +134,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			public String getValue(QuotationDto object) {
 				return object.getDescription();
 			}
-		});
+		};
 	}
 
-	private void createOrganizationColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(i18nCore.quotationBrowserOrganization(), new TextColumn<QuotationDto>() {
+	private TextColumn<QuotationDto> createOrganizationColumn() {
+		return (TextColumn<QuotationDto>) new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -101,11 +152,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			}
 		}.sortComparator((o1, o2) -> (o1.getData().getOrganization() == null) ? null
 				: o1.getData().getOrganization().getCode().compareToIgnoreCase(
-						(o2.getData().getOrganization() == null) ? null : o2.getData().getOrganization().getCode())));
+						(o2.getData().getOrganization() == null) ? null : o2.getData().getOrganization().getCode()));
 	}
 
-	private void createIssuedByColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(i18nCore.quotationBrowserIssuedBy(), new TextColumn<QuotationDto>() {
+	private TextColumn<QuotationDto> createIssuedByColumn() {
+		return (TextColumn<QuotationDto>) new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -119,11 +170,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			}
 		}.sortComparator((o1, o2) -> (o1.getData().getIssuedBy() == null) ? null
 				: o1.getData().getIssuedBy().getCode().compareToIgnoreCase(
-						(o2.getData().getIssuedBy() == null) ? null : o2.getData().getIssuedBy().getCode())));
+						(o2.getData().getIssuedBy() == null) ? null : o2.getData().getIssuedBy().getCode()));
 	}
 
-	private void createIssueDateColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(i18nCore.quotationBrowserIssueDate(), new TextColumn<QuotationDto>() {
+	private TextColumn<QuotationDto> createIssueDateColumn() {
+		return (TextColumn<QuotationDto>) new TextColumn<QuotationDto>() {
 			@Override
 			public boolean sortable() {
 				return true;
@@ -133,11 +184,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			public String getValue(QuotationDto object) {
 				return DateUtils.formatDateTime(object.getIssueDate(), currentUser.getLocale());
 			}
-		}.sortComparator((o1, o2) -> o1.getData().getIssueDate().compareTo(o2.getData().getIssueDate())));
+		}.sortComparator((o1, o2) -> o1.getData().getIssueDate().compareTo(o2.getData().getIssueDate()));
 	}
 
-	private void createEditActionColumn(AbstractBrowserView<QuotationDto> table) {
-		table.getTable().addColumn(new WidgetColumn<QuotationDto, MaterialIcon>() {
+	private Column<QuotationDto, ?> createEditActionColumn() {
+		return new WidgetColumn<QuotationDto, MaterialIcon>() {
 
 			@Override
 			public MaterialIcon getValue(QuotationDto object) {
@@ -156,27 +207,11 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 				icon.setTextColor(Color.WHITE);
 				return icon;
 			}
-		}.textAlign(TextAlign.RIGHT));
-	}
-
-	private void init() {
-
-		table.setTableTitle(i18nCore.quotationBrowserTitle());
-
-		table.getAddButton().addClickHandler(e -> {
-			getUiHandlers().addNew();
-		});
-
-		createCodeColumn(table);
-		createDescriptionColumn(table);
-		createOrganizationColumn(table);
-		createIssuedByColumn(table);
-		createIssueDateColumn(table);
-		createEditActionColumn(table);
+		}.textAlign(TextAlign.RIGHT);
 	}
 
 	@Override
 	public void setData(List<QuotationDto> data) {
-		table.setData(data);
+		browserView.setData(data);
 	}
 }

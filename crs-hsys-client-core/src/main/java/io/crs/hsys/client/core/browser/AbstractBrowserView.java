@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.core.browser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -54,6 +55,8 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 		void edit(O object);
 	}
 
+	private List<AbstractColumnConfig<T>> columnConfigs = new ArrayList<AbstractColumnConfig<T>>();
+
 	@UiField
 	SimplePanel filterPanel;
 
@@ -76,7 +79,7 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	*/
 	@Inject
 	AbstractBrowserView(Binder uiBinder) {
-		logger.info("AbstractTableView()");
+		logger.info("AbstractBrowserView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -100,12 +103,66 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 		table.getView().refresh();
 	}
 
+	public List<AbstractColumnConfig<T>> getColumnConfigs() {
+		return columnConfigs;
+	}
+
+	public void setColumnConfigs(List<AbstractColumnConfig<T>> columnConfigs) {
+		this.columnConfigs = columnConfigs;
+	}
+
+	public void addColumnConfigs(AbstractColumnConfig<T> columnConfig) {
+		this.columnConfigs.add(columnConfig);
+	}
+
+	public void clearColumnConfigs() {
+		this.columnConfigs.clear();
+	}
+
+	public void addAllColumns() {
+		table.removeColumns();
+		for (AbstractColumnConfig<T> columnConfig : columnConfigs) {
+			table.addColumn(columnConfig.getHeader(), columnConfig.getColumn());
+		}
+	}
+
+	public void hideColumn(Integer index, Boolean hide) {
+		if (columnConfigs.get(index).getHidden().equals(hide))
+			return;
+
+		if (hide) {
+			removeColumn(index);
+			return;
+		}
+		insertColumn(index);
+	}
+
+	private void removeColumn(Integer index) {
+		columnConfigs.get(index).setHidden(true);
+		int tempIndex = 0;
+		for (int i = 0; i < index; i++) {
+			if (!columnConfigs.get(i).getHidden())
+				tempIndex++;
+		}
+		table.removeColumn(tempIndex);
+	}
+
+	private void insertColumn(Integer index) {
+		int tempIndex = 0;
+		for (int i = 0; i < index; i++) {
+			if (!columnConfigs.get(i).getHidden())
+				tempIndex++;
+		}
+		table.insertColumn(columnConfigs.get(index).getHeader(), tempIndex, columnConfigs.get(index).getColumn());
+		columnConfigs.get(index).setHidden(false);
+	}
+
 	private void setToolPanel(Panel toolPanel) {
 
 		MaterialIcon menuIcon = new MaterialIcon(IconType.MORE_VERT);
 		menuIcon.setActivates("dd-menu");
 
-		MaterialDropDown menuDropDown = new MaterialDropDown();
+		MaterialDropDown<String> menuDropDown = new MaterialDropDown<String>();
 		menuDropDown.setActivator("dd-menu");
 		menuDropDown.setConstrainWidth(false);
 		menuDropDown.setWidth("180px");
