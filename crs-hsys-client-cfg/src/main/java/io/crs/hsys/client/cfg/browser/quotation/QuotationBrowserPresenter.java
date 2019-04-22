@@ -22,13 +22,13 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 import gwt.material.design.client.constants.IconType;
 import io.crs.hsys.client.cfg.display.organization.OrganizationConfigPresenter;
 import io.crs.hsys.client.cfg.editor.quotation.QuotationEditorPresenter;
+import io.crs.hsys.client.cfg.filter.quotation.QuotationFilterPresenter;
+import io.crs.hsys.client.cfg.filter.quotation.QuotationFilterPresenterFactory;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
-import io.crs.hsys.client.core.filter.FilterPresenterFactory;
-import io.crs.hsys.client.core.filter.profile.ProfileFilterPresenter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.model.BreadcrumbConfig;
@@ -48,6 +48,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	public interface MyView extends View, HasUiHandlers<QuotationBrowserUiHandlers> {
 		void setData(List<QuotationDto> data);
+
 		void reConfigColumns();
 	}
 
@@ -55,18 +56,18 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	public static final SingleSlot<PresenterWidget<?>> SLOT_EDITOR = new SingleSlot<>();
 
 	private final ResourceDelegate<QuotationResource> resourceDelegate;
-	private final ProfileFilterPresenter filter;
+	private final QuotationFilterPresenter filter;
 	private final CoreMessages i18nCore;
 
 	@Inject
 	QuotationBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
 			ResourceDelegate<QuotationResource> resourceDelegate, CurrentUser currentUser,
-			FilterPresenterFactory filterFactory, CoreMessages i18nCore) {
+			QuotationFilterPresenterFactory filterFactory, CoreMessages i18nCore) {
 		super(eventBus, view, placeManager);
 		logger.info("QuotationBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
-		this.filter = filterFactory.createProfileFilterPresenter();
+		this.filter = filterFactory.createQuotationFilter();
 		this.i18nCore = i18nCore;
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
@@ -101,9 +102,9 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 			@Override
 			public void onSuccess(List<QuotationDto> result) {
 				/*
-				SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM,
-						QuotationBrowserPresenter.this);
-						*/
+				 * SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM,
+				 * QuotationBrowserPresenter.this);
+				 */
 				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(createTargetHistory(getWebSafeKey())),
 						QuotationBrowserPresenter.this);
 				/*

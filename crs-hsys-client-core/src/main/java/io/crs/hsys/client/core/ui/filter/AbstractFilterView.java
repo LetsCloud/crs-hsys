@@ -48,16 +48,26 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 
 	public AbstractFilterView(CoreMessages i18nCore) {
 		logger.info("AbstractFilterView()");
-
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.i18nCore = i18nCore;
 		
+		// First, the input components must be initialized
 		initView();
-		
+		// than will be placed on the desired layout
 		createLayout();
 	}
 
+	/**
+	 * 
+	 */
+	protected void initView() {
+		initOnlyActiveFilter();
+	}
+
+	/**
+	 * 
+	 */
 	protected void createLayout() {
 		setOnlyActiveLayour();
 	}
@@ -65,11 +75,6 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 	protected void setOnlyActiveLayour() {
 		onlyActiveCheckBox.setGrid("s12 m6");
 		controlPanel.add(onlyActiveCheckBox);
-
-	}
-
-	protected void initView() {
-		initOnlyActiveFilter();
 	}
 
 	private void initOnlyActiveFilter() {
