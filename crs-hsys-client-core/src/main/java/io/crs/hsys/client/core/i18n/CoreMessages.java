@@ -751,7 +751,25 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Issue Date")
 	String quotationBrowserIssueDate();
+	
+	
+	/*
+	 * QUOTATION FILTER
+	 */
 
+	@DefaultMessage("Code~")
+	String quotationFilterCodeChipLabel();
+
+	@DefaultMessage("Code filter")
+	String quotationFilterCodeLabel();
+
+	@DefaultMessage("Description~")
+	String quotationDescriptionChipLabel();
+
+	@DefaultMessage("Description filter")
+	String quotationFilterDescriptionLabel();
+
+	
 	/*
 	 * QUOTATION EDITOR
 	 */

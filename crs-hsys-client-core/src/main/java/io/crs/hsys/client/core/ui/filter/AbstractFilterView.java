@@ -49,9 +49,14 @@ public abstract class AbstractFilterView extends ViewWithUiHandlers<AbstractFilt
 	public AbstractFilterView(CoreMessages i18nCore) {
 		logger.info("AbstractFilterView()");
 		initWidget(uiBinder.createAndBindUi(this));
+		this.i18nCore = i18nCore;		
+	}
 
-		this.i18nCore = i18nCore;
-		
+	/**
+	 * 
+	 */
+	@Override
+	public void buildView() {
 		// First, the input components must be initialized
 		initView();
 		// than will be placed on the desired layout

@@ -7,6 +7,7 @@ import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -107,14 +108,15 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 				 */
 				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(createTargetHistory(getWebSafeKey())),
 						QuotationBrowserPresenter.this);
+
+				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
+					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
+							.collect(Collectors.toList());
 				/*
-				 * if ((filter.getCode() != null) && (!filter.getCode().isEmpty())) result =
-				 * result.stream().filter(org -> org.getCode().contains(filter.getCode()))
-				 * .collect(Collectors.toList()); if ((filter.getName() != null) &&
-				 * (!filter.getName().isEmpty())) result = result.stream().filter(org ->
-				 * org.getName().contains(filter.getName())) .collect(Collectors.toList()); if
-				 * (!filter.getProfileGroupKeys().isEmpty()) result = result.stream()
-				 * .filter(org ->
+				 * if ((filter.getName() != null) && (!filter.getName().isEmpty())) result =
+				 * result.stream().filter(org -> org.getName().contains(filter.getName()))
+				 * .collect(Collectors.toList()); if (!filter.getProfileGroupKeys().isEmpty())
+				 * result = result.stream() .filter(org ->
 				 * filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
 				 * .collect(Collectors.toList());
 				 */
@@ -125,7 +127,6 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	protected String getCreatorNameToken() {
-		logger.info("QuotationBrowserPresenter().getCreatorNameToken()");
 		return CoreNameTokens.QUOTATION_CREATOR;
 	}
 
@@ -165,6 +166,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("QuotationBrowserPresenter().onFilterChange()");
 		loadData();
 	}
 

@@ -52,7 +52,7 @@
 		<spring.security.version>5.1.5.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
-		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
 		<thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
 
 		<logback.version>1.2.3</logback.version>
