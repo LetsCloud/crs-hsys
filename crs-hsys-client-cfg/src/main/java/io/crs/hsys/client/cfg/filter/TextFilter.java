@@ -8,12 +8,11 @@ import javax.inject.Inject;
 import com.google.common.base.Strings;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.web.bindery.event.shared.EventBus;
 
-import gwt.material.design.client.ui.MaterialChip;
+import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialTextBox;
+
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 
@@ -21,28 +20,20 @@ import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
  * @author robi
  *
  */
-public class TextFilter extends Composite {
+public class TextFilter extends BaseFilter {
 
-	private Panel chipPanel;
-	private MaterialTextBox textBox = new MaterialTextBox();;
-	private MaterialChip chip = new MaterialChip();
-	private String chipLabel = "";
-
-	private final EventBus eventBus;
-
+	MaterialTextBox textBox = new MaterialTextBox();
+	
 	@Inject
 	TextFilter(EventBus eventBus) {
-		this.eventBus = eventBus;
+		super(eventBus);
 		initWidget(textBox);
 		initTextBox();
 	}
 
-	public void setChipLabel(String label) {
-		chipLabel = label;
-	}
-
-	public void setLabel(String label) {
-		textBox.setLabel(label);
+	@Override
+	protected MaterialWidget getFilterWidget() {
+		return textBox;
 	}
 
 	public String getValue() {
@@ -51,6 +42,10 @@ public class TextFilter extends Composite {
 
 	public void setValue(String value) {
 		textBox.setValue(value);
+	}
+
+	public void setFilterLabel(String label) {
+		textBox.setLabel(label);
 	}
 
 	private void initTextBox() {
@@ -65,28 +60,5 @@ public class TextFilter extends Composite {
 				eventBus.fireEvent(new FilterChangeEvent(DataTable.QUOTATION));
 			}
 		});
-	}
-
-	private void setChipText(String text) {
-		if (chip.isAttached()) {
-			if ((text == null) || (text.isEmpty())) {
-				chipPanel.remove(chip);
-				return;
-			}
-			chip.setText(text);
-		} else {
-			if ((text != null) && (!text.isEmpty())) {
-				chip.setText(text);
-				chipPanel.add(chip);
-			}
-		}
-	}
-
-	public void setGrid(String grid) {
-		textBox.setGrid(grid);
-	}
-
-	public void setChipPanel(Panel panel) {
-		this.chipPanel = panel;
 	}
 }

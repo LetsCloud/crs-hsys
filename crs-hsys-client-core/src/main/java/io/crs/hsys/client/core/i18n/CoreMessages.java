@@ -769,6 +769,9 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Description filter")
 	String quotationFilterDescriptionLabel();
 
+	@DefaultMessage("Status filter")
+	String quotationFilterStatusLabel();
+
 	
 	/*
 	 * QUOTATION EDITOR

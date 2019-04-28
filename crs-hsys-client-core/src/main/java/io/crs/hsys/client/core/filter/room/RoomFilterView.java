@@ -15,6 +15,7 @@ import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterView;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author robi
@@ -25,7 +26,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 
 	private MaterialChip floorChip, roomTypesChip;
 	private MaterialComboBox<String> floorCombo;
-	private MaterialComboBox<RoomTypeDto> roomTypeCombo;
+	private MaterialComboBox<RoomTypeDtor> roomTypeCombo;
 
 	@Inject
 	RoomFilterView(CoreMessages i18nCore, CoreConstants cnstCore) {
@@ -108,7 +109,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 	private void initRoomTypeFilter() {
 		roomTypesChip = new MaterialChip();
 
-		roomTypeCombo = new MaterialComboBox<RoomTypeDto>();
+		roomTypeCombo = new MaterialComboBox<RoomTypeDtor>();
 		roomTypeCombo.setMultiple(true);
 		roomTypeCombo.setAllowClear(true);
 		roomTypeCombo.setAllowBlank(true);
@@ -118,7 +119,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 		roomTypeCombo.setPlaceholder(i18nCore.roomFilterRoomTypesPlaceholder());
 		roomTypeCombo.addSelectionHandler(e -> {
 			String roomTypesText = null;
-			for (RoomTypeDto roomType : e.getSelectedValues()) {
+			for (RoomTypeDtor roomType : e.getSelectedValues()) {
 				if (roomTypesText == null) {
 					roomTypesText = roomType.getCode();
 				} else {
@@ -150,10 +151,10 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 	}
 
 	@Override
-	public void setRoomTypeData(List<RoomTypeDto> roomTypeData) {
+	public void setRoomTypeData(List<RoomTypeDtor> roomTypeData) {
 		logger.info("RoomFilterView().setRoomTypeData()");
 		roomTypeCombo.clear();
-		for (RoomTypeDto dto : roomTypeData) {
+		for (RoomTypeDtor dto : roomTypeData) {
 			logger.info("RoomFilterView().setRoomTypeData()->dto.getCode()=" + dto.getCode());
 			roomTypeCombo.addItem(dto.getCode() + "-" + dto.getName(), dto);
 		}
@@ -162,7 +163,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 	@Override
 	public List<String> getSelectedRoomTypeKeys() {
 		List<String> result = new ArrayList<String>();
-		for (RoomTypeDto dto : roomTypeCombo.getSelectedValues())
+		for (RoomTypeDtor dto : roomTypeCombo.getSelectedValues())
 			result.add(dto.getWebSafeKey());
 		return result;
 	}
