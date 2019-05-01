@@ -17,7 +17,7 @@ import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
  *
  */
 public class QuotationStatusFilter extends ComboBoxFilter<QuotationStatusDto> {
-	private static Logger logger = Logger.getLogger(ComboBoxFilter.class.getName());
+	private static Logger logger = Logger.getLogger(QuotationStatusFilter.class.getName());
 
 	@Inject
 	QuotationStatusFilter(EventBus eventBus) {

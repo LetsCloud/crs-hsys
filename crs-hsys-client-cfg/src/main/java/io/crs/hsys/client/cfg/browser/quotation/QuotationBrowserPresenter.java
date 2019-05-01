@@ -85,6 +85,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		filter.setOrganizationKey(getWebSafeKey());
 		getView().reConfigColumns();
 	}
 

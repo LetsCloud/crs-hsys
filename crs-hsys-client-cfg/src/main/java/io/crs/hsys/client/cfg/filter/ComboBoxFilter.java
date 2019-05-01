@@ -65,6 +65,17 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 		comboBox.setSingleValue(value);
 	}
 
+	public void setItemKey(String webSafeKey) {
+		List<T> values = comboBox.getValues();
+		for (int i = 0; i < values.size(); i++) {
+			if (values.get(i).getWebSafeKey().equals(webSafeKey)) {
+				comboBox.setSelectedIndex(i);
+				setChipText(getChipText(comboBox.getSelectedValues()));
+				return;
+			}
+		}
+	}
+
 	/**
 	 * Inicializáció
 	 */
