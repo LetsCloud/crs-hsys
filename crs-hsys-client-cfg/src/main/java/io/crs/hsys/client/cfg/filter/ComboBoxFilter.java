@@ -28,8 +28,8 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 		super(eventBus);
 		logger.info("ComboBoxFilter()");
 		comboBox = new MaterialComboBox<T>();
-		initWidget(comboBox);
 		initComboBox();
+		initWidget(comboBox);
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 	 */
 	private void initComboBox() {
 		comboBox.setMultiple(true);
-		comboBox.setAllowClear(true);
-		comboBox.setAllowBlank(true);
+//		comboBox.setAllowClear(true);
+//		comboBox.setAllowBlank(true);
 		comboBox.setCloseOnSelect(false);
 		comboBox.setMarginTop(25);
 
