@@ -84,7 +84,7 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 		});
 
 		browserView.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(browserView.getSelected());
+			getUiHandlers().delete(browserView.getSelectedItems());
 		});
 
 		browserView.clearColumnConfigs();

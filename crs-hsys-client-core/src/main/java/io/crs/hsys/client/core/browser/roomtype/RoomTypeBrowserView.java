@@ -58,7 +58,7 @@ public class RoomTypeBrowserView extends ViewWithUiHandlers<RoomTypeBrowserUiHan
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+			getUiHandlers().delete(table.getSelectedItems());
 		});
 
 		// Code Column

@@ -54,7 +54,7 @@ public class MarketGroupBrowserView extends ViewWithUiHandlers<MarketGroupBrowse
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+			getUiHandlers().delete(table.getSelectedItems());
 		});
 
 // Code Column

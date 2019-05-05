@@ -416,7 +416,7 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Delete Task Group(s)")
 	String taskGroupBrowserDeleteTitle();
 
-	@DefaultMessage("Are you sure you want to delete the following groups: {0}")
+	@DefaultMessage("Are you sure you want to delete the following task group(s): {0}")
 	String taskGroupBrowserDeleteMessage(String codes);
 
 	/*
@@ -464,6 +464,12 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Time(m)")
 	String taskTodoBrowserTimeReqColumn();
+
+	@DefaultMessage("Delete Task Todo(s)")
+	String taskTodoBrowserDeleteTitle();
+
+	@DefaultMessage("Are you sure you want to delete the following task todo(s): {0}")
+	String taskTodoBrowserDeleteMessage(String codes);
 
 	/*
 	 * TASK TODO FILTER

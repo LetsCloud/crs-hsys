@@ -53,7 +53,7 @@ public class QuotationStatusBrowserView extends ViewWithUiHandlers<QuotationStat
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+			getUiHandlers().delete(table.getSelectedItems());
 		});
 
 		// Code Column

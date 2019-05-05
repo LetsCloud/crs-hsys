@@ -10,6 +10,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
@@ -17,7 +18,6 @@ import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageButtonConfig;
 import io.crs.hsys.client.core.message.MessageButtonType;
 import io.crs.hsys.client.core.message.MessageData;
-import io.crs.hsys.client.core.message.MessageStyle;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
@@ -46,41 +46,10 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		bindSlot(TaskGroupBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
 		bindSlot(TaskGroupBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
 
-		initTable();
+		initBrowserView();
 	}
 
-	@Override
-	protected void onAttach() {
-		super.onAttach();
-	}
-
-	private String getSelectedCodes(List<TaskGroupDto> dtos) {
-		StringBuilder temp = new StringBuilder();
-		for (TaskGroupDto dto : dtos) {
-			if (temp.length() > 0)
-				temp.append(",");
-			temp.append(dto.getCode());
-		}
-		return temp.toString();
-	}
-
-	private MessageData createDeleteMessage() {
-		MessageData message = new MessageData(MessageStyle.SUCCESS, i18n.taskGroupBrowserDeleteTitle(),
-				i18n.taskGroupBrowserDeleteMessage(getSelectedCodes(browserView.getSelected())));
-		
-		MessageButtonConfig yesButton = new MessageButtonConfig(MessageButtonType.YES, e -> {
-			getUiHandlers().delete(browserView.getSelected());
-		});
-		message.addBttonConfig(yesButton);
-
-		MessageButtonConfig noButton = new MessageButtonConfig(MessageButtonType.NO, e -> {
-		});
-		message.addBttonConfig(noButton);
-		
-		return message;
-	}
-
-	private void initTable() {
+	private void initBrowserView() {
 
 		browserView.setTableTitle(i18n.taskGroupBrowserTitle());
 
@@ -89,7 +58,6 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		});
 
 		browserView.getDeleteIcon().addClickHandler(e -> {
-			logger.info("TaskGroupBrowserView().onDeleteClick()");
 			showMessage(createDeleteMessage());
 		});
 
@@ -153,4 +121,29 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		browserView.showMessage(message);
 	}
 
+	private String getSelectedCodes(List<TaskGroupDto> dtos) {
+		StringBuilder temp = new StringBuilder();
+		for (TaskGroupDto dto : dtos) {
+			if (temp.length() > 0)
+				temp.append(",");
+			temp.append(dto.getCode());
+		}
+		return temp.toString();
+	}
+
+	private MessageData createDeleteMessage() {
+		MessageData message = new MessageData(i18n.taskGroupBrowserDeleteTitle(),
+				i18n.taskGroupBrowserDeleteMessage(getSelectedCodes(browserView.getSelectedItems())));
+
+		MessageButtonConfig yesButton = new MessageButtonConfig(MessageButtonType.YES, e -> {
+			getUiHandlers().delete(browserView.getSelectedItems());
+		});
+		message.addBttonConfig(yesButton);
+
+		MessageButtonConfig noButton = new MessageButtonConfig(MessageButtonType.NO, e -> {
+		});
+		message.addBttonConfig(noButton);
+
+		return message;
+	}
 }

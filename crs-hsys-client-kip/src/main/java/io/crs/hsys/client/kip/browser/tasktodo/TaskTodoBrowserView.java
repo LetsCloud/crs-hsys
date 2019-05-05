@@ -10,10 +10,14 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.MessageButtonConfig;
+import io.crs.hsys.client.core.message.MessageButtonType;
+import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskTodoDto;
@@ -26,7 +30,7 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		implements TaskTodoBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TaskTodoBrowserView.class.getName());
 
-	private final AbstractBrowserView<TaskTodoDto> table;
+	private final AbstractBrowserView<TaskTodoDto> browserView;
 	private final CoreMessages i18nCore;
 
 	/**
@@ -36,7 +40,7 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		logger.info("TaskTodoBrowserView()");
 		initWidget(table);
 
-		this.table = table;
+		this.browserView = table;
 		this.i18nCore = i18nCore;
 
 		bindSlot(TaskTodoBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
@@ -53,18 +57,18 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 
 	private void initTable() {
 
-		table.setTableTitle(i18nCore.taskTodoBrowserTitle());
+		browserView.setTableTitle(i18nCore.taskTodoBrowserTitle());
 
-		table.getAddButton().addClickHandler(e -> {
+		browserView.getAddButton().addClickHandler(e -> {
 			getUiHandlers().addNew();
 		});
 
-		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+		browserView.getDeleteIcon().addClickHandler(e -> {
+			showMessage(createDeleteMessage());
 		});
 
 		// Kind Column
-		table.addColumn(new ActionColumn<TaskTodoDto>() {
+		browserView.addColumn(new ActionColumn<TaskTodoDto>() {
 			@Override
 			protected MaterialIcon getIcon(TaskTodoDto object) {
 				MaterialIcon icon = new MaterialIcon();
@@ -76,7 +80,7 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		}, i18nCore.taskTodoBrowserKindColumn());
 
 		// Group Column
-		table.addColumn(new DataColumn<TaskTodoDto>((object) -> {
+		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> {
 			if (object.getTaskGroup() != null) {
 				return object.getTaskGroup().getDescription();
 			} else {
@@ -85,7 +89,7 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		}), i18nCore.taskTypeBrowserGroupColumn());
 
 		// Description Column
-		table.addColumn(
+		browserView.addColumn(
 				new DataColumn<TaskTodoDto>((object) -> object.getDescription(),
 						(o1, o2) -> o1.getData().getDescription().compareToIgnoreCase(o2.getData().getDescription())),
 				i18nCore.taskTodoBrowserDescriptionColumn());
@@ -95,11 +99,11 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 //				new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString(),
 //						(o1, o2) -> o1.getData().getTimeRequired().compareTo(o2.getData().getTimeRequired())),
 //				i18nCore.taskTodoBrowserTimeReqColumn());
-		table.addColumn(new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString()),
+		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString()),
 				i18nCore.taskTodoBrowserTimeReqColumn());
 
 		// Active Column
-		table.addColumn(new DataColumn<TaskTodoDto>((object) -> {
+		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> {
 			if (object.getActive()) {
 				return i18nCore.comActive();
 			} else {
@@ -108,7 +112,7 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		}), i18nCore.comActive());
 
 		// Edit Column
-		table.addColumn(new ActionColumn<TaskTodoDto>((object) -> getUiHandlers().edit(object)) {
+		browserView.addColumn(new ActionColumn<TaskTodoDto>((object) -> getUiHandlers().edit(object)) {
 			@Override
 			protected Boolean isVisible(TaskTodoDto object) {
 				return isEnabledTaskKind(object.getKind());
@@ -118,12 +122,39 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 
 	@Override
 	public void setData(List<TaskTodoDto> data) {
-		logger.info("TaskTodoBrowserView().setData()");
-		for(TaskTodoDto taskTodo: data) {
-			logger.info("TaskTodoBrowserView().setData()->taskTodo=" + taskTodo);
-		}
-		table.setData(data);
+		browserView.setData(data);
 	}
 
 	protected abstract Boolean isEnabledTaskKind(TaskKind kind);
+
+	@Override
+	public void showMessage(MessageData message) {
+		browserView.showMessage(message);
+	}
+
+	private String getSelectedCodes(List<TaskTodoDto> dtos) {
+		StringBuilder temp = new StringBuilder();
+		for (TaskTodoDto dto : dtos) {
+			if (temp.length() > 0)
+				temp.append(",");
+			temp.append(dto.getDescription());
+		}
+		return temp.toString();
+	}
+
+	private MessageData createDeleteMessage() {
+		MessageData message = new MessageData(i18nCore.taskTodoBrowserDeleteTitle(),
+				i18nCore.taskTodoBrowserDeleteMessage(getSelectedCodes(browserView.getSelectedItems())));
+
+		MessageButtonConfig yesButton = new MessageButtonConfig(MessageButtonType.YES, e -> {
+			getUiHandlers().delete(browserView.getSelectedItems());
+		});
+		message.addBttonConfig(yesButton);
+
+		MessageButtonConfig noButton = new MessageButtonConfig(MessageButtonType.NO, e -> {
+		});
+		message.addBttonConfig(noButton);
+
+		return message;
+	}
 }

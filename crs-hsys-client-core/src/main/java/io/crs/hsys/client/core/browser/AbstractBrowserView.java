@@ -245,7 +245,7 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	 * 
 	 * @return A kiválasztott adat objektunok listája.
 	 */
-	public List<T> getSelected() {
+	public List<T> getSelectedItems() {
 		return table.getSelectedRowModels(false);
 	}
 

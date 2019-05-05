@@ -51,7 +51,7 @@ public abstract class TaskTypeBrowserView extends ViewWithUiHandlers<TaskTypeBro
 		table.setTableTitle(i18nCore.taskTypeBrowserTitle());
 
 		table.getAddButton().addClickHandler(e -> getUiHandlers().addNew());
-		table.getDeleteIcon().addClickHandler(e -> getUiHandlers().delete(table.getSelected()));
+		table.getDeleteIcon().addClickHandler(e -> getUiHandlers().delete(table.getSelectedItems()));
 
 		// Kind Column
 		table.addColumn(new ActionColumn<TaskTypeDto>() {
