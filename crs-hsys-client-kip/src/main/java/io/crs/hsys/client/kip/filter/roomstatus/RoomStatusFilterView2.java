@@ -42,22 +42,24 @@ public class RoomStatusFilterView2 extends AbstractFilterView implements RoomSta
 		super(i18nCore);
 		logger.info("RoomStatusFilterView2()");
 		this.i18n = i18n;
-		initOccupancyStatusPanel();
-		initCleaningStatusPanel();
-		initRoomNumberFilter();
-		initRoomTypeFilter();
-		initFloorFilter();
-		disableOnlyActive();
 	}
 
 	@Override
 	protected void initView() {
 		super.initView();
+		disableOnlyActive();
+
 		occupancyStatusPanel = new MaterialPanel();
 		cleaningStatusPanel = new MaterialPanel();
 		roomNumberField =  new MaterialTextBox();
 		roomTypeComboBox = new MaterialComboBox<RoomTypeDtor>();
 		floorField = new MaterialTextBox();
+
+		initOccupancyStatusPanel();
+		initCleaningStatusPanel();
+		initRoomNumberFilter();
+		initRoomTypeFilter();
+		initFloorFilter();
 	}
 
 	private void initOccupancyStatusPanel() {

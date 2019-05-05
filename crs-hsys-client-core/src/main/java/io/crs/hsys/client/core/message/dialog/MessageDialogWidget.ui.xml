@@ -15,9 +15,7 @@
 		<m:MaterialDialogContent>
 			<m:MaterialTitle ui:field="title" />
 		</m:MaterialDialogContent>
-		<m:MaterialDialogFooter>
-			<m:MaterialButton ui:field="closeButton"
-				text="{i18nCore.comClose}" />
-		</m:MaterialDialogFooter>
+
+		<m:MaterialDialogFooter ui:field="footer" />
 	</m:MaterialDialog>
 </ui:UiBinder> 

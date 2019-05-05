@@ -45,24 +45,26 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		logger.info("TasksFilterView()");
 		this.i18n = i18n;
 		this.i18nCoreCnst = i18nCoreCnst;
-		initTaskStatusPanel();
-		initCleaningStatusPanel();
-		initTaskKindFilter();
-		initRoomNumberFilter();
-		initRoomTypeFilter();
-		initFloorFilter();
-		disableOnlyActive();
 	}
 
 	@Override
 	protected void initView() {
 		super.initView();
+		disableOnlyActive();
+
 		taskStatusPanel = new MaterialPanel();
 		cleaningStatusPanel = new MaterialPanel();
 		taskKindComboBox = new MaterialComboBox<TaskKind>();
 		roomNumberField = new MaterialTextBox();
 		roomTypeComboBox = new MaterialComboBox<RoomTypeDtor>();
 		floorField = new MaterialTextBox();
+
+		initTaskStatusPanel();
+		initCleaningStatusPanel();
+		initTaskKindFilter();
+		initRoomNumberFilter();
+		initRoomTypeFilter();
+		initFloorFilter();
 	}
 
 	private void initTaskStatusPanel() {
@@ -225,10 +227,10 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		taskStatusPanel.addStyleName("dataGroupBox");
 		controlPanel.add(taskStatusPanel);
 	}
-	
+
 	protected void setTaskKindLayout() {
 		taskKindComboBox.setGrid("s6 m4");
-		controlPanel.add(taskKindComboBox);		
+		controlPanel.add(taskKindComboBox);
 	};
 
 	@Override

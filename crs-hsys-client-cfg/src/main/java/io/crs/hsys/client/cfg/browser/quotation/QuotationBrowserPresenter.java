@@ -154,9 +154,11 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	protected void deleteData(String webSafeKey) {
+		logger.info("QuotationBrowserPresenter().deleteData()->webSafeKey=" + webSafeKey);
 		resourceDelegate.withCallback(new AbstractAsyncCallback<Void>() {
 			@Override
 			public void onSuccess(Void result) {
+				logger.info("QuotationBrowserPresenter().deleteData().onSuccess()");
 				loadData();
 			}
 		}).delete(webSafeKey);

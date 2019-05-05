@@ -110,7 +110,13 @@ public interface CoreMessages extends Messages {
 	String com1YearAgo(String time);
 
 	/*
-	 * CRUD MESSIGES
+	 * DIALOG MESSAGES
+	 */
+	@DefaultMessage("DELETION")
+	String dialogDeleteTitle();
+
+	/*
+	 * CRUD MESSAGES
 	 */
 	@DefaultMessage("Data cannot be saved")
 	String CRUD_CANNOT_BE_SAVED();
@@ -406,6 +412,12 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Description")
 	String taskGroupBrowserDescriptionColumn();
+
+	@DefaultMessage("Delete Task Group(s)")
+	String taskGroupBrowserDeleteTitle();
+
+	@DefaultMessage("Are you sure you want to delete the following groups: {0}")
+	String taskGroupBrowserDeleteMessage(String codes);
 
 	/*
 	 * TASK GROUP FILTER
