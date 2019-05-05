@@ -8,7 +8,7 @@ package io.crs.hsys.client.core.message;
  *
  */
 public enum MessageButtonType {
-	CLOSE("Close"), YES("Yes"), NO("No");
+	CLOSE("DB_CLOSE"), YES("DB_YES"), NO("DB_NO");
 
 	private String label;
 

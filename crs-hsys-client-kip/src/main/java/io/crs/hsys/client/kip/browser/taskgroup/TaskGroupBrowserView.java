@@ -71,8 +71,12 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		MessageButtonConfig yesButton = new MessageButtonConfig(MessageButtonType.YES, e -> {
 			getUiHandlers().delete(browserView.getSelected());
 		});
-		
 		message.addBttonConfig(yesButton);
+
+		MessageButtonConfig noButton = new MessageButtonConfig(MessageButtonType.NO, e -> {
+		});
+		message.addBttonConfig(noButton);
+		
 		return message;
 	}
 
