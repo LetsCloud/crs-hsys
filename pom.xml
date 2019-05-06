@@ -63,7 +63,7 @@
 		<itext.version>7.1.5</itext.version>
 
 		<modelmapper.version>2.3.2</modelmapper.version>
-		<appengine.version>1.9.73</appengine.version>
+		<appengine.version>1.9.74</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
 		<objectify.version>5.1.21</objectify.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>

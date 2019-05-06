@@ -9,7 +9,7 @@
 		<g:SimplePanel ui:field="filterPanel" />
 
 		<m.table:MaterialDataTable ui:field="table"
-			shadow="1" height="calc(100vh - 400px)" useLoadOverlay="false"
+			shadow="1" height="calc(100vh - 445px)" useLoadOverlay="false"
 			useStickyHeader="false" useCategories="false" selectionType="SINGLE" />
 
 		<m:MaterialFAB>
