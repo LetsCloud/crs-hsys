@@ -38,6 +38,7 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 	public interface MyView extends View, HasUiHandlers<TaskTodoBrowserUiHandlers> {
 		void setData(List<TaskTodoDto> data);
 		void showMessage(MessageData message);
+		void reConfigColumns();
 	}
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
@@ -72,6 +73,7 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		getView().reConfigColumns();
 	}
 
 	@Override

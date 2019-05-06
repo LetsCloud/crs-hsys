@@ -6,12 +6,15 @@ package io.crs.hsys.client.kip.browser.tasktodo;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.table.cell.Column;
 
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreMessages;
@@ -30,33 +33,43 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 		implements TaskTodoBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TaskTodoBrowserView.class.getName());
 
+//	private static final int COL_KIND = 0;
+//	private static final int COL_GROUP = 1;
+//	private static final int COL_DESCRIPRION = 2;
+//	private static final int COL_TIME = 3;
+	private static final int COL_ACTIVE = 4;
+
+	public class ColumnConfig extends AbstractColumnConfig<TaskTodoDto> {
+
+		public ColumnConfig(Column<TaskTodoDto, ?> column) {
+			super(column);
+		}
+
+		public ColumnConfig(String header, Column<TaskTodoDto, ?> column) {
+			super(header, column);
+		}
+	}
+
 	private final AbstractBrowserView<TaskTodoDto> browserView;
 	private final CoreMessages i18nCore;
 
 	/**
 	* 
 	*/
-	public TaskTodoBrowserView(AbstractBrowserView<TaskTodoDto> table, CoreMessages i18nCore) {
+	public TaskTodoBrowserView(AbstractBrowserView<TaskTodoDto> browserView, CoreMessages i18nCore) {
 		logger.info("TaskTodoBrowserView()");
-		initWidget(table);
+		initWidget(browserView);
 
-		this.browserView = table;
+		this.browserView = browserView;
 		this.i18nCore = i18nCore;
 
-		bindSlot(TaskTodoBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
-		bindSlot(TaskTodoBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
+		bindSlot(TaskTodoBrowserPresenter.SLOT_FILTER, browserView.getFilterPanel());
+		bindSlot(TaskTodoBrowserPresenter.SLOT_EDITOR, browserView.getEditorPanel());
 
-		initTable();
-
+		initBrowswerView();
 	}
 
-	@Override
-	protected void onAttach() {
-		super.onAttach();
-	}
-
-	private void initTable() {
-
+	private void initBrowswerView() {
 		browserView.setTableTitle(i18nCore.taskTodoBrowserTitle());
 
 		browserView.getAddButton().addClickHandler(e -> {
@@ -67,8 +80,42 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 			showMessage(createDeleteMessage());
 		});
 
-		// Kind Column
-		browserView.addColumn(new ActionColumn<TaskTodoDto>() {
+		browserView.clearColumnConfigs();
+
+		// 0 - Kind Column
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.taskTodoBrowserKindColumn(), createKindColumn()));
+
+		// 1 - Group Column
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.taskTypeBrowserGroupColumn(), createGroupColumn()));
+
+		// 2 - Description Column
+		browserView.addColumnConfigs(
+				new ColumnConfig(i18nCore.taskTodoBrowserDescriptionColumn(), createDescriptionColumn()));
+
+		// 3 - Time Column
+//		table.addColumn(
+//				new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString(),
+//						(o1, o2) -> o1.getData().getTimeRequired().compareTo(o2.getData().getTimeRequired())),
+//				i18nCore.taskTodoBrowserTimeReqColumn());
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.taskTodoBrowserTimeReqColumn(), createTimeColumn()));
+
+		// 4 - Active Column
+		browserView.addColumnConfigs(new ColumnConfig(i18nCore.comActive(), createActiveColumn()));
+
+		// 5 - Edit Column
+		browserView.addColumnConfigs(new ColumnConfig(createEditActionColumn()));
+
+		browserView.addAllColumns();
+	}
+
+	@Override
+	public void reConfigColumns() {
+//		browserView.hideColumn(COL_TIME, Window.getClientWidth() <= 1024);
+		browserView.hideColumn(COL_ACTIVE, Window.getClientWidth() <= 1240);
+	}
+
+	private ActionColumn<TaskTodoDto> createKindColumn() {
+		return new ActionColumn<TaskTodoDto>() {
 			@Override
 			protected MaterialIcon getIcon(TaskTodoDto object) {
 				MaterialIcon icon = new MaterialIcon();
@@ -77,47 +124,45 @@ public abstract class TaskTodoBrowserView extends ViewWithUiHandlers<TaskTodoBro
 				icon.setTextColor(RoomStatusUtils.getTaskColor(object.getKind()));
 				return icon;
 			}
-		}, i18nCore.taskTodoBrowserKindColumn());
+		};
+	}
 
-		// Group Column
-		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> {
+	private DataColumn<TaskTodoDto> createGroupColumn() {
+		return new DataColumn<TaskTodoDto>((object) -> {
 			if (object.getTaskGroup() != null) {
 				return object.getTaskGroup().getDescription();
 			} else {
 				return null;
 			}
-		}), i18nCore.taskTypeBrowserGroupColumn());
+		});
+	}
 
-		// Description Column
-		browserView.addColumn(
-				new DataColumn<TaskTodoDto>((object) -> object.getDescription(),
-						(o1, o2) -> o1.getData().getDescription().compareToIgnoreCase(o2.getData().getDescription())),
-				i18nCore.taskTodoBrowserDescriptionColumn());
+	private DataColumn<TaskTodoDto> createDescriptionColumn() {
+		return new DataColumn<TaskTodoDto>((object) -> object.getDescription(),
+				(o1, o2) -> o1.getData().getDescription().compareToIgnoreCase(o2.getData().getDescription()));
+	}
 
-		// Time Column
-//		table.addColumn(
-//				new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString(),
-//						(o1, o2) -> o1.getData().getTimeRequired().compareTo(o2.getData().getTimeRequired())),
-//				i18nCore.taskTodoBrowserTimeReqColumn());
-		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString()),
-				i18nCore.taskTodoBrowserTimeReqColumn());
+	private DataColumn<TaskTodoDto> createTimeColumn() {
+		return new DataColumn<TaskTodoDto>((object) -> object.getTimeRequired().toString());
+	}
 
-		// Active Column
-		browserView.addColumn(new DataColumn<TaskTodoDto>((object) -> {
+	private DataColumn<TaskTodoDto> createActiveColumn() {
+		return new DataColumn<TaskTodoDto>((object) -> {
 			if (object.getActive()) {
 				return i18nCore.comActive();
 			} else {
 				return i18nCore.comInactive();
 			}
-		}), i18nCore.comActive());
+		});
+	}
 
-		// Edit Column
-		browserView.addColumn(new ActionColumn<TaskTodoDto>((object) -> getUiHandlers().edit(object)) {
+	private ActionColumn<TaskTodoDto> createEditActionColumn() {
+		return new ActionColumn<TaskTodoDto>((object) -> getUiHandlers().edit(object)) {
 			@Override
 			protected Boolean isVisible(TaskTodoDto object) {
 				return isEnabledTaskKind(object.getKind());
 			}
-		});
+		};
 	}
 
 	@Override
