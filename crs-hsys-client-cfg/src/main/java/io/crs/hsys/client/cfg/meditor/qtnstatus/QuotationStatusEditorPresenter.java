@@ -17,6 +17,7 @@ import io.crs.hsys.client.cfg.config.doc.DocConfigPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.meditor.AbstractMeditorPresenter;
 import io.crs.hsys.client.core.meditor.MeditorView;
@@ -73,14 +74,15 @@ public class QuotationStatusEditorPresenter
 
 	@Override
 	public void saveDto(QuotationStatusDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<QuotationStatusDto>(this, i18nCore) {
-			@Override
-			public void onSuccess(QuotationStatusDto dto) {
-				getView().close();
-				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.DOC_CONFIG)
-						.with(AbstractConfigPresenter.PLACE_PARAM, DocConfigPresenter.QUOTATION_STATUS).build();
-				placeManager.revealPlace(placeRequest);
-			}
-		}).saveOrCreate(dto);
+		resourceDelegate.withCallback(
+				new ErrorHandlerAsyncCallback<QuotationStatusDto>(this, MessageTarget.QUOTATION_STATUS, i18nCore) {
+					@Override
+					public void onSuccess(QuotationStatusDto dto) {
+						getView().close();
+						PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.DOC_CONFIG)
+								.with(AbstractConfigPresenter.PLACE_PARAM, DocConfigPresenter.QUOTATION_STATUS).build();
+						placeManager.revealPlace(placeRequest);
+					}
+				}).saveOrCreate(dto);
 	}
 }

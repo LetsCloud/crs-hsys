@@ -3,7 +3,10 @@
  */
 package io.crs.hsys.server.repository.ofy;
 
+import io.crs.hsys.server.entity.ForeignKey;
+import io.crs.hsys.server.entity.task.Task;
 import io.crs.hsys.server.entity.task.TaskType;
+import io.crs.hsys.server.repository.TaskRepository;
 import io.crs.hsys.server.repository.TaskTypeRepository;
 import io.crs.hsys.shared.exception.ExceptionSubType;
 
@@ -18,8 +21,9 @@ public class TaskTypeRepositoryImpl extends AccountChildRepositoryImpl<TaskType>
 	 */
 	private static final String PROPERTY_CODE = "code";
 
-	protected TaskTypeRepositoryImpl() {
+	protected TaskTypeRepositoryImpl(TaskRepository taskRepository) {
 		super(TaskType.class);
+		foreignKeys.add(new ForeignKey(Task.PROPERTY_TYPE, taskRepository, ExceptionSubType.TASKTYPE_ID_USED_BY_TASK));
 	}
 
 	@Override

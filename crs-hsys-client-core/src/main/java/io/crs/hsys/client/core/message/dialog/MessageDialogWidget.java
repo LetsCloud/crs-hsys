@@ -65,6 +65,7 @@ public class MessageDialogWidget extends Composite implements HasShowMessage {
 	}
 
 	private MaterialButton createButton(String label, Fn.Arg<ClickEvent> callback) {
+
 		MaterialButton b = new MaterialButton(label);
 		b.setMarginRight(10);
 		b.addClickHandler(e -> {
@@ -81,6 +82,12 @@ public class MessageDialogWidget extends Composite implements HasShowMessage {
 
 	@Override
 	public void showMessage(MessageData messageData) {
+		logger.info("MessageDialogWidget().showMessage()");
+		initAndOpen(messageData);
+	}
+
+	private void initAndOpen(MessageData messageData) {
+		logger.info("MessageDialogWidget().initAndOpen()");
 		title.setTitle(messageData.getTitle());
 		title.setDescription(messageData.getDescription());
 		footer.clear();
@@ -94,4 +101,5 @@ public class MessageDialogWidget extends Composite implements HasShowMessage {
 		}
 		dialog.open();
 	}
+
 }

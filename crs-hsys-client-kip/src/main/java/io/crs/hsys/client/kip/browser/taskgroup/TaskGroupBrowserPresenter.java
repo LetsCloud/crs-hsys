@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
 import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageData;
@@ -78,11 +79,6 @@ public abstract class TaskGroupBrowserPresenter
 	}
 
 	@Override
-	protected void onReveal() {
-		super.onReveal();
-	}
-
-	@Override
 	protected void loadData() {
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<TaskGroupDto>>() {
 			@Override
@@ -109,22 +105,11 @@ public abstract class TaskGroupBrowserPresenter
 
 	@Override
 	protected void deleteData(String webSafeKey) {
-		logger.info("TaskGroupBrowserPresenter().deleteData()->webSafeKey=" + webSafeKey);
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<Void>(this, i18nCore) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<Void>(this, MessageTarget.TASK_GROUP, i18nCore) {
 			@Override
 			public void onSuccess(Void result) {
-				logger.info("TaskGroupBrowserPresenter().deleteData().onSuccess()->webSafeKey=" + webSafeKey);
 				loadData();
 			}
-			/*
-			 * @Override public void onFailure(Throwable caught) { if (caught instanceof
-			 * CustomActionException) { CustomActionException e = (CustomActionException)
-			 * caught; MaterialToast.fireToast(e.getMessage()); ErrorResponseDto erd =
-			 * e.getErDto(); MaterialToast.fireToast(erd.toString(), 10000); }
-			 * MaterialToast.fireToast(caught.getMessage());
-			 */
-//				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
-//			}
 		}).delete(webSafeKey);
 	}
 
@@ -145,7 +130,11 @@ public abstract class TaskGroupBrowserPresenter
 
 	@Override
 	public void onDisplayMessage(DisplayMessageEvent event) {
-		getView().showMessage(event.getMessage());
+		logger.info("TaskGroupBrowserPresenter().onDisplayMessage()");
+		if (event.getTarget().equals(MessageTarget.TASK_GROUP)) {
+			logger.info("TaskGroupBrowserPresenter().onDisplayMessage()-2");
+			getView().showMessage(event.getMessage());
+		}
 	}
 
 	@Override

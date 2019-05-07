@@ -9,6 +9,7 @@ import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.gin.CustomActionException;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageData;
@@ -24,11 +25,13 @@ public abstract class ErrorHandlerAsyncCallback<R> implements AsyncCallback<R> {
 	private static Logger logger = Logger.getLogger(ErrorHandlerAsyncCallback.class.getName());
 
 	private final HasHandlers hasHandlers;
+	private final MessageTarget target;
 	private final CoreMessages i18n;
 
-	public ErrorHandlerAsyncCallback(HasHandlers hasHandlers, CoreMessages i18n) {
+	public ErrorHandlerAsyncCallback(HasHandlers hasHandlers, MessageTarget target, CoreMessages i18n) {
 		logger.info("ErrorHandlerAsyncCallback()");
 		this.hasHandlers = hasHandlers;
+		this.target = target;
 		this.i18n = i18n;
 	}
 
@@ -39,7 +42,8 @@ public abstract class ErrorHandlerAsyncCallback<R> implements AsyncCallback<R> {
 			MessageData message = new MessageData(MessageStyle.ERROR,
 					translateTitle(exception.getErDto().getExceptionType()), translateDescription(
 							exception.getErDto().getExceptionSubType(), exception.getErDto().getProperty()));
-			DisplayMessageEvent.fire(hasHandlers, message);
+			logger.info("ErrorHandlerAsyncCallback().onFailure()->target=" + target);
+			DisplayMessageEvent.fire(hasHandlers, target, message);
 		}
 	}
 

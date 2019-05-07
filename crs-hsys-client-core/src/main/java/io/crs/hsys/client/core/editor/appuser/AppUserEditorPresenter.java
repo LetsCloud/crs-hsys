@@ -28,6 +28,7 @@ import io.crs.hsys.client.core.datasource.UserGroupDataSource;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
@@ -171,21 +172,22 @@ public class AppUserEditorPresenter
 	@Override
 	public void save(AppUserDto dto) {
 		logger.info("AppUserEditorPresenter().save()->dto=" + dto);
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, i18nCore) {
-			@Override
-			public void onSuccess(AppUserDto dto) {
-				logger.info("AppUserEditorPresenter().save().onSuccess()->dto=" + dto);
+		resourceDelegate
+				.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, MessageTarget.APP_USER, i18nCore) {
+					@Override
+					public void onSuccess(AppUserDto dto) {
+						logger.info("AppUserEditorPresenter().save().onSuccess()->dto=" + dto);
 //				PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG)
 //						.with(AbstractConfigPresenter.PLACE_PARAM, SystemConfigPresenter.APP_USERS).build();
 //				placeManager.revealPlace(placeRequest);
-				placeManager.navigateBack();
-			}
+						placeManager.navigateBack();
+					}
 
-			@Override
-			public void onFailure(Throwable caught) {
-				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
-			}
-		}).saveOrCreate(dto);
+					@Override
+					public void onFailure(Throwable caught) {
+						getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
+					}
+				}).saveOrCreate(dto);
 	}
 
 }

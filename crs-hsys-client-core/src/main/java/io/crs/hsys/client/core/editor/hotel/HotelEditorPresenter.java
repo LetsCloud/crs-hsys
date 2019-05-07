@@ -21,6 +21,7 @@ import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
@@ -106,7 +107,7 @@ public class HotelEditorPresenter
 
 	@Override
 	public void save(HotelDto userDto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<HotelDto>(this, i18nCore) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<HotelDto>(this, MessageTarget.HOTEL, i18nCore) {
 			@Override
 			public void onSuccess(HotelDto userDto) {
 				placeManager.navigateBack();

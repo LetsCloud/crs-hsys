@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
@@ -88,15 +89,16 @@ public class AppUserBrowserPresenter extends AbstractBrowserPresenter<AppUserDto
 	@Override
 	public void inviteItem(List<AppUserDto> dtos) {
 		for (AppUserDto dto : dtos) {
-			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, i18nCore) {
-				@Override
-				public void onSuccess(AppUserDto userDto) {
-				}
+			resourceDelegate
+					.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, MessageTarget.APP_USER, i18nCore) {
+						@Override
+						public void onSuccess(AppUserDto userDto) {
+						}
 
-				@Override
-				public void onFailure(Throwable caught) {
-				}
-			}).invite(dto);
+						@Override
+						public void onFailure(Throwable caught) {
+						}
+					}).invite(dto);
 		}
 	}
 
@@ -104,15 +106,16 @@ public class AppUserBrowserPresenter extends AbstractBrowserPresenter<AppUserDto
 	public void clearFcmTokens(List<AppUserDto> dtos) {
 		for (AppUserDto dto : dtos) {
 			dto.getFcmTokens().clear();
-			resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, i18nCore) {
-				@Override
-				public void onSuccess(AppUserDto userDto) {
-				}
+			resourceDelegate
+					.withCallback(new ErrorHandlerAsyncCallback<AppUserDto>(this, MessageTarget.APP_USER, i18nCore) {
+						@Override
+						public void onSuccess(AppUserDto userDto) {
+						}
 
-				@Override
-				public void onFailure(Throwable caught) {
-				}
-			}).saveOrCreate(dto);
+						@Override
+						public void onFailure(Throwable caught) {
+						}
+					}).saveOrCreate(dto);
 		}
 	}
 

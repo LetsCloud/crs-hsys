@@ -163,7 +163,8 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, TaskRepository> imple
 
 		public checkTaskTypeChange(Task oldTask, Task newTask) {
 			super(newTask, oldTask.getType(), newTask.getType(), TaskNoteType.TNT_MOD_TYPE);
-			text = oldTask.getType().getCode();
+			if (oldTask.getType() != null)
+				text = oldTask.getType().getCode();
 		}
 	}
 

@@ -23,7 +23,11 @@ import io.crs.hsys.shared.cnst.TaskStatus;
  */
 @Entity
 public class Task extends AccountChild {
+	
+	public static final String PROPERTY_TYPE = "type";
+
 	private TaskKind kind;
+	@Index
 	private Ref<TaskType> type;
 	private Date created;
 	private Date updated;

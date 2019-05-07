@@ -11,7 +11,7 @@
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
 	<m:MaterialDialog ui:field="dialog" type="DEFAULT"
-		dismissible="false" inDuration="500" outDuration="500">
+		dismissible="true" inDuration="500" outDuration="500">
 		<m:MaterialDialogContent>
 			<m:MaterialTitle ui:field="title" />
 		</m:MaterialDialogContent>
