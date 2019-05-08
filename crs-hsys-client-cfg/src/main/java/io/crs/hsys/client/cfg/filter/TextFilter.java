@@ -12,7 +12,7 @@ import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialTextBox;
-
+import io.crs.hsys.client.core.filter.BaseFilter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import com.google.gwt.user.client.ui.Label;
 
@@ -15,9 +16,11 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialTextBox;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
+import io.crs.hsys.client.kip.filter.TaskStatusFilter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
@@ -30,7 +33,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	private static Logger logger = Logger.getLogger(TasksFilterView.class.getName());
 
 	private MaterialPanel cleaningStatusPanel;
-	private MaterialPanel taskStatusPanel;
+	private TaskStatusFilter taskStatusFilter;
 	private MaterialComboBox<TaskKind> taskKindComboBox;
 	private MaterialTextBox roomNumberField;
 	private MaterialComboBox<RoomTypeDtor> roomTypeComboBox;
@@ -38,6 +41,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private final KipMessages i18n;
 	private final CoreConstants i18nCoreCnst;
+
+	@Inject
+	Provider<TaskStatusFilter> taskStatusFilterProvider;
 
 	@Inject
 	TasksFilterView(CoreMessages i18nCore, KipMessages i18n, CoreConstants i18nCoreCnst) {
@@ -52,21 +58,26 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		super.initView();
 		disableOnlyActive();
 
-		taskStatusPanel = new MaterialPanel();
+		taskStatusFilter = taskStatusFilterProvider.get();
+		taskStatusFilter.setChipPanel(collapsibleHeader);
+		taskStatusFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+//		taskStatusFilter.setFilterLabel(i18nCore.quotationFilterCodeLabel());
+
+//		taskStatusPanel = new MaterialPanel();
 		cleaningStatusPanel = new MaterialPanel();
 		taskKindComboBox = new MaterialComboBox<TaskKind>();
 		roomNumberField = new MaterialTextBox();
 		roomTypeComboBox = new MaterialComboBox<RoomTypeDtor>();
 		floorField = new MaterialTextBox();
 
-		initTaskStatusPanel();
+//		initTaskStatusPanel();
 		initCleaningStatusPanel();
 		initTaskKindFilter();
 		initRoomNumberFilter();
 		initRoomTypeFilter();
 		initFloorFilter();
 	}
-
+/*
 	private void initTaskStatusPanel() {
 		Label title = new Label(i18n.tasksFilterTaskStatusTitle());
 		title.addStyleName("dataGroupTitle");
@@ -78,7 +89,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		initCheckBox(taskStatusPanel, i18n.tasksFilterStatusCompleted());
 		initCheckBox(taskStatusPanel, i18n.tasksFilterStatusDeleted());
 	}
-
+*/
 	private void initCleaningStatusPanel() {
 		Label title = new Label(i18n.roomStatusFilterRoomStatusTitle());
 		title.addStyleName("dataGroupTitle");
@@ -222,10 +233,10 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	}
 
 	private void createOccupancyStatusLayout() {
-		taskStatusPanel.setGrid("s6 m4");
+		taskStatusFilter.setGrid("s6 m4");
 //		taskStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
-		taskStatusPanel.addStyleName("dataGroupBox");
-		controlPanel.add(taskStatusPanel);
+		taskStatusFilter.addStyleName("dataGroupBox");
+		controlPanel.add(taskStatusFilter);
 	}
 
 	protected void setTaskKindLayout() {

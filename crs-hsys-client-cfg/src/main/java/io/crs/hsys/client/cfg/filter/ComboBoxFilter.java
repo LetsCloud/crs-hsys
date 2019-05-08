@@ -11,6 +11,7 @@ import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.base.MaterialWidget;
+import io.crs.hsys.client.core.filter.BaseFilter;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.shared.dto.BaseDto;
