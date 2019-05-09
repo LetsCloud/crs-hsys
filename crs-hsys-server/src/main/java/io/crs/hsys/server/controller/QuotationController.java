@@ -50,7 +50,7 @@ public class QuotationController extends CrudController<Quotation, QuotationDto>
 	@Autowired
 	QuotationController(QuotationService quotationService, ModelMapper modelMapper) {
 		super(Quotation.class, quotationService, modelMapper);
-		logger.info("ContactController()");
+		logger.info("QuotationController()");
 		this.modelMapper = modelMapper;
 		this.quotationService = quotationService;
 	}
@@ -75,14 +75,13 @@ public class QuotationController extends CrudController<Quotation, QuotationDto>
 	@Override
 	@RequestMapping(value = PATH_WEBSAFEKEY, method = GET)
 	public ResponseEntity<QuotationDto> get(@PathVariable String webSafeKey) throws RestApiException {
-		logger.info("get()->webSafeKey=" + webSafeKey);
 		return super.get(webSafeKey);
 	}
 
 	@Override
 	@RequestMapping(method = POST)
 	public ResponseEntity<QuotationDto> saveOrCreate(@RequestBody QuotationDto dto) throws RestApiException {
-		logger.info("ContactController().saveOrCreate(" + dto + ")");
+		logger.info("QuotationController().saveOrCreate(" + dto + ")");
 		return super.saveOrCreate(dto);
 	}
 
@@ -90,6 +89,7 @@ public class QuotationController extends CrudController<Quotation, QuotationDto>
 	@RequestMapping(value = PATH_WEBSAFEKEY, method = DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable(WEBSAFEKEY) String webSafeKey) throws RestApiException {
+		logger.info("QuotationController().delete()->webSafeKey=" + webSafeKey);
 		super.delete(webSafeKey);
 	}
 

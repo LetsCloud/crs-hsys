@@ -26,6 +26,7 @@ import io.crs.hsys.client.cfg.editor.profile.organization.OrganizationEditorPres
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.OrganizationResource;
@@ -90,18 +91,19 @@ public class OrganizationCreatePresenter
 
 	@Override
 	public void save(OrganizationDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<OrganizationDto>(this, i18nCore) {
-			@Override
-			public void onSuccess(OrganizationDto dto) {
-				PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG).build();
-				placeManager.revealPlace(placeRequest);
-			}
+		resourceDelegate.withCallback(
+				new ErrorHandlerAsyncCallback<OrganizationDto>(this, MessageTarget.ORGANIZATION, i18nCore) {
+					@Override
+					public void onSuccess(OrganizationDto dto) {
+						PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG).build();
+						placeManager.revealPlace(placeRequest);
+					}
 
-			@Override
-			public void onFailure(Throwable caught) {
+					@Override
+					public void onFailure(Throwable caught) {
 //				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
-			}
-		}).saveOrCreate(dto);
+					}
+				}).saveOrCreate(dto);
 	}
 
 	@Override

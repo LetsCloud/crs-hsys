@@ -38,7 +38,7 @@ public abstract class AbstractTaskGroupFilterPresenter<V extends AbstractTaskGro
 	}
 
 	@Override
-	protected void onBind() {
+	public void onBind() {
 		super.onBind();
 		getView().setTaskKindData(Arrays.asList(TaskKind.values()));
 	}

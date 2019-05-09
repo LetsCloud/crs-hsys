@@ -48,7 +48,7 @@ public class RoomBrowserView extends ViewWithUiHandlers<RoomBrowserUiHandlers> i
 		table.setTableTitle(i18nCore.roomBrowserTitle());
 
 		table.getAddButton().addClickHandler(e -> getUiHandlers().addNew());
-		table.getDeleteIcon().addClickHandler(e -> getUiHandlers().delete(table.getSelected()));
+		table.getDeleteIcon().addClickHandler(e -> getUiHandlers().delete(table.getSelectedItems()));
 
 		// Code Column
 		table.addColumn(

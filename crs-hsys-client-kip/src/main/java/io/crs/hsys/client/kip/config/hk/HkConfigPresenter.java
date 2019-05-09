@@ -51,8 +51,8 @@ public class HkConfigPresenter extends AbstractConfigPresenter<HkConfigPresenter
 		addContent(i18n.hkTaskGroupBrowserTitle(), hkTaskGroupBrowserFactory.createHkTaskGroupBrowser(), TASK_GROUPS);
 		addContent(i18n.hkTaskTodoBrowserTitle(), hkTaskTodoBrowserFactory.createHkTaskTodoBrowser(), TASK_TODOS);
 		addContent(i18n.hkTaskTypeBrowserTitle(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), TASK_TYPES);
-		addContent(i18n.hkConfigStandardTypesItem(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), STANDARD_CLEANING_TYPES);
-		addContent(i18n.hkConfigPublicAreaCleaningSetup(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), PUBLIC_AREA_CLEANING_PARAMS);
+//		addContent(i18n.hkConfigStandardTypesItem(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), STANDARD_CLEANING_TYPES);
+//		addContent(i18n.hkConfigPublicAreaCleaningSetup(), taskTypeBrowserFactory.createHkTaskTypeBrowser(), PUBLIC_AREA_CLEANING_PARAMS);
 
 		getView().setUiHandlers(this);
 	}

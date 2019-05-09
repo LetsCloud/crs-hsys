@@ -30,14 +30,13 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 
 		this.i18nCoreCnst = i18nCoreCnst;
 
-		initTaskKindFilter();
 //		disableOnlyActive();
 	}
 
 	@Override
 	protected void initView() {
 		super.initView();
-		taskKindComboBox = new MaterialComboBox<TaskKind>();
+		initTaskKindFilter();
 	}
 
 	private void initTaskKindFilter() {
@@ -45,6 +44,7 @@ public class AbstractTaskGroupFilterView extends AbstractFilterView implements A
 		chip.setVisible(false);
 		collapsibleHeader.insert(chip, 1);
 
+		taskKindComboBox = new MaterialComboBox<TaskKind>();
 		taskKindComboBox.setMarginTop(30);
 		taskKindComboBox.setLabel(i18nCore.taskGroupFilterTaskKindLabel());
 		taskKindComboBox.setPlaceholder(i18nCore.taskGroupFilterTaskKindPlaceholder());

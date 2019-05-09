@@ -164,7 +164,6 @@ public abstract class AbstractBrowserPresenter<T extends BaseDto, V extends View
 			logger.info("AbstractBrowserPresenter().delete()->dto.getWebSafeKey()=" + dto.getWebSafeKey());
 			deleteData(dto.getWebSafeKey());
 		}
-		loadData();
 	}
 
 	protected abstract void deleteData(String webSafeKey);

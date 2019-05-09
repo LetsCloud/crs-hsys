@@ -36,4 +36,6 @@ public interface CoreConstants extends Constants {
 	Map<String, String> roomStatusMap();
 
 	Map<String, String> erroCodeMap();
+
+	Map<String, String> dialogButtonMap();
 }

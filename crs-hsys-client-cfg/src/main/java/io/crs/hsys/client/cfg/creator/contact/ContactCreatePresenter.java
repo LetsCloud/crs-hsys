@@ -27,6 +27,7 @@ import io.crs.hsys.client.cfg.editor.profile.contact.ContactEditorPresenter;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.callback.ErrorHandlerAsyncCallback;
 import io.crs.hsys.shared.api.ContactResource;
@@ -83,13 +84,13 @@ public class ContactCreatePresenter extends Presenter<ContactCreatePresenter.MyV
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire(i18nCore.contactCreatorTitle(), i18nCore.contactCreatorDescription(), MenuItemType.MENU_ITEM,
-				this);
+		SetPageTitleEvent.fire(i18nCore.contactCreatorTitle(), i18nCore.contactCreatorDescription(),
+				MenuItemType.MENU_ITEM, this);
 	}
 
 	@Override
 	public void save(ContactDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<ContactDto>(this, i18nCore) {
+		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<ContactDto>(this, MessageTarget.CONTACT, i18nCore) {
 			@Override
 			public void onSuccess(ContactDto dto) {
 				PlaceRequest placeRequest = new Builder().nameToken(CoreNameTokens.SYSTEM_CONFIG).build();

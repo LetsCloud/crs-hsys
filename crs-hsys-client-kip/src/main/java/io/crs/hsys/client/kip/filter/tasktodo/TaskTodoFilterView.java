@@ -30,13 +30,12 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 	TaskTodoFilterView(CoreMessages i18nCore, CoreConstants cnstCore) {
 		super(i18nCore, cnstCore);
 		logger.info("TaskTodoFilterView()");
-		initTaskGroupFilter();
 	}
 
 	@Override
 	protected void initView() {
 		super.initView();
-		taskGroupComboBox = new MaterialComboBox<TaskGroupDto>();
+		initTaskGroupFilter();
 	}
 
 	private void initTaskGroupFilter() {
@@ -44,6 +43,7 @@ public class TaskTodoFilterView extends AbstractTaskGroupFilterView implements T
 		chip.setVisible(false);
 		collapsibleHeader.insert(chip, 1);
 
+		taskGroupComboBox = new MaterialComboBox<TaskGroupDto>();
 		taskGroupComboBox.setMarginTop(30);
 		taskGroupComboBox.setLabel(i18nCore.taskTodoFilterTaskGroupLabel());
 		taskGroupComboBox.setPlaceholder(i18nCore.taskTodoFilterTaskGroupPlaceholder());

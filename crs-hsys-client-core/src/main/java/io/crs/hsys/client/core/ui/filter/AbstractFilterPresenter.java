@@ -21,6 +21,7 @@ public abstract class AbstractFilterPresenter<V extends AbstractFilterPresenter.
 	private static Logger logger = Logger.getLogger(AbstractFilterPresenter.class.getName());
 
 	public interface MyView extends View {
+		void buildView();
 
 		void reset();
 
@@ -28,11 +29,17 @@ public abstract class AbstractFilterPresenter<V extends AbstractFilterPresenter.
 	}
 
 	protected final CurrentUser currentUser;
-	
+
 	public AbstractFilterPresenter(EventBus eventBus, V view, CurrentUser currentUser) {
 		super(eventBus, view);
 		logger.info("AbstractFilterPresenter()");
 		this.currentUser = currentUser;
+	}
+
+	@Override
+	public void onBind() {
+		super.onBind();
+		getView().buildView();
 	}
 
 	@Override

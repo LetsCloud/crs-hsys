@@ -25,6 +25,7 @@ public abstract class AbstractDisplayPresenterWidget<V extends View> extends Pre
 
 	public AbstractDisplayPresenterWidget(EventBus eventBus, V view) {
 		super(eventBus, view);
+		logger.info("AbstractDisplayPresenterWidget()");
 	}
 
 	public Boolean getReadOnly() {

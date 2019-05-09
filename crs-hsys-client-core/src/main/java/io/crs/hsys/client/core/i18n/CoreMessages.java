@@ -110,7 +110,13 @@ public interface CoreMessages extends Messages {
 	String com1YearAgo(String time);
 
 	/*
-	 * CRUD MESSIGES
+	 * DIALOG MESSAGES
+	 */
+	@DefaultMessage("DELETION")
+	String dialogDeleteTitle();
+
+	/*
+	 * CRUD MESSAGES
 	 */
 	@DefaultMessage("Data cannot be saved")
 	String CRUD_CANNOT_BE_SAVED();
@@ -407,6 +413,12 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Description")
 	String taskGroupBrowserDescriptionColumn();
 
+	@DefaultMessage("Delete Task Group(s)")
+	String taskGroupBrowserDeleteTitle();
+
+	@DefaultMessage("Are you sure you want to delete the following task group(s): {0}")
+	String taskGroupBrowserDeleteMessage(String codes);
+
 	/*
 	 * TASK GROUP FILTER
 	 */
@@ -452,6 +464,12 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Time(m)")
 	String taskTodoBrowserTimeReqColumn();
+
+	@DefaultMessage("Delete Task Todo(s)")
+	String taskTodoBrowserDeleteTitle();
+
+	@DefaultMessage("Are you sure you want to delete the following task todo(s): {0}")
+	String taskTodoBrowserDeleteMessage(String codes);
 
 	/*
 	 * TASK TODO FILTER
@@ -751,7 +769,28 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Issue Date")
 	String quotationBrowserIssueDate();
+	
+	
+	/*
+	 * QUOTATION FILTER
+	 */
 
+	@DefaultMessage("Code~")
+	String quotationFilterCodeChipLabel();
+
+	@DefaultMessage("Code filter")
+	String quotationFilterCodeLabel();
+
+	@DefaultMessage("Description~")
+	String quotationDescriptionChipLabel();
+
+	@DefaultMessage("Description filter")
+	String quotationFilterDescriptionLabel();
+
+	@DefaultMessage("Status filter")
+	String quotationFilterStatusLabel();
+
+	
 	/*
 	 * QUOTATION EDITOR
 	 */

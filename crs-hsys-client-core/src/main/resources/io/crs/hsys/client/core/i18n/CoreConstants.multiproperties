@@ -799,5 +799,44 @@
             <Value disabled="false">Видалено</Value>
             <Value disabled="false">Törölve</Value>
         </Property>
+        <Comment>
+            <Value>dialogButtonMap</Value>
+        </Comment>
+        <Property>
+            <Name>dialogButtonMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">DB_CLOSE,DB_YES,DB_NO</Value>
+            <Value disabled="false">DB_CLOSE,DB_YES,DB_NO</Value>
+            <Value disabled="false">DB_CLOSE,DB_YES,DB_NO</Value>
+            <Value disabled="false">DB_CLOSE,DB_YES,DB_NO</Value>
+        </Property>
+        <Property>
+            <Name>DB_CLOSE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Close</Value>
+            <Value disabled="false">Bezár</Value>
+        </Property>
+        <Property>
+            <Name>DB_YES</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Yes</Value>
+            <Value disabled="false">Yes</Value>
+            <Value disabled="false">Yes</Value>
+            <Value disabled="false">Igen</Value>
+        </Property>
+        <Property>
+            <Name>DB_NO</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">No</Value>
+            <Value disabled="false">No</Value>
+            <Value disabled="false">No</Value>
+            <Value disabled="false">Nem</Value>
+        </Property>
     </Records>
 </MultiProperties>

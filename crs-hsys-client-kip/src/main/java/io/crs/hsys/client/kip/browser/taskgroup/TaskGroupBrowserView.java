@@ -10,10 +10,13 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+
 import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.MessageButtonConfig;
+import io.crs.hsys.client.core.message.MessageButtonType;
 import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
 import io.crs.hsys.shared.cnst.TaskKind;
@@ -27,7 +30,7 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		implements TaskGroupBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TaskGroupBrowserView.class.getName());
 
-	private final AbstractBrowserView<TaskGroupDto> table;
+	private final AbstractBrowserView<TaskGroupDto> browserView;
 	private final CoreMessages i18n;
 
 	/**
@@ -37,36 +40,29 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		logger.info("TaskGroupBrowserView()");
 		initWidget(table);
 
-		this.table = table;
+		this.browserView = table;
 		this.i18n = i18n;
 
 		bindSlot(TaskGroupBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
 		bindSlot(TaskGroupBrowserPresenter.SLOT_EDITOR, table.getEditorPanel());
 
-		initTable();
-
+		initBrowserView();
 	}
 
-	@Override
-	protected void onAttach() {
-		super.onAttach();
-	}
+	private void initBrowserView() {
 
-	private void initTable() {
+		browserView.setTableTitle(i18n.taskGroupBrowserTitle());
 
-		table.setTableTitle(i18n.taskGroupBrowserTitle());
-
-		table.getAddButton().addClickHandler(e -> {
+		browserView.getAddButton().addClickHandler(e -> {
 			getUiHandlers().addNew();
 		});
 
-		table.getDeleteIcon().addClickHandler(e -> {
-			logger.info("TaskGroupBrowserView().onDeleteClick()");
-			getUiHandlers().delete(table.getSelected());
+		browserView.getDeleteIcon().addClickHandler(e -> {
+			showMessage(createDeleteMessage());
 		});
 
 		// Kind Column
-		table.addColumn(new ActionColumn<TaskGroupDto>() {
+		browserView.addColumn(new ActionColumn<TaskGroupDto>() {
 			@Override
 			protected MaterialIcon getIcon(TaskGroupDto object) {
 				MaterialIcon icon = new MaterialIcon();
@@ -82,19 +78,21 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		}, i18n.taskGroupBrowserKindColumn());
 
 		// Code Column
-		table.addColumn(
+		browserView.addColumn(
 				new DataColumn<TaskGroupDto>((object) -> object.getCode(),
 						(o1, o2) -> o1.getData().getCode().compareToIgnoreCase(o2.getData().getCode())),
 				i18n.taskGroupBrowserCodeColumn());
 
 		// Description Column
-		table.addColumn(
-				new DataColumn<TaskGroupDto>((object) -> object.getDescription(),
-						(o1, o2) -> o1.getData().getDescription().compareToIgnoreCase(o2.getData().getDescription())),
-				i18n.taskGroupBrowserDescriptionColumn());
+		browserView
+				.addColumn(
+						new DataColumn<TaskGroupDto>((object) -> object.getDescription(),
+								(o1, o2) -> o1.getData().getDescription()
+										.compareToIgnoreCase(o2.getData().getDescription())),
+						i18n.taskGroupBrowserDescriptionColumn());
 
 		// Active Column
-		table.addColumn(new DataColumn<TaskGroupDto>((object) -> {
+		browserView.addColumn(new DataColumn<TaskGroupDto>((object) -> {
 			if (object.getActive()) {
 				return i18n.comActive();
 			} else {
@@ -103,7 +101,7 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 		}), i18n.comActive());
 
 		// Edit Column
-		table.addColumn(new ActionColumn<TaskGroupDto>((object) -> getUiHandlers().edit(object)) {
+		browserView.addColumn(new ActionColumn<TaskGroupDto>((object) -> getUiHandlers().edit(object)) {
 			@Override
 			protected Boolean isVisible(TaskGroupDto object) {
 				return isEnabledTaskKind(object.getKind());
@@ -113,15 +111,39 @@ public abstract class TaskGroupBrowserView extends ViewWithUiHandlers<TaskGroupB
 
 	@Override
 	public void setData(List<TaskGroupDto> data) {
-		table.setData(data);
+		browserView.setData(data);
 	}
 
 	protected abstract Boolean isEnabledTaskKind(TaskKind kind);
-	
 
 	@Override
 	public void showMessage(MessageData message) {
-		table.showMessage(message);
+		browserView.showMessage(message);
 	}
 
+	private String getSelectedCodes(List<TaskGroupDto> dtos) {
+		StringBuilder temp = new StringBuilder();
+		for (TaskGroupDto dto : dtos) {
+			if (temp.length() > 0)
+				temp.append(",");
+			temp.append(dto.getCode());
+		}
+		return temp.toString();
+	}
+
+	private MessageData createDeleteMessage() {
+		MessageData message = new MessageData(i18n.taskGroupBrowserDeleteTitle(),
+				i18n.taskGroupBrowserDeleteMessage(getSelectedCodes(browserView.getSelectedItems())));
+
+		MessageButtonConfig yesButton = new MessageButtonConfig(MessageButtonType.YES, e -> {
+			getUiHandlers().delete(browserView.getSelectedItems());
+		});
+		message.addBttonConfig(yesButton);
+
+		MessageButtonConfig noButton = new MessageButtonConfig(MessageButtonType.NO, e -> {
+		});
+		message.addBttonConfig(noButton);
+
+		return message;
+	}
 }

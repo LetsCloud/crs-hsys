@@ -54,7 +54,7 @@ public class RelationshipBrowserView extends ViewWithUiHandlers<RelationshipBrow
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+			getUiHandlers().delete(table.getSelectedItems());
 		});
 
 		// Forward Column

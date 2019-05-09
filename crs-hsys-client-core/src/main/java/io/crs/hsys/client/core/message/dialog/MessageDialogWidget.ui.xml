@@ -11,13 +11,11 @@
 		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
 	<m:MaterialDialog ui:field="dialog" type="DEFAULT"
-		dismissible="false" inDuration="500" outDuration="500">
+		dismissible="true" inDuration="500" outDuration="500">
 		<m:MaterialDialogContent>
 			<m:MaterialTitle ui:field="title" />
 		</m:MaterialDialogContent>
-		<m:MaterialDialogFooter>
-			<m:MaterialButton ui:field="closeButton"
-				text="{i18nCore.comClose}" />
-		</m:MaterialDialogFooter>
+
+		<m:MaterialDialogFooter ui:field="footer" />
 	</m:MaterialDialog>
 </ui:UiBinder> 

@@ -15,6 +15,7 @@ import com.gwtplatform.mvp.client.View;
 
 import io.crs.hsys.client.core.event.DisplayMessageEvent;
 import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.MessageTarget;
 import io.crs.hsys.client.core.event.RefreshTableEvent;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageData;
@@ -93,23 +94,25 @@ public abstract class TaskGroupEditorPresenter extends PresenterWidget<TaskGroup
 	}
 
 	private void createEntity(TaskGroupDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
-			@Override
-			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
-				getView().close();
-			}
-		}).saveOrCreate(dto);
+		resourceDelegate
+				.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, MessageTarget.TASK_GROUP, i18nCore) {
+					@Override
+					public void onSuccess(TaskGroupDto dto) {
+						RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
+						getView().close();
+					}
+				}).saveOrCreate(dto);
 	}
 
 	private void updateEntity(TaskGroupDto dto) {
-		resourceDelegate.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, i18nCore) {
-			@Override
-			public void onSuccess(TaskGroupDto dto) {
-				RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
-				getView().close();
-			}
-		}).saveOrCreate(dto);
+		resourceDelegate
+				.withCallback(new ErrorHandlerAsyncCallback<TaskGroupDto>(this, MessageTarget.TASK_GROUP, i18nCore) {
+					@Override
+					public void onSuccess(TaskGroupDto dto) {
+						RefreshTableEvent.fire(TaskGroupEditorPresenter.this, RefreshTableEvent.TableType.TASK_GROUP);
+						getView().close();
+					}
+				}).saveOrCreate(dto);
 	}
 
 	protected abstract TaskKind getDefaultTaskKind();

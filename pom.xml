@@ -48,11 +48,11 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.1.6.RELEASE</spring.framework.version>
+		<spring.framework.version>5.1.7.RELEASE</spring.framework.version>
 		<spring.security.version>5.1.5.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
-		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
 		<thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
 
 		<logback.version>1.2.3</logback.version>
@@ -63,7 +63,7 @@
 		<itext.version>7.1.5</itext.version>
 
 		<modelmapper.version>2.3.2</modelmapper.version>
-		<appengine.version>1.9.73</appengine.version>
+		<appengine.version>1.9.74</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
 		<objectify.version>5.1.21</objectify.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>

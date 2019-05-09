@@ -15,10 +15,12 @@ import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource;
+import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author robi
@@ -33,17 +35,17 @@ public class RoomFilterPresenter extends AbstractHotelChildFilterPresenter<RoomF
 
 		String getSelectedFloor();
 
-		void setRoomTypeData(List<RoomTypeDto> roomTypeData);
+		void setRoomTypeData(List<RoomTypeDtor> roomTypeData);
 
 		List<String> getSelectedRoomTypeKeys();
 	}
 
-	private final RoomTypeDataSource roomTypeDataSource;
+	private final RoomTypeDataSource2 roomTypeDataSource;
 	private final CurrentUser currentUser;
 
 	@Inject
 	RoomFilterPresenter(EventBus eventBus, MyView view, CurrentUser currentUser, HotelDataSource2 hotelDataSource,
-			RoomTypeDataSource roomTypeDataSource) {
+			RoomTypeDataSource2 roomTypeDataSource) {
 		super(eventBus, view, currentUser, hotelDataSource);
 		logger.info("RoomFilterPresenter()");
 
@@ -57,10 +59,10 @@ public class RoomFilterPresenter extends AbstractHotelChildFilterPresenter<RoomF
 	public void onReveal() {
 		super.onReveal();
 		logger.info("RoomFilterPresenter().onReveal()");
-		LoadCallback<RoomTypeDto> roomTypeLoadCallback = new LoadCallback<RoomTypeDto>() {
+		LoadCallback<RoomTypeDtor> roomTypeLoadCallback = new LoadCallback<RoomTypeDtor>() {
 
 			@Override
-			public void onSuccess(LoadResult<RoomTypeDto> loadResult) {
+			public void onSuccess(LoadResult<RoomTypeDtor> loadResult) {
 				getView().setRoomTypeData(loadResult.getData());
 			}
 
@@ -74,10 +76,10 @@ public class RoomFilterPresenter extends AbstractHotelChildFilterPresenter<RoomF
 
 		roomTypeDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
 		logger.info("RoomFilterPresenter().onReveal()-3");
-		roomTypeDataSource.setOnlyActive(true);
+//		roomTypeDataSource.setOnlyActive(true);
 		logger.info("RoomFilterPresenter().onReveal()-4");
-		roomTypeDataSource.setInventoryType(InventoryType.PHYS);
-		roomTypeDataSource.load(new LoadConfig<RoomTypeDto>(0, 0, null, null), roomTypeLoadCallback);
+//		roomTypeDataSource.setInventoryType(InventoryType.PHYS);
+		roomTypeDataSource.load(new LoadConfig<RoomTypeDtor>(0, 0, null, null), roomTypeLoadCallback);
 		logger.info("RoomFilterPresenter().onReveal()-5");
 	}
 

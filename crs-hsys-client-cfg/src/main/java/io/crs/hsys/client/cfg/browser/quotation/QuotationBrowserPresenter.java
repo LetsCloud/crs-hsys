@@ -7,6 +7,7 @@ import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -84,6 +85,7 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		filter.setOrganizationKey(getWebSafeKey());
 		getView().reConfigColumns();
 	}
 
@@ -101,23 +103,22 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<QuotationDto>>() {
 			@Override
 			public void onSuccess(List<QuotationDto> result) {
-				/*
-				 * SetPageTitleEvent.fire(getTitle(), getDescription(), MenuItemType.MENU_ITEM,
-				 * QuotationBrowserPresenter.this);
-				 */
 				SetBreadcrumbsEvent.fire(createBreadcrumbConfig(createTargetHistory(getWebSafeKey())),
 						QuotationBrowserPresenter.this);
-				/*
-				 * if ((filter.getCode() != null) && (!filter.getCode().isEmpty())) result =
-				 * result.stream().filter(org -> org.getCode().contains(filter.getCode()))
-				 * .collect(Collectors.toList()); if ((filter.getName() != null) &&
-				 * (!filter.getName().isEmpty())) result = result.stream().filter(org ->
-				 * org.getName().contains(filter.getName())) .collect(Collectors.toList()); if
-				 * (!filter.getProfileGroupKeys().isEmpty()) result = result.stream()
-				 * .filter(org ->
-				 * filter.getProfileGroupKeys().contains(org.getProfileGroup().getWebSafeKey()))
-				 * .collect(Collectors.toList());
-				 */
+
+				if ((filter.getCode() != null) && (!filter.getCode().isEmpty()))
+					result = result.stream().filter(org -> org.getCode().contains(filter.getCode()))
+							.collect(Collectors.toList());
+
+				if ((filter.getDescription() != null) && (!filter.getDescription().isEmpty()))
+					result = result.stream().filter(org -> org.getDescription().contains(filter.getDescription()))
+							.collect(Collectors.toList());
+
+				if (!filter.getQuotationStatusKeys().isEmpty())
+					result = result.stream()
+							.filter(org -> filter.getQuotationStatusKeys().contains(org.getStatus().getWebSafeKey()))
+							.collect(Collectors.toList());
+
 				getView().setData(result);
 			}
 		}).getAll(getWebSafeKey());
@@ -125,7 +126,6 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	protected String getCreatorNameToken() {
-		logger.info("QuotationBrowserPresenter().getCreatorNameToken()");
 		return CoreNameTokens.QUOTATION_CREATOR;
 	}
 
@@ -139,7 +139,6 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	protected String getEditorNameToken() {
-		logger.info("QuotationBrowserPresenter().getEditorNameToken()");
 		return CoreNameTokens.QUOTATION_CREATOR;
 	}
 
@@ -155,9 +154,11 @@ public class QuotationBrowserPresenter extends AbstractBrowserPresenter<Quotatio
 
 	@Override
 	protected void deleteData(String webSafeKey) {
+		logger.info("QuotationBrowserPresenter().deleteData()->webSafeKey=" + webSafeKey);
 		resourceDelegate.withCallback(new AbstractAsyncCallback<Void>() {
 			@Override
 			public void onSuccess(Void result) {
+				logger.info("QuotationBrowserPresenter().deleteData().onSuccess()");
 				loadData();
 			}
 		}).delete(webSafeKey);

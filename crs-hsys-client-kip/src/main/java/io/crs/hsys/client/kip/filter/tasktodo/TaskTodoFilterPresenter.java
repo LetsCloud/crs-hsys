@@ -45,7 +45,7 @@ public class TaskTodoFilterPresenter extends AbstractTaskGroupFilterPresenter<Ta
 	}
 
 	@Override
-	protected void onBind() {
+	public void onBind() {
 		super.onBind();
 
 		loadTaskGroupData();

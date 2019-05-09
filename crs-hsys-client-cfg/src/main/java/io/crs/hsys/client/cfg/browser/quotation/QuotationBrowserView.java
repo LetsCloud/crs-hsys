@@ -83,6 +83,10 @@ public class QuotationBrowserView extends ViewWithUiHandlers<QuotationBrowserUiH
 			getUiHandlers().addNew();
 		});
 
+		browserView.getDeleteIcon().addClickHandler(e -> {
+			getUiHandlers().delete(browserView.getSelectedItems());
+		});
+
 		browserView.clearColumnConfigs();
 		// 0
 		browserView.addColumnConfigs(new ColumnConfig(i18nCore.quotationBrowserCode(), createCodeColumn()));

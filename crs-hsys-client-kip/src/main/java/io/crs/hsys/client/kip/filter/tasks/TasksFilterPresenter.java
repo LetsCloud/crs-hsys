@@ -53,7 +53,7 @@ public class TasksFilterPresenter extends AbstractFilterPresenter<TasksFilterPre
 	}
 
 	@Override
-	protected void onBind() {
+	public void onBind() {
 		super.onBind();
 		getView().setTaskKindData(Arrays.asList(TaskKind.values()));
 	}

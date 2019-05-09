@@ -14,16 +14,24 @@ import io.crs.hsys.client.core.message.MessageData;
  *
  */
 public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMessageHandler> {
-	
+
+	public enum MessageTarget {
+		APP_USER, USER_GROUP, TASK_GROUP, TASK_TODO, TASK_TYPE, PROFILE_GROUP, RELATIONSHIP, QUOTATION_STATUS,
+		ORGANIZATION, QUOTATION, CONTACT, MARKET_GROUP, HOTEL, ROOM_TYPE, ROOM;
+	}
+
 	public interface DisplayMessageHandler extends EventHandler {
 		void onDisplayMessage(DisplayMessageEvent event);
 	}
 
 	public static final Type<DisplayMessageHandler> TYPE = new Type<>();
 
+	private MessageTarget target;
+
 	private MessageData message;
 
-	DisplayMessageEvent(MessageData message) {
+	DisplayMessageEvent(MessageTarget target, MessageData message) {
+		this.target = target;
 		this.message = message;
 	}
 
@@ -31,13 +39,17 @@ public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMes
 		return TYPE;
 	}
 
-	public static void fire(HasHandlers source, MessageData message) {
-		source.fireEvent(new DisplayMessageEvent(message));
+	public static void fire(HasHandlers source, MessageTarget target, MessageData message) {
+		source.fireEvent(new DisplayMessageEvent(target, message));
 	}
 
 	@Override
 	public Type<DisplayMessageHandler> getAssociatedType() {
 		return TYPE;
+	}
+
+	public MessageTarget getTarget() {
+		return target;
 	}
 
 	public MessageData getMessage() {

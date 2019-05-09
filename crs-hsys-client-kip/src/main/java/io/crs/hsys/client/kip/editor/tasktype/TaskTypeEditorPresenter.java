@@ -142,7 +142,7 @@ public class TaskTypeEditorPresenter
 			@Override
 			public void onSuccess(LoadResult<TaskTodoDto> loadResult) {
 				getView().setTaskTodoData(loadResult.getData());
-				if (taskTodoDataSource.getIsLoaded())
+				if (taskGroupDataSource.getIsLoaded())
 					start();
 			}
 
