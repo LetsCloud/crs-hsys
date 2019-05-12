@@ -149,17 +149,17 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		RoomTypeDtor dblbRT = RoomTypeDtor.builder().code("DBLB").name("Double bed room").build();
 		RoomTypeDtor twinRT = RoomTypeDtor.builder().code("TWIN").name("Twin room").build();
 
-		RoomDto r1001 = new RoomDto.Builder().code("1001").roomType(dblbRT).roomStatus(RoomStatus.DIRTY).build();
-		RoomDto r1002 = new RoomDto.Builder().code("1002").roomType(twinRT).roomStatus(RoomStatus.CLEAN).build();
-		RoomDto r1003 = new RoomDto.Builder().code("1003").roomType(twinRT).roomStatus(RoomStatus.INSPECTED).build();
-		RoomDto r1004 = new RoomDto.Builder().code("1004").roomType(twinRT).roomStatus(RoomStatus.OOO).build();
-		RoomDto r1005 = new RoomDto.Builder().code("1005").roomType(dblbRT).roomStatus(RoomStatus.OOS).build();
-		RoomDto r1006 = new RoomDto.Builder().code("1006").roomType(dblbRT).roomStatus(RoomStatus.SHOW).build();
-		RoomDto r1007 = new RoomDto.Builder().code("1007").roomType(dblbRT).roomStatus(RoomStatus.DIRTY).build();
-		RoomDto r1008 = new RoomDto.Builder().code("1008").roomType(dblbRT).roomStatus(RoomStatus.DIRTY).build();
-		RoomDto r1009 = new RoomDto.Builder().code("1009").roomType(twinRT).roomStatus(RoomStatus.CLEAN).build();
-		RoomDto r1010 = new RoomDto.Builder().code("1010").roomType(twinRT).roomStatus(RoomStatus.INSPECTED).build();
-		RoomDto r1011 = new RoomDto.Builder().code("1011").roomType(twinRT).roomStatus(RoomStatus.INSPECTED).build();
+		RoomDto r1001 = new RoomDto.Builder().code("1001").roomType(dblbRT).roomStatus(RoomStatus.RS_DIRTY).build();
+		RoomDto r1002 = new RoomDto.Builder().code("1002").roomType(twinRT).roomStatus(RoomStatus.RS_CLEAN).build();
+		RoomDto r1003 = new RoomDto.Builder().code("1003").roomType(twinRT).roomStatus(RoomStatus.RS_INSPECTED).build();
+		RoomDto r1004 = new RoomDto.Builder().code("1004").roomType(twinRT).roomStatus(RoomStatus.RS_OOO).build();
+		RoomDto r1005 = new RoomDto.Builder().code("1005").roomType(dblbRT).roomStatus(RoomStatus.RS_OOS).build();
+		RoomDto r1006 = new RoomDto.Builder().code("1006").roomType(dblbRT).roomStatus(RoomStatus.RS_SHOW).build();
+		RoomDto r1007 = new RoomDto.Builder().code("1007").roomType(dblbRT).roomStatus(RoomStatus.RS_DIRTY).build();
+		RoomDto r1008 = new RoomDto.Builder().code("1008").roomType(dblbRT).roomStatus(RoomStatus.RS_DIRTY).build();
+		RoomDto r1009 = new RoomDto.Builder().code("1009").roomType(twinRT).roomStatus(RoomStatus.RS_CLEAN).build();
+		RoomDto r1010 = new RoomDto.Builder().code("1010").roomType(twinRT).roomStatus(RoomStatus.RS_INSPECTED).build();
+		RoomDto r1011 = new RoomDto.Builder().code("1011").roomType(twinRT).roomStatus(RoomStatus.RS_INSPECTED).build();
 
 		List<String> inspectTD = new ArrayList<String>();
 		inspectTD.add("ROOM – Temperature room comfortable upon arrival (between X & Xº)");

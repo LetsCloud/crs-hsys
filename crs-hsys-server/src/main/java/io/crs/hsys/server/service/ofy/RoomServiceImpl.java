@@ -63,7 +63,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	}
 	@Override
 	public Room create(Room entity) throws Throwable {
-		entity.setRoomStatus(RoomStatus.DIRTY);
+		entity.setRoomStatus(RoomStatus.RS_DIRTY);
 		return super.create(entity);
 	}
 
@@ -313,7 +313,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	@Override
 	public void resetRoomStatus(String hotelKey) throws RestApiException {
 		for (Room room : getActiveRoomsByHotel(hotelKey)) {
-			room.setRoomStatus(RoomStatus.DIRTY);
+			room.setRoomStatus(RoomStatus.RS_DIRTY);
 			try {
 				this.update(room);
 			} catch (Throwable e) {

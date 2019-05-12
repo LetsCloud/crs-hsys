@@ -50,11 +50,11 @@ public class RoomStatusEditorView extends PopupViewWithUiHandlers<RoomStatusEdit
 		roomStatus = roomDto.getRoomStatus();
 		clearStatusButtons();
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			dirtyMRB.setValue(true);
-		case CLEAN:
+		case RS_CLEAN:
 			cleanMRB.setValue(true);
-		case INSPECTED:
+		case RS_INSPECTED:
 			inspectedMRB.setValue(true);
 		default:
 			break;
@@ -71,27 +71,27 @@ public class RoomStatusEditorView extends PopupViewWithUiHandlers<RoomStatusEdit
 
 	@UiHandler("dirtyMRB")
 	public void onDirtyClick(ClickEvent event) {
-		roomStatus = RoomStatus.DIRTY;
+		roomStatus = RoomStatus.RS_DIRTY;
 	}
 
 	@UiHandler("cleanMRB")
 	public void onCleanClick(ClickEvent event) {
-		roomStatus = RoomStatus.CLEAN;
+		roomStatus = RoomStatus.RS_CLEAN;
 	}
 
 	@UiHandler("inspectedMRB")
 	public void onInspectedClick(ClickEvent event) {
-		roomStatus = RoomStatus.INSPECTED;
+		roomStatus = RoomStatus.RS_INSPECTED;
 	}
 
 	@UiHandler("oosMRB")
 	public void onOosClick(ClickEvent event) {
-		roomStatus = RoomStatus.OOS;
+		roomStatus = RoomStatus.RS_OOS;
 	}
 
 	@UiHandler("showMRB")
 	public void onShowClick(ClickEvent event) {
-		roomStatus = RoomStatus.SHOW;
+		roomStatus = RoomStatus.RS_SHOW;
 	}
 
 	@UiHandler("changeButton")

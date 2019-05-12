@@ -587,13 +587,13 @@
             <Name>roomStatusMap</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">DIRTY,CLEAN,INSPECTED</Value>
-            <Value disabled="false">DIRTY,CLEAN,INSPECTED</Value>
-            <Value disabled="false">DIRTY,CLEAN,INSPECTED</Value>
-            <Value disabled="false">DIRTY,CLEAN,INSPECTED</Value>
+            <Value disabled="false">RS_DIRTY,RS_CLEAN,RS_INSPECTED,RS_OOO,RS_OOS,RS_SHOW</Value>
+            <Value disabled="false">RS_DIRTY,RS_CLEAN,RS_INSPECTED,RS_OOO,RS_OOS,RS_SHOW</Value>
+            <Value disabled="false">RS_DIRTY,RS_CLEAN,RS_INSPECTED,RS_OOO,RS_OOS,RS_SHOW</Value>
+            <Value disabled="false">RS_DIRTY,RS_CLEAN,RS_INSPECTED,RS_OOO,RS_OOS,RS_SHOW</Value>
         </Property>
         <Property>
-            <Name>DIRTY</Name>
+            <Name>RS_DIRTY</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Dirty</Value>
@@ -602,7 +602,7 @@
             <Value disabled="false">Piszkos</Value>
         </Property>
         <Property>
-            <Name>CLEAN</Name>
+            <Name>RS_CLEAN</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Clean</Value>
@@ -611,13 +611,40 @@
             <Value disabled="false">Tiszta</Value>
         </Property>
         <Property>
-            <Name>INSPECTED</Name>
+            <Name>RS_INSPECTED</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Inspected</Value>
             <Value disabled="false">Inspected</Value>
             <Value disabled="false">Inspected</Value>
             <Value disabled="false">Rendben</Value>
+        </Property>
+        <Property>
+            <Name>RS_OOO</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">OOO</Value>
+            <Value disabled="false">OOO</Value>
+            <Value disabled="false">OOO</Value>
+            <Value disabled="false">OOO</Value>
+        </Property>
+        <Property>
+            <Name>RS_OOS</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">OOS</Value>
+            <Value disabled="false">OOS</Value>
+            <Value disabled="false">OOS</Value>
+            <Value disabled="false">OOS</Value>
+        </Property>
+        <Property>
+            <Name>RS_SHOW</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Show Room</Value>
+            <Value disabled="false">Show Room</Value>
+            <Value disabled="false">Show Room</Value>
+            <Value disabled="false">Show Room</Value>
         </Property>
         <Comment>
             <Value>INVENTORY TYPES</Value>

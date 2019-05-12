@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import com.google.web.bindery.event.shared.EventBus;
 
+import io.crs.hsys.client.core.filter.ComboBoxFilter;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 
 /**
@@ -26,7 +27,7 @@ public class QuotationStatusFilter extends ComboBoxFilter<QuotationStatusDto> {
 	}
 
 	@Override
-	protected String getChipText(List<QuotationStatusDto> selectedItems) {
+	protected String createChipText(List<QuotationStatusDto> selectedItems) {
 		String result = null;
 		for (QuotationStatusDto dto : selectedItems) {
 			if (result == null)
@@ -38,7 +39,7 @@ public class QuotationStatusFilter extends ComboBoxFilter<QuotationStatusDto> {
 	}
 
 	@Override
-	protected String getComboBoxItemText(QuotationStatusDto dto) {
+	protected String createComboBoxItemText(QuotationStatusDto dto) {
 		return dto.getDescription();
 	}
 }

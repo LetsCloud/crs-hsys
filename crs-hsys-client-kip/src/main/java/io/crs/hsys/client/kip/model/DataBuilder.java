@@ -123,15 +123,15 @@ public class DataBuilder {
 
 	private void buildRoomDtos() {
 		roomDtos.clear();
-		roomDtos.add(new RoomDto.Builder().code(R_1001).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.DIRTY)
+		roomDtos.add(new RoomDto.Builder().code(R_1001).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.RS_DIRTY)
 				.build());
-		roomDtos.add(new RoomDto.Builder().code(R_1002).roomType(getRoomTypeDtor(RT_TWIN)).roomStatus(RoomStatus.CLEAN)
+		roomDtos.add(new RoomDto.Builder().code(R_1002).roomType(getRoomTypeDtor(RT_TWIN)).roomStatus(RoomStatus.RS_CLEAN)
 				.build());
 		roomDtos.add(new RoomDto.Builder().code(R_1003).roomType(getRoomTypeDtor(RT_TWIN))
-				.roomStatus(RoomStatus.INSPECTED).build());
-		roomDtos.add(new RoomDto.Builder().code(R_1007).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.DIRTY)
+				.roomStatus(RoomStatus.RS_INSPECTED).build());
+		roomDtos.add(new RoomDto.Builder().code(R_1007).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.RS_DIRTY)
 				.build());
-		roomDtos.add(new RoomDto.Builder().code(R_1008).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.DIRTY)
+		roomDtos.add(new RoomDto.Builder().code(R_1008).roomType(getRoomTypeDtor(RT_DBLB)).roomStatus(RoomStatus.RS_DIRTY)
 				.build());
 	}
 

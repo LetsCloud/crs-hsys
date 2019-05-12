@@ -102,8 +102,8 @@ public class AtendantsPresenter extends Presenter<AtendantsPresenter.MyView, Ate
 		result.setAttendantDto(au1);
 
 		Map<RoomStatus, Integer> statusMap1 = new HashMap<RoomStatus, Integer>();
-		statusMap1.put(RoomStatus.DIRTY, clean);
-		statusMap1.put(RoomStatus.CLEAN, dirty);
+		statusMap1.put(RoomStatus.RS_DIRTY, clean);
+		statusMap1.put(RoomStatus.RS_CLEAN, dirty);
 		result.setRoomSummary(statusMap1);
 
 		return result;
