@@ -112,9 +112,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initOwnedTasksFilter() {
 		ownedTasksFilter = switchFilterProvider.get();
-		ownedTasksFilter.setChipLabel("Delegálásaim");
+		ownedTasksFilter.setChipLabel("Sajátjaim");
 		ownedTasksFilter.setChipPanel(collapsibleHeader);
-		ownedTasksFilter.setFilterOnLabel("Delegálásaim");
+		ownedTasksFilter.setFilterOnLabel("Sajátjaim");
 		ownedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				ownerFilter.setChipEnabled(false);
@@ -145,9 +145,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initAssignedMeTasksFilter() {
 		assignedMeTasksFilter = switchFilterProvider.get();
-		assignedMeTasksFilter.setChipLabel("Feladataim");
+		assignedMeTasksFilter.setChipLabel("Teendőim");
 		assignedMeTasksFilter.setChipPanel(collapsibleHeader);
-		assignedMeTasksFilter.setFilterOnLabel("Feladataim");
+		assignedMeTasksFilter.setFilterOnLabel("Teendőim");
 		assignedMeTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				assignedFilter.setChipEnabled(false);
