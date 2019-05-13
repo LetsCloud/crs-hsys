@@ -112,9 +112,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initOwnedTasksFilter() {
 		ownedTasksFilter = switchFilterProvider.get();
-		ownedTasksFilter.setChipLabel("Saját");
+		ownedTasksFilter.setChipLabel("Delegálásaim");
 		ownedTasksFilter.setChipPanel(collapsibleHeader);
-		ownedTasksFilter.setFilterOnLabel("Saját");
+		ownedTasksFilter.setFilterOnLabel("Delegálásaim");
 		ownedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				ownerFilter.setChipEnabled(false);
@@ -132,7 +132,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		ownerFilter = appUserFilterProvider.get();
 //		ownerFilter.setChipLabel("Owner");
 		ownerFilter.setChipPanel(collapsibleHeader);
-		ownerFilter.setFilterLabel("Létrehozó");
+		ownerFilter.setFilterLabel("Létrehozta");
 		ownerFilter.setMarginLeft(10);
 		ownerFilter.setMarginRight(10);
 //		ownerFilter.setChipLetter("L");
@@ -145,9 +145,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	private void initAssignedMeTasksFilter() {
 		assignedMeTasksFilter = switchFilterProvider.get();
-		assignedMeTasksFilter.setChipLabel("Rám osztott");
+		assignedMeTasksFilter.setChipLabel("Feladataim");
 		assignedMeTasksFilter.setChipPanel(collapsibleHeader);
-		assignedMeTasksFilter.setFilterOnLabel("Rám osztott");
+		assignedMeTasksFilter.setFilterOnLabel("Feladataim");
 		assignedMeTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				assignedFilter.setChipEnabled(false);
