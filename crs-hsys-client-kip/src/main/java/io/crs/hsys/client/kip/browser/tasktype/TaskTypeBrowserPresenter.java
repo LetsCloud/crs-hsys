@@ -94,6 +94,7 @@ public abstract class TaskTypeBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("TaskTypeBrowserPresenter().onFilterChange()");
 		loadData();
 	}
 

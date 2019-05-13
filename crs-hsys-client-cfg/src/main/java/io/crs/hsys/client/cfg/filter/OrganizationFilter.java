@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import com.google.web.bindery.event.shared.EventBus;
 
+import io.crs.hsys.client.core.filter.ComboBoxFilter;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
 /**
@@ -26,7 +27,7 @@ public class OrganizationFilter extends ComboBoxFilter<OrganizationDtor> {
 	}
 
 	@Override
-	protected String getChipText(List<OrganizationDtor> selectedItems) {
+	protected String createChipText(List<OrganizationDtor> selectedItems) {
 		String result = null;
 		for (OrganizationDtor dto : selectedItems) {
 			if (result == null)
@@ -38,7 +39,7 @@ public class OrganizationFilter extends ComboBoxFilter<OrganizationDtor> {
 	}
 
 	@Override
-	protected String getComboBoxItemText(OrganizationDtor dto) {
+	protected String createComboBoxItemText(OrganizationDtor dto) {
 		return dto.getName();
 	}
 }

@@ -125,6 +125,7 @@ public abstract class TaskGroupBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("TaskGroupBrowserPresenter().onFilterChange()");
 		loadData();
 	}
 

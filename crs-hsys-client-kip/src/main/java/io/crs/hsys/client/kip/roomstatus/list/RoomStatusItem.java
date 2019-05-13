@@ -86,13 +86,13 @@ public class RoomStatusItem extends Composite implements HasRoomStatusEditHandle
 		roomTypeCode.setText(roomDto.getRoomType().getCode());
 
 		switch (roomDto.getRoomStatus()) {
-		case DIRTY:
+		case RS_DIRTY:
 			code.setLetterBackgroundColor(Color.RED);
 			break;
-		case CLEAN:
+		case RS_CLEAN:
 			code.setLetterBackgroundColor(Color.YELLOW);
 			break;
-		case INSPECTED:
+		case RS_INSPECTED:
 			code.setLetterBackgroundColor(Color.GREEN);
 			break;
 		default:

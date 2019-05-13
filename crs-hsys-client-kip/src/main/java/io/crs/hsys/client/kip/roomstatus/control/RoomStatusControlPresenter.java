@@ -102,19 +102,19 @@ public class RoomStatusControlPresenter
 	@Override
 	public void makeDirty(String roomKey) {
 		logger.log(Level.INFO, "RoomStatusControllPresenter().makeDirty()");
-		roomStatusChange(roomKey, RoomStatus.DIRTY);
+		roomStatusChange(roomKey, RoomStatus.RS_DIRTY);
 	}
 
 	@Override
 	public void makeClean(String roomKey) {
 		logger.log(Level.INFO, "RoomStatusControllPresenter().makeClean()");
-		roomStatusChange(roomKey, RoomStatus.CLEAN);
+		roomStatusChange(roomKey, RoomStatus.RS_CLEAN);
 	}
 
 	@Override
 	public void makeInspected(String roomKey) {
 		logger.log(Level.INFO, "RoomStatusControllPresenter().makeInspected()");
-		roomStatusChange(roomKey, RoomStatus.INSPECTED);
+		roomStatusChange(roomKey, RoomStatus.RS_INSPECTED);
 	}
 
 	private void roomStatusChange(String roomKey, RoomStatus roomStatus) {

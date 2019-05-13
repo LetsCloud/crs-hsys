@@ -20,17 +20,17 @@ public class RoomStatusUtils {
 		if (roomStatus == null) return Color.BLUE_GREY;
 		
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			return Color.RED_LIGHTEN_2;
-		case CLEAN:
+		case RS_CLEAN:
 			return Color.BLUE_LIGHTEN_2;
-		case INSPECTED:
+		case RS_INSPECTED:
 			return Color.GREEN_LIGHTEN_2;
-		case OOO:
+		case RS_OOO:
 			return Color.GREY_DARKEN_3;
-		case OOS:
+		case RS_OOS:
 			return Color.PURPLE_LIGHTEN_3;
-		case SHOW:
+		case RS_SHOW:
 			return Color.AMBER_LIGHTEN_1;
 		default:
 			break;
@@ -42,17 +42,17 @@ public class RoomStatusUtils {
 		if (roomStatus == null) return Color.BLACK;
 
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			return Color.RED_LIGHTEN_4;
-		case CLEAN:
+		case RS_CLEAN:
 			return Color.BLUE_LIGHTEN_4;
-		case INSPECTED:
+		case RS_INSPECTED:
 			return Color.GREEN_LIGHTEN_4;
-		case OOO:
+		case RS_OOO:
 			return Color.GREY_LIGHTEN_1;
-		case OOS:
+		case RS_OOS:
 			return Color.PURPLE_LIGHTEN_5;
-		case SHOW:
+		case RS_SHOW:
 			return Color.AMBER_LIGHTEN_5;
 		default:
 			break;
@@ -64,17 +64,17 @@ public class RoomStatusUtils {
 		if (roomStatus == null) return MdiType.ALERT;
 
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			return MdiType.DELETE;
-		case CLEAN:
+		case RS_CLEAN:
 			return MdiType.STAR;
-		case INSPECTED:
+		case RS_INSPECTED:
 			return MdiType.CHECK;
-		case OOO:
+		case RS_OOO:
 			return MdiType.SETTINGS_OUTLINE;
-		case OOS:
+		case RS_OOS:
 			return MdiType.ALERT;
-		case SHOW:
+		case RS_SHOW:
 			return MdiType.EYE_OUTLINE;
 		default:
 			break;
@@ -86,17 +86,17 @@ public class RoomStatusUtils {
 		if (roomStatus == null) return IconType.WARNING;
 		
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			return IconType.DELETE;
-		case CLEAN:
+		case RS_CLEAN:
 			return IconType.STAR;
-		case INSPECTED:
+		case RS_INSPECTED:
 			return IconType.DONE_ALL;
-		case OOO:
+		case RS_OOO:
 			return IconType.SETTINGS;
-		case OOS:
+		case RS_OOS:
 			return IconType.WARNING;
-		case SHOW:
+		case RS_SHOW:
 			return IconType.VISIBILITY;
 		default:
 			break;

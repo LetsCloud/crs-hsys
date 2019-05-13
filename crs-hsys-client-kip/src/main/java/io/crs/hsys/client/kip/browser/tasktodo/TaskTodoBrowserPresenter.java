@@ -132,6 +132,7 @@ public class TaskTodoBrowserPresenter extends AbstractBrowserPresenter<TaskTodoD
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("TaskTodoBrowserPresenter().onFilterChange()");
 		loadData();
 	}
 

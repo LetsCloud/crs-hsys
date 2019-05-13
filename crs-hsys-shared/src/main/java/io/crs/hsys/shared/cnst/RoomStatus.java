@@ -10,5 +10,5 @@ import java.io.Serializable;
  *
  */
 public enum RoomStatus implements Serializable {
-	DIRTY, CLEAN, INSPECTED, OOO, OOS, SHOW;
+	RS_DIRTY, RS_CLEAN, RS_INSPECTED, RS_OOO, RS_OOS, RS_SHOW;
 }

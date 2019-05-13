@@ -14,7 +14,6 @@ import gwt.material.design.client.ui.MaterialChip;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterView;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
@@ -110,7 +109,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 		roomTypesChip = new MaterialChip();
 
 		roomTypeCombo = new MaterialComboBox<RoomTypeDtor>();
-		roomTypeCombo.setMultiple(true);
+		roomTypeCombo.setMultiple(false);
 		roomTypeCombo.setAllowClear(true);
 		roomTypeCombo.setAllowBlank(true);
 		roomTypeCombo.setCloseOnSelect(false);
@@ -163,7 +162,7 @@ public class RoomFilterView extends AbstractHotelChildFilterView implements Room
 	@Override
 	public List<String> getSelectedRoomTypeKeys() {
 		List<String> result = new ArrayList<String>();
-		for (RoomTypeDtor dto : roomTypeCombo.getSelectedValues())
+		for (RoomTypeDtor dto : roomTypeCombo.getSelectedValue())
 			result.add(dto.getWebSafeKey());
 		return result;
 	}

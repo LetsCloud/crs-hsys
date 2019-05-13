@@ -53,16 +53,16 @@ public class AtendantsView extends ViewWithUiHandlers<AtendantsUiHandlers> imple
 		materialCollection.clear();
 		for (AssignmentSummaryDto as : assignmentSummary) {
 			materialCollection.add(createAtendantSum(as.getAttendantDto().getName(),
-					as.getRoomSummary().get(RoomStatus.DIRTY), as.getRoomSummary().get(RoomStatus.CLEAN)));
+					as.getRoomSummary().get(RoomStatus.RS_DIRTY), as.getRoomSummary().get(RoomStatus.RS_CLEAN)));
 		}
 	}
 
 	private AtendantWidget createAtendantSum(String name, Integer dirty, Integer clean) {
 		AtendantWidget as = new AtendantWidget();
 		as.setAttendantName(name);
-		as.setDirtyLabel(coreConstants.roomStatusMap().get(RoomStatus.DIRTY.toString())+":");
+		as.setDirtyLabel(coreConstants.roomStatusMap().get(RoomStatus.RS_DIRTY.toString())+":");
 		as.setDirtyValue(dirty);
-		as.setCleanLabel(coreConstants.roomStatusMap().get(RoomStatus.CLEAN.toString())+":");
+		as.setCleanLabel(coreConstants.roomStatusMap().get(RoomStatus.RS_CLEAN.toString())+":");
 		as.setCleanValue(clean);
 
 		as.addAtendantItemEventHandler(new AtendantItemEventHandler() {

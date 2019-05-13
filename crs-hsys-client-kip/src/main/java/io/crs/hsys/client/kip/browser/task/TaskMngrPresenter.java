@@ -26,6 +26,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.task.TaskDto;
@@ -42,7 +43,7 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
  *
  */
 public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskMngrPresenter.MyProxy>
-		implements TaskMngrUiHandlers {
+		implements TaskMngrUiHandlers, FilterChangeEvent.FilterChangeHandler {
 	private static Logger logger = Logger.getLogger(TaskMngrPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<TaskMngrUiHandlers> {
@@ -81,6 +82,8 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	protected void onBind() {
 		super.onBind();
 		setInSlot(FILTER_SLOT, filter);
+
+		addVisibleHandler(FilterChangeEvent.TYPE, this);
 	}
 
 	@Override
@@ -92,17 +95,28 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	}
 
 	private void loadTasks() {
+		logger.info("TaskMngrPresenter().loadTasks()");
 		resourceDelegate.withCallback(new AsyncCallback<List<TaskDto>>() {
 			@Override
 			public void onSuccess(List<TaskDto> result) {
+				logger.info("TaskMngrPresenter().loadTasks().onSuccess()");
+				// Filter by task statuses
+				if (!filter.getSelectedTaskStatuses().isEmpty())
+					result = result.stream().filter(obj -> filter.getSelectedTaskStatuses().contains(obj.getStatus()))
+							.collect(Collectors.toList());
+
+				// Order by room type and task kind
 				result = result.stream().sorted(Comparator.comparing(TaskDto::getRoom).thenComparing(TaskDto::getKind))
 						.collect(Collectors.toList());
+
+				logger.info("TaskMngrPresenter().loadTasks().onSuccess()-2");
 				getView().clearTasksPanel();
 				for (TaskDto task : result) {
 					TaskWidgetPresenter taskWidget = taskWidgetFactory.createTaskWidget();
 					taskWidget.setTask(task);
 					addToSlot(SLOT_TASKS, taskWidget);
 				}
+				logger.info("TaskMngrPresenter().loadTasks().onSuccess()-3");
 			}
 
 			@Override
@@ -116,5 +130,11 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	public void create() {
 		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.TASK_EDITOR);
 		placeManager.revealPlace(placeBuilder.build());
+	}
+
+	@Override
+	public void onFilterChange(FilterChangeEvent event) {
+		logger.info("TaskMngrPresenter().onFilterChange()");
+//		loadTasks();
 	}
 }

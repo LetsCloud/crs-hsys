@@ -85,12 +85,12 @@ public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlU
 	}
 
 	private void setButtonsStyle() {
-		setButtonStyle(cleanButton, RoomStatusUtils.getStatusIcon2(RoomStatus.CLEAN));
-		setButtonStyle(inspectButton, RoomStatusUtils.getStatusIcon2(RoomStatus.INSPECTED));
-		setButtonStyle(dirtyButton, RoomStatusUtils.getStatusIcon2(RoomStatus.DIRTY));
-		setButtonStyle(showButton, RoomStatusUtils.getStatusIcon2(RoomStatus.SHOW));
-		setButtonStyle(oosButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOS));
-		setButtonStyle(oooButton, RoomStatusUtils.getStatusIcon2(RoomStatus.OOO));
+		setButtonStyle(cleanButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_CLEAN));
+		setButtonStyle(inspectButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_INSPECTED));
+		setButtonStyle(dirtyButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_DIRTY));
+		setButtonStyle(showButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_SHOW));
+		setButtonStyle(oosButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_OOS));
+		setButtonStyle(oooButton, RoomStatusUtils.getStatusIcon2(RoomStatus.RS_OOO));
 
 		setButtonStyle(minibarButton, IconType.KITCHEN);
 		setButtonStyle(chatButton, IconType.CHAT);
@@ -211,14 +211,14 @@ public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlU
 			return;
 
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			cleanButton.setVisible(true);
 			showButton.setVisible(true);
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			minibarButton.setVisible(true);
 			break;
-		case CLEAN:
+		case RS_CLEAN:
 			inspectButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			minibarButton.setVisible(true);
@@ -226,24 +226,24 @@ public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlU
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			break;
-		case INSPECTED:
+		case RS_INSPECTED:
 			dirtyButton.setVisible(true);
 			minibarButton.setVisible(true);
 			showButton.setVisible(true);
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			break;
-		case OOO:
+		case RS_OOO:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			inspectButton.setVisible(true);
 			break;
-		case OOS:
+		case RS_OOS:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			inspectButton.setVisible(true);
 			break;
-		case SHOW:
+		case RS_SHOW:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			inspectButton.setVisible(true);
@@ -258,15 +258,15 @@ public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlU
 			return;
 
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			cleanButton.setVisible(true);
 //			minibarButton.setVisible(true);
 			break;
-		case CLEAN:
+		case RS_CLEAN:
 			dirtyButton.setVisible(true);
 //			minibarButton.setVisible(true);
 			break;
-		case INSPECTED:
+		case RS_INSPECTED:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 //			minibarButton.setVisible(true);
@@ -281,28 +281,28 @@ public class RoomStatusControlView extends ViewWithUiHandlers<RoomStatusControlU
 			return;
 
 		switch (roomStatus) {
-		case DIRTY:
+		case RS_DIRTY:
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			break;
-		case CLEAN:
+		case RS_CLEAN:
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			break;
-		case INSPECTED:
+		case RS_INSPECTED:
 			oooButton.setVisible(true);
 			oosButton.setVisible(true);
 			showButton.setVisible(true);
 			break;
-		case OOO:
+		case RS_OOO:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			break;
-		case OOS:
+		case RS_OOS:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			break;
-		case SHOW:
+		case RS_SHOW:
 			cleanButton.setVisible(true);
 			dirtyButton.setVisible(true);
 			oosButton.setVisible(true);
