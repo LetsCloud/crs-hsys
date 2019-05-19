@@ -8,8 +8,6 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.web.bindery.event.shared.EventBus;
-
 import io.crs.hsys.client.core.filter.ComboBoxFilter;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 
@@ -21,8 +19,7 @@ public class QuotationStatusFilter extends ComboBoxFilter<QuotationStatusDto> {
 	private static Logger logger = Logger.getLogger(QuotationStatusFilter.class.getName());
 
 	@Inject
-	QuotationStatusFilter(EventBus eventBus) {
-		super(eventBus);
+	QuotationStatusFilter() {
 		logger.info("QuotationStatusFilter()");
 	}
 

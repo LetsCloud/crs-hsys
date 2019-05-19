@@ -8,13 +8,12 @@ import javax.inject.Inject;
 import com.google.common.base.Strings;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.web.bindery.event.shared.EventBus;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialTextBox;
+
 import io.crs.hsys.client.core.filter.BaseFilter;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 
 /**
  * @author robi
@@ -23,10 +22,9 @@ import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 public class TextFilter extends BaseFilter {
 
 	MaterialTextBox textBox = new MaterialTextBox();
-	
+
 	@Inject
-	TextFilter(EventBus eventBus) {
-		super(eventBus);
+	TextFilter() {
 		initWidget(textBox);
 		initTextBox();
 	}
@@ -56,9 +54,11 @@ public class TextFilter extends BaseFilter {
 					setChipText("");
 				else
 					setChipText(chipLabel + event.getValue());
-
-				eventBus.fireEvent(new FilterChangeEvent(DataTable.QUOTATION));
 			}
 		});
+	}
+
+	public HandlerRegistration addValueChangeHandler(final ValueChangeHandler<String> handler) {
+		return textBox.addValueChangeHandler(handler);
 	}
 }

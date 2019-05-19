@@ -35,13 +35,14 @@ public class RoomStatusFilter extends BaseFilter {
 
 	private MaterialPanel panel;
 	private Map<RoomStatus, MaterialCheckBox> checkBoxes = new HashMap<RoomStatus, MaterialCheckBox>();
+	private final EventBus eventBus;
 	private final KipMessages i18n;
 	private final CoreConstants cnst;
 
 	@Inject
 	RoomStatusFilter(EventBus eventBus, KipMessages i18n, CoreConstants cnst) {
-		super(eventBus);
 		logger.info("RoomStatusFilter()");
+		this.eventBus = eventBus;
 		this.i18n = i18n;
 		this.cnst = cnst;
 

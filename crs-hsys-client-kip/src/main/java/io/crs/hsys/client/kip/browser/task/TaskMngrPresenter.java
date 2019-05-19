@@ -105,6 +105,18 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 					result = result.stream().filter(obj -> filter.getSelectedTaskStatuses().contains(obj.getStatus()))
 							.collect(Collectors.toList());
 
+				// Filter by task reporter
+				if (filter.getSelectedReporterKey() != null)
+					result = result.stream()
+							.filter(obj -> obj.getReporter().getWebSafeKey().equals(filter.getSelectedReporterKey()))
+							.collect(Collectors.toList());
+
+				// Filter by task assignee
+				if (filter.getSelectedAssigneeKey() != null)
+					result = result.stream()
+							.filter(obj -> obj.getAssignee().getWebSafeKey().equals(filter.getSelectedAssigneeKey()))
+							.collect(Collectors.toList());
+
 				// Order by room type and task kind
 				result = result.stream().sorted(Comparator.comparing(TaskDto::getRoom).thenComparing(TaskDto::getKind))
 						.collect(Collectors.toList());
@@ -135,6 +147,6 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
 		logger.info("TaskMngrPresenter().onFilterChange()");
-//		loadTasks();
+		loadTasks();
 	}
 }

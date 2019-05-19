@@ -9,11 +9,15 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import com.google.web.bindery.event.shared.EventBus;
+
 import io.crs.hsys.client.cfg.filter.OrganizationFilter;
 import io.crs.hsys.client.cfg.filter.QuotationStatusFilter;
 import io.crs.hsys.client.cfg.filter.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
@@ -24,6 +28,7 @@ import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 public class QuotationFilterView extends AbstractFilterView implements QuotationFilterPresenter.MyView {
 	private static Logger logger = Logger.getLogger(QuotationFilterView.class.getName());
 
+	private final EventBus eventBus;
 	private TextFilter codeFilter, descriptionFilter;
 	private QuotationStatusFilter quotationFilter;
 	private OrganizationFilter organizationFilter;
@@ -38,8 +43,9 @@ public class QuotationFilterView extends AbstractFilterView implements Quotation
 	Provider<OrganizationFilter> organizationFilterProvider;
 
 	@Inject
-	QuotationFilterView(CoreMessages i18nCore) {
+	QuotationFilterView(EventBus eventBus, CoreMessages i18nCore) {
 		super(i18nCore);
+		this.eventBus = eventBus;
 		logger.info("QuotationFilterView()");
 	}
 
@@ -49,11 +55,17 @@ public class QuotationFilterView extends AbstractFilterView implements Quotation
 		codeFilter.setChipPanel(collapsibleHeader);
 		codeFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
 		codeFilter.setFilterLabel(i18nCore.quotationFilterCodeLabel());
-
+		codeFilter.addValueChangeHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.QUOTATION));
+		});
+		
 		descriptionFilter = textFilterProvider.get();
 		descriptionFilter.setChipPanel(collapsibleHeader);
 		descriptionFilter.setChipLabel(i18nCore.quotationDescriptionChipLabel());
 		descriptionFilter.setFilterLabel(i18nCore.quotationFilterDescriptionLabel());
+		descriptionFilter.addValueChangeHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.QUOTATION));
+		});
 
 		quotationFilter = quotationStatusFilterProvider.get();
 		quotationFilter.setChipPanel(collapsibleHeader);

@@ -8,8 +8,6 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.web.bindery.event.shared.EventBus;
-
 import io.crs.hsys.client.core.filter.ComboBoxFilter;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 
@@ -21,8 +19,7 @@ public class AppUserFilter extends ComboBoxFilter<AppUserDtor> {
 	private static Logger logger = Logger.getLogger(AppUserFilter.class.getName());
 
 	@Inject
-	AppUserFilter(EventBus eventBus) {
-		super(eventBus);
+	AppUserFilter() {
 		logger.info("AppUserFilter()");
 	}
 

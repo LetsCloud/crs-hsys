@@ -47,6 +47,10 @@ public class TasksFilterPresenter extends AbstractFilterPresenter<TasksFilterPre
 
 		void setRoomTypeData(List<RoomTypeDtor> hotelData);
 
+		String getSelectedReporterKey();
+
+		String getSelectedAssigneeKey();
+		
 		RoomTypeDtor getSelectedRoomType();
 	}
 
@@ -112,6 +116,14 @@ public class TasksFilterPresenter extends AbstractFilterPresenter<TasksFilterPre
 		};
 
 		roomTypeDataSource.load(new LoadConfig<RoomTypeDtor>(0, 0, null, null), roomTypeLoadCallback);
+	}
+
+	public String getSelectedReporterKey() {
+		return getView().getSelectedReporterKey();
+	}
+
+	public String getSelectedAssigneeKey() {
+		return getView().getSelectedAssigneeKey();
 	}
 
 	public List<TaskStatus> getSelectedTaskStatuses() {

@@ -35,13 +35,14 @@ public class TaskStatusFilter extends BaseFilter {
 
 	private MaterialPanel panel;
 	private Map<TaskStatus, MaterialCheckBox> checkBoxes = new HashMap<TaskStatus, MaterialCheckBox>();
+	private final EventBus eventBus;
 	private final KipMessages i18n;
 	private final CoreConstants cnst;
 
 	@Inject
 	TaskStatusFilter(EventBus eventBus, KipMessages i18n, CoreConstants cnst) {
-		super(eventBus);
 		logger.info("TaskStatusFilter()");
+		this.eventBus = eventBus;
 		this.i18n = i18n;
 		this.cnst = cnst;
 

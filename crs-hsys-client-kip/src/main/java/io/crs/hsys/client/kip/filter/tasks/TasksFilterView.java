@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.constants.IconPosition;
@@ -21,6 +22,8 @@ import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.kip.filter.AppUserFilter;
 import io.crs.hsys.client.kip.filter.RoomStatusFilter;
 import io.crs.hsys.client.kip.filter.SwitchFilter;
@@ -38,10 +41,10 @@ import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 public class TasksFilterView extends AbstractFilterView implements TasksFilterPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TasksFilterView.class.getName());
 
-	private SwitchFilter ownedTasksFilter;
-	private AppUserFilter ownerFilter;
-	private SwitchFilter assignedMeTasksFilter;
-	private AppUserFilter assignedFilter;
+	private SwitchFilter reportedTasksFilter;
+	private AppUserFilter reporterFilter;
+	private SwitchFilter assignedTasksFilter;
+	private AppUserFilter assigneeFilter;
 	private TaskStatusFilter taskStatusFilter;
 	private RoomStatusFilter roomStatusFilter;
 	private MaterialComboBox<TaskKind> taskKindComboBox;
@@ -50,6 +53,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	private MaterialTextBox floorField;
 	private String currentUserKey;
 
+	private final EventBus eventBus;
 	private final KipMessages i18n;
 	private final CoreConstants i18nCoreCnst;
 
@@ -66,9 +70,10 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	Provider<RoomStatusFilter> roomStatusFilterProvider;
 
 	@Inject
-	TasksFilterView(CoreMessages i18nCore, KipMessages i18n, CoreConstants i18nCoreCnst) {
+	TasksFilterView(EventBus eventBus, CoreMessages i18nCore, KipMessages i18n, CoreConstants i18nCoreCnst) {
 		super(i18nCore);
 		logger.info("TasksFilterView()");
+		this.eventBus = eventBus;
 		this.i18n = i18n;
 		this.i18nCoreCnst = i18nCoreCnst;
 	}
@@ -78,10 +83,10 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		super.initView();
 		disableOnlyActive();
 
-		initOwnedTasksFilter();
-		initOwnerFilter();
-		initAssignedMeTasksFilter();
-		initAssignedFilter();
+		initReportedTasksFilter();
+		initReporterFilter();
+		initAssignedTasksFilter();
+		initAssigneeFilter();
 		initTaskStatusPanel();
 		/*
 		 * ownedTasks = new MaterialSwitch(); ownedTasks.setOnLabel("Owned");
@@ -110,70 +115,84 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		initFloorFilter();
 	}
 
-	private void initOwnedTasksFilter() {
-		ownedTasksFilter = switchFilterProvider.get();
-		ownedTasksFilter.setChipLabel("Sajátjaim");
-		ownedTasksFilter.setChipPanel(collapsibleHeader);
-		ownedTasksFilter.setFilterOnLabel("Sajátjaim");
-		ownedTasksFilter.addValueChangeHandler(e -> {
+	private void initReportedTasksFilter() {
+		reportedTasksFilter = switchFilterProvider.get();
+		reportedTasksFilter.setChipLabel("Sajátjaim");
+		reportedTasksFilter.setChipPanel(collapsibleHeader);
+		reportedTasksFilter.setFilterOnLabel("Sajátjaim");
+		reportedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
-				ownerFilter.setChipEnabled(false);
-				ownerFilter.setItemKey(currentUserKey);
-				ownerFilter.setEnabled(false);
+				reporterFilter.setChipEnabled(false);
+				reporterFilter.setItemKey(currentUserKey);
+				reporterFilter.setEnabled(false);
 			} else {
-				ownerFilter.setChipEnabled(true);
-				ownerFilter.unselect();
-				ownerFilter.setEnabled(true);
+				reporterFilter.setChipEnabled(true);
+				reporterFilter.unselect();
+				reporterFilter.setEnabled(true);
 			}
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
 	}
 
-	private void initOwnerFilter() {
-		ownerFilter = appUserFilterProvider.get();
+	private void initReporterFilter() {
+		reporterFilter = appUserFilterProvider.get();
 //		ownerFilter.setChipLabel("Owner");
-		ownerFilter.setChipPanel(collapsibleHeader);
-		ownerFilter.setFilterLabel("Létrehozta");
-		ownerFilter.setMarginLeft(10);
-		ownerFilter.setMarginRight(10);
+		reporterFilter.setChipPanel(collapsibleHeader);
+		reporterFilter.setFilterLabel("Létrehozta");
+		reporterFilter.setMarginLeft(10);
+		reporterFilter.setMarginRight(10);
 //		ownerFilter.setChipLetter("L");
 //		ownerFilter.setChipLetterColor(Color.WHITE);
 //		ownerFilter.setChipLetterBackgroundColor(Color.BLUE);
-		ownerFilter.setChipIconType(IconType.RECORD_VOICE_OVER);
-		ownerFilter.setChipIconPosition(IconPosition.LEFT);
-		ownerFilter.setChipIconFontSize(20d, Unit.PX);
-	}
-
-	private void initAssignedMeTasksFilter() {
-		assignedMeTasksFilter = switchFilterProvider.get();
-		assignedMeTasksFilter.setChipLabel("Teendőim");
-		assignedMeTasksFilter.setChipPanel(collapsibleHeader);
-		assignedMeTasksFilter.setFilterOnLabel("Teendőim");
-		assignedMeTasksFilter.addValueChangeHandler(e -> {
-			if (e.getValue()) {
-				assignedFilter.setChipEnabled(false);
-				assignedFilter.setItemKey(currentUserKey);
-				assignedFilter.setEnabled(false);
-			} else {
-				assignedFilter.setChipEnabled(true);
-				assignedFilter.unselect();
-				assignedFilter.setEnabled(true);
-			}
+		reporterFilter.setChipIconType(IconType.RECORD_VOICE_OVER);
+		reporterFilter.setChipIconPosition(IconPosition.LEFT);
+		reporterFilter.setChipIconFontSize(20d, Unit.PX);
+		reporterFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+		reporterFilter.addRemoveItemHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
 	}
 
-	private void initAssignedFilter() {
-		assignedFilter = appUserFilterProvider.get();
+	private void initAssignedTasksFilter() {
+		assignedTasksFilter = switchFilterProvider.get();
+		assignedTasksFilter.setChipLabel("Teendőim");
+		assignedTasksFilter.setChipPanel(collapsibleHeader);
+		assignedTasksFilter.setFilterOnLabel("Teendőim");
+		assignedTasksFilter.addValueChangeHandler(e -> {
+			if (e.getValue()) {
+				assigneeFilter.setChipEnabled(false);
+				assigneeFilter.setItemKey(currentUserKey);
+				assigneeFilter.setEnabled(false);
+			} else {
+				assigneeFilter.setChipEnabled(true);
+				assigneeFilter.unselect();
+				assigneeFilter.setEnabled(true);
+			}
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+	}
+
+	private void initAssigneeFilter() {
+		assigneeFilter = appUserFilterProvider.get();
 //		assignedFilter.setChipLabel("Assigned to");
-		assignedFilter.setChipPanel(collapsibleHeader);
-		assignedFilter.setFilterLabel("Felelős");
-		assignedFilter.setMarginLeft(10);
-		assignedFilter.setMarginRight(10);
+		assigneeFilter.setChipPanel(collapsibleHeader);
+		assigneeFilter.setFilterLabel("Felelős");
+		assigneeFilter.setMarginLeft(10);
+		assigneeFilter.setMarginRight(10);
 //		assignedFilter.setChipLetter("F");
 //		assignedFilter.setChipLetterColor(Color.WHITE);
 //		assignedFilter.setChipLetterBackgroundColor(Color.RED);
-		assignedFilter.setChipIconType(IconType.ASSIGNMENT_IND);
-		assignedFilter.setChipIconPosition(IconPosition.LEFT);
-		assignedFilter.setChipIconFontSize(20d, Unit.PX);
+		assigneeFilter.setChipIconType(IconType.ASSIGNMENT_IND);
+		assigneeFilter.setChipIconPosition(IconPosition.LEFT);
+		assigneeFilter.setChipIconFontSize(20d, Unit.PX);
+		assigneeFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+		assigneeFilter.addRemoveItemHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
 	}
 
 	private void initTaskStatusPanel() {
@@ -299,10 +318,10 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		MaterialPanel panel1 = new MaterialPanel();
 		panel1.setPadding(0);
 		panel1.setGrid("s6 m4");
-		panel1.add(ownedTasksFilter);
-		panel1.add(ownerFilter);
-		panel1.add(assignedMeTasksFilter);
-		panel1.add(assignedFilter);
+		panel1.add(reportedTasksFilter);
+		panel1.add(reporterFilter);
+		panel1.add(assignedTasksFilter);
+		panel1.add(assigneeFilter);
 		controlPanel.add(panel1);
 
 		createTaskStatusLayout();
@@ -376,15 +395,25 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	@Override
 	public void setAppUserData(List<AppUserDtor> data) {
-		ownerFilter.setComboBoxData(data);
-		assignedFilter.setComboBoxData(data);
+		reporterFilter.setComboBoxData(data);
+		assigneeFilter.setComboBoxData(data);
 
-		ownerFilter.setItemKey(currentUserKey);
-		assignedFilter.setItemKey(currentUserKey);
+		reporterFilter.setItemKey(currentUserKey);
+		assigneeFilter.setItemKey(currentUserKey);
 	}
 
 	@Override
 	public void setCurrentUserKey(String webSafeKey) {
 		this.currentUserKey = webSafeKey;
+	}
+
+	@Override
+	public String getSelectedReporterKey() {
+		return reporterFilter.getSelectedDataKey();
+	}
+
+	@Override
+	public String getSelectedAssigneeKey() {
+		return assigneeFilter.getSelectedDataKey();
 	}
 }
