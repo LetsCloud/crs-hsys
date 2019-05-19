@@ -6,9 +6,6 @@ package io.crs.hsys.server.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Ignore;
@@ -28,7 +25,6 @@ import io.crs.hsys.shared.exception.ExceptionSubType;
  *
  */
 public abstract class BaseEntity {
-	private static final Logger logger = LoggerFactory.getLogger(BaseEntity.class.getName());
 
 	/**
 	 * Generált ID amit az Objectify használ az entitás példány entitás típuson
@@ -194,6 +190,31 @@ public abstract class BaseEntity {
 	public String toString() {
 		return "BaseEntity [id=" + id + ", webSafeKey=" + webSafeKey + ", version=" + version + ", uniqueIndexes="
 				+ uniqueIndexes + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((webSafeKey == null) ? 0 : webSafeKey.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BaseEntity other = (BaseEntity) obj;
+		if (webSafeKey == null) {
+			if (other.webSafeKey != null)
+				return false;
+		} else if (!webSafeKey.equals(other.webSafeKey))
+			return false;
+		return true;
 	}
 
 }

@@ -3,9 +3,6 @@
  */
 package io.crs.hsys.server.entity.common;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Parent;
 
@@ -20,7 +17,6 @@ import io.crs.hsys.server.entity.BaseEntity;
  *
  */
 public class AccountChild extends BaseEntity {
-	private static final Logger logger = LoggerFactory.getLogger(AccountChild.class.getName());
 
 	@Parent
 	private Ref<Account> account;
@@ -53,6 +49,31 @@ public class AccountChild extends BaseEntity {
 	@Override
 	public String toString() {
 		return "AccountChild [account=" + account + "]" + super.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((account == null) ? 0 : account.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AccountChild other = (AccountChild) obj;
+		if (account == null) {
+			if (other.account != null)
+				return false;
+		} else if (!account.equals(other.account))
+			return false;
+		return true;
 	}
 
 	/**
