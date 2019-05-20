@@ -8,14 +8,14 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.core.filter.ComboBoxFilter;
+import io.crs.hsys.client.core.filter.ComboBoxDtoFilter;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 
 /**
  * @author robi
  *
  */
-public class QuotationStatusFilter extends ComboBoxFilter<QuotationStatusDto> {
+public class QuotationStatusFilter extends ComboBoxDtoFilter<QuotationStatusDto> {
 	private static Logger logger = Logger.getLogger(QuotationStatusFilter.class.getName());
 
 	@Inject

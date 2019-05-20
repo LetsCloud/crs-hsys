@@ -13,7 +13,7 @@ import com.google.web.bindery.event.shared.EventBus;
 
 import io.crs.hsys.client.cfg.filter.OrganizationFilter;
 import io.crs.hsys.client.cfg.filter.QuotationStatusFilter;
-import io.crs.hsys.client.cfg.filter.TextFilter;
+import io.crs.hsys.client.core.filter.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;

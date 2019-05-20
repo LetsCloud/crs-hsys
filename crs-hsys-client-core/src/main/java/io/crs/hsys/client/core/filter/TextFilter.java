@@ -1,19 +1,18 @@
 /**
  * 
  */
-package io.crs.hsys.client.cfg.filter;
+package io.crs.hsys.client.core.filter;
 
 import javax.inject.Inject;
 
 import com.google.common.base.Strings;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialTextBox;
-
-import io.crs.hsys.client.core.filter.BaseFilter;
 
 /**
  * @author robi
@@ -60,5 +59,17 @@ public class TextFilter extends BaseFilter {
 
 	public HandlerRegistration addValueChangeHandler(final ValueChangeHandler<String> handler) {
 		return textBox.addValueChangeHandler(handler);
+	}
+
+	public void setFilterMarginTop(double margin) {
+		textBox.setMarginTop(margin);
+	}
+
+	public void setFilterPlaceholder(String text) {
+		textBox.setPlaceholder(text);
+	}
+
+	public void setFilterHeight(double value, Unit unit) {
+		textBox.getValueBoxBase().getElement().getStyle().setHeight(value, unit);
 	}
 }

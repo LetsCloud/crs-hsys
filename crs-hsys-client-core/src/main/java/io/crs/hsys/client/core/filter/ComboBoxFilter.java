@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.core.filter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,8 +13,6 @@ import gwt.material.design.addins.client.combobox.events.SelectItemEvent;
 import gwt.material.design.addins.client.combobox.events.UnselectItemEvent;
 import gwt.material.design.client.base.MaterialWidget;
 
-import io.crs.hsys.shared.dto.BaseDto;
-
 /**
  * Filter view-ban használt ComboBox és Chips filter páros. A BaseFilter ősnek
  * köszönhetően képes kezelni a választás eredményét kijelző Chips-t.
@@ -23,10 +20,10 @@ import io.crs.hsys.shared.dto.BaseDto;
  * @author robi
  *
  */
-public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
+public abstract class ComboBoxFilter<T> extends BaseFilter {
 	private static Logger logger = Logger.getLogger(ComboBoxFilter.class.getName());
 
-	MaterialComboBox<T> comboBox;
+	protected MaterialComboBox<T> comboBox;
 
 	protected ComboBoxFilter() {
 		logger.info("ComboBoxFilter()");
@@ -47,6 +44,9 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 	 */
 	public void setFilterLabel(String label) {
 		comboBox.setLabel(label);
+	}
+
+	public void setFilterPlaceholder(String label) {
 		comboBox.setPlaceholder(label);
 	}
 
@@ -70,29 +70,6 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 	protected abstract String createComboBoxItemText(T dto);
 
 	/**
-	 * A ComboBox-val kiválasztott elemek egyedi kulcsainak visszaadása.
-	 * 
-	 * @return
-	 */
-	public List<String> getSelectedDataKeys() {
-		List<String> result = new ArrayList<String>();
-		for (T dto : comboBox.getSelectedValue())
-			result.add(dto.getWebSafeKey());
-		return result;
-	}
-
-	/**
-	 * A ComboBox-val kiválasztott elem egyedi kulcsának visszaadása.
-	 * 
-	 * @return
-	 */
-	public String getSelectedDataKey() {
-		if (comboBox.getSelectedValue().isEmpty())
-			return null;
-		return comboBox.getSelectedValue().get(0).getWebSafeKey();
-	}
-
-	/**
 	 * A ComboBox inicializálása értékkel.
 	 * 
 	 * @param value
@@ -104,17 +81,6 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 
 	public void unselect() {
 		comboBox.unselect();
-	}
-
-	public void setItemKey(String webSafeKey) {
-		List<T> values = comboBox.getValues();
-		for (int i = 0; i < values.size(); i++) {
-			if (values.get(i).getWebSafeKey().equals(webSafeKey)) {
-				comboBox.setSelectedIndex(i);
-				setChipText(createChipText(comboBox.getSelectedValue()));
-				return;
-			}
-		}
 	}
 
 	/**
@@ -156,8 +122,11 @@ public abstract class ComboBoxFilter<T extends BaseDto> extends BaseFilter {
 		comboBox.setMarginRight(margin);
 	}
 
+	public void setMarginTop(double margin) {
+		comboBox.setMarginTop(margin);
+	}
+
 	public void setEnabled(boolean enabled) {
-		logger.info("ComboBoxFilter()->enabled=" + enabled);
 		comboBox.setEnabled(enabled);
 	}
 
