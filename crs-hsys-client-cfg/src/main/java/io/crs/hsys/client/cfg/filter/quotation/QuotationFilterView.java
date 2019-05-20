@@ -111,7 +111,7 @@ public class QuotationFilterView extends AbstractFilterView implements Quotation
 
 	@Override
 	public List<String> getSelectedQuotationStatusKeys() {
-		return quotationFilter.getSelectedDataKeys();
+		return quotationFilter.getSelectedKeys();
 	}
 
 	@Override
@@ -126,11 +126,11 @@ public class QuotationFilterView extends AbstractFilterView implements Quotation
 
 	@Override
 	public List<String> getSelectedOrganizationKeys() {
-		return organizationFilter.getSelectedDataKeys();
+		return organizationFilter.getSelectedKeys();
 	}
 
 	@Override
 	public void setOrganizationKey(String webSafeKey) {
-		organizationFilter.setItemKey(webSafeKey);
+		organizationFilter.setSelectedKey(webSafeKey);
 	}
 }

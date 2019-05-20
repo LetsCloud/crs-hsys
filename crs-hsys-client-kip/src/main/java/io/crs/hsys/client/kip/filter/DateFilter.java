@@ -12,9 +12,11 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 import gwt.material.design.client.base.MaterialWidget;
+import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
 
 import io.crs.hsys.client.core.filter.BaseFilter;
+import io.crs.hsys.client.core.security.CurrentUser;
 
 /**
  * @author robi
@@ -25,9 +27,9 @@ public class DateFilter extends BaseFilter {
 	MaterialDatePicker datePicker = new MaterialDatePicker();
 
 	@Inject
-	DateFilter() {
+	DateFilter(CurrentUser currentUser) {
 		initWidget(datePicker);
-		initDatePicker();
+		initDatePicker(currentUser.getLocale());
 	}
 
 	@Override
@@ -51,7 +53,12 @@ public class DateFilter extends BaseFilter {
 		datePicker.addValueChangeHandler(handler);
 	}
 
-	private void initDatePicker() {
+	private void initDatePicker(String locale) {
+		datePicker.setAutoClose(true);
+
+		if (locale.startsWith("hu"))
+			datePicker.setLanguage(DatePickerLanguage.HU);
+
 		datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Date> event) {

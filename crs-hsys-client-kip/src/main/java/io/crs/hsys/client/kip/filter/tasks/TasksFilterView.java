@@ -12,10 +12,8 @@ import javax.inject.Provider;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.web.bindery.event.shared.EventBus;
 
-import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialPanel;
 
 import io.crs.hsys.client.core.filter.TextFilter;
@@ -26,6 +24,7 @@ import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.kip.filter.AppUserFilter;
 import io.crs.hsys.client.kip.filter.DateFilter;
 import io.crs.hsys.client.kip.filter.RoomStatusFilter;
+import io.crs.hsys.client.kip.filter.RoomTypeFilter;
 import io.crs.hsys.client.kip.filter.SwitchFilter;
 import io.crs.hsys.client.kip.filter.TaskKindFilter;
 import io.crs.hsys.client.kip.filter.TaskStatusFilter;
@@ -49,8 +48,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	private TaskStatusFilter taskStatusFilter;
 	private RoomStatusFilter roomStatusFilter;
 	private TaskKindFilter taskKindFilter;
-//	private MaterialComboBox<TaskKind> taskKindComboBox;
-	private MaterialComboBox<RoomTypeDtor> roomTypeComboBox;
+	private RoomTypeFilter roomTypeFilter;
 	private TextFilter roomFilter, floorFilter;
 	private DateFilter fromDateFilter;
 	private DateFilter toDateFilter;
@@ -80,6 +78,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	@Inject
 	Provider<TaskKindFilter> tasKindFilterProvider;
+
+	@Inject
+	Provider<RoomTypeFilter> roomTypeFilterProvider;
 
 	@Inject
 	TasksFilterView(EventBus eventBus, CoreMessages i18nCore, KipMessages i18n) {
@@ -116,7 +117,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		reportedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				reporterFilter.setChipEnabled(false);
-				reporterFilter.setItemKey(currentUserKey);
+				reporterFilter.setSelectedKey(currentUserKey);
 				reporterFilter.setEnabled(false);
 			} else {
 				reporterFilter.setChipEnabled(true);
@@ -156,7 +157,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		assignedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
 				assigneeFilter.setChipEnabled(false);
-				assigneeFilter.setItemKey(currentUserKey);
+				assigneeFilter.setSelectedKey(currentUserKey);
 				assigneeFilter.setEnabled(false);
 			} else {
 				assigneeFilter.setChipEnabled(true);
@@ -225,27 +226,12 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	}
 
 	private void initRoomTypeFilter() {
-		MaterialChip chip = new MaterialChip();
-		chip.setVisible(false);
-		collapsibleHeader.insert(chip, 1);
-
-		roomTypeComboBox = new MaterialComboBox<RoomTypeDtor>();
-//		roomTypeComboBox.setMarginTop(30);
-		roomTypeComboBox.setLabel(i18n.roomStatusFilterRoomTypeLabel());
-		roomTypeComboBox.setPlaceholder(i18n.roomStatusFilterRoomTypePlaceholder());
-
-		roomTypeComboBox.addSelectionHandler(e -> {
-			setRoomTypeChip(chip, e.getSelectedValues().get(0));
-			getUiHandlers().filterChange();
+		roomTypeFilter = roomTypeFilterProvider.get();
+		roomTypeFilter.setFilterLabel(i18n.roomStatusFilterRoomTypeLabel());
+		roomTypeFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomTypePlaceholder());
+		roomTypeFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
-	}
-
-	private void setRoomTypeChip(MaterialChip chip, RoomTypeDtor roomType) {
-		logger.info("RoomStatusFilterView2().setRoomTypeChip()");
-		Boolean visible = ((roomType != null) && (roomType.getCode() != null) && (!roomType.getCode().isEmpty()));
-		chip.setVisible(visible);
-		if (visible)
-			chip.setText(roomType.getCode());
 	}
 
 	private void initFloorFilter() {
@@ -288,9 +274,11 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		panel1.add(assigneeFilter);
 		controlPanel.add(panel1);
 
-		createTaskStatusLayout();
+		taskStatusFilter.setGrid("s6 m4");
+		controlPanel.add(taskStatusFilter);
 
-		createRoomStatusLayout();
+		roomStatusFilter.setGrid("s6 m4");
+		controlPanel.add(roomStatusFilter);
 
 		roomFilter.setGrid("s6 m4");
 		controlPanel.add(roomFilter);
@@ -298,8 +286,8 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		floorFilter.setGrid("s6 m4");
 		controlPanel.add(floorFilter);
 
-		roomTypeComboBox.setGrid("s6 m4");
-		controlPanel.add(roomTypeComboBox);
+		roomTypeFilter.setGrid("s6 m4");
+		controlPanel.add(roomTypeFilter);
 
 		fromDateFilter.setGrid("s6 m4");
 		controlPanel.add(fromDateFilter);
@@ -307,23 +295,9 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		toDateFilter.setGrid("s6 m4");
 		controlPanel.add(toDateFilter);
 
-		setTaskKindLayout();
-	}
-
-	private void createTaskStatusLayout() {
-		taskStatusFilter.setGrid("s6 m4");
-		controlPanel.add(taskStatusFilter);
-	}
-
-	private void createRoomStatusLayout() {
-		roomStatusFilter.setGrid("s6 m4");
-		controlPanel.add(roomStatusFilter);
-	}
-
-	protected void setTaskKindLayout() {
 		taskKindFilter.setGrid("s6 m4");
 		controlPanel.add(taskKindFilter);
-	};
+	}
 
 	@Override
 	public void setTaskKindData(List<TaskKind> data) {
@@ -336,16 +310,13 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	}
 
 	@Override
-	public void setRoomTypeData(List<RoomTypeDtor> hotelData) {
-		roomTypeComboBox.clear();
-		roomTypeComboBox.addItem(i18n.roomStatusFilterRoomTypeAll(), new RoomTypeDtor());
-		for (RoomTypeDtor hd : hotelData)
-			roomTypeComboBox.addItem(hd.getCode(), hd);
+	public void setRoomTypeData(List<RoomTypeDtor> data) {
+		roomTypeFilter.setComboBoxData(data);
 	}
 
 	@Override
 	public RoomTypeDtor getSelectedRoomType() {
-		return roomTypeComboBox.getSelectedValue().get(0);
+		return roomTypeFilter.getSelectedItem();
 	}
 
 	@Override
@@ -364,8 +335,8 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		reporterFilter.setComboBoxData(data);
 		assigneeFilter.setComboBoxData(data);
 
-		reporterFilter.setItemKey(currentUserKey);
-		assigneeFilter.setItemKey(currentUserKey);
+		reporterFilter.setSelectedKey(currentUserKey);
+		assigneeFilter.setSelectedKey(currentUserKey);
 	}
 
 	@Override
@@ -375,11 +346,11 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	@Override
 	public String getSelectedReporterKey() {
-		return reporterFilter.getSelectedDataKey();
+		return reporterFilter.getSelectedKey();
 	}
 
 	@Override
 	public String getSelectedAssigneeKey() {
-		return assigneeFilter.getSelectedDataKey();
+		return assigneeFilter.getSelectedKey();
 	}
 }

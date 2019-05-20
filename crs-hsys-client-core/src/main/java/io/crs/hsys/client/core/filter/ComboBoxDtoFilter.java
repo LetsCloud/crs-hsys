@@ -20,7 +20,7 @@ public abstract class ComboBoxDtoFilter<T extends BaseDto> extends ComboBoxFilte
 	 * 
 	 * @return
 	 */
-	public List<String> getSelectedDataKeys() {
+	public List<String> getSelectedKeys() {
 		List<String> result = new ArrayList<String>();
 		for (T dto : comboBox.getSelectedValue())
 			result.add(dto.getWebSafeKey());
@@ -32,13 +32,13 @@ public abstract class ComboBoxDtoFilter<T extends BaseDto> extends ComboBoxFilte
 	 * 
 	 * @return
 	 */
-	public String getSelectedDataKey() {
+	public String getSelectedKey() {
 		if (comboBox.getSelectedValue().isEmpty())
 			return null;
 		return comboBox.getSelectedValue().get(0).getWebSafeKey();
 	}
 
-	public void setItemKey(String webSafeKey) {
+	public void setSelectedKey(String webSafeKey) {
 		List<T> values = comboBox.getValues();
 		for (int i = 0; i < values.size(); i++) {
 			if (values.get(i).getWebSafeKey().equals(webSafeKey)) {

@@ -133,4 +133,8 @@ public class TasksFilterPresenter extends AbstractFilterPresenter<TasksFilterPre
 	public RoomTypeDtor getSelectedRoomType() {
 		return getView().getSelectedRoomType();
 	}
+
+	public TaskKind getSelectedTaskKind() {
+		return getView().getSelectedTaskKind();
+	}
 }

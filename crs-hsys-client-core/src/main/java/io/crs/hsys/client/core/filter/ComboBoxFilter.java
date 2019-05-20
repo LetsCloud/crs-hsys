@@ -91,7 +91,7 @@ public abstract class ComboBoxFilter<T> extends BaseFilter {
 		comboBox.setAllowClear(true);
 		comboBox.setAllowBlank(true);
 		comboBox.setCloseOnSelect(false);
-		comboBox.setMarginTop(25);
+//		comboBox.setMarginTop(25);
 
 		comboBox.addSelectionHandler(e -> {
 			setChipText(createChipText(e.getSelectedValues()));
@@ -139,4 +139,31 @@ public abstract class ComboBoxFilter<T> extends BaseFilter {
 	public HandlerRegistration addRemoveItemHandler(UnselectItemEvent.UnselectComboHandler<T> handler) {
 		return comboBox.addHandler(handler, UnselectItemEvent.getType());
 	}
+
+	public T getSelectedItem() {
+		if (comboBox.getSelectedValue().isEmpty())
+			return null;
+		return comboBox.getSelectedValue().get(0);
+	}
+
+	/**
+	 * A ComboBox-val kiválasztott elemek egyedi kulcsainak visszaadása.
+	 * 
+	 * @return
+	 */
+	public List<T> getSelectedItems() {
+		return comboBox.getSelectedValue();
+	}
+
+	public void setSelectedItem(T item) {
+		List<T> values = comboBox.getValues();
+		for (int i = 0; i < values.size(); i++) {
+			if (values.get(i).equals(item)) {
+				comboBox.setSelectedIndex(i);
+				setChipText(createChipText(comboBox.getSelectedValue()));
+				return;
+			}
+		}
+	}
+
 }

@@ -46,10 +46,4 @@ public class TaskKindFilter extends ComboBoxFilter<TaskKind> {
 		return i18nCoreCnst.taskKindMap().get(item.toString());
 	}
 
-	public TaskKind getSelectedItem() {
-		if (comboBox.getSelectedValue().isEmpty())
-			return null;
-		return comboBox.getSelectedValue().get(0);
-	}
-
 }
