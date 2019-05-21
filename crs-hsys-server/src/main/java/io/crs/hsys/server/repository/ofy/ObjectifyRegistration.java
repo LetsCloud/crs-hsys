@@ -20,6 +20,7 @@ import io.crs.hsys.server.entity.doc.ProductType;
 import io.crs.hsys.server.entity.doc.Quotation;
 import io.crs.hsys.server.entity.doc.QuotationStatus;
 import io.crs.hsys.server.entity.hotel.Hotel;
+import io.crs.hsys.server.entity.hotel.OooRoom;
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.hotel.RoomType;
 import io.crs.hsys.server.entity.profile.Contact;
@@ -81,6 +82,7 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(RoomType.class);
 		ObjectifyService.register(Room.class);
 		ObjectifyService.register(MarketGroup.class);
+		ObjectifyService.register(OooRoom.class);
 		/*
 		 * ObjectifyService.register(Chat.class); ObjectifyService.register(Task.class);
 		 */

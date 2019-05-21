@@ -35,6 +35,7 @@ public class CoreNameTokens {
 	public static final String HOTEL_EDITOR = "/hotelEditor";
 	public static final String ROOMTYPE_EDITOR = "/roomTypeEditor";
 	public static final String ROOM_EDITOR = "/roomEditor";
+	public static final String OOO_ROOM_EDITOR = "/oooRoomEditor";
 	public static final String USERS = "!users";
 	public static final String USER_CONFIG = "/userconfig";
 	public static final String USER_EDITOR = "/userEditor";
