@@ -4,6 +4,7 @@
 package io.crs.hsys.client.kip.i18n;
 
 import com.google.gwt.i18n.client.Messages;
+import com.google.gwt.i18n.client.Messages.DefaultMessage;
 
 /**
  * @author CR
@@ -359,6 +360,7 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("Public Area Cleaning Setup")
 	String hkConfigPublicAreaCleaningSetup();
 	
+	
 	/*
 	 * Maintenance Config
 	 */
@@ -376,4 +378,33 @@ public interface KipMessages extends Messages {
 	
 	@DefaultMessage("Task Types")
 	String mtConfigTaskTypeItem();
+
+	
+	/*
+	 * OOO ROOM BROWSER
+	 */
+
+	@DefaultMessage("Out Of Order Rooms")
+	String oooRoomBrowserTitle();
+
+	@DefaultMessage("Rooms kept under out of order are not sellable")
+	String oooRoomBrowserSubTitle();
+
+	@DefaultMessage("Room")
+	String oooRoomBrowserRoomCol();
+
+	@DefaultMessage("From")
+	String oooRoomBrowserFromDateCol();
+
+	@DefaultMessage("Return When")
+	String oooRoomBrowserReturnWhenCol();
+
+	@DefaultMessage("Return As")
+	String oooRoomBrowserReturnAsCol();
+
+	@DefaultMessage("To")
+	String oooRoomBrowserToDateCol();
+
+	@DefaultMessage("Remarks")
+	String oooRoomBrowserRemarksCol();
 }
