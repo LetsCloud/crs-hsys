@@ -110,4 +110,36 @@ public class TaskType extends AccountChild {
 		this.translations = translations;
 	}
 
+	@Override
+	public String toString() {
+		return "TaskType [kind=" + kind + ", code=" + code + ", description=" + description + ", translations="
+				+ translations + ", taskGroup=" + taskGroup + ", timeRequired=" + timeRequired + ", todos=" + todos
+				+ ", active=" + active + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TaskType other = (TaskType) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
+	}
+
 }

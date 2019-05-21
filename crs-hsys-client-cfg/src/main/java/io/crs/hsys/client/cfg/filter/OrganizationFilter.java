@@ -8,21 +8,18 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.web.bindery.event.shared.EventBus;
-
-import io.crs.hsys.client.core.filter.ComboBoxFilter;
+import io.crs.hsys.client.core.filter.ComboBoxDtoFilter;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
 /**
  * @author robi
  *
  */
-public class OrganizationFilter extends ComboBoxFilter<OrganizationDtor> {
+public class OrganizationFilter extends ComboBoxDtoFilter<OrganizationDtor> {
 	private static Logger logger = Logger.getLogger(OrganizationFilter.class.getName());
 
 	@Inject
-	OrganizationFilter(EventBus eventBus) {
-		super(eventBus);
+	OrganizationFilter() {
 		logger.info("OrganizationFilter()");
 	}
 

@@ -10,20 +10,23 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.web.bindery.event.shared.EventBus;
 
-import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialPanel;
-import gwt.material.design.client.ui.MaterialTextBox;
 
-import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.core.filter.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.kip.filter.AppUserFilter;
+import io.crs.hsys.client.kip.filter.DateFilter;
 import io.crs.hsys.client.kip.filter.RoomStatusFilter;
+import io.crs.hsys.client.kip.filter.RoomTypeFilter;
 import io.crs.hsys.client.kip.filter.SwitchFilter;
+import io.crs.hsys.client.kip.filter.TaskKindFilter;
 import io.crs.hsys.client.kip.filter.TaskStatusFilter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.cnst.TaskKind;
@@ -38,20 +41,22 @@ import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 public class TasksFilterView extends AbstractFilterView implements TasksFilterPresenter.MyView {
 	private static Logger logger = Logger.getLogger(TasksFilterView.class.getName());
 
-	private SwitchFilter ownedTasksFilter;
-	private AppUserFilter ownerFilter;
-	private SwitchFilter assignedMeTasksFilter;
-	private AppUserFilter assignedFilter;
+	private SwitchFilter reportedTasksFilter;
+	private AppUserFilter reporterFilter;
+	private SwitchFilter assignedTasksFilter;
+	private AppUserFilter assigneeFilter;
 	private TaskStatusFilter taskStatusFilter;
 	private RoomStatusFilter roomStatusFilter;
-	private MaterialComboBox<TaskKind> taskKindComboBox;
-	private MaterialTextBox roomNumberField;
-	private MaterialComboBox<RoomTypeDtor> roomTypeComboBox;
-	private MaterialTextBox floorField;
+	private TaskKindFilter taskKindFilter;
+	private RoomTypeFilter roomTypeFilter;
+	private TextFilter roomFilter, floorFilter;
+	private DateFilter fromDateFilter;
+	private DateFilter toDateFilter;
+
 	private String currentUserKey;
 
+	private final EventBus eventBus;
 	private final KipMessages i18n;
-	private final CoreConstants i18nCoreCnst;
 
 	@Inject
 	Provider<SwitchFilter> switchFilterProvider;
@@ -66,11 +71,23 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	Provider<RoomStatusFilter> roomStatusFilterProvider;
 
 	@Inject
-	TasksFilterView(CoreMessages i18nCore, KipMessages i18n, CoreConstants i18nCoreCnst) {
+	Provider<DateFilter> dateFilterProvider;
+
+	@Inject
+	Provider<TextFilter> textFilterProvider;
+
+	@Inject
+	Provider<TaskKindFilter> tasKindFilterProvider;
+
+	@Inject
+	Provider<RoomTypeFilter> roomTypeFilterProvider;
+
+	@Inject
+	TasksFilterView(EventBus eventBus, CoreMessages i18nCore, KipMessages i18n) {
 		super(i18nCore);
 		logger.info("TasksFilterView()");
+		this.eventBus = eventBus;
 		this.i18n = i18n;
-		this.i18nCoreCnst = i18nCoreCnst;
 	}
 
 	@Override
@@ -78,102 +95,98 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		super.initView();
 		disableOnlyActive();
 
-		initOwnedTasksFilter();
-		initOwnerFilter();
-		initAssignedMeTasksFilter();
-		initAssignedFilter();
+		initReportedTasksFilter();
+		initReporterFilter();
+		initAssignedTasksFilter();
+		initAssigneeFilter();
 		initTaskStatusPanel();
-		/*
-		 * ownedTasks = new MaterialSwitch(); ownedTasks.setOnLabel("Owned");
-		 * ownedTasks.addValueChangeHandler(e -> { if (e.getValue()) {
-		 * ownerFilter.setItemKey(currentUserKey); ownerFilter.setEnabled(false); } else
-		 * { ownerFilter.unselect(); ownerFilter.setEnabled(true); } });
-		 */
-
-		roomStatusFilter = roomStatusFilterProvider.get();
-		roomStatusFilter.setChipPanel(collapsibleHeader);
-		roomStatusFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
-//		roomStatusFilter.setFilterLabel(i18nCore.quotationFilterCodeLabel());
-
-//		taskStatusPanel = new MaterialPanel();
-//		cleaningStatusPanel = new MaterialPanel();
-		taskKindComboBox = new MaterialComboBox<TaskKind>();
-		roomNumberField = new MaterialTextBox();
-		roomTypeComboBox = new MaterialComboBox<RoomTypeDtor>();
-		floorField = new MaterialTextBox();
-
-//		initTaskStatusPanel();
-//		initCleaningStatusPanel();
+		initRoomStatusPanel();
 		initTaskKindFilter();
 		initRoomNumberFilter();
 		initRoomTypeFilter();
 		initFloorFilter();
+		initFromDateFilter();
+		initToDateFilter();
 	}
 
-	private void initOwnedTasksFilter() {
-		ownedTasksFilter = switchFilterProvider.get();
-		ownedTasksFilter.setChipLabel("Sajátjaim");
-		ownedTasksFilter.setChipPanel(collapsibleHeader);
-		ownedTasksFilter.setFilterOnLabel("Sajátjaim");
-		ownedTasksFilter.addValueChangeHandler(e -> {
+	private void initReportedTasksFilter() {
+		reportedTasksFilter = switchFilterProvider.get();
+		reportedTasksFilter.setChipLabel("Saját");
+		reportedTasksFilter.setChipPanel(collapsibleHeader);
+		reportedTasksFilter.setFilterOnLabel("Saját");
+		reportedTasksFilter.addValueChangeHandler(e -> {
 			if (e.getValue()) {
-				ownerFilter.setChipEnabled(false);
-				ownerFilter.setItemKey(currentUserKey);
-				ownerFilter.setEnabled(false);
+				reporterFilter.setChipEnabled(false);
+				reporterFilter.setSelectedKey(currentUserKey);
+				reporterFilter.setEnabled(false);
 			} else {
-				ownerFilter.setChipEnabled(true);
-				ownerFilter.unselect();
-				ownerFilter.setEnabled(true);
+				reporterFilter.setChipEnabled(true);
+				reporterFilter.unselect();
+				reporterFilter.setEnabled(true);
 			}
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
 	}
 
-	private void initOwnerFilter() {
-		ownerFilter = appUserFilterProvider.get();
+	private void initReporterFilter() {
+		reporterFilter = appUserFilterProvider.get();
 //		ownerFilter.setChipLabel("Owner");
-		ownerFilter.setChipPanel(collapsibleHeader);
-		ownerFilter.setFilterLabel("Létrehozta");
-		ownerFilter.setMarginLeft(10);
-		ownerFilter.setMarginRight(10);
+		reporterFilter.setChipPanel(collapsibleHeader);
+		reporterFilter.setFilterLabel("Létrehozta");
+		reporterFilter.setMarginLeft(10);
+		reporterFilter.setMarginRight(10);
 //		ownerFilter.setChipLetter("L");
 //		ownerFilter.setChipLetterColor(Color.WHITE);
 //		ownerFilter.setChipLetterBackgroundColor(Color.BLUE);
-		ownerFilter.setChipIconType(IconType.RECORD_VOICE_OVER);
-		ownerFilter.setChipIconPosition(IconPosition.LEFT);
-		ownerFilter.setChipIconFontSize(20d, Unit.PX);
-	}
-
-	private void initAssignedMeTasksFilter() {
-		assignedMeTasksFilter = switchFilterProvider.get();
-		assignedMeTasksFilter.setChipLabel("Teendőim");
-		assignedMeTasksFilter.setChipPanel(collapsibleHeader);
-		assignedMeTasksFilter.setFilterOnLabel("Teendőim");
-		assignedMeTasksFilter.addValueChangeHandler(e -> {
-			if (e.getValue()) {
-				assignedFilter.setChipEnabled(false);
-				assignedFilter.setItemKey(currentUserKey);
-				assignedFilter.setEnabled(false);
-			} else {
-				assignedFilter.setChipEnabled(true);
-				assignedFilter.unselect();
-				assignedFilter.setEnabled(true);
-			}
+		reporterFilter.setChipIconType(IconType.RECORD_VOICE_OVER);
+		reporterFilter.setChipIconPosition(IconPosition.LEFT);
+		reporterFilter.setChipIconFontSize(20d, Unit.PX);
+		reporterFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+		reporterFilter.addRemoveItemHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
 	}
 
-	private void initAssignedFilter() {
-		assignedFilter = appUserFilterProvider.get();
+	private void initAssignedTasksFilter() {
+		assignedTasksFilter = switchFilterProvider.get();
+		assignedTasksFilter.setChipLabel("Teendőim");
+		assignedTasksFilter.setChipPanel(collapsibleHeader);
+		assignedTasksFilter.setFilterOnLabel("Teendőim");
+		assignedTasksFilter.addValueChangeHandler(e -> {
+			if (e.getValue()) {
+				assigneeFilter.setChipEnabled(false);
+				assigneeFilter.setSelectedKey(currentUserKey);
+				assigneeFilter.setEnabled(false);
+			} else {
+				assigneeFilter.setChipEnabled(true);
+				assigneeFilter.unselect();
+				assigneeFilter.setEnabled(true);
+			}
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+	}
+
+	private void initAssigneeFilter() {
+		assigneeFilter = appUserFilterProvider.get();
 //		assignedFilter.setChipLabel("Assigned to");
-		assignedFilter.setChipPanel(collapsibleHeader);
-		assignedFilter.setFilterLabel("Felelős");
-		assignedFilter.setMarginLeft(10);
-		assignedFilter.setMarginRight(10);
+		assigneeFilter.setChipPanel(collapsibleHeader);
+		assigneeFilter.setFilterLabel("Felelős");
+		assigneeFilter.setMarginLeft(10);
+		assigneeFilter.setMarginRight(10);
 //		assignedFilter.setChipLetter("F");
 //		assignedFilter.setChipLetterColor(Color.WHITE);
 //		assignedFilter.setChipLetterBackgroundColor(Color.RED);
-		assignedFilter.setChipIconType(IconType.ASSIGNMENT_IND);
-		assignedFilter.setChipIconPosition(IconPosition.LEFT);
-		assignedFilter.setChipIconFontSize(20d, Unit.PX);
+		assigneeFilter.setChipIconType(IconType.ASSIGNMENT_IND);
+		assigneeFilter.setChipIconPosition(IconPosition.LEFT);
+		assigneeFilter.setChipIconFontSize(20d, Unit.PX);
+		assigneeFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
+		assigneeFilter.addRemoveItemHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
 	}
 
 	private void initTaskStatusPanel() {
@@ -182,116 +195,72 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		taskStatusFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
 	}
 
-	/*
-	 * private void initCleaningStatusPanel() { Label title = new
-	 * Label(i18n.roomStatusFilterRoomStatusTitle());
-	 * title.addStyleName("dataGroupTitle"); cleaningStatusPanel.add(title);
-	 * 
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomDirty());
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomClean());
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomInspected());
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomOoo());
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomOos());
-	 * initCheckBox(cleaningStatusPanel, i18n.roomStatusFilterRoomShow()); }
-	 * 
-	 * private void initCheckBox(MaterialPanel cleaningStatusPanel, String title) {
-	 * MaterialChip chip = new MaterialChip(); chip.setText(title);
-	 * chip.setVisible(false); collapsibleHeader.insert(chip, 1);
-	 * 
-	 * MaterialCheckBox checkBox = new MaterialCheckBox(); checkBox.setText(title);
-	 * checkBox.setMarginTop(10);
-	 * 
-	 * checkBox.addValueChangeHandler(e -> { chip.setVisible(e.getValue());
-	 * getUiHandlers().filterChange(); });
-	 * 
-	 * cleaningStatusPanel.add(checkBox); }
-	 */
-	private void initTaskKindFilter() {
-		MaterialChip chip = new MaterialChip();
-		chip.setVisible(false);
-		collapsibleHeader.insert(chip, 1);
-
-		taskKindComboBox.setMarginTop(14);
-		taskKindComboBox.setLabel(i18nCore.taskGroupFilterTaskKindLabel());
-		taskKindComboBox.setPlaceholder(i18nCore.taskGroupFilterTaskKindPlaceholder());
-
-		taskKindComboBox.addSelectionHandler(e -> {
-			setTaskKindChip(chip, e.getSelectedValues().get(0));
-			getUiHandlers().filterChange();
-		});
+	private void initRoomStatusPanel() {
+		roomStatusFilter = roomStatusFilterProvider.get();
+		roomStatusFilter.setChipPanel(collapsibleHeader);
+		roomStatusFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+//		roomStatusFilter.setFilterLabel(i18nCore.quotationFilterCodeLabel());
 	}
 
-	private void setTaskKindChip(MaterialChip chip, TaskKind taskKind) {
-		Boolean visible = ((taskKind != null) && (!taskKind.equals(TaskKind.TK_ALL)));
-		chip.setVisible(visible);
-		if (visible)
-			chip.setText(i18nCoreCnst.taskKindMap().get(taskKind.toString()));
+	private void initTaskKindFilter() {
+		taskKindFilter = tasKindFilterProvider.get();
+		taskKindFilter.setMarginTop(14);
+		taskKindFilter.setFilterLabel(i18nCore.taskGroupFilterTaskKindLabel());
+		taskKindFilter.setFilterPlaceholder(i18nCore.taskGroupFilterTaskKindPlaceholder());
+		taskKindFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
+		});
 	}
 
 	private void initRoomNumberFilter() {
-		MaterialChip chip = new MaterialChip();
-		chip.setVisible(false);
-		collapsibleHeader.insert(chip, 1);
-
-		roomNumberField.setMarginTop(14);
-		roomNumberField.setLabel(i18n.roomStatusFilterRoomNumberLabel());
-		roomNumberField.setPlaceholder(i18n.roomStatusFilterRoomNumberPlaceholder());
-
-		roomNumberField.addValueChangeHandler(e -> {
-			setRoomNumberChip(chip, e.getValue());
-			getUiHandlers().filterChange();
+		roomFilter = textFilterProvider.get();
+		roomFilter.setChipPanel(collapsibleHeader);
+		roomFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+		roomFilter.setFilterLabel(i18n.roomStatusFilterRoomNumberLabel());
+		roomFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomNumberPlaceholder());
+		roomFilter.setFilterMarginTop(14);
+		roomFilter.setFilterHeight(45, Unit.PX);
+		roomFilter.addValueChangeHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
-	}
-
-	private void setRoomNumberChip(MaterialChip chip, String roomNumber) {
-		Boolean visible = ((roomNumber != null) && (!roomNumber.isEmpty()));
-		chip.setVisible(visible);
-		if (visible)
-			chip.setText(i18n.roomStatusFilterRoomNumberChip(roomNumber));
 	}
 
 	private void initRoomTypeFilter() {
-		MaterialChip chip = new MaterialChip();
-		chip.setVisible(false);
-		collapsibleHeader.insert(chip, 1);
-
-//		roomTypeComboBox.setMarginTop(30);
-		roomTypeComboBox.setLabel(i18n.roomStatusFilterRoomTypeLabel());
-		roomTypeComboBox.setPlaceholder(i18n.roomStatusFilterRoomTypePlaceholder());
-
-		roomTypeComboBox.addSelectionHandler(e -> {
-			setRoomTypeChip(chip, e.getSelectedValues().get(0));
-			getUiHandlers().filterChange();
+		roomTypeFilter = roomTypeFilterProvider.get();
+		roomTypeFilter.setFilterLabel(i18n.roomStatusFilterRoomTypeLabel());
+		roomTypeFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomTypePlaceholder());
+		roomTypeFilter.addSelectionHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
-	}
-
-	private void setRoomTypeChip(MaterialChip chip, RoomTypeDtor roomType) {
-		logger.info("RoomStatusFilterView2().setRoomTypeChip()");
-		Boolean visible = ((roomType != null) && (roomType.getCode() != null) && (!roomType.getCode().isEmpty()));
-		chip.setVisible(visible);
-		if (visible)
-			chip.setText(roomType.getCode());
 	}
 
 	private void initFloorFilter() {
-		MaterialChip chip = new MaterialChip();
-		chip.setVisible(false);
-		collapsibleHeader.insert(chip, 1);
-
-		floorField.setLabel(i18n.roomStatusFilterRoomFloorLabel());
-		floorField.setPlaceholder(i18n.roomStatusFilterRoomFloorPlaceholder());
-
-		floorField.addValueChangeHandler(e -> {
-			setFloorChip(chip, e.getValue());
-			getUiHandlers().filterChange();
+		floorFilter = textFilterProvider.get();
+		floorFilter.setChipPanel(collapsibleHeader);
+		floorFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+		floorFilter.setFilterLabel(i18n.roomStatusFilterRoomFloorLabel());
+		floorFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomFloorPlaceholder());
+		floorFilter.setFilterMarginTop(14);
+		floorFilter.setFilterHeight(45, Unit.PX);
+		floorFilter.addValueChangeHandler(e -> {
+			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
 	}
 
-	private void setFloorChip(MaterialChip chip, String floorNumber) {
-		Boolean visible = ((floorNumber != null) && (!floorNumber.isEmpty()));
-		chip.setVisible(visible);
-		if (visible)
-			chip.setText(i18n.roomStatusFilterRoomFloorChip(floorNumber));
+	private void initFromDateFilter() {
+		fromDateFilter = dateFilterProvider.get();
+		fromDateFilter.setChipPanel(collapsibleHeader);
+		fromDateFilter.setChipLabel("Mettől:");
+		fromDateFilter.setFilterLabel("Mettől");
+		fromDateFilter.setFilterHeight(45, Unit.PX);
+	}
+
+	private void initToDateFilter() {
+		toDateFilter = dateFilterProvider.get();
+		toDateFilter.setChipPanel(collapsibleHeader);
+		toDateFilter.setChipLabel("Mettől:");
+		toDateFilter.setFilterLabel("Meddig");
+		toDateFilter.setFilterHeight(45, Unit.PX);
 	}
 
 	@Override
@@ -299,68 +268,55 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 		MaterialPanel panel1 = new MaterialPanel();
 		panel1.setPadding(0);
 		panel1.setGrid("s6 m4");
-		panel1.add(ownedTasksFilter);
-		panel1.add(ownerFilter);
-		panel1.add(assignedMeTasksFilter);
-		panel1.add(assignedFilter);
+		panel1.add(reportedTasksFilter);
+		panel1.add(reporterFilter);
+		panel1.add(assignedTasksFilter);
+		panel1.add(assigneeFilter);
 		controlPanel.add(panel1);
 
-		createTaskStatusLayout();
-
-		createRoomStatusLayout();
-		setTaskKindLayout();
-		roomNumberField.setGrid("s6 m4");
-		controlPanel.add(roomNumberField);
-
-		floorField.setGrid("s6 m4");
-		controlPanel.add(floorField);
-
-		roomTypeComboBox.setGrid("s6 m4");
-		controlPanel.add(roomTypeComboBox);
-	}
-
-	private void createTaskStatusLayout() {
 		taskStatusFilter.setGrid("s6 m4");
-//		taskStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
-//		taskStatusFilter.addStyleName("dataGroupBox");
 		controlPanel.add(taskStatusFilter);
-	}
 
-	private void createRoomStatusLayout() {
 		roomStatusFilter.setGrid("s6 m4");
-//		cleaningStatusPanel.setBorderLeft("3px solid " + BlueThemeColors.C_PRIMARY);
-//		cleaningStatusPanel.addStyleName("dataGroupBox");
 		controlPanel.add(roomStatusFilter);
-	}
 
-	protected void setTaskKindLayout() {
-		taskKindComboBox.setGrid("s6 m4");
-		controlPanel.add(taskKindComboBox);
-	};
+		roomFilter.setGrid("s6 m4");
+		controlPanel.add(roomFilter);
+
+		floorFilter.setGrid("s6 m4");
+		controlPanel.add(floorFilter);
+
+		roomTypeFilter.setGrid("s6 m4");
+		controlPanel.add(roomTypeFilter);
+
+		fromDateFilter.setGrid("s6 m4");
+		controlPanel.add(fromDateFilter);
+
+		toDateFilter.setGrid("s6 m4");
+		controlPanel.add(toDateFilter);
+
+		taskKindFilter.setGrid("s6 m4");
+		controlPanel.add(taskKindFilter);
+	}
 
 	@Override
-	public void setTaskKindData(List<TaskKind> taskKindData) {
-		taskKindComboBox.clear();
-		for (TaskKind tk : taskKindData)
-			taskKindComboBox.addItem(i18nCoreCnst.taskKindMap().get(tk.toString()), tk);
+	public void setTaskKindData(List<TaskKind> data) {
+		taskKindFilter.setComboBoxData(data);
 	}
 
 	@Override
 	public TaskKind getSelectedTaskKind() {
-		return taskKindComboBox.getSelectedValue().get(0);
+		return taskKindFilter.getSelectedItem();
 	}
 
 	@Override
-	public void setRoomTypeData(List<RoomTypeDtor> hotelData) {
-		roomTypeComboBox.clear();
-		roomTypeComboBox.addItem(i18n.roomStatusFilterRoomTypeAll(), new RoomTypeDtor());
-		for (RoomTypeDtor hd : hotelData)
-			roomTypeComboBox.addItem(hd.getCode(), hd);
+	public void setRoomTypeData(List<RoomTypeDtor> data) {
+		roomTypeFilter.setComboBoxData(data);
 	}
 
 	@Override
 	public RoomTypeDtor getSelectedRoomType() {
-		return roomTypeComboBox.getSelectedValue().get(0);
+		return roomTypeFilter.getSelectedItem();
 	}
 
 	@Override
@@ -376,15 +332,25 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 
 	@Override
 	public void setAppUserData(List<AppUserDtor> data) {
-		ownerFilter.setComboBoxData(data);
-		assignedFilter.setComboBoxData(data);
+		reporterFilter.setComboBoxData(data);
+		assigneeFilter.setComboBoxData(data);
 
-		ownerFilter.setItemKey(currentUserKey);
-		assignedFilter.setItemKey(currentUserKey);
+		reporterFilter.setSelectedKey(currentUserKey);
+		assigneeFilter.setSelectedKey(currentUserKey);
 	}
 
 	@Override
 	public void setCurrentUserKey(String webSafeKey) {
 		this.currentUserKey = webSafeKey;
+	}
+
+	@Override
+	public String getSelectedReporterKey() {
+		return reporterFilter.getSelectedKey();
+	}
+
+	@Override
+	public String getSelectedAssigneeKey() {
+		return assigneeFilter.getSelectedKey();
 	}
 }

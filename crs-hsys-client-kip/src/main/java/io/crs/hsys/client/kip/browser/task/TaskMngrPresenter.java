@@ -29,6 +29,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.dto.task.TaskDto;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
@@ -105,6 +106,23 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 					result = result.stream().filter(obj -> filter.getSelectedTaskStatuses().contains(obj.getStatus()))
 							.collect(Collectors.toList());
 
+				// Filter by task reporter
+				if (filter.getSelectedReporterKey() != null)
+					result = result.stream()
+							.filter(obj -> obj.getReporter().getWebSafeKey().equals(filter.getSelectedReporterKey()))
+							.collect(Collectors.toList());
+
+				// Filter by task assignee
+				if (filter.getSelectedAssigneeKey() != null)
+					result = result.stream()
+							.filter(obj -> obj.getAssignee().getWebSafeKey().equals(filter.getSelectedAssigneeKey()))
+							.collect(Collectors.toList());
+
+				// Filter by task kind
+				if ((filter.getSelectedTaskKind() != null) && (!filter.getSelectedTaskKind().equals(TaskKind.TK_ALL)))
+					result = result.stream().filter(obj -> obj.getKind().equals(filter.getSelectedTaskKind()))
+							.collect(Collectors.toList());
+
 				// Order by room type and task kind
 				result = result.stream().sorted(Comparator.comparing(TaskDto::getRoom).thenComparing(TaskDto::getKind))
 						.collect(Collectors.toList());
@@ -135,6 +153,6 @@ public class TaskMngrPresenter extends Presenter<TaskMngrPresenter.MyView, TaskM
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
 		logger.info("TaskMngrPresenter().onFilterChange()");
-//		loadTasks();
+		loadTasks();
 	}
 }

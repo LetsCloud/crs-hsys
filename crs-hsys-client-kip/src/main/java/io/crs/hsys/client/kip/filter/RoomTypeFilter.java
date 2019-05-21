@@ -9,18 +9,18 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import io.crs.hsys.client.core.filter.ComboBoxDtoFilter;
-import io.crs.hsys.shared.dto.common.AppUserDtor;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author robi
  *
  */
-public class AppUserFilter extends ComboBoxDtoFilter<AppUserDtor> {
-	private static Logger logger = Logger.getLogger(AppUserFilter.class.getName());
+public class RoomTypeFilter extends ComboBoxDtoFilter<RoomTypeDtor> {
+	private static Logger logger = Logger.getLogger(RoomTypeFilter.class.getName());
 
 	@Inject
-	AppUserFilter() {
-		logger.info("AppUserFilter()");
+	RoomTypeFilter() {
+		logger.info("RoomTypeFilter()");
 	}
 
 	@Override
@@ -31,10 +31,9 @@ public class AppUserFilter extends ComboBoxDtoFilter<AppUserDtor> {
 	}
 
 	@Override
-	protected String createChipText(List<AppUserDtor> selectedItems) {
-		logger.info("AppUserFilter().getChipText()");
+	protected String createChipText(List<RoomTypeDtor> selectedItems) {
 		String result = null;
-		for (AppUserDtor dto : selectedItems) {
+		for (RoomTypeDtor dto : selectedItems) {
 			if (result == null)
 				result = dto.getCode();
 			else
@@ -44,8 +43,7 @@ public class AppUserFilter extends ComboBoxDtoFilter<AppUserDtor> {
 	}
 
 	@Override
-	protected String createComboBoxItemText(AppUserDtor dto) {
-		logger.info("AppUserFilter().getComboBoxItemText()");
+	protected String createComboBoxItemText(RoomTypeDtor dto) {
 		return dto.getCode() + "-" + dto.getName();
 	}
 }

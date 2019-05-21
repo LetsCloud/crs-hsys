@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialSwitch;
@@ -23,8 +22,7 @@ public class SwitchFilter extends BaseFilter {
 	MaterialSwitch materialSwitch = new MaterialSwitch();
 
 	@Inject
-	SwitchFilter(EventBus eventBus) {
-		super(eventBus);
+	SwitchFilter() {
 		initWidget(materialSwitch);
 		initSwitch();
 	}

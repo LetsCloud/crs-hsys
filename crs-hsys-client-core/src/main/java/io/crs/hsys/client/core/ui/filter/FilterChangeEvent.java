@@ -17,7 +17,7 @@ public class FilterChangeEvent extends GwtEvent<FilterChangeEvent.FilterChangeHa
 	private static final Logger logger = Logger.getLogger(FilterChangeEvent.class.getName());
 
 	public enum DataTable {
-		USER_GROUPS, APP_USER, QUOTATION, HOTEL, ROOM_TYPE
+		USER_GROUPS, APP_USER, TASK, QUOTATION, HOTEL, ROOM_TYPE
 	}
 
 	public interface FilterChangeHandler extends EventHandler {
