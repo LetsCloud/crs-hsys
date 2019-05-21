@@ -1084,6 +1084,7 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Choose Room Type")
 	String roomFilterRoomTypesPlaceholder();
 
+	
 	/*
 	 * ROOM EDITOR
 	 */
@@ -1121,6 +1122,21 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Remove")
 	String roomEditorAvailabilityRemove();
 
+	
+	/*
+	 * OOO ROOM BROWSER
+	 */
+
+	@DefaultMessage("Room")
+	String oooRoomBrowserRoomCol();
+
+	@DefaultMessage("From")
+	String oooRoomBrowserFromDateCol();
+
+	@DefaultMessage("To")
+	String oooRoomBrowserToDateCol();
+
+	
 	/*
 	 * MARKET GROUP BROWSER
 	 */
@@ -1128,6 +1144,7 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Market Groups")
 	String marketGroupBrowserTitle();
 
+	
 	/*
 	 * SEND MESSAGE
 	 */
