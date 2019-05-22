@@ -20,7 +20,9 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.presenter.slots.Slot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipAppPresenter;
@@ -77,7 +79,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire(i18n.tasksTitle(), i18n.tasksSubTitle(), MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire(i18n.oooRoomBrowserTitle(), i18n.oooRoomBrowserSubTitle(), MenuItemType.MENU_ITEM, this);
 
 		loadTasks();
 	}
@@ -98,8 +100,8 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 
 	@Override
 	public void createItem() {
-		// TODO Auto-generated method stub
-		
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_EDITOR);
+		placeManager.revealPlace(placeBuilder.build());
 	}
 
 	@Override

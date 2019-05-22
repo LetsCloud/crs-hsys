@@ -9,6 +9,7 @@ import io.crs.hsys.client.kip.KipAppModule;
 import io.crs.hsys.client.kip.assignments.AssignmentsModule;
 import io.crs.hsys.client.kip.atendants.AtendantsModule;
 import io.crs.hsys.client.kip.browser.guestroom.GuestRoomBrowserModule;
+import io.crs.hsys.client.kip.browser.oooroom.OooRoomBrowserModule;
 import io.crs.hsys.client.kip.browser.task.TaskMngrModule;
 import io.crs.hsys.client.kip.chat.ChatRoomModule;
 import io.crs.hsys.client.kip.chat.creator.ChatCreatorModule;
@@ -17,6 +18,7 @@ import io.crs.hsys.client.kip.chat.list.ChatListModule;
 import io.crs.hsys.client.kip.config.hk.HkConfigModule;
 import io.crs.hsys.client.kip.config.mt.MtConfigModule;
 import io.crs.hsys.client.kip.dashboard.DashboardModule;
+import io.crs.hsys.client.kip.editor.oooroom.OooRoomEditorModule;
 import io.crs.hsys.client.kip.editor.task.TaskEditorModule;
 import io.crs.hsys.client.kip.editor.translate.TranslateEditorModule;
 import io.crs.hsys.client.kip.filter.KipFilterModule;
@@ -58,6 +60,8 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new SearchModule());
 		install(new GuestRoomBrowserModule());
 		install(new TaskCreatorModule());
+		install(new OooRoomBrowserModule());
+		install(new OooRoomEditorModule());
 
 		install(new HkConfigModule());
 		install(new MtConfigModule());

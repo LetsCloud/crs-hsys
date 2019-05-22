@@ -1124,20 +1124,6 @@ public interface CoreMessages extends Messages {
 
 	
 	/*
-	 * OOO ROOM BROWSER
-	 */
-
-	@DefaultMessage("Room")
-	String oooRoomBrowserRoomCol();
-
-	@DefaultMessage("From")
-	String oooRoomBrowserFromDateCol();
-
-	@DefaultMessage("To")
-	String oooRoomBrowserToDateCol();
-
-	
-	/*
 	 * MARKET GROUP BROWSER
 	 */
 
