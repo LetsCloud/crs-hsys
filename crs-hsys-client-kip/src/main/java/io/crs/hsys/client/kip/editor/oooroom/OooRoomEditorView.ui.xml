@@ -39,19 +39,21 @@
 
 	<g:HTMLPanel addStyleNames="{style.pp}">
 		<m:MaterialRow>
-			<m:MaterialColumn grid="s12">
+			<m:MaterialColumn grid="s12 m6">
 				<combobox:MaterialComboBox
 					ui:field="roomComboBox" multiple="false"
-					label="{i18n.taskEditorRoom}"
-					placeholder="{i18n.taskEditorRoomPlaceholder}" marginTop="15"
+					label="{i18n.oooRoomEditorRoomLabel}"
+					placeholder="{i18n.oooRoomEditorRoomPlaceholder}" marginTop="15"
 					marginBottom="30" />
 
 				<m:MaterialDatePicker ui:field="fromDate"
-					placeholder="{i18n.taskEditorDueDate}" />
+					placeholder="{i18n.oooRoomEditorFromDateLabel}" />
 
 				<m:MaterialDatePicker ui:field="toDate"
-					placeholder="{i18n.taskEditorDueDate}" />
+					placeholder="{i18n.oooRoomEditorToDateLabel}" />
+			</m:MaterialColumn>
 
+			<m:MaterialColumn grid="s12 m6">
 				<combobox:MaterialComboBox
 					ui:field="returnTimeComboBox" multiple="false"
 					label="{i18n.taskEditorAssignee}"
