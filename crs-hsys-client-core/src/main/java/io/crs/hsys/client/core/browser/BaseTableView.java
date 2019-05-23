@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.inject.Inject;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -21,34 +20,24 @@ import gwt.material.design.client.data.SortDir;
 import gwt.material.design.client.data.events.SetupEvent;
 import gwt.material.design.client.data.events.SetupHandler;
 import gwt.material.design.client.ui.MaterialButton;
-import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
-import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.table.MaterialDataTable;
 import gwt.material.design.client.ui.table.cell.Column;
+
 import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.shared.dto.BaseDto;
 
 /**
- * A törzsadatok táblázatos megjelenítését végző nézetek ős osztálya.
- * <p>
- * A nézet tartalmaz egy foglalatot a filter widgetnek, egy MaterialDataTable
- * táblázatot, egy foglalatot a modális editornak és a szükséges vezérlő
- * gombokat.
- * <p>
- * A filter és az editor widgeteket az utód osztály illeszti be igény szerint.
- * <p>
- * MaterialDataTable táblázat oszlopait ugyancsak az utőd állítja be igény
- * szerint.
- * 
  * @author robi
  *
  */
-public class AbstractBrowserView<T extends BaseDto> extends Composite {
+public class BaseTableView<T extends BaseDto> extends Composite {
 	private static Logger logger = Logger.getLogger(AbstractBrowserView.class.getName());
 
-	interface Binder extends UiBinder<HTMLPanel, AbstractBrowserView<?>> {
+	private static Binder uiBinder = GWT.create(Binder.class);
+
+	interface Binder extends UiBinder<HTMLPanel, BaseTableView<?>> {
 	}
 
 	public interface EditRow<O extends BaseDto> {
@@ -77,9 +66,8 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	/**
 	* 
 	*/
-	@Inject
-	AbstractBrowserView(Binder uiBinder) {
-		logger.info("AbstractBrowserView()");
+	public BaseTableView() {
+		logger.info("BaseTableView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -88,6 +76,7 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 
 	private void initTable() {
 		deleteIcon = new MaterialIcon(IconType.DELETE);
+		deleteIcon.setMarginRight(10);
 
 		table.addSetupHandler(new SetupHandler() {
 			@Override
@@ -158,29 +147,6 @@ public class AbstractBrowserView<T extends BaseDto> extends Composite {
 	}
 
 	protected void setToolPanel(Panel toolPanel) {
-
-		MaterialIcon menuIcon = new MaterialIcon(IconType.MORE_VERT);
-		menuIcon.setActivates("dd-menu");
-
-		MaterialDropDown<String> menuDropDown = new MaterialDropDown<String>();
-		menuDropDown.setActivator("dd-menu");
-		menuDropDown.setConstrainWidth(false);
-		menuDropDown.setWidth("180px");
-
-		MaterialLink pdfLink = new MaterialLink();
-		pdfLink.setIconType(IconType.PICTURE_AS_PDF);
-		pdfLink.setText("PDF export");
-		menuDropDown.add(pdfLink);
-
-		MaterialLink xlsLink = new MaterialLink();
-		xlsLink.setIconType(IconType.DOCK);
-		pdfLink.setText("XLS export");
-		menuDropDown.add(xlsLink);
-
-		toolPanel.add(deleteIcon);
-		toolPanel.add(menuIcon);
-		toolPanel.add(menuDropDown);
-
 		table.getStretchIcon().setVisible(false);
 		table.getColumnMenuIcon().setVisible(false);
 	}
