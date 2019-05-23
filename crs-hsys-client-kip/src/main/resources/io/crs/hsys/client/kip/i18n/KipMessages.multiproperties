@@ -976,5 +976,80 @@
             <Value disabled="false">Feladat típusok</Value>
             <Value disabled="false">Task Types</Value>
         </Property>
+        <Comment>
+            <Value>OOO ROOM BROWSER</Value>
+        </Comment>
+        <Property>
+            <Name>oooRoomBrowserTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">OOO Rooms</Value>
+            <Value disabled="false">OOO Rooms</Value>
+            <Value disabled="false">OOO szobák</Value>
+            <Value disabled="false">OOO Rooms</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserSubTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Rooms kept under out of order are not sellable</Value>
+            <Value disabled="false">Rooms kept under out of order are not sellable</Value>
+            <Value disabled="false">Az out of order státuszú szobák nem értékesíthetők</Value>
+            <Value disabled="false">Rooms kept under out of order are not sellable</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserRoomCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Room</Value>
+            <Value disabled="false">Room</Value>
+            <Value disabled="false">Szoba</Value>
+            <Value disabled="false">Room</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserFromDateCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">From</Value>
+            <Value disabled="false">From</Value>
+            <Value disabled="false">Mettől</Value>
+            <Value disabled="false">From</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserToDateCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">To</Value>
+            <Value disabled="false">To</Value>
+            <Value disabled="false">Meddig</Value>
+            <Value disabled="false">To</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserReturnWhenCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Return When</Value>
+            <Value disabled="false">Return When</Value>
+            <Value disabled="false">Visszadás időszaka</Value>
+            <Value disabled="false">Return When</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserReturnAsCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Return As</Value>
+            <Value disabled="false">Return As</Value>
+            <Value disabled="false">Visszaadás státusza</Value>
+            <Value disabled="false">Return As</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomBrowserRemarksCol</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Remarks</Value>
+            <Value disabled="false">Remarks</Value>
+            <Value disabled="false">Megjegyzés</Value>
+            <Value disabled="false">Remarks</Value>
+        </Property>
     </Records>
 </MultiProperties>

@@ -1,15 +1,10 @@
 /**
  * 
  */
-package io.crs.hsys.server.entity.hotel;
+package io.crs.hsys.shared.dto.hotel;
 
 import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.googlecode.objectify.Ref;
-import com.googlecode.objectify.annotation.Entity;
+import java.util.List;
 
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
@@ -18,47 +13,52 @@ import io.crs.hsys.shared.cnst.RoomStatus;
  * @author CR
  *
  */
-@Entity
-public class OooRoom extends HotelChild {
-	private static final Logger logger = LoggerFactory.getLogger(OooRoom.class.getName());
+@SuppressWarnings("serial")
+public class OooCreateDto extends HotelChildDto {
 
-	/**
-	 * Szoba hivatkozás.
-	 */
-	private Ref<Room> room;
-
-	/**
-	 * Mettől.
-	 */
+	private List<RoomDto> rooms;
+	private String fromRoom;
+	private String toRoom;
+	private List<RoomStatus> roomStatuses;
 	private Date fromDate;
-
-	/**
-	 * Meddig.
-	 */
 	private Date toDate;
-
 	private RoomStatus returnAs;
-	
 	private OooReturnWhen returnWhen;
-	
-	/**
-	 * Megjegyzés.
-	 */
 	private String remarks;
 
-	public OooRoom() {
-		logger.info("OooRoom(");
+	public OooCreateDto() {
 	}
 
-	public Room getRoom() {
-		if (room == null)
-			return null;
-		return room.get();
+	public List<RoomDto> getRooms() {
+		return rooms;
 	}
 
-	public void setRoom(Room room) {
-		if (room.getId() != null)
-			this.room = Ref.create(room);
+	public void setRooms(List<RoomDto> rooms) {
+		this.rooms = rooms;
+	}
+
+	public String getFromRoom() {
+		return fromRoom;
+	}
+
+	public void setFromRoom(String fromRoom) {
+		this.fromRoom = fromRoom;
+	}
+
+	public String getToRoom() {
+		return toRoom;
+	}
+
+	public void setToRoom(String toRoom) {
+		this.toRoom = toRoom;
+	}
+
+	public List<RoomStatus> getRoomStatuses() {
+		return roomStatuses;
+	}
+
+	public void setRoomStatuses(List<RoomStatus> roomStatuses) {
+		this.roomStatuses = roomStatuses;
 	}
 
 	public Date getFromDate() {
@@ -100,5 +100,5 @@ public class OooRoom extends HotelChild {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	
+
 }
