@@ -4,7 +4,6 @@
 package io.crs.hsys.client.kip.i18n;
 
 import com.google.gwt.i18n.client.Messages;
-import com.google.gwt.i18n.client.Messages.DefaultMessage;
 
 /**
  * @author CR
@@ -407,4 +406,21 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Remarks")
 	String oooRoomBrowserRemarksCol();
+
+	
+	/*
+	 * OOO ROOM BROWSER
+	 */
+
+	@DefaultMessage("Szobaszám")
+	String oooRoomEditorRoomLabel();
+
+	@DefaultMessage("Szobaszám")
+	String oooRoomEditorRoomPlaceholder();
+
+	@DefaultMessage("Mettől")
+	String oooRoomEditorFromDateLabel();
+
+	@DefaultMessage("Meddig")
+	String oooRoomEditorToDateLabel();
 }
