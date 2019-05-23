@@ -3,6 +3,8 @@
  */
 package io.crs.hsys.client.kip.browser.oooroom;
 
+import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -43,6 +45,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 
 	interface MyView extends View, HasUiHandlers<OooRoomBrowserUiHandlers> {
 		void setData(List<OooRoomDto> data);
+		void reConfigColumns();
 	}
 
 	@ProxyStandard
@@ -100,19 +103,20 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 
 	@Override
 	public void createItem() {
-		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_EDITOR);
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_CREATOR);
 		placeManager.revealPlace(placeBuilder.build());
 	}
 
 	@Override
 	public void editItem(OooRoomDto item) {
-		// TODO Auto-generated method stub
-		
+		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_EDITOR);
+		placeBuilder.with(WEBSAFEKEY, String.valueOf(item.getWebSafeKey()));
+		placeManager.revealPlace(placeBuilder.build());
 	}
 
 	@Override
 	public void deleteItems(List<OooRoomDto> items) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

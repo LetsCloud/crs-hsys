@@ -865,5 +865,35 @@
             <Value disabled="false">No</Value>
             <Value disabled="false">Nem</Value>
         </Property>
+        <Comment>
+            <Value>oooReturnWhenMap</Value>
+        </Comment>
+        <Property>
+            <Name>oooReturnWhenMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">ORW_MORNING,ORW_EVENING</Value>
+            <Value disabled="false">ORW_MORNING,ORW_EVENING</Value>
+            <Value disabled="false">ORW_MORNING,ORW_EVENING</Value>
+            <Value disabled="false">ORW_MORNING,ORW_EVENING</Value>
+        </Property>
+        <Property>
+            <Name>ORW_MORNING</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">At Morning</Value>
+            <Value disabled="false">At Morning</Value>
+            <Value disabled="false">At Morning</Value>
+            <Value disabled="false">Reggel</Value>
+        </Property>
+        <Property>
+            <Name>ORW_EVENING</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">At Evening</Value>
+            <Value disabled="false">At Evening</Value>
+            <Value disabled="false">At Evening</Value>
+            <Value disabled="false">Este</Value>
+        </Property>
     </Records>
 </MultiProperties>

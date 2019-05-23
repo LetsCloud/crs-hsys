@@ -395,14 +395,14 @@ public interface KipMessages extends Messages {
 	@DefaultMessage("From")
 	String oooRoomBrowserFromDateCol();
 
+	@DefaultMessage("To")
+	String oooRoomBrowserToDateCol();
+
 	@DefaultMessage("Return When")
 	String oooRoomBrowserReturnWhenCol();
 
 	@DefaultMessage("Return As")
 	String oooRoomBrowserReturnAsCol();
-
-	@DefaultMessage("To")
-	String oooRoomBrowserToDateCol();
 
 	@DefaultMessage("Remarks")
 	String oooRoomBrowserRemarksCol();
@@ -411,6 +411,18 @@ public interface KipMessages extends Messages {
 	/*
 	 * OOO ROOM BROWSER
 	 */
+
+	@DefaultMessage("OOO szoba felvétel")
+	String oooRoomEditorCreateTitle();
+
+	@DefaultMessage("Az üzemen kívül helyezett szobák nem foglalhatók")
+	String oooRoomEditorCreateSubTitle();
+
+	@DefaultMessage("OOO szoba módosítás")
+	String oooRoomEditorEditTitle();
+
+	@DefaultMessage("Az üzemen kívül helyezett szobák nem foglalhatók")
+	String oooRoomEditorEditSubTitle();
 
 	@DefaultMessage("Szobaszám")
 	String oooRoomEditorRoomLabel();
@@ -423,4 +435,31 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Meddig")
 	String oooRoomEditorToDateLabel();
+
+	@DefaultMessage("Visszaadás időszaka")
+	String oooRoomEditorReturnWhenLabel();
+
+	@DefaultMessage("Válassz időszakot")
+	String oooRoomEditorReturnWhenPlaceholder();
+
+	@DefaultMessage("Visszaadás státusza")
+	String oooRoomEditorReturnAsLabel();
+
+	@DefaultMessage("Válassz státuszt")
+	String oooRoomEditorReturnAsPlaceholder();
+
+	@DefaultMessage("Megjegyzés")
+	String oooRoomEditorRemarksLabel();
+
+	@DefaultMessage("Szobaszámok választása")
+	String oooRoomCreatorRoomLabel();
+
+	@DefaultMessage("Válassz szobaszámokat")
+	String oooRoomCreatorRoomPlaceholder();
+
+	@DefaultMessage("Szoba státuszok választása")
+	String oooRoomCreatorRoomStatusLabel();
+
+	@DefaultMessage("Válassz státuszokat")
+	String oooRoomCreatorRoomStautsPlaceholder();
 }

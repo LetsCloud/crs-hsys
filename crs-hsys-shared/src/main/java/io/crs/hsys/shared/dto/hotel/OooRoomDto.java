@@ -5,7 +5,7 @@ package io.crs.hsys.shared.dto.hotel;
 
 import java.util.Date;
 
-import io.crs.hsys.shared.cnst.OooReturnTime;
+import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
 
 /**
@@ -19,7 +19,7 @@ public class OooRoomDto extends HotelChildDto {
 	private Date fromDate;
 	private Date toDate;
 	private RoomStatus returnAs;
-	private OooReturnTime returnTime;
+	private OooReturnWhen returnWhen;
 	private String remarks;
 
 	public OooRoomDto() {
@@ -57,12 +57,12 @@ public class OooRoomDto extends HotelChildDto {
 		this.returnAs = returnAs;
 	}
 
-	public OooReturnTime getReturnTime() {
-		return returnTime;
+	public OooReturnWhen getReturnWhen() {
+		return returnWhen;
 	}
 
-	public void setReturnTime(OooReturnTime returnTime) {
-		this.returnTime = returnTime;
+	public void setReturnWhen(OooReturnWhen returnWhen) {
+		this.returnWhen = returnWhen;
 	}
 
 	public String getRemarks() {

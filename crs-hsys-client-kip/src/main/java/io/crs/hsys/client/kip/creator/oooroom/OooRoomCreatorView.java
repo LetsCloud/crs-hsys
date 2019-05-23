@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.editor.oooroom;
+package io.crs.hsys.client.kip.creator.oooroom;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -25,27 +25,26 @@ import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
-
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
-import io.crs.hsys.shared.dto.hotel.OooRoomDto;
+import io.crs.hsys.shared.dto.hotel.OooCreateDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 
 /**
  * @author CR
  *
  */
-public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandlers>
-		implements OooRoomEditorPresenter.MyView, Editor<OooRoomDto> {
-	private static Logger logger = Logger.getLogger(OooRoomEditorView.class.getName());
+public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandlers>
+		implements OooRoomCreatorPresenter.MyView, Editor<OooCreateDto> {
+	private static Logger logger = Logger.getLogger(OooRoomCreatorView.class.getName());
 
-	interface Binder extends UiBinder<Widget, OooRoomEditorView> {
+	interface Binder extends UiBinder<Widget, OooRoomCreatorView> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<OooRoomDto, OooRoomEditorView> {
+	interface Driver extends SimpleBeanEditorDriver<OooCreateDto, OooRoomCreatorView> {
 	}
 
 	private final Driver driver;
@@ -54,8 +53,13 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 
 	@Ignore
 	@UiField
-	MaterialComboBox<RoomDto> roomComboBox;
-	TakesValueEditor<RoomDto> room;
+	MaterialComboBox<RoomDto> roomFilterComboBox;
+	TakesValueEditor<List<RoomDto>> rooms;
+
+	@Ignore
+	@UiField
+	MaterialComboBox<RoomStatus> roomStatusFilterComboBox;
+	TakesValueEditor<List<RoomStatus>> roomStatuses;
 
 	@UiField
 	MaterialDatePicker fromDate;
@@ -80,13 +84,14 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 	* 
 	*/
 	@Inject
-	OooRoomEditorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, CurrentUser currentUser) {
+	OooRoomCreatorView(Binder uiBinder, Driver driver, CoreConstants i18nCoreCnst, CurrentUser currentUser) {
 		logger.info("OooRoomEditorView()");
 
 		initWidget(uiBinder.createAndBindUi(this));
 
-		initRoomComboBox();
-		initOooReturnWhenComboBox();
+		initRoomFilterComboBox();
+		initRoomStatusFilterComboBox();
+		initOooReturnTimeComboBox();
 		initRoomStatusComboBox();
 
 		this.driver = driver;
@@ -100,23 +105,23 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 		driver.initialize(this);
 	}
 
-	private void initRoomComboBox() {
-		room = TakesValueEditor.of(new TakesValue<RoomDto>() {
+	private void initRoomFilterComboBox() {
+		rooms = TakesValueEditor.of(new TakesValue<List<RoomDto>>() {
 			@Override
-			public void setValue(RoomDto value) {
-				roomComboBox.setSingleValue(value);
+			public void setValue(List<RoomDto> value) {
+				roomFilterComboBox.setValue(value);
 			}
 
 			@Override
-			public RoomDto getValue() {
-				return roomComboBox.getSingleValue();
+			public List<RoomDto> getValue() {
+				return roomFilterComboBox.getSelectedValue();
 			}
 		});
 	}
 
 	@Override
 	public void setRoomData(List<RoomDto> data) {
-		roomComboBox.clear();
+		roomFilterComboBox.clear();
 		if ((data == null) || (data.isEmpty()))
 			return;
 
@@ -132,17 +137,40 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 		OptGroup optGroup = new OptGroup(typeCode);
 		for (RoomDto room : data) {
 			if (!room.getRoomType().getCode().equals(typeCode)) {
-				roomComboBox.addGroup(optGroup);
+				roomFilterComboBox.addGroup(optGroup);
 				typeCode = room.getRoomType().getCode();
 				optGroup = new OptGroup(typeCode);
 			}
-			roomComboBox.addItem(room.getCode() + " - " + room.getDescription(), room, optGroup);
+			roomFilterComboBox.addItem(room.getCode() + " - " + room.getDescription(), room, optGroup);
 		}
-		roomComboBox.addGroup(optGroup);
-		roomComboBox.unselect();
+		roomFilterComboBox.addGroup(optGroup);
+		roomFilterComboBox.unselect();
 	}
 
-	private void initOooReturnWhenComboBox() {
+	private void initRoomStatusFilterComboBox() {
+		roomStatuses = TakesValueEditor.of(new TakesValue<List<RoomStatus>>() {
+			@Override
+			public void setValue(List<RoomStatus> value) {
+				roomStatusFilterComboBox.setValue(value);
+			}
+
+			@Override
+			public List<RoomStatus> getValue() {
+				return roomStatusFilterComboBox.getSelectedValue();
+			}
+		});
+	}
+
+	@Override
+	public void setRoomStatusFilterData(RoomStatus[] data) {
+		roomStatusFilterComboBox.clear();
+		for (RoomStatus item : data) {
+			roomStatusFilterComboBox.addItem(i18nCoreCnst.roomStatusMap().get(item.toString()), item);
+		}
+		roomStatusFilterComboBox.unselect();
+	}
+
+	private void initOooReturnTimeComboBox() {
 		returnWhen = TakesValueEditor.of(new TakesValue<OooReturnWhen>() {
 			@Override
 			public void setValue(OooReturnWhen value) {
@@ -189,17 +217,17 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 	}
 
 	@Override
-	public void show(OooRoomDto dto) {
+	public void show(OooCreateDto dto) {
 	}
 
 	@Override
-	public void edit(OooRoomDto dto) {
+	public void edit(OooCreateDto dto) {
 		driver.edit(dto);
 
 		Timer t = new Timer() {
 			@Override
 			public void run() {
-				roomComboBox.setFocus(true);
+				roomFilterComboBox.setFocus(true);
 			}
 		};
 		t.schedule(100);
@@ -207,12 +235,12 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 
 	@Override
 	public void displayError(EntityPropertyCode code, String message) {
-		// TODO Auto-generated method stub
+// TODO Auto-generated method stub
 	}
 
 	@UiHandler("saveButton")
 	void onSaveClick(ClickEvent event) {
-		OooRoomDto dto = driver.flush();
+		OooCreateDto dto = driver.flush();
 		getUiHandlers().save(dto);
 	}
 
@@ -223,6 +251,6 @@ public class OooRoomEditorView extends ViewWithUiHandlers<OooRoomEditorUiHandler
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+// TODO Auto-generated method stub
 	}
 }

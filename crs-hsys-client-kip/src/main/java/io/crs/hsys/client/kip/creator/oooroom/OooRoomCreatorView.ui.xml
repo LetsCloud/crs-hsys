@@ -40,31 +40,50 @@
 	<g:HTMLPanel addStyleNames="{style.pp}">
 		<m:MaterialRow>
 			<m:MaterialColumn grid="s12 m6">
-				<combobox:MaterialComboBox
-					ui:field="roomComboBox" multiple="false"
-					label="{i18n.oooRoomEditorRoomLabel}"
-					placeholder="{i18n.oooRoomEditorRoomPlaceholder}" marginTop="15"
-					marginBottom="30" />
+				<g:HTMLPanel addStyleNames="dataGroupBox">
+					<m:MaterialLabel text="Szoba választó"
+						marginBottom="10" addStyleNames="dataGroupTitle" />
 
+					<combobox:MaterialComboBox
+						ui:field="roomFilterComboBox" multiple="true"
+						label="{i18n.oooRoomCreatorRoomLabel}"
+						placeholder="{i18n.oooRoomCreatorRoomPlaceholder}" marginTop="15"
+						marginBottom="30" closeOnSelect="false"/>
+
+					<m:MaterialRow marginLeft="-10" marginRight="-10">
+						<m:MaterialTextBox ui:field="fromRoom"
+							type="TEXT" label="Szobaszámtól" grid="s6" />
+
+						<m:MaterialTextBox ui:field="toRoom" type="TEXT"
+							label="Szobaszámig" grid="s6" />
+					</m:MaterialRow>
+
+					<combobox:MaterialComboBox
+						ui:field="roomStatusFilterComboBox" multiple="true"
+						label="{i18n.oooRoomCreatorRoomStatusLabel}"
+						placeholder="{i18n.oooRoomCreatorRoomStautsPlaceholder}"
+						marginTop="15" marginBottom="30" closeOnSelect="false"/>
+				</g:HTMLPanel>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m6">
 				<m:MaterialDatePicker ui:field="fromDate"
 					placeholder="{i18n.oooRoomEditorFromDateLabel}" autoClose="true" />
 
 				<m:MaterialDatePicker ui:field="toDate"
 					placeholder="{i18n.oooRoomEditorToDateLabel}" autoClose="true" />
-			</m:MaterialColumn>
 
-			<m:MaterialColumn grid="s12 m6">
 				<combobox:MaterialComboBox
 					ui:field="returnWhenComboBox" multiple="false"
 					label="{i18n.oooRoomEditorReturnWhenLabel}"
-					placeholder="{i18n.oooRoomEditorReturnWhenPlaceholder}" marginTop="15"
-					marginBottom="30" />
+					placeholder="{i18n.oooRoomEditorReturnWhenPlaceholder}"
+					marginTop="15" marginBottom="30" />
 
 				<combobox:MaterialComboBox
 					ui:field="roomStatusComboBox" multiple="false"
 					label="{i18n.oooRoomEditorReturnAsLabel}"
-					placeholder="{i18n.oooRoomEditorReturnAsPlaceholder}" marginTop="15"
-					marginBottom="30" />
+					placeholder="{i18n.oooRoomEditorReturnAsPlaceholder}"
+					marginTop="15" marginBottom="30" />
 
 				<m:MaterialTextArea ui:field="remarks"
 					label="{i18n.oooRoomEditorRemarksLabel}" resizeRule="AUTO"
@@ -78,4 +97,4 @@
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
 	</g:HTMLPanel>
-</ui:UiBinder> 
+</ui:UiBinder>
