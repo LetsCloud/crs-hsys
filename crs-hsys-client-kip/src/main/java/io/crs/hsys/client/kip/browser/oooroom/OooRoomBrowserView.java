@@ -3,7 +3,6 @@
  */
 package io.crs.hsys.client.kip.browser.oooroom;
 
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -12,6 +11,10 @@ import javax.inject.Inject;
 import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.constants.Color;
+import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.constants.WavesType;
+import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.table.cell.Column;
 
@@ -23,6 +26,8 @@ import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.i18n.KipMessages;
+import io.crs.hsys.client.kip.roomstatus.RoomStatusUtils;
+import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.dto.hotel.OooRoomDto;
 
 /**
@@ -33,11 +38,16 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		implements OooRoomBrowserPresenter.MyView {
 	private static Logger logger = Logger.getLogger(RoomBrowserView.class.getName());
 
-//	private static final int COL_KIND = 0;
-//	private static final int COL_GROUP = 1;
-//	private static final int COL_DESCRIPRION = 2;
-//	private static final int COL_TIME = 3;
-	private static final int COL_REMARKS = 6;
+	private static final int COL_FROMDATE = 0;
+	private static final int COL_TODATE = 1;
+	private static final int COL_ROOM = 2;
+	private static final int COL_STATUS = 3;
+	private static final int COL_ROOMTYPE = 4;
+	private static final int COL_FLOOR = 5;
+	private static final int COL_RETURNWHEN = 6;
+	private static final int COL_RETURNAS = 7;
+	private static final int COL_REMARKS = 8;
+	private static final int COL_CREATEDBY = 9;
 
 	public class ColumnConfig extends AbstractColumnConfig<OooRoomDto> {
 
@@ -90,46 +100,85 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 
 		browserView.clearColumnConfigs();
 
-		// 1 - Room Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRoomCol(), createRoomColumn()));
-
-		// 2 - From Date Column
+		// 0 - From Date Column
 		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserFromDateCol(), createFromDateColumn()));
 
-		// 3- To Date Column
+		// 1- To Date Column
 		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserToDateCol(), createToDateColumn()));
 
-		// 4- Return When Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnWhenCol(), createReturnWhenColumn()));
+		// 2 - Room Column
+		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRoomCol(), createRoomColumn()));
 
-		// 5 - Return As Column
+		// 3 - Current Status Column
+		browserView.addColumnConfigs(new ColumnConfig("Státusz", createStatusColumn()));
+
+		// 4 - RoomType Column
+		browserView.addColumnConfigs(new ColumnConfig("Típus", createRoomTypeColumn()));
+
+		// 5 - Floor Column
+		browserView.addColumnConfigs(new ColumnConfig("Emelet", createFloorColumn()));
+
+		// 6- Return When Column
+		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnWhenCol(), createReturnWhenColumn2()));
+
+		// 7 - Return As Column
 		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnAsCol(), createReturnAsColumn()));
 
-		// 6 - Remarks Column
+		// 8 - Remarks Column
 		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRemarksCol(), createReturnRemarks()));
 
-		// Edit Column
+		// 9 - CreatedBy Column
+		browserView.addColumnConfigs(new ColumnConfig("Létrehozta", createCreatedByColumn()));
+
+		// 10 -Edit Column
 		browserView.addColumnConfigs(
 				new ColumnConfig(new ActionColumn<OooRoomDto>((object) -> getUiHandlers().editItem(object))));
 
 		// OOO change Column
-		Date today = new Date();
-		today.setHours(0);
-		browserView.addColumnConfigs(
-				new ColumnConfig(new ChangeOooColumn((object) -> getUiHandlers().editItem(object), today)));
+//		Date today = new Date();
+//		today.setHours(0);
+//		browserView.addColumnConfigs(
+//				new ColumnConfig(new ChangeOooColumn((object) -> getUiHandlers().editItem(object), today)));
 
 		browserView.addAllColumns();
 	}
 
 	@Override
 	public void reConfigColumns() {
-//		browserView.hideColumn(COL_TIME, Window.getClientWidth() <= 1024);
-		browserView.hideColumn(COL_REMARKS, Window.getClientWidth() <= 1240);
+		browserView.hideColumn(COL_FLOOR, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400));
+		browserView.hideColumn(COL_ROOMTYPE, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200));
+		browserView.hideColumn(COL_RETURNWHEN, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
+		browserView.hideColumn(COL_RETURNAS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
+		browserView.hideColumn(COL_REMARKS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));
+		browserView.hideColumn(COL_CREATEDBY, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900));
 	}
 
 	private DataColumn<OooRoomDto> createRoomColumn() {
 		return new DataColumn<OooRoomDto>((o) -> o.getRoom().getCode(),
 				(o1, o2) -> o1.getData().getRoom().compareTo(o2.getData().getRoom()));
+	}
+
+	private ActionColumn<OooRoomDto> createStatusColumn() {
+		return new ActionColumn<OooRoomDto>() {
+			@Override
+			protected MaterialIcon getIcon(OooRoomDto object) {
+				MaterialIcon icon = new MaterialIcon();
+				icon.setWaves(WavesType.DEFAULT);
+				icon.setIconType(RoomStatusUtils.getStatusIcon2(object.getRoom().getRoomStatus()));
+				icon.setTextColor(RoomStatusUtils.getStatusBgColor(object.getRoom().getRoomStatus()));
+				return icon;
+			}
+		};
+	}
+
+	private DataColumn<OooRoomDto> createRoomTypeColumn() {
+		return new DataColumn<OooRoomDto>((o) -> o.getRoom().getRoomType().getCode(),
+				(o1, o2) -> o1.getData().getRoom().getRoomType().compareTo(o2.getData().getRoom().getRoomType()));
+	}
+
+	private DataColumn<OooRoomDto> createFloorColumn() {
+		return new DataColumn<OooRoomDto>((o) -> o.getRoom().getFloor(),
+				(o1, o2) -> o1.getData().getRoom().getFloor().compareTo(o2.getData().getRoom().getFloor()));
 	}
 
 	private DataColumn<OooRoomDto> createFromDateColumn() {
@@ -146,12 +195,45 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		return new DataColumn<OooRoomDto>((o) -> cnst.oooReturnWhenMap().get(o.getReturnWhen().toString()));
 	}
 
-	private DataColumn<OooRoomDto> createReturnAsColumn() {
-		return new DataColumn<OooRoomDto>((o) -> cnst.roomStatusMap().get(o.getReturnAs().toString()));
+	private ActionColumn<OooRoomDto> createReturnWhenColumn2() {
+//		return new DataColumn<OooRoomDto>((o) -> cnst.roomStatusMap().get(o.getReturnAs().toString()));
+		return new ActionColumn<OooRoomDto>() {
+			@Override
+			protected MaterialIcon getIcon(OooRoomDto object) {
+				MaterialIcon icon = new MaterialIcon();
+				icon.setWaves(WavesType.DEFAULT);
+				if (object.getReturnWhen().equals(OooReturnWhen.ORW_MORNING)) {
+					icon.setIconType(IconType.WB_SUNNY);
+					icon.setTextColor(Color.YELLOW);
+				} else {
+					icon.setIconType(IconType.BRIGHTNESS_3);
+					icon.setTextColor(Color.BLUE);					
+				}
+				return icon;
+			}
+		};
+	}
+
+	private ActionColumn<OooRoomDto> createReturnAsColumn() {
+//		return new DataColumn<OooRoomDto>((o) -> cnst.roomStatusMap().get(o.getReturnAs().toString()));
+		return new ActionColumn<OooRoomDto>() {
+			@Override
+			protected MaterialIcon getIcon(OooRoomDto object) {
+				MaterialIcon icon = new MaterialIcon();
+				icon.setWaves(WavesType.DEFAULT);
+				icon.setIconType(RoomStatusUtils.getStatusIcon2(object.getReturnAs()));
+				icon.setTextColor(RoomStatusUtils.getStatusBgColor(object.getReturnAs()));
+				return icon;
+			}
+		};
 	}
 
 	private DataColumn<OooRoomDto> createReturnRemarks() {
 		return new DataColumn<OooRoomDto>((o) -> o.getRemarks());
+	}
+
+	private DataColumn<OooRoomDto> createCreatedByColumn() {
+		return new DataColumn<OooRoomDto>((o) -> o.getCreatedBy().getCode());
 	}
 
 	@Override

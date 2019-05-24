@@ -17,6 +17,7 @@ import io.crs.hsys.shared.cnst.RoomStatus;
 public class OooCreateDto extends HotelChildDto {
 
 	private List<RoomDto> rooms;
+	private List<RoomTypeDtor> roomTypes;
 	private String fromRoom;
 	private String toRoom;
 	private List<RoomStatus> roomStatuses;
@@ -99,6 +100,14 @@ public class OooCreateDto extends HotelChildDto {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public List<RoomTypeDtor> getRoomTypes() {
+		return roomTypes;
+	}
+
+	public void setRoomTypes(List<RoomTypeDtor> roomTypes) {
+		this.roomTypes = roomTypes;
 	}
 
 }

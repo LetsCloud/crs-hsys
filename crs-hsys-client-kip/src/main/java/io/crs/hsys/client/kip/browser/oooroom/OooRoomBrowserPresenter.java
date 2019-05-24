@@ -89,6 +89,8 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 		super.onReveal();
 		SetPageTitleEvent.fire(i18n.oooRoomBrowserTitle(), i18n.oooRoomBrowserSubTitle(), MenuItemType.MENU_ITEM, this);
 
+		getView().reConfigColumns();
+		
 		loadTasks();
 	}
 
@@ -109,6 +111,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 	@Override
 	public void createItem() {
 		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_CREATOR);
+//		Builder placeBuilder = new Builder().nameToken(CoreNameTokens.OOO_ROOM_EDITOR);
 		placeManager.revealPlace(placeBuilder.build());
 	}
 

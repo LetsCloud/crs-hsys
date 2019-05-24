@@ -25,6 +25,7 @@ import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
+
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.cnst.OooReturnWhen;
@@ -32,6 +33,7 @@ import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.OooCreateDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author CR
@@ -60,6 +62,11 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 	@UiField
 	MaterialComboBox<RoomStatus> roomStatusFilterComboBox;
 	TakesValueEditor<List<RoomStatus>> roomStatuses;
+
+	@Ignore
+	@UiField
+	MaterialComboBox<RoomTypeDtor> roomTypeFilterComboBox;
+	TakesValueEditor<List<RoomTypeDtor>> roomTypes;
 
 	@UiField
 	MaterialDatePicker fromDate;
@@ -93,7 +100,8 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 		initRoomStatusFilterComboBox();
 		initOooReturnTimeComboBox();
 		initRoomStatusComboBox();
-
+		initRoomTypeFilterComboBox();
+		
 		this.driver = driver;
 		this.i18nCoreCnst = i18nCoreCnst;
 
@@ -145,6 +153,20 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 		}
 		roomFilterComboBox.addGroup(optGroup);
 		roomFilterComboBox.unselect();
+	}
+
+	private void initRoomTypeFilterComboBox() {
+		roomTypes = TakesValueEditor.of(new TakesValue<List<RoomTypeDtor>>() {
+			@Override
+			public void setValue(List<RoomTypeDtor> value) {
+				roomTypeFilterComboBox.setValue(value);
+			}
+
+			@Override
+			public List<RoomTypeDtor> getValue() {
+				return roomTypeFilterComboBox.getSelectedValue();
+			}
+		});
 	}
 
 	private void initRoomStatusFilterComboBox() {
@@ -252,5 +274,14 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 	@Override
 	public void close() {
 // TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setRoomTypeData(List<RoomTypeDtor> data) {
+		roomTypeFilterComboBox.clear();
+		for (RoomTypeDtor item : data) {
+			roomTypeFilterComboBox.addItem(item.getCode() + " -" + item.getName(), item);
+		}
+		roomTypeFilterComboBox.unselect();
 	}
 }
