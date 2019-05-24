@@ -8,6 +8,8 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterPresenter;
 import io.crs.hsys.client.kip.filter.assignment.AssignmentFilterView;
+import io.crs.hsys.client.kip.filter.oooroom.OooRoomFilterPresenter;
+import io.crs.hsys.client.kip.filter.oooroom.OooRoomFilterView;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterPresenter2;
 import io.crs.hsys.client.kip.filter.roomstatus.RoomStatusFilterView2;
 import io.crs.hsys.client.kip.filter.taskgroup.TaskGroupFilterPresenter;
@@ -38,6 +40,8 @@ public class KipFilterModule extends AbstractPresenterModule {
 
 		bindPresenterWidget(RoomStatusFilterPresenter2.class, RoomStatusFilterPresenter2.MyView.class,
 				RoomStatusFilterView2.class);
+
+		bindPresenterWidget(OooRoomFilterPresenter.class, OooRoomFilterPresenter.MyView.class, OooRoomFilterView.class);
 
 		install(new GinFactoryModuleBuilder().build(KipFilterPresenterFactory.class));
 	}

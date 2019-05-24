@@ -15,7 +15,6 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.table.cell.Column;
 
-import io.crs.hsys.client.core.browser.AbstractBrowserView;
 import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
@@ -51,7 +50,7 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		}
 	}
 
-	private final AbstractBrowserView<OooRoomDto> browserView;
+	private final OooRoomTableView browserView = new OooRoomTableView();
 	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 	private final CoreConstants cnst;
@@ -60,8 +59,7 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 	* 
 	*/
 	@Inject
-	OooRoomBrowserView(AbstractBrowserView<OooRoomDto> table, CurrentUser currentUser, KipMessages i18n,
-			CoreConstants cnst) {
+	OooRoomBrowserView(CurrentUser currentUser, KipMessages i18n, CoreConstants cnst) {
 		logger.info("OooRoomBrowserView()");
 
 		MaterialPanel contentPanel = new MaterialPanel();
@@ -69,16 +67,16 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		contentPanel.setMarginRight(20);
 		contentPanel.setPaddingTop(20);
 		contentPanel.setPaddingBottom(20);
-		contentPanel.add(table);
+		contentPanel.add(browserView);
 
 		initWidget(contentPanel);
 
-		this.browserView = table;
+//		this.browserView = table;
 		this.currentUser = currentUser;
 		this.i18n = i18n;
 		this.cnst = cnst;
 
-//		bindSlot(OooRoomBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
+		bindSlot(OooRoomBrowserPresenter.FILTER_SLOT, browserView.getFilterPanel());
 
 		initBrowswerView();
 	}

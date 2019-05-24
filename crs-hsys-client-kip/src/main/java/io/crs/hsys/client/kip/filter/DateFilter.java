@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.DatePickerLanguage;
@@ -64,8 +65,10 @@ public class DateFilter extends BaseFilter {
 			public void onValueChange(ValueChangeEvent<Date> event) {
 				if (event.getValue() == null)
 					setChipText(null);
-				else
-					setChipText(chipLabel);
+				else {
+					DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd.");
+					setChipText(chipLabel + fmt.format(event.getValue()));
+				}
 			}
 		});
 	}

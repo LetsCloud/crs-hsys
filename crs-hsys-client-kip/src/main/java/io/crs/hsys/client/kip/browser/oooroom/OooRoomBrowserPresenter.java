@@ -30,6 +30,7 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
 import io.crs.hsys.client.kip.filter.KipFilterPresenterFactory;
+import io.crs.hsys.client.kip.filter.oooroom.OooRoomFilterPresenter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.OooRoomResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
@@ -45,6 +46,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 
 	interface MyView extends View, HasUiHandlers<OooRoomBrowserUiHandlers> {
 		void setData(List<OooRoomDto> data);
+
 		void reConfigColumns();
 	}
 
@@ -58,6 +60,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<OooRoomResource> resourceDelegate;
+	private final OooRoomFilterPresenter filter;
 	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 
@@ -68,6 +71,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.info("OooRoomPresenter()");
 		this.placeManager = placeManager;
+		this.filter = filterFactory.createOooRoomFilter();
 		this.currentUser = currentUser;
 		this.resourceDelegate = resourceDelegate;
 		this.i18n = i18n;
@@ -77,6 +81,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 	@Override
 	protected void onBind() {
 		super.onBind();
+		setInSlot(FILTER_SLOT, filter);
 	}
 
 	@Override
