@@ -30,6 +30,18 @@ public class AppUserDtor extends AccountChildDto {
 	 */
 	private List<UserPerm> permissions = new ArrayList<UserPerm>();
 
+	public AppUserDtor() {}
+
+	public AppUserDtor(AppUserDto dto) {
+		this.setAccount(dto.getAccount());
+		this.setCode(dto.getCode());
+		this.setId(dto.getId());
+		this.setName(dto.getName());
+		this.setPermissions(dto.getPermissions());
+		this.setVersion(dto.getVersion());
+		this.setWebSafeKey(dto.getWebSafeKey());
+	}
+	
 	public String getCode() {
 		return code;
 	}

@@ -48,21 +48,29 @@
 						ui:field="roomFilterComboBox" multiple="true"
 						label="{i18n.oooRoomCreatorRoomLabel}"
 						placeholder="{i18n.oooRoomCreatorRoomPlaceholder}" marginTop="15"
-						marginBottom="30" closeOnSelect="false"/>
+						marginBottom="30" closeOnSelect="false" />
 
 					<m:MaterialRow marginLeft="-10" marginRight="-10">
 						<m:MaterialTextBox ui:field="fromRoom"
-							type="TEXT" label="Szobaszámtól" grid="s6" />
+							type="TEXT" label="Szobaszámtól" grid="s4" />
 
 						<m:MaterialTextBox ui:field="toRoom" type="TEXT"
-							label="Szobaszámig" grid="s6" />
+							label="Szobaszámig" grid="s4" />
+
+						<m:MaterialTextBox ui:field="floor" type="TEXT"
+							label="Emelet" grid="s4" />
 					</m:MaterialRow>
+
+					<combobox:MaterialComboBox
+						ui:field="roomTypeFilterComboBox" multiple="true"
+						label="Szoba típusok választása" placeholder="Válassz típusokat"
+						marginTop="15" marginBottom="30" closeOnSelect="false" />
 
 					<combobox:MaterialComboBox
 						ui:field="roomStatusFilterComboBox" multiple="true"
 						label="{i18n.oooRoomCreatorRoomStatusLabel}"
 						placeholder="{i18n.oooRoomCreatorRoomStautsPlaceholder}"
-						marginTop="15" marginBottom="30" closeOnSelect="false"/>
+						marginTop="15" marginBottom="30" closeOnSelect="false" />
 				</g:HTMLPanel>
 			</m:MaterialColumn>
 

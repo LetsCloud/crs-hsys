@@ -7,6 +7,7 @@ import java.util.Date;
 
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**
  * @author CR
@@ -21,6 +22,7 @@ public class OooRoomDto extends HotelChildDto {
 	private RoomStatus returnAs;
 	private OooReturnWhen returnWhen;
 	private String remarks;
+	private AppUserDtor createdBy;
 
 	public OooRoomDto() {
 	}
@@ -71,6 +73,14 @@ public class OooRoomDto extends HotelChildDto {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public AppUserDtor getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(AppUserDtor createdBy) {
+		this.createdBy = createdBy;
 	}
 
 }

@@ -25,6 +25,7 @@ import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.datasource.RoomDataSource;
+import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
@@ -38,6 +39,7 @@ import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.hotel.OooCreateDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author CR
@@ -50,6 +52,8 @@ public class OooRoomCreatorPresenter
 
 	public interface MyView extends AbstractEditorView<OooCreateDto>, HasUiHandlers<OooRoomCreatorUiHandlers> {
 		void setRoomData(List<RoomDto> data);
+
+		void setRoomTypeData(List<RoomTypeDtor> data);
 
 		void setRoomStatusFilterData(RoomStatus[] data);
 
@@ -68,19 +72,21 @@ public class OooRoomCreatorPresenter
 	private final PlaceManager placeManager;
 	private final ResourceDelegate<OooRoomResource> resourceDelegate;
 	private final RoomDataSource roomDataSource;
+	private final RoomTypeDataSource2 roomTypeDataSource;
 	private final CurrentUser currentUser;
 	private final CoreMessages i18nCore;
 	private final KipMessages i18n;
 
 	@Inject
 	OooRoomCreatorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			ResourceDelegate<OooRoomResource> resourceDelegate, RoomDataSource roomDataSource, CurrentUser currentUser,
+			ResourceDelegate<OooRoomResource> resourceDelegate, RoomDataSource roomDataSource, RoomTypeDataSource2 roomTypeDataSource, CurrentUser currentUser,
 			CoreMessages i18nCore, KipMessages i18n) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("OooRoomCreatorPresenter()");
 
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
+		this.roomTypeDataSource = roomTypeDataSource; 
 		this.roomDataSource = roomDataSource;
 		this.currentUser = currentUser;
 		this.i18nCore = i18nCore;
@@ -100,6 +106,7 @@ public class OooRoomCreatorPresenter
 		loadRoomStatusFilterData();
 		loadOooReturnTimeData();
 		loadRoomData();
+		loadRoomTypeData();
 	}
 
 	private void loadRoomData() {
@@ -107,7 +114,7 @@ public class OooRoomCreatorPresenter
 			@Override
 			public void onSuccess(LoadResult<RoomDto> loadResult) {
 				getView().setRoomData(loadResult.getData());
-				start();
+				if (roomTypeDataSource.getIsLoaded()) start();
 			}
 
 			@Override
@@ -118,6 +125,25 @@ public class OooRoomCreatorPresenter
 		roomDataSource.setOnlyActive(true);
 		roomDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
 		roomDataSource.load(new LoadConfig<RoomDto>(0, 0, null, null), roomLoadCallback);
+	}
+
+	private void loadRoomTypeData() {
+		roomTypeDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
+		LoadCallback<RoomTypeDtor> roomTypeLoadCallback = new LoadCallback<RoomTypeDtor>() {
+
+			@Override
+			public void onSuccess(LoadResult<RoomTypeDtor> loadResult) {
+				getView().setRoomTypeData(loadResult.getData());
+				if (roomDataSource.getIsLoaded()) start();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		};
+
+		roomTypeDataSource.load(new LoadConfig<RoomTypeDtor>(0, 0, null, null), roomTypeLoadCallback);
 	}
 
 	private void loadRoomStatusFilterData() {

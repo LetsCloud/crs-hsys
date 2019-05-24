@@ -29,7 +29,6 @@ import io.crs.hsys.client.core.datasource.RoomDataSource;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
-import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.OooRoomResource;
@@ -37,6 +36,7 @@ import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.OooRoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 
@@ -140,6 +140,7 @@ public class OooRoomEditorPresenter
 	protected OooRoomDto createDto() {
 		OooRoomDto dto = new OooRoomDto();
 		dto.setHotel(currentUser.getCurrentHotel());
+		dto.setCreatedBy(new AppUserDtor(currentUser.getAppUserDto()));
 		return dto;
 	}
 

@@ -8,7 +8,7 @@ package io.crs.hsys.shared.dto.hotel;
  *
  */
 @SuppressWarnings("serial")
-public class RoomTypeDtor extends HotelChildDto {
+public class RoomTypeDtor extends HotelChildDto implements Comparable<RoomTypeDtor> {
 
 	private String code;
 	private String name;
@@ -87,5 +87,12 @@ public class RoomTypeDtor extends HotelChildDto {
 
 	public static Builder<?> builder() {
 		return new Builder2();
+	}
+
+	@Override
+	public int compareTo(RoomTypeDtor other) {
+		if (other == null)
+			return 1;
+		return code.compareTo(other.getCode());
 	}
 }
