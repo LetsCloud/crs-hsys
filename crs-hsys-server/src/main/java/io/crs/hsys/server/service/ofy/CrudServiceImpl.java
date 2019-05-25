@@ -34,6 +34,10 @@ public abstract class CrudServiceImpl<T extends BaseEntity, R extends CrudReposi
 		this.repository = repository;
 	}
 
+	public R getRepository() {
+		return repository;
+	}
+	
 	public T findByWebSafeKey(String webSafeKey) {
 		return repository.findByWebSafeKey(webSafeKey);
 	}

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.shared.cnst.OooReturnWhen;
@@ -26,6 +27,7 @@ public class OooRoom extends HotelChild {
 	/**
 	 * Szoba hivatkozás.
 	 */
+	@Index
 	private Ref<Room> room;
 
 	/**
@@ -51,6 +53,19 @@ public class OooRoom extends HotelChild {
 
 	public OooRoom() {
 		logger.info("OooRoom(");
+	}
+
+	public OooRoom(Room room, Date fromDate, Date toDate, RoomStatus returnAs, OooReturnWhen returnWhen, String remarks,
+			AppUser createdBy, Hotel hotel) {
+		this();
+		setRoom(room);
+		setFromDate(fromDate);
+		setToDate(toDate);
+		setReturnAs(returnAs);
+		setReturnWhen(returnWhen);
+		setRemarks(remarks);
+		setCreatedBy(createdBy);
+		setHotel(hotel);
 	}
 
 	public Room getRoom() {
@@ -113,6 +128,12 @@ public class OooRoom extends HotelChild {
 	public void setCreatedBy(AppUser createdBy) {
 		if (createdBy.getId() != null)
 			this.createdBy = Ref.create(createdBy);
+	}
+
+	@Override
+	public String toString() {
+		return "OooRoom [room=" + room + ", fromDate=" + fromDate + ", toDate=" + toDate + ", returnAs=" + returnAs
+				+ ", returnWhen=" + returnWhen + ", remarks=" + remarks + ", createdBy=" + createdBy + "]";
 	}
 
 }
