@@ -19,9 +19,7 @@ import io.crs.hsys.shared.dto.hotel.OooRoomDto;
 public class OooRoomTableView extends BaseTableView<OooRoomDto> {
 	
 	public OooRoomTableView() {
-		super();
-
-		
+		super();		
 	}
 	
 	@Override
@@ -29,9 +27,9 @@ public class OooRoomTableView extends BaseTableView<OooRoomDto> {
 		super.setToolPanel(toolPanel);
 
 		MaterialIcon setOooIcon = new MaterialIcon(IconType.SETTINGS);
-		setOooIcon.setMarginRight(10);
+		setOooIcon.setMarginRight(15);
 		MaterialIcon clearOooIcon = new MaterialIcon(IconType.PLAY_CIRCLE_FILLED);
-		clearOooIcon.setMarginRight(10);
+		clearOooIcon.setMarginRight(15);
 
 		MaterialIcon menuIcon = new MaterialIcon(IconType.MORE_VERT);
 		menuIcon.setActivates("dd-menu");

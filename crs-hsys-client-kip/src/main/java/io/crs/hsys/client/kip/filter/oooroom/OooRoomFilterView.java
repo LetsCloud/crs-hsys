@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.kip.filter.oooroom;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -178,7 +179,8 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 
 	@Override
 	protected void createLayout() {
-
+		controlPanel.setMarginBottom(0);
+		
 		fromDateFilter.setGrid("s6 m4");
 		controlPanel.add(fromDateFilter);
 
@@ -188,20 +190,20 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 		roomTypeFilter.setGrid("s12 m4");
 		controlPanel.add(roomTypeFilter);
 
-		roomFilter.setGrid("s6 m4");
+		roomFilter.setGrid("s6 m2");
 		controlPanel.add(roomFilter);
 
-		floorFilter.setGrid("s6 m4");
+		floorFilter.setGrid("s6 m2");
 		controlPanel.add(floorFilter);
+
+		reporterFilter.setGrid("s12 m4");
+		controlPanel.add(reporterFilter);
 
 		onlyOooFilter.setGrid("s12 m4");
 		controlPanel.add(onlyOooFilter);
 
 		expiredNoFilter.setGrid("s12 m4");
 		controlPanel.add(expiredNoFilter);
-
-		reporterFilter.setGrid("s12 m4");
-		controlPanel.add(reporterFilter);
 	}
 
 	@Override
@@ -240,6 +242,16 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	@Override
 	public String getSelectedReporterKey() {
 		return reporterFilter.getSelectedKey();
+	}
+
+	@Override
+	public void setFromDate(Date fromDate) {
+		fromDateFilter.setValue(fromDate);
+	}
+
+	@Override
+	public void setToDate(Date toDate) {
+		toDateFilter.setValue(toDate);
 	}
 
 }
