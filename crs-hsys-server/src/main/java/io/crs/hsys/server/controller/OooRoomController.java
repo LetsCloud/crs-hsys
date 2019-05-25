@@ -33,6 +33,7 @@ import io.crs.hsys.server.entity.hotel.OooRoom;
 import io.crs.hsys.server.service.OooRoomService;
 import io.crs.hsys.shared.dto.hotel.OooCreateDto;
 import io.crs.hsys.shared.dto.hotel.OooRoomDto;
+import io.crs.hsys.shared.exception.BaseException;
 import io.crs.hsys.shared.exception.RestApiException;
 
 /**
@@ -83,7 +84,7 @@ public class OooRoomController extends HotelChildController<OooRoom, OooRoomDto>
 		logger.info("createOooRooms()->dto=" + dto);
 		try {
 			service.createOooRooms(dto);
-		} catch (Throwable e) {
+		} catch (BaseException e) {
 			throw new RestApiException(e);
 		}
 	}

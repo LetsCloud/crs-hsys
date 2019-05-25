@@ -4,7 +4,7 @@
 package io.crs.hsys.server.entity;
 
 import io.crs.hsys.server.repository.CrudRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author robi
@@ -15,9 +15,9 @@ public class ForeignKey {
 	private String property;
 	private Object value;
 	private CrudRepository<?> repo;
-	private ExceptionSubType exception;
+	private ErrorMessageCode exception;
 
-	public ForeignKey(String property, CrudRepository<?> repo, ExceptionSubType exception) {
+	public ForeignKey(String property, CrudRepository<?> repo, ErrorMessageCode exception) {
 		this.property = property;
 		this.repo = repo;
 		this.exception = exception;
@@ -39,11 +39,11 @@ public class ForeignKey {
 		this.repo = repo;
 	}
 
-	public ExceptionSubType getException() {
+	public ErrorMessageCode getException() {
 		return exception;
 	}
 
-	public void setException(ExceptionSubType exception) {
+	public void setException(ErrorMessageCode exception) {
 		this.exception = exception;
 	}
 

@@ -63,4 +63,10 @@ public class MessageData {
 		this.buttonConfigs.add(buttonConfig);
 	}
 
+	@Override
+	public String toString() {
+		return "MessageData [title=" + title + ", description=" + description + ", style=" + style + ", closeDelay="
+				+ closeDelay + ", buttonConfigs=" + buttonConfigs + "]";
+	}
+
 }

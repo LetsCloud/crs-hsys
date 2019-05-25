@@ -3,7 +3,7 @@
  */
 package io.crs.hsys.server.entity;
 
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author robi
@@ -12,9 +12,9 @@ import io.crs.hsys.shared.exception.ExceptionSubType;
 public class UniqueKey {
 	private String property;
 	private Object value;
-	private ExceptionSubType exception;
+	private ErrorMessageCode exception;
 
-	public UniqueKey(String property, Object value, ExceptionSubType exception) {
+	public UniqueKey(String property, Object value, ErrorMessageCode exception) {
 		this.property = property;
 		this.value = value;
 		this.exception = exception;
@@ -36,11 +36,11 @@ public class UniqueKey {
 		this.value = value;
 	}
 
-	public ExceptionSubType getException() {
+	public ErrorMessageCode getException() {
 		return exception;
 	}
 
-	public void setException(ExceptionSubType exception) {
+	public void setException(ErrorMessageCode exception) {
 		this.exception = exception;
 	}
 

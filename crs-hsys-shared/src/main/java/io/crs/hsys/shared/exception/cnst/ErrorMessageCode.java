@@ -1,13 +1,13 @@
 /**
  * 
  */
-package io.crs.hsys.shared.exception;
+package io.crs.hsys.shared.exception.cnst;
 
 /**
  * @author robi
  *
  */
-public enum ExceptionSubType {
+public enum ErrorMessageCode {
 	APPUSER_EMAIL_ALREADY_EXISTS, 
 	APPUSER_CODE_ALREADY_EXISTS, 
 	

@@ -5,7 +5,8 @@
 	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
 	xmlns:ma="urn:import:gwt.material.design.addins.client"
 	xmlns:tasktypeeditor="urn:import:io.crs.hsys.client.kip.editor.tasktype"
-	xmlns:addext="urn:import:gwt.material.design.addext.client.ui">
+	xmlns:addext="urn:import:gwt.material.design.addext.client.ui"
+	xmlns:message="urn:import:io.crs.hsys.client.core.message.dialog">
 
 	<ui:style>
 	.pp {
@@ -104,5 +105,8 @@
 			addStyleNames="{style.saveButton}" />
 		<m:MaterialButton ui:field="cancelButton"
 			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
+
+		<message:MessageDialogWidget
+			ui:field="messageDialog" />
 	</g:HTMLPanel>
 </ui:UiBinder>

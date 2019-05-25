@@ -28,6 +28,13 @@ import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
 import io.crs.hsys.client.core.editor.AbstractEditorPresenter;
 import io.crs.hsys.client.core.editor.AbstractEditorView;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent;
+import io.crs.hsys.client.core.event.DisplayMessageEvent.DisplayMessageHandler;
+import io.crs.hsys.client.core.gin.CustomActionException;
+import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.MessageStyle;
+import io.crs.hsys.client.core.message.MessageUtils;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.api.OooRoomResource;
@@ -46,7 +53,7 @@ import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
  */
 public class OooRoomCreatorPresenter
 		extends AbstractEditorPresenter<OooCreateDto, OooRoomCreatorPresenter.MyView, OooRoomCreatorPresenter.MyProxy>
-		implements OooRoomCreatorUiHandlers {
+		implements OooRoomCreatorUiHandlers, DisplayMessageHandler {
 	private static Logger logger = Logger.getLogger(OooRoomCreatorPresenter.class.getName());
 
 	public interface MyView extends AbstractEditorView<OooCreateDto>, HasUiHandlers<OooRoomCreatorUiHandlers> {
@@ -61,6 +68,8 @@ public class OooRoomCreatorPresenter
 		void setRoomStatusData(RoomStatus[] data);
 
 		void displayError(EntityPropertyCode code, String message);
+
+		void showMessage(MessageData message);
 	}
 
 	@ProxyCodeSplit
@@ -74,20 +83,22 @@ public class OooRoomCreatorPresenter
 	private final RoomTypeDataSource2 roomTypeDataSource;
 	private final CurrentUser currentUser;
 	private final KipMessages i18n;
+	private final CoreMessages i18nCore;
 
 	@Inject
 	OooRoomCreatorPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy,
-			ResourceDelegate<OooRoomResource> resourceDelegate, RoomDataSource roomDataSource, RoomTypeDataSource2 roomTypeDataSource, CurrentUser currentUser,
-			KipMessages i18n) {
+			ResourceDelegate<OooRoomResource> resourceDelegate, RoomDataSource roomDataSource,
+			RoomTypeDataSource2 roomTypeDataSource, CurrentUser currentUser, KipMessages i18n, CoreMessages i18nCore) {
 		super(eventBus, placeManager, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("OooRoomCreatorPresenter()");
 
 		this.placeManager = placeManager;
 		this.resourceDelegate = resourceDelegate;
-		this.roomTypeDataSource = roomTypeDataSource; 
+		this.roomTypeDataSource = roomTypeDataSource;
 		this.roomDataSource = roomDataSource;
 		this.currentUser = currentUser;
 		this.i18n = i18n;
+		this.i18nCore = i18nCore;
 
 		getView().setUiHandlers(this);
 	}
@@ -95,6 +106,7 @@ public class OooRoomCreatorPresenter
 	@Override
 	protected void onBind() {
 		super.onBind();
+		addRegisteredHandler(DisplayMessageEvent.TYPE, this);
 	}
 
 	@Override
@@ -111,7 +123,8 @@ public class OooRoomCreatorPresenter
 			@Override
 			public void onSuccess(LoadResult<RoomDto> loadResult) {
 				getView().setRoomData(loadResult.getData());
-				if (roomTypeDataSource.getIsLoaded()) start();
+				if (roomTypeDataSource.getIsLoaded())
+					start();
 			}
 
 			@Override
@@ -131,7 +144,8 @@ public class OooRoomCreatorPresenter
 			@Override
 			public void onSuccess(LoadResult<RoomTypeDtor> loadResult) {
 				getView().setRoomTypeData(loadResult.getData());
-				if (roomDataSource.getIsLoaded()) start();
+				if (roomDataSource.getIsLoaded())
+					start();
 			}
 
 			@Override
@@ -179,8 +193,20 @@ public class OooRoomCreatorPresenter
 
 			@Override
 			public void onFailure(Throwable caught) {
-				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
+				if (caught instanceof CustomActionException) {
+					CustomActionException exception = (CustomActionException) caught;
+					MessageData message = new MessageData(MessageStyle.ERROR,
+							MessageUtils.tranlateTitle(i18nCore, exception.getErrorResponse().getTitleCode()),
+							MessageUtils.tranlateMessage(i18nCore, exception.getErrorResponse().getMessageCode(),
+									exception.getErrorResponse().getValuesMap(), currentUser.getLocale()));
+					getView().showMessage(message);
+				}
 			}
+
 		}).create(dto);
+	}
+
+	@Override
+	public void onDisplayMessage(DisplayMessageEvent event) {
 	}
 }

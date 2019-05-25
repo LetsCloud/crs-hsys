@@ -133,6 +133,9 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("The task group is used by Task Type.")
 	String TASKGROUP_ID_USED_BY_TASKTYPE();
 
+	@DefaultMessage("Overlaping OOO period withh room {0} ({1} - {2}).")
+	String OOO_ROOM_OVERLAP(String room, String fromDate, String todate);
+
 	/*
 	 * LOGIN
 	 */
@@ -769,8 +772,7 @@ public interface CoreMessages extends Messages {
 
 	@DefaultMessage("Issue Date")
 	String quotationBrowserIssueDate();
-	
-	
+
 	/*
 	 * QUOTATION FILTER
 	 */
@@ -790,7 +792,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Status filter")
 	String quotationFilterStatusLabel();
 
-	
 	/*
 	 * QUOTATION EDITOR
 	 */
@@ -1084,7 +1085,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Choose Room Type")
 	String roomFilterRoomTypesPlaceholder();
 
-	
 	/*
 	 * ROOM EDITOR
 	 */
@@ -1122,7 +1122,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Remove")
 	String roomEditorAvailabilityRemove();
 
-	
 	/*
 	 * MARKET GROUP BROWSER
 	 */
@@ -1130,7 +1129,6 @@ public interface CoreMessages extends Messages {
 	@DefaultMessage("Market Groups")
 	String marketGroupBrowserTitle();
 
-	
 	/*
 	 * SEND MESSAGE
 	 */

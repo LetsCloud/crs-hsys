@@ -17,7 +17,7 @@ public class DisplayMessageEvent extends GwtEvent<DisplayMessageEvent.DisplayMes
 
 	public enum MessageTarget {
 		APP_USER, USER_GROUP, TASK_GROUP, TASK_TODO, TASK_TYPE, PROFILE_GROUP, RELATIONSHIP, QUOTATION_STATUS,
-		ORGANIZATION, QUOTATION, CONTACT, MARKET_GROUP, HOTEL, ROOM_TYPE, ROOM;
+		ORGANIZATION, QUOTATION, CONTACT, MARKET_GROUP, HOTEL, ROOM_TYPE, ROOM, OOO_ROOM_CREATE;
 	}
 
 	public interface DisplayMessageHandler extends EventHandler {

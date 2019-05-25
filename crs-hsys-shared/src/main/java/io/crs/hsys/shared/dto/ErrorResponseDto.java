@@ -3,8 +3,12 @@
  */
 package io.crs.hsys.shared.dto;
 
-import io.crs.hsys.shared.exception.ExceptionSubType;
-import io.crs.hsys.shared.exception.ExceptionType;
+import java.util.HashMap;
+import java.util.Map;
+
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
+import io.crs.hsys.shared.exception.cnst.ErrorTitleCode;
+import io.crs.hsys.shared.exception.cnst.ValueCode;
 
 /**
  * @author CR
@@ -15,16 +19,17 @@ public class ErrorResponseDto implements Dto {
 
 	private int errorCode;
 
-	private ExceptionType exceptionType;
+	private ErrorTitleCode titleCode;
 
-	private ExceptionSubType exceptionSubType;
+	private ErrorMessageCode messageCode;
 
+	private Map<ValueCode, Object> valuesMap = new HashMap<ValueCode, Object>();
+	
 	private String property;
 
 	private String message;
 
-	public ErrorResponseDto() {
-	
+	public ErrorResponseDto() {	
 	}
 	
 	public int getErrorCode() {
@@ -35,20 +40,32 @@ public class ErrorResponseDto implements Dto {
 		this.errorCode = errorCode;
 	}
 
-	public ExceptionType getExceptionType() {
-		return exceptionType;
+	public ErrorTitleCode getTitleCode() {
+		return titleCode;
 	}
 
-	public void setExceptionType(ExceptionType exceptionType) {
-		this.exceptionType = exceptionType;
+	public void setTitleCode(ErrorTitleCode titleCode) {
+		this.titleCode = titleCode;
 	}
 
-	public ExceptionSubType getExceptionSubType() {
-		return exceptionSubType;
+	public ErrorMessageCode getMessageCode() {
+		return messageCode;
 	}
 
-	public void setExceptionSubType(ExceptionSubType exceptionSubType) {
-		this.exceptionSubType = exceptionSubType;
+	public void setMessageCode(ErrorMessageCode messageCode) {
+		this.messageCode = messageCode;
+	}
+
+	public Map<ValueCode, Object> getValuesMap() {
+		return valuesMap;
+	}
+
+	public void setValuesMap(Map<ValueCode, Object> valuesMap) {
+		this.valuesMap = valuesMap;
+	}
+
+	public void addValue(ValueCode key, Object value) {
+		this.valuesMap.put(key, value);
 	}
 
 	public String getProperty() {
@@ -69,8 +86,8 @@ public class ErrorResponseDto implements Dto {
 
 	@Override
 	public String toString() {
-		return "ErrorResponseDto [errorCode=" + errorCode + ", exceptionType=" + exceptionType + ", property="
-				+ property + ", message=" + message + "]";
+		return "ErrorResponseDto [errorCode=" + errorCode + ", titleCode=" + titleCode + ", messageCode=" + messageCode
+				+ ", valuesMap=" + valuesMap + ", property=" + property + ", message=" + message + "]";
 	}
 	
 }

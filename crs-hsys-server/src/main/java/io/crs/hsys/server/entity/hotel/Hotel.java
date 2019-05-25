@@ -15,7 +15,7 @@ import com.googlecode.objectify.annotation.Index;
 
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.cnst.ErrorTitleCode;
 
 /**
  * @author robi
@@ -114,10 +114,10 @@ public class Hotel extends AccountChild {
 		 * getClass().getSimpleName(), PROPERTY_ACCOUNTID); }
 		 */
 		if (this.getCode() == null) {
-			throw new EntityValidationException(ExceptionType.MISSING_VALUE, getClass().getSimpleName(), PROPERTY_CODE);
+			throw new EntityValidationException(ErrorTitleCode.MISSING_VALUE, getClass().getSimpleName(), PROPERTY_CODE);
 		}
 		if (this.getName() == null) {
-			throw new EntityValidationException(ExceptionType.MISSING_VALUE, getClass().getSimpleName(), PROPERTY_NAME);
+			throw new EntityValidationException(ErrorTitleCode.MISSING_VALUE, getClass().getSimpleName(), PROPERTY_NAME);
 		}
 	}
 }

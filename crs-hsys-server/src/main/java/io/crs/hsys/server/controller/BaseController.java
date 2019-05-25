@@ -14,11 +14,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import io.crs.hsys.server.service.AccountService;
 import io.crs.hsys.shared.dto.ErrorResponseDto;
-import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionType;
-import io.crs.hsys.shared.exception.ForeignKeyConflictException;
+import io.crs.hsys.shared.exception.BaseException;
 import io.crs.hsys.shared.exception.RestApiException;
-import io.crs.hsys.shared.exception.UniqueIndexConflictException;
+import io.crs.hsys.shared.exception.cnst.ErrorTitleCode;
 
 /**
  * @author robi
@@ -39,7 +37,7 @@ public abstract class BaseController {
 	public void accountIdValidation(WebRequest request, String accountId) throws RestApiException {
 		logger.info("accountIdValidation->accountId=" + accountId);
 		if (!accountService.sameAccountIds(accountId, getAccountId(request)))
-			throw new RestApiException(new Exception(ExceptionType.MISMATCHED_ACCOUNT + " " + accountId));
+			throw new RestApiException(new BaseException(ErrorTitleCode.MISMATCHED_ACCOUNT + " " + accountId));
 	}
 
 	/**
@@ -49,46 +47,13 @@ public abstract class BaseController {
 	 */
 	@ExceptionHandler(RestApiException.class)
 	public ResponseEntity<ErrorResponseDto> exceptionHandler(RestApiException ex) {
-		logger.info("exceptionHandler()->"+ex);
-		ErrorResponseDto error = new ErrorResponseDto();
+		ErrorResponseDto error = ex.getBaseException().getErrorResponse();
 		error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
-		error.setMessage(ExceptionType.UNKNOWN.toString() + "-" + ex.getMessage());
-
-		if (ex.getCause() instanceof EntityValidationException) {
-			error.setExceptionType(ExceptionType.FAILD_ENTITIY_VALIDATION);
-			error.setMessage(ExceptionType.FAILD_ENTITIY_VALIDATION.toString() + "-" + ex.getMessage());
-		}
-
-		if (ex.getCause() instanceof UniqueIndexConflictException) {
-			error = createUiceResponse((UniqueIndexConflictException) ex.getCause());
-		}
-
-		if (ex.getCause() instanceof ForeignKeyConflictException) {
-			error = createForeignKeyConflictResponse((ForeignKeyConflictException) ex.getCause());
-		}
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json; charset=utf-8");
 
 		return new ResponseEntity<ErrorResponseDto>(error, headers, HttpStatus.NOT_FOUND);
-	}
-
-	private ErrorResponseDto createUiceResponse(UniqueIndexConflictException e) {
-		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_SAVED);
-		error.setExceptionSubType(e.getException());
-		error.setProperty(e.getProperty());
-		error.setMessage(ExceptionType.CRUD_CANNOT_BE_SAVED.toString() + "-" + e.getMessage());
-		return error;
-	}
-
-	private ErrorResponseDto createForeignKeyConflictResponse(ForeignKeyConflictException e) {
-		ErrorResponseDto error = new ErrorResponseDto();
-		error.setExceptionType(ExceptionType.CRUD_CANNOT_BE_DELETED);
-		error.setExceptionSubType(e.getForeignKey());
-		error.setProperty(e.getForeignKey().toString());
-		error.setMessage(ExceptionType.CRUD_CANNOT_BE_DELETED.toString() + "-" + e.getMessage());
-		return error;
 	}
 
 	/**
