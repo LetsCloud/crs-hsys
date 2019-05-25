@@ -44,6 +44,7 @@ public class DateFilter extends BaseFilter {
 
 	public void setValue(Date value) {
 		datePicker.setValue(value);
+		chipUpdate(value);
 	}
 
 	public void setFilterLabel(String label) {
@@ -63,16 +64,20 @@ public class DateFilter extends BaseFilter {
 		datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Date> event) {
-				if (event.getValue() == null)
-					setChipText(null);
-				else {
-					DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd.");
-					setChipText(chipLabel + fmt.format(event.getValue()));
-				}
+				chipUpdate(event.getValue());
 			}
 		});
 	}
 
+	private void chipUpdate(Date value) {
+		if (value == null)
+			setChipText(null);
+		else {
+			DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd.");
+			setChipText(chipLabel + fmt.format(value));
+		}
+	}
+	
 	public void setFilterHeight(double value, Unit unit) {
 		datePicker.getDateInput().getElement().getStyle().setHeight(value, unit);
 	}

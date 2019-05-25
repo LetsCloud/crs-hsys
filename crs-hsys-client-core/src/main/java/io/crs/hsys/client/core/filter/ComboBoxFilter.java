@@ -59,6 +59,7 @@ public abstract class ComboBoxFilter<T> extends BaseFilter {
 		comboBox.clear();
 		for (T dto : data)
 			comboBox.addItem(createComboBoxItemText(dto), dto);
+		comboBox.unselect();
 	}
 
 	/**

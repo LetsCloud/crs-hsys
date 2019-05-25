@@ -5,6 +5,7 @@ package io.crs.hsys.client.kip.browser.oooroom;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -88,6 +89,11 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 	protected void onReveal() {
 		super.onReveal();
 		SetPageTitleEvent.fire(i18n.oooRoomBrowserTitle(), i18n.oooRoomBrowserSubTitle(), MenuItemType.MENU_ITEM, this);
+
+		Date today = new Date();
+		today.setHours(0);
+		filter.setFromDate(today);
+		filter.setToDate(today);
 
 		getView().reConfigColumns();
 		

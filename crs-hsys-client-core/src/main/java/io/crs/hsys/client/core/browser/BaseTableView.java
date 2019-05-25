@@ -240,4 +240,8 @@ public class BaseTableView<T extends BaseDto> extends Composite {
 	public void showMessage(MessageData messageData) {
 		messageDialog.showMessage(messageData);
 	}
+
+	public void setTableHeight(String height) {
+		table.setHeight(height);
+	}
 }

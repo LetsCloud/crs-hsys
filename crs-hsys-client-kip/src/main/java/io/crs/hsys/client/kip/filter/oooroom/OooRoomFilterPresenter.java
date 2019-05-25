@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.kip.filter.oooroom;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -32,6 +33,10 @@ public class OooRoomFilterPresenter extends AbstractFilterPresenter<OooRoomFilte
 	private static Logger logger = Logger.getLogger(OooRoomFilterPresenter.class.getName());
 
 	public interface MyView extends AbstractFilterPresenter.MyView, HasUiHandlers<AbstractFilterUiHandlers> {
+		void setFromDate(Date fromDate);
+
+		void setToDate(Date toDate);
+
 		void setRoomTypeData(List<RoomTypeDtor> data);
 
 		RoomTypeDtor getSelectedRoomType();
@@ -39,9 +44,9 @@ public class OooRoomFilterPresenter extends AbstractFilterPresenter<OooRoomFilte
 		void setRoomData(List<RoomDto> data);
 
 		RoomDto getSelectedRoom();
-		
+
 		void setAppUserData(List<AppUserDtor> data);
-		
+
 		String getSelectedReporterKey();
 	}
 
@@ -130,4 +135,11 @@ public class OooRoomFilterPresenter extends AbstractFilterPresenter<OooRoomFilte
 		appUserDataSource.load(new LoadConfig<AppUserDtor>(0, 0, null, null), appUserLoadCallback);
 	}
 
+	public void setFromDate(Date fromDate) {
+		getView().setFromDate(fromDate);
+	}
+
+	public void setToDate(Date toDate) {
+		getView().setToDate(toDate);
+	}
 }

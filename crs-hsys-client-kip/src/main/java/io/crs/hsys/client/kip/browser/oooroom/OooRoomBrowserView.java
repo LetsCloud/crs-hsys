@@ -60,7 +60,7 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		}
 	}
 
-	private final OooRoomTableView browserView = new OooRoomTableView();
+	private final OooRoomTableView tableView = new OooRoomTableView();
 	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 	private final CoreConstants cnst;
@@ -77,7 +77,9 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		contentPanel.setMarginRight(20);
 		contentPanel.setPaddingTop(20);
 		contentPanel.setPaddingBottom(20);
-		contentPanel.add(browserView);
+		contentPanel.add(tableView);
+
+		tableView.setTableHeight("calc(100vh - 395px)");
 
 		initWidget(contentPanel);
 
@@ -86,52 +88,52 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 		this.i18n = i18n;
 		this.cnst = cnst;
 
-		bindSlot(OooRoomBrowserPresenter.FILTER_SLOT, browserView.getFilterPanel());
+		bindSlot(OooRoomBrowserPresenter.FILTER_SLOT, tableView.getFilterPanel());
 
 		initBrowswerView();
 	}
 
 	private void initBrowswerView() {
 
-		browserView.setTableTitle(i18n.oooRoomBrowserTitle());
+		tableView.setTableTitle(i18n.oooRoomBrowserTitle());
 
-		browserView.getAddButton().addClickHandler(e -> getUiHandlers().createItem());
-		browserView.getDeleteIcon().addClickHandler(e -> getUiHandlers().deleteItems(browserView.getSelectedItems()));
+		tableView.getAddButton().addClickHandler(e -> getUiHandlers().createItem());
+		tableView.getDeleteIcon().addClickHandler(e -> getUiHandlers().deleteItems(tableView.getSelectedItems()));
 
-		browserView.clearColumnConfigs();
+		tableView.clearColumnConfigs();
 
 		// 0 - From Date Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserFromDateCol(), createFromDateColumn()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserFromDateCol(), createFromDateColumn()));
 
 		// 1- To Date Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserToDateCol(), createToDateColumn()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserToDateCol(), createToDateColumn()));
 
 		// 2 - Room Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRoomCol(), createRoomColumn()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRoomCol(), createRoomColumn()));
 
 		// 3 - Current Status Column
-		browserView.addColumnConfigs(new ColumnConfig("Státusz", createStatusColumn()));
+		tableView.addColumnConfigs(new ColumnConfig("Státusz", createStatusColumn()));
 
 		// 4 - RoomType Column
-		browserView.addColumnConfigs(new ColumnConfig("Típus", createRoomTypeColumn()));
+		tableView.addColumnConfigs(new ColumnConfig("Típus", createRoomTypeColumn()));
 
 		// 5 - Floor Column
-		browserView.addColumnConfigs(new ColumnConfig("Emelet", createFloorColumn()));
+		tableView.addColumnConfigs(new ColumnConfig("Emelet", createFloorColumn()));
 
 		// 6- Return When Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnWhenCol(), createReturnWhenColumn2()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnWhenCol(), createReturnWhenColumn2()));
 
 		// 7 - Return As Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnAsCol(), createReturnAsColumn()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserReturnAsCol(), createReturnAsColumn()));
 
 		// 8 - Remarks Column
-		browserView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRemarksCol(), createReturnRemarks()));
+		tableView.addColumnConfigs(new ColumnConfig(i18n.oooRoomBrowserRemarksCol(), createReturnRemarks()));
 
 		// 9 - CreatedBy Column
-		browserView.addColumnConfigs(new ColumnConfig("Létrehozta", createCreatedByColumn()));
+		tableView.addColumnConfigs(new ColumnConfig("Létrehozta", createCreatedByColumn()));
 
 		// 10 -Edit Column
-		browserView.addColumnConfigs(
+		tableView.addColumnConfigs(
 				new ColumnConfig(new ActionColumn<OooRoomDto>((object) -> getUiHandlers().editItem(object))));
 
 		// OOO change Column
@@ -140,17 +142,17 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 //		browserView.addColumnConfigs(
 //				new ColumnConfig(new ChangeOooColumn((object) -> getUiHandlers().editItem(object), today)));
 
-		browserView.addAllColumns();
+		tableView.addAllColumns();
 	}
 
 	@Override
 	public void reConfigColumns() {
-		browserView.hideColumn(COL_FLOOR, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400));
-		browserView.hideColumn(COL_ROOMTYPE, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200));
-		browserView.hideColumn(COL_RETURNWHEN, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
-		browserView.hideColumn(COL_RETURNAS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
-		browserView.hideColumn(COL_REMARKS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));
-		browserView.hideColumn(COL_CREATEDBY, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900));
+		tableView.hideColumn(COL_FLOOR, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400));
+		tableView.hideColumn(COL_ROOMTYPE, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200));
+		tableView.hideColumn(COL_RETURNWHEN, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
+		tableView.hideColumn(COL_RETURNAS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
+		tableView.hideColumn(COL_REMARKS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));
+		tableView.hideColumn(COL_CREATEDBY, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900));
 	}
 
 	private DataColumn<OooRoomDto> createRoomColumn() {
@@ -207,7 +209,7 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 					icon.setTextColor(Color.YELLOW);
 				} else {
 					icon.setIconType(IconType.BRIGHTNESS_3);
-					icon.setTextColor(Color.BLUE);					
+					icon.setTextColor(Color.BLUE);
 				}
 				return icon;
 			}
@@ -238,6 +240,6 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 
 	@Override
 	public void setData(List<OooRoomDto> data) {
-		browserView.setData(data);
+		tableView.setData(data);
 	}
 }
