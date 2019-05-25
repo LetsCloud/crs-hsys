@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**
  * @author CR
@@ -20,12 +21,14 @@ public class OooCreateDto extends HotelChildDto {
 	private List<RoomTypeDtor> roomTypes;
 	private String fromRoom;
 	private String toRoom;
+	private String floor;
 	private List<RoomStatus> roomStatuses;
 	private Date fromDate;
 	private Date toDate;
 	private RoomStatus returnAs;
 	private OooReturnWhen returnWhen;
 	private String remarks;
+	private AppUserDtor createdBy;
 
 	public OooCreateDto() {
 	}
@@ -52,6 +55,14 @@ public class OooCreateDto extends HotelChildDto {
 
 	public void setToRoom(String toRoom) {
 		this.toRoom = toRoom;
+	}
+
+	public String getFloor() {
+		return floor;
+	}
+
+	public void setFloor(String floor) {
+		this.floor = floor;
 	}
 
 	public List<RoomStatus> getRoomStatuses() {
@@ -108,6 +119,22 @@ public class OooCreateDto extends HotelChildDto {
 
 	public void setRoomTypes(List<RoomTypeDtor> roomTypes) {
 		this.roomTypes = roomTypes;
+	}
+
+	public AppUserDtor getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(AppUserDtor createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Override
+	public String toString() {
+		return "OooCreateDto [rooms=" + rooms + ", roomTypes=" + roomTypes + ", fromRoom=" + fromRoom + ", toRoom="
+				+ toRoom + ", floor=" + floor + ", roomStatuses=" + roomStatuses + ", fromDate=" + fromDate
+				+ ", toDate=" + toDate + ", returnAs=" + returnAs + ", returnWhen=" + returnWhen + ", remarks="
+				+ remarks + ", createdBy=" + createdBy + "]";
 	}
 
 }

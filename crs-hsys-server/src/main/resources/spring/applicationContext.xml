@@ -181,6 +181,8 @@
 		<constructor-arg ref="oooRoomRepository" />
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
+		<constructor-arg ref="roomRepository" />
+		<constructor-arg ref="modelMapper" />
 	</bean>
 	<bean id="marketGroupService"
 		class="io.crs.hsys.server.service.ofy.MarketGroupServiceImpl">

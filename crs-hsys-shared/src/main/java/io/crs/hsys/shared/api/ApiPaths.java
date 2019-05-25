@@ -62,6 +62,7 @@ public class ApiPaths {
 		public static final String ROOMTYPE = "/roomtype";
 		public static final String ROOM = "/room";
 		public static final String OOO_ROOM = "/oooRoom";
+		public static final String OOO_ROOMS_CREATE = "/oooRoomsCreate";
 		public static final String ROOM_STATUS = "/roomStatus";
 		public static final String AVAILABLE_ON_DATE = "/availableOnDate";
 		public static final String ROOM_STATUS_CHANGE = "/roomStatusChange";
