@@ -8,7 +8,7 @@ import java.util.List;
 import io.crs.hsys.server.entity.common.Account;
 import io.crs.hsys.server.entity.common.AppUser;
 import io.crs.hsys.server.repository.AppUserRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author robi
@@ -53,10 +53,10 @@ public class AppUserRepositoryImpl extends AccountChildRepositoryImpl<AppUser> i
 	protected void loadUniqueIndexMap(AppUser entiy) {
 		if ((entiy.getEmailAddress() != null) && (!entiy.getEmailAddress().isEmpty()))
 			entiy.addUniqueIndex(PROPERTY_EMAIL, entiy.getEmailAddress(),
-					ExceptionSubType.APPUSER_EMAIL_ALREADY_EXISTS);
+					ErrorMessageCode.APPUSER_EMAIL_ALREADY_EXISTS);
 
 		if ((entiy.getUsername() != null) && (!entiy.getUsername().isEmpty()))
-			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername(), ExceptionSubType.APPUSER_CODE_ALREADY_EXISTS);
+			entiy.addUniqueIndex(PROPERTY_USERNAME, entiy.getUsername(), ErrorMessageCode.APPUSER_CODE_ALREADY_EXISTS);
 	}
 
 	@Override

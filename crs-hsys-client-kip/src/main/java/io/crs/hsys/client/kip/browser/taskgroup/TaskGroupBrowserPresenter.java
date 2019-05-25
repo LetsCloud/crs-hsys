@@ -125,17 +125,13 @@ public abstract class TaskGroupBrowserPresenter
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
-		logger.info("TaskGroupBrowserPresenter().onFilterChange()");
 		loadData();
 	}
 
 	@Override
 	public void onDisplayMessage(DisplayMessageEvent event) {
-		logger.info("TaskGroupBrowserPresenter().onDisplayMessage()");
-		if (event.getTarget().equals(MessageTarget.TASK_GROUP)) {
-			logger.info("TaskGroupBrowserPresenter().onDisplayMessage()-2");
+		if (event.getTarget().equals(MessageTarget.TASK_GROUP))
 			getView().showMessage(event.getMessage());
-		}
 	}
 
 	@Override

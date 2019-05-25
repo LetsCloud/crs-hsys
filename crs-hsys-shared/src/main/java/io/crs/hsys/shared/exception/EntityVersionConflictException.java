@@ -8,6 +8,6 @@ package io.crs.hsys.shared.exception;
  *
  */
 @SuppressWarnings("serial")
-public class EntityVersionConflictException extends Exception {
+public class EntityVersionConflictException extends BaseException {
 
 }

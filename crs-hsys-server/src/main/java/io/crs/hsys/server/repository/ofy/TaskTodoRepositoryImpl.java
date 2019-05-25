@@ -5,7 +5,7 @@ package io.crs.hsys.server.repository.ofy;
 
 import io.crs.hsys.server.entity.task.TaskTodo;
 import io.crs.hsys.server.repository.TaskTodoRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author robi
@@ -26,6 +26,6 @@ public class TaskTodoRepositoryImpl extends AccountChildRepositoryImpl<TaskTodo>
 	protected void loadUniqueIndexMap(TaskTodo entiy) {
 		if ((entiy.getDescription() != null) && (!entiy.getDescription().isEmpty()))
 			entiy.addUniqueIndex(PROPERTY_DESCRIPTION, entiy.getDescription(),
-					ExceptionSubType.TASKTODO_DESCRIPTION_ALREADY_EXISTS);
+					ErrorMessageCode.TASKTODO_DESCRIPTION_ALREADY_EXISTS);
 	}
 }

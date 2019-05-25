@@ -27,6 +27,8 @@ import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.html.OptGroup;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
+import io.crs.hsys.client.core.message.MessageData;
+import io.crs.hsys.client.core.message.dialog.MessageDialogWidget;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.cnst.OooReturnWhen;
 import io.crs.hsys.shared.cnst.RoomStatus;
@@ -86,6 +88,10 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 
 	@UiField
 	MaterialTextArea remarks;
+
+	@UiField
+	@Ignore
+	MessageDialogWidget messageDialog;
 
 	/**
 	* 
@@ -283,5 +289,10 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 			roomTypeFilterComboBox.addItem(item.getCode() + " -" + item.getName(), item);
 		}
 		roomTypeFilterComboBox.unselect();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		messageDialog.showMessage(message);
 	}
 }

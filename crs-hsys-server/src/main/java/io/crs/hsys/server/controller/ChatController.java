@@ -34,6 +34,7 @@ import io.crs.hsys.server.service.AppUserService;
 import io.crs.hsys.server.service.ChatService;
 import io.crs.hsys.shared.dto.chat.AddPostDto;
 import io.crs.hsys.shared.dto.chat.ChatDto;
+import io.crs.hsys.shared.exception.BaseException;
 import io.crs.hsys.shared.exception.RestApiException;
 
 /**
@@ -111,7 +112,7 @@ public class ChatController extends BaseController {
 			Chat entity = chatService.addPost(postDto.getChatWebSafeKey(), post);
 			ChatDto dto = modelMapper.map(entity, ChatDto.class);
 			return new ResponseEntity<ChatDto>(dto, OK);
-		} catch (Throwable e) {
+		} catch (BaseException e) {
 			throw new RestApiException(e);
 		}
 	}

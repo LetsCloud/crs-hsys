@@ -8,7 +8,7 @@ package io.crs.hsys.shared.exception;
  *
  */
 @SuppressWarnings("serial")
-public class IdNotFoundException extends Exception {
+public class IdNotFoundException extends BaseException {
 
 	private String entiy;
 

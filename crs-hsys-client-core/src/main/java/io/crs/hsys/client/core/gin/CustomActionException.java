@@ -14,7 +14,7 @@ import io.crs.hsys.shared.dto.ErrorResponseDto;
 @SuppressWarnings("serial")
 public class CustomActionException extends ActionException {
 
-	private ErrorResponseDto erDto;
+	private ErrorResponseDto errorResponse;
 	
     public CustomActionException() {
     	super();
@@ -26,7 +26,7 @@ public class CustomActionException extends ActionException {
 
     public CustomActionException(String message, ErrorResponseDto erDto) {
         super(message);
-        this.erDto = erDto;
+        this.errorResponse = erDto;
     }
 
     public CustomActionException(String message, Throwable cause) {
@@ -36,12 +36,12 @@ public class CustomActionException extends ActionException {
     public CustomActionException(Throwable cause) {
         super(cause.getMessage());
     }
-	public ErrorResponseDto getErDto() {
-		return erDto;
+	public ErrorResponseDto getErrorResponse() {
+		return errorResponse;
 	}
 
-	public void setErDto(ErrorResponseDto erDto) {
-		this.erDto = erDto;
+	public void setErrorResponse(ErrorResponseDto errorResponse) {
+		this.errorResponse = errorResponse;
 	}
 
 }

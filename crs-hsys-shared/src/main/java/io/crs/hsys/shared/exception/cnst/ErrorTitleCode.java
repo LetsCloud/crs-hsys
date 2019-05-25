@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.shared.exception;
+package io.crs.hsys.shared.exception.cnst;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author robi
  *
  */
-public enum ExceptionType implements Serializable {
+public enum ErrorTitleCode implements Serializable {
 
 	// LOGIN
 	LOGIN_INSUFFICIENT_AUTHENTICATION,

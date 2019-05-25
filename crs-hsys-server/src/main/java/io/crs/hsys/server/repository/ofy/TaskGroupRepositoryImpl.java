@@ -10,7 +10,7 @@ import io.crs.hsys.server.entity.task.TaskType;
 import io.crs.hsys.server.repository.TaskGroupRepository;
 import io.crs.hsys.server.repository.TaskTodoRepository;
 import io.crs.hsys.server.repository.TaskTypeRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author CR
@@ -24,15 +24,15 @@ public class TaskGroupRepositoryImpl extends AccountChildRepositoryImpl<TaskGrou
 	protected TaskGroupRepositoryImpl(TaskTodoRepository taskTodoRepository, TaskTypeRepository taskTypeRepository) {
 		super(TaskGroup.class);
 		foreignKeys.add(new ForeignKey(TaskTodo.PROPERTY_TASKGROUP, taskTodoRepository,
-				ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTODO));
+				ErrorMessageCode.TASKGROUP_ID_USED_BY_TASKTODO));
 		foreignKeys.add(new ForeignKey(TaskType.PROPERTY_TASKGROUP, taskTypeRepository,
-				ExceptionSubType.TASKGROUP_ID_USED_BY_TASKTYPE));
+				ErrorMessageCode.TASKGROUP_ID_USED_BY_TASKTYPE));
 	}
 
 	@Override
 	protected void loadUniqueIndexMap(TaskGroup entiy) {
 		if ((entiy.getCode() != null) && (!entiy.getCode().isEmpty()))
 			entiy.addUniqueIndex(TaskGroup.PROPERTY_CODE, entiy.getCode(),
-					ExceptionSubType.TASKGROUP_CODE_ALREADY_EXISTS);
+					ErrorMessageCode.TASKGROUP_CODE_ALREADY_EXISTS);
 	}
 }

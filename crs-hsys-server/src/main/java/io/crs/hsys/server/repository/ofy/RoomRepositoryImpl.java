@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.repository.RoomRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author CR
@@ -42,7 +42,7 @@ public class RoomRepositoryImpl extends HotelChildRepositoryImpl<Room> implement
 	@Override
 	protected void loadUniqueIndexMap(Room entiy) {
 		if (entiy.getCode() != null)
-			entiy.addUniqueIndex(ROOM_CODE, entiy.getCode(), ExceptionSubType.ROOMCODE_CODE_ALREADY_EXISTS);
+			entiy.addUniqueIndex(ROOM_CODE, entiy.getCode(), ErrorMessageCode.ROOMCODE_CODE_ALREADY_EXISTS);
 	}
 
 	@Override

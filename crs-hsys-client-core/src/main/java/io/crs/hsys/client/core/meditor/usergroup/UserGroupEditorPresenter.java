@@ -120,6 +120,6 @@ public class UserGroupEditorPresenter extends PresenterWidget<UserGroupEditorPre
 
 	private void customMessage(CustomActionException e) {
 		getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-				e.getErDto().getProperty() + "/" + e.getErDto().getExceptionType());
+				e.getErrorResponse().getProperty() + "/" + e.getErrorResponse().getTitleCode());
 	}
 }

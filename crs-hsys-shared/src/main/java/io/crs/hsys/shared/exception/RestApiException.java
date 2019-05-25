@@ -9,8 +9,12 @@ package io.crs.hsys.shared.exception;
  */
 @SuppressWarnings("serial")
 public class RestApiException extends Exception {
-
-	public RestApiException(Throwable e) {
-		super(e);
+	
+	public RestApiException(Throwable exception) {
+		super(exception);
+	}
+	
+	public BaseException getBaseException() {
+		return (BaseException) getCause();
 	}
 }

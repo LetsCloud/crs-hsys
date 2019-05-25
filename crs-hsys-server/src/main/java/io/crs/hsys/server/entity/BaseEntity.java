@@ -13,7 +13,7 @@ import com.googlecode.objectify.annotation.OnLoad;
 import com.googlecode.objectify.annotation.OnSave;
 
 import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * Minden entitás őse.
@@ -158,7 +158,7 @@ public abstract class BaseEntity {
 	 * @param property Mező név.
 	 * @param value    Mező érték.
 	 */
-	public void addUniqueIndex(String property, Object value, ExceptionSubType exception) {
+	public void addUniqueIndex(String property, Object value, ErrorMessageCode exception) {
 		uniqueIndexes.add(new UniqueKey(property, value, exception));
 	}
 

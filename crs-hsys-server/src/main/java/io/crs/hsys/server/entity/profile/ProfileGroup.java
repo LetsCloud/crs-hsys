@@ -12,7 +12,7 @@ import com.googlecode.objectify.annotation.Index;
 import io.crs.hsys.server.entity.common.AccountChild;
 import io.crs.hsys.shared.cnst.ProfileType;
 import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.cnst.ErrorTitleCode;
 
 /**
  * @author robi
@@ -99,11 +99,11 @@ public class ProfileGroup extends AccountChild {
 		 * getClass().getSimpleName(), PROPERTY_ACCOUNTID); }
 		 */
 		if (this.getCode() == null) {
-			throw new EntityValidationException(ExceptionType.MISSING_VALUE, getClass().getSimpleName(),
+			throw new EntityValidationException(ErrorTitleCode.MISSING_VALUE, getClass().getSimpleName(),
 					PROFILEGROUP_CODE);
 		}
 		if (this.getDescription() == null) {
-			throw new EntityValidationException(ExceptionType.MISSING_VALUE, getClass().getSimpleName(),
+			throw new EntityValidationException(ErrorTitleCode.MISSING_VALUE, getClass().getSimpleName(),
 					PROFILEGROUP_DESCRIPTION);
 		}
 	}

@@ -28,8 +28,7 @@ import io.crs.hsys.shared.dto.hotel.OooCreateDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.exception.EntityValidationException;
-import io.crs.hsys.shared.exception.ExceptionSubType;
-import io.crs.hsys.shared.exception.ForeignKeyConflictException;
+import io.crs.hsys.shared.exception.OooRoomOverlapException;
 import io.crs.hsys.shared.exception.UniqueIndexConflictException;
 
 /**
@@ -51,7 +50,8 @@ public class OooRoomServiceImpl extends HotelChildServiceImpl<OooRoom, OooRoomRe
 	}
 
 	@Override
-	public void createOooRooms(OooCreateDto dto) throws ForeignKeyConflictException, EntityValidationException, UniqueIndexConflictException {
+	public void createOooRooms(OooCreateDto dto)
+			throws OooRoomOverlapException, EntityValidationException, UniqueIndexConflictException {
 		logger.info("createOooRooms()");
 		List<Room> rooms = new ArrayList<Room>();
 		if (dto.getRooms().isEmpty()) {
@@ -72,11 +72,11 @@ public class OooRoomServiceImpl extends HotelChildServiceImpl<OooRoom, OooRoomRe
 				if (((oooRoom.getFromDate().equals(dto.getToDate())) || (oooRoom.getFromDate().before(dto.getToDate())))
 						&& ((oooRoom.getToDate().equals(dto.getFromDate()))
 								|| (oooRoom.getToDate().after(dto.getFromDate())))) {
-					throw new ForeignKeyConflictException(ExceptionSubType.OOO_ROOM_OVERLAP);
+					throw new OooRoomOverlapException(oooRoom.getRoom().getCode(), oooRoom.getFromDate(),
+							oooRoom.getToDate());
 				}
 			}
 		}
-		logger.info("createOooRooms()-3");
 
 		AppUser appUser = modelMapper.map(dto.getCreatedBy(), AppUser.class);
 		Hotel hotel = modelMapper.map(dto.getHotel(), Hotel.class);

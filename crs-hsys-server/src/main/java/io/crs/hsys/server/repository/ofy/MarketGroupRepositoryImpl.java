@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import io.crs.hsys.server.entity.reservation.MarketGroup;
 import io.crs.hsys.server.repository.MarketGroupRepository;
-import io.crs.hsys.shared.exception.ExceptionSubType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
 
 /**
  * @author robi
@@ -31,7 +31,7 @@ public class MarketGroupRepositoryImpl extends HotelChildRepositoryImpl<MarketGr
 	protected void loadUniqueIndexMap(MarketGroup entiy) {
 
 		if (entiy.getCode() != null)
-			entiy.addUniqueIndex(MARKET_GROUP_CODE, entiy.getCode(), ExceptionSubType.MARKETGROUP_CODE_ALREADY_EXISTS);
+			entiy.addUniqueIndex(MARKET_GROUP_CODE, entiy.getCode(), ErrorMessageCode.MARKETGROUP_CODE_ALREADY_EXISTS);
 	}
 
 	@Override

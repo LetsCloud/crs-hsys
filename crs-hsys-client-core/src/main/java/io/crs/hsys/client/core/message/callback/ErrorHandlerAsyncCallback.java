@@ -14,8 +14,8 @@ import io.crs.hsys.client.core.gin.CustomActionException;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.client.core.message.MessageStyle;
-import io.crs.hsys.shared.exception.ExceptionSubType;
-import io.crs.hsys.shared.exception.ExceptionType;
+import io.crs.hsys.shared.exception.cnst.ErrorMessageCode;
+import io.crs.hsys.shared.exception.cnst.ErrorTitleCode;
 
 /**
  * @author CR
@@ -40,14 +40,14 @@ public abstract class ErrorHandlerAsyncCallback<R> implements AsyncCallback<R> {
 		if (caught instanceof CustomActionException) {
 			CustomActionException exception = (CustomActionException) caught;
 			MessageData message = new MessageData(MessageStyle.ERROR,
-					translateTitle(exception.getErDto().getExceptionType()), translateDescription(
-							exception.getErDto().getExceptionSubType(), exception.getErDto().getProperty()));
+					translateTitle(exception.getErrorResponse().getTitleCode()), translateDescription(
+							exception.getErrorResponse().getMessageCode(), exception.getErrorResponse().getProperty()));
 			logger.info("ErrorHandlerAsyncCallback().onFailure()->target=" + target);
 			DisplayMessageEvent.fire(hasHandlers, target, message);
 		}
 	}
 
-	private String translateTitle(ExceptionType exception) {
+	private String translateTitle(ErrorTitleCode exception) {
 		switch (exception) {
 		case CRUD_CANNOT_BE_SAVED:
 			return i18n.CRUD_CANNOT_BE_SAVED();
@@ -59,7 +59,7 @@ public abstract class ErrorHandlerAsyncCallback<R> implements AsyncCallback<R> {
 
 	}
 
-	private String translateDescription(ExceptionSubType exception, String value) {
+	private String translateDescription(ErrorMessageCode exception, String value) {
 		switch (exception) {
 		case TASKGROUP_CODE_ALREADY_EXISTS:
 			return i18n.TASKGROUP_CODE_ALREADY_EXISTS(value);

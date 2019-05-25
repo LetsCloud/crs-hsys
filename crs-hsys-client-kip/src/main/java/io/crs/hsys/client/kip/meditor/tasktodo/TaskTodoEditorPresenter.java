@@ -127,7 +127,7 @@ public abstract class TaskTodoEditorPresenter extends PresenterWidget<TaskTodoEd
 
 	private void customMessage(CustomActionException e) {
 		getView().displayError(EntityPropertyCode.USER_GROUP_NAME,
-				e.getErDto().getProperty() + "/" + e.getErDto().getExceptionType());
+				e.getErrorResponse().getProperty() + "/" + e.getErrorResponse().getTitleCode());
 	}
 
 	protected abstract TaskKind getDefaultTaskKind();
