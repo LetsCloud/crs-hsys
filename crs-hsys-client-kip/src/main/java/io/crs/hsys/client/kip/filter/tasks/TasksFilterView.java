@@ -18,6 +18,7 @@ import gwt.material.design.client.ui.MaterialPanel;
 
 import io.crs.hsys.client.core.filter.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
@@ -56,6 +57,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	private String currentUserKey;
 
 	private final EventBus eventBus;
+	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 
 	@Inject
@@ -71,9 +73,6 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	Provider<RoomStatusFilter> roomStatusFilterProvider;
 
 	@Inject
-	Provider<DateFilter> dateFilterProvider;
-
-	@Inject
 	Provider<TextFilter> textFilterProvider;
 
 	@Inject
@@ -83,10 +82,11 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	Provider<RoomTypeFilter> roomTypeFilterProvider;
 
 	@Inject
-	TasksFilterView(EventBus eventBus, CoreMessages i18nCore, KipMessages i18n) {
+	TasksFilterView(EventBus eventBus, CurrentUser currentUser, CoreMessages i18nCore, KipMessages i18n) {
 		super(i18nCore);
 		logger.info("TasksFilterView()");
 		this.eventBus = eventBus;
+		this.currentUser = currentUser;
 		this.i18n = i18n;
 	}
 
@@ -248,7 +248,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	}
 
 	private void initFromDateFilter() {
-		fromDateFilter = dateFilterProvider.get();
+		fromDateFilter = new DateFilter(currentUser.getLocale());
 		fromDateFilter.setChipPanel(collapsibleHeader);
 		fromDateFilter.setChipLabel("Mettől:");
 		fromDateFilter.setFilterLabel("Mettől");
@@ -256,7 +256,7 @@ public class TasksFilterView extends AbstractFilterView implements TasksFilterPr
 	}
 
 	private void initToDateFilter() {
-		toDateFilter = dateFilterProvider.get();
+		toDateFilter = new DateFilter(currentUser.getLocale());
 		toDateFilter.setChipPanel(collapsibleHeader);
 		toDateFilter.setChipLabel("Mettől:");
 		toDateFilter.setFilterLabel("Meddig");

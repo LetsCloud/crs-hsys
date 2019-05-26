@@ -32,6 +32,7 @@ public abstract class BaseFilter extends Composite {
 	protected Panel chipPanel;
 	protected MaterialChip chip = new MaterialChip();
 	protected String chipLabel = "";
+	protected boolean chipLabelIsPrefix = true;
 
 	private Boolean chipEnabled = true;
 
@@ -189,6 +190,14 @@ public abstract class BaseFilter extends Composite {
 				chipPanel.add(chip);
 			}
 		}
+	}
+
+	public boolean isChipLabelIsPrefix() {
+		return chipLabelIsPrefix;
+	}
+
+	public void setChipLabelIsPrefix(boolean chipLabelIsPrefix) {
+		this.chipLabelIsPrefix = chipLabelIsPrefix;
 	}
 
 }

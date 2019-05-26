@@ -5,8 +5,6 @@ package io.crs.hsys.client.kip.filter;
 
 import java.util.Date;
 
-import javax.inject.Inject;
-
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -17,7 +15,6 @@ import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
 
 import io.crs.hsys.client.core.filter.BaseFilter;
-import io.crs.hsys.client.core.security.CurrentUser;
 
 /**
  * @author robi
@@ -27,10 +24,9 @@ public class DateFilter extends BaseFilter {
 
 	MaterialDatePicker datePicker = new MaterialDatePicker();
 
-	@Inject
-	DateFilter(CurrentUser currentUser) {
+	public DateFilter(String locale) {
 		initWidget(datePicker);
-		initDatePicker(currentUser.getLocale());
+		initDatePicker(locale);
 	}
 
 	@Override
@@ -73,12 +69,16 @@ public class DateFilter extends BaseFilter {
 		if (value == null)
 			setChipText(null);
 		else {
-			DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd.");
-			setChipText(chipLabel + fmt.format(value));
+			setChipText(createChipText(value));
 		}
 	}
-	
+
 	public void setFilterHeight(double value, Unit unit) {
 		datePicker.getDateInput().getElement().getStyle().setHeight(value, unit);
+	}
+
+	protected String createChipText(Date value) {
+		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy.MM.dd.");
+		return chipLabel + fmt.format(value);
 	}
 }

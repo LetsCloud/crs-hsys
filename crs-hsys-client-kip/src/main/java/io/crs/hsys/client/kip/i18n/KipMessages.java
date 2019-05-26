@@ -409,7 +409,7 @@ public interface KipMessages extends Messages {
 
 	
 	/*
-	 * OOO ROOM BROWSER
+	 * OOO ROOM EDITOR
 	 */
 
 	@DefaultMessage("OOO szoba felvétel")
@@ -462,4 +462,21 @@ public interface KipMessages extends Messages {
 
 	@DefaultMessage("Válassz státuszokat")
 	String oooRoomCreatorRoomStautsPlaceholder();
+
+	
+	/*
+	 * OOO ROOM FILTER
+	 */
+
+	@DefaultMessage("From Date")
+	String oooRoomFilterFromDateFilterLabel();
+
+	@DefaultMessage("From: {0}")
+	String oooRoomFilterFromDateChipLabel(String date);
+
+	@DefaultMessage("To Date")
+	String oooRoomFilterToDateFilterLabel();
+
+	@DefaultMessage("To: {0}")
+	String oooRoomFilterToDateChipLabel(String date);
 }

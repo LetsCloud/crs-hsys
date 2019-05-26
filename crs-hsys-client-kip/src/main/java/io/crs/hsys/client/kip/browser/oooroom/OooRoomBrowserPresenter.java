@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.datepicker.client.CalendarUtil;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
@@ -91,7 +92,7 @@ public class OooRoomBrowserPresenter extends Presenter<OooRoomBrowserPresenter.M
 		SetPageTitleEvent.fire(i18n.oooRoomBrowserTitle(), i18n.oooRoomBrowserSubTitle(), MenuItemType.MENU_ITEM, this);
 
 		Date today = new Date();
-		today.setHours(0);
+		CalendarUtil.resetTime(today);
 		filter.setFromDate(today);
 		filter.setToDate(today);
 

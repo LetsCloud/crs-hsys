@@ -18,9 +18,11 @@ import gwt.material.design.client.constants.IconType;
 
 import io.crs.hsys.client.core.filter.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
+import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.filter.AppUserFilter;
 import io.crs.hsys.client.kip.filter.CheckBoxFilter;
 import io.crs.hsys.client.kip.filter.DateFilter;
@@ -45,6 +47,7 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	private AppUserFilter reporterFilter;
 
 	private final EventBus eventBus;
+	private final CurrentUser currentUser;
 	private final KipMessages i18n;
 
 	@Inject
@@ -54,19 +57,17 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	Provider<AppUserFilter> appUserFilterProvider;
 
 	@Inject
-	Provider<DateFilter> dateFilterProvider;
-
-	@Inject
 	Provider<TextFilter> textFilterProvider;
 
 	@Inject
 	Provider<RoomTypeFilter> roomTypeFilterProvider;
 
 	@Inject
-	OooRoomFilterView(EventBus eventBus, CoreMessages i18nCore, KipMessages i18n) {
+	OooRoomFilterView(EventBus eventBus, CurrentUser currentUser, CoreMessages i18nCore, KipMessages i18n) {
 		super(i18nCore);
 		logger.info("OooRoomFilterView()");
 		this.eventBus = eventBus;
+		this.currentUser = currentUser;
 		this.i18n = i18n;
 	}
 
@@ -86,18 +87,26 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	}
 
 	private void initFromDateFilter() {
-		fromDateFilter = dateFilterProvider.get();
+		fromDateFilter = new DateFilter(currentUser.getLocale()) {
+			@Override
+			protected String createChipText(Date value) {
+				return i18n.oooRoomFilterFromDateChipLabel(DateUtils.formatDateTime(value, currentUser.getLocale()));
+			}
+		};
 		fromDateFilter.setChipPanel(collapsibleHeader);
-		fromDateFilter.setChipLabel("");
-		fromDateFilter.setFilterLabel("Mettől");
+		fromDateFilter.setFilterLabel(i18n.oooRoomFilterFromDateFilterLabel());
 		fromDateFilter.setFilterHeight(45, Unit.PX);
 	}
 
 	private void initToDateFilter() {
-		toDateFilter = dateFilterProvider.get();
+		toDateFilter = new DateFilter(currentUser.getLocale()) {
+			@Override
+			protected String createChipText(Date value) {
+				return i18n.oooRoomFilterToDateChipLabel(DateUtils.formatDateTime(value, currentUser.getLocale()));
+			}
+		};
 		toDateFilter.setChipPanel(collapsibleHeader);
-		toDateFilter.setChipLabel("");
-		toDateFilter.setFilterLabel("Meddig");
+		toDateFilter.setFilterLabel(i18n.oooRoomFilterFromDateFilterLabel());
 		toDateFilter.setFilterHeight(45, Unit.PX);
 	}
 
@@ -180,7 +189,7 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	@Override
 	protected void createLayout() {
 		controlPanel.setMarginBottom(0);
-		
+
 		fromDateFilter.setGrid("s6 m4");
 		controlPanel.add(fromDateFilter);
 
@@ -225,7 +234,7 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	@Override
 	public void setRoomData(List<RoomDto> data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
