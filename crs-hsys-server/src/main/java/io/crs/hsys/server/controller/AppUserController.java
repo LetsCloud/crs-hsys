@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -55,7 +55,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RestController
 @RequestMapping(value = ROOT + USER, produces = MediaType.APPLICATION_JSON_VALUE)
 public class AppUserController extends CrudController<AppUser, AppUserDto> {
-	private static final Logger logger = LoggerFactory.getLogger(AppUserController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(AppUserController.class);
 
 	private final ApplicationEventPublisher eventPublisher;
 
@@ -64,7 +64,7 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@Autowired
 	AppUserController(AppUserService service, ApplicationEventPublisher eventPublisher, ModelMapper modelMapper) {
 		super(AppUser.class, service, modelMapper);
-		logger.info("AppUserController()");
+//		logger.info("AppUserController()");
 		this.eventPublisher = eventPublisher;
 		this.modelMapper = modelMapper;
 	}
@@ -78,7 +78,6 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@Override
 	@RequestMapping(method = GET)
 	public @ResponseBody ResponseEntity<List<AppUserDto>> getAll() {
-		logger.info("AppUserController().getAll");
 		return super.getAll();
 	}
 
@@ -91,7 +90,6 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@RequestMapping(value = REDUCED, method = GET)
 	public @ResponseBody ResponseEntity<List<AppUserDtor>> getAllReduced(
 			@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
-		logger.info("AppUserController().getAllReduced()->onlyActive=" + onlyActive);
 		List<AppUserDtor> dtos = new ArrayList<AppUserDtor>();
 
 		Map<String, Object> filters = new HashMap<String, Object>();
@@ -100,8 +98,6 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 
 		for (AppUser entity : service.getChildrenByFilters(getCurrentAccount().getWebSafeKey(), filters))
 			dtos.add(modelMapper.map(entity, AppUserDtor.class));
-
-		logger.info("AppUserController().getAllReduced()->beforeEnd");
 
 		return new ResponseEntity<List<AppUserDtor>>(dtos, OK);
 	}
@@ -115,7 +111,6 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@Override
 	@RequestMapping(method = POST)
 	public ResponseEntity<AppUserDto> saveOrCreate(@RequestBody AppUserDto dto) throws RestApiException {
-		logger.info("saveOrCreate()->dto=" + dto);
 		return super.saveOrCreate(dto);
 	}
 
@@ -142,12 +137,10 @@ public class AppUserController extends CrudController<AppUser, AppUserDto> {
 	@RequestMapping(value = SUBSCRIBE, method = POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<Boolean> subscribe(@RequestBody FcmTokenDto token) {
-		logger.info("subscribe(IID_TOKEN=" + token.getToken() + ", USER_AGENT=" + token.getUserAgent() + ")");
 		try {
 			userService.fcmSubscribe(token.getToken(), token.getUserAgent());
 			return new ResponseEntity<Boolean>(true, NOT_FOUND);
 		} catch (Throwable e) {
-			logger.info("subscribe->catch Exeption->" + e.getMessage());
 			e.printStackTrace();
 			return new ResponseEntity<Boolean>(NOT_FOUND);
 		}

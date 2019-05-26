@@ -5,8 +5,8 @@ package io.crs.hsys.server.entity.hotel;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
@@ -21,7 +21,7 @@ import io.crs.hsys.shared.cnst.InventoryType;
  */
 @Entity
 public class RoomType extends HotelChild {
-	private static final Logger logger = LoggerFactory.getLogger(RoomType.class.getName());
+//	private static final Logger logger = LoggerFactory.getLogger(RoomType.class.getName());
 
 	@Index
 	private String code;
@@ -50,7 +50,7 @@ public class RoomType extends HotelChild {
 	private Integer numberOfRooms;
 
 	public RoomType() {
-		logger.info("RoomType()");
+//		logger.info("RoomType()");
 	}
 
 	public String getCode() {

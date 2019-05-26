@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -29,7 +29,7 @@ import io.crs.hsys.shared.dto.filter.RoomStatusFilterDto;
  */
 @Entity
 public class Room extends HotelChild {
-	private static final Logger logger = LoggerFactory.getLogger(Room.class.getName());
+//	private static final Logger logger = LoggerFactory.getLogger(Room.class.getName());
 
 	/**
 	 * Szállodán belöl egyedi szobaszám
@@ -75,7 +75,7 @@ public class Room extends HotelChild {
 	private List<RoomAvailability> roomAvailabilities = new ArrayList<RoomAvailability>();
 
 	public Room() {
-		logger.info("Room()");
+//		logger.info("Room()");
 	}
 
 	public String getCode() {

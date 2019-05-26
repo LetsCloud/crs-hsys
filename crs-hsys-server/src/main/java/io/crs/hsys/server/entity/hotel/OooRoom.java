@@ -5,8 +5,8 @@ package io.crs.hsys.server.entity.hotel;
 
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
@@ -22,7 +22,7 @@ import io.crs.hsys.shared.cnst.RoomStatus;
  */
 @Entity
 public class OooRoom extends HotelChild {
-	private static final Logger logger = LoggerFactory.getLogger(OooRoom.class.getName());
+//	private static final Logger logger = LoggerFactory.getLogger(OooRoom.class.getName());
 
 	/**
 	 * Szoba hivatkozás.
@@ -52,7 +52,7 @@ public class OooRoom extends HotelChild {
 	private Ref<AppUser> createdBy;
 
 	public OooRoom() {
-		logger.info("OooRoom(");
+//		logger.info("OooRoom(");
 	}
 
 	public OooRoom(Room room, Date fromDate, Date toDate, RoomStatus returnAs, OooReturnWhen returnWhen, String remarks,

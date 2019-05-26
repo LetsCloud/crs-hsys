@@ -15,8 +15,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.googlecode.objectify.Work;
 
@@ -46,7 +46,7 @@ import io.crs.hsys.shared.exception.RestApiException;
  *
  */
 public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository> implements RoomService {
-	private static final Logger logger = LoggerFactory.getLogger(RoomServiceImpl.class.getName());
+//	private static final Logger logger = LoggerFactory.getLogger(RoomServiceImpl.class.getName());
 
 	private final ReservationRepository reservationRepository;
 	private final TaskRepository taskRepository;
@@ -56,7 +56,7 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 			HotelRepository hotelRepository, ReservationRepository reservationRepository, TaskRepository taskRepository,
 			ModelMapper modelMapper) {
 		super(repository, accountRepository, hotelRepository);
-		logger.info("RoomServiceImpl");
+//		logger.info("RoomServiceImpl");
 		this.reservationRepository = reservationRepository;
 		this.taskRepository = taskRepository;
 		this.modelMapper = modelMapper;
@@ -69,26 +69,19 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 
 	@Override
 	public List<Room> getActiveRoomsByHotel(String hotelKey) {
-		logger.info("RoomServiceImpl().getActiveRoomsByHotel()");
 		Date today = new Date();
-		logger.info("RoomServiceImpl().getActiveRoomsByHotel()->today=" + today);
 		List<Room> result = new ArrayList<Room>();
 		for (Room room : repository.getChildren(hotelKey)) {
-			logger.info("RoomServiceImpl().getActiveRoomsByHotel()->room.getCode()=" + room.getCode());
 			List<RoomAvailability> ral = room.getRoomAvailabilities();
 			Optional<RoomAvailability> open = ral.stream()
 					.filter(o -> ((o.getDate().compareTo(today) <= 0) && (o.isAvailable())))
 					.max(Comparator.comparing(RoomAvailability::getDate));
-			logger.info("RoomServiceImpl().getActiveRoomsByHotel()->open=" + open);
 			if (open.isPresent()) {
-				logger.info("RoomServiceImpl().getActiveRoomsByHotel()->open.isPresent()");
 				Optional<RoomAvailability> closed = ral.stream()
 						.filter(o -> ((o.getDate().compareTo(open.get().getDate()) > 0)
 								&& (o.getDate().compareTo(today) <= 0) && (!o.isAvailable())))
 						.max(Comparator.comparing(RoomAvailability::getDate));
-				logger.info("RoomServiceImpl().getActiveRoomsByHotel()->closed=" + closed);
 				if (!closed.isPresent()) {
-					logger.info("RoomServiceImpl().getActiveRoomsByHotel()->!closed.isPresent()");
 					result.add(room);
 				}
 			}
@@ -281,14 +274,12 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 	}
 
 	private RoomStatusDto createRoomStatus(Room room) {
-		logger.info("RoomServiceImpl().createRoomStatus()");
 		Map<String, Object> filters = new HashMap<String, Object>();
 		filters.put("room", room);
 		List<Task> tasks = taskRepository.getChildrenByFilters(room.getHotel().getAccount().getWebSafeKey(), filters);
 
 		List<TaskDto> taskDtos = new ArrayList<TaskDto>();
 		for (Task task : tasks) {
-			logger.info("RoomServiceImpl().createRoomStatus()->task=" + task);
 			taskDtos.add(modelMapper.map(task, TaskDto.class));
 		}
 
@@ -299,11 +290,9 @@ public class RoomServiceImpl extends HotelChildServiceImpl<Room, RoomRepository>
 
 	@Override
 	public RoomStatusDto getRoomStatus(String webSafeKey) throws RestApiException {
-		logger.info("RoomServiceImpl().getRoomStatus()->webSafeKey=" + webSafeKey);
 		Room room;
 		try {
 			room = this.read(webSafeKey);
-			logger.info("RoomServiceImpl().getRoomStatus()->room.getCode()=" + room.getCode());
 		} catch (Throwable e) {
 			throw new RestApiException(e);
 		}

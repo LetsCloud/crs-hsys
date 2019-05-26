@@ -24,6 +24,7 @@ import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialTextArea;
+import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.html.OptGroup;
 
 import io.crs.hsys.client.core.i18n.CoreConstants;
@@ -60,6 +61,9 @@ public class OooRoomCreatorView extends ViewWithUiHandlers<OooRoomCreatorUiHandl
 	MaterialComboBox<RoomDto> roomFilterComboBox;
 	TakesValueEditor<List<RoomDto>> rooms;
 
+	@UiField
+	MaterialTextBox fromRoom, toRoom, floor;
+	
 	@Ignore
 	@UiField
 	MaterialComboBox<RoomStatus> roomStatusFilterComboBox;

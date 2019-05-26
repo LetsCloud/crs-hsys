@@ -6,8 +6,8 @@ package io.crs.hsys.server.service.ofy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import io.crs.hsys.server.entity.common.Account;
@@ -27,7 +27,7 @@ import io.crs.hsys.shared.exception.UniqueIndexConflictException;
  *
  */
 public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserRepository> implements AppUserService {
-	private static final Logger logger = LoggerFactory.getLogger(AppUserServiceImpl.class.getName());
+//	private static final Logger logger = LoggerFactory.getLogger(AppUserServiceImpl.class.getName());
 
 	private final LoggedInChecker loggedInChecker;
 	private final AccountRepository accountRepository;
@@ -37,6 +37,7 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 	AppUserServiceImpl(LoggedInChecker loggedInChecker, AccountRepository accountRepository,
 			AppUserRepository appUserRepository, PasswordEncoder passwordEncoder) {
 		super(appUserRepository);
+//		logger.info("AppUserServiceImpl()");
 		this.loggedInChecker = loggedInChecker;
 		this.accountRepository = accountRepository;
 		this.appUserRepository = appUserRepository;
@@ -63,19 +64,16 @@ public class AppUserServiceImpl extends CrudServiceImpl<AppUser, AppUserReposito
 
 	@Override
 	public AppUser getCurrentUser() {
-		logger.info("getCurrentUser()");
 		return loggedInChecker.getLoggedInUser();
 	}
 
 	@Override
 	public Boolean isCurrentUserLoggedIn() {
-		logger.info("isCurrentUserLoggedIn()");
 		return loggedInChecker.getLoggedInUser() != null;
 	}
 
 	@Override
 	public void createVerificationToken(AppUser user, String token) throws Throwable {
-		logger.info("createVerificationToken()->user=" + user);
 		VerificationToken myToken = new VerificationToken(token);
 		List<VerificationToken> tokens = new ArrayList<VerificationToken>();
 		tokens.add(myToken);

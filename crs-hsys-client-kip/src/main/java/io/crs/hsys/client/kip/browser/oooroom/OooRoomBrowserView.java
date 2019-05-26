@@ -8,16 +8,20 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.Color;
+import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.table.cell.Column;
-
+import gwt.material.design.jquery.client.api.JQueryElement;
 import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.browser.ActionColumn;
 import io.crs.hsys.client.core.browser.DataColumn;
@@ -143,12 +147,44 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 //				new ColumnConfig(new ChangeOooColumn((object) -> getUiHandlers().editItem(object), today)));
 
 		tableView.addAllColumns();
+
+		// Here we are adding a row expansion handler.
+		// This is invoked when a row is expanded.
+		tableView.setUseRowExpansion(true);
+		tableView.addRowExpandingHandler(event -> {
+			JQueryElement section = event.getExpansion().getOverlay();
+
+			// Clear the content first.
+			MaterialWidget content = new MaterialWidget(event.getExpansion().getContent().empty().asElement());
+
+			// Fake Async Task
+			// This is demonstrating a fake asynchronous call to load
+			// the data inside the expansion element.
+			new Timer() {
+				@Override
+				public void run() {
+					MaterialLabel title = new MaterialLabel("Expansion Row Panel");
+					title.setFontSize("1.6em");
+					title.setDisplay(Display.BLOCK);
+					MaterialLabel description = new MaterialLabel("This content was made from asynchronous call");
+
+					content.setPadding(20);
+					content.add(title);
+					content.add(description);
+
+					// Hide the expansion elements overlay section.
+					// The overlay is retrieved using EowExpand#getOverlay()
+					section.css("display", "none");
+				}
+			}.schedule(100);
+		});
 	}
 
 	@Override
 	public void reConfigColumns() {
 		tableView.hideColumn(COL_FLOOR, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400));
 		tableView.hideColumn(COL_ROOMTYPE, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200));
+		tableView.hideColumn(COL_STATUS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));
 		tableView.hideColumn(COL_RETURNWHEN, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
 		tableView.hideColumn(COL_RETURNAS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
 		tableView.hideColumn(COL_REMARKS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));

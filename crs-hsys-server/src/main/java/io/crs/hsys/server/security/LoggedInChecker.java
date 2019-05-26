@@ -4,8 +4,8 @@
 package io.crs.hsys.server.security;
 
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -21,12 +21,12 @@ import io.crs.hsys.shared.dto.common.AppUserDto;
  *
  */
 public class LoggedInChecker {
-	private static final Logger logger = LoggerFactory.getLogger(LoggedInChecker.class);
+//	private static final Logger logger = LoggerFactory.getLogger(LoggedInChecker.class);
 
 	private final ModelMapper modelMapper;
 
 	public LoggedInChecker(ModelMapper modelMapper) {
-		logger.info("LoggedInChecker()");
+//		logger.info("LoggedInChecker()");
 		this.modelMapper = modelMapper;
 	}
 
@@ -36,7 +36,6 @@ public class LoggedInChecker {
 	 * @return
 	 */
 	public AppUser getLoggedInUser() {
-		logger.info("getLoggedInUser()");
 		AppUser appUser = null;
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -49,7 +48,6 @@ public class LoggedInChecker {
 				AppUserDto dto = userDetails.getAppUserDto();
 				try {
 					appUser = modelMapper.map(dto, AppUser.class);
-					logger.info("getLoggedInUser()-1");
 					return appUser;
 				} catch (Throwable e) {
 					e.printStackTrace();
@@ -62,11 +60,9 @@ public class LoggedInChecker {
 				appUser = new AppUser();
 				appUser.setEmailAddress(gaeUser.getEmail());
 				appUser.setName(gaeUser.getNickname());
-				logger.info("getLoggedInUser()-2");
 				return appUser;
 			}
 		}
-		logger.info("getLoggedInUser()-3");
 		return appUser;
 	}
 }

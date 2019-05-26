@@ -74,12 +74,9 @@ public class RoomController extends HotelChildController<Room, RoomDto> {
 	@RequestMapping(method = GET)
 	public ResponseEntity<List<RoomDto>> getByHotel(@RequestParam(HOTEL_KEY) String hotelKey,
 			@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
-		logger.info("RoomController().getByHotel()");
 		if (onlyActive) {
-			logger.info("RoomController().getByHotel()->onlyActive");
 			List<RoomDto> result = new ArrayList<RoomDto>();
 			for (Room room : roomService.getActiveRoomsByHotel(hotelKey)) {
-				logger.info("RoomController().getByHotel()->onlyActive->room.getCode()=" + room.getCode());
 				result.add(modelMapper.map(room, RoomDto.class));
 			}
 			return new ResponseEntity<List<RoomDto>>(result, OK);
@@ -108,7 +105,6 @@ public class RoomController extends HotelChildController<Room, RoomDto> {
 	@Override
 	@RequestMapping(method = POST)
 	public ResponseEntity<RoomDto> saveOrCreate(@RequestBody RoomDto dto) throws RestApiException {
-		logger.info("RoomController()->dto=" + dto);
 		return super.saveOrCreate(dto);
 	}
 

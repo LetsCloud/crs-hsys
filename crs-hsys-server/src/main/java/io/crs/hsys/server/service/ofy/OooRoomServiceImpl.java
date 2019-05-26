@@ -91,11 +91,21 @@ public class OooRoomServiceImpl extends HotelChildServiceImpl<OooRoom, OooRoomRe
 	}
 
 	private List<Room> getRooms(OooCreateDto dto) {
+		logger.info("getRooms()->fromCode=" + dto.getFromRoom());
+		logger.info("getRooms()->toCode=" + dto.getToRoom());
+		logger.info("getRooms()->floor=" + dto.getFloor());
+
 		List<String> typeCodes = new ArrayList<String>();
 		for (RoomTypeDtor typeDtor : dto.getRoomTypes()) {
-			if (typeCodes.contains(typeDtor.getCode()))
+			logger.info("getRooms()->typeDtor.getCode()=" + typeDtor.getCode());
+			if (!typeCodes.contains(typeDtor.getCode())) {
+				logger.info("getRooms()->filterType=" + typeDtor.getCode());
 				typeCodes.add(typeDtor.getCode());
+			}
 		}
+
+		logger.info("getRooms()->typeCodes=" + typeCodes);
+		logger.info("getRooms()->roomStatuses=" + dto.getRoomStatuses());
 
 		List<Room> rooms = new ArrayList<Room>();
 
@@ -104,45 +114,86 @@ public class OooRoomServiceImpl extends HotelChildServiceImpl<OooRoom, OooRoomRe
 					&& (!rooms.contains(room)))
 				rooms.add(room);
 		}
-
 		return rooms;
 	}
 
 	private Boolean checkRoom(Room room, String fromCode, String toCode, List<String> typeCodes, String floor,
 			List<RoomStatus> statuses) {
-		Boolean result = false;
+		int criterion = 0;
+		int checksum = 0;
+		// 000000 - 0
+		// 000001 - 1
+
+		// 000000 - 0
+		// 000010 - 2
+
+		// 000000 - 0
+		// 000011 - 3
+
+		// 000100 - 4
+		// 000101 - 5
+		// 000110 - 6
+		// 000111 - 7
+
+		logger.info("checkRoom()->check room=" + room.getCode());
 
 		if (!Strings.isNullOrEmpty(fromCode) && !Strings.isNullOrEmpty(toCode)) {
-			if ((room.getCode().compareTo(fromCode) >= 0) && (room.getCode().compareTo(toCode) <= 0))
-				return true;
+			logger.info("checkRoom()->check room period");
+			criterion = criterion + 1;
+			if ((room.getCode().compareTo(fromCode) >= 0) && (room.getCode().compareTo(toCode) <= 0)) {
+				logger.info("checkRoom()->selected1 room=" + room.getCode());
+				checksum = checksum + 1;
+			}
 		}
 
-		if (!Strings.isNullOrEmpty(fromCode)) {
-			if (room.getCode().equals(fromCode))
-				return true;
+		if (!Strings.isNullOrEmpty(fromCode) && Strings.isNullOrEmpty(toCode)) {
+			logger.info("checkRoom()->check fromCode");
+			criterion = criterion + 2;
+			if (room.getCode().equals(fromCode)) {
+				logger.info("checkRoom()->selected2 room=" + room.getCode());
+				checksum = checksum + 2;
+			}
 		}
 
-		if (!Strings.isNullOrEmpty(toCode)) {
-			if (room.getCode().equals(toCode))
-				return true;
+		if (Strings.isNullOrEmpty(fromCode) && !Strings.isNullOrEmpty(toCode)) {
+			logger.info("checkRoom()->check toCode");
+			criterion = criterion + 4;
+			if (room.getCode().equals(toCode)) {
+				logger.info("checkRoom()->selected3 room=" + room.getCode());
+				checksum = checksum + 4;
+			}
 		}
 
 		if (!typeCodes.isEmpty()) {
-			if (typeCodes.contains(room.getRoomType().getCode()))
-				return true;
+			logger.info("checkRoom()->check typeCodes");
+			criterion = criterion + 8;
+			if (typeCodes.contains(room.getRoomType().getCode())) {
+				logger.info("checkRoom()->selected4 room=" + room.getCode());
+				checksum = checksum + 8;
+			}
 		}
 
 		if (!Strings.isNullOrEmpty(floor)) {
-
-			if (room.getFloor().equals(floor))
-				return true;
+			logger.info("checkRoom()->check floor=" + floor);
+			criterion = criterion + 16;
+			if (room.getFloor().equals(floor)) {
+				logger.info("checkRoom()->selected5 room=" + room.getCode());
+				checksum = checksum + 16;
+			}
 		}
 
 		if (!statuses.isEmpty()) {
-			if (statuses.contains(room.getRoomStatus()))
-				return true;
+			logger.info("checkRoom()->check statuses=" + statuses);
+			criterion = criterion + 32;
+			if (statuses.contains(room.getRoomStatus())) {
+				logger.info("checkRoom()->selected5 room=" + room.getCode());
+				checksum = checksum + 32;
+			}
 		}
 
-		return result;
+		logger.info("checkRoom()->criterion=" + criterion);
+		logger.info("checkRoom()->checksum=" + checksum);
+
+		return checksum == criterion;
 	}
 }
