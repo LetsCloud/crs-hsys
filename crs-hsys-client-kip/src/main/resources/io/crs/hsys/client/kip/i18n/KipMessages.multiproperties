@@ -1051,5 +1051,44 @@
             <Value disabled="false">Megjegyzés</Value>
             <Value disabled="false">Remarks</Value>
         </Property>
+        <Comment>
+            <Value>OOO ROOM FILTER</Value>
+        </Comment>
+        <Property>
+            <Name>oooRoomFilterFromDateFilterLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">From Date</Value>
+            <Value disabled="false">From Date</Value>
+            <Value disabled="false">Mettől</Value>
+            <Value disabled="false">From Date</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomFilterFromDateChipLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">From: {0}</Value>
+            <Value disabled="false">From: {0}</Value>
+            <Value disabled="false">{0}-tól</Value>
+            <Value disabled="false">From: {0}</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomFilterToDateFilterLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">To Date</Value>
+            <Value disabled="false">To Date</Value>
+            <Value disabled="false">Meddig</Value>
+            <Value disabled="false">To Date</Value>
+        </Property>
+        <Property>
+            <Name>oooRoomFilterToDateChipLabel</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">To: {0}</Value>
+            <Value disabled="false">To: {0}</Value>
+            <Value disabled="false">{0}-ig</Value>
+            <Value disabled="false">To: {0}</Value>
+        </Property>
     </Records>
 </MultiProperties>

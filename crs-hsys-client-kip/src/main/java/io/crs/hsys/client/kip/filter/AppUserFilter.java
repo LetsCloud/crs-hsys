@@ -32,7 +32,6 @@ public class AppUserFilter extends ComboBoxDtoFilter<AppUserDtor> {
 
 	@Override
 	protected String createChipText(List<AppUserDtor> selectedItems) {
-		logger.info("AppUserFilter().getChipText()");
 		String result = null;
 		for (AppUserDtor dto : selectedItems) {
 			if (result == null)
@@ -45,7 +44,6 @@ public class AppUserFilter extends ComboBoxDtoFilter<AppUserDtor> {
 
 	@Override
 	protected String createComboBoxItemText(AppUserDtor dto) {
-		logger.info("AppUserFilter().getComboBoxItemText()");
 		return dto.getCode() + "-" + dto.getName();
 	}
 }
