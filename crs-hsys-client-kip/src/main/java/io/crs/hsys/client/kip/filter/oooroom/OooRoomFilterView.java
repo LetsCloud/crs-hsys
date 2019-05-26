@@ -113,7 +113,7 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	private void initRoomTypeFilter() {
 		roomTypeFilter = roomTypeFilterProvider.get();
 		roomTypeFilter.setChipPanel(collapsibleHeader);
-		roomTypeFilter.setChipIconType(IconType.ROOM);
+		roomTypeFilter.setChipIconType(IconType.HOTEL);
 		roomTypeFilter.setChipIconPosition(IconPosition.LEFT);
 		roomTypeFilter.setChipIconFontSize(20d, Unit.PX);
 		roomTypeFilter.setFilterLabel(i18n.roomStatusFilterRoomTypeLabel());
@@ -128,7 +128,9 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	private void initRoomNumberFilter() {
 		roomFilter = textFilterProvider.get();
 		roomFilter.setChipPanel(collapsibleHeader);
-		roomFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+		roomFilter.setChipIconType(IconType.ROOM);
+		roomFilter.setChipIconPosition(IconPosition.LEFT);
+		roomFilter.setChipIconFontSize(20d, Unit.PX);
 		roomFilter.setFilterLabel(i18n.roomStatusFilterRoomNumberLabel());
 		roomFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomNumberPlaceholder());
 		roomFilter.setFilterMarginTop(14);
@@ -141,7 +143,9 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 	private void initFloorFilter() {
 		floorFilter = textFilterProvider.get();
 		floorFilter.setChipPanel(collapsibleHeader);
-		floorFilter.setChipLabel(i18nCore.quotationFilterCodeChipLabel());
+		floorFilter.setChipIconType(IconType.LIST);
+		floorFilter.setChipIconPosition(IconPosition.LEFT);
+		floorFilter.setChipIconFontSize(20d, Unit.PX);
 		floorFilter.setFilterLabel(i18n.roomStatusFilterRoomFloorLabel());
 		floorFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomFloorPlaceholder());
 		floorFilter.setFilterMarginTop(14);
