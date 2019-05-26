@@ -16,7 +16,9 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
 import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.data.SelectionType;
 import gwt.material.design.client.data.SortDir;
+import gwt.material.design.client.data.events.RowExpandingHandler;
 import gwt.material.design.client.data.events.SetupEvent;
 import gwt.material.design.client.data.events.SetupHandler;
 import gwt.material.design.client.ui.MaterialButton;
@@ -68,9 +70,7 @@ public class BaseTableView<T extends BaseDto> extends Composite {
 	*/
 	public BaseTableView() {
 		logger.info("BaseTableView()");
-
 		initWidget(uiBinder.createAndBindUi(this));
-
 		initTable();
 	}
 
@@ -243,5 +243,17 @@ public class BaseTableView<T extends BaseDto> extends Composite {
 
 	public void setTableHeight(String height) {
 		table.setHeight(height);
+	}
+
+	public void addRowExpandingHandler(RowExpandingHandler<T> handler) {
+		table.addRowExpandingHandler(handler);
+	}
+
+	public void setUseRowExpansion(boolean useRowExpansion) {
+		table.setUseRowExpansion(useRowExpansion);
+	}
+
+	public void setSelectionType(SelectionType selectionType) {
+		table.setSelectionType(selectionType);
 	}
 }

@@ -334,7 +334,7 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Data cannot be saved</Value>
             <Value disabled="false">Data cannot be saved</Value>
-            <Value disabled="false">Az adat nem menthető le</Value>
+            <Value disabled="false">A mentés meghiúsult</Value>
             <Value disabled="false">Дані неможливо зберегти</Value>
         </Property>
         <Property>
@@ -372,6 +372,15 @@
             <Value disabled="false">The task group is used by Task Type.</Value>
             <Value disabled="false">A feledat csoport használatban van a feladat típusoknál.</Value>
             <Value disabled="false">Групу завдань використовує тип завдання.</Value>
+        </Property>
+        <Property>
+            <Name>OOO_ROOM_OVERLAP</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Overlaping OOO period withh room {0} ({1} - {2}).</Value>
+            <Value disabled="false">Overlaping OOO period withh room {0} ({1} - {2}).</Value>
+            <Value disabled="false">A megadott időszakban a {0} számú szobához már tartozik  OOO bejegyzés ({1} - {2}).</Value>
+            <Value disabled="false">Overlaping OOO period withh room {0} ({1} - {2}).</Value>
         </Property>
         <Comment>
             <Value>LOGIN</Value>

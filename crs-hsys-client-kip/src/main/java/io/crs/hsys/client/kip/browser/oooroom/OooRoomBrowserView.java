@@ -3,20 +3,26 @@
  */
 package io.crs.hsys.client.kip.browser.oooroom;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.Color;
+import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.table.cell.Column;
+import gwt.material.design.jquery.client.api.JQueryElement;
 
 import io.crs.hsys.client.core.browser.AbstractColumnConfig;
 import io.crs.hsys.client.core.browser.ActionColumn;
@@ -48,6 +54,8 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 	private static final int COL_RETURNAS = 7;
 	private static final int COL_REMARKS = 8;
 	private static final int COL_CREATEDBY = 9;
+
+	private Boolean[] colHide = new Boolean[10];
 
 	public class ColumnConfig extends AbstractColumnConfig<OooRoomDto> {
 
@@ -94,6 +102,7 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 	}
 
 	private void initBrowswerView() {
+		Arrays.fill(colHide, Boolean.FALSE);
 
 		tableView.setTableTitle(i18n.oooRoomBrowserTitle());
 
@@ -143,18 +152,152 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 //				new ColumnConfig(new ChangeOooColumn((object) -> getUiHandlers().editItem(object), today)));
 
 		tableView.addAllColumns();
+
+		// Here we are adding a row expansion handler.
+		// This is invoked when a row is expanded.
+//		tableView.setUseRowExpansion(true);
+		tableView.addRowExpandingHandler(event -> {
+			JQueryElement section = event.getExpansion().getOverlay();
+
+			// Clear the content first.
+			MaterialWidget content = new MaterialWidget(event.getExpansion().getContent().empty().asElement());
+
+			// Fake Async Task
+			// This is demonstrating a fake asynchronous call to load
+			// the data inside the expansion element.
+			new Timer() {
+				@Override
+				public void run() {
+					MaterialLabel title = new MaterialLabel("Részletek");
+					title.setFontSize("1.2em");
+					title.setDisplay(Display.BLOCK);
+
+					content.setPadding(20);
+					content.add(title);
+
+					if (colHide[COL_STATUS]) {
+						ValueDisplay statusText = new ValueDisplay();
+						statusText.setLabel("Státusz");
+						statusText.setValue(cnst.roomStatusMap()
+								.get(event.getExpansion().getModel().getRoom().getRoomStatus().toString()));
+						statusText.setGrid("s12 m4 l3");
+						content.add(statusText);
+					}
+
+					if (colHide[COL_ROOMTYPE]) {
+						ValueDisplay roomTypeText = new ValueDisplay();
+						roomTypeText.setLabel("Típus");
+						roomTypeText.setValue(event.getExpansion().getModel().getRoom().getRoomType().getCode());
+						roomTypeText.setGrid("s12 m4 l3");
+						content.add(roomTypeText);
+					}
+
+					if (colHide[COL_FLOOR]) {
+						ValueDisplay floorText = new ValueDisplay();
+						floorText.setLabel("Emelet");
+						floorText.setValue(event.getExpansion().getModel().getRoom().getFloor());
+						floorText.setGrid("s12 m4 l3");
+						content.add(floorText);
+					}
+
+					if (colHide[COL_RETURNWHEN]) {
+						ValueDisplay returnWhenText = new ValueDisplay();
+						returnWhenText.setLabel("Visszadás időszaka");
+						returnWhenText.setValue(cnst.oooReturnWhenMap()
+								.get(event.getExpansion().getModel().getReturnWhen().toString()));
+						returnWhenText.setGrid("s12 m4 l3");
+						content.add(returnWhenText);
+					}
+
+					if (colHide[COL_RETURNAS]) {
+						ValueDisplay returnAsText = new ValueDisplay();
+						returnAsText.setLabel("Visszadás státusza");
+						returnAsText.setValue(
+								cnst.roomStatusMap().get(event.getExpansion().getModel().getReturnAs().toString()));
+						returnAsText.setGrid("s12 m4 l3");
+						content.add(returnAsText);
+					}
+
+					if (colHide[COL_CREATEDBY]) {
+						ValueDisplay createdByText = new ValueDisplay();
+						createdByText.setLabel("Létrehozta");
+						createdByText.setValue(event.getExpansion().getModel().getCreatedBy().getCode());
+						createdByText.setGrid("s12 m4 l3");
+						content.add(createdByText);
+					}
+
+					if (colHide[COL_REMARKS]) {
+						ValueDisplay remarksText = new ValueDisplay();
+						remarksText.setLabel("Megjegyzés");
+						remarksText.setValue(event.getExpansion().getModel().getRemarks());
+						remarksText.setGrid("s12 m8 l6");
+						content.add(remarksText);
+					}
+					// Hide the expansion elements overlay section.
+					// The overlay is retrieved using EowExpand#getOverlay()
+					section.css("display", "none");
+				}
+			}.schedule(100);
+		});
 	}
 
 	@Override
 	public void reConfigColumns() {
-		tableView.hideColumn(COL_FLOOR, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400));
-		tableView.hideColumn(COL_ROOMTYPE, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200));
-		tableView.hideColumn(COL_RETURNWHEN, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
-		tableView.hideColumn(COL_RETURNAS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800));
-		tableView.hideColumn(COL_REMARKS, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100));
-		tableView.hideColumn(COL_CREATEDBY, (Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900));
+		Arrays.fill(colHide, Boolean.FALSE);
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 800)) {
+			colHide[COL_RETURNWHEN] = true;
+			tableView.hideColumn(COL_RETURNWHEN, true);
+			colHide[COL_RETURNAS] = true;
+			tableView.hideColumn(COL_RETURNAS, true);
+		} else {
+			tableView.hideColumn(COL_RETURNWHEN, false);
+			tableView.hideColumn(COL_RETURNAS, false);
+		}
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900)) {
+			colHide[COL_CREATEDBY] = true;
+			tableView.hideColumn(COL_CREATEDBY, true);
+		} else {
+			tableView.hideColumn(COL_CREATEDBY, false);
+		}
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100)) {
+			colHide[COL_STATUS] = true;
+			tableView.hideColumn(COL_STATUS, true);
+			colHide[COL_REMARKS] = true;
+			tableView.hideColumn(COL_REMARKS, true);
+		} else {
+			tableView.hideColumn(COL_STATUS, false);
+			tableView.hideColumn(COL_REMARKS, false);
+		}
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200)) {
+			colHide[COL_ROOMTYPE] = true;
+			tableView.hideColumn(COL_ROOMTYPE, true);
+		} else {
+			tableView.hideColumn(COL_ROOMTYPE, false);
+		}
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400)) {
+			colHide[COL_FLOOR] = true;
+			tableView.hideColumn(COL_FLOOR, true);
+		} else {
+			tableView.hideColumn(COL_FLOOR, false);
+		}
+		boolean useRowExpansion = !allFalse(colHide);
+		logger.info("OooRoomBrowserView().reConfigColumns()->useRowExpansion=" + useRowExpansion);
+		tableView.setUseRowExpansion(useRowExpansion);
 	}
 
+	private static boolean allFalse (Boolean[] values) {
+	    for (Boolean value : values) {
+	        if (value)
+	            return false;
+	    }
+	    return true;
+	}
+	
 	private DataColumn<OooRoomDto> createRoomColumn() {
 		return new DataColumn<OooRoomDto>((o) -> o.getRoom().getCode(),
 				(o1, o2) -> o1.getData().getRoom().compareTo(o2.getData().getRoom()));
