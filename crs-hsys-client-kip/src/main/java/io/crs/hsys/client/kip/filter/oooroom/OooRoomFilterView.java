@@ -112,11 +112,17 @@ public class OooRoomFilterView extends AbstractFilterView implements OooRoomFilt
 
 	private void initRoomTypeFilter() {
 		roomTypeFilter = roomTypeFilterProvider.get();
+		roomTypeFilter.setChipPanel(collapsibleHeader);
+		roomTypeFilter.setChipIconType(IconType.ROOM);
+		roomTypeFilter.setChipIconPosition(IconPosition.LEFT);
+		roomTypeFilter.setChipIconFontSize(20d, Unit.PX);
 		roomTypeFilter.setFilterLabel(i18n.roomStatusFilterRoomTypeLabel());
 		roomTypeFilter.setFilterPlaceholder(i18n.roomStatusFilterRoomTypePlaceholder());
+		/*
 		roomTypeFilter.addSelectionHandler(e -> {
 			eventBus.fireEvent(new FilterChangeEvent(DataTable.TASK));
 		});
+		*/
 	}
 
 	private void initRoomNumberFilter() {
