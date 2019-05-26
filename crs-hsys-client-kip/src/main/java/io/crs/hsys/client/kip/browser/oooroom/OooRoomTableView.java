@@ -6,6 +6,7 @@ package io.crs.hsys.client.kip.browser.oooroom;
 import com.google.gwt.user.client.ui.Panel;
 
 import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.data.SelectionType;
 import gwt.material.design.client.ui.MaterialDropDown;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLink;
@@ -19,7 +20,8 @@ import io.crs.hsys.shared.dto.hotel.OooRoomDto;
 public class OooRoomTableView extends BaseTableView<OooRoomDto> {
 	
 	public OooRoomTableView() {
-		super();		
+		super();
+		this.setSelectionType(SelectionType.MULTIPLE);
 	}
 	
 	@Override
