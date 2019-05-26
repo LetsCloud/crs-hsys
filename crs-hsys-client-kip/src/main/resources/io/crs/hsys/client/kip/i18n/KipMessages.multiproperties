@@ -1030,7 +1030,7 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Return When</Value>
             <Value disabled="false">Return When</Value>
-            <Value disabled="false">Vissza</Value>
+            <Value disabled="false">Va.időszak</Value>
             <Value disabled="false">Return When</Value>
         </Property>
         <Property>
@@ -1039,7 +1039,7 @@
             <MultiLine>false</MultiLine>
             <Value disabled="false">Return As</Value>
             <Value disabled="false">Return As</Value>
-            <Value disabled="false">Vissza</Value>
+            <Value disabled="false">Va.státusz</Value>
             <Value disabled="false">Return As</Value>
         </Property>
         <Property>
