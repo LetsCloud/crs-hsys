@@ -3,9 +3,13 @@
  */
 package io.crs.hsys.client.fro.roomplan;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -19,6 +23,7 @@ import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.fro.NameTokens;
+import io.crs.hsys.client.fro.roomplan.model.HeaderData;
 import io.crs.hsys.shared.cnst.MenuItemType;
 
 /**
@@ -30,6 +35,8 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	private static Logger logger = Logger.getLogger(RoomPlanPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<RoomPlanUiHandlers> {
+		void showPage();
+		void setData(List<HeaderData> data);
 	}
 
 	@ProxyCodeSplit
@@ -49,10 +56,21 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-		SetPageTitleEvent.fire("Dashboard", "", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire("Roomplan", "", MenuItemType.MENU_ITEM, this);
+		loadData();
 	}
 
 	@Override
 	public void onContentPush(ContentPushEvent event) {
+	}
+	
+	private void loadData() {
+		List<HeaderData> data = new ArrayList<HeaderData>();
+		int clientWidth = Window.getClientWidth();
+		int numOfDays = clientWidth / 100;
+		for (int i = 0; i < numOfDays; i++) {
+			data.add(new HeaderData(i, new Date(), 0f));
+		}
+		getView().setData(data);
 	}
 }
