@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package com.allen_sauer.gwt.dnd.client.drop;
+
+import com.allen_sauer.gwt.dnd.client.PickupDragController;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+
+public class RoomPlanViewPickupDragController extends PickupDragController {
+
+	public RoomPlanViewPickupDragController(AbsolutePanel boundaryPanel, boolean allowDroppingOnBoundaryPanel) {
+		super(boundaryPanel, allowDroppingOnBoundaryPanel);
+	}
+
+	@Override
+	public void dragMove() {
+		try {
+			super.dragMove();
+		} catch (NullPointerException ex) {
+		}
+	}
+}

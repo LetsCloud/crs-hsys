@@ -28,7 +28,7 @@
 	<inherits name="gwt.material.design.incubator.AddinsIncubator" />
 
 	<inherits name="com.google.common.collect.Collect" />
-
+<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
 	<source path="client" />
 	<source path="shared" />
 
