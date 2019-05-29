@@ -211,6 +211,12 @@
 				<version>${gwt-charts.version}</version>
 			</dependency>
 
+		<dependency>
+			<groupId>com.bradrydzewski</groupId>
+			<artifactId>gwt-cal</artifactId>
+			<version>0.9.5-SNAPSHOT</version>
+		</dependency>
+
 			<!-- ************************ -->
 			<!-- Moxieapps Gwt Highcharts -->
 			<!-- ************************ -->

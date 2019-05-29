@@ -111,6 +111,11 @@
 			<artifactId>gwt-charts</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.bradrydzewski</groupId>
+			<artifactId>gwt-cal</artifactId>
+		</dependency>
+
 		<!-- ***************** -->
 		<!-- Google Guava -->
 		<!-- ***************** -->
