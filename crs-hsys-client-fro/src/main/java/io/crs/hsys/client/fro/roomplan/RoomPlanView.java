@@ -4,6 +4,7 @@
 package io.crs.hsys.client.fro.roomplan;
 
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import io.crs.hsys.client.fro.roomplan.model.HeaderData;
+import io.crs.hsys.client.fro.roomplan.w2.DayTile;
 import io.crs.hsys.client.fro.roomplan.widget.DateUtils;
 import io.crs.hsys.client.fro.roomplan.widget.RoomPlanSettings;
 
@@ -71,8 +74,9 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 	 * displayed. This is where all components are configured and added to the
 	 * RootPanel.
 	 */
-	public void attach() {
-
+	@Override
+	public void onAttach() {
+		super.onAttach();
 		roomPlanGrid.setCellPadding(0);
 		roomPlanGrid.setBorderWidth(0);
 		roomPlanGrid.setCellSpacing(0);
@@ -89,7 +93,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 		}
 
 		// Rebuild the month grid
-		buildRoomPlanGrid();
+//		buildRoomPlanGrid();
 
 	}
 
@@ -137,8 +141,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 	 * @param weekNumber        The weekNumber to show in the cell, only appears in
 	 *                          the first col.
 	 */
-	private void configureDayInGrid(int row, int col, Date date, boolean isToday,
-			int weekNumber) {
+	private void configureDayInGrid(int row, int col, Date date, boolean isToday, int weekNumber) {
 		HorizontalPanel panel = new HorizontalPanel();
 		String text = String.valueOf(date.getDate());
 		Label label = new Label(text);
@@ -189,6 +192,19 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 
 	public RoomPlanSettings getSettings() {
 		return settings;
+	}
+
+	@Override
+	public void showPage() {
+		doLayout();
+	}
+
+	@Override
+	public void setData(List<HeaderData> data) {
+		for (int i = 0; i < data.size(); i++) {
+			roomPlanGrid.setWidget(0, i,
+					new DayTile(i, data.get(i).getDate(), data.get(i).getOccupancy()));
+		}
 	}
 
 }

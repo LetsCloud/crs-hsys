@@ -22,6 +22,7 @@
 		background: transparent;
 	}
 	</ui:style>
+	
 	<g:FlowPanel>
 		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
 			widget names. The ui:field attribute binds an element to a field in the owner 
