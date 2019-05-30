@@ -35,7 +35,8 @@
 			access="permitAll" />
 		<custom-filter position="PRE_AUTH_FILTER"
 			ref="gaeFilter" />
-		<csrf token-repository-ref="tokenRepository" />
+		<csrf token-repository-ref="tokenRepository"
+			request-matcher-ref="csrfSecurityRequestMatcher" />
 	</http>
 
 	<beans:bean id="gaeEntryPoint"

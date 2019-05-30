@@ -13,7 +13,7 @@
 	<modules>
 		<module>crs-hsys-shared</module>
 		<module>crs-hsys-client-core</module>
-		<!-- <module>crs-hsys-client-admin</module> -->
+		<module>crs-hsys-client-admin</module>
 		<module>crs-hsys-client-cfg</module>
 		<module>crs-hsys-client-kip</module>
 		<module>crs-hsys-client-fro</module>
