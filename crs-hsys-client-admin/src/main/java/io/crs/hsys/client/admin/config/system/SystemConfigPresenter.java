@@ -16,7 +16,7 @@ import io.crs.hsys.client.admin.AdminNameTokens;
 import io.crs.hsys.client.admin.browser.globalconfig.GlobalConfigBrowserFactory;
 import io.crs.hsys.client.admin.i18n.AdminMessages;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 
 /**
  * @author robi
