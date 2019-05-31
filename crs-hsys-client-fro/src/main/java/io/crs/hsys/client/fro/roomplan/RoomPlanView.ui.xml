@@ -22,14 +22,24 @@
 		background: transparent;
 	}
 	</ui:style>
-	
+
 	<g:FlowPanel>
 		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
 			widget names. The ui:field attribute binds an element to a field in the owner 
 			class. See the GWT docs on UI Binder for more details. -->
-		<g:FlexTable ui:field="roomPlanGrid" addStyleNames="{style.grid}">
+		<g:FlexTable ui:field="roomPlanGrid"
+			addStyleNames="{style.grid}">
 		</g:FlexTable>
-		<g:AbsolutePanel ui:field="bookingCanvas" addStyleNames="{style.canvas}">
+		<g:AbsolutePanel ui:field="headerCanvas"
+			addStyleNames="{style.canvas}">
 		</g:AbsolutePanel>
+		<g:ScrollPanel>
+			<g:FlexTable ui:field="bookingGrid"
+				addStyleNames="{style.grid}">
+			</g:FlexTable>
+			<g:AbsolutePanel ui:field="bookingCanvas"
+				addStyleNames="{style.canvas}">
+			</g:AbsolutePanel>
+		</g:ScrollPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

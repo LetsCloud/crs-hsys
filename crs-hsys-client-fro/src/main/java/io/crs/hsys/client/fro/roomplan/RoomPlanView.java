@@ -61,7 +61,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 	FlexTable roomPlanGrid;
 
 	@UiField
-	AbsolutePanel bookingCanvas;
+	AbsolutePanel headerCanvas, bookingCanvas;
 
 	@Inject
 	RoomPlanView(Binder uiBinder) {
@@ -86,7 +86,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 	public void doLayout() {
 		// Clear all existing bookings
 
-		bookingCanvas.clear();
+		headerCanvas.clear();
 		roomPlanGrid.clear();
 		while (roomPlanGrid.getRowCount() > 0) {
 			roomPlanGrid.removeRow(0);
@@ -181,7 +181,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 		}
 		panel.add(label);
 
-		bookingCanvas.add(panel);
+		headerCanvas.add(panel);
 //		dayLabels.add(label);
 //		dayPanels.add(panel);
 
