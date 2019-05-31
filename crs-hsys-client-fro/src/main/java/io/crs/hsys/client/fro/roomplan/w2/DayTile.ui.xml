@@ -3,17 +3,29 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 	.center {
-		text-align: center;
-		border: 1px solid blue;
-		border-radius: 3px;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 0px 5px 0px 5px;
+		width: 40px;
+		font-weight: bold;
+		color: white;
+		background-color: blue;
+		text-align: center;
+		border: 1px solid blue;
+		border-radius: 10px;
+	}
+	
+	.date {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 	}
 	/* Add CSS here. See the GWT docs on UI Binder for more details */
 	</ui:style>
 	<g:HTMLPanel>
-		<g:InlineLabel ui:field="unassignedLabel" addStyleNames="{style.center}"/>
-		<g:Label ui:field="dateLabel" />
-		<g:Label ui:field="occupancyLabel" />
+		<g:Label ui:field="unassignedLabel"
+			addStyleNames="{style.center}" />
+		<g:Label ui:field="dateLabel" addStyleNames="{style.date}" />
+		<g:Label ui:field="occupancyLabel" addStyleNames="{style.date}" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

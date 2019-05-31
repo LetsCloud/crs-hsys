@@ -67,8 +67,8 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	private void loadData() {
 		List<HeaderData> data = new ArrayList<HeaderData>();
 		int clientWidth = Window.getClientWidth();
-		int numOfDays = clientWidth / 100;
-		for (int i = 0; i < numOfDays; i++) {
+		int numOfDays = (clientWidth-100) / 100;
+		for (int i = 1; i < numOfDays; i++) {
 			data.add(new HeaderData(i, new Date(), 0f));
 		}
 		getView().setData(data);

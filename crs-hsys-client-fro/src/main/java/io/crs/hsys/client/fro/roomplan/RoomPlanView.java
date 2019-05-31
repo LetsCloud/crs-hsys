@@ -203,7 +203,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 	public void setData(List<HeaderData> data) {
 		for (int i = 0; i < data.size(); i++) {
 			roomPlanGrid.setWidget(0, i,
-					new DayTile(i, data.get(i).getDate(), data.get(i).getOccupancy()));
+					new DayTile(data.get(i).getUnassined(), data.get(i).getDate(), data.get(i).getOccupancy()));
 		}
 	}
 
