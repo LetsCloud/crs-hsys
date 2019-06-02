@@ -32,5 +32,6 @@ public class App extends AbstractAppBootstrapper {
 		super(placeManager, appData, globalConfigResource, messagingManager, swManager, dispatch, authService,
 				currentUser, fcmService);
 		setAppCode(SubSystem.FRO);
+				
 	}
 }
