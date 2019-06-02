@@ -77,6 +77,11 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 				.icon(IconType.EVENT_AVAILABLE.name()).text(i18n.mainMenuItemReservation())
 				.nameToken(NameTokens.RESERVATION).build());
 
+		// RoomPlan menu item
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
+				.icon(IconType.EVENT_BUSY.name()).text("RoomPlan")
+				.nameToken(NameTokens.ROOM_PLAN).build());
+
 		// Chat Room menu item
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
 				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CHAT_ROOM).build());

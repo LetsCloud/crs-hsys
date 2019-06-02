@@ -16,10 +16,10 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 import io.crs.hsys.client.admin.AdminNameTokens;
 import io.crs.hsys.client.admin.config.system.SystemConfigPresenter;
+import io.crs.hsys.client.core.config.AbstractConfigPresenter;
+import io.crs.hsys.client.core.meditor.AbstractMeditorPresenter;
+import io.crs.hsys.client.core.meditor.MeditorView;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.config.AbstractConfigPresenter;
-import io.crs.hsys.client.core.ui.meditor.AbstractMeditorPresenter;
-import io.crs.hsys.client.core.ui.meditor.MeditorView;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.GlobalConfigDto;

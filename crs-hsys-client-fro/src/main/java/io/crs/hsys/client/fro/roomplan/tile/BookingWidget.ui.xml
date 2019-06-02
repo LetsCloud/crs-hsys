@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.base_arrow {
+		height: 30px;
+		position: relative;
+		left: 15px;
+		width: 100px;
+		text-align: center;
+	}
+	
+	.base_arrow:before {
+		content: ' ';
+		height: 0;
+		position: absolute;
+		width: 0;
+		border-width: 15px;
+		border-style: solid;
+		left: -15px;
+	}
+	
+	.base_arrow:after {
+		content: ' ';
+		height: 0;
+		position: absolute;
+		width: 0;
+		border-width: 15px;
+		border-style: solid;
+		top: 0px;
+		left: 100%;
+	}
+	</ui:style>
+
+	<g:FocusPanel ui:field="focusPanel">
+		<g:FlowPanel ui:field="arrowPanel"
+			addStyleNames="{style.base_arrow}">
+			<g:InlineLabel ui:field="arrowLabel" />
+		</g:FlowPanel>
+		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
+			widget names. The ui:field attribute binds an element to a field in the owner 
+			class. See the GWT docs on UI Binder for more details. -->
+	</g:FocusPanel>
+</ui:UiBinder> 

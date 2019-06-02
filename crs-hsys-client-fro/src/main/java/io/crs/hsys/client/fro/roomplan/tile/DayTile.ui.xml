@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	.center {
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0px 5px 0px 5px;
+		width: 40px;
+		font-weight: bold;
+		color: white;
+		background-color: blue;
+		text-align: center;
+		border: 1px solid blue;
+		border-radius: 10px;
+	}
+	
+	.date {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label ui:field="unassignedLabel"
+			addStyleNames="{style.center}" />
+		<g:Label ui:field="dateLabel" addStyleNames="{style.date}" />
+		<g:Label ui:field="occupancyLabel" addStyleNames="{style.date}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

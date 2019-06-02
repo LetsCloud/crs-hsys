@@ -18,9 +18,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import io.crs.hsys.client.admin.meditor.globalconfig.GlobalConfigEditorFactory;
 import io.crs.hsys.client.admin.meditor.globalconfig.GlobalConfigEditorPresenter;
+import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
+import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
+import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserPresenter;
-import io.crs.hsys.client.core.util.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 
@@ -104,6 +105,18 @@ public class GlobalConfigBrowserPresenter extends AbstractBrowserPresenter<Globa
 	@Override
 	protected String getEditorNameToken() {
 // TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(List<GlobalConfigDto> dtos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected TableType getTableType() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

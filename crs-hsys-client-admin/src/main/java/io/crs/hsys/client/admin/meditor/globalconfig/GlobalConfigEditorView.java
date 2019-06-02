@@ -22,6 +22,7 @@ import gwt.material.design.client.ui.MaterialDialog;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialTitle;
 import io.crs.hsys.client.admin.i18n.AdminMessages;
+import io.crs.hsys.client.core.message.MessageData;
 import io.crs.hsys.shared.dto.EntityPropertyCode;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 
@@ -112,5 +113,11 @@ public class GlobalConfigEditorView extends ViewWithUiHandlers<GlobalConfigEdito
 	@UiHandler("cancelButton")
 	void onCancelClick(ClickEvent event) {
 		getUiHandlers().cancel();
+	}
+
+	@Override
+	public void showMessage(MessageData message) {
+		// TODO Auto-generated method stub
+		
 	}
 }
