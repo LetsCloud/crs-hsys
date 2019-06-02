@@ -7,14 +7,13 @@ package io.crs.hsys.client.fro.roomplan.model;
  * @author robi
  *
  */
-class RoomTypeDayCellData {
+public class RoomTypeDayCellData {
 	
 	private int available;
 	
 	private double price;
 
 	public RoomTypeDayCellData(int available, double price) {
-		super();
 		this.available = available;
 		this.price = price;
 	}

@@ -1,0 +1,27 @@
+.blue_arrow {
+	background-color: blue;
+}
+
+.blue_arrow:before {
+	border-color: blue;
+	border-left-color: transparent;
+}
+
+.blue_arrow:after {
+	border-color: transparent;
+	border-left-color: blue;
+}
+
+.red_arrow {
+	background-color: red;
+}
+
+.red_arrow:before {
+	border-color: red;
+	border-left-color: transparent;
+}
+
+.red_arrow:after {
+	border-color: transparent;
+	border-left-color: red;
+}

@@ -32,6 +32,7 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.client.fro.roomplan.model.HeaderData;
 import io.crs.hsys.client.fro.roomplan.model.RoomCellData;
+import io.crs.hsys.client.fro.roomplan.model.RoomTypeDayCellData;
 import io.crs.hsys.client.fro.roomplan.model.RoomTypeRowData;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
@@ -47,7 +48,9 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	interface MyView extends View, HasUiHandlers<RoomPlanUiHandlers> {
 		void showPage();
 
-		void setData(List<HeaderData> data);
+		void setHeaderData(List<HeaderData> data);
+
+		void setRoomData(List<RoomTypeRowData> data);
 	}
 
 	@ProxyCodeSplit
@@ -84,40 +87,66 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	}
 
 	private void loadData(List<RoomDto> rooms) {
+		logger.log(Level.INFO, "RoomPlanPresenter().loadData()");
 		List<HeaderData> data = new ArrayList<HeaderData>();
 		int clientWidth = Window.getClientWidth();
 		int numOfDays = (clientWidth - 100) / 100;
 		for (int i = 1; i < numOfDays; i++) {
 			data.add(new HeaderData(i, new Date(), 0f));
 		}
-		getView().setData(data);
+		getView().setHeaderData(data);
 
 		rooms.sort((o1, o2) -> o1.getRoomType().compareTo(o2.getRoomType()));
 		List<RoomTypeRowData> rows = new ArrayList<RoomTypeRowData>();
 		List<RoomCellData> roomCells = new ArrayList<RoomCellData>();
+		List<RoomTypeDayCellData> daySummary = new ArrayList<RoomTypeDayCellData>();
 		String tempCode = null;
+		String tempName = null;
 		int numberOfRooms = 0;
 		for (RoomDto room : rooms) {
-			if (tempCode == null)
+			logger.log(Level.INFO,
+					"RoomPlanPresenter().loadData()->room.getRoomType().getCode()=" + room.getRoomType().getCode());
+			if (tempCode == null) {
 				tempCode = room.getRoomType().getCode();
+				tempName = room.getRoomType().getName();
+			}
+			
 			if (!tempCode.equals(room.getRoomType().getCode())) {
-				rows.add(new RoomTypeRowData(room.getRoomType().getCode(), room.getRoomType().getName(), numberOfRooms,
-						roomCells));
+				daySummary.clear();
+				for (int i = 1; i < numOfDays; i++) {
+					daySummary.add(new RoomTypeDayCellData(numberOfRooms, 100d));
+				}
+				rows.add(new RoomTypeRowData(tempCode, tempName, numberOfRooms,
+						roomCells, daySummary));
 				tempCode = room.getRoomType().getCode();
+				tempName = room.getRoomType().getName();
 				numberOfRooms = 0;
 				roomCells.clear();
 			}
 			numberOfRooms++;
+			logger.log(Level.INFO, "RoomPlanPresenter().loadData()->room.getCode()=" + room.getCode());
 			roomCells.add(new RoomCellData(room.getCode(), room.getDescription()));
 		}
+		if (tempCode != null) {
+			daySummary.clear();
+			for (int i = 1; i < numOfDays; i++) {
+				daySummary.add(new RoomTypeDayCellData(numberOfRooms, 100d));
+			}
+			rows.add(new RoomTypeRowData(tempCode, tempName, numberOfRooms,
+					roomCells, daySummary));
+		}
+		
+		getView().setRoomData(rows);
 	}
 
 	private void loadRoomData() {
+		logger.log(Level.INFO, "RoomPlanPresenter().loadRoomData()");
 		roomDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
 		LoadCallback<RoomDto> roomLoadCallback = new LoadCallback<RoomDto>() {
 
 			@Override
 			public void onSuccess(LoadResult<RoomDto> loadResult) {
+				logger.log(Level.INFO, "RoomPlanPresenter().loadRoomData().onSuccess()");
 				loadData(loadResult.getData());
 			}
 

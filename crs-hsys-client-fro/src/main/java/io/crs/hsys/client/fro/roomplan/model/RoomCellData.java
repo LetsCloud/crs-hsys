@@ -12,7 +12,6 @@ public class RoomCellData {
 	private String description;
 
 	public RoomCellData(String code, String description) {
-		super();
 		this.code = code;
 		this.description = description;
 	}

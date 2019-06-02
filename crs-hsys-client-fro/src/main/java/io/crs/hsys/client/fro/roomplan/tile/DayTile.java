@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.fro.roomplan.w2;
+package io.crs.hsys.client.fro.roomplan.tile;
 
 import java.util.Date;
 

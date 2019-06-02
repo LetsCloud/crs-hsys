@@ -1,1 +1,0 @@
-package io.crs.hsys.client.fro.roomplan.w2;

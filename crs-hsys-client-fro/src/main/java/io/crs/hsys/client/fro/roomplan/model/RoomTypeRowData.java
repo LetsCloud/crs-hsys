@@ -23,11 +23,15 @@ public class RoomTypeRowData {
 	private List<RoomTypeDayCellData> daySummary = new ArrayList<RoomTypeDayCellData>();
 
 	public RoomTypeRowData(String type, String description, int numberOfRooms, List<RoomCellData> rooms) {
-		super();
 		this.type = type;
 		this.description = description;
 		this.numberOfRooms = numberOfRooms;
 		this.rooms = rooms;
+	}
+
+	public RoomTypeRowData(String type, String description, int numberOfRooms, List<RoomCellData> rooms, List<RoomTypeDayCellData> daySummary) {
+		this(type, description, numberOfRooms, rooms);
+		this.daySummary = daySummary;
 	}
 
 	public String getType() {

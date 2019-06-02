@@ -15,7 +15,6 @@ public class HeaderData {
 	private Float occupancy;
 	
 	public HeaderData(Integer unassined, Date date, Float occupancy) {
-		super();
 		this.unassined = unassined;
 		this.date = date;
 		this.occupancy = occupancy;
