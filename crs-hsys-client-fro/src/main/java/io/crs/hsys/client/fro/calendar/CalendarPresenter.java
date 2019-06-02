@@ -15,7 +15,6 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.fro.NameTokens;
@@ -40,7 +39,7 @@ public class CalendarPresenter extends Presenter<CalendarPresenter.MyView, Calen
 
 	@Inject
 	CalendarPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
-		super(eventBus, view, proxy, AbstractAppPresenter.SLOT_MAIN);
+		super(eventBus, view, proxy, RevealType.Root);
 		logger.log(Level.INFO, "CalendarPresenter()");
 
 		addRegisteredHandler(ContentPushEvent.TYPE, this);

@@ -4,10 +4,10 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 import io.crs.hsys.client.core.app.AppView;
 
-public class AppModule extends AbstractPresenterModule {
+public class FroAppModule extends AbstractPresenterModule {
 	@Override
 	protected void configure() {
-		bindPresenter(AppPresenter.class, AppPresenter.MyView.class, AppView.class,
-				AppPresenter.MyProxy.class);
+		bindPresenter(FroAppPresenter.class, FroAppPresenter.MyView.class, AppView.class,
+				FroAppPresenter.MyProxy.class);
 	}
 }

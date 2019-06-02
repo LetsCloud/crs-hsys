@@ -35,17 +35,17 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
  * @author CR
  *
  */
-public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
+public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProxy> {
 
 	private final FroMessages i18n;
 	private final FroResources resources;
 
 	@ProxyStandard
-	interface MyProxy extends Proxy<AppPresenter> {
+	interface MyProxy extends Proxy<FroAppPresenter> {
 	}
 
 	@Inject
-	AppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, FroMessages i18n,
+	FroAppPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, FroMessages i18n,
 			FroResources resources, RestDispatch dispatch, AuthResource authenticationService,
 			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
 			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager swManager,

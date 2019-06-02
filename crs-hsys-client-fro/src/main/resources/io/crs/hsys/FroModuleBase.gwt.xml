@@ -42,7 +42,7 @@
 		value="io.crs.hsys.client.fro.gin.ClientModule" />
 
 	<set-configuration-property
-		name="gwtp.bootstrapper" value="io.crs.hsys.client.fro.App" />
+		name="gwtp.bootstrapper" value="io.crs.hsys.client.fro.FroApp" />
 	<set-configuration-property
 		name="CssResource.enableGss" value="true" />
 

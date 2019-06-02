@@ -26,6 +26,6 @@ public class CalendarView  extends ViewWithUiHandlers<CalendarUiHandlers> implem
 		logger.log(Level.INFO, "CalendarView");
 		initWidget(content);
 
-		    content.add(new GoogleCalendarPanel());
+//		    content.add(new GoogleCalendarPanel());
 	}
 }

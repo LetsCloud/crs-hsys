@@ -19,7 +19,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
-import io.crs.hsys.client.fro.AppPresenter;
+import io.crs.hsys.client.fro.FroAppPresenter;
 import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.shared.cnst.MenuItemType;
 
@@ -44,7 +44,7 @@ public class ResNewPresenter extends Presenter<ResNewPresenter.MyView, ResNewPre
 
 	@Inject
 	ResNewPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
-		super(eventBus, view, proxy, AppPresenter.SLOT_MAIN);
+		super(eventBus, view, proxy, FroAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "ResNewPresenter()");
 
 		getView().setUiHandlers(this);

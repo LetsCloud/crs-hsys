@@ -23,10 +23,10 @@ import io.crs.hsys.shared.cnst.SubSystem;
  * @author CR
  *
  */
-public class App extends AbstractAppBootstrapper {
+public class FroApp extends AbstractAppBootstrapper {
 
 	@Inject
-	App(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
+	FroApp(PlaceManager placeManager, AppData appData, ResourceDelegate<GlobalConfigResource> globalConfigResource,
 			MessagingManager messagingManager, AppServiceWorkerManager swManager, RestDispatch dispatch,
 			AuthResource authService, CurrentUser currentUser, FcmResource fcmService) {
 		super(placeManager, appData, globalConfigResource, messagingManager, swManager, dispatch, authService,
