@@ -112,6 +112,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.bradrydzewski</groupId>
+			<artifactId>gwt-cal</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.allen-sauer.gwt.dnd</groupId>
 			<artifactId>gwt-dnd</artifactId>
 			<version>3.1.2</version>

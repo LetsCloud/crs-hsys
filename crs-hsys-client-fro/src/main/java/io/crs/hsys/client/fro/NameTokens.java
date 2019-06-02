@@ -3,6 +3,7 @@ package io.crs.hsys.client.fro;
 public class NameTokens {
 
 	public static final String HOME = "/home";
+	public static final String CALENDAR = "/calendar";
 
 	// Reservation
 	public static final String RESERVATION = "/reservation";

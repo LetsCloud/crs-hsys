@@ -28,7 +28,16 @@
 	<inherits name="gwt.material.design.incubator.AddinsIncubator" />
 
 	<inherits name="com.google.common.collect.Collect" />
+<<<<<<< HEAD
+
+	<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd' />
+	<inherits name='com.bradrydzewski.gwt.calendar.Calendar' />
+	<inherits
+		name='com.bradrydzewski.gwt.calendar.theme.google.Google' />
+
+=======
 <inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+>>>>>>> master
 	<source path="client" />
 	<source path="shared" />
 

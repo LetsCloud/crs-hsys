@@ -72,6 +72,9 @@ public class AppPresenter extends AbstractAppPresenter<AppPresenter.MyProxy> {
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
 				.icon(IconType.DASHBOARD.name()).text(i18n.mainMenuItemDashboard()).nameToken(NameTokens.HOME).build());
 
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
+				.icon(IconType.EVENT_AVAILABLE.name()).text("Calendar").nameToken(NameTokens.CALENDAR).build());
+
 		// Reservation menu item
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
 				.icon(IconType.EVENT_AVAILABLE.name()).text(i18n.mainMenuItemReservation())
