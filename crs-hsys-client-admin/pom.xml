@@ -190,7 +190,7 @@
 							<moduleShortName>admin_module</moduleShortName>
 							<codeserverArgs>
 								<arg>-port</arg>
-								<arg>4532</arg>
+								<arg>4538</arg>
 							</codeserverArgs>
 						</configuration>
 					</plugin>

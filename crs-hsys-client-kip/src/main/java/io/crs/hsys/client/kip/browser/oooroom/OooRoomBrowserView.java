@@ -255,31 +255,35 @@ public class OooRoomBrowserView extends ViewWithUiHandlers<OooRoomBrowserUiHandl
 			tableView.hideColumn(COL_RETURNAS, false);
 		}
 
-		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 900)) {
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100)) {
 			colHide[COL_CREATEDBY] = true;
 			tableView.hideColumn(COL_CREATEDBY, true);
 		} else {
 			tableView.hideColumn(COL_CREATEDBY, false);
 		}
 
-		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1100)) {
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200)) {
 			colHide[COL_STATUS] = true;
 			tableView.hideColumn(COL_STATUS, true);
+		} else {
+			tableView.hideColumn(COL_STATUS, false);
+		}
+
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1300)) {
 			colHide[COL_REMARKS] = true;
 			tableView.hideColumn(COL_REMARKS, true);
 		} else {
-			tableView.hideColumn(COL_STATUS, false);
 			tableView.hideColumn(COL_REMARKS, false);
 		}
 
-		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1200)) {
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400)) {
 			colHide[COL_ROOMTYPE] = true;
 			tableView.hideColumn(COL_ROOMTYPE, true);
 		} else {
 			tableView.hideColumn(COL_ROOMTYPE, false);
 		}
 
-		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1400)) {
+		if ((Window.getClientWidth() > 520) && (Window.getClientWidth() <= 1500)) {
 			colHide[COL_FLOOR] = true;
 			tableView.hideColumn(COL_FLOOR, true);
 		} else {

@@ -11,9 +11,9 @@ import javax.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import io.crs.hsys.client.admin.i18n.AdminMessages;
-import io.crs.hsys.client.core.ui.browser.AbstractBrowserView;
-import io.crs.hsys.client.core.ui.browser.ActionColumn;
-import io.crs.hsys.client.core.ui.browser.DataColumn;
+import io.crs.hsys.client.core.browser.AbstractBrowserView;
+import io.crs.hsys.client.core.browser.ActionColumn;
+import io.crs.hsys.client.core.browser.DataColumn;
 import io.crs.hsys.shared.dto.GlobalConfigDto;
 
 /**
@@ -54,7 +54,7 @@ public class GlobalConfigBrowserView extends ViewWithUiHandlers<GlobalConfigBrow
 		});
 
 		table.getDeleteIcon().addClickHandler(e -> {
-			getUiHandlers().delete(table.getSelected());
+			getUiHandlers().delete(table.getSelectedItems());
 		});
 
 		// Key Column

@@ -9,6 +9,8 @@ public class NameTokens {
 	public static final String RESERVATION = "/reservation";
 	public static final String CREATE_RESERVATION = "/createReservation";
 
+	public static final String ROOM_PLAN = "/roomPlan";
+
 	public static final String CHAT_ROOM = "/chatRoom";
 
 	public static final String TASK_MNGR = "/taskMngr";
