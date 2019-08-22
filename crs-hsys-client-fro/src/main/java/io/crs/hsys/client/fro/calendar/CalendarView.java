@@ -16,16 +16,16 @@ import gwt.material.design.client.ui.MaterialPanel;
  * @author robi
  *
  */
-public class CalendarView  extends ViewWithUiHandlers<CalendarUiHandlers> implements CalendarPresenter.MyView {
+public class CalendarView extends ViewWithUiHandlers<CalendarUiHandlers> implements CalendarPresenter.MyView {
 	private static Logger logger = Logger.getLogger(CalendarView.class.getName());
 
 	MaterialPanel content = new MaterialPanel();
-	
+
 	@Inject
 	CalendarView() {
 		logger.log(Level.INFO, "CalendarView");
 		initWidget(content);
 
-//		    content.add(new GoogleCalendarPanel());
+		content.add(new GoogleCalendarPanel());
 	}
 }

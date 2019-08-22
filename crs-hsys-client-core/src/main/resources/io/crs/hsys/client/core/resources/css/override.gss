@@ -271,7 +271,9 @@ blockquote {
 	.read-only input[type=date], .read-only input[type=datetime-local],
 	.read-only input[type=tel], .read-only input[type=number], .read-only input[type=search],
 	.read-only textarea.materialize-textarea {
-	margin: 0 0 0 0;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0 !important;
 }
 
 @media only screen and (max-width:992px) {

@@ -37,6 +37,12 @@ public class Reservation extends HotelChild {
 	 * Foglalás státusza.
 	 */
 	@Index
+	private Long reservationNo;
+
+	/**
+	 * Foglalás státusza.
+	 */
+	@Index
 	private ReservationStatus status;
 
 	/**
@@ -45,7 +51,7 @@ public class Reservation extends HotelChild {
 	private Ref<Currency> currencyRef;
 
 	/**
-	 * Szobafoglalások listája.
+	 * Szoba tartózkodás.
 	 */
 	private List<RoomStay> roomStays = new ArrayList<RoomStay>();
 
@@ -62,10 +68,22 @@ public class Reservation extends HotelChild {
 	/**
 	 * Csoport foglalás esetén a kapcsolódó szobafoglalások.
 	 */
-	private List<Ref<Reservation>> reservationRefs = new ArrayList<Ref<Reservation>>();
+	private List<Ref<Reservation>> reservations = new ArrayList<Ref<Reservation>>();
 
 	public Reservation() {
 		logger.info("Reservation(");
+	}
+
+	protected Reservation(Builder builder) {
+		super(builder);
+		this.setReservationNo(builder.reservationNo);
+		this.setStatus(builder.status);
+		if (builder.currency != null)
+			this.setCurrency(builder.currency);
+		this.setFixedCharges(builder.fixedCharges);
+		this.setProfileLinks(builder.profileLinks);
+		// this.setReservationRefs(builder.reservationRefs);
+		this.setStatus(builder.status);
 	}
 
 	/**
@@ -75,12 +93,12 @@ public class Reservation extends HotelChild {
 		return currencyRef.get();
 	}
 
-	/**
-	 * 
-	 * @param currency
-	 */
-	public void setCurrency(Currency currency) {
-		this.currencyRef = Ref.create(currency);
+	public Long getReservationNo() {
+		return reservationNo;
+	}
+
+	public void setReservationNo(Long reservationNo) {
+		this.reservationNo = reservationNo;
 	}
 
 	public ReservationStatus getStatus() {
@@ -89,14 +107,6 @@ public class Reservation extends HotelChild {
 
 	public void setStatus(ReservationStatus status) {
 		this.status = status;
-	}
-
-	public Ref<Currency> getCurrencyRef() {
-		return currencyRef;
-	}
-
-	public void setCurrencyRef(Ref<Currency> currencyRef) {
-		this.currencyRef = currencyRef;
 	}
 
 	public List<RoomStay> getRoomStays() {
@@ -115,6 +125,22 @@ public class Reservation extends HotelChild {
 		this.fixedCharges = fixedCharges;
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 */
+	public void setCurrency(Currency currency) {
+		this.currencyRef = Ref.create(currency);
+	}
+
+	public Ref<Currency> getCurrencyRef() {
+		return currencyRef;
+	}
+
+	public void setCurrencyRef(Ref<Currency> currencyRef) {
+		this.currencyRef = currencyRef;
+	}
+
 	public List<ProfileLink> getProfileLinks() {
 		return profileLinks;
 	}
@@ -124,11 +150,11 @@ public class Reservation extends HotelChild {
 	}
 
 	public List<Ref<Reservation>> getReservationRefs() {
-		return reservationRefs;
+		return reservations;
 	}
 
 	public void setReservationRefs(List<Ref<Reservation>> reservationRefs) {
-		this.reservationRefs = reservationRefs;
+		this.reservations = reservationRefs;
 	}
 
 	public static Builder builder() {
@@ -141,6 +167,8 @@ public class Reservation extends HotelChild {
 	 *
 	 */
 	public static class Builder extends HotelChild.Builder<Builder> {
+
+		private Long reservationNo;
 
 		private ReservationStatus status;
 
@@ -159,6 +187,11 @@ public class Reservation extends HotelChild {
 
 		public Reservation build() {
 			return new Reservation(this);
+		}
+
+		public Builder reservationNo(Long reservationNo) {
+			this.reservationNo = reservationNo;
+			return this;
 		}
 
 		public Builder status(ReservationStatus status) {
@@ -210,17 +243,6 @@ public class Reservation extends HotelChild {
 			this.reservations.add(reservation);
 			return this;
 		}
-	}
-
-	protected Reservation(Builder builder) {
-		super(builder);
-		if (builder.currency != null)
-			this.setCurrency(builder.currency);
-		this.setFixedCharges(builder.fixedCharges);
-		this.setProfileLinks(builder.profileLinks);
-		// this.setReservationRefs(builder.reservationRefs);
-		this.setRoomStays(builder.roomStays);
-		this.setStatus(builder.status);
 	}
 
 	public static List<Reservation> filterByRoom(List<Reservation> reservations, final Room room) {

@@ -225,10 +225,10 @@ public class AppUserDto extends AccountChildDto {
 
 	@Override
 	public String toString() {
-		String ret = "AppUserDto:{name=" + name + ", username=" + username + ", password=" + password
-				+ ", emailAddress=" + emailAddress + ", picture=" + picture + ", enabled=" + enabled + ", admin="
-				+ admin + ", roles=" + roles + ", userGroups=" + userGroups + ", defaultHotel=" + defaultHotel
-				+ ", permissions=" + permissions + ", " + super.toString() + "}";
-		return ret;
+		return "AppUserDto [code=" + code + ", name=" + name + ", title=" + title + ", picture=" + picture
+				+ ", username=" + username + ", password=" + password + ", emailAddress=" + emailAddress + ", enabled="
+				+ enabled + ", admin=" + admin + ", userGroups=" + userGroups + ", permissions=" + permissions
+				+ ", roles=" + roles + ", defaultHotel=" + defaultHotel + "]";
 	}
+	
 }

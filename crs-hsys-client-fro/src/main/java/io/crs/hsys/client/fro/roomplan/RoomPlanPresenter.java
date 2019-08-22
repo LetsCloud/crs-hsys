@@ -4,7 +4,6 @@
 package io.crs.hsys.client.fro.roomplan;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +22,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
+
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.datasource.RoomDataSource;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
@@ -86,15 +86,21 @@ public class RoomPlanPresenter extends Presenter<RoomPlanPresenter.MyView, RoomP
 	public void onContentPush(ContentPushEvent event) {
 	}
 
-	private void loadData(List<RoomDto> rooms) {
-		logger.log(Level.INFO, "RoomPlanPresenter().loadData()");
+	private List<HeaderData> sumHeaderDate(int numOfDays) {
 		List<HeaderData> data = new ArrayList<HeaderData>();
-		int clientWidth = Window.getClientWidth();
-		int numOfDays = (clientWidth - 100) / 100;
+		
 		for (int i = 1; i < numOfDays; i++) {
 			data.add(new HeaderData(i, new Date(), 0f));
 		}
-		getView().setHeaderData(data);
+		return data;
+	}
+	
+	private void loadData(List<RoomDto> rooms) {
+		logger.log(Level.INFO, "RoomPlanPresenter().loadData()");
+		int clientWidth = Window.getClientWidth();
+		int numOfDays = (clientWidth - 100) / 100;
+		
+		getView().setHeaderData(sumHeaderDate(numOfDays));
 
 		rooms.sort((o1, o2) -> o1.getRoomType().compareTo(o2.getRoomType()));
 		List<RoomTypeRowData> rows = new ArrayList<RoomTypeRowData>();

@@ -256,18 +256,18 @@ public class RoomPlanView extends AbstractRoomPlanView {
 		}
 
 		// Get the layouts for each week in the month
-		RoomLayoutDescription[] weeks = periodLayoutDescription.getWeekDescriptions();
-		for (int weekOfMonth = 0; weekOfMonth < weeks.length && weekOfMonth < numberOfRooms; weekOfMonth++) {
-			RoomLayoutDescription weekDescription = weeks[weekOfMonth];
-			if (weekDescription != null) {
-				layOnTopOfTheWeekHangingAppointments(weekDescription, weekOfMonth);
-				layOnWeekDaysAppointments(weekDescription, weekOfMonth);
+		RoomLayoutDescription[] roomLayouts = periodLayoutDescription.getRoomLayoutDescriptions();
+		for (int roomNumber = 0; roomNumber < roomLayouts.length && roomNumber < numberOfRooms; roomNumber++) {
+			RoomLayoutDescription roomLayoutDescription = roomLayouts[roomNumber];
+			if (roomLayoutDescription != null) {
+				layOnTopOfTheWeekHangingAppointments(roomLayoutDescription, roomNumber);
+				layOnRoomRowBookings(roomLayoutDescription, roomNumber);
 			}
 		}
 	}
 
-	private void layOnTopOfTheWeekHangingAppointments(RoomLayoutDescription weekDescription, int weekOfMonth) {
-		BookingStackingManager weekTopElements = weekDescription.getTopAppointmentsManager();
+	private void layOnTopOfTheWeekHangingAppointments(RoomLayoutDescription roomLayoutDescription, int roomNumber) {
+		BookingStackingManager weekTopElements = roomLayoutDescription.getTopAppointmentsManager();
 		for (int layer = 0; layer < calculatedCellAppointments; layer++) {
 
 			ArrayList<BookingLayoutDescription> descriptionsInLayer = weekTopElements.getDescriptionsInLayer(layer);
@@ -278,40 +278,40 @@ public class RoomPlanView extends AbstractRoomPlanView {
 
 			for (BookingLayoutDescription weekTopElement : descriptionsInLayer) {
 				layOnAppointment(weekTopElement.getBooking(), weekTopElement.getFromDayCell(),
-						weekTopElement.getToDayCell(), weekOfMonth, layer);
+						weekTopElement.getToDayCell(), roomNumber, layer);
 			}
 		}
 	}
 
-	private void layOnWeekDaysAppointments(RoomLayoutDescription room, int weekOfMonth) {
+	private void layOnRoomRowBookings(RoomLayoutDescription roomLayout, int roomNumber) {
 
-		BookingStackingManager topAppointmentManager = room.getTopAppointmentsManager();
+		BookingStackingManager topAppointmentManager = roomLayout.getTopAppointmentsManager();
 
-		for (int dayOfWeek = 0; dayOfWeek < DAYS_IN_A_WEEK; dayOfWeek++) {
-			DayCellLayoutDescription dayAppointments = room.getDayLayoutDescription(dayOfWeek);
+		for (int dayOfPeriod = 0; dayOfPeriod < DAYS_IN_A_WEEK; dayOfPeriod++) {
+			DayCellLayoutDescription dayCellLayout = roomLayout.getDayLayoutDescription(dayOfPeriod);
 
-			int bookingLayer = topAppointmentManager.lowestLayerIndex(dayOfWeek);
+			int bookingLayerIndex = topAppointmentManager.lowestLayerIndex(dayOfPeriod);
 
-			if (dayAppointments != null) {
-				int count = dayAppointments.getAppointments().size();
+			if (dayCellLayout != null) {
+				int count = dayCellLayout.getAppointments().size();
 				for (int i = 0; i < count; i++) {
-					Booking appointment = dayAppointments.getAppointments().get(i);
-					bookingLayer = topAppointmentManager.nextLowestLayerIndex(dayOfWeek, bookingLayer);
-					if (bookingLayer > calculatedCellAppointments - 1) {
-						int remaining = count + topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfWeek) - i;
+					Booking booking = dayCellLayout.getAppointments().get(i);
+					bookingLayerIndex = topAppointmentManager.nextLowestLayerIndex(dayOfPeriod, bookingLayerIndex);
+					if (bookingLayerIndex > calculatedCellAppointments - 1) {
+						int remaining = count + topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfPeriod) - i;
 						if (remaining == 1) {
-							layOnAppointment(appointment, dayOfWeek, dayOfWeek, weekOfMonth, bookingLayer);
+							layOnAppointment(booking, dayOfPeriod, dayOfPeriod, roomNumber, bookingLayerIndex);
 						} else {
-							layOnNMoreLabel(remaining, dayOfWeek, weekOfMonth);
+							layOnNMoreLabel(remaining, dayOfPeriod, roomNumber);
 						}
 						break;
 					}
-					layOnAppointment(appointment, dayOfWeek, dayOfWeek, weekOfMonth, bookingLayer);
-					bookingLayer++;
+					layOnAppointment(booking, dayOfPeriod, dayOfPeriod, roomNumber, bookingLayerIndex);
+					bookingLayerIndex++;
 				}
-			} else if (topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfWeek) > 0) {
-				layOnNMoreLabel(topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfWeek), dayOfWeek,
-						weekOfMonth);
+			} else if (topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfPeriod) > 0) {
+				layOnNMoreLabel(topAppointmentManager.multidayAppointmentsOverLimitOn(dayOfPeriod), dayOfPeriod,
+						roomNumber);
 			}
 		}
 	}

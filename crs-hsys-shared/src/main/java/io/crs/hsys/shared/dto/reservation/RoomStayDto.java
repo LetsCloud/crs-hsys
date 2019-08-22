@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.crs.hsys.shared.dto.Dto;
+import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 
@@ -16,7 +17,7 @@ import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
  *
  */
 @SuppressWarnings("serial")
-public class RoomStayDto implements Dto {
+public class RoomStayDto extends HotelChildDto {
 
 	/**
 	 * Érkezés napja.

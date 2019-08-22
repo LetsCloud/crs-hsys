@@ -34,8 +34,9 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 	interface Binder extends UiBinder<Widget, DashboardView> {
 	}
 
-	private ReservationGrid reservationGrid;
+//	private ReservationGrid reservationGrid;
 
+	
 	@UiField
 	MaterialRow measuresPanel;
 
@@ -62,8 +63,8 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 		detailToggle.addItem("Vendég", 3);
 		detailToggle.setActive(1);
 
-		reservationGrid = new ReservationGrid();
-		reservationSearchPanel.add(reservationGrid);
+//		reservationGrid = new ReservationGrid();
+//		reservationSearchPanel.add(reservationGrid);
 	}
 
 	@Override
@@ -73,6 +74,6 @@ public class DashboardView extends ViewWithUiHandlers<DashboardUiHandlers> imple
 
 	@Override
 	public void setReservationSearchData(List<ReservationSearchDto> data) {
-		reservationGrid.setData(data);
+//		reservationGrid.setData(data);
 	}
 }

@@ -42,6 +42,8 @@
 		<!-- <gwt-material-table.version>2.0-SNAPSHOT</gwt-material-table.version> -->
 		<gwt-charts.version>0.9.9</gwt-charts.version>
 		<objectify-gwt.version>1.2.1</objectify-gwt.version>
+
+		<gwt-dnd.version>3.3.4</gwt-dnd.version>
 		<!-- https://firebase.google.com/support/releases -->
 		<firebase-sdk.version>5.7.1</firebase-sdk.version>
 
@@ -211,11 +213,17 @@
 				<version>${gwt-charts.version}</version>
 			</dependency>
 
-		<dependency>
-			<groupId>com.bradrydzewski</groupId>
-			<artifactId>gwt-cal</artifactId>
-			<version>0.9.5-SNAPSHOT</version>
-		</dependency>
+			<dependency>
+				<groupId>com.bradrydzewski</groupId>
+				<artifactId>gwt-cal</artifactId>
+				<version>0.9.5-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.allen-sauer.gwt.dnd</groupId>
+				<artifactId>gwt-dnd</artifactId>
+				<version>${gwt-dnd.version}</version>
+			</dependency>
 
 			<!-- ************************ -->
 			<!-- Moxieapps Gwt Highcharts -->
