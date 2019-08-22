@@ -12,8 +12,8 @@
 	
 	.iconBase {
 		position: absolute;
-		top: 30px;
-		font-size: 30px;
+		top: 25px;
+		font-size: 26px;
 	}
 	
 	.linkBase {
@@ -25,12 +25,16 @@
 	.labelBase {
 		position: absolute;
 		margin-left: 35px;
+	}
+	
+	.labelText {
+		display: inline;
 		color: #9e9e9e;
 	}
 	
 	.title {
 		display: inline;
-		font-size: 32px;
+		font-size: 26px;
 		color: #616161;
 	}
 	
@@ -45,6 +49,8 @@
 		padding-left: 2px;
 		border-radius: 3px;
 		margin-left: 10px;
+		font-size: 12px;
+		font-weight: bold;
 	}
 	</ui:style>
 
@@ -58,11 +64,13 @@
 				addStyleNames="{style.title}" />
 			<m:MaterialLabel ui:field="subTitle"
 				addStyleNames="{style.subTitle}" />
+		</m:MaterialPanel>
+		<m:MaterialPanel addStyleNames="{style.labelBase}">
+			<m:MaterialLabel ui:field="label"
+				addStyleNames="{style.labelText}">
+			</m:MaterialLabel>
 			<m:MaterialLabel ui:field="badge"
 				addStyleNames="{style.badge}" />
 		</m:MaterialPanel>
-		<m:MaterialLabel ui:field="label"
-			addStyleNames="{style.labelBase}">
-		</m:MaterialLabel>
 	</m:MaterialPanel>
 </ui:UiBinder> 

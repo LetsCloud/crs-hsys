@@ -6,6 +6,10 @@
 	xmlns:rp="urn:import:io.crs.hsys.client.fro.reservation.room">
 
 	<ui:style>
+	.mainPanel {
+		background: #f5f5f5;
+	}
+	
 	.dataGroupBox {
 		margin-top: 8px;
 		margin-bottom: 8px;
@@ -48,31 +52,52 @@
 					value="TWIN" text="1002" /> <m:html.Option value="SNGL" text="1003" /> </combobox:MaterialComboBox> -->
 				<m:MaterialRow marginBottom="0"
 					addStyleNames="dataGroupBox">
-					<m:MaterialColumn grid="s12">
+					<m:MaterialRow marginBottom="0">
 						<m:MaterialLabel text="Szobafoglalás"
-							marginBottom="10" addStyleNames="dataGroupTitle" float="LEFT" />
+							marginBottom="10" addStyleNames="dataGroupTitle" grid="s12" />
 						<!-- <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" backgroundColor="AMBER" 
 							iconType="EDIT" float="RIGHT" /> -->
-					</m:MaterialColumn>
+					</m:MaterialRow>
 
-					<rp:ValueDisplay ui:field="arrivalDisplay"
-						iconType="FLIGHT_LAND" iconColor="GREEN" label="Érkezés" text="2019.08.16."
-						subText=",pén" badgeText="KORAI" badgeBackground="GREEN"
-						badgeColor="WHITE" grid="s12 m6" />
+					<m:MaterialRow marginBottom="10" backgroundColor="GREY_LIGHTEN_4">
+						<rp:ValueDisplay ui:field="arrivalDisplay"
+							iconType="FLIGHT_LAND" iconColor="GREEN" label="Érkezés"
+							text="2019.08.16." subText="pén" badgeText="KORAI"
+							badgeBackground="GREEN" badgeColor="WHITE" grid="s12 m6" />
 
-					<rp:ValueDisplay ui:field="departurelDisplay"
-						iconType="FLIGHT_TAKEOFF" iconColor="RED" label="Utazás" text="2019.08.22."
-						subText=",csü" badgeText="KÉSŐI" badgeBackground="RED"
-						badgeColor="WHITE" grid="s12 m6" />
+						<rp:ValueDisplay ui:field="departurelDisplay"
+							iconType="ARROW_UPWARD" iconColor="GREY" label="Kiköltözés"
+							text="2019.08.22." subText="csü" grid="s12 m6" />
 
-					<rp:ValueDisplay ui:field="roomDisplay"
-						iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055."
-						subText=",DBLB" badgeText="FIX" badgeBackground="BLUE"
-						badgeColor="WHITE" grid="s12 m6" />
+						<rp:ValueDisplay ui:field="roomDisplay"
+							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
+							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
+							badgeColor="WHITE" grid="s12 m6" />
 
-					<m:MaterialTextBox text="2 / 1 / 0 / 0"
-						iconType="GROUP" label="Vendég létszám" grid="s12 m6" readOnly="true" />
+						<rp:ValueDisplay ui:field="guestDisplay"
+							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
+							text="2 / 1 / 0 / 0" grid="s12 m6" />
+					</m:MaterialRow>
 
+					<m:MaterialRow marginBottom="10" backgroundColor="GREY_LIGHTEN_4">
+						<rp:ValueDisplay ui:field="arrivalDisplay2"
+							iconType="ARROW_DOWNWARD" iconColor="GREY" label="Beköltözés"
+							text="2019.08.16." subText="pén" grid="s12 m6" />
+
+						<rp:ValueDisplay ui:field="departurelDisplay2"
+							iconType="FLIGHT_TAKEOFF" iconColor="RED" label="Utazás"
+							text="2019.08.22." subText="csü" badgeText="KÉSŐI"
+							badgeBackground="RED" badgeColor="WHITE" grid="s12 m6" />
+
+						<rp:ValueDisplay ui:field="roomDisplay2"
+							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
+							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
+							badgeColor="WHITE" grid="s12 m6" />
+
+						<rp:ValueDisplay ui:field="guestDisplay2"
+							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
+							text="2 / 1 / 0 / 0" grid="s12 m6" />
+					</m:MaterialRow>
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
