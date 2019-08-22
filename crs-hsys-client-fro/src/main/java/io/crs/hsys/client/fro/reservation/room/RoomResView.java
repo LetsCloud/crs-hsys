@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import com.google.gwt.dom.client.Style.FontWeight;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -36,7 +37,7 @@ public class RoomResView extends ViewWithUiHandlers<RoomResUiHandlers> implement
 	}
 	
 	@UiField
-	MaterialTextBox arrivalDate, departureDate, roomNumber;
+	ValueDisplay arrivalDisplay;
 	
 	/**
 	*/
@@ -44,15 +45,6 @@ public class RoomResView extends ViewWithUiHandlers<RoomResUiHandlers> implement
 	RoomResView(Binder binder) {
 		logger.log(Level.INFO, "RoomResView()");
 		initWidget(binder.createAndBindUi(this));
-		arrivalDate.getLabel().setBackgroundColor(Color.GREEN);
-		arrivalDate.getLabel().getElement().getStyle().setColor("white");
-		arrivalDate.getLabel().getElement().getStyle().setFontWeight(FontWeight.BOLD);
-		departureDate.getLabel().setBackgroundColor(Color.RED);
-		departureDate.getLabel().getElement().getStyle().setColor("white");
-		departureDate.getLabel().getElement().getStyle().setFontWeight(FontWeight.BOLD);
-		roomNumber.getLabel().setBackgroundColor(Color.BLACK);
-		roomNumber.getLabel().getElement().getStyle().setColor("white");
-		roomNumber.getLabel().getElement().getStyle().setFontWeight(FontWeight.BOLD);
 	}
 
 	@Override
