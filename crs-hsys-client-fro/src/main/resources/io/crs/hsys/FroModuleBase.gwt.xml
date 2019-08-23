@@ -26,6 +26,8 @@
 	<inherits
 		name="gwt.material.design.addext.GwtMaterialAddextBasic" />
 	<inherits name="gwt.material.design.incubator.AddinsIncubator" />
+	<!-- Font Awesome Icons import -->
+    <inherits name="gwt.material.design.incubator.FontAwesomeResources" />
 
 	<inherits name="com.google.common.collect.Collect" />
 

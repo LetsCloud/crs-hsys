@@ -10,9 +10,9 @@
 	<m:MaterialColumn grid="s12 m6 l6 xl12">
 		<m:MaterialPanel layoutPosition="RELATIVE"
 			height="100px" backgroundColor="GREY_LIGHTEN_2" marginBottom="5">
-			<m:MaterialLabel text="2019.08.19"
+			<m:MaterialLabel text="08.16"
 				layoutPosition="ABSOLUTE" left="10" top="10" />
-			<m:MaterialLabel text="2019.08.19"
+			<m:MaterialLabel text="08.22"
 				layoutPosition="ABSOLUTE" right="10" top="10" />
 
 			<m:MaterialIcon ui:field="arrivalIcon"

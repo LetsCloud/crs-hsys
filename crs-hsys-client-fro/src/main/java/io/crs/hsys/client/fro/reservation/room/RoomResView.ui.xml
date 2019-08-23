@@ -53,81 +53,78 @@
 				<m:MaterialRow marginBottom="0"
 					addStyleNames="dataGroupBox">
 					<m:MaterialRow marginBottom="0">
-						<m:MaterialLabel text="Szobafoglalás"
-							marginBottom="10" addStyleNames="dataGroupTitle" grid="s12" />
-						<!-- <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" backgroundColor="AMBER" 
-							iconType="EDIT" float="RIGHT" /> -->
+						<m:MaterialColumn grid="s6">
+							<m:MaterialLabel text="Szobafoglalás"
+								addStyleNames="dataGroupTitle" />
+							<!-- <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" backgroundColor="AMBER" 
+								iconType="EDIT" float="RIGHT" /> -->
+						</m:MaterialColumn>
+						<m:MaterialColumn grid="s6">
+							<m:MaterialIcon iconType="HOTEL" float="RIGHT" />
+							<m:MaterialLabel text="Lakó"
+								addStyleNames="dataGroupTitle" float="RIGHT" />
+						</m:MaterialColumn>
 					</m:MaterialRow>
 
-					<m:MaterialRow marginBottom="10" backgroundColor="GREY_LIGHTEN_4">
+					<m:MaterialRow marginBottom="10"
+						backgroundColor="GREY_LIGHTEN_4">
 						<rp:ValueDisplay ui:field="arrivalDisplay"
 							iconType="FLIGHT_LAND" iconColor="GREEN" label="Érkezés"
 							text="2019.08.16." subText="pén" badgeText="KORAI"
-							badgeBackground="GREEN" badgeColor="WHITE" grid="s12 m6" />
+							badgeBackground="GREEN" badgeColor="WHITE" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="departurelDisplay"
 							iconType="ARROW_UPWARD" iconColor="GREY" label="Kiköltözés"
-							text="2019.08.22." subText="csü" grid="s12 m6" />
+							text="2019.08.22." subText="csü" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="roomDisplay"
 							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
 							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
-							badgeColor="WHITE" grid="s12 m6" />
+							badgeColor="WHITE" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="guestDisplay"
 							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
-							text="2 / 1 / 0 / 0" grid="s12 m6" />
+							text="2 / 1 / 0 / 0" grid="s12 m6 xl12" />
 					</m:MaterialRow>
 
-					<m:MaterialRow marginBottom="10" backgroundColor="GREY_LIGHTEN_4">
+					<m:MaterialRow marginBottom="10"
+						backgroundColor="GREY_LIGHTEN_4">
 						<rp:ValueDisplay ui:field="arrivalDisplay2"
 							iconType="ARROW_DOWNWARD" iconColor="GREY" label="Beköltözés"
-							text="2019.08.16." subText="pén" grid="s12 m6" />
+							text="2019.08.16." subText="pén" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="departurelDisplay2"
 							iconType="FLIGHT_TAKEOFF" iconColor="RED" label="Utazás"
 							text="2019.08.22." subText="csü" badgeText="KÉSŐI"
-							badgeBackground="RED" badgeColor="WHITE" grid="s12 m6" />
+							badgeBackground="RED" badgeColor="WHITE" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="roomDisplay2"
 							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
 							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
-							badgeColor="WHITE" grid="s12 m6" />
+							badgeColor="WHITE" grid="s12 m6 xl12" />
 
 						<rp:ValueDisplay ui:field="guestDisplay2"
 							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
-							text="2 / 1 / 0 / 0" grid="s12 m6" />
+							text="2 / 1 / 0 / 0" grid="s12 m6 xl12" />
 					</m:MaterialRow>
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
-				paddingRight="0">
-				<m:MaterialRow marginBottom="0"
-					addStyleNames="dataGroupBox">
-					<m:MaterialColumn grid="s12">
-						<m:MaterialLabel text="Szobaárak"
-							marginBottom="10" addStyleNames="dataGroupTitle" float="LEFT" />
-						<m:MaterialButton margin="8" type="FLOATING"
-							waves="LIGHT" backgroundColor="AMBER" iconType="EDIT"
-							iconSize="TINY" float="RIGHT" />
-					</m:MaterialColumn>
-					<rp:RatePanel2 enableArrival="true" />
-					<rp:RatePanel2 enableDeparture="true" />
+				paddingRight="0" addStyleNames="dataGroupBox">
+				<m:MaterialRow marginBottom="0">
+					<m:MaterialLabel text="Szobaárak" marginBottom="10"
+						addStyleNames="dataGroupTitle" grid="s12" />
+				</m:MaterialRow>
+				<m:MaterialRow>
+					<rp:RatePanel3 enableArrival="true" />
+					<rp:RatePanel3 enableDeparture="true" />
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
 			<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
 				paddingRight="0">
 				<m:MaterialRow marginBottom="0">
-
-					<m:MaterialCheckBox text="EarlyCI" value="true"
-						grid="s6" />
-					<m:MaterialCheckBox text="LateCO" value="true"
-						grid="s6" />
-
-					<m:MaterialCheckBox text="Fix szoba"
-						value="true" grid="s6" />
 					<m:MaterialCheckBox text="Átterhelés"
 						value="true" grid="s6" />
 

@@ -99,7 +99,7 @@ public class ReservationPresenter extends AbstractConfigPresenter<ReservationPre
 	public void onReveal() {
 		super.onReveal();
 		logger.log(Level.INFO, "onReveal()");
-		SetPageTitleEvent.fire("R-No: 465465 / Szoba#: 205", "Mr. John Smith", MenuItemType.MENU_ITEM, this);
+		SetPageTitleEvent.fire("R-No: 465465", "Mr. John Smith", MenuItemType.MENU_ITEM, this);
 	}
 
 	@Override
