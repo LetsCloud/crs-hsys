@@ -114,6 +114,13 @@ public class DateUtils {
 
 	}
 
+	public static String formatDate(Date date, String locale) {
+		logger.info("DateUtils().formatDateTime()->locale=" + locale);
+		DateTimeFormat fmt = DateTimeFormat.getFormat(getDateFormat(locale));
+		return fmt.format(date);
+
+	}
+
 	private static Boolean isTime(Date date) {
 		DateTimeFormat timeformat = DateTimeFormat.getFormat("HH:mm");
 		String timeText = timeformat.format(date);
@@ -140,5 +147,23 @@ public class DateUtils {
 		if (locale.startsWith("uk"))
 			dateformat = "dd.MM.yyyy";
 		return dateformat;
+	}
+
+	public static String getDayOfWeek1(Date date, String locale) {
+		DateTimeFormat fmt = DateTimeFormat.getFormat("c");
+		return fmt.format(date);
+	}
+
+	public static String getDayOfWeek3(Date date, String locale) {
+		DateTimeFormat fmt = DateTimeFormat.getFormat("EEE");
+		return fmt.format(date);
+	}
+
+	public static Date addDaysToDate(Date date, int days) {
+		return new Date(date.getTime() + (days * DAY_IN_MILISEC));
+	}
+
+	public static Date setTime(Date date, long time) {
+		return new Date(((date.getTime() / DAY_IN_MILISEC) * DAY_IN_MILISEC) + time);
 	}
 }

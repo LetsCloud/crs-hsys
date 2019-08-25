@@ -8,7 +8,9 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import io.crs.hsys.client.core.gin.CoreModule;
 import io.crs.hsys.client.fro.FroAppModule;
 import io.crs.hsys.client.fro.calendar.CalendarModule;
+import io.crs.hsys.client.fro.config.rate.RateConfigModule;
 import io.crs.hsys.client.fro.dashboard.DashboardModule;
+import io.crs.hsys.client.fro.filter.FroFilterModule;
 import io.crs.hsys.client.fro.reservation.ReservationModule;
 import io.crs.hsys.client.fro.resnew.ResNewModule;
 import io.crs.hsys.client.fro.roomplan.RoomPlanModule;
@@ -31,6 +33,8 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new ReservationModule());
 		install(new CalendarModule());
 		install(new RoomPlanModule());
+		install(new FroFilterModule());
+		install(new RateConfigModule());
 
 	}
 }

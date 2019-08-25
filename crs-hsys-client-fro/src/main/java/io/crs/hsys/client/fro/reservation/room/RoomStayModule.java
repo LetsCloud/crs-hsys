@@ -9,14 +9,14 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
  * @author robi
  *
  */
-public class RoomResModule extends AbstractPresenterModule {
+public class RoomStayModule extends AbstractPresenterModule {
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.inject.client.AbstractGinModule#configure()
 	 */
 	@Override
 	protected void configure() {
-		bindPresenterWidget(RoomResPresenter.class, RoomResPresenter.MyView.class,
+		bindPresenterWidget(RoomStayPresenter.class, RoomStayPresenter.MyView.class,
 				RoomResView.class);
 	}
 

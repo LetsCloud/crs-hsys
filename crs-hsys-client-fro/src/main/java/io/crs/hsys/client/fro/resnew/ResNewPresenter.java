@@ -21,6 +21,8 @@ import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.fro.FroAppPresenter;
 import io.crs.hsys.client.fro.NameTokens;
+import io.crs.hsys.client.fro.filter.FroFilterFactory;
+import io.crs.hsys.client.fro.filter.createres.CreateResFilterPresenter;
 import io.crs.hsys.shared.cnst.MenuItemType;
 
 /**
@@ -34,6 +36,10 @@ public class ResNewPresenter extends Presenter<ResNewPresenter.MyView, ResNewPre
 	interface MyView extends View, HasUiHandlers<ResNewUiHandlers> {
 	}
 
+	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
+
+	private final CreateResFilterPresenter filter;
+
 	@ProxyCodeSplit
 	@NameToken(NameTokens.CREATE_RESERVATION)
 	// @UseGatekeeper(LoggedInGatekeeper.class)
@@ -43,10 +49,12 @@ public class ResNewPresenter extends Presenter<ResNewPresenter.MyView, ResNewPre
 	public static final SingleSlot<PresenterWidget<?>> SLOT_CONTENT = new SingleSlot<>();
 
 	@Inject
-	ResNewPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
+	ResNewPresenter(EventBus eventBus, MyView view, MyProxy proxy, FroFilterFactory filterFactory) {
 		super(eventBus, view, proxy, FroAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "ResNewPresenter()");
 
+		this.filter = filterFactory.createBookingFilter();
+		
 		getView().setUiHandlers(this);
 		addRegisteredHandler(ContentPushEvent.TYPE, this);
 	}
@@ -55,6 +63,7 @@ public class ResNewPresenter extends Presenter<ResNewPresenter.MyView, ResNewPre
 	public void onBind() {
 		super.onBind();
 		logger.log(Level.INFO, "onBind()");
+		setInSlot(SLOT_FILTER, filter);
 	}
 
 	@Override

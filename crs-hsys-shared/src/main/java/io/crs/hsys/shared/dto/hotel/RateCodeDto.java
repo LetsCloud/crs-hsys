@@ -15,7 +15,7 @@ import io.crs.hsys.shared.cnst.RateSubject;
  *
  */
 @SuppressWarnings("serial")
-public class RatePlanDto extends HotelChildDto {
+public class RateCodeDto extends HotelChildDto {
 
 	/**
 	 * Az árkód egyedi azonosítója.

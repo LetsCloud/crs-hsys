@@ -12,20 +12,21 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 
 import io.crs.hsys.client.fro.reservation.AbstractResWidget;
+import io.crs.hsys.shared.dto.reservation.ReservationDto;
 
 /**
  * @author robi
  *
  */
-public class RoomResPresenter extends AbstractResWidget<RoomResPresenter.MyView> implements RoomResUiHandlers {
-	private static Logger logger = Logger.getLogger(RoomResPresenter.class.getName());
+public class RoomStayPresenter extends AbstractResWidget<RoomStayPresenter.MyView> implements RoomResUiHandlers {
+	private static Logger logger = Logger.getLogger(RoomStayPresenter.class.getName());
 
 	interface MyView extends View, HasUiHandlers<RoomResUiHandlers> {
-		void open();
+		void setData(ReservationDto reservation);
 	}
 
 	@Inject
-	RoomResPresenter(EventBus eventBus, MyView view) {
+	RoomStayPresenter(EventBus eventBus, MyView view) {
 		super(eventBus, view);
 		logger.info("RoomResPresenter()");
 		this.setTitle("Szobafoglalás");
@@ -42,6 +43,9 @@ public class RoomResPresenter extends AbstractResWidget<RoomResPresenter.MyView>
 	protected void onReveal() {
 		super.onReveal();
 		logger.info("RoomResPresenter().onReveal()");
-		getView().open();
+	}
+	
+	public void setData(ReservationDto reservation) {
+		getView().setData(reservation);
 	}
 }

@@ -1,14 +1,13 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.filter;
+package io.crs.hsys.client.core.filter;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.core.filter.ComboBoxDtoFilter;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**

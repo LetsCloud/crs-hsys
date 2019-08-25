@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.kip.filter;
+package io.crs.hsys.client.core.filter;
 
 import java.util.Date;
 
@@ -13,8 +13,6 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.DatePickerLanguage;
 import gwt.material.design.client.ui.MaterialDatePicker;
-
-import io.crs.hsys.client.core.filter.BaseFilter;
 
 /**
  * @author robi

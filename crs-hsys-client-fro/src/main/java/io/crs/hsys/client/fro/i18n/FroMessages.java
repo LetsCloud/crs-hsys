@@ -45,25 +45,17 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Guest Rooms")
 	String mainMenuItemGuestRooms();
 
-
 	// ************
-	// Public Areas
+	// Configuration
 	// ************
-	@DefaultMessage("Public Areas")
-	String mainMenuGroupPublicAreas();
+	@DefaultMessage("Configuration")
+	String mainMenuGroupConfiguration();
 
+	@DefaultMessage("Hotel Configuration")
+	String mainMenuItemHotelConfiguration();
 
-	// ************
-	// Assignment
-	// ************
-	@DefaultMessage("Cleaning Assignment")
-	String mainMenuGroupAssignment();
-
-	@DefaultMessage("Room Cleaning Assignment")
-	String mainMenuItemRoomAssignment();
-
-	@DefaultMessage("Area Cleaning Assignment")
-	String mainMenuItemAreaAssignment();
+	@DefaultMessage("Rate Configuration")
+	String mainMenuItemRateConfiguration();
 
 
 	// ************
@@ -98,37 +90,18 @@ public interface FroMessages extends Messages {
 	
 
 	/*
-	 * ATTENDANTS
+	 * RATE CONFIGURATION
 	 */
 
-	@DefaultMessage("Attendants")
-	String attendantsTitle();
+	@DefaultMessage("Rate Configuration")
+	String rateConfigTitle();
 
-	@DefaultMessage("All attendants")
-	String attendantsDescription();
+	@DefaultMessage("Rate Grpoups, Rate Codes and Rate Manager")
+	String rateConfigDescription();
+
 	
-
-	/*
-	 * ASSIGNMENTS
-	 */
-
-	@DefaultMessage("Assignments")
-	String assignmentsTitle();
-
-	@DefaultMessage("All assignments")
-	String assignmentsDescription();
-
-	@DefaultMessage("Tasks assigned to {0}")
-	String assignmentsTasksAssignedTo(String attendant);
-
-	@DefaultMessage("AssignedTo")
-	String assignmentsAssignedTo();
-
-	@DefaultMessage("Inspector")
-	String assignmentsInspector();
-
-	@DefaultMessage("CleanType")
-	String assignmentsCleanType();
+	@DefaultMessage("Rate Codes")
+	String rateCodeBrowserTitle();
 	
 	
 }

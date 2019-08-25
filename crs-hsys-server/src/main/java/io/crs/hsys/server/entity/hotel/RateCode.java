@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.server.entity.reservation;
+package io.crs.hsys.server.entity.hotel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
-import io.crs.hsys.server.entity.hotel.HotelChild;
+import io.crs.hsys.server.entity.reservation.RateElement;
 import io.crs.hsys.shared.cnst.CityTaxMethod;
 import io.crs.hsys.shared.cnst.RateCalcMethod;
 import io.crs.hsys.shared.cnst.RateSubject;
@@ -19,7 +19,7 @@ import io.crs.hsys.shared.cnst.RateSubject;
  *
  */
 @Entity
-public class RatePlan extends HotelChild {
+public class RateCode extends HotelChild {
 
 	/**
 	 * Az árkód egyedi azonosítója.
@@ -58,16 +58,11 @@ public class RatePlan extends HotelChild {
 	private RateCalcMethod elementCalcMethod;
 
 	/**
-	 * Árkód érvényességek.
-	 */
-	private List<RateValidity> rateValidities = new ArrayList<RateValidity>();
-
-	/**
 	 * Árkód összetevők.
 	 */
 	private List<RateElement> rateElements = new ArrayList<RateElement>();
 
-	public RatePlan() {
+	public RateCode() {
 	}
 
 	public String getCode() {
@@ -126,14 +121,6 @@ public class RatePlan extends HotelChild {
 		this.elementCalcMethod = elementCalcMethod;
 	}
 
-	public List<RateValidity> getRateValidities() {
-		return rateValidities;
-	}
-
-	public void setRateValidities(List<RateValidity> rateValidities) {
-		this.rateValidities = rateValidities;
-	}
-
 	public List<RateElement> getRateElements() {
 		return rateElements;
 	}
@@ -158,15 +145,13 @@ public class RatePlan extends HotelChild {
 
 		private RateCalcMethod elementCalcMethod;
 
-		private List<RateValidity> rateValidities = new ArrayList<RateValidity>();
-
 		private List<RateElement> rateElements = new ArrayList<RateElement>();
 
 		public Builder() {
 		}
 
-		public RatePlan build() {
-			return new RatePlan(this);
+		public RateCode build() {
+			return new RateCode(this);
 		}
 
 		public Builder code(String code) {
@@ -204,18 +189,13 @@ public class RatePlan extends HotelChild {
 			return this;
 		}
 
-		public Builder rateValidities(List<RateValidity> rateValidities) {
-			this.rateValidities = rateValidities;
-			return this;
-		}
-
 		public Builder rateElements(List<RateElement> rateElements) {
 			this.rateElements = rateElements;
 			return this;
 		}
 	}
 
-	protected RatePlan(Builder builder) {
+	protected RateCode(Builder builder) {
 		super(builder);
 		this.cityTaxMethod = builder.cityTaxMethod;
 		this.code = builder.code;
@@ -224,7 +204,6 @@ public class RatePlan extends HotelChild {
 		this.nights = builder.nights;
 		this.paidNights = builder.paidNights;
 		this.rateElements = builder.rateElements;
-		this.rateValidities = builder.rateValidities;
 		this.subject = builder.subject;
 	}
 

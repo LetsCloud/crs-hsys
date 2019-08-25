@@ -15,7 +15,7 @@
 	}
 	</ui:style>
 
-	<m:MaterialColumn grid="s12 m6 l6 xl12"
+	<m:MaterialColumn grid="s12 m6 l6 xl6"
 		marginBottom="10">
 		<m:MaterialRow backgroundColor="GREY_LIGHTEN_4"
 			marginBottom="0">

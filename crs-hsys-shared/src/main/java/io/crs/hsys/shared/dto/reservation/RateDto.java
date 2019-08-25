@@ -11,7 +11,7 @@ import io.crs.hsys.shared.cnst.CityTaxMethod;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.CurrencyDto;
 import io.crs.hsys.shared.dto.hotel.RateElementDto;
-import io.crs.hsys.shared.dto.hotel.RatePlanDto;
+import io.crs.hsys.shared.dto.hotel.RateCodeDto;
 
 /**
  * @author CR
@@ -33,7 +33,7 @@ public class RateDto implements Dto {
 	/**
 	 * Árkód.
 	 */
-	private RatePlanDto ratePlan;
+	private RateCodeDto ratePlan;
 
 	/**
 	 * Ár.
@@ -71,11 +71,11 @@ public class RateDto implements Dto {
 		this.toDate = toDate;
 	}
 
-	public RatePlanDto getRatePlan() {
+	public RateCodeDto getRatePlan() {
 		return ratePlan;
 	}
 
-	public void setRatePlan(RatePlanDto ratePlan) {
+	public void setRatePlan(RateCodeDto ratePlan) {
 		this.ratePlan = ratePlan;
 	}
 

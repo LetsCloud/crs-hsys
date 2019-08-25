@@ -17,9 +17,11 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
 import gwt.material.design.client.constants.IconType;
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.app.AppServiceWorkerManager;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
+import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.menu.MenuPresenter;
 import io.crs.hsys.client.core.security.AppData;
 import io.crs.hsys.client.core.security.CurrentUser;
@@ -37,6 +39,7 @@ import io.crs.hsys.shared.dto.menu.MenuItemDto;
  */
 public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProxy> {
 
+	private final CoreMessages i18nCore;
 	private final FroMessages i18n;
 	private final FroResources resources;
 
@@ -49,10 +52,11 @@ public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProx
 			FroResources resources, RestDispatch dispatch, AuthResource authenticationService,
 			ResourceDelegate<GlobalConfigResource> globalConfigResource, CurrentUser currentUser,
 			MenuPresenter menuPresenter, AppData appData, AppServiceWorkerManager swManager,
-			MessagingManager messagingManager) {
+			MessagingManager messagingManager, CoreMessages i18nCore) {
 		super(eventBus, view, proxy, placeManager, dispatch, authenticationService, globalConfigResource, menuPresenter,
 				currentUser, SubSystem.FRO, swManager, messagingManager);
 
+		this.i18nCore = i18nCore;
 		this.i18n = i18n;
 		this.resources = resources;
 	}
@@ -87,7 +91,7 @@ public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProx
 
 		// Chat Room menu item
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
-				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CHAT_ROOM).build());
+				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CREATE_RESERVATION).build());
 
 		// Tasks menu item
 
@@ -98,11 +102,11 @@ public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProx
 
 		// Assignment menu group
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.SUB_MENU)
-				.icon(IconType.ASSIGNMENT_RETURNED.name()).text(i18n.mainMenuGroupAssignment())
-				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemRoomAssignment())
-						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
-				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemAreaAssignment())
-						.nameToken(NameTokens.HK_ASSIGNMENTS).build())
+				.icon(IconType.BUILD.name()).text(i18n.mainMenuGroupConfiguration())
+				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemHotelConfiguration())
+						.nameToken(CoreNameTokens.HOTEL_CONFIG).build())
+				.addItem(MenuItemDto.builder().type(MenuItemType.MENU_ITEM).text(i18n.mainMenuItemRateConfiguration())
+						.nameToken(NameTokens.RATE_CONFIGURATION).build())
 				.build());
 
 		return menuItems;

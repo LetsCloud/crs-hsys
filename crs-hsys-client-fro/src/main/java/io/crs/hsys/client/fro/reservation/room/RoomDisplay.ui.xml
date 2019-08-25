@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:rp="urn:import:io.crs.hsys.client.fro.reservation.room">
+
+	<ui:style>
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+
+	<m:MaterialRow marginBottom="10" marginRight="10"
+		backgroundColor="GREY_LIGHTEN_4">
+		<rp:ValueDisplay ui:field="arrivalDisplay"
+			iconType="FLIGHT_LAND" iconColor="GREEN" label="Érkezés"
+			grid="s12 sx6 m6 xl6" />
+
+		<rp:ValueDisplay ui:field="departurelDisplay"
+			iconType="FLIGHT_TAKEOFF" iconColor="RED" label="Utazás"
+			grid="s12 sx6 m6 xl6" />
+
+		<rp:ValueDisplay ui:field="roomDisplay"
+			iconType="HOTEL" iconColor="BLUE" label="Szoba" grid="s12 sx6 m6 xl6" />
+
+		<rp:ValueDisplay ui:field="guestDisplay"
+			iconType="GROUP" iconColor="GREY" label="Vendég létszám"
+			text="2 / 1 / 0 / 0" grid="s12 sx6 m6 xl6" />
+	</m:MaterialRow>
+</ui:UiBinder> 

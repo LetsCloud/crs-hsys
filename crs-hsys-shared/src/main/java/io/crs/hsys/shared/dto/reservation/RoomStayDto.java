@@ -8,21 +8,24 @@ import java.util.Date;
 import java.util.List;
 
 import io.crs.hsys.shared.dto.Dto;
-import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
  * @author CR
  *
  */
 @SuppressWarnings("serial")
-public class RoomStayDto extends HotelChildDto {
+public class RoomStayDto implements Dto {
 
 	/**
 	 * Érkezés napja.
 	 */
 	private Date arrival;
+	private Boolean eci = false;
+	private Boolean lco = false;
+	private Boolean fixed = false;
+	private Boolean noPost = false;
 
 	/**
 	 * Elutazott.
@@ -39,10 +42,26 @@ public class RoomStayDto extends HotelChildDto {
 	 */
 	private Boolean movedOut;
 
+	public Boolean getFixed() {
+		return fixed;
+	}
+
+	public void setFixed(Boolean fixed) {
+		this.fixed = fixed;
+	}
+
+	public Boolean getNoPost() {
+		return noPost;
+	}
+
+	public void setNoPost(Boolean noPost) {
+		this.noPost = noPost;
+	}
+
 	/**
 	 * Szobatípus hivatkozás.
 	 */
-	private RoomTypeDto roomTypeDto;
+	private RoomTypeDtor roomTypeDto;
 
 	/**
 	 * Szobatípus hivatkozás.
@@ -98,11 +117,11 @@ public class RoomStayDto extends HotelChildDto {
 		this.movedOut = movedOut;
 	}
 
-	public RoomTypeDto getRoomType() {
+	public RoomTypeDtor getRoomType() {
 		return roomTypeDto;
 	}
 
-	public void setRoomType(RoomTypeDto roomTypeDto) {
+	public void setRoomType(RoomTypeDtor roomTypeDto) {
 		this.roomTypeDto = roomTypeDto;
 	}
 
@@ -144,6 +163,101 @@ public class RoomStayDto extends HotelChildDto {
 
 	public void setAmenities(List<String> amenities) {
 		this.amenities = amenities;
+	}
+
+	public Boolean getEci() {
+		return eci;
+	}
+
+	public void setEci(Boolean eci) {
+		this.eci = eci;
+	}
+
+	public Boolean getLco() {
+		return lco;
+	}
+
+	public void setLco(Boolean lco) {
+		this.lco = lco;
+	}
+
+	/**
+	 * 
+	 * @author CR
+	 *
+	 */
+	public static class Builder {
+
+		private RoomStayDto instance = new RoomStayDto();
+
+		public Builder() {
+		}
+
+		public RoomStayDto build() {
+			return instance;
+		}
+
+		public Builder arrival(Date arrival) {
+			instance.setArrival(arrival);
+			return this;
+		}
+
+		public Builder departure(Date departure) {
+			instance.setDeparture(departure);
+			return this;
+		}
+
+		public Builder eci(Boolean eci) {
+			instance.setEci(eci);
+			return this;
+		}
+
+		public Builder lco(Boolean lco) {
+			instance.setLco(lco);
+			return this;
+		}
+
+
+		public Builder fixed(Boolean fixed) {
+			instance.setFixed(fixed);
+			return this;
+		}
+
+		public Builder noPost(Boolean noPost) {
+			instance.setNoPost(noPost);
+			return this;
+		}
+		
+		
+		public Builder amenities(List<String> amenities) {
+			instance.setAmenities(amenities);
+			return this;
+		}
+
+		public Builder movedInto(Boolean movedInto) {
+			instance.setMovedInto(movedInto);
+			return this;
+		}
+
+		public Builder movedOut(Boolean movedOut) {
+			instance.setMovedOut(movedOut);
+			return this;
+		}
+
+		public Builder room(RoomDto room) {
+			instance.setRoom(room);
+			return this;
+		}
+
+		public Builder quantity(Integer quantity) {
+			instance.setQuantity(quantity);
+			return this;
+		}
+
+		public Builder roomType(RoomTypeDtor roomType) {
+			instance.setRoomType(roomType);
+			return this;
+		}
 	}
 
 }

@@ -5,9 +5,13 @@ package io.crs.hsys.client.fro.reservation;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.datepicker.client.CalendarUtil;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PresenterWidget;
@@ -22,9 +26,16 @@ import io.crs.hsys.client.core.config.AbstractConfigPresenter;
 import io.crs.hsys.client.core.editor.AbstractDisplayPresenterWidget;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
+import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.fro.FroAppPresenter;
 import io.crs.hsys.client.fro.NameTokens;
+import io.crs.hsys.client.fro.reservation.room.RoomStayPresenter;
 import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.cnst.RoomStatus;
+import io.crs.hsys.shared.dto.hotel.RoomDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.reservation.ReservationDto;
+import io.crs.hsys.shared.dto.reservation.RoomStayDto;
 
 /**
  * @author robi
@@ -50,11 +61,14 @@ public class ReservationPresenter extends AbstractConfigPresenter<ReservationPre
 
 	private String webSafeKey;
 
+	private final RoomStayPresenter roomResPresenter;
+	
 	@Inject
 	ReservationPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy, ResWidgetPresenterFactory widgetFactgory) {
 		super(eventBus, placeManager, view, proxy, FroAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "ReservationPresenter()");
 
+		roomResPresenter = widgetFactgory.createRoomResPresenter();
 
 //		setCaption(i18nCore.organizationConfigTitle());
 //		setDescription(i18nCore.organizationConfigDescription());
@@ -62,7 +76,7 @@ public class ReservationPresenter extends AbstractConfigPresenter<ReservationPre
 
 		addContent("Main", widgetFactgory.createMainResPresenter(),
 				SP_MAIN);
-		addContent("Room", widgetFactgory.createRoomResPresenter(),
+		addContent("Room", roomResPresenter,
 				SP_ROOM);
 		addContent("Extra", widgetFactgory.createExtraResPresenter(),
 				SP_EXTRAS);
@@ -100,11 +114,37 @@ public class ReservationPresenter extends AbstractConfigPresenter<ReservationPre
 		super.onReveal();
 		logger.log(Level.INFO, "onReveal()");
 		SetPageTitleEvent.fire("R-No: 465465", "Mr. John Smith", MenuItemType.MENU_ITEM, this);
+		
+		roomResPresenter.setData(getData());
 	}
 
 	@Override
 	public void onContentPush(ContentPushEvent event) {
 		// TODO Auto-generated method stub
 
+	}
+
+	private ReservationDto getData() {
+
+		RoomTypeDtor dblbRTD = RoomTypeDtor.builder().code("DBLB").name("Double bed room").build();
+		RoomTypeDtor twinRTD = RoomTypeDtor.builder().code("TWIN").name("Twin bed room").build();
+
+		RoomDto r101D =	new RoomDto.Builder().code("101").description("asdsadasd").floor("1").roomStatus(RoomStatus.RS_CLEAN).roomType(dblbRTD).build();
+		RoomDto r105D =	new RoomDto.Builder().code("105").description("asdsadasd").floor("1").roomStatus(RoomStatus.RS_CLEAN).roomType(twinRTD).build();
+		
+		Date arrivalDate = DateUtils.setTime(new Date(), 0);
+		Date moveDate = DateUtils.addDaysToDate(arrivalDate, 2);
+		Date departureDate = DateUtils.addDaysToDate(arrivalDate, 3);
+
+		ReservationDto result = ReservationDto.builder().
+				addRoomStay(new RoomStayDto.Builder().arrival(arrivalDate).eci(true).movedInto(false)
+						.departure(moveDate).lco(false).movedOut(true)
+						.room(r101D).roomType(dblbRTD).build()).
+				addRoomStay(new RoomStayDto.Builder().arrival(moveDate).eci(false).movedInto(true)
+						.departure(departureDate).lco(true).movedOut(false)
+						.room(r105D).roomType(twinRTD).build()).
+				build();
+
+		return result;
 	}
 }

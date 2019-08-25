@@ -18,7 +18,8 @@ public class NameTokens {
 	public static final String GUEST_ROOMS2 = "/guestRooms2";
 	
 	public static final String HK_ATENDANTS = "/hkAtendants";
-	public static final String HK_ASSIGNMENTS = "/hkAssignments";
+	public static final String RATE_CONFIGURATION = "/rateConfiguration";
+	public static final String RATECODE_EDITOR = "/rateCodeEditor";
 	public static final String MINIBAR_CONSUMPTION = "/minibarConsumption";
 
 
@@ -29,10 +30,6 @@ public class NameTokens {
 
 	public static String getHkAtendants() {
 		return HK_ATENDANTS;
-	}
-
-	public static String getHkAssignment() {
-		return HK_ASSIGNMENTS;
 	}
 
 	public static String getMinibarConsumption() {

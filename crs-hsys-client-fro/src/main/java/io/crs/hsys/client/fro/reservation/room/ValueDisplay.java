@@ -7,14 +7,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
-import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialPanel;
 
 /**
@@ -32,10 +31,13 @@ public class ValueDisplay extends Composite {
 	MaterialPanel panel;
 
 	@UiField
+	FlowPanel badgePanel;
+
+	@UiField
 	MaterialIcon icon;
 
 	@UiField
-	MaterialLabel label, title, subTitle, badge;
+	MaterialLabel label, title, subTitle;
 
 	/**
 	 * 
@@ -67,16 +69,8 @@ public class ValueDisplay extends Composite {
 	public void setSubText(String text) {
 		subTitle.setText(text);
 	}
-
-	public void setBadgeText(String text) {
-		badge.setText(text);		
-	}
-
-	public void setBadgeBackground(Color color) {
-		badge.setBackgroundColor(color);		
-	}
-
-	public void setBadgeColor(Color color) {
-		badge.setTextColor(color);		
+	
+	public void addBadge(Widget widget) {
+		badgePanel.add(widget);
 	}
 }

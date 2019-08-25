@@ -42,22 +42,15 @@
 
 	<g:HTMLPanel>
 		<m:MaterialRow marginBottom="0">
-			<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+			<m:MaterialColumn grid="s12 xl12" paddingLeft="0"
 				paddingRight="0">
-				<!-- <combobox:MaterialComboBox label="Szobatípus" grid="s4"> <m:html.Option 
-					value="DBLB" text="DBLB" /> <m:html.Option value="TWIN" text="TWIN" /> <m:html.Option 
-					value="SNGL" text="SNGL" /> </combobox:MaterialComboBox> <m:MaterialIntegerBox 
-					ui:field="qt" label="Mennyi" placeholder="Mennyi" grid="s4" /> <combobox:MaterialComboBox 
-					label="Szoba#" grid="s4"> <m:html.Option value="DBLB" text="1001" /> <m:html.Option 
-					value="TWIN" text="1002" /> <m:html.Option value="SNGL" text="1003" /> </combobox:MaterialComboBox> -->
 				<m:MaterialRow marginBottom="0"
 					addStyleNames="dataGroupBox">
+
 					<m:MaterialRow marginBottom="0">
 						<m:MaterialColumn grid="s6">
 							<m:MaterialLabel text="Szobafoglalás"
 								addStyleNames="dataGroupTitle" />
-							<!-- <m:MaterialButton margin="8" type="FLOATING" waves="LIGHT" backgroundColor="AMBER" 
-								iconType="EDIT" float="RIGHT" /> -->
 						</m:MaterialColumn>
 						<m:MaterialColumn grid="s6">
 							<m:MaterialIcon iconType="HOTEL" float="RIGHT" />
@@ -65,52 +58,13 @@
 								addStyleNames="dataGroupTitle" float="RIGHT" />
 						</m:MaterialColumn>
 					</m:MaterialRow>
-
-					<m:MaterialRow marginBottom="10"
-						backgroundColor="GREY_LIGHTEN_4">
-						<rp:ValueDisplay ui:field="arrivalDisplay"
-							iconType="FLIGHT_LAND" iconColor="GREEN" label="Érkezés"
-							text="2019.08.16." subText="pén" badgeText="KORAI"
-							badgeBackground="GREEN" badgeColor="WHITE" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="departurelDisplay"
-							iconType="ARROW_UPWARD" iconColor="GREY" label="Kiköltözés"
-							text="2019.08.22." subText="csü" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="roomDisplay"
-							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
-							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
-							badgeColor="WHITE" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="guestDisplay"
-							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
-							text="2 / 1 / 0 / 0" grid="s12 m6 xl12" />
-					</m:MaterialRow>
-
-					<m:MaterialRow marginBottom="10"
-						backgroundColor="GREY_LIGHTEN_4">
-						<rp:ValueDisplay ui:field="arrivalDisplay2"
-							iconType="ARROW_DOWNWARD" iconColor="GREY" label="Beköltözés"
-							text="2019.08.16." subText="pén" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="departurelDisplay2"
-							iconType="FLIGHT_TAKEOFF" iconColor="RED" label="Utazás"
-							text="2019.08.22." subText="csü" badgeText="KÉSŐI"
-							badgeBackground="RED" badgeColor="WHITE" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="roomDisplay2"
-							iconType="HOTEL" iconColor="BLUE" label="Szoba" text="1055"
-							subText="DBLB" badgeText="FIX" badgeBackground="BLUE"
-							badgeColor="WHITE" grid="s12 m6 xl12" />
-
-						<rp:ValueDisplay ui:field="guestDisplay2"
-							iconType="GROUP" iconColor="GREY" label="Vendég létszám"
-							text="2 / 1 / 0 / 0" grid="s12 m6 xl12" />
-					</m:MaterialRow>
+ 
+					<g:FlowPanel ui:field="roomStaysPanel"/>
+					
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
-			<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
+			<m:MaterialColumn grid="s12 xl12" paddingLeft="0"
 				paddingRight="0" addStyleNames="dataGroupBox">
 				<m:MaterialRow marginBottom="0">
 					<m:MaterialLabel text="Szobaárak" marginBottom="10"
@@ -122,18 +76,6 @@
 				</m:MaterialRow>
 			</m:MaterialColumn>
 
-			<m:MaterialColumn grid="s12 xl6" paddingLeft="0"
-				paddingRight="0">
-				<m:MaterialRow marginBottom="0">
-					<m:MaterialCheckBox text="Átterhelés"
-						value="true" grid="s6" />
-
-					<m:MaterialCheckBox text="Árkód szobára"
-						value="true" grid="s6" />
-					<m:MaterialCheckBox text="IFA szobára"
-						value="true" grid="s6" />
-				</m:MaterialRow>
-			</m:MaterialColumn>
 		</m:MaterialRow>
 
 

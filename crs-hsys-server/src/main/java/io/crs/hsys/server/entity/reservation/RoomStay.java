@@ -10,6 +10,7 @@ import java.util.List;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Index;
 
+import io.crs.hsys.server.entity.hotel.Rate;
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.hotel.RoomType;
 
