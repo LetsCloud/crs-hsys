@@ -13,14 +13,14 @@ import javax.inject.Provider;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.web.bindery.event.shared.EventBus;
 
-import io.crs.hsys.client.core.filter.DateFilter;
-import io.crs.hsys.client.core.filter.RoomTypeFilter;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterView;
+import io.crs.hsys.client.core.filter.widget.DateFilter;
+import io.crs.hsys.client.core.filter.widget.RoomTypeFilter;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**

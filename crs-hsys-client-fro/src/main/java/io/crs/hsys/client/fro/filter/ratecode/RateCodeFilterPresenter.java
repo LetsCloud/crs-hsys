@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.filter.roomtype;
+package io.crs.hsys.client.fro.filter.ratecode;
 
 import java.util.logging.Logger;
 
@@ -10,9 +10,10 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
-import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
 import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 
@@ -20,37 +21,31 @@ import io.crs.hsys.client.core.security.CurrentUser;
  * @author robi
  *
  */
-public class RoomTypeFilterPresenter extends AbstractHotelChildFilterPresenter<RoomTypeFilterPresenter.MyView> {
-	private static Logger logger = Logger.getLogger(RoomTypeFilterPresenter.class.getName());
+public class RateCodeFilterPresenter extends AbstractHotelChildFilterPresenter<RateCodeFilterPresenter.MyView> {
+	private static Logger logger = Logger.getLogger(RateCodeFilterPresenter.class.getName());
 
 	public interface MyView extends AbstractHotelChildFilterPresenter.MyView, HasUiHandlers<AbstractFilterUiHandlers> {
-		InventoryType getSelectedInventoryType();
 	}
 
 	@Inject
-	RoomTypeFilterPresenter(EventBus eventBus, MyView view, CurrentUser currentUser, HotelDataSource2 hotelDataSource) {
+	RateCodeFilterPresenter(EventBus eventBus, MyView view, CurrentUser currentUser, HotelDataSource2 hotelDataSource) {
 		super(eventBus, view, currentUser, hotelDataSource);
-		logger.info("RoomTypeFilterPresenter()");
+		logger.info("RateCodeFilterPresenter()");
 		getView().setUiHandlers(this);
 	}
 
 	@Override
 	public void onReveal() {
 		super.onReveal();
-		logger.info("RoomTypeFilterPresenter().onReveal()");
+		logger.info("RateCodeFilterPresenter().onReveal()");
 	}
 
 	public Boolean isOnlyActive() {
 		return getView().isOnlyActive();
 	}
 
-	public InventoryType getSelectedInventoryType() {
-		return getView().getSelectedInventoryType();
-	}
-
 	@Override
 	public void filterChange() {
-		// TODO Auto-generated method stub
-		
+		FilterChangeEvent.fire(RateCodeFilterPresenter.this, DataTable.RATE_CODE);
 	}
 }

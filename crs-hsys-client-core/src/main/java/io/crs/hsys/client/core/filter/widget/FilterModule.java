@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.filter;
+package io.crs.hsys.client.core.filter.widget;
 
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;

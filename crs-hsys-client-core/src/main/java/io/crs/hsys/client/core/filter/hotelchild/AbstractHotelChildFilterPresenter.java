@@ -12,12 +12,9 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
-
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
 
@@ -57,7 +54,7 @@ public abstract class AbstractHotelChildFilterPresenter<V extends AbstractHotelC
 				logger.info("AbstractFilterPresenter().onReveal().onSuccess()");
 				getView().setHotelData(currentUser.getAppUserDto().getAvailableHotels());
 				getView().setSelectedHotel(currentUser.getCurrentHotel());
-				FilterChangeEvent.fire(AbstractHotelChildFilterPresenter.this, DataTable.ROOM_TYPE);
+				filterChange();
 			}
 
 			@Override

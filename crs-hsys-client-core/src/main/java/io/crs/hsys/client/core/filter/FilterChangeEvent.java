@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.filter;
+package io.crs.hsys.client.core.filter;
 
 import java.util.logging.Logger;
 
@@ -17,7 +17,7 @@ public class FilterChangeEvent extends GwtEvent<FilterChangeEvent.FilterChangeHa
 	private static final Logger logger = Logger.getLogger(FilterChangeEvent.class.getName());
 
 	public enum DataTable {
-		USER_GROUPS, APP_USER, TASK, QUOTATION, HOTEL, ROOM_TYPE
+		USER_GROUPS, APP_USER, TASK, QUOTATION, HOTEL, ROOM_TYPE, RATE_CODE;
 	}
 
 	public interface FilterChangeHandler extends EventHandler {

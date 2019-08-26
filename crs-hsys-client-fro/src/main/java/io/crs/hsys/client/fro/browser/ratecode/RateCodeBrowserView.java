@@ -46,7 +46,7 @@ public class RateCodeBrowserView extends ViewWithUiHandlers<RateCodeBrowserUiHan
 		this.i18nCore = i18nCore;
 		this.cnstCore = cnstCore;
 
-		bindSlot(RoomTypeBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
+		bindSlot(RateCodeBrowserPresenter.SLOT_FILTER, table.getFilterPanel());
 
 		initTable();
 	}

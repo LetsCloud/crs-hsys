@@ -18,9 +18,9 @@ import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.datasource.AppUserDataSource2;
 import io.crs.hsys.client.core.datasource.RoomDataSource;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
@@ -141,5 +141,11 @@ public class OooRoomFilterPresenter extends AbstractFilterPresenter<OooRoomFilte
 
 	public void setToDate(Date toDate) {
 		getView().setToDate(toDate);
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

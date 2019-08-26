@@ -18,14 +18,13 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.browser.AbstractBrowserPresenter;
 import io.crs.hsys.client.core.event.RefreshTableEvent.TableType;
-import io.crs.hsys.client.core.filter.FilterPresenterFactory;
-import io.crs.hsys.client.core.filter.roomtype.RoomTypeFilterPresenter;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
 import io.crs.hsys.client.fro.NameTokens;
+import io.crs.hsys.client.fro.filter.FroFilterFactory;
+import io.crs.hsys.client.fro.filter.ratecode.RateCodeFilterPresenter;
 import io.crs.hsys.shared.api.RateCodeResource;
 import io.crs.hsys.shared.dto.hotel.RateCodeDto;
 
@@ -44,16 +43,16 @@ public class RateCodeBrowserPresenter extends AbstractBrowserPresenter<RateCodeD
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
 
 	private final ResourceDelegate<RateCodeResource> resourceDelegate;
-	private final RoomTypeFilterPresenter filter;
+	private final RateCodeFilterPresenter filter;
 
 	@Inject
 	RateCodeBrowserPresenter(EventBus eventBus, PlaceManager placeManager, MyView view,
-			ResourceDelegate<RateCodeResource> resourceDelegate, FilterPresenterFactory filterPresenterFactory) {
+			ResourceDelegate<RateCodeResource> resourceDelegate, FroFilterFactory filterFactory) {
 		super(eventBus, view, placeManager);
-		logger.info("RoomTypeTablePresenter()");
+		logger.info("RateCodeBrowserPresenter()");
 
 		this.resourceDelegate = resourceDelegate;
-		this.filter = filterPresenterFactory.createRoomTypeFilterPresenter();
+		this.filter = filterFactory.createRateCodeFilter();
 
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
 
@@ -69,7 +68,7 @@ public class RateCodeBrowserPresenter extends AbstractBrowserPresenter<RateCodeD
 	@Override
 	protected void onReveal() {
 		super.onReveal();
-//filter.onReveal();
+		filter.onReveal();
 	}
 
 	@Override
@@ -98,22 +97,22 @@ public class RateCodeBrowserPresenter extends AbstractBrowserPresenter<RateCodeD
 
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
-		logger.info("RoomTypeTablePresenter().onFilterChange()");
-		/*
+		logger.info("RateCodeBrowserPresenter().onFilterChange()");
+
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<RateCodeDto>>() {
 			@Override
 			public void onSuccess(List<RateCodeDto> result) {
 				getView().setData(result);
 			}
-		}).getAll(filter.getSelectedHotel().getWebSafeKey(), filter.isOnlyActive(), filter.getSelectedInventoryType());
+		}).getAll(filter.getSelectedHotel().getWebSafeKey(), filter.isOnlyActive());
 
 		addFilter(HOTEL_KEY, filter.getSelectedHotel().getWebSafeKey());
-		*/
+
 	}
 
 	@Override
 	protected TableType getTableType() {
-		return TableType.ROOM_TYPE;
+		return TableType.RATE_CODE;
 	}
 
 }

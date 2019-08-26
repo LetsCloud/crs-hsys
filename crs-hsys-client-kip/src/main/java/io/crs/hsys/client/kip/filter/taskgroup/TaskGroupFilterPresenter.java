@@ -10,9 +10,9 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.filter.hotelchild.HotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 
 /**
  * @author robi
@@ -31,5 +31,11 @@ public class TaskGroupFilterPresenter extends AbstractTaskGroupFilterPresenter<T
 		logger.info("TaskGroupFilterPresenter()");
 
 		getView().setUiHandlers(this);
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

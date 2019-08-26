@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.ui.filter;
+package io.crs.hsys.client.core.filter;
 
 import java.util.logging.Logger;
 
@@ -10,7 +10,6 @@ import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 
 /**
  * @author robi
@@ -40,11 +39,6 @@ public abstract class AbstractFilterPresenter<V extends AbstractFilterPresenter.
 	public void onBind() {
 		super.onBind();
 		getView().buildView();
-	}
-
-	@Override
-	public void filterChange() {
-		FilterChangeEvent.fire(AbstractFilterPresenter.this, DataTable.ROOM_TYPE);
 	}
 
 	public Boolean isOnlyActive() {

@@ -36,8 +36,7 @@ import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
 public interface RateCodeResource {
 
 	@GET
-	List<RateCodeDto> getAll(@QueryParam(HOTEL_KEY) String hotelKey, @QueryParam(ONLY_ACTIVE) Boolean onlyActive,
-			@QueryParam(SEL_INV_TYPE) InventoryType type);
+	List<RateCodeDto> getAll(@QueryParam(HOTEL_KEY) String hotelKey, @QueryParam(ONLY_ACTIVE) Boolean onlyActive);
 
 	@GET
 	@Path(REDUCED)

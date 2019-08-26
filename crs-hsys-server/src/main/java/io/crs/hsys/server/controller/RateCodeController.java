@@ -57,7 +57,7 @@ public class RateCodeController extends HotelChildController<RateCode, RateCodeD
 	@Autowired
 	RateCodeController(RateCodeService service, ModelMapper modelMapper) {
 		super(RateCode.class, service, modelMapper);
-		logger.info("RoomTypeController()");
+		logger.info("RateCodeController()");
 		this.modelMapper = modelMapper;
 	}
 
@@ -69,13 +69,10 @@ public class RateCodeController extends HotelChildController<RateCode, RateCodeD
 
 	@RequestMapping(method = GET)
 	public ResponseEntity<List<RateCodeDto>> getByHotelWithFilters(@RequestParam(HOTEL_KEY) String hotelKey,
-			@RequestParam(ONLY_ACTIVE) Boolean onlyActive, @RequestParam(SEL_INV_TYPE) InventoryType inventoryType) {
+			@RequestParam(ONLY_ACTIVE) Boolean onlyActive) {
 		Map<String, Object> filters = new HashMap<String, Object>();
-		if (onlyActive)
-			filters.put("active", onlyActive);
-
-		if (inventoryType != null)
-			filters.put(SEL_INV_TYPE, inventoryType);
+//		if (onlyActive)
+//			filters.put("active", onlyActive);
 
 		return getChildrenByFilters(hotelKey, filters);
 	}

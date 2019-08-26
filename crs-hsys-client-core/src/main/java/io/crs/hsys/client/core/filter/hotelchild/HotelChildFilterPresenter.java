@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
 
 /**
@@ -31,5 +31,11 @@ public class HotelChildFilterPresenter extends AbstractHotelChildFilterPresenter
 		logger.info("HotelChildFilterPresenter()");
 
 		getView().setUiHandlers(this);
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

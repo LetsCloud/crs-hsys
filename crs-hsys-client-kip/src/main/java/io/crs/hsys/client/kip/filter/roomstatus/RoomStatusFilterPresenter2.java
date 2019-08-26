@@ -16,11 +16,11 @@ import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
@@ -72,5 +72,11 @@ public class RoomStatusFilterPresenter2 extends AbstractFilterPresenter<RoomStat
 
 	public RoomTypeDtor getSelectedRoomType() {
 		return getView().getSelectedRoomType();
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.filter;
+package io.crs.hsys.client.core.filter.widget;
 
 import java.util.List;
 import java.util.logging.Logger;

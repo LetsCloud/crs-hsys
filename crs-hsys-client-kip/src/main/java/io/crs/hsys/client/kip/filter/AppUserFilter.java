@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.core.filter.ComboBoxDtoFilter;
+import io.crs.hsys.client.core.filter.widget.ComboBoxDtoFilter;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 
 /**

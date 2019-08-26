@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.core.filter;
+package io.crs.hsys.client.core.filter.widget;
 
 import io.crs.hsys.client.core.filter.accountchild.AccountChildFilterPresenter;
 import io.crs.hsys.client.core.filter.hotelchild.HotelChildFilterPresenter;

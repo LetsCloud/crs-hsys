@@ -15,10 +15,9 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialTextBox;
-
+import io.crs.hsys.client.core.filter.AbstractFilterView;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.resources.BlueThemeColors;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 

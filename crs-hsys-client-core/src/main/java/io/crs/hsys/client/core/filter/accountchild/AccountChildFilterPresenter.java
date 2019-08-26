@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
 
 /**
@@ -30,5 +30,11 @@ public class AccountChildFilterPresenter extends AbstractFilterPresenter<Account
 		super(eventBus, view, currentUser);
 		logger.info("AccountChildFilterPresenter()");
 		getView().setUiHandlers(this);
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

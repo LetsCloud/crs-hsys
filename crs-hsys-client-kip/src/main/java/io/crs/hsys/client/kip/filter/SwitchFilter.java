@@ -10,8 +10,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.ui.MaterialSwitch;
-
-import io.crs.hsys.client.core.filter.BaseFilter;
+import io.crs.hsys.client.core.filter.widget.BaseFilter;
 
 /**
  * @author robi
