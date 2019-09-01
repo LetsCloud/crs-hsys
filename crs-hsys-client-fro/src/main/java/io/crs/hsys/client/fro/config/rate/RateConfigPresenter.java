@@ -29,6 +29,7 @@ public class RateConfigPresenter
 	private static Logger logger = Logger.getLogger(RateConfigPresenter.class.getName());
 
 	public static final String RATE_CODES = "rateCodes";
+	public static final String RATE_GRID = "rateGrid";
 	public static final String MARKET_GROUPS = "marketGroups";
 
 	interface MyView extends AbstractConfigPresenter.MyView {
@@ -51,6 +52,7 @@ public class RateConfigPresenter
 		setPlaceToken(NameTokens.RATE_CONFIGURATION);
 
 		addContent(i18n.rateCodeBrowserTitle(), rateCodeBrowserFactory.createRateCodeBrowser(), RATE_CODES);
+//		addContent("RateGrid", rateBrowserFactory.createRateBrowser(), RATE_GRID);
 //addContent(i18n.marketGroupBrowserTitle(), marketGroupBrowserFactory.createMarketGroupBrowser(), MARKET_GROUPS);
 
 		getView().setUiHandlers(this);

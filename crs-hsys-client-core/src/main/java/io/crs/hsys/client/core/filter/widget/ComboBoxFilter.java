@@ -157,9 +157,12 @@ public abstract class ComboBoxFilter<T> extends BaseFilter {
 	}
 
 	public void setSelectedItem(T item) {
+		logger.info("ComboBoxFilter()->setSelectedItem()");
 		List<T> values = comboBox.getValues();
 		for (int i = 0; i < values.size(); i++) {
+			logger.info("ComboBoxFilter()->setSelectedItem()->i="+i);
 			if (values.get(i).equals(item)) {
+				logger.info("ComboBoxFilter()->setSelectedItem()->equals i="+i);
 				comboBox.setSelectedIndex(i);
 				setChipText(createChipText(comboBox.getSelectedValue()));
 				return;

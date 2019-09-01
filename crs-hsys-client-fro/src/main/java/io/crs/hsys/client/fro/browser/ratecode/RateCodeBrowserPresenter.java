@@ -3,8 +3,6 @@
  */
 package io.crs.hsys.client.fro.browser.ratecode;
 
-import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -98,7 +96,7 @@ public class RateCodeBrowserPresenter extends AbstractBrowserPresenter<RateCodeD
 	@Override
 	public void onFilterChange(FilterChangeEvent event) {
 		logger.info("RateCodeBrowserPresenter().onFilterChange()");
-
+/*
 		resourceDelegate.withCallback(new AbstractAsyncCallback<List<RateCodeDto>>() {
 			@Override
 			public void onSuccess(List<RateCodeDto> result) {
@@ -107,7 +105,7 @@ public class RateCodeBrowserPresenter extends AbstractBrowserPresenter<RateCodeD
 		}).getAll(filter.getSelectedHotel().getWebSafeKey(), filter.isOnlyActive());
 
 		addFilter(HOTEL_KEY, filter.getSelectedHotel().getWebSafeKey());
-
+*/
 	}
 
 	@Override

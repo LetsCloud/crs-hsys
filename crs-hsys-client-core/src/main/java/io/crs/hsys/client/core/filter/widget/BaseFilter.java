@@ -103,6 +103,7 @@ public abstract class BaseFilter extends Composite {
 	 */
 	public void setChipIconType(IconType type) {
 		chip.setIconType(type);
+		chip.setIconPosition(IconPosition.LEFT);
 		chip.getIcon().setMarginRight(0);
 		chip.getIcon().setPaddingLeft(0);
 		chip.setPaddingLeft(0);
@@ -176,18 +177,24 @@ public abstract class BaseFilter extends Composite {
 	 * @param text
 	 */
 	protected void setChipText(String text) {
+		logger.info("BaseFilter().setChipText(" + text + ")");
 		if (chip.isAttached()) {
+			logger.info("BaseFilter().setChipText()->chip.isAttached");
 			if ((text == null) || (text.isEmpty()) || (!chipEnabled)) {
 				chipPanel.remove(chip);
 				return;
 			}
 			chip.setText(text);
 		} else {
+			logger.info("BaseFilter().setChipText()->chip.isNotAttached");
 			if (!chipEnabled)
 				return;
 			if ((text != null) && (!text.isEmpty())) {
+				logger.info("BaseFilter().setChipText()->(text != null) && (!text.isEmpty())");
 				chip.setText(text);
+				logger.info("BaseFilter().setChipText()->(text != null) && (!text.isEmpty())-1");
 				chipPanel.add(chip);
+				logger.info("BaseFilter().setChipText()->(text != null) && (!text.isEmpty())-2");
 			}
 		}
 	}

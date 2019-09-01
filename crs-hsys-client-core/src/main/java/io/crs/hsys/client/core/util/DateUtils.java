@@ -166,4 +166,9 @@ public class DateUtils {
 	public static Date setTime(Date date, long time) {
 		return new Date(((date.getTime() / DAY_IN_MILISEC) * DAY_IN_MILISEC) + time);
 	}
+
+	public static String getMonthAndDay(Date date) {
+		DateTimeFormat fmt = DateTimeFormat.getFormat("MMM d");
+		return fmt.format(date);
+	}
 }

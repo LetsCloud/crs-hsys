@@ -11,6 +11,8 @@ public class NameTokens {
 
 	public static final String ROOM_PLAN = "/roomPlan";
 
+	public static final String RATE_MANAGER = "/retaManager";
+
 	public static final String CHAT_ROOM = "/chatRoom";
 
 	public static final String TASK_MNGR = "/taskMngr";

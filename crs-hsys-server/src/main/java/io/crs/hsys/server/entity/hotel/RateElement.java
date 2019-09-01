@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.server.entity.reservation;
+package io.crs.hsys.server.entity.hotel;
 
 import com.googlecode.objectify.Ref;
 

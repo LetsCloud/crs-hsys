@@ -89,6 +89,11 @@ public class FroAppPresenter extends AbstractAppPresenter<FroAppPresenter.MyProx
 				.icon(IconType.EVENT_BUSY.name()).text("RoomPlan")
 				.nameToken(NameTokens.ROOM_PLAN).build());
 
+		// RateManager menu item
+		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM)
+				.icon(IconType.LABEL.name()).text("Rate Manager")
+				.nameToken(NameTokens.RATE_MANAGER).build());
+
 		// Chat Room menu item
 		menuItems.add(MenuItemDto.builder().index(index++).type(MenuItemType.MENU_ITEM).icon(IconType.FORUM.name())
 				.text(i18n.mainMenuItemChatRoom()).nameToken(NameTokens.CREATE_RESERVATION).build());

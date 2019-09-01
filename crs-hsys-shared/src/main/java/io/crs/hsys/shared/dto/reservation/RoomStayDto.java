@@ -76,7 +76,7 @@ public class RoomStayDto implements Dto {
 	/**
 	 * Szobafoglaláshoz rendelt árkódok.
 	 */
-	private List<RateDto> rates;
+	private List<RoomRateDto> rates;
 
 	/**
 	 * Szobafoglalás vendégtartózkodásai.
@@ -141,11 +141,11 @@ public class RoomStayDto implements Dto {
 		this.room = roomDto;
 	}
 
-	public List<RateDto> getRates() {
+	public List<RoomRateDto> getRates() {
 		return rates;
 	}
 
-	public void setRates(List<RateDto> rateDtos) {
+	public void setRates(List<RoomRateDto> rateDtos) {
 		this.rates = rateDtos;
 	}
 

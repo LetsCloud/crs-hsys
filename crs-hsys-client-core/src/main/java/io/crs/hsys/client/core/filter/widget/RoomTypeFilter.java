@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import gwt.material.design.client.constants.IconType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
@@ -20,6 +21,7 @@ public class RoomTypeFilter extends ComboBoxDtoFilter<RoomTypeDtor> {
 	@Inject
 	RoomTypeFilter() {
 		logger.info("RoomTypeFilter()");
+		setChipIconType(IconType.HOTEL);
 	}
 
 	@Override
@@ -31,6 +33,7 @@ public class RoomTypeFilter extends ComboBoxDtoFilter<RoomTypeDtor> {
 
 	@Override
 	protected String createChipText(List<RoomTypeDtor> selectedItems) {
+		logger.info("RoomTypeFilter().createChipText()");
 		String result = null;
 		for (RoomTypeDtor dto : selectedItems) {
 			if (result == null)
@@ -38,6 +41,7 @@ public class RoomTypeFilter extends ComboBoxDtoFilter<RoomTypeDtor> {
 			else
 				result = result + ", " + dto.getCode();
 		}
+		logger.info("RoomTypeFilter().createChipText()->result=" + result);
 		return result;
 	}
 

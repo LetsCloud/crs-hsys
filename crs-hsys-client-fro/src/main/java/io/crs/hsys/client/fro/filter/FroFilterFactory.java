@@ -5,6 +5,7 @@ package io.crs.hsys.client.fro.filter;
 
 import io.crs.hsys.client.fro.filter.createres.CreateResFilterPresenter;
 import io.crs.hsys.client.fro.filter.ratecode.RateCodeFilterPresenter;
+import io.crs.hsys.client.fro.filter.ratemngr.RateMngrFilterPresenter;
 
 /**
  * @author robi
@@ -13,6 +14,8 @@ import io.crs.hsys.client.fro.filter.ratecode.RateCodeFilterPresenter;
 public interface FroFilterFactory {
 
 	RateCodeFilterPresenter createRateCodeFilter();
+
+	RateMngrFilterPresenter createRateMngrFilter();
 
 	CreateResFilterPresenter createBookingFilter();
 

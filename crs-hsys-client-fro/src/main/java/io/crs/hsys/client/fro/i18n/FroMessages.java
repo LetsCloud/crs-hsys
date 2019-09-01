@@ -21,7 +21,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Reservation")
 	String mainMenuItemReservation();
 
-	
 	// *********
 	// Chat Room
 	// *********
@@ -29,7 +28,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
-	
 	// *********
 	// Tasks
 	// *********
@@ -37,7 +35,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Tasks")
 	String mainMenuItemTasks();
 
-	
 	// ***********
 	// Guest Rooms
 	// ***********
@@ -57,7 +54,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Rate Configuration")
 	String mainMenuItemRateConfiguration();
 
-
 	// ************
 	// Minibar
 	// ************
@@ -67,17 +63,13 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Minibar Consumption")
 	String mainMenuItemConsumption();
 
-
 	// ************
 	// Maintenance
 	// ************
-	
+
 	@DefaultMessage("Maintenance")
 	String mainMenuGroupMaintenance();
 
-	
-
-	
 	/*
 	 * CHAT ROOM
 	 */
@@ -87,7 +79,6 @@ public interface FroMessages extends Messages {
 
 	@DefaultMessage("All attendants")
 	String chatRoomDescription();
-	
 
 	/*
 	 * RATE CONFIGURATION
@@ -99,9 +90,22 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Rate Grpoups, Rate Codes and Rate Manager")
 	String rateConfigDescription();
 
-	
 	@DefaultMessage("Rate Codes")
 	String rateCodeBrowserTitle();
-	
-	
+
+	/*
+	 * RATE MANAGER FILTER
+	 */
+	@DefaultMessage("Rate Codes")
+	String rateMngrFilterRateCodeLabel();
+
+	@DefaultMessage("Choose Rate Code")
+	String rateMngrFilterRateCodePlaceholder();
+
+	@DefaultMessage("Room Types")
+	String rateMngrFilterRoomTypeLabel();
+
+	@DefaultMessage("Choose Room Type")
+	String rateMngrFilterRoomTypePlaceholder();
+
 }

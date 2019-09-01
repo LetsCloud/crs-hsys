@@ -44,7 +44,7 @@ public class GuestStayDto implements Dto {
 	/**
 	 * A vendégtartózkodáshoz rendelet árkód.
 	 */
-	private List<RateDto> rates;
+	private List<RoomRateDto> rates;
 
 	/**
 	 * Átköltözött másik szobából.
@@ -99,11 +99,11 @@ public class GuestStayDto implements Dto {
 		this.chekedIn = chekedIn;
 	}
 
-	public List<RateDto> getRates() {
+	public List<RoomRateDto> getRates() {
 		return rates;
 	}
 
-	public void setRates(List<RateDto> rates) {
+	public void setRates(List<RoomRateDto> rates) {
 		this.rates = rates;
 	}
 
