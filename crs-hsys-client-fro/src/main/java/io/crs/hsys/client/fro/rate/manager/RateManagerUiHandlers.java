@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.fro.ratemanager;
+package io.crs.hsys.client.fro.rate.manager;
 
 import com.gwtplatform.mvp.client.UiHandlers;
 
@@ -10,5 +10,7 @@ import com.gwtplatform.mvp.client.UiHandlers;
  *
  */
 public interface RateManagerUiHandlers extends UiHandlers {
+	
+	void update();
 
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.fro.ratemanager;
+package io.crs.hsys.client.fro.rate.manager;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+
+	<ui:style gss="true">
+	
+	</ui:style>
+
+	<m:MaterialRow ui:field="contentPanel">
+
+		<combobox:MaterialComboBox
+			ui:field="rateCodeCombo" multiple="false" label="Árkód"
+			placeholder="Válassz árkódot" grid="s12 m6 l4 xl3" />
+
+		<combobox:MaterialComboBox
+			ui:field="roomTypeCombo" multiple="true" label="Szobatípus"
+			placeholder="Válassz árkódot" grid="s12 m6 l4 xl3" />
+
+		<m:MaterialDatePicker ui:field="fromDate"
+			placeholder="Mettől" grid="s12 m6 l4 xl3" />
+
+		<m:MaterialDatePicker ui:field="toDate"
+			placeholder="Meddig" grid="s12 m6 l4 xl3" />
+
+		<g:HTMLPanel addStyleNames="dataGroupBox">
+			<g:Label text="Hét napjai" addStyleNames="dataGroupTitle" />
+			<m:MaterialCheckBox text="Hétfő" />
+			<m:MaterialCheckBox text="Kedd" />
+			<m:MaterialCheckBox text="Szerda" />
+			<m:MaterialCheckBox text="Csütörtök" />
+			<m:MaterialCheckBox text="Péntek" />
+			<m:MaterialCheckBox text="Szombat" />
+			<m:MaterialCheckBox text="Vasárnap" />
+		</g:HTMLPanel>
+		
+	</m:MaterialRow>
+</ui:UiBinder> 

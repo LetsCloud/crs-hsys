@@ -11,7 +11,8 @@ import io.crs.hsys.client.fro.calendar.CalendarModule;
 import io.crs.hsys.client.fro.config.rate.RateConfigModule;
 import io.crs.hsys.client.fro.dashboard.DashboardModule;
 import io.crs.hsys.client.fro.filter.FroFilterModule;
-import io.crs.hsys.client.fro.ratemanager.RateManagerModule;
+import io.crs.hsys.client.fro.rate.manager.RateManagerModule;
+import io.crs.hsys.client.fro.rate.updater.RateUpdaterModule;
 import io.crs.hsys.client.fro.reservation.ReservationModule;
 import io.crs.hsys.client.fro.resnew.ResNewModule;
 import io.crs.hsys.client.fro.roomplan.RoomPlanModule;
@@ -35,6 +36,7 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new CalendarModule());
 		install(new RoomPlanModule());
 		install(new RateManagerModule());
+		install(new RateUpdaterModule());
 		install(new FroFilterModule());
 		install(new RateConfigModule());
 	}

@@ -6,7 +6,7 @@ package io.crs.hsys.client.fro.config.rate;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 import io.crs.hsys.client.fro.browser.ratecode.RateCodeBrowserModule;
-import io.crs.hsys.client.fro.ratemanager.RateManagerModule;
+import io.crs.hsys.client.fro.rate.manager.RateManagerModule;
 
 /**
  * @author robi

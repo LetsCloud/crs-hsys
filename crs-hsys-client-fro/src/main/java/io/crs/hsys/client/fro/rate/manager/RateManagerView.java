@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.fro.ratemanager;
+package io.crs.hsys.client.fro.rate.manager;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -9,12 +9,14 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ScrollEvent;
 import com.google.gwt.event.dom.client.ScrollHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -138,5 +140,10 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 	public void resizePanls(MenuState menuState) {
 		this.menuState = menuState;
 		resizeScrollPanels(menuState);
+	}
+
+	@UiHandler("updateButton")
+	public void onClickUpdate(ClickEvent event) {
+		getUiHandlers().update();
 	}
 }

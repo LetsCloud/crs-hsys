@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.crs.hsys.client.fro.ratemanager;
+package io.crs.hsys.client.fro.rate.manager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,8 +20,11 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
@@ -64,17 +67,22 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 
 	public static final SingleSlot<PresenterWidget<?>> SLOT_FILTER = new SingleSlot<>();
 
+	private final PlaceManager placeManager;
 	private final RateMngrFilterPresenter filter;
 
 	@Inject
-	RateManagerPresenter(EventBus eventBus, MyView view, MyProxy proxy, FroFilterFactory filterFactory) {
+	RateManagerPresenter(EventBus eventBus, PlaceManager placeManager, MyView view, MyProxy proxy, FroFilterFactory filterFactory) {
 		super(eventBus, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("RateBrowserPresenter()");
 
+		this.placeManager = placeManager;
 		this.filter = filterFactory.createRateMngrFilter();
 
 		addRegisteredHandler(ContentPushEvent.TYPE, this);
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
+		
+		getView().setUiHandlers(this);
+		
 	}
 
 	@Override
@@ -154,5 +162,11 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 	@Override
 	public void onContentPush(ContentPushEvent event) {
 		getView().resizePanls(event.getMenuState());
+	}
+
+	@Override
+	public void update() {
+		Builder placeBuilder = new Builder().nameToken(NameTokens.RATE_UPDATER);
+		placeManager.revealPlace(placeBuilder.build());
 	}
 }
