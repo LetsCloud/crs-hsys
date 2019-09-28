@@ -21,7 +21,7 @@ import io.crs.hsys.server.entity.doc.Quotation;
 import io.crs.hsys.server.entity.doc.QuotationStatus;
 import io.crs.hsys.server.entity.hotel.Hotel;
 import io.crs.hsys.server.entity.hotel.OooRoom;
-import io.crs.hsys.server.entity.hotel.RateByYear;
+import io.crs.hsys.server.entity.hotel.RoomRate;
 import io.crs.hsys.server.entity.hotel.RateCode;
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.hotel.RoomType;
@@ -85,7 +85,7 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(Room.class);
 		ObjectifyService.register(MarketGroup.class);
 		ObjectifyService.register(RateCode.class);
-		ObjectifyService.register(RateByYear.class);
+//		ObjectifyService.register(RoomRate.class);
 		ObjectifyService.register(OooRoom.class);
 		/*
 		 * ObjectifyService.register(Chat.class); ObjectifyService.register(Task.class);

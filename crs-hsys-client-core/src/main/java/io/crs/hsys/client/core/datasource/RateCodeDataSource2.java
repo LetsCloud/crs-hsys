@@ -16,7 +16,7 @@ import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.message.callback.AbstractAsyncCallback;
 import io.crs.hsys.shared.api.RateCodeResource;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi

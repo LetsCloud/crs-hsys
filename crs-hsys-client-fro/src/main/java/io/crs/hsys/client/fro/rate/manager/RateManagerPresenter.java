@@ -38,11 +38,11 @@ import io.crs.hsys.shared.cnst.RatePriceType;
 import io.crs.hsys.shared.cnst.RateRestrictionType;
 import io.crs.hsys.shared.cnst.RateSubject;
 import io.crs.hsys.shared.dto.common.CurrencyDtor;
-import io.crs.hsys.shared.dto.hotel.RateByDateDto;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
-import io.crs.hsys.shared.dto.hotel.RateLineDto;
-import io.crs.hsys.shared.dto.hotel.RateRestrictionDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
+import io.crs.hsys.shared.dto.rate.RateRestrictionDto;
+import io.crs.hsys.shared.dto.rate.query.RateByDateDto;
+import io.crs.hsys.shared.dto.rate.query.RateQueryRespDto;
 import io.crs.hsys.shared.util.DateUtils;
 
 /**
@@ -54,7 +54,7 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 	private static Logger logger = Logger.getLogger(RateManagerPresenter.class.getName());
 
 	public interface MyView extends View, HasUiHandlers<RateManagerUiHandlers> {
-		void setData(List<RateLineDto> data);
+		void setData(List<RateQueryRespDto> data);
 
 		void resizePanls(MenuState menuState);
 	}
@@ -116,7 +116,7 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 		CurrencyDtor cEur = CurrencyDtor.builder().code("EUR").description("Euro").build();
 		CurrencyDtor cHuf = CurrencyDtor.builder().code("HUF").description("Magyar forint").build();
 
-		List<RateLineDto> ratesGridData = new ArrayList<RateLineDto>();
+		List<RateQueryRespDto> ratesGridData = new ArrayList<RateQueryRespDto>();
 
 		RateRestrictionDto noRest = new RateRestrictionDto();
 		ratesGridData.add(createRateLine(startDate, rcPublic, dblbRTD, cHuf, 999999d, noRest));
@@ -142,7 +142,7 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 		getView().setData(ratesGridData);
 	}
 
-	private RateLineDto createRateLine(Date date, RateCodeDtor rateCode, RoomTypeDtor roomType, CurrencyDtor currency,
+	private RateQueryRespDto createRateLine(Date date, RateCodeDtor rateCode, RoomTypeDtor roomType, CurrencyDtor currency,
 			Double rate, RateRestrictionDto restriction) {
 		Map<RatePriceType, Double> rates = new HashMap<RatePriceType, Double>();
 		rates.put(RatePriceType.DOUBLE, rate);
@@ -151,7 +151,7 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 		for (int i = 0; i < 21; i++) {
 			ratesByDate.add(new RateByDateDto(DateUtils.addDay(date, i), currency, rates, restriction));
 		}
-		return new RateLineDto(rateCode, roomType, ratesByDate);
+		return new RateQueryRespDto(rateCode, roomType, ratesByDate);
 	}
 
 	@Override

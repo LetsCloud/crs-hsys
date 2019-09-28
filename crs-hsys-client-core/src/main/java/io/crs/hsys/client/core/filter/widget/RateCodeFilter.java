@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import gwt.material.design.client.constants.IconType;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi

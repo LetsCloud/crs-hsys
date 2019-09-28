@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import io.crs.hsys.server.entity.hotel.RateCode;
 import io.crs.hsys.server.service.RateCodeService;
 import io.crs.hsys.shared.cnst.InventoryType;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;

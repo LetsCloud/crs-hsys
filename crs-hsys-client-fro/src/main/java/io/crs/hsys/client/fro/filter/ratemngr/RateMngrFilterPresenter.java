@@ -23,8 +23,8 @@ import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.shared.dto.hotel.HotelDtor;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi

@@ -24,8 +24,8 @@ import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.fro.i18n.FroMessages;
-import io.crs.hsys.shared.dto.hotel.RateCodeDtor;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi

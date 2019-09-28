@@ -24,10 +24,13 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
 import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.ui.MaterialLink;
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter.MyView;
 import io.crs.hsys.client.core.event.SetBreadcrumbsEvent;
 import io.crs.hsys.client.core.event.SetBreadcrumbsEvent.SetBreadcrumbsHandler;
+import io.crs.hsys.client.core.event.SetPageMenuEvent;
+import io.crs.hsys.client.core.event.SetPageMenuEvent.SetPageMenuHandler;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent.SetPageTitleHandler;
 import io.crs.hsys.client.core.firebase.messaging.MessagingManager;
@@ -38,11 +41,13 @@ import io.crs.hsys.shared.api.AuthResource;
 import io.crs.hsys.shared.api.GlobalConfigResource;
 
 public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Presenter<MyView, Proxy_>
-		implements NavigationHandler, SetPageTitleHandler, SetBreadcrumbsHandler {
+		implements NavigationHandler, SetPageTitleHandler, SetPageMenuHandler, SetBreadcrumbsHandler {
 	private static Logger logger = Logger.getLogger(AbstractAppPresenter.class.getName());
 
 	public interface MyView extends View {
 		void setPageTitle(String title, String description);
+
+		void setPageMenu(List<MaterialLink> menuItems);
 
 		void setBreadcrumbs(List<BreadcrumbConfig> breadcrumbConfigs);
 
@@ -83,6 +88,7 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 
 		addRegisteredHandler(NavigationEvent.getType(), this);
 		addRegisteredHandler(SetPageTitleEvent.TYPE, this);
+		addRegisteredHandler(SetPageMenuEvent.TYPE, this);
 		addRegisteredHandler(SetBreadcrumbsEvent.TYPE, this);
 	}
 
@@ -118,8 +124,16 @@ public abstract class AbstractAppPresenter<Proxy_ extends Proxy<?>> extends Pres
 
 	@Override
 	public void onSetPageTitle(SetPageTitleEvent event) {
+		logger.info("AbstractAppPresenter().onSetPageTitle()");
 		getView().setPageTitle(event.getTitle(), event.getDescription());
+		getView().setPageMenu(null);
 //cr		menuPresenter.adjustMenuItems(event.getMenuItemType());
+	}
+
+	@Override
+	public void onSetPageMenu(SetPageMenuEvent event) {
+		logger.info("AbstractAppPresenter().onSetPageMenu()");
+		getView().setPageMenu(event.getMenuItems());
 	}
 
 	@Override

@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.fro.editor.ratecode;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -20,7 +21,9 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import gwt.material.design.client.ui.MaterialTextBox;
 import io.crs.hsys.client.core.editor.room.AvailabilityListEditor;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi

@@ -10,30 +10,56 @@
 
 	<m:MaterialRow ui:field="contentPanel">
 
-		<combobox:MaterialComboBox
-			ui:field="rateCodeCombo" multiple="false" label="Árkód"
-			placeholder="Válassz árkódot" grid="s12 m6 l4 xl3" />
+		<m:MaterialColumn grid="s12 m6 l4 xl3">
+			<combobox:MaterialComboBox
+				ui:field="rateCodeCombo" multiple="false" label="Árkód"
+				placeholder="Válassz árkódot" />
+			<combobox:MaterialComboBox
+				ui:field="roomTypeCombo" multiple="true" label="Szobatípus"
+				placeholder="Válassz szobatípusokat" />
+			<combobox:MaterialComboBox
+				ui:field="restrictionCombo" multiple="false" label="Korlátozás"
+				placeholder="Válassz korlátozást" />
+		</m:MaterialColumn>
 
-		<combobox:MaterialComboBox
-			ui:field="roomTypeCombo" multiple="true" label="Szobatípus"
-			placeholder="Válassz árkódot" grid="s12 m6 l4 xl3" />
+		<m:MaterialColumn grid="s12 m6 l4 xl3">
+			<m:MaterialDatePicker ui:field="fromDate"
+				placeholder="Mettől" />
+			<m:MaterialDatePicker ui:field="toDate"
+				placeholder="Meddig" />
+			<m:MaterialColumn grid="s12">
+				<g:FlowPanel addStyleNames="dataGroupBox clearfix">
+					<g:Label text="Hét napjai" addStyleNames="dataGroupTitle" />
+					<g:FlowPanel addStyleNames="clearfix">
+						<m:MaterialLabel text="H" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="K" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="Sz" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="Cs" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="P" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="Sz" float="LEFT"
+							width="35px" />
+						<m:MaterialLabel text="V" float="LEFT"
+							width="35px" />
+					</g:FlowPanel>
+					<g:FlowPanel addStyleNames="clearfix">
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+						<m:MaterialCheckBox float="LEFT" />
+					</g:FlowPanel>
+					<g:FlowPanel addStyleNames="clearfix">
+					</g:FlowPanel>
+				</g:FlowPanel>
+			</m:MaterialColumn>
+		</m:MaterialColumn>
 
-		<m:MaterialDatePicker ui:field="fromDate"
-			placeholder="Mettől" grid="s12 m6 l4 xl3" />
-
-		<m:MaterialDatePicker ui:field="toDate"
-			placeholder="Meddig" grid="s12 m6 l4 xl3" />
-
-		<g:HTMLPanel addStyleNames="dataGroupBox">
-			<g:Label text="Hét napjai" addStyleNames="dataGroupTitle" />
-			<m:MaterialCheckBox text="Hétfő" />
-			<m:MaterialCheckBox text="Kedd" />
-			<m:MaterialCheckBox text="Szerda" />
-			<m:MaterialCheckBox text="Csütörtök" />
-			<m:MaterialCheckBox text="Péntek" />
-			<m:MaterialCheckBox text="Szombat" />
-			<m:MaterialCheckBox text="Vasárnap" />
-		</g:HTMLPanel>
-		
 	</m:MaterialRow>
 </ui:UiBinder> 

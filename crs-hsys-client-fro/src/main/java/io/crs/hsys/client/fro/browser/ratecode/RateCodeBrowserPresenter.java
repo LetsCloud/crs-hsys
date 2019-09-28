@@ -24,7 +24,7 @@ import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.client.fro.filter.FroFilterFactory;
 import io.crs.hsys.client.fro.filter.ratecode.RateCodeFilterPresenter;
 import io.crs.hsys.shared.api.RateCodeResource;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
 
 /**
  * @author robi

@@ -17,6 +17,10 @@ import com.gwtplatform.mvp.client.presenter.slots.SingleSlot;
 import com.gwtplatform.mvp.client.presenter.slots.Slot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
+import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLink;
+import io.crs.hsys.client.core.event.SetPageMenuEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.kip.KipAppPresenter;
 import io.crs.hsys.client.kip.KipNameTokens;
@@ -83,10 +87,12 @@ public class GuestRoomBrowserPresenter
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		logger.log(Level.INFO, "GuestRoomBrowserPresenter().onReveal()");
 		String description = i18n.assignmentsDescription();
 		description = i18n.assignmentsTasksAssignedTo("Kiss Piroska");
 		SetPageTitleEvent.fire(i18n.assignmentsTitle(), description, MenuItemType.MENU_ITEM, this);
 
+		logger.log(Level.INFO, "GuestRoomBrowserPresenter().onReveal()-3");
 		for (RoomDto data : getData()) {
 			getView().addData(data);
 		}

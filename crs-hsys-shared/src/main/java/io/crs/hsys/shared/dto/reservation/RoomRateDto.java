@@ -10,8 +10,8 @@ import java.util.List;
 import io.crs.hsys.shared.cnst.CityTaxMethod;
 import io.crs.hsys.shared.dto.Dto;
 import io.crs.hsys.shared.dto.common.CurrencyDto;
-import io.crs.hsys.shared.dto.hotel.RateElementDto;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateElementDto;
 
 /**
  * @author CR

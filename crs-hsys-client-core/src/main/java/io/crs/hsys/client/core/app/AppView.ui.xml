@@ -55,14 +55,16 @@
 		<g:HTMLPanel ui:field="menu" />
 
 		<m:MaterialContainer>
-			<m:MaterialPanel addStyleNames="titleBar"
-				marginTop="56" padding="56" shadow="1">
+			<m:MaterialPanel addStyleNames="titleBar" shadow="1">
 				<m:MaterialPanel ui:field="panel">
+					<m:MaterialIcon ui:field="menuIcon"
+						iconType="MORE_VERT" float="RIGHT" activates="dp-5" />
 					<m:MaterialLabel ui:field="title" fontSize="2.3em"
 						truncate="true" />
 					<m:MaterialLabel ui:field="description"
 						truncate="true" />
-					<m:MaterialPanel ui:field="breadcrumbsPanel" marginTop="5" height="30px"/>
+					<m:MaterialPanel ui:field="breadcrumbsPanel"
+						marginTop="5" height="30px" />
 				</m:MaterialPanel>
 			</m:MaterialPanel>
 
@@ -73,5 +75,8 @@
 		</m:MaterialContainer>
 
 		<g:SimplePanel ui:field="modalSlot" />
+
+		<m:MaterialDropDown ui:field="menuDropDown"
+			activator="dp-5" constrainWidth="false" />
 	</g:HTMLPanel>
 </ui:UiBinder>

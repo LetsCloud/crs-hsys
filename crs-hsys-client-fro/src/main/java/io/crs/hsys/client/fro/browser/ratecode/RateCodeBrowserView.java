@@ -17,7 +17,7 @@ import io.crs.hsys.client.core.browser.roomtype.RoomTypeBrowserPresenter;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.fro.i18n.FroMessages;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
 
 /**
  * @author robi

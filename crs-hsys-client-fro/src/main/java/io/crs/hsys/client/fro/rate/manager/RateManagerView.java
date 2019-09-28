@@ -28,8 +28,8 @@ import gwt.material.design.client.js.Window;
 import gwt.material.design.client.ui.MaterialPanel;
 import io.crs.hsys.client.core.event.ContentPushEvent.MenuState;
 import io.crs.hsys.client.core.util.DateUtils;
-import io.crs.hsys.shared.dto.hotel.RateByDateDto;
-import io.crs.hsys.shared.dto.hotel.RateLineDto;
+import io.crs.hsys.shared.dto.rate.query.RateByDateDto;
+import io.crs.hsys.shared.dto.rate.query.RateQueryRespDto;
 
 /**
  * @author robi
@@ -98,7 +98,7 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 	}
 
 	@Override
-	public void setData(List<RateLineDto> data) {
+	public void setData(List<RateQueryRespDto> data) {
 		codeHeaderTable.clear();
 		fixedCol.clear();
 		flexTable.clear();
@@ -108,7 +108,7 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 		codeHeaderTable.getCellFormatter().getElement(0, 0).getStyle().setPadding(1, Unit.PX);
 		codeHeaderTable.getCellFormatter().getElement(0, 1).getStyle().setPadding(1, Unit.PX);
 		int i = 0;
-		for (RateLineDto line : data) {
+		for (RateQueryRespDto line : data) {
 			fixedCol.setWidget(i, 0, new RateCodeWidget(line.getRateCode().getCode()));
 			fixedCol.setWidget(i, 1, new RateCodeWidget(line.getRoomType().getCode()));
 			fixedCol.getCellFormatter().getElement(i, 0).getStyle().setPadding(1, Unit.PX);

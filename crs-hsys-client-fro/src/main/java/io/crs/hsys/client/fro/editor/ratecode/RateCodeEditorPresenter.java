@@ -16,10 +16,6 @@ import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import gwt.material.design.client.data.loader.LoadCallback;
-import gwt.material.design.client.data.loader.LoadConfig;
-import gwt.material.design.client.data.loader.LoadResult;
-
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.datasource.HotelDataSource;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
@@ -31,8 +27,7 @@ import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.shared.api.RateCodeResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
-import io.crs.hsys.shared.dto.hotel.HotelDto;
-import io.crs.hsys.shared.dto.hotel.RateCodeDto;
+import io.crs.hsys.shared.dto.rate.RateCodeDto;
 
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 

@@ -3,6 +3,7 @@
  */
 package io.crs.hsys.client.fro.rate.updater;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -15,12 +16,21 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
+import gwt.material.design.client.data.loader.LoadCallback;
+import gwt.material.design.client.data.loader.LoadConfig;
+import gwt.material.design.client.data.loader.LoadResult;
+
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
+import io.crs.hsys.client.core.datasource.RateCodeDataSource2;
+import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.shared.cnst.MenuItemType;
+import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
+import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 
 /**
  * @author robi
@@ -31,6 +41,9 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 	private static Logger logger = Logger.getLogger(RateUpdaterPresenter.class.getName());
 
 	public interface MyView extends View, HasUiHandlers<RateUpdaterUiHandlers> {
+		void setRateCodeData(List<RateCodeDtor> data);
+
+		void setRoomTypeData(List<RoomTypeDtor> data);
 	}
 
 	@ProxyCodeSplit
@@ -39,10 +52,18 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 	interface MyProxy extends ProxyPlace<RateUpdaterPresenter> {
 	}
 
+	private final RateCodeDataSource2 rateCodeDataSource;
+	private final RoomTypeDataSource2 roomTypeDataSource;
+	private final CurrentUser currentUser;
+
 	@Inject
-	RateUpdaterPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
+	RateUpdaterPresenter(EventBus eventBus, MyView view, MyProxy proxy, RateCodeDataSource2 rateCodeDataSource,
+			RoomTypeDataSource2 roomTypeDataSource, CurrentUser currentUser) {
 		super(eventBus, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("RateUpdaterPresenter()");
+		this.rateCodeDataSource = rateCodeDataSource;
+		this.roomTypeDataSource = roomTypeDataSource;
+		this.currentUser = currentUser;
 
 		addRegisteredHandler(ContentPushEvent.TYPE, this);
 		addVisibleHandler(FilterChangeEvent.TYPE, this);
@@ -54,6 +75,44 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 	protected void onReveal() {
 		super.onReveal();
 		SetPageTitleEvent.fire("Rate Updater", "", MenuItemType.MENU_ITEM, this);
+		loadRoomTypeData();
+		loadRateCodeData();
+	}
+
+	private void loadRateCodeData() {
+		rateCodeDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
+		LoadCallback<RateCodeDtor> rateCodeLoadCallback = new LoadCallback<RateCodeDtor>() {
+
+			@Override
+			public void onSuccess(LoadResult<RateCodeDtor> loadResult) {
+				getView().setRateCodeData(loadResult.getData());
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		};
+
+		rateCodeDataSource.load(new LoadConfig<RateCodeDtor>(0, 0, null, null), rateCodeLoadCallback);
+	}
+
+	private void loadRoomTypeData() {
+		roomTypeDataSource.setHotelKey(currentUser.getCurrentHotel().getWebSafeKey());
+		LoadCallback<RoomTypeDtor> roomTypeLoadCallback = new LoadCallback<RoomTypeDtor>() {
+
+			@Override
+			public void onSuccess(LoadResult<RoomTypeDtor> loadResult) {
+				getView().setRoomTypeData(loadResult.getData());
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		};
+
+		roomTypeDataSource.load(new LoadConfig<RoomTypeDtor>(0, 0, null, null), roomTypeLoadCallback);
 	}
 
 	@Override

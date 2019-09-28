@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialPanel;
 import io.crs.hsys.shared.cnst.RatePriceType;
-import io.crs.hsys.shared.dto.hotel.RateByDateDto;
+import io.crs.hsys.shared.dto.rate.query.RateByDateDto;
 
 /**
  * @author robi

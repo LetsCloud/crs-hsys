@@ -1,0 +1,1 @@
+package io.crs.hsys.shared.dto.rate;

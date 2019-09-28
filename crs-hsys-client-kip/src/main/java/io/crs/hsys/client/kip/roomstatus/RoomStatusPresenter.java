@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
@@ -25,6 +26,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
+import gwt.material.design.client.constants.IconType;
+import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLink;
+import io.crs.hsys.client.core.event.SetPageMenuEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.kip.KipAppPresenter;
@@ -35,6 +40,7 @@ import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.client.kip.roomstatus.event.RoomStatusFilterEvent;
 import io.crs.hsys.client.kip.search.SearchPresenterFactory;
 import io.crs.hsys.client.kip.search.roomstatus.RoomStatusSearchPresenter;
+import io.crs.hsys.shared.api.PdfResource;
 import io.crs.hsys.shared.api.RoomResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.cnst.OccStatus;
@@ -79,11 +85,14 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 	private final RoomStatusFilterPresenter2 roomStatusfilter;
 	private final CurrentUser currentUser;
 	private final KipMessages i18n;
+	private final RestDispatch dispatcher;
+	private final ResourceDelegate<PdfResource> pdfResourceDelegate;
 
 	@Inject
 	RoomStatusPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager,
 			ResourceDelegate<RoomResource> resourceDelegate, SearchPresenterFactory searchFactory,
-			KipFilterPresenterFactory filterFactory, CurrentUser currentUser, KipMessages i18n) {
+			KipFilterPresenterFactory filterFactory, CurrentUser currentUser, KipMessages i18n, RestDispatch dispatcher,
+			ResourceDelegate<PdfResource> pdfResourceDelegate) {
 		super(eventBus, view, proxy, KipAppPresenter.SLOT_MAIN);
 		logger.log(Level.INFO, "RoomStatusPresenter()");
 
@@ -93,6 +102,8 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		this.roomStatusfilter = filterFactory.createRoomStatusFilter();
 		this.currentUser = currentUser;
 		this.i18n = i18n;
+		this.dispatcher = dispatcher;
+		this.pdfResourceDelegate = pdfResourceDelegate;
 
 		getView().setUiHandlers(this);
 	}
@@ -107,8 +118,16 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 
 	@Override
 	protected void onReveal() {
-		logger.log(Level.INFO, "onReveal()");
+		logger.log(Level.INFO, "RoomStatusPresenter().onReveal()");
 		SetPageTitleEvent.fire(i18n.roomStatusTitle(), i18n.roomStatusSubTitle(), MenuItemType.MENU_ITEM, this);
+
+		logger.log(Level.INFO, "RoomStatusPresenter().onReveal()-2");
+		MaterialLink pdfLink = new MaterialLink("PDF export", new MaterialIcon(IconType.PICTURE_AS_PDF));
+		pdfLink.addClickHandler(e -> createPdf());
+		List<MaterialLink> menuItems = new ArrayList<MaterialLink>();
+		menuItems.add(pdfLink);
+		SetPageMenuEvent.fire(menuItems, this);
+
 		loadData2();
 	}
 
@@ -365,4 +384,31 @@ public class RoomStatusPresenter extends Presenter<RoomStatusPresenter.MyView, R
 		placeBuilder.with(WEBSAFEKEY, String.valueOf(webSafeKey));
 		placeManager.revealPlace(placeBuilder.build());
 	}
+
+	private void createPdf() {
+		pdfResourceDelegate.withCallback(new AsyncCallback<String>() {
+			@Override
+			public void onSuccess(String token) {
+				logger.log(Level.INFO, "RoomStatusPresenter().createPdf().onSuccess()->token=" + token);
+//				Window.open("pdfdoc?token=" + token, "Hello Bello", "");
+				getURL("pdfdoc?token=" + token);
+				// location=no,menubar=no, resizable=yes, scrollbars=yes,
+				// status=no
+				// Dialog d = new Dialog();
+				// d.setWidth(500);
+				// d.setHeight(700);
+				// d.setUrl(GWT.getModuleBaseURL() + "hello?token=" + token);
+				// d.show();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+//				getView().displayError(EntityPropertyCode.NONE, caught.getMessage());
+			}
+		}).testPdf();
+	}
+
+	public static native String getURL(String url)/*-{
+		return $wnd.open(url, 'target=_blank')
+	}-*/;
 }
