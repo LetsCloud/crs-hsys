@@ -2,15 +2,19 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
+	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox"
+	xmlns:updater="urn:import:io.crs.hsys.client.fro.rate.updater">
 
 	<ui:style gss="true">
-	
+	.contentPanel {
+		padding: 20px;
+	}
 	</ui:style>
 
-	<m:MaterialRow ui:field="contentPanel">
+	<m:MaterialRow ui:field="contentPanel"
+		addStyleNames="{style.contentPanel}">
 
-		<m:MaterialColumn grid="s12 m6 l4 xl3">
+		<m:MaterialColumn grid="s12 m4">
 			<combobox:MaterialComboBox
 				ui:field="rateCodeCombo" multiple="false" label="Árkód"
 				placeholder="Válassz árkódot" />
@@ -22,7 +26,7 @@
 				placeholder="Válassz korlátozást" />
 		</m:MaterialColumn>
 
-		<m:MaterialColumn grid="s12 m6 l4 xl3">
+		<m:MaterialColumn grid="s12 m4">
 			<m:MaterialDatePicker ui:field="fromDate"
 				placeholder="Mettől" />
 			<m:MaterialDatePicker ui:field="toDate"
@@ -59,6 +63,11 @@
 					</g:FlowPanel>
 				</g:FlowPanel>
 			</m:MaterialColumn>
+		</m:MaterialColumn>
+
+		<m:MaterialColumn grid="s12 m4">
+			<updater:RateListEditor
+				ui:field="roomRateOperations" />
 		</m:MaterialColumn>
 
 	</m:MaterialRow>

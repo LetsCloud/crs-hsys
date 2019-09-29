@@ -4,29 +4,12 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
 
-	<ui:style>
-	/* Add CSS here. See the GWT docs on UI Binder for more details */
-	</ui:style>
+	<m:MaterialRow>
+		<m:MaterialDoubleBox ui:field="value"
+			label="Érték" grid="s6" />
 
-	<g:HTMLPanel>
 		<combobox:MaterialComboBox
 			ui:field="operationCombo" multiple="false" label="Módosítás módja"
-			placeholder="Válassz módosítási módot" grid="s12 m6 l4 xl3">
-			<m:html.Option value="1" text="Állítsd be az árat" />
-			<m:html.Option value="2" text="Növeld az árat" />
-			<m:html.Option value="3" text="Csökkentsd az árat" />
-		</combobox:MaterialComboBox>
-
-		<m:MaterialTextBox ui:field="valueBox" label="Érték" />
-		<!-- Add GWT widgets here. Enter < and hit Ctrl-Space to auto-complete 
-			widget names. The ui:field attribute binds an element to a field in the owner 
-			class. See the GWT docs on UI Binder for more details. -->
-
-		<combobox:MaterialComboBox
-			ui:field="valueTypeCombo" multiple="false" label="Érték típusa"
-			placeholder="Válassz érték típust" grid="s12 m6 l4 xl3">
-			<m:html.Option value="1" text="Értékre/kel" />
-			<m:html.Option value="2" text="Százalékkal" />
-		</combobox:MaterialComboBox>
-	</g:HTMLPanel>
+			placeholder="Válassz módosítási módot" grid="s6" />
+	</m:MaterialRow>
 </ui:UiBinder> 

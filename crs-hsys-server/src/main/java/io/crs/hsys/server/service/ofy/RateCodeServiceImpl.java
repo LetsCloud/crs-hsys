@@ -78,7 +78,7 @@ public class RateCodeServiceImpl extends HotelChildServiceImpl<RateCode, RateCod
 	}
 
 	private Map<Date, RoomRateByDate> roomRateSync(Map<Date, RoomRateByDate> roomRatesByDate,
-			Map<Date, RoomRateOperationDto> roomRateOperations) {
+			List<RoomRateOperationDto> roomRateOperations) {
 
 		return roomRatesByDate;
 	}

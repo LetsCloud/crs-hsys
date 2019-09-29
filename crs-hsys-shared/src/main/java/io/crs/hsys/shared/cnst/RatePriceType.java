@@ -8,5 +8,24 @@ package io.crs.hsys.shared.cnst;
  *
  */
 public enum RatePriceType {
-	SINGLE, DOUBLE, EXT_ADULT, TINY, CHILD;
+	DOUBLE("DOUBLE"), SINGLE("SINGLE"), EXT_ADULT("EXT_ADULT"), TINY("TINY"), CHILD("CHILD");
+
+	private final String text;
+
+	/**
+	 * @param text
+	 */
+	RatePriceType(final String text) {
+		this.text = text;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Enum#toString()
+	 */
+	@Override
+	public String toString() {
+		return text;
+	}
 }

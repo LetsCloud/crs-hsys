@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
@@ -16,7 +17,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.TakesValue;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -106,13 +106,12 @@ public class RoomEditorView extends ViewWithUiHandlers<RoomEditorUiHandlers>
 	public void edit(RoomDto dto) {
 		driver.edit(dto);
 
-		Timer t = new Timer() {
+		Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
 			@Override
-			public void run() {
+			public void execute() {
 				code.setFocus(true);
 			}
-		};
-		t.schedule(100);
+		});
 	}
 
 	@Override

@@ -31,6 +31,7 @@ import io.crs.hsys.client.fro.NameTokens;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
+import io.crs.hsys.shared.dto.rate.update.RoomRateUpdateDto;
 
 /**
  * @author robi
@@ -44,6 +45,8 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 		void setRateCodeData(List<RateCodeDtor> data);
 
 		void setRoomTypeData(List<RoomTypeDtor> data);
+
+		void edit(RoomRateUpdateDto dto);
 	}
 
 	@ProxyCodeSplit
@@ -77,6 +80,9 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 		SetPageTitleEvent.fire("Rate Updater", "", MenuItemType.MENU_ITEM, this);
 		loadRoomTypeData();
 		loadRateCodeData();
+		RoomRateUpdateDto dto = new RoomRateUpdateDto();
+
+		getView().edit(dto);
 	}
 
 	private void loadRateCodeData() {

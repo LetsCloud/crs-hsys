@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
@@ -19,6 +20,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialRow;
+
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 import io.crs.hsys.shared.dto.rate.update.RoomRateUpdateDto;
@@ -52,12 +54,16 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 	MaterialComboBox<RoomTypeDtor> roomTypeCombo;
 	TakesValueEditor<List<RoomTypeDtor>> roomTypes;
 
+	@UiField(provided = true)
+	RateListEditor roomRateOperations;
+
 	/**
 	* 
 	*/
 	@Inject
-	RateUpdaterView(Binder uiBinder, Driver driver) {
+	RateUpdaterView(Binder uiBinder, Driver driver, RateListEditor roomRateOperations) {
 		logger.info("RateUpdaterView()");
+		this.roomRateOperations = roomRateOperations;
 		initWidget(uiBinder.createAndBindUi(this));
 
 		initRateCodeCombo();
@@ -114,4 +120,17 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 			roomTypeCombo.addItem(roomTypeDto.getCode() + " - " + roomTypeDto.getName(), roomTypeDto);
 		}
 	}
+
+	@Override
+	public void edit(RoomRateUpdateDto dto) {
+		driver.edit(dto);
+
+		Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+			@Override
+			public void execute() {
+				rateCodeCombo.setFocus(true);
+			}
+		});
+	}
+
 }

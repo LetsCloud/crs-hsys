@@ -4,10 +4,8 @@
 package io.crs.hsys.shared.dto.rate.update;
 
 import io.crs.hsys.shared.cnst.RatePriceType;
-import io.crs.hsys.shared.cnst.RateUpdateOperand;
 import io.crs.hsys.shared.cnst.RateUpdateOperation;
 import io.crs.hsys.shared.dto.Dto;
-import io.crs.hsys.shared.dto.rate.RateRestrictionDto;
 
 /**
  * @author robi
@@ -18,15 +16,18 @@ public class RoomRateOperationDto implements Dto {
 
 	private RatePriceType type;
 
-	private RateUpdateOperation operation;
-
 	private Double value;
 
-	private RateUpdateOperand operand;
-
-	private RateRestrictionDto restriction;
+	private RateUpdateOperation operation;
 
 	public RoomRateOperationDto() {
+	}
+
+	public RoomRateOperationDto(RatePriceType type, Double value, RateUpdateOperation operation) {
+		this();
+		this.type = type;
+		this.operation = operation;
+		this.value = value;
 	}
 
 	public RatePriceType getType() {
@@ -52,21 +53,4 @@ public class RoomRateOperationDto implements Dto {
 	public void setValue(Double value) {
 		this.value = value;
 	}
-
-	public RateUpdateOperand getOperand() {
-		return operand;
-	}
-
-	public void setOperand(RateUpdateOperand operand) {
-		this.operand = operand;
-	}
-
-	public RateRestrictionDto getRestriction() {
-		return restriction;
-	}
-
-	public void setRestriction(RateRestrictionDto restriction) {
-		this.restriction = restriction;
-	}
-
 }

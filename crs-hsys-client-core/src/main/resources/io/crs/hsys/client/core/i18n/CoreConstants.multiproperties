@@ -895,5 +895,119 @@
             <Value disabled="false">At Evening</Value>
             <Value disabled="false">Este</Value>
         </Property>
+        <Comment>
+            <Value>rateUpdateOperationMap</Value>
+        </Comment>
+        <Property>
+            <Name>rateUpdateOperationMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+        </Property>
+        <Property>
+            <Name>SET_AMOUNT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Set amount</Value>
+            <Value disabled="false">Set amount</Value>
+            <Value disabled="false">Set amount</Value>
+            <Value disabled="false">Beállít</Value>
+        </Property>
+        <Property>
+            <Name>INC_BY_AMOUNT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Increase by amount</Value>
+            <Value disabled="false">Increase by amount</Value>
+            <Value disabled="false">Increase by amount</Value>
+            <Value disabled="false">Növel</Value>
+        </Property>
+        <Property>
+            <Name>DEC_BY_AMOUNT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Decrease by amount</Value>
+            <Value disabled="false">Decrease by amount</Value>
+            <Value disabled="false">Decrease by amount</Value>
+            <Value disabled="false">Csökkent</Value>
+        </Property>
+        <Property>
+            <Name>INC_BY_PERCENT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Increase by percent</Value>
+            <Value disabled="false">Increase by percent</Value>
+            <Value disabled="false">Increase by percent</Value>
+            <Value disabled="false">SZázalékos növelés</Value>
+        </Property>
+        <Property>
+            <Name>DEC_BY_PERCENT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Százalékos csökkentés</Value>
+            <Value disabled="false">Százalékos csökkentés</Value>
+            <Value disabled="false">Százalékos csökkentés</Value>
+            <Value disabled="false">Százalékos csökkentés</Value>
+        </Property>
+        <Comment>
+            <Value>ratePriceType</Value>
+        </Comment>
+        <Property>
+            <Name>ratePriceType</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">DOUBLE, SINGLE, EXT_ADULT, TINY, CHILD</Value>
+            <Value disabled="false">DOUBLE, SINGLE, EXT_ADULT, TINY, CHILD</Value>
+            <Value disabled="false">DOUBLE, SINGLE, EXT_ADULT, TINY, CHILD</Value>
+            <Value disabled="false">DOUBLE, SINGLE, EXT_ADULT, TINY, CHILD</Value>
+        </Property>
+        <Property>
+            <Name>DOUBLE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Base</Value>
+            <Value disabled="false">Base</Value>
+            <Value disabled="false">Base</Value>
+            <Value disabled="false">Alap</Value>
+        </Property>
+        <Property>
+            <Name>SINGLE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Single</Value>
+            <Value disabled="false">Single</Value>
+            <Value disabled="false">Single</Value>
+            <Value disabled="false">Egy fős</Value>
+        </Property>
+        <Property>
+            <Name>EXT_ADULT</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Extra bed</Value>
+            <Value disabled="false">Extra bed</Value>
+            <Value disabled="false">Extra bed</Value>
+            <Value disabled="false">Felnőtt pótágy</Value>
+        </Property>
+        <Property>
+            <Name>TINY</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Tiny</Value>
+            <Value disabled="false">Tiny</Value>
+            <Value disabled="false">Tiny</Value>
+            <Value disabled="false">Tiny</Value>
+        </Property>
+        <Property>
+            <Name>CHILD</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Child</Value>
+            <Value disabled="false">Child</Value>
+            <Value disabled="false">Child</Value>
+            <Value disabled="false">Gyerek</Value>
+        </Property>
     </Records>
 </MultiProperties>
