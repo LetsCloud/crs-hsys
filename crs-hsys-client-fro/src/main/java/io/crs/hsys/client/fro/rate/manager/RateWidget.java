@@ -13,7 +13,6 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
@@ -22,7 +21,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialPanel;
+
 import io.crs.hsys.shared.cnst.RatePriceType;
+import io.crs.hsys.shared.dto.rate.RateRestrictionDto;
 import io.crs.hsys.shared.dto.rate.query.RateByDateDto;
 
 /**
@@ -84,8 +85,15 @@ public class RateWidget extends Composite {
 			}
 		});
 
-		switch (price.getRestriction().getType()) {
-		case CLOSED:
+		initRestriction(price.getRestriction());
+	}
+
+	private void initRestriction(RateRestrictionDto restriction) {
+		if (restriction == null)
+			return;
+
+		switch (restriction.getType()) {
+		case RRT_CLOSED:
 			wrapPanel.setBackgroundColor(Color.RED_LIGHTEN_4);
 			restrictionLabel.setText("CLOSED");
 			restrictionLabel.getElement().getStyle().setColor("#b71c1c");
@@ -93,33 +101,33 @@ public class RateWidget extends Composite {
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);
 			ratePanel.getElement().getStyle().setTextDecoration(TextDecoration.LINE_THROUGH);
 			break;
-		case CTA:
+		case RRT_CTA:
 			wrapPanel.addStyleName(style.cta());
 			restrictionLabel.setText("CTA");
 			restrictionLabel.getElement().getStyle().setTextAlign(TextAlign.LEFT);
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);
 			break;
-		case CTD:
+		case RRT_CTD:
 			wrapPanel.addStyleName(style.ctd());
 			restrictionLabel.setText("CTD");
 			restrictionLabel.getElement().getStyle().setTextAlign(TextAlign.RIGHT);
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);
 			break;
-		case MIN_LOS:
-			restrictionLabel.setText("MinLOS " + price.getRestriction().getValue());
+		case RRT_MINLOS:
+			restrictionLabel.setText("MinLOS " + restriction.getValue());
 			restrictionLabel.getElement().getStyle().setTextAlign(TextAlign.CENTER);
 			restrictionLabel.getElement().getStyle().setBackgroundColor("#e1bee7");
 			restrictionLabel.getElement().getStyle().setColor("#4a148c");
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);
 			break;
-		case MAX_LOS:
-			restrictionLabel.setText("MaxLOS " + price.getRestriction().getValue());
+		case RRT_MAXLOS:
+			restrictionLabel.setText("MaxLOS " + restriction.getValue());
 			restrictionLabel.getElement().getStyle().setTextAlign(TextAlign.CENTER);
 			restrictionLabel.getElement().getStyle().setBackgroundColor("#bbdefb");
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);
 			break;
-		case MIN_ST:
-			restrictionLabel.setText("MinST " + price.getRestriction().getValue());
+		case RRT_MINST:
+			restrictionLabel.setText("MinST " + restriction.getValue());
 			restrictionLabel.getElement().getStyle().setTextAlign(TextAlign.CENTER);
 			restrictionLabel.getElement().getStyle().setBackgroundColor("#ffe0b2");
 			ratePanel.getElement().getStyle().setPaddingTop(0, Unit.PX);

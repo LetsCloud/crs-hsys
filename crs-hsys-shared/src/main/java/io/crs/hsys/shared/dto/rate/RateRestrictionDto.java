@@ -17,8 +17,10 @@ public class RateRestrictionDto implements Dto {
 
 	private Integer value;
 
+	private Boolean applied;
+
 	public RateRestrictionDto() {
-		this.type = RateRestrictionType.NORST;
+		this.applied = false;
 	}
 
 	public RateRestrictionDto(RateRestrictionType type) {
@@ -45,6 +47,14 @@ public class RateRestrictionDto implements Dto {
 
 	public void setValue(Integer value) {
 		this.value = value;
+	}
+
+	public Boolean getApplied() {
+		return applied;
+	}
+
+	public void setApplied(Boolean applied) {
+		this.applied = applied;
 	}
 
 }

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import io.crs.hsys.shared.cnst.RatePriceType;
+import io.crs.hsys.shared.cnst.RateRestrictionType;
 import io.crs.hsys.shared.cnst.RateUpdateOperation;
 import io.crs.hsys.shared.dto.hotel.HotelChildDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
@@ -25,13 +26,15 @@ public class RoomRateUpdateDto extends HotelChildDto {
 
 	private List<RoomTypeDtor> roomTypes = new ArrayList<RoomTypeDtor>();
 
-	private List<RoomRateOperationDto> roomRateOperations = new ArrayList<RoomRateOperationDto>();
+	private List<RoomRateOperationDto> operations = new ArrayList<RoomRateOperationDto>();
 
-	private RateRestrictionDto restriction;
+	private List<RateRestrictionDto> restrictions = new ArrayList<RateRestrictionDto>();
 
 	public RoomRateUpdateDto() {
-		Arrays.asList(RatePriceType.values()).forEach(
-				st -> roomRateOperations.add(new RoomRateOperationDto(st, 0d, RateUpdateOperation.SET_AMOUNT)));
+		Arrays.asList(RatePriceType.values())
+				.forEach(st -> operations.add(new RoomRateOperationDto(st, 0d, RateUpdateOperation.SET_AMOUNT)));
+
+		Arrays.asList(RateRestrictionType.values()).forEach(st -> restrictions.add(new RateRestrictionDto(st, 0)));
 	}
 
 	public RateCodeDtor getRateCode() {
@@ -50,20 +53,20 @@ public class RoomRateUpdateDto extends HotelChildDto {
 		this.roomTypes = roomTypes;
 	}
 
-	public List<RoomRateOperationDto> getRoomRateOperations() {
-		return roomRateOperations;
+	public List<RoomRateOperationDto> getOperations() {
+		return operations;
 	}
 
-	public void setRoomRateOperations(List<RoomRateOperationDto> roomRateOperations) {
-		this.roomRateOperations = roomRateOperations;
+	public void setOperations(List<RoomRateOperationDto> operations) {
+		this.operations = operations;
 	}
 
-	public RateRestrictionDto getRestriction() {
-		return restriction;
+	public List<RateRestrictionDto> getRestrictions() {
+		return restrictions;
 	}
 
-	public void setRestriction(RateRestrictionDto restriction) {
-		this.restriction = restriction;
+	public void setRestrictions(List<RateRestrictionDto> restrictions) {
+		this.restrictions = restrictions;
 	}
 
 }

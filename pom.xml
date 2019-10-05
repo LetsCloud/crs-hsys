@@ -49,8 +49,8 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.1.10.RELEASE</spring.framework.version>
-		<spring.security.version>5.1.6.RELEASE</spring.security.version>
+		<spring.framework.version>5.2.0.RELEASE</spring.framework.version>
+		<spring.security.version>5.2.0.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
 		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>

@@ -902,10 +902,19 @@
             <Name>rateUpdateOperationMap</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
-            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
-            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
-            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
-            <Value disabled="false">SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">NO_CHANGE, SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">NO_CHANGE, SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">NO_CHANGE, SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+            <Value disabled="false">NO_CHANGE, SET_AMOUNT, INC_BY_AMOUNT, DEC_BY_AMOUNT,INC_BY_PERCENT,DEC_BY_PERCENT</Value>
+        </Property>
+        <Property>
+            <Name>NO_CHANGE</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">No change</Value>
+            <Value disabled="false">No change</Value>
+            <Value disabled="false">No change</Value>
+            <Value disabled="false">Nem módosul</Value>
         </Property>
         <Property>
             <Name>SET_AMOUNT</Name>
@@ -971,7 +980,7 @@
             <Value disabled="false">Base</Value>
             <Value disabled="false">Base</Value>
             <Value disabled="false">Base</Value>
-            <Value disabled="false">Alap</Value>
+            <Value disabled="false">Alap ár</Value>
         </Property>
         <Property>
             <Name>SINGLE</Name>
@@ -980,7 +989,7 @@
             <Value disabled="false">Single</Value>
             <Value disabled="false">Single</Value>
             <Value disabled="false">Single</Value>
-            <Value disabled="false">Egy fős</Value>
+            <Value disabled="false">Egy fős ár</Value>
         </Property>
         <Property>
             <Name>EXT_ADULT</Name>
@@ -998,7 +1007,7 @@
             <Value disabled="false">Tiny</Value>
             <Value disabled="false">Tiny</Value>
             <Value disabled="false">Tiny</Value>
-            <Value disabled="false">Tiny</Value>
+            <Value disabled="false">Tini pótágy</Value>
         </Property>
         <Property>
             <Name>CHILD</Name>
@@ -1007,7 +1016,91 @@
             <Value disabled="false">Child</Value>
             <Value disabled="false">Child</Value>
             <Value disabled="false">Child</Value>
-            <Value disabled="false">Gyerek</Value>
+            <Value disabled="false">Gyerek pótágy</Value>
+        </Property>
+        <Comment>
+            <Value>rateRestrictionType</Value>
+        </Comment>
+        <Property>
+            <Name>rateRestrictionType</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">RRT_CLOSED,RRT_CTA,RRT_CTD,RRT_MINLOS,RRT_MAXLOS,RRT_MINST,RRT_MINAB,RRT_MAXAB</Value>
+            <Value disabled="false">RRT_CLOSED,RRT_CTA,RRT_CTD,RRT_MINLOS,RRT_MAXLOS,RRT_MINST,RRT_MINAB,RRT_MAXAB</Value>
+            <Value disabled="false">RRT_CLOSED,RRT_CTA,RRT_CTD,RRT_MINLOS,RRT_MAXLOS,RRT_MINST,RRT_MINAB,RRT_MAXAB</Value>
+            <Value disabled="false">RRT_CLOSED,RRT_CTA,RRT_CTD,RRT_MINLOS,RRT_MAXLOS,RRT_MINST,RRT_MINAB,RRT_MAXAB</Value>
+        </Property>
+        <Property>
+            <Name>RRT_CLOSED</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Closed</Value>
+            <Value disabled="false">Closed</Value>
+            <Value disabled="false">Closed</Value>
+            <Value disabled="false">Closed</Value>
+        </Property>
+        <Property>
+            <Name>RRT_CTA</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Closed To Arrival</Value>
+            <Value disabled="false">Closed To Arrival</Value>
+            <Value disabled="false">Closed To Arrival</Value>
+            <Value disabled="false">Closed To Arrival</Value>
+        </Property>
+        <Property>
+            <Name>RRT_CTD</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Closed To Departure</Value>
+            <Value disabled="false">Closed To Departure</Value>
+            <Value disabled="false">Closed To Departure</Value>
+            <Value disabled="false">Closed To Departure</Value>
+        </Property>
+        <Property>
+            <Name>RRT_MINLOS</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Min Length of Stay</Value>
+            <Value disabled="false">Min Length of Stay</Value>
+            <Value disabled="false">Min Length of Stay</Value>
+            <Value disabled="false">Min Length of Stay</Value>
+        </Property>
+        <Property>
+            <Name>RRT_MAXLOS</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Max Length of Stay</Value>
+            <Value disabled="false">Max Length of Stay</Value>
+            <Value disabled="false">Max Length of Stay</Value>
+            <Value disabled="false">Max Length of Stay</Value>
+        </Property>
+        <Property>
+            <Name>RRT_MINST</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Min Stay Through</Value>
+            <Value disabled="false">Min Stay Through</Value>
+            <Value disabled="false">Min Stay Through</Value>
+            <Value disabled="false">Min Stay Through</Value>
+        </Property>
+        <Property>
+            <Name>RRT_MINAB</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Min Advance Booking</Value>
+            <Value disabled="false">Min Advance Booking</Value>
+            <Value disabled="false">Min Advance Booking</Value>
+            <Value disabled="false">Min Advance Booking</Value>
+        </Property>
+        <Property>
+            <Name>RRT_MAXAB</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Max Advance Booking</Value>
+            <Value disabled="false">Max Advance Booking</Value>
+            <Value disabled="false">Max Advance Booking</Value>
+            <Value disabled="false">Max Advance Booking</Value>
         </Property>
     </Records>
 </MultiProperties>

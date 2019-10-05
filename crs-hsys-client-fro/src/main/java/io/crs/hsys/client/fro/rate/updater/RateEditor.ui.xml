@@ -4,12 +4,16 @@
 	xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:combobox="urn:import:gwt.material.design.addins.client.combobox">
 
-	<m:MaterialRow>
-		<m:MaterialDoubleBox ui:field="value"
-			label="Érték" grid="s6" />
+	<m:MaterialRow marginBottom="0">
+		<m:MaterialColumn grid="s6" paddingLeft="0">
+			<m:MaterialDoubleBox ui:field="value"
+				label="Érték" />
+		</m:MaterialColumn>
 
-		<combobox:MaterialComboBox
-			ui:field="operationCombo" multiple="false" label="Módosítás módja"
-			placeholder="Válassz módosítási módot" grid="s6" />
+		<m:MaterialColumn grid="s6" paddingRight="0">
+			<combobox:MaterialComboBox
+				ui:field="operationCombo" multiple="false" label="Módosítás"
+				placeholder="Válassz módosítási módot" />
+		</m:MaterialColumn>
 	</m:MaterialRow>
 </ui:UiBinder> 

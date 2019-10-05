@@ -44,4 +44,6 @@ public interface CoreConstants extends Constants {
 	Map<String, String> rateUpdateOperationMap();
 	
 	Map<String, String> ratePriceType();
+	
+	Map<String, String> rateRestrictionType();
 }

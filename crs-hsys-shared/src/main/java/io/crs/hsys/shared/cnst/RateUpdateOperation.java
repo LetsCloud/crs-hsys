@@ -8,7 +8,7 @@ package io.crs.hsys.shared.cnst;
  *
  */
 public enum RateUpdateOperation {
-	SET_AMOUNT("SET_AMOUNT"), INC_BY_AMOUNT("INC_BY_AMOUNT"), DEC_BY_AMOUNT("DEC_BY_AMOUNT"),
+	NO_CHANGE("NO_CHANGE"), SET_AMOUNT("SET_AMOUNT"), INC_BY_AMOUNT("INC_BY_AMOUNT"), DEC_BY_AMOUNT("DEC_BY_AMOUNT"),
 	INC_BY_PERCENT("INC_BY_PERCENT"), DEC_BY_PERCENT("DEC_BY_PERCENT");
 
 	private final String text;

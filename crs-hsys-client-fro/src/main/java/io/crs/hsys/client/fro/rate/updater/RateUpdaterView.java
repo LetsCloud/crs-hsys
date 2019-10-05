@@ -55,15 +55,20 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 	TakesValueEditor<List<RoomTypeDtor>> roomTypes;
 
 	@UiField(provided = true)
-	RateListEditor roomRateOperations;
+	RateListEditor operations;
+
+	@UiField(provided = true)
+	RestrictionListEditor restrictions;
 
 	/**
 	* 
 	*/
 	@Inject
-	RateUpdaterView(Binder uiBinder, Driver driver, RateListEditor roomRateOperations) {
+	RateUpdaterView(Binder uiBinder, Driver driver, RateListEditor roomRateOperations,
+			RestrictionListEditor restrictions) {
 		logger.info("RateUpdaterView()");
-		this.roomRateOperations = roomRateOperations;
+		this.operations = roomRateOperations;
+		this.restrictions = restrictions;
 		initWidget(uiBinder.createAndBindUi(this));
 
 		initRateCodeCombo();

@@ -44,25 +44,26 @@ public class RateEditor extends Composite implements Editor<RoomRateOperationDto
 
 	@UiField
 	MaterialDoubleBox value;
-
+	
 	/**
 	 * 
 	 */
 	@Inject
 	RateEditor(Binder uiBinder, CoreConstants i18nCoreCnst) {
+		
 		initWidget(uiBinder.createAndBindUi(this));
 
-		initPriceType();
+		initPriceType(i18nCoreCnst.ratePriceType());
 		initOperationCombo(i18nCoreCnst.rateUpdateOperationMap());
 	}
 
-	private void initPriceType() {
+	private void initPriceType(Map<String, String> i18nMap) {
 		type = TakesValueEditor.of(new TakesValue<RatePriceType>() {
 
 		@Override
 		public void setValue(RatePriceType value) {
 			tempType = value;
-			setValueLabel(value.toString());
+			setValueLabel(i18nMap.get(value.toString()));
 		}
 
 		@Override

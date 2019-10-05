@@ -24,7 +24,6 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
-import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.app.AbstractAppPresenter;
 import io.crs.hsys.client.core.event.ContentPushEvent;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
@@ -118,25 +117,25 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 
 		List<RateQueryRespDto> ratesGridData = new ArrayList<RateQueryRespDto>();
 
-		RateRestrictionDto noRest = new RateRestrictionDto();
-		ratesGridData.add(createRateLine(startDate, rcPublic, dblbRTD, cHuf, 999999d, noRest));
+//		RateRestrictionDto noRest = new RateRestrictionDto();
+		ratesGridData.add(createRateLine(startDate, rcPublic, dblbRTD, cHuf, 999999d, null));
 
-		RateRestrictionDto closedRest = new RateRestrictionDto(RateRestrictionType.CLOSED);
+		RateRestrictionDto closedRest = new RateRestrictionDto(RateRestrictionType.RRT_CLOSED);
 		ratesGridData.add(createRateLine(startDate, rcFlash, twinRTD, cHuf, 125000d, closedRest));
 
-		RateRestrictionDto minlosRest = new RateRestrictionDto(RateRestrictionType.MIN_LOS, 3);
+		RateRestrictionDto minlosRest = new RateRestrictionDto(RateRestrictionType.RRT_MINLOS, 3);
 		ratesGridData.add(createRateLine(startDate, rcPublic, twinRTD, cHuf, 125000d, minlosRest));
 
-		RateRestrictionDto maxlosRest = new RateRestrictionDto(RateRestrictionType.MAX_LOS, 5);
+		RateRestrictionDto maxlosRest = new RateRestrictionDto(RateRestrictionType.RRT_MAXLOS, 5);
 		ratesGridData.add(createRateLine(startDate, rcCompany, dblbRTD, cHuf, 99999d, maxlosRest));
 
-		RateRestrictionDto minStRest = new RateRestrictionDto(RateRestrictionType.MIN_ST, 2);
+		RateRestrictionDto minStRest = new RateRestrictionDto(RateRestrictionType.RRT_MINST, 2);
 		ratesGridData.add(createRateLine(startDate, rcCompany, dblbRTD, cEur, 99d, minStRest));
 
-		RateRestrictionDto ctaRest = new RateRestrictionDto(RateRestrictionType.CTA);
+		RateRestrictionDto ctaRest = new RateRestrictionDto(RateRestrictionType.RRT_CTA);
 		ratesGridData.add(createRateLine(startDate, rcNonref, dblbRTD, cEur, 120d, ctaRest));
 
-		RateRestrictionDto ctdRest = new RateRestrictionDto(RateRestrictionType.CTD);
+		RateRestrictionDto ctdRest = new RateRestrictionDto(RateRestrictionType.RRT_CTD);
 		ratesGridData.add(createRateLine(startDate, rcNonref, twinRTD, cEur, 130d, ctdRest));
 
 		getView().setData(ratesGridData);

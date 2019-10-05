@@ -10,18 +10,13 @@ package io.crs.hsys.shared.cnst;
 public enum RateRestrictionType {
 
 	/**
-	 * No restrictions
-	 */
-	NORST,
-
-	/**
 	 * Closed sales
 	 * <p>
 	 * Hotel rooms made unavailable from sales. Such a closed out could be for a
 	 * variety of reasons and applied to individual market segments.
 	 * </p>
 	 */
-	CLOSED,
+	RRT_CLOSED,
 
 	/**
 	 * Closed to Arrival
@@ -30,7 +25,7 @@ public enum RateRestrictionType {
 	 * reservations arriving on a particular day.
 	 * </p>
 	 */
-	CTA,
+	RRT_CTA,
 
 	/**
 	 * Closed to Departure
@@ -39,17 +34,17 @@ public enum RateRestrictionType {
 	 * cannot make their reservation for with this date as check-out.
 	 * </p>
 	 */
-	CTD,
+	RRT_CTD,
 
 	/**
 	 * Minimum Length of Stay
 	 */
-	MIN_LOS,
+	RRT_MINLOS,
 
 	/**
 	 * Maximum Length of Stay
 	 */
-	MAX_LOS,
+	RRT_MAXLOS,
 
 	/**
 	 * Minimum Stay Through
@@ -60,16 +55,16 @@ public enum RateRestrictionType {
 	 * restriction of the booking dates.
 	 * </p>
 	 */
-	MIN_ST,
+	RRT_MINST,
 
 	/**
 	 * Minimum Advance Booking
 	 */
-	MIN_AB,
+	RRT_MINAB,
 
 	/**
 	 * Maximum Advance Booking
 	 */
-	MAX_AB;
+	RRT_MAXAB;
 
 }

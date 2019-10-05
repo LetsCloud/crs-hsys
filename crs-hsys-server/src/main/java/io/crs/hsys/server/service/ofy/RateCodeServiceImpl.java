@@ -71,7 +71,7 @@ public class RateCodeServiceImpl extends HotelChildServiceImpl<RateCode, RateCod
 			List<RoomRate> roomRates = rateByYearRepository
 					.getChildrenByFilters(rateUpdateDto.getHotel().getWebSafeKey(), filters);
 			for (RoomRate roomRate : roomRates) {
-				roomRateSync(roomRate.getRoomRatesByDate(), rateUpdateDto.getRoomRateOperations());
+				roomRateSync(roomRate.getRoomRatesByDate(), rateUpdateDto.getOperations());
 				rateByYearRepository.save(roomRate);
 			}
 		}
