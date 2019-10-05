@@ -13,6 +13,8 @@ public interface ThemeParams {
 
 	public String getPrimaryLightColor();
 
+	public String getPrimaryDarkColor();
+
 	public String getSecondaryColor();
 
 	public String getSecondaryLightColor();

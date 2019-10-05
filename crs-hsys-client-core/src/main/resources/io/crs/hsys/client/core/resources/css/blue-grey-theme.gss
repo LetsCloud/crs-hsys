@@ -6,6 +6,7 @@
  
 @def C_PRIMARY			eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_PRIMARY");
 @def C_PRIMARY_LIGHT	eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_PRIMARY_LIGHT");
+@def C_PRIMARY_DARK		eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_PRIMARY_DARK");
 @def C_SECONDARY		eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_SECONDARY");
 @def C_SECONDARY_LIGHT	eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_SECONDARY_LIGHT");
 @def C_SECONDARY_DARK	eval("io.crs.hsys.client.core.resources.BlueGreyThemeColors.C_SECONDARY_DARK");

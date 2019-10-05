@@ -10,6 +10,7 @@ package io.crs.hsys.client.core.resources;
 public class OrangeThemeColors {
 	public static final String C_PRIMARY = "#ff9800 "; /* ORANGE */
 	public static final String C_PRIMARY_LIGHT = "#ffcc80 "; /* ORANGE_LIGHTEN_3 */
+	public static final String C_PRIMARY_DARK = "#ef6c00 "; /* ORANGE_DARKEN_3 */
 
 	public static final String C_SECONDARY = "#424242"; /* GREY_DARKEN_3 */
 	public static final String C_SECONDARY_LIGHT = "#616161"; /* GREY_DARKEN_2 */

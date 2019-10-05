@@ -29,4 +29,9 @@ public class CfgThemeParams implements ThemeParams {
 	public String getSecondaryDarkColor() {
 		return BlueGreyThemeColors.C_SECONDARY_DARK;
 	}
+
+	@Override
+	public String getPrimaryDarkColor() {
+		return BlueGreyThemeColors.C_PRIMARY_DARK;
+	}
 }
