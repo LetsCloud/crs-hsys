@@ -405,14 +405,10 @@ ul.select2-results__options[aria-multiselectable="true"] li.select2-results__opt
 *                   *
 ********************/
 
-.picker__input
-.picker__input--active {
-	border-color: C_PRIMARY;
-}
-
-.picker__input
-.picker__input--active {
-	border-color: C_PRIMARY_LIGHT;
+.picker__input.picker__input--active {
+    border-bottom: 1px solid C_PRIMARY;
+    box-shadow: 0 1px 0 0 C_PRIMARY;
+    border-color: C_PRIMARY;
 }
 
 .picker--focused 
