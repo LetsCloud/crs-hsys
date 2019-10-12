@@ -12,15 +12,18 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.TakesValue;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
+import gwt.material.design.client.ui.MaterialDatePicker;
 import gwt.material.design.client.ui.MaterialRow;
-
+import io.crs.hsys.shared.dto.hotel.RoomDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 import io.crs.hsys.shared.dto.rate.update.RoomRateUpdateDto;
@@ -54,8 +57,14 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 	MaterialComboBox<RoomTypeDtor> roomTypeCombo;
 	TakesValueEditor<List<RoomTypeDtor>> roomTypes;
 
+	@UiField
+	MaterialDatePicker fromDate, toDate;
+
+	@UiField
+	DayWidget day1, day2, day3, day4, day5, day6, day7;
+
 	@UiField(provided = true)
-	RateListEditor operations;
+	OperationListEditor operations;
 
 	@UiField(provided = true)
 	RestrictionListEditor restrictions;
@@ -64,7 +73,7 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 	* 
 	*/
 	@Inject
-	RateUpdaterView(Binder uiBinder, Driver driver, RateListEditor roomRateOperations,
+	RateUpdaterView(Binder uiBinder, Driver driver, OperationListEditor roomRateOperations,
 			RestrictionListEditor restrictions) {
 		logger.info("RateUpdaterView()");
 		this.operations = roomRateOperations;
@@ -136,6 +145,17 @@ public class RateUpdaterView extends ViewWithUiHandlers<RateUpdaterUiHandlers>
 				rateCodeCombo.setFocus(true);
 			}
 		});
+	}
+
+	@UiHandler("saveButton")
+	void onSaveClick(ClickEvent event) {
+		RoomRateUpdateDto dto = driver.flush();
+		getUiHandlers().save(dto);
+	}
+
+	@UiHandler("cancelButton")
+	void onCancelClick(ClickEvent event) {
+		getUiHandlers().cancel();
 	}
 
 }

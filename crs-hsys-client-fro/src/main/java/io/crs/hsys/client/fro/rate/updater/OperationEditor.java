@@ -28,9 +28,9 @@ import io.crs.hsys.shared.dto.rate.update.RoomRateOperationDto;
  * @author robi
  *
  */
-public class RateEditor extends Composite implements Editor<RoomRateOperationDto> {
+public class OperationEditor extends Composite implements Editor<RoomRateOperationDto> {
 
-	interface Binder extends UiBinder<Widget, RateEditor> {
+	interface Binder extends UiBinder<Widget, OperationEditor> {
 	}
 
 	private RatePriceType tempType; 
@@ -49,7 +49,7 @@ public class RateEditor extends Composite implements Editor<RoomRateOperationDto
 	 * 
 	 */
 	@Inject
-	RateEditor(Binder uiBinder, CoreConstants i18nCoreCnst) {
+	OperationEditor(Binder uiBinder, CoreConstants i18nCoreCnst) {
 		
 		initWidget(uiBinder.createAndBindUi(this));
 

@@ -7,7 +7,7 @@ package io.crs.hsys.client.core.resources;
  * @author robi
  *
  */
-public class GreyThemeColors {
+public class ThemeColorsGrey {
 	public static final String C_PRIMARY = "#9e9e9e"; /* GREY */
 	public static final String C_PRIMARY_LIGHT = "#eeeeee"; /* GREY_LIGHTEN_3 */
 	public static final String C_PRIMARY_DARK = "#424242"; /* # GREY_DARKEN_3 */

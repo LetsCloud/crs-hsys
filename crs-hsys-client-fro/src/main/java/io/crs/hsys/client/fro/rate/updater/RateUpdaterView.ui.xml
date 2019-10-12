@@ -9,61 +9,77 @@
 	.contentPanel {
 		padding: 20px;
 	}
+	
+	.saveButton {
+		margin-bottom: 18px;
+	}
 	</ui:style>
 
-	<m:MaterialRow ui:field="contentPanel"
-		addStyleNames="{style.contentPanel}">
+	<ui:with field="i18nCore"
+		type="io.crs.hsys.client.core.i18n.CoreMessages" />
 
-		<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
-			<combobox:MaterialComboBox
-				ui:field="rateCodeCombo" multiple="false" label="Árkód"
-				placeholder="Válassz árkódot" />
-			<combobox:MaterialComboBox
-				ui:field="roomTypeCombo" multiple="true" label="Szobatípus(ok)"
-				placeholder="Válassz szobatípusokat" marginTop="25" />
-			<m:MaterialDatePicker ui:field="fromDate"
-				placeholder="Mettől" marginTop="25" />
-			<m:MaterialDatePicker ui:field="toDate"
-				placeholder="Meddig" marginTop="25" />
-			<m:MaterialColumn grid="s12" paddingLeft="0">
+	<g:HTMLPanel>
+		<m:MaterialRow ui:field="contentPanel"
+			addStyleNames="{style.contentPanel}">
+
+			<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
+				<combobox:MaterialComboBox
+					ui:field="rateCodeCombo" multiple="false" label="Árkód"
+					placeholder="Válassz árkódot" />
+				<combobox:MaterialComboBox
+					ui:field="roomTypeCombo" multiple="true" label="Szobatípus(ok)"
+					placeholder="Válassz szobatípusokat" marginTop="25" />
+				<m:MaterialDatePicker ui:field="fromDate"
+					placeholder="Mettől" marginTop="25" />
+				<m:MaterialDatePicker ui:field="toDate"
+					placeholder="Meddig" marginTop="25" />
+				<m:MaterialColumn grid="s12" paddingLeft="0">
+					<g:FlowPanel addStyleNames="dataGroupBox clearfix">
+						<g:Label text="Hét napjai" addStyleNames="dataGroupTitle" />
+						<g:FlowPanel addStyleNames="clearfix">
+							<updater:DayWidget ui:field="day1"
+								labelText="H" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day2"
+								labelText="K" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day3"
+								labelText="Sz" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day4"
+								labelText="Cs" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day5"
+								labelText="P" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day6"
+								labelText="Sz" float="LEFT" width="35px" />
+							<updater:DayWidget ui:field="day7"
+								labelText="V" float="LEFT" width="35px" />
+						</g:FlowPanel>
+						<g:FlowPanel addStyleNames="clearfix">
+						</g:FlowPanel>
+					</g:FlowPanel>
+				</m:MaterialColumn>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
 				<g:FlowPanel addStyleNames="dataGroupBox clearfix">
-					<g:Label text="Hét napjai" addStyleNames="dataGroupTitle" />
-					<g:FlowPanel addStyleNames="clearfix">
-						<updater:DayWidget labelText="H" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="K" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="Sz" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="Cs" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="P" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="Sz" float="LEFT"
-							width="35px" />
-						<updater:DayWidget labelText="V" float="LEFT"
-							width="35px" />
-					</g:FlowPanel>
-					<g:FlowPanel addStyleNames="clearfix">
-					</g:FlowPanel>
+					<g:Label text="Árak" addStyleNames="dataGroupTitle" />
+					<updater:OperationListEditor
+						ui:field="operations" />
 				</g:FlowPanel>
 			</m:MaterialColumn>
-		</m:MaterialColumn>
 
-		<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
-			<g:FlowPanel addStyleNames="dataGroupBox clearfix">
-				<g:Label text="Árak" addStyleNames="dataGroupTitle" />
-				<updater:RateListEditor ui:field="operations" />
-			</g:FlowPanel>
-		</m:MaterialColumn>
+			<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
+				<g:FlowPanel addStyleNames="dataGroupBox clearfix">
+					<g:Label text="Korlátozások" addStyleNames="dataGroupTitle" />
+					<updater:RestrictionListEditor
+						ui:field="restrictions" />
+				</g:FlowPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
 
-		<m:MaterialColumn grid="s12 m6 l4" paddingLeft="0">
-			<g:FlowPanel addStyleNames="dataGroupBox clearfix">
-				<g:Label text="Korlátozások" addStyleNames="dataGroupTitle" />
-				<updater:RestrictionListEditor
-					ui:field="restrictions" />
-			</g:FlowPanel>
-		</m:MaterialColumn>
+		<m:MaterialButton ui:field="saveButton"
+			text="{i18nCore.comSave}" float="RIGHT"
+			addStyleNames="{style.saveButton}" />
+		<m:MaterialButton ui:field="cancelButton"
+			text="{i18nCore.comCancel}" type="FLAT" float="RIGHT" />
 
-	</m:MaterialRow>
+	</g:HTMLPanel>
 </ui:UiBinder> 

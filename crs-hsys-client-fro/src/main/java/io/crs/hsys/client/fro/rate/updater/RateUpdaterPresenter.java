@@ -129,4 +129,16 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 	@Override
 	public void onContentPush(ContentPushEvent event) {
 	}
+
+	@Override
+	public void save(RoomRateUpdateDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cancel() {
+		// TODO Auto-generated method stub
+		
+	}
 }

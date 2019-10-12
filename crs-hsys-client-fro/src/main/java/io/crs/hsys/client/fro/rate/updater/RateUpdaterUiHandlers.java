@@ -3,12 +3,13 @@
  */
 package io.crs.hsys.client.fro.rate.updater;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import io.crs.hsys.client.core.editor.AbstractEditorUiHandlers;
+import io.crs.hsys.shared.dto.rate.update.RoomRateUpdateDto;
 
 /**
  * @author robi
  *
  */
-public interface RateUpdaterUiHandlers extends UiHandlers {
+public interface RateUpdaterUiHandlers extends AbstractEditorUiHandlers<RoomRateUpdateDto> {
 
 }

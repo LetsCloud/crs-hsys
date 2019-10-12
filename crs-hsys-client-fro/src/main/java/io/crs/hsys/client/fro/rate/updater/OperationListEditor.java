@@ -22,9 +22,9 @@ import io.crs.hsys.shared.dto.rate.update.RoomRateOperationDto;
  * @author robi
  *
  */
-public class RateListEditor extends Composite implements IsEditor<ListEditor<RoomRateOperationDto, RateEditor>> {
+public class OperationListEditor extends Composite implements IsEditor<ListEditor<RoomRateOperationDto, OperationEditor>> {
 
-	interface Binder extends UiBinder<Widget, RateListEditor> {
+	interface Binder extends UiBinder<Widget, OperationListEditor> {
 	}
 
 	@Ignore
@@ -32,7 +32,7 @@ public class RateListEditor extends Composite implements IsEditor<ListEditor<Roo
 	FlowPanel listPanel;
 
 	@Inject
-	Provider<RateEditor> editorProvider;
+	Provider<OperationEditor> editorProvider;
 
 	/**
 	 * An entity capable of creating and destroying instances of Editors. This type
@@ -41,15 +41,15 @@ public class RateListEditor extends Composite implements IsEditor<ListEditor<Roo
 	 * @author cr
 	 * 
 	 */
-	private class RateEditorSource extends EditorSource<RateEditor> {
+	private class RateEditorSource extends EditorSource<OperationEditor> {
 
 		/**
 		 * Create a new Editor. Parameters: index - the position at which the new Editor
 		 * should be displayed Returns: an Editor of type E
 		 */
 		@Override
-		public RateEditor create(final int index) {
-			RateEditor subEditor = editorProvider.get();
+		public OperationEditor create(final int index) {
+			OperationEditor subEditor = editorProvider.get();
 
 			listPanel.insert(subEditor, index);
 
@@ -61,7 +61,7 @@ public class RateListEditor extends Composite implements IsEditor<ListEditor<Roo
 		 * implementation is a no-op.
 		 */
 		@Override
-		public void dispose(RateEditor subEditor) {
+		public void dispose(OperationEditor subEditor) {
 			subEditor.removeFromParent();
 		}
 
@@ -69,22 +69,22 @@ public class RateListEditor extends Composite implements IsEditor<ListEditor<Roo
 		 * Re-order a sub-Editor. The default implementation is a no-op.
 		 */
 		@Override
-		public void setIndex(RateEditor editor, int index) {
+		public void setIndex(OperationEditor editor, int index) {
 			listPanel.insert(editor, index);
 		}
 	}
 
-	private ListEditor<RoomRateOperationDto, RateEditor> editor = ListEditor.of(new RateEditorSource());
+	private ListEditor<RoomRateOperationDto, OperationEditor> editor = ListEditor.of(new RateEditorSource());
 
 	/**
 	*/
 	@Inject
-	RateListEditor(Binder uiBinder) {
+	OperationListEditor(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
-	public ListEditor<RoomRateOperationDto, RateEditor> asEditor() {
+	public ListEditor<RoomRateOperationDto, OperationEditor> asEditor() {
 		return editor;
 	}
 }

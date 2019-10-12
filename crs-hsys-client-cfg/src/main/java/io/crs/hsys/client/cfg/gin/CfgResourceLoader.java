@@ -6,7 +6,7 @@ package io.crs.hsys.client.cfg.gin;
 import javax.inject.Inject;
 
 import io.crs.hsys.client.cfg.resources.CfgResources;
-import io.crs.hsys.client.core.resources.BlueGreyThemeResources;
+import io.crs.hsys.client.core.resources.ThemeResourcesBlueGrey;
 
 /**
  * @author CR
@@ -14,7 +14,7 @@ import io.crs.hsys.client.core.resources.BlueGreyThemeResources;
  */
 public class CfgResourceLoader {
 	@Inject
-    CfgResourceLoader(CfgResources cfgResources, BlueGreyThemeResources resources) {
+    CfgResourceLoader(CfgResources cfgResources, ThemeResourcesBlueGrey resources) {
         resources.override().ensureInjected();
     }
 }
