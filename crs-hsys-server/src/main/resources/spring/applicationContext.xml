@@ -195,7 +195,13 @@
 		<constructor-arg ref="rateCodeRepository" />
 		<constructor-arg ref="accountRepository" />
 		<constructor-arg ref="hotelRepository" />
-		<constructor-arg ref="rateByYearRepository" />
+	</bean>
+	<bean id="roomRateService"
+		class="io.crs.hsys.server.service.ofy.RoomRateServiceImpl">
+		<constructor-arg ref="roomRateRepository" />
+		<constructor-arg ref="hotelRepository" />
+		<constructor-arg ref="roomTypeRepository" />
+		<constructor-arg ref="rateCodeRepository" />
 	</bean>
 
 
@@ -275,8 +281,8 @@
 		class="io.crs.hsys.server.repository.ofy.MarketGroupRepositoryImpl" />
 	<bean id="rateCodeRepository"
 		class="io.crs.hsys.server.repository.ofy.RateCodeRepositoryImpl" />
-	<bean id="rateByYearRepository"
-		class="io.crs.hsys.server.repository.ofy.RateByYearRepositoryImpl" />
+	<bean id="roomRateRepository"
+		class="io.crs.hsys.server.repository.ofy.RoomRateRepositoryImpl" />
 
 
 	<bean id="chatRepository"

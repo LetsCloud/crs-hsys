@@ -57,4 +57,9 @@ public class RateRestrictionDto implements Dto {
 		this.applied = applied;
 	}
 
+	@Override
+	public String toString() {
+		return "RateRestrictionDto [type=" + type + ", value=" + value + ", applied=" + applied + "]";
+	}
+
 }

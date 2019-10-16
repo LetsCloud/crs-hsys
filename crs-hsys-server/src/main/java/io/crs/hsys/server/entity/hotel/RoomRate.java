@@ -10,6 +10,9 @@ import java.util.Map;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.Stringify;
+
+import io.crs.hsys.server.entity.DateStringifier;
 
 /**
  * @author robi
@@ -33,6 +36,7 @@ public class RoomRate extends HotelChild {
 	/**
 	 * 
 	 */
+	@Stringify(DateStringifier.class)
 	private Map<Date, RoomRateByDate> roomRatesByDate = new HashMap<Date, RoomRateByDate>();
 
 	/**

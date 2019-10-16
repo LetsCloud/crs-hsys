@@ -53,4 +53,10 @@ public class RoomRateOperationDto implements Dto {
 	public void setValue(Double value) {
 		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		return "RoomRateOperationDto [type=" + type + ", value=" + value + ", operation=" + operation + "]";
+	}
+	
 }

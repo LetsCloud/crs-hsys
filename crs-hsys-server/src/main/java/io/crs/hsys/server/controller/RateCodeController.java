@@ -25,19 +25,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.crs.hsys.server.entity.hotel.RateCode;
 import io.crs.hsys.server.service.RateCodeService;
-import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.rate.RateCodeDto;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 import io.crs.hsys.shared.exception.RestApiException;
 
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
 import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
-import static io.crs.hsys.shared.api.ApiParameters.SEL_INV_TYPE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.RATE_CODE;
 import static io.crs.hsys.shared.api.ApiPaths.SpaV1.ROOT;
+
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -88,7 +87,7 @@ public class RateCodeController extends HotelChildController<RateCode, RateCodeD
 		List<RateCodeDtor> dtos = new ArrayList<RateCodeDtor>();
 
 		Map<String, Object> filters = new HashMap<String, Object>();
-		
+
 		for (RateCode entity : service.getChildrenByFilters(hotelKey, filters)) {
 			dtos.add(modelMapper.map(entity, RateCodeDtor.class));
 		}

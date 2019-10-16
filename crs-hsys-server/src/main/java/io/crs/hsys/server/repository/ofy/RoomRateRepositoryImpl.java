@@ -7,18 +7,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.crs.hsys.server.entity.hotel.RoomRate;
-import io.crs.hsys.server.repository.RateByYearRepository;
+import io.crs.hsys.server.repository.RoomRateRepository;
 
 /**
  * @author robi
  *
  */
-public class RateByYearRepositoryImpl extends HotelChildRepositoryImpl<RoomRate> implements RateByYearRepository {
-	private static final Logger logger = LoggerFactory.getLogger(RateCodeRepositoryImpl.class.getName());
+public class RoomRateRepositoryImpl extends HotelChildRepositoryImpl<RoomRate> implements RoomRateRepository {
+	private static final Logger logger = LoggerFactory.getLogger(RoomRateRepositoryImpl.class.getName());
 
-	public RateByYearRepositoryImpl() {
+	public RoomRateRepositoryImpl() {
 		super(RoomRate.class);
-		logger.info("RateCodeRepositoryImpl");
+		logger.info("RoomRateRepositoryImpl");
 	}
 
 	@Override

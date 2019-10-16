@@ -5,7 +5,6 @@ package io.crs.hsys.shared.api;
 
 import static io.crs.hsys.shared.api.ApiParameters.HOTEL_KEY;
 import static io.crs.hsys.shared.api.ApiParameters.ONLY_ACTIVE;
-import static io.crs.hsys.shared.api.ApiParameters.SEL_INV_TYPE;
 import static io.crs.hsys.shared.api.ApiParameters.WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.PATH_WEBSAFEKEY;
 import static io.crs.hsys.shared.api.ApiPaths.REDUCED;
@@ -23,7 +22,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import io.crs.hsys.shared.cnst.InventoryType;
 import io.crs.hsys.shared.dto.rate.RateCodeDto;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
 

@@ -8,12 +8,15 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import gwt.material.design.client.data.loader.LoadCallback;
@@ -28,6 +31,7 @@ import io.crs.hsys.client.core.event.SetPageTitleEvent;
 import io.crs.hsys.client.core.filter.FilterChangeEvent;
 import io.crs.hsys.client.core.security.CurrentUser;
 import io.crs.hsys.client.fro.NameTokens;
+import io.crs.hsys.shared.api.RoomRateResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 import io.crs.hsys.shared.dto.rate.RateCodeDtor;
@@ -55,15 +59,20 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 	interface MyProxy extends ProxyPlace<RateUpdaterPresenter> {
 	}
 
+	private final PlaceManager placeManager;
+	private final ResourceDelegate<RoomRateResource> resourceDelegate;
 	private final RateCodeDataSource2 rateCodeDataSource;
 	private final RoomTypeDataSource2 roomTypeDataSource;
 	private final CurrentUser currentUser;
 
 	@Inject
-	RateUpdaterPresenter(EventBus eventBus, MyView view, MyProxy proxy, RateCodeDataSource2 rateCodeDataSource,
+	RateUpdaterPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager,
+			ResourceDelegate<RoomRateResource> resourceDelegate, RateCodeDataSource2 rateCodeDataSource,
 			RoomTypeDataSource2 roomTypeDataSource, CurrentUser currentUser) {
 		super(eventBus, view, proxy, AbstractAppPresenter.SLOT_MAIN);
 		logger.info("RateUpdaterPresenter()");
+		this.placeManager = placeManager;
+		this.resourceDelegate = resourceDelegate;
 		this.rateCodeDataSource = rateCodeDataSource;
 		this.roomTypeDataSource = roomTypeDataSource;
 		this.currentUser = currentUser;
@@ -81,7 +90,7 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 		loadRoomTypeData();
 		loadRateCodeData();
 		RoomRateUpdateDto dto = new RoomRateUpdateDto();
-
+		dto.setHotel(currentUser.getCurrentHotel());
 		getView().edit(dto);
 	}
 
@@ -132,13 +141,21 @@ public class RateUpdaterPresenter extends Presenter<RateUpdaterPresenter.MyView,
 
 	@Override
 	public void save(RoomRateUpdateDto dto) {
-		// TODO Auto-generated method stub
-		
+		resourceDelegate.withCallback(new AsyncCallback<RoomRateUpdateDto>() {
+			@Override
+			public void onSuccess(RoomRateUpdateDto dto) {
+				placeManager.navigateBack();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+			}
+		}).roomRateUpdate(dto);
 	}
 
 	@Override
 	public void cancel() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

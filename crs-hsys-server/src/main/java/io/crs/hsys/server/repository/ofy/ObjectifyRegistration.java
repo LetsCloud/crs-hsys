@@ -85,7 +85,7 @@ public class ObjectifyRegistration {
 		ObjectifyService.register(Room.class);
 		ObjectifyService.register(MarketGroup.class);
 		ObjectifyService.register(RateCode.class);
-//		ObjectifyService.register(RoomRate.class);
+		ObjectifyService.register(RoomRate.class);
 		ObjectifyService.register(OooRoom.class);
 		/*
 		 * ObjectifyService.register(Chat.class); ObjectifyService.register(Task.class);

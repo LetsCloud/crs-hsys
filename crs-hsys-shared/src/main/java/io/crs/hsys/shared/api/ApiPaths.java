@@ -68,6 +68,7 @@ public class ApiPaths {
 		public static final String ROOM_STATUS_CHANGE = "/roomStatusChange";
 		public static final String MARKET_GROUP = "/marketGroup";
 		public static final String RATE_CODE = "/rateCode";
+		public static final String ROOM_RATE = "/roomRate";
 
 		public static final String DATACUBE = "/dataCube";
 		public static final String PERF1_QUERY = "/perf1Query";

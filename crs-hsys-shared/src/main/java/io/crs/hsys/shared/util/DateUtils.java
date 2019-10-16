@@ -27,5 +27,4 @@ public class DateUtils {
 		long temp = date.getTime() + (day * DAY_IN_MILISEC);
 		return new Date(temp);
 	}
-
 }

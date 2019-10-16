@@ -31,13 +31,13 @@ public class RoomRateUpdateDto extends HotelChildDto {
 	
 	private Date toDate;
 	
-	private Boolean day1;
-	private Boolean day2;
-	private Boolean day3;
-	private Boolean day4;
-	private Boolean day5;
-	private Boolean day6;
-	private Boolean day7;
+	private Boolean day1 = true;
+	private Boolean day2 = true;
+	private Boolean day3 = true;
+	private Boolean day4 = true;
+	private Boolean day5 = true;
+	private Boolean day6 = true;
+	private Boolean day7 = true;
 	
 	private List<RoomRateOperationDto> operations = new ArrayList<RoomRateOperationDto>();
 
@@ -152,6 +152,14 @@ public class RoomRateUpdateDto extends HotelChildDto {
 
 	public void setDay7(Boolean day7) {
 		this.day7 = day7;
+	}
+
+	@Override
+	public String toString() {
+		return "RoomRateUpdateDto [rateCode=" + rateCode + ", roomTypes=" + roomTypes + ", fromDate=" + fromDate
+				+ ", toDate=" + toDate + ", day1=" + day1 + ", day2=" + day2 + ", day3=" + day3 + ", day4=" + day4
+				+ ", day5=" + day5 + ", day6=" + day6 + ", day7=" + day7 + ", operations=" + operations
+				+ ", restrictions=" + restrictions + "]";
 	}
 
 }

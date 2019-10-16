@@ -9,6 +9,6 @@ import io.crs.hsys.server.entity.hotel.RoomRate;
  * @author robi
  *
  */
-public interface RateByYearRepository extends HotelChildRepository<RoomRate> {
+public interface RoomRateRepository extends HotelChildRepository<RoomRate> {
 
 }
