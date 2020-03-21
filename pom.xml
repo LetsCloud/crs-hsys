@@ -50,7 +50,7 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.2.1.RELEASE</spring.framework.version>
+		<spring.framework.version>5.2.4.RELEASE</spring.framework.version>
 		<spring.security.version>5.2.1.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
