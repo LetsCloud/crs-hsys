@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style>
+	.contentPanel {
+		height: 55px;
+	}
+	
+	.fieldLabel {
+		color: #424242; /* GREY_DARKEN_3 */
+		font-size: 12px;
+		text-align: right;
+		padding-right: 10px;
+	}
+	
+	.fieldValue {
+		color: #212121; /* GREY_DARKEN_4 */
+		font-size: 18px;
+		text-align: right;
+		padding-right: 10px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel addStyleNames="{style.contentPanel}">
+		<g:Label ui:field="valueLabel" addStyleNames="{style.fieldLabel}" />
+		<g:Label ui:field="valueField" addStyleNames="{style.fieldValue}" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

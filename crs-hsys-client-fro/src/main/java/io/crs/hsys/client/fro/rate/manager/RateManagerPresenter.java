@@ -100,20 +100,20 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 	private void loadData() {
 		Date startDate = new Date();
 
+		CurrencyDtor cEur = CurrencyDtor.builder().code("EUR").description("Euro").build();
+		CurrencyDtor cHuf = CurrencyDtor.builder().code("HUF").description("Magyar forint").build();
+
 		RateCodeDtor rcPublic = RateCodeDtor.builder().webSafeKey("PUBLIC").code("PUBLIC").description("Public Rate")
-				.subject(RateSubject.ROOM).build();
+				.subject(RateSubject.ROOM).currency(cHuf).build();
 		RateCodeDtor rcNonref = RateCodeDtor.builder().webSafeKey("NONREF").code("NONREF")
-				.description("Non Refundable Rate").subject(RateSubject.ROOM).build();
+				.description("Non Refundable Rate").subject(RateSubject.ROOM).currency(cEur).build();
 		RateCodeDtor rcCompany = RateCodeDtor.builder().webSafeKey("COMPANY").code("COMPANY")
-				.description("Company Rate").subject(RateSubject.ROOM).build();
+				.description("Company Rate").subject(RateSubject.ROOM).currency(cEur).build();
 		RateCodeDtor rcFlash = RateCodeDtor.builder().webSafeKey("FLASH").code("FLASH")
-				.description("Company Rate").subject(RateSubject.ROOM).build();
+				.description("Company Rate").subject(RateSubject.ROOM).currency(cHuf).build();
 
 		RoomTypeDtor dblbRTD = RoomTypeDtor.builder().webSafeKey("DBLB").code("DBLB").name("Double bed room").build();
 		RoomTypeDtor twinRTD = RoomTypeDtor.builder().webSafeKey("TWIN").code("TWIN").name("Twin bed room").build();
-
-		CurrencyDtor cEur = CurrencyDtor.builder().code("EUR").description("Euro").build();
-		CurrencyDtor cHuf = CurrencyDtor.builder().code("HUF").description("Magyar forint").build();
 
 		List<RateQueryRespDto> ratesGridData = new ArrayList<RateQueryRespDto>();
 
@@ -148,7 +148,7 @@ public class RateManagerPresenter extends Presenter<RateManagerPresenter.MyView,
 
 		List<RateByDateDto> ratesByDate = new ArrayList<RateByDateDto>();
 		for (int i = 0; i < 21; i++) {
-			ratesByDate.add(new RateByDateDto(DateUtils.addDay(date, i), currency, rates, restriction));
+			ratesByDate.add(new RateByDateDto(DateUtils.addDay(date, i), rates, restriction));
 		}
 		return new RateQueryRespDto(rateCode, roomType, ratesByDate);
 	}

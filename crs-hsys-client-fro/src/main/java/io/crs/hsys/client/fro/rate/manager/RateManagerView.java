@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ScrollEvent;
@@ -64,7 +65,7 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 		initWidget(uiBinder.createAndBindUi(this));
 
 		bindSlot(RateManagerPresenter.SLOT_FILTER, filterPanel);
-
+		
 		headerScrollPanel.addScrollHandler(new ScrollHandler() {
 			@Override
 			public void onScroll(ScrollEvent event) {
@@ -72,6 +73,7 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 			}
 		});
 
+		contentScrollPanel.getElement().getStyle().setOverflowY(Overflow.HIDDEN);
 		contentScrollPanel.addScrollHandler(new ScrollHandler() {
 			@Override
 			public void onScroll(ScrollEvent event) {
@@ -104,15 +106,15 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 		flexTable.clear();
 		headerTable.clear();
 		codeHeaderTable.setWidget(0, 0, new RateCodeWidget("Árkód"));
-		codeHeaderTable.setWidget(0, 1, new RateCodeWidget("Szobatípus"));
+//		codeHeaderTable.setWidget(0, 1, new RateCodeWidget("Szobatípus"));
 		codeHeaderTable.getCellFormatter().getElement(0, 0).getStyle().setPadding(1, Unit.PX);
-		codeHeaderTable.getCellFormatter().getElement(0, 1).getStyle().setPadding(1, Unit.PX);
+//		codeHeaderTable.getCellFormatter().getElement(0, 1).getStyle().setPadding(1, Unit.PX);
 		int i = 0;
 		for (RateQueryRespDto line : data) {
 			fixedCol.setWidget(i, 0, new RateCodeWidget(line.getRateCode().getCode()));
-			fixedCol.setWidget(i, 1, new RateCodeWidget(line.getRoomType().getCode()));
+//			fixedCol.setWidget(i, 1, new RateCodeWidget(line.getRoomType().getCode()));
 			fixedCol.getCellFormatter().getElement(i, 0).getStyle().setPadding(1, Unit.PX);
-			fixedCol.getCellFormatter().getElement(i, 1).getStyle().setPadding(1, Unit.PX);
+//			fixedCol.getCellFormatter().getElement(i, 1).getStyle().setPadding(1, Unit.PX);
 			int j = 0;
 			for (RateByDateDto rbd : line.getRatesByDate()) {
 				if (i == 1) {
@@ -126,7 +128,7 @@ public class RateManagerView extends ViewWithUiHandlers<RateManagerUiHandlers> i
 				}
 //				flexTable.getFlexCellFormatter().setWidth(i, j, "40px");
 //				flexTable.setText(i, j, rbd.getRates().get(RatePriceType.DOUBLE).toString());
-				RateWidget celllLabel = new RateWidget(rbd);
+				RateWidget celllLabel = new RateWidget(rbd, line.getRateCode().getCurrency());
 				flexTable.setWidget(i, j, celllLabel);
 				flexTable.getCellFormatter().getElement(i, j).getStyle().setPadding(1, Unit.PX);
 				j++;

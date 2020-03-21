@@ -3,9 +3,13 @@
  */
 package io.crs.hsys.shared.dto.rate;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.crs.hsys.shared.cnst.RatePriceType;
 import io.crs.hsys.shared.cnst.RateSubject;
+import io.crs.hsys.shared.dto.common.CurrencyDtor;
 import io.crs.hsys.shared.dto.hotel.HotelChildDto;
-import io.crs.hsys.shared.dto.hotel.HotelChildDto.Builder;
 
 /**
  * @author robi
@@ -29,6 +33,10 @@ public class RateCodeDtor extends HotelChildDto implements Comparable<RateCodeDt
 	 */
 	private RateSubject subject;
 
+	private CurrencyDtor currency;
+
+	private List<RatePriceType> priceTypes = new ArrayList<RatePriceType>();
+	
 	/**
 	 * 
 	 */
@@ -40,6 +48,8 @@ public class RateCodeDtor extends HotelChildDto implements Comparable<RateCodeDt
 		code = builder.code;
 		description = builder.description;
 		subject = builder.subject;
+		currency = builder.currency;
+		priceTypes = builder.priceTypes;
 	};
 
 	public String getCode() {
@@ -66,6 +76,22 @@ public class RateCodeDtor extends HotelChildDto implements Comparable<RateCodeDt
 		this.subject = subject;
 	}
 
+	public CurrencyDtor getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(CurrencyDtor currency) {
+		this.currency = currency;
+	}
+	
+	public List<RatePriceType> getPriceTypes() {
+		return priceTypes;
+	}
+
+	public void setPriceTypes(List<RatePriceType> priceTypes) {
+		this.priceTypes = priceTypes;
+	}
+
 	/**
 	 * 
 	 * @author robi
@@ -77,6 +103,8 @@ public class RateCodeDtor extends HotelChildDto implements Comparable<RateCodeDt
 		private String code;
 		private String description;
 		private RateSubject subject;
+		private CurrencyDtor currency;
+		private List<RatePriceType> priceTypes = new ArrayList<RatePriceType>();
 
 		public T code(String code) {
 			this.code = code;
@@ -90,6 +118,16 @@ public class RateCodeDtor extends HotelChildDto implements Comparable<RateCodeDt
 
 		public T subject(RateSubject subject) {
 			this.subject = subject;
+			return self();
+		}
+
+		public T currency(CurrencyDtor currency) {
+			this.currency = currency;
+			return self();
+		}
+
+		public T addPriceType(RatePriceType priceType) {
+			this.priceTypes.add(priceType);
 			return self();
 		}
 

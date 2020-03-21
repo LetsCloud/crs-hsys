@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MultiProperties xmlns="hu.skzs.multiproperties">
+    <Version>1.2</Version>
+    <Name>InfMessages</Name>
+    <Description></Description>
+    <Handler>Java Properties Handler</Handler>
+    <Columns>
+        <Key>
+            <Width>200</Width>
+        </Key>
+        <Column>
+            <Name>default</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/hw-gae-client_inf/src/main/resources/hu/hw/cloud/client/inf/i18n/InfMessages.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>hu_HU</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/hw-gae-client_inf/src/main/resources/hu/hw/cloud/client/inf/i18n/InfMessages_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+    </Columns>
+    <Records>
+        <Comment>
+            <Value>MAIN MENU</Value>
+        </Comment>
+        <Property>
+            <Name>mainMenuItemDashhboard</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Dashboard</Value>
+            <Value disabled="false">Infopult</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupPerformance</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Performance analysis</Value>
+            <Value disabled="false">Teljesítmény elemzés</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupPickup</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Pick-up analysis</Value>
+            <Value disabled="false">Pick-up elemzés</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupPace</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Pace analysis</Value>
+            <Value disabled="false">Sebesség elemzés</Value>
+        </Property>
+        <Property>
+            <Name>mainMenuGroupCurve</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Booking curve analysis</Value>
+            <Value disabled="false">Foglalási ív elemzés</Value>
+        </Property>
+        <Comment>
+            <Value>GPS</Value>
+        </Comment>
+        <Property>
+            <Name>gpsTitle</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Period selection</Value>
+            <Value disabled="false">Időszak választó</Value>
+        </Property>
+        <Property>
+            <Name>gpsActualPeriod</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Actual</Value>
+            <Value disabled="false">Vizsgált</Value>
+        </Property>
+        <Property>
+            <Name>gpsActualFrom</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">From</Value>
+            <Value disabled="false">Mettől</Value>
+        </Property>
+        <Property>
+            <Name>gpsActualTo</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">To</Value>
+            <Value disabled="false">Meddig</Value>
+        </Property>
+        <Property>
+            <Name>gpsBasePeriod</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Base</Value>
+            <Value disabled="false">Bázis</Value>
+        </Property>
+        <Property>
+            <Name>gpsBaseFrom</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">From</Value>
+            <Value disabled="false">Mettől</Value>
+        </Property>
+        <Property>
+            <Name>gpsTimeScale</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Time scale</Value>
+            <Value disabled="false">Idő lépték</Value>
+        </Property>
+    </Records>
+</MultiProperties>

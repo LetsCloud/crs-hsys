@@ -5,7 +5,7 @@
 
 	<ui:style>
 	.panel {
-		width: 70px;
+		width: 140px;
 		height: 40px;
 		background-color: #eeeeee;
 		text-align: center;

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MultiProperties xmlns="hu.skzs.multiproperties">
+    <Version>1.2</Version>
+    <Name>InfConstants</Name>
+    <Description></Description>
+    <Handler>Java Properties Handler</Handler>
+    <Columns>
+        <Key>
+            <Width>200</Width>
+        </Key>
+        <Column>
+            <Name>default</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/hw-gae-client_inf/src/main/resources/hu/hw/cloud/client/inf/i18n/InfConstants.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>hu_HU</Name>
+            <Description></Description>
+            <Width>150</Width>
+            <HandlerConfiguration>/hw-gae-client_inf/src/main/resources/hu/hw/cloud/client/inf/i18n/InfConstants_hu_HU.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+    </Columns>
+    <Records>
+        <Comment>
+            <Value>GPS PERIOD TYPES</Value>
+        </Comment>
+        <Property>
+            <Name>gpsPeriodMap</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">pToday,pYesterday,pTomorrow,pThisWeek,pLastWeek,pNextWeek,pThisMonth,pLastMonth,pNextMonth,pThisYear,pLastYear,pNextYear</Value>
+            <Value disabled="false">pToday,pYesterday,pTomorrow,pThisWeek,pLastWeek,pNextWeek,pThisMonth,pLastMonth,pNextMonth,pThisYear,pLastYear,pNextYear</Value>
+        </Property>
+        <Property>
+            <Name>pToday</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Today</Value>
+            <Value disabled="false">Ma</Value>
+        </Property>
+        <Property>
+            <Name>pYesterday</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Yesterday</Value>
+            <Value disabled="false">Tegnap</Value>
+        </Property>
+        <Property>
+            <Name>pTomorrow</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Tomorrow</Value>
+            <Value disabled="false">Holnap</Value>
+        </Property>
+        <Property>
+            <Name>pThisWeek</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">This week</Value>
+            <Value disabled="false">Tárgyhét</Value>
+        </Property>
+        <Property>
+            <Name>pLastWeek</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Last week</Value>
+            <Value disabled="false">Múlt hét</Value>
+        </Property>
+        <Property>
+            <Name>pNextWeek</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next week</Value>
+            <Value disabled="false">Jövő hét</Value>
+        </Property>
+        <Property>
+            <Name>pThisMonth</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">This month</Value>
+            <Value disabled="false">Tárgyhónap</Value>
+        </Property>
+        <Property>
+            <Name>pLastMonth</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Last month</Value>
+            <Value disabled="false">Múlt hónap</Value>
+        </Property>
+        <Property>
+            <Name>pNextMonth</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Nex month</Value>
+            <Value disabled="false">Jövő hónap</Value>
+        </Property>
+        <Property>
+            <Name>pThisQuart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">This quarter</Value>
+            <Value disabled="false">Tárgynegyedév</Value>
+        </Property>
+        <Property>
+            <Name>pLastQuart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Last quarter</Value>
+            <Value disabled="false">Múlt negyedév</Value>
+        </Property>
+        <Property>
+            <Name>pNextQuart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next quarter</Value>
+            <Value disabled="false">Jövő negyedév</Value>
+        </Property>
+        <Property>
+            <Name>pThisHalf</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">This half-year</Value>
+            <Value disabled="false">Tárgyfélév</Value>
+        </Property>
+        <Property>
+            <Name>pLastHalf</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Last half-year</Value>
+            <Value disabled="false">Múlt félév</Value>
+        </Property>
+        <Property>
+            <Name>pNextHalf</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next half-year</Value>
+            <Value disabled="false">Jövő félév</Value>
+        </Property>
+        <Property>
+            <Name>pThisYear</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">This year</Value>
+            <Value disabled="false">Tárgyév</Value>
+        </Property>
+        <Property>
+            <Name>pLastYear</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Last year</Value>
+            <Value disabled="false">Múlt év</Value>
+        </Property>
+        <Property>
+            <Name>pNextYear</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next year</Value>
+            <Value disabled="false">Jövő év</Value>
+        </Property>
+        <Comment>
+            <Value>GPS PERIOD TYPES2</Value>
+        </Comment>
+        <Property>
+            <Name>gpsPeriodMap2</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">p2NextDay,p2PrevDay,p2NextWeek,p2PrevWeek,p2NextMonth,p2PrevMonth,p2NextYear,p2PrevYear</Value>
+            <Value disabled="false">p2NextDay,p2PrevDay,p2NextWeek,p2PrevWeek,p2NextMonth,p2PrevMonth,p2NextYear,p2PrevYear</Value>
+        </Property>
+        <Property>
+            <Name>p2NextDay</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next day</Value>
+            <Value disabled="false">Következő nap</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevDay</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous day</Value>
+            <Value disabled="false">Előző nap</Value>
+        </Property>
+        <Property>
+            <Name>p2NextWeek</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next week</Value>
+            <Value disabled="false">Következő hét</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevWeek</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous week</Value>
+            <Value disabled="false">Előző hét</Value>
+        </Property>
+        <Property>
+            <Name>p2NextMonth</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next month</Value>
+            <Value disabled="false">Következő hónap</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevMonth</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous month</Value>
+            <Value disabled="false">Előző hónap</Value>
+        </Property>
+        <Property>
+            <Name>p2NextQuart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next quarter</Value>
+            <Value disabled="false">Következő negyedév</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevQuart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous quarter</Value>
+            <Value disabled="false">Előző negyedév</Value>
+        </Property>
+        <Property>
+            <Name>p2NextHalf</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next half-year</Value>
+            <Value disabled="false">Következő félév</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevHalf</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous half-year</Value>
+            <Value disabled="false">Előző félév</Value>
+        </Property>
+        <Property>
+            <Name>p2NextYear</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Next year</Value>
+            <Value disabled="false">Következő év</Value>
+        </Property>
+        <Property>
+            <Name>p2PrevYear</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Previous year</Value>
+            <Value disabled="false">Előző év</Value>
+        </Property>
+        <Comment>
+            <Value>GPS TIME SCALE TYPES</Value>
+        </Comment>
+        <Property>
+            <Name>sd</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Daily</Value>
+            <Value disabled="false">Napi</Value>
+        </Property>
+        <Property>
+            <Name>sw</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Weekly</Value>
+            <Value disabled="false">Heti</Value>
+        </Property>
+        <Property>
+            <Name>sm</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Monthly</Value>
+            <Value disabled="false">Havi</Value>
+        </Property>
+        <Property>
+            <Name>sq</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Quarterly</Value>
+            <Value disabled="false">Negyedéves</Value>
+        </Property>
+        <Property>
+            <Name>sh</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Half-yearly</Value>
+            <Value disabled="false">Féléves</Value>
+        </Property>
+        <Property>
+            <Name>sy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Yearly</Value>
+            <Value disabled="false">Éves</Value>
+        </Property>
+    </Records>
+</MultiProperties>

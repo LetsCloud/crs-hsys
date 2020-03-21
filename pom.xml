@@ -17,6 +17,7 @@
 		<module>crs-hsys-client-cfg</module>
 		<module>crs-hsys-client-kip</module>
 		<module>crs-hsys-client-fro</module>
+		<module>crs-hsys-client-inf</module>
 		<module>crs-hsys-server</module>
 	</modules>
 
@@ -49,8 +50,8 @@
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.2.0.RELEASE</spring.framework.version>
-		<spring.security.version>5.2.0.RELEASE</spring.security.version>
+		<spring.framework.version>5.2.1.RELEASE</spring.framework.version>
+		<spring.security.version>5.2.1.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
 		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
@@ -63,10 +64,10 @@
 
 		<itext.version>7.1.8</itext.version>
 
-		<modelmapper.version>2.3.2</modelmapper.version>
+		<modelmapper.version>2.3.5</modelmapper.version>
 		<appengine.version>1.9.76</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
-		<objectify.version>5.1.21</objectify.version>
+		<objectify.version>5.1.24</objectify.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>
 
 		<!-- ***************** -->
@@ -104,6 +105,7 @@
 		<cfg-gwt-directory>${server-target-directory}/cfg</cfg-gwt-directory>
 		<kip-gwt-directory>${server-target-directory}/kip</kip-gwt-directory>
 		<fro-gwt-directory>${server-target-directory}/fro</fro-gwt-directory>
+		<inf-gwt-directory>${server-target-directory}/inf</inf-gwt-directory>
 
 		<gcd.backing.store-directory>${project.parent.basedir}/${server-artifactId}/appengine-generated/local_db.bin</gcd.backing.store-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

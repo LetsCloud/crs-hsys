@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.crs.hsys.shared.cnst.RatePriceType;
-import io.crs.hsys.shared.dto.common.CurrencyDtor;
 import io.crs.hsys.shared.dto.rate.RateRestrictionDto;
 
 /**
@@ -22,8 +21,6 @@ public class RateByDateDto {
 	 */
 	private Date date;
 
-	private CurrencyDtor currency;
-
 	private RateRestrictionDto restriction;
 
 	/**
@@ -34,11 +31,9 @@ public class RateByDateDto {
 	public RateByDateDto() {
 	}
 
-	public RateByDateDto(Date date, CurrencyDtor currency, Map<RatePriceType, Double> rates,
-			RateRestrictionDto restriction) {
+	public RateByDateDto(Date date, Map<RatePriceType, Double> rates, RateRestrictionDto restriction) {
 		this();
 		this.date = date;
-		this.currency = currency;
 		this.rates = rates;
 		this.restriction = restriction;
 	}
@@ -49,14 +44,6 @@ public class RateByDateDto {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public CurrencyDtor getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(CurrencyDtor currency) {
-		this.currency = currency;
 	}
 
 	public Map<RatePriceType, Double> getRates() {

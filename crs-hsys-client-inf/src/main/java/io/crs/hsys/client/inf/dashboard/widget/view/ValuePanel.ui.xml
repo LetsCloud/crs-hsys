@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.valuePanel {
+		height: 80px;
+	}
+	
+	.valueField {
+		color: #212121; /* GREY_DARKEN_4 */
+		font-size: 28px;
+		text-align: right;
+		padding-right: 10px;
+	}
+	
+	.remarkLabel {
+		color: #424242; /* GREY_DARKEN_3 */
+		font-size: 14px;
+		text-align: left;
+		padding-left: 10px;
+	}
+	</ui:style>
+
+	<m:MaterialPanel ui:field="panel" addStyleNames="{style.valuePanel}">
+		<g:Label ui:field="valueField" addStyleNames="{style.valueField}" />
+		<g:Label ui:field="remarkLabel" addStyleNames="{style.remarkLabel}" />
+	</m:MaterialPanel>
+</ui:UiBinder> 

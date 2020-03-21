@@ -23,6 +23,7 @@ import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialPanel;
 
 import io.crs.hsys.shared.cnst.RatePriceType;
+import io.crs.hsys.shared.dto.common.CurrencyDtor;
 import io.crs.hsys.shared.dto.rate.RateRestrictionDto;
 import io.crs.hsys.shared.dto.rate.query.RateByDateDto;
 
@@ -70,11 +71,11 @@ public class RateWidget extends Composite {
 		priceLabel.setText(price);
 	}
 
-	public RateWidget(RateByDateDto price) {
+	public RateWidget(RateByDateDto price, CurrencyDtor currency) {
 		this();
 		String formatted = NumberFormat.getFormat("###,##0").format(price.getRates().get(RatePriceType.DOUBLE));
 		priceLabel.setText(formatted);
-		currencyLabel.setText(price.getCurrency().getCode());
+		currencyLabel.setText(currency.getCode());
 
 		wrapPanel.addClickHandler(new ClickHandler() {
 
