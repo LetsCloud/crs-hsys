@@ -18,9 +18,9 @@ import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.core.datasource.AppUserDataSource2;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.shared.cnst.TaskKind;
 import io.crs.hsys.shared.cnst.TaskStatus;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
@@ -136,5 +136,11 @@ public class TasksFilterPresenter extends AbstractFilterPresenter<TasksFilterPre
 
 	public TaskKind getSelectedTaskKind() {
 		return getView().getSelectedTaskKind();
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

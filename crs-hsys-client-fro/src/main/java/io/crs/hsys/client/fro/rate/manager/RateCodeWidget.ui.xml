@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.panel {
+		width: 140px;
+		height: 40px;
+		background-color: #eeeeee;
+		text-align: center;
+		color: #424242;
+		padding-top: 10px;
+		font-size: 14px;
+	}
+	</ui:style>
+
+	<m:MaterialPanel ui:field="panel"
+		addStyleNames="{style.panel}">
+		<g:Label ui:field="label" />
+	</m:MaterialPanel>
+</ui:UiBinder> 

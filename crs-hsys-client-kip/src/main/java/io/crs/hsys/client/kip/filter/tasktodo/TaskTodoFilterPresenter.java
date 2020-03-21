@@ -15,8 +15,8 @@ import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
 import io.crs.hsys.client.core.datasource.TaskGroupDataSource;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.kip.filter.taskgroup.AbstractTaskGroupFilterPresenter;
 import io.crs.hsys.shared.dto.task.TaskGroupDto;
 
@@ -68,5 +68,11 @@ public class TaskTodoFilterPresenter extends AbstractTaskGroupFilterPresenter<Ta
 			}
 		};
 		taskGroupDataSource.load(new LoadConfig<TaskGroupDto>(0, 0, null, null), taskGroupLoadCallback);
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

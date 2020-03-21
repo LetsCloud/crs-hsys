@@ -15,18 +15,17 @@ import com.google.web.bindery.event.shared.EventBus;
 
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconType;
-
-import io.crs.hsys.client.core.filter.TextFilter;
+import io.crs.hsys.client.core.filter.AbstractFilterView;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
+import io.crs.hsys.client.core.filter.widget.DateFilter;
+import io.crs.hsys.client.core.filter.widget.RoomTypeFilter;
+import io.crs.hsys.client.core.filter.widget.TextFilter;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.core.util.DateUtils;
 import io.crs.hsys.client.kip.filter.AppUserFilter;
 import io.crs.hsys.client.kip.filter.CheckBoxFilter;
-import io.crs.hsys.client.kip.filter.DateFilter;
-import io.crs.hsys.client.kip.filter.RoomTypeFilter;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.dto.common.AppUserDtor;
 import io.crs.hsys.shared.dto.hotel.RoomDto;

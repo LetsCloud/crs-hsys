@@ -111,7 +111,7 @@ public class PeriodLayoutDescription {
 		return endDate;
 	}
 
-	public RoomLayoutDescription[] getWeekDescriptions() {
+	public RoomLayoutDescription[] getRoomLayoutDescriptions() {
 		return rooms;
 	}
 

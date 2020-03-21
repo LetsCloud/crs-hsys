@@ -17,6 +17,7 @@
 		<module>crs-hsys-client-cfg</module>
 		<module>crs-hsys-client-kip</module>
 		<module>crs-hsys-client-fro</module>
+		<module>crs-hsys-client-inf</module>
 		<module>crs-hsys-server</module>
 	</modules>
 
@@ -37,19 +38,20 @@
 		<!-- <gwtp.version>2.0-SNAPSHOT</gwtp.version> -->
 		<gin.version>2.1.2</gin.version>
 		<!-- <gwt-material.version>2.1.1</gwt-material.version> -->
-		<gwt-material.version>2.2-SNAPSHOT</gwt-material.version>
-		<gmd-addext.version>2.1.1</gmd-addext.version>
+		<gwt-material.version>2.3-SNAPSHOT</gwt-material.version>
 		<!-- <gwt-material-table.version>2.0-SNAPSHOT</gwt-material-table.version> -->
 		<gwt-charts.version>0.9.9</gwt-charts.version>
 		<objectify-gwt.version>1.2.1</objectify-gwt.version>
+
+		<gwt-dnd.version>3.3.4</gwt-dnd.version>
 		<!-- https://firebase.google.com/support/releases -->
 		<firebase-sdk.version>5.7.1</firebase-sdk.version>
 
 		<!-- ********************** -->
 		<!-- Server side properties -->
 		<!-- ********************** -->
-		<spring.framework.version>5.1.7.RELEASE</spring.framework.version>
-		<spring.security.version>5.1.5.RELEASE</spring.security.version>
+		<spring.framework.version>5.2.1.RELEASE</spring.framework.version>
+		<spring.security.version>5.2.1.RELEASE</spring.security.version>
 
 		<thymeleaf-spring.version>3.0.11.RELEASE</thymeleaf-spring.version>
 		<thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
@@ -58,14 +60,14 @@
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.25</slf4j.version> <!-- 1.8.0-beta2 -->
 
-		<fasterxml.jackson.core.version>2.9.9</fasterxml.jackson.core.version>
+		<fasterxml.jackson.core.version>2.9.10</fasterxml.jackson.core.version>
 
-		<itext.version>7.1.5</itext.version>
+		<itext.version>7.1.8</itext.version>
 
-		<modelmapper.version>2.3.2</modelmapper.version>
-		<appengine.version>1.9.74</appengine.version>
+		<modelmapper.version>2.3.5</modelmapper.version>
+		<appengine.version>1.9.76</appengine.version>
 		<servlet.version>3.1.0</servlet.version>
-		<objectify.version>5.1.21</objectify.version>
+		<objectify.version>5.1.24</objectify.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>
 
 		<!-- ***************** -->
@@ -103,6 +105,7 @@
 		<cfg-gwt-directory>${server-target-directory}/cfg</cfg-gwt-directory>
 		<kip-gwt-directory>${server-target-directory}/kip</kip-gwt-directory>
 		<fro-gwt-directory>${server-target-directory}/fro</fro-gwt-directory>
+		<inf-gwt-directory>${server-target-directory}/inf</inf-gwt-directory>
 
 		<gcd.backing.store-directory>${project.parent.basedir}/${server-artifactId}/appengine-generated/local_db.bin</gcd.backing.store-directory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -211,11 +214,17 @@
 				<version>${gwt-charts.version}</version>
 			</dependency>
 
-		<dependency>
-			<groupId>com.bradrydzewski</groupId>
-			<artifactId>gwt-cal</artifactId>
-			<version>0.9.5-SNAPSHOT</version>
-		</dependency>
+			<dependency>
+				<groupId>com.bradrydzewski</groupId>
+				<artifactId>gwt-cal</artifactId>
+				<version>0.9.5-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.allen-sauer.gwt.dnd</groupId>
+				<artifactId>gwt-dnd</artifactId>
+				<version>${gwt-dnd.version}</version>
+			</dependency>
 
 			<!-- ************************ -->
 			<!-- Moxieapps Gwt Highcharts -->
@@ -603,12 +612,6 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
-
-
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.5</version>
 				</plugin>
 
 

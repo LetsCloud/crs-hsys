@@ -24,6 +24,7 @@
 	
 	.flexTable td {
 		border: 1px solid #BBBBBB;
+		padding: 5px;
 	}
 	</ui:style>
 
@@ -41,7 +42,8 @@
 					addStyleNames="{style.grid} {style.flexTable}">
 				</g:FlexTable>
 
-				<g:AbsolutePanel ui:field="bookingCanvas">
+				<g:AbsolutePanel ui:field="bookingCanvas"
+					addStyleNames="{style.canvas}">
 				</g:AbsolutePanel>
 
 			</g:FlowPanel>

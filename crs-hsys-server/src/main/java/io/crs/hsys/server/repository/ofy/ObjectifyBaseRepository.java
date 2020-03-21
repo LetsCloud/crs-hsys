@@ -386,6 +386,12 @@ public abstract class ObjectifyBaseRepository<T extends BaseEntity> {
 		return q.list();
 	}
 
+	public T getChildByFilters(Object parent, Map<String, Object> filters) {
+		Query<T> q = query().ancestor(parent);
+		q = addFilters(q, filters);
+		return q.first().now();
+	}
+
 	/**
 	 * Visszaadja a szülő entitás megadott feltételeknek valamint a megadott
 	 * tulajdonság MAXimum értékének megfelő gyermekét.

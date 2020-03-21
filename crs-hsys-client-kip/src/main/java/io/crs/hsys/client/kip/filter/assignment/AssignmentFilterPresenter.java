@@ -10,9 +10,9 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.shared.cnst.InventoryType;
 
 /**
@@ -40,5 +40,11 @@ public class AssignmentFilterPresenter extends AbstractFilterPresenter<Assignmen
 
 	public Boolean isOnlyActive() {
 		return getView().isOnlyActive();
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

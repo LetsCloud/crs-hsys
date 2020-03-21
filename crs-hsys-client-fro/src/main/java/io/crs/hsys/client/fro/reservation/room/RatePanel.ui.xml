@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.content {
+		display: inline-block;
+		margin: 5px;
+		background: yellow;
+		position: relative;
+		width: 100px;
+		height: 100px;
+	}
+	
+	.leftTop {
+		position: absoluet;
+		top: 10;
+		left: 10;
+	}
+	
+	.rightTop {
+		position: absoluet;
+		top: 10;
+		right: 10;
+	}
+	
+	.leftBottom {
+		position: absoluet;
+		bottom: 10;
+		left: 10;
+	}
+	
+	.rightBottom {
+		position: absoluet;
+		bottom: 10;
+		right: 10;
+	}
+	/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.content}">
+		<m:MaterialLabel text="SAT" layoutPosition="ABSOLUTE"
+			left="10" top="10" />
+		<m:MaterialLabel text="19" layoutPosition="ABSOLUTE"
+			right="10" top="10" />
+		<m:MaterialIcon iconType="ARROW_FORWARD"
+			layoutPosition="ABSOLUTE" left="10" bottom="10" />
+		<m:MaterialLabel text="160 EUR"
+			layoutPosition="ABSOLUTE" right="10" bottom="10" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

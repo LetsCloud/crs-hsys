@@ -44,5 +44,7 @@ public interface CrudRepository<T extends BaseEntity> {
 
 	List<T> getChildren(String parentWebSafeKey);
 
+	T getChildByFilters(String parentWebSafeKey, Map<String, Object> filters);
+
 	List<T> getChildrenByFilters(String parentWebSafeKey, Map<String, Object> filters);
 }

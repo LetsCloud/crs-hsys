@@ -40,4 +40,10 @@ public interface CoreConstants extends Constants {
 	Map<String, String> dialogButtonMap();
 
 	Map<String, String> oooReturnWhenMap();
+
+	Map<String, String> rateUpdateOperationMap();
+	
+	Map<String, String> ratePriceType();
+	
+	Map<String, String> rateRestrictionType();
 }

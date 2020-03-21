@@ -10,6 +10,7 @@ import java.util.List;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Index;
 
+import io.crs.hsys.server.entity.hotel.RoomRateByDate;
 import io.crs.hsys.server.entity.hotel.Room;
 import io.crs.hsys.server.entity.hotel.RoomType;
 
@@ -64,7 +65,7 @@ public class RoomStay {
 	/**
 	 * Szobafoglaláshoz rendelt árkódok.
 	 */
-	private List<Rate> rates;
+	private List<RoomRateByDate> roomRateByDates;
 
 	/**
 	 * Szobafoglalás vendégtartózkodásai.
@@ -151,12 +152,12 @@ public class RoomStay {
 		this.setRoomType(room.getRoomType());
 	}
 
-	public List<Rate> getRates() {
-		return rates;
+	public List<RoomRateByDate> getRates() {
+		return roomRateByDates;
 	}
 
-	public void setRates(List<Rate> rates) {
-		this.rates = rates;
+	public void setRates(List<RoomRateByDate> roomRateByDates) {
+		this.roomRateByDates = roomRateByDates;
 	}
 
 	public List<GuestStay> getGuestStays() {
@@ -245,8 +246,8 @@ public class RoomStay {
 			return this;
 		}
 
-		public Builder rates(List<Rate> rates) {
-			instance.setRates(rates);
+		public Builder roomRateByDates(List<RoomRateByDate> roomRateByDates) {
+			instance.setRates(roomRateByDates);
 			return this;
 		}
 	}

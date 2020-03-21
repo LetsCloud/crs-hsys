@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -81,6 +82,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 		initWidget(uiBinder.createAndBindUi(this));
 		logger.log(Level.INFO, "RoomPlanView");
 		this.bookingStyle = froGssRes.bookingStyle();
+		bookingCanvas.getElement().getStyle().setPosition(Position.ABSOLUTE);
 	}
 
 	/**
@@ -231,6 +233,7 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 		for (RoomTypeRowData roomTypeRow : data) {
 			logger.log(Level.INFO, "RoomPlanView().setRoomData()->roomTypeRow.getType()=" + roomTypeRow.getType());
 			bookingGrid.getCellFormatter().setWidth(l, 0, "150px");
+			bookingGrid.getCellFormatter().setHeight(l, 0, "50px");
 			bookingGrid.setWidget(l, 0, new RoomTypeTile(roomTypeRow.getType() + " - " + roomTypeRow.getDescription()));
 			for (int j = 0; j < roomTypeRow.getDaySummary().size(); j++) {
 				bookingGrid.setWidget(l, j + 1, new RoomTypeDayTile(roomTypeRow.getDaySummary().get(j).getAvailable(),
@@ -240,10 +243,12 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 			for (RoomCellData roomCell : roomTypeRow.getRooms()) {
 				logger.log(Level.INFO, "RoomPlanView().setRoomData()->roomCell.getCode()=" + roomCell.getCode());
 				bookingGrid.getCellFormatter().setWidth(l, 0, "150px");
+				bookingGrid.getCellFormatter().setHeight(l, 0, "30px");
 				bookingGrid.setWidget(l, 0, new RoomTile(roomCell.getCode() + " - " + roomCell.getDescription()));
 				l++;
 			}
 		}
+/*		
 		int bcat = bookingCanvas.getAbsoluteTop();
 		logger.log(Level.INFO, "RoomPlanView().setRoomData()->bcat=" + bcat);
 		String bct = bookingCanvas.getElement().getStyle().getTop();
@@ -251,12 +256,18 @@ public class RoomPlanView extends ViewWithUiHandlers<RoomPlanUiHandlers> impleme
 		double bgh = bookingGrid.getOffsetHeight();
 		logger.log(Level.INFO, "RoomPlanView().setRoomData()->bgh=" + bgh);
 		bookingCanvas.getElement().getStyle().setTop(12-bgh, Unit.PX);
-
+*/
 		BookingWidget bw = new BookingWidget();
-		bw.setTop(100);
+		bw.setTop(50);
 		bw.setLeft(150);
 		bw.setArrowColor(bookingStyle.red_arrow());
 		bookingCanvas.add(bw);
+
+		BookingWidget bw2 = new BookingWidget();
+		bw2.setTop(80);
+		bw2.setLeft(150);
+		bw2.setArrowColor(bookingStyle.blue_arrow());
+		bookingCanvas.add(bw2);
 	}
 
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+
+	<ui:style>
+	.wrapPanel {
+		width: 90px;
+		height: 40px;
+		background-color: #37474f;
+		text-align: center;
+		color: white;
+	}
+	
+	.montAndDay {
+		font-weight: bold;
+		font-size: 14px;
+	}
+	</ui:style>
+
+	<m:MaterialPanel ui:field="wrapPanel"
+		addStyleNames="{style.wrapPanel}">
+		<g:Label ui:field="weekDayLabel" />
+		<g:Label ui:field="monthDayLabel"
+			addStyleNames="{style.montAndDay}" />
+	</m:MaterialPanel>
+</ui:UiBinder> 

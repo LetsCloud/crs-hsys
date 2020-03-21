@@ -127,22 +127,23 @@
 		<intercept-url pattern="/static/**" access="permitAll" />
 
 		<intercept-url pattern="/**" access="authenticated" />
-		<intercept-url pattern="/launchboard*" access="authenticated" />
+		<intercept-url pattern="/launchboard*"
+			access="authenticated" />
 		<intercept-url pattern="/upload" access="authenticated" />
 
+		<intercept-url pattern="/kip/pdfdoc"
+			access="authenticated" />
 		<intercept-url pattern="/kip/start.html"
 			access="authenticated" />
 		<intercept-url pattern="/kip/start-uk.html"
 			access="authenticated" />
-		<intercept-url pattern="/kip/**"
-			access="authenticated" />
+		<intercept-url pattern="/kip/**" access="authenticated" />
 		<intercept-url pattern="/kip/kip_module/**"
 			access="authenticated" />
 
 		<intercept-url pattern="/fro/start.html"
 			access="authenticated" />
-		<intercept-url pattern="/fro/**"
-			access="authenticated" />
+		<intercept-url pattern="/fro/**" access="authenticated" />
 		<intercept-url pattern="/fro/fro_module/**"
 			access="authenticated" />
 

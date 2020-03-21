@@ -6,7 +6,7 @@ package io.crs.hsys.client.fro.reservation;
 import io.crs.hsys.client.fro.reservation.extra.ExtraResPresenter;
 import io.crs.hsys.client.fro.reservation.guest.GuestResPresenter;
 import io.crs.hsys.client.fro.reservation.header.MainResPresenter;
-import io.crs.hsys.client.fro.reservation.room.RoomResPresenter;
+import io.crs.hsys.client.fro.reservation.room.RoomStayPresenter;
 
 /**
  * @author robi
@@ -15,7 +15,7 @@ import io.crs.hsys.client.fro.reservation.room.RoomResPresenter;
 public interface ResWidgetPresenterFactory {
 	MainResPresenter createMainResPresenter();
 
-	RoomResPresenter createRoomResPresenter();
+	RoomStayPresenter createRoomResPresenter();
 
 	ExtraResPresenter createExtraResPresenter();
 

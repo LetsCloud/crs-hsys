@@ -161,6 +161,57 @@ nav .button-collapse i {
 }
 
 
+@media only screen and (min-width: 480px){
+	.row .col.sx1{width:8.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx2{width:16.6666666667%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx3{width:25%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx4{width:33.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx5{width:41.6666666667%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx6{width:50%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx7{width:58.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx8{width:66.6666666667%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx9{width:75%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx10{width:83.3333333333%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx11{width:91.6666666667%;margin-left:auto;left:auto;right:auto}
+	.row .col.sx12{width:100%;margin-left:auto;left:auto;right:auto}
+	.row .col.offset-sx1{margin-left:8.3333333333%}
+	.row .col.pull-sx1{right:8.3333333333%}
+	.row .col.push-sx1{left:8.3333333333%}
+	.row .col.offset-sx2{margin-left:16.6666666667%}
+	.row .col.pull-sx2{right:16.6666666667%}
+	.row .col.push-sx2{left:16.6666666667%}
+	.row .col.offset-sx3{margin-left:25%}
+	.row .col.pull-sx3{right:25%}
+	.row .col.push-sx3{left:25%}
+	.row .col.offset-sx4{margin-left:33.3333333333%}
+	.row .col.pull-sx4{right:33.3333333333%}
+	.row .col.push-sx4{left:33.3333333333%}
+	.row .col.offset-sx5{margin-left:41.6666666667%}
+	.row .col.pull-sx5{right:41.6666666667%}
+	.row .col.push-sx5{left:41.6666666667%}
+	.row .col.offset-sx6{margin-left:50%}
+	.row .col.pull-sx6{right:50%}
+	.row .col.push-sx6{left:50%}
+	.row .col.offset-sx7{margin-left:58.3333333333%}
+	.row .col.pull-sx7{right:58.3333333333%}
+	.row .col.push-sx7{left:58.3333333333%}
+	.row .col.offset-sx8{margin-left:66.6666666667%}
+	.row .col.pull-sx8{right:66.6666666667%}
+	.row .col.push-sx8{left:66.6666666667%}
+	.row .col.offset-sx9{margin-left:75%}
+	.row .col.pull-sx9{right:75%}
+	.row .col.push-sx9{left:75%}
+	.row .col.offset-sx10{margin-left:83.3333333333%}
+	.row .col.pull-sx10{right:83.3333333333%}
+	.row .col.push-sx10{left:83.3333333333%}
+	.row .col.offset-sx11{margin-left:91.6666666667%}
+	.row .col.pull-sx11{right:91.6666666667%}
+	.row .col.push-sx11{left:91.6666666667%}
+	.row .col.offset-sx12{margin-left:100%}
+	.row .col.pull-sx12{right:100%}
+	.row .col.push-sx12{left:100%}
+}
+
 
 
 @media only screen and (min-width: 1201px) {

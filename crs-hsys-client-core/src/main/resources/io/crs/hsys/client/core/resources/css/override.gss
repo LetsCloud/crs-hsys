@@ -2,8 +2,42 @@
 
 @external titleBar, btn, btn-large, secondary-content, collection, dropdown-content, selected, side-nav, 
 multiValueSuggestBox-panel, tabs, table-container, collapsible-body, active, top-panel, collapsible, 
-materialize-textarea, collection-item, fixed, select2-selection--multiple, select2-selection--single, 
-select2-container--focus, select2-container--default, read-only, dataGroupBox, dataGroupTitle, breadcrumb;
+materialize-textarea, collection-item, fixed, 
+select2-selection, 
+select2-selection--multiple, 
+select2-selection--single, 
+select2-container--default, 
+select2-container--focus, 
+select2-container--open,
+select2-results__options, 
+select2-results__option,
+picker__button--clear,
+picker__button--close,
+picker__button--today,
+picker__close,
+picker__date-display,
+picker__day,
+picker__day--outfocus,
+picker__day--today,
+picker__day--selected,
+picker__day--selected,
+picker__input,
+picker__input--active,
+picker--focused, 
+picker__list-item,
+picker__list-item--highlighted,
+picker__list-item--selected
+picker__nav--prev,
+picker__nav--next,
+picker--time,
+picker__today,
+picker__weekday-display,
+picker__year-display,
+input-field,
+combobox, 
+input-field,
+outlined,
+read-only, dataGroupBox, dataGroupTitle, breadcrumb, switch, lever;
 	/*
 * BTN, BTN-LARGE, BTN-FLAT, BTN-FLOATING
 */
@@ -64,7 +98,17 @@ textarea.materialize-textarea {
 
 [type="checkbox"]:checked+label:before {
 	border-right: 2px solid C_PRIMARY;
-	border-bottom: 2px solid C_PRIMARY
+	border-bottom: 2px solid C_PRIMARY;
+}
+
+/***************
+     Switch
+***************/
+.switch label input[type=checkbox]:checked+.lever{
+	background-color: C_PRIMARY_LIGHT;
+}
+.switch label input[type=checkbox]:checked+.lever:after{
+	background-color: C_PRIMARY;
 }
 
 /*
@@ -93,10 +137,29 @@ textarea.materialize-textarea {
 /*
 *
 */
+	
+@media only screen and (max-width:600px) {
+	.titleBar {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+	
+@media only screen and (min-width:600px) {
+	.titleBar {
+		padding-left: 56px;
+		padding-right: 56px;
+	}
+}
+
 .titleBar {
 	color: #fff;
-	background-color: C_PRIMARY
+	background-color: C_PRIMARY;
+	margin-top: 56px;
+	padding-top: 56px;		
+	padding-bottom: 56px;		
 }
+
 
 .secondary-content {
 	color: C_PRIMARY
@@ -271,7 +334,9 @@ blockquote {
 	.read-only input[type=date], .read-only input[type=datetime-local],
 	.read-only input[type=tel], .read-only input[type=number], .read-only input[type=search],
 	.read-only textarea.materialize-textarea {
-	margin: 0 0 0 0;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0 !important;
 }
 
 @media only screen and (max-width:992px) {
@@ -307,3 +372,131 @@ blockquote {
 }
 
 
+/**
+* ComboBox
+**/
+ul.select2-results__options[aria-multiselectable="true"] li.select2-results__option:not([role="group"])[aria-selected="true"]:after {
+    border: 2px solid C_PRIMARY !important;
+    background-color: C_PRIMARY !important;
+}
+
+.input-field.outlined.combobox 
+.select2-container--open .select2-selection {
+    border: 2px solid C_PRIMARY;
+    box-shadow: none;
+}
+
+/**
+* ComboBox Focus
+**/
+.input-field.combobox .select2-container--focus .select2-selection {
+    border-bottom: 1px solid C_PRIMARY !important;
+    box-shadow: 0 1px 0 0 C_PRIMARY !important;
+}
+
+.input-field.outlined.combobox .select2-container--focus .select2-selection {
+    border: 2px solid C_PRIMARY;
+    box-shadow: none;
+}
+
+/********************
+*                   *
+* PICKER            *
+*                   *
+********************/
+
+.picker__input.picker__input--active {
+    border-bottom: 1px solid C_PRIMARY;
+    box-shadow: 0 1px 0 0 C_PRIMARY;
+    border-color: C_PRIMARY;
+}
+
+.picker--focused 
+.picker__day--selected{
+	background-color: C_PRIMARY;
+}
+
+.picker__button--today:hover,
+.picker__button--clear:hover,
+.picker__button--close:hover{
+	background: C_PRIMARY_LIGHT;
+}
+
+.picker__button--today:focus,
+.picker__button--clear:focus,
+.picker__button--close:focus{
+	background: C_PRIMARY_LIGHT;
+}
+
+.picker__button--today:before{
+	border-top:0.66em solid C_PRIMARY;
+}
+
+.picker__button--clear:before{
+	border-top:3px solid #ee2200
+}
+
+.picker__date-display{
+	background-color: C_PRIMARY;
+}
+.picker__nav--prev:hover,
+.picker__nav--next:hover{
+	background: C_PRIMARY_LIGHT
+}
+
+.picker__weekday-display{
+	background-color: C_PRIMARY_DARK;
+    color: #fff;
+    font-weight: 300;
+}
+
+.picker__day.picker__day--today {
+	color: C_PRIMARY;
+    font-weight: 600;
+}
+
+.picker--focused 
+.picker__day--selected
+.picker__day--outfocus{
+	background-color: C_PRIMARY_LIGHT;
+}
+
+.picker__close,
+.picker__today{
+	color: C_PRIMARY /* LIGHT_BLUE_LIGHTEN_1 */
+}
+
+button.picker__close:focus{
+	background-color: C_PRIMARY_LIGHT
+}
+
+.picker__list-item:hover{
+	background: C_PRIMARY_LIGHT;
+	border-color: C_PRIMARY;
+}
+
+.picker__list-item--highlighted{
+	border-color: C_PRIMARY;
+}
+.picker__list-item--highlighted:hover,
+.picker--focused .picker__list-item--highlighted{
+	background: C_PRIMARY_LIGHT;
+}
+
+.picker__list-item--selected,
+.picker__list-item--selected:hover,
+.picker--focused .picker__list-item--selected{
+	background: C_PRIMARY;
+}
+
+.picker--time
+.picker__button--clear:hover,
+.picker--time
+.picker__button--clear:focus{
+	background: C_PRIMARY_LIGHT;
+	border-color: #ee2200;
+}
+
+.picker__year-display {
+    color: #fff;
+}

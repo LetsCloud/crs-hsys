@@ -117,6 +117,11 @@ public abstract class CrudRepositoryImpl<T extends BaseEntity> extends Objectify
 	}
 
 	@Override
+	public T getChildByFilters(String parentWebSafeKey, Map<String, Object> filters) {
+		return getChildByFilters(getParentKey(parentWebSafeKey), filters);
+	}
+
+	@Override
 	public List<T> getChildrenByFilters(String parentWebSafeKey, Map<String, Object> filters) {
 		return getChildrenByFilters(getParentKey(parentWebSafeKey), filters);
 	}

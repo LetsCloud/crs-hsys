@@ -50,6 +50,18 @@ public class ReservationDto extends HotelChildDto {
 	 */
 	private List<ReservationDto> reservations = new ArrayList<ReservationDto>();
 
+	public ReservationDto() {}
+
+	public ReservationDto(Builder<?> builder) {
+		super(builder);
+		status = builder.status;
+		market = builder.market;
+		roomStays = builder.roomStays;
+		fixedCharges = builder.fixedCharges;
+		profileLinks = builder.profileLinks;
+		reservations = builder.reservations;
+	}	
+	
 	public ReservationStatus getStatus() {
 		return status;
 	}
@@ -96,6 +108,57 @@ public class ReservationDto extends HotelChildDto {
 
 	public void setProfileLinks(List<ProfileLinkDto> profileLinkDtos) {
 		this.profileLinks = profileLinkDtos;
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 * @param <T>
+	 */
+	public static abstract class Builder<T extends Builder<T>> extends HotelChildDto.Builder<T> {
+
+		private ReservationStatus status;
+		private MarketCodeDto market;
+		private List<RoomStayDto> roomStays = new ArrayList<RoomStayDto>();
+		private List<FixedChargeDto> fixedCharges = new ArrayList<FixedChargeDto>();
+		private List<ProfileLinkDto> profileLinks = new ArrayList<ProfileLinkDto>();
+		private List<ReservationDto> reservations = new ArrayList<ReservationDto>();
+
+		public T status(ReservationStatus status) {
+			this.status = status;
+			return self();
+		}
+
+		public T market(MarketCodeDto market) {
+			this.market = market;
+			return self();
+		}
+
+		public T addRoomStay(RoomStayDto roomStay) {
+			this.roomStays.add(roomStay);
+			return self();
+		}
+
+		public ReservationDto build() {
+			return new ReservationDto(this);
+		}
+	}
+
+	/**
+	 * 
+	 * @author robi
+	 *
+	 */
+	protected static class Builder2 extends Builder<Builder2> {
+		@Override
+		protected Builder2 self() {
+			return this;
+		}
+	}
+
+	public static Builder<?> builder() {
+		return new Builder2();
 	}
 
 }

@@ -26,7 +26,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
 import io.crs.hsys.client.core.CoreNameTokens;
 import io.crs.hsys.client.core.event.SetPageTitleEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
 import io.crs.hsys.shared.api.TaskResource;
 import io.crs.hsys.shared.cnst.MenuItemType;
 import io.crs.hsys.shared.cnst.TaskKind;

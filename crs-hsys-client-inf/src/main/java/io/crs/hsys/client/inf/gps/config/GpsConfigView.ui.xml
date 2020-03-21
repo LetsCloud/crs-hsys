@@ -1,0 +1,90 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	.title {
+		margin-top: -60px;
+		margin-bottom: 30px;
+	}
+	
+	.dropdownButton {
+		width: 100%;
+	}
+	
+	.actionButton {
+		float: right;
+	}
+	
+	.okButton {
+		color: #ffa726;
+	}
+	</ui:style>
+
+	<ui:with field="i18n0" type="io.crs.hsys.client.core.i18n.CoreMessages" />
+
+	<ui:with field="i18n" type="io.crs.hsys.client.inf.i18n.InfMessages" />
+
+	<g:HTMLPanel>
+		<m:MaterialDialog ui:field="modal" type="DEFAULT"
+			inDuration="500" outDuration="500">
+			<m:MaterialDialogContent>
+				<m:MaterialTitle title="{i18n.gpsTitle}"
+					addStyleNames="{style.title}" />
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12 m4">
+						<!-- Activator -->
+						<m:MaterialButton text="{i18n.gpsActualPeriod}"
+							iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" textColor="WHITE"
+							activates="actualDropDown" addStyleNames="{style.dropdownButton}" />
+						<!-- My Drop Down -->
+						<m:MaterialDropDown ui:field="actualDropDown"
+							activator="actualDropDown" constrainWidth="true" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s12 m4">
+						<m:MaterialDatePicker ui:field="actualFrom"
+							placeholder="{i18n.gpsActualFrom}" container="BODY"
+							selectionType="YEAR_MONTH_DAY" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s12 m4">
+						<m:MaterialDatePicker ui:field="actualTo"
+							placeholder="{i18n.gpsActualTo}" container="BODY" selectionType="YEAR_MONTH_DAY" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12 m4">
+						<!-- Activator -->
+						<m:MaterialButton text="{i18n.gpsBasePeriod}"
+							iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" textColor="WHITE"
+							activates="baseDropDown" addStyleNames="{style.dropdownButton}" />
+						<!-- My Drop Down -->
+						<m:MaterialDropDown ui:field="baseDropDown"
+							activator="baseDropDown" constrainWidth="true" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s12 m4">
+						<m:MaterialDatePicker ui:field="baseFrom"
+							placeholder="{i18n.gpsBaseFrom}" container="BODY" selectionType="YEAR_MONTH_DAY" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s12">
+						<m:MaterialListBox ui:field="scaleListBox"
+							placeholder="{i18n.gpsTimeScale}" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialDialogContent>
+
+			<m:MaterialDialogFooter>
+				<m:MaterialButton ui:field="okButton" text="{i18n0.comOk}"
+					type="FLAT" waves="DEFAULT" addStyleNames="{style.actionButton} {style.okButton}" />
+
+				<m:MaterialButton ui:field="cancelButton" text="{i18n0.comCancel}"
+					type="FLAT" waves="DEFAULT" addStyleNames="{style.actionButton}" />
+			</m:MaterialDialogFooter>
+		</m:MaterialDialog>
+	</g:HTMLPanel>
+</ui:UiBinder> 

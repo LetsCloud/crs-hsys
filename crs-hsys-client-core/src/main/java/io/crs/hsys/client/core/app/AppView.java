@@ -15,7 +15,10 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import gwt.material.design.client.base.viewport.Resolution;
 import gwt.material.design.client.base.viewport.ViewPort;
 import gwt.material.design.client.ui.MaterialBreadcrumb;
+import gwt.material.design.client.ui.MaterialDropDown;
+import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialRow;
 import io.crs.hsys.client.core.model.BreadcrumbConfig;
@@ -31,6 +34,12 @@ public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 
 	@UiField
 	HTMLPanel menu;
+
+	@UiField
+	MaterialIcon menuIcon;
+
+	@UiField
+	MaterialDropDown<?> menuDropDown;
 
 	@UiField
 	MaterialLabel title, description;
@@ -76,5 +85,20 @@ public class AppView extends ViewImpl implements AbstractAppPresenter.MyView {
 			breadcrumb.setTargetHistoryToken(breadcrumbConfig.getTargetHistory());
 			breadcrumbsPanel.add(breadcrumb);
 		}
+	}
+
+	@Override
+	public void setPageMenu(List<MaterialLink> menuItems) {
+		logger.info("ApplicationView().setPageMenu()");
+		if (menuItems == null) {
+			logger.info("ApplicationView().setPageMenu()->(menuItems == null)");
+			menuIcon.setVisible(false);
+			menuDropDown.clear();
+			return;
+		}
+		logger.info("ApplicationView().setPageMenu()-2");
+		menuIcon.setVisible(true);
+		for (MaterialLink item : menuItems)
+			menuDropDown.add(item);
 	}
 }

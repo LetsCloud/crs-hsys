@@ -26,18 +26,16 @@
 	<inherits
 		name="gwt.material.design.addext.GwtMaterialAddextBasic" />
 	<inherits name="gwt.material.design.incubator.AddinsIncubator" />
+	<!-- Font Awesome Icons import -->
+    <inherits name="gwt.material.design.incubator.FontAwesomeResources" />
 
 	<inherits name="com.google.common.collect.Collect" />
-<<<<<<< HEAD
 
 	<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd' />
 	<inherits name='com.bradrydzewski.gwt.calendar.Calendar' />
 	<inherits
 		name='com.bradrydzewski.gwt.calendar.theme.google.Google' />
 
-=======
-<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
->>>>>>> master
 	<source path="client" />
 	<source path="shared" />
 
@@ -46,7 +44,8 @@
 		value="io.crs.hsys.client.fro.gin.ClientModule" />
 
 	<set-configuration-property
-		name="gwtp.bootstrapper" value="io.crs.hsys.client.fro.App" />
+		name="gwtp.bootstrapper" value="io.crs.hsys.client.fro.FroApp" />
+
 	<set-configuration-property
 		name="CssResource.enableGss" value="true" />
 

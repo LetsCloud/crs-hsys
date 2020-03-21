@@ -46,7 +46,7 @@ public abstract class AbstractEditorPresenter<T extends BaseDto, V extends Abstr
 
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
-		logger.info("AppUserEditorPresenter().prepareFromRequest()");
+		logger.info("AbstractEditorPresenter().prepareFromRequest()");
 		filters.clear();
 		Set<String> params = request.getParameterNames();
 		for (String param : params) {

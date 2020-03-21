@@ -21,7 +21,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Reservation")
 	String mainMenuItemReservation();
 
-	
 	// *********
 	// Chat Room
 	// *********
@@ -29,7 +28,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Chat Room")
 	String mainMenuItemChatRoom();
 
-	
 	// *********
 	// Tasks
 	// *********
@@ -37,7 +35,6 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Tasks")
 	String mainMenuItemTasks();
 
-	
 	// ***********
 	// Guest Rooms
 	// ***********
@@ -45,26 +42,17 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Guest Rooms")
 	String mainMenuItemGuestRooms();
 
-
 	// ************
-	// Public Areas
+	// Configuration
 	// ************
-	@DefaultMessage("Public Areas")
-	String mainMenuGroupPublicAreas();
+	@DefaultMessage("Configuration")
+	String mainMenuGroupConfiguration();
 
+	@DefaultMessage("Hotel Configuration")
+	String mainMenuItemHotelConfiguration();
 
-	// ************
-	// Assignment
-	// ************
-	@DefaultMessage("Cleaning Assignment")
-	String mainMenuGroupAssignment();
-
-	@DefaultMessage("Room Cleaning Assignment")
-	String mainMenuItemRoomAssignment();
-
-	@DefaultMessage("Area Cleaning Assignment")
-	String mainMenuItemAreaAssignment();
-
+	@DefaultMessage("Rate Configuration")
+	String mainMenuItemRateConfiguration();
 
 	// ************
 	// Minibar
@@ -75,17 +63,13 @@ public interface FroMessages extends Messages {
 	@DefaultMessage("Minibar Consumption")
 	String mainMenuItemConsumption();
 
-
 	// ************
 	// Maintenance
 	// ************
-	
+
 	@DefaultMessage("Maintenance")
 	String mainMenuGroupMaintenance();
 
-	
-
-	
 	/*
 	 * CHAT ROOM
 	 */
@@ -95,40 +79,33 @@ public interface FroMessages extends Messages {
 
 	@DefaultMessage("All attendants")
 	String chatRoomDescription();
-	
 
 	/*
-	 * ATTENDANTS
+	 * RATE CONFIGURATION
 	 */
 
-	@DefaultMessage("Attendants")
-	String attendantsTitle();
+	@DefaultMessage("Rate Configuration")
+	String rateConfigTitle();
 
-	@DefaultMessage("All attendants")
-	String attendantsDescription();
-	
+	@DefaultMessage("Rate Grpoups, Rate Codes and Rate Manager")
+	String rateConfigDescription();
+
+	@DefaultMessage("Rate Codes")
+	String rateCodeBrowserTitle();
 
 	/*
-	 * ASSIGNMENTS
+	 * RATE MANAGER FILTER
 	 */
+	@DefaultMessage("Rate Codes")
+	String rateMngrFilterRateCodeLabel();
 
-	@DefaultMessage("Assignments")
-	String assignmentsTitle();
+	@DefaultMessage("Choose Rate Code")
+	String rateMngrFilterRateCodePlaceholder();
 
-	@DefaultMessage("All assignments")
-	String assignmentsDescription();
+	@DefaultMessage("Room Types")
+	String rateMngrFilterRoomTypeLabel();
 
-	@DefaultMessage("Tasks assigned to {0}")
-	String assignmentsTasksAssignedTo(String attendant);
+	@DefaultMessage("Choose Room Type")
+	String rateMngrFilterRoomTypePlaceholder();
 
-	@DefaultMessage("AssignedTo")
-	String assignmentsAssignedTo();
-
-	@DefaultMessage("Inspector")
-	String assignmentsInspector();
-
-	@DefaultMessage("CleanType")
-	String assignmentsCleanType();
-	
-	
 }

@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import io.crs.hsys.client.core.filter.ComboBoxFilter;
+import io.crs.hsys.client.core.filter.widget.ComboBoxFilter;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.shared.cnst.TaskKind;
 

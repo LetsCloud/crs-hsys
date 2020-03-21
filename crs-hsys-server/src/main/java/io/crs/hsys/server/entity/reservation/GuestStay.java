@@ -9,6 +9,7 @@ import java.util.List;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Index;
 
+import io.crs.hsys.server.entity.hotel.RoomRateByDate;
 import io.crs.hsys.server.entity.profile.Guest;
 
 /**
@@ -50,7 +51,7 @@ public class GuestStay {
 	/**
 	 * A vendégtartózkodáshoz rendelet árkód.
 	 */
-	private List<Rate> rates;
+	private List<RoomRateByDate> roomRateByDates;
 
 	/**
 	 * Átköltözött másik szobából.
@@ -111,12 +112,12 @@ public class GuestStay {
 		this.guestRef = Ref.create(guest);
 	}
 
-	public List<Rate> getRates() {
-		return rates;
+	public List<RoomRateByDate> getRates() {
+		return roomRateByDates;
 	}
 
-	public void setRates(List<Rate> rates) {
-		this.rates = rates;
+	public void setRates(List<RoomRateByDate> roomRateByDates) {
+		this.roomRateByDates = roomRateByDates;
 	}
 
 	public Boolean getChekedIn() {
@@ -177,8 +178,8 @@ public class GuestStay {
 			return this;
 		}
 
-		public Builder rates(List<Rate> rates) {
-			instance.setRates(rates);
+		public Builder roomRateByDates(List<RoomRateByDate> roomRateByDates) {
+			instance.setRates(roomRateByDates);
 			return this;
 		}
 	}

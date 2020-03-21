@@ -16,8 +16,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialChip;
 import gwt.material.design.client.ui.MaterialTextBox;
-
-import io.crs.hsys.client.core.ui.filter.AbstractFilterView;
+import io.crs.hsys.client.core.filter.AbstractFilterView;
 import io.crs.hsys.client.core.i18n.CoreConstants;
 import io.crs.hsys.client.core.i18n.CoreMessages;
 import io.crs.hsys.shared.dto.profile.ProfileGroupDto;

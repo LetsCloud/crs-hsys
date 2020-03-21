@@ -32,8 +32,7 @@
 	<!-- RequestContextListener, a request header olvasás céljából -->
 	<listener>
 		<listener-class>
-			org.springframework.web.context.request.RequestContextListener
-		</listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 	<!-- RequestContextListener END -->
 
@@ -84,4 +83,13 @@
 	<welcome-file-list>
 		<welcome-file>dashboard.html</welcome-file>
 	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>PdfDoc</servlet-name>
+		<servlet-class>io.crs.hsys.server.servlet.PdfServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PdfDoc</servlet-name>
+		<url-pattern>/kip/pdfdoc</url-pattern>
+	</servlet-mapping>
 </web-app>

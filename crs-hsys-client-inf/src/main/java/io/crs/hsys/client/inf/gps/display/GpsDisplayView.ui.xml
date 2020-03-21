@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:m.html="urn:import:gwt.material.design.client.ui.html">
+
+	<ui:style>
+	.gpsButton {
+		padding-left: 10px;
+	}
+	
+	.gpsDisplayM {
+		padding-top: 5px;
+		max-width: 200px;
+		line-height: 25px;
+	}
+	
+	.vs {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<!-- GPS link -->
+		<m:MaterialLink ui:field="gpsLink" iconType="DATE_RANGE"
+			iconColor="GREY_LIGHTEN_5" float="RIGHT" addStyleNames="{style.gpsButton}" />
+
+		<!-- GPS Display -->
+		<m.html:Div float="RIGHT" hideOn="HIDE_ON_SMALL_DOWN">
+			<m:MaterialLabel ui:field="basePeriod" text="2016.07.01.-2016.07.31."
+				textColor="CYAN_LIGHTEN_1" float="RIGHT" />
+			<m:MaterialLabel text="vs" float="RIGHT"
+				addStyleNames="{style.vs}" />
+			<m:MaterialLabel ui:field="factPeriod" text="2017.07.01.-2017.07.31. "
+				textColor="ORANGE_LIGHTEN_1" float="RIGHT" />
+		</m.html:Div>
+
+		<m.html:Div float="RIGHT" hideOn="HIDE_ON_MED_UP"
+			addStyleNames="{style.gpsDisplayM}">
+			<m:MaterialLabel ui:field="factPeriodM" text="2017.07.01.-2017.07.31. "
+				textColor="ORANGE_LIGHTEN_1" float="RIGHT" />
+			<m:MaterialLabel ui:field="basePeriodM" text="2016.07.01.-2016.07.31."
+				textColor="CYAN_LIGHTEN_1" float="RIGHT" />
+		</m.html:Div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

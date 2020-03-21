@@ -17,9 +17,9 @@ import gwt.material.design.client.data.loader.LoadResult;
 
 import io.crs.hsys.client.core.datasource.OrganizationDataSource2;
 import io.crs.hsys.client.core.datasource.QuotationStatusDataSource;
+import io.crs.hsys.client.core.filter.AbstractFilterPresenter;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterPresenter;
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.shared.dto.doc.QuotationStatusDto;
 import io.crs.hsys.shared.dto.profile.OrganizationDtor;
 
@@ -117,5 +117,11 @@ public class QuotationFilterPresenter extends AbstractFilterPresenter<QuotationF
 
 	public void setOrganizationKey(String webSafeKey) {
 		organizationKey = webSafeKey;
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

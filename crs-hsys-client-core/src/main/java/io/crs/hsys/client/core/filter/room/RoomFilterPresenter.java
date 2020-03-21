@@ -11,15 +11,11 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import gwt.material.design.client.data.loader.LoadCallback;
 import gwt.material.design.client.data.loader.LoadConfig;
 import gwt.material.design.client.data.loader.LoadResult;
-
-import io.crs.hsys.client.core.ui.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.datasource.HotelDataSource2;
-import io.crs.hsys.client.core.datasource.RoomTypeDataSource;
 import io.crs.hsys.client.core.datasource.RoomTypeDataSource2;
+import io.crs.hsys.client.core.filter.AbstractFilterUiHandlers;
 import io.crs.hsys.client.core.filter.hotelchild.AbstractHotelChildFilterPresenter;
 import io.crs.hsys.client.core.security.CurrentUser;
-import io.crs.hsys.shared.cnst.InventoryType;
-import io.crs.hsys.shared.dto.hotel.RoomTypeDto;
 import io.crs.hsys.shared.dto.hotel.RoomTypeDtor;
 
 /**
@@ -93,5 +89,11 @@ public class RoomFilterPresenter extends AbstractHotelChildFilterPresenter<RoomF
 
 	public List<String> getSelectedRoomTypeKeys() {
 		return getView().getSelectedRoomTypeKeys();
+	}
+
+	@Override
+	public void filterChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

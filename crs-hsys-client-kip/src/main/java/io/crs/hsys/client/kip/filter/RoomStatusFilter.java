@@ -18,11 +18,10 @@ import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialPanel;
-
-import io.crs.hsys.client.core.filter.BaseFilter;
+import io.crs.hsys.client.core.filter.FilterChangeEvent;
+import io.crs.hsys.client.core.filter.FilterChangeEvent.DataTable;
+import io.crs.hsys.client.core.filter.widget.BaseFilter;
 import io.crs.hsys.client.core.i18n.CoreConstants;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent;
-import io.crs.hsys.client.core.ui.filter.FilterChangeEvent.DataTable;
 import io.crs.hsys.client.kip.i18n.KipMessages;
 import io.crs.hsys.shared.cnst.RoomStatus;
 
